@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2026-06-17)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Chores
+
+* sync repo ([e5c80ee](https://github.com/hanzoai/java-sdk/commit/e5c80ee8d095a4d80465eef186ee8745826d1d52))
+
+
+### Documentation
+
+* tidy LLM.md indexes; CLAUDE.md -&gt; LLM.md symlink convention ([f6b9d51](https://github.com/hanzoai/java-sdk/commit/f6b9d51d9c5c820c499470521956bbf9064e8bd6))
+
 ## 0.1.0-alpha.4 (2026-06-01)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
