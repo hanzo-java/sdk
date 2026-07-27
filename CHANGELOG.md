@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2026-07-27)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([5ccfcd3](https://github.com/hanzoai/java-sdk/commit/5ccfcd31dbcd562012b06a749638a09e4cdea4fe))
+
+
+### Chores
+
+* **brand:** dynamic hero banner ([76d50f0](https://github.com/hanzoai/java-sdk/commit/76d50f0ceb26da97070f31254d2cf9c312222a80))
+
+
+### Documentation
+
+* **brand:** add hero banner ([de85e51](https://github.com/hanzoai/java-sdk/commit/de85e513db40dfcd147f8d310e8c4f245973e27a))
+
 ## 0.1.0-alpha.5 (2026-06-17)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
