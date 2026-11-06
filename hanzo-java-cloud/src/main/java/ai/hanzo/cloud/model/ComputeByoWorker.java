@@ -16,6 +16,7 @@ package ai.hanzo.cloud.model;
 import java.util.Objects;
 import ai.hanzo.cloud.model.ComputeByoGPU;
 import ai.hanzo.cloud.model.ComputeEngineAdvertisement;
+import ai.hanzo.cloud.model.ComputeLaneModel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -119,6 +120,11 @@ public class ComputeByoWorker {
   @javax.annotation.Nullable
   private String jobQueue;
 
+  public static final String SERIALIZED_NAME_LANES = "lanes";
+  @SerializedName(SERIALIZED_NAME_LANES)
+  @javax.annotation.Nullable
+  private List<String> lanes = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_LAST_HEARTBEAT = "lastHeartbeat";
   @SerializedName(SERIALIZED_NAME_LAST_HEARTBEAT)
   @javax.annotation.Nullable
@@ -133,6 +139,11 @@ public class ComputeByoWorker {
   @SerializedName(SERIALIZED_NAME_MEMORY)
   @javax.annotation.Nullable
   private Long memory;
+
+  public static final String SERIALIZED_NAME_MODELS = "models";
+  @SerializedName(SERIALIZED_NAME_MODELS)
+  @javax.annotation.Nullable
+  private List<ComputeLaneModel> models = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)
@@ -425,6 +436,33 @@ public class ComputeByoWorker {
   }
 
 
+  public ComputeByoWorker lanes(@javax.annotation.Nullable List<String> lanes) {
+    this.lanes = lanes;
+    return this;
+  }
+
+  public ComputeByoWorker addLanesItem(String lanesItem) {
+    if (this.lanes == null) {
+      this.lanes = new ArrayList<>();
+    }
+    this.lanes.add(lanesItem);
+    return this;
+  }
+
+  /**
+   * Lanes are the Studio render lanes the node&#39;s engine can run now (image.zen, edit.qwen, video.wan, mesh, ...): advertised only when every weight file a lane loads is on the node, so a page offers a GPU card only where it renders.
+   * @return lanes
+   */
+  @javax.annotation.Nullable
+  public List<String> getLanes() {
+    return lanes;
+  }
+
+  public void setLanes(@javax.annotation.Nullable List<String> lanes) {
+    this.lanes = lanes;
+  }
+
+
   public ComputeByoWorker lastHeartbeat(@javax.annotation.Nullable String lastHeartbeat) {
     this.lastHeartbeat = lastHeartbeat;
     return this;
@@ -479,6 +517,33 @@ public class ComputeByoWorker {
 
   public void setMemory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
+  }
+
+
+  public ComputeByoWorker models(@javax.annotation.Nullable List<ComputeLaneModel> models) {
+    this.models = models;
+    return this;
+  }
+
+  public ComputeByoWorker addModelsItem(ComputeLaneModel modelsItem) {
+    if (this.models == null) {
+      this.models = new ArrayList<>();
+    }
+    this.models.add(modelsItem);
+    return this;
+  }
+
+  /**
+   * Models are the weights behind those lanes, each with its SPDX licence.
+   * @return models
+   */
+  @javax.annotation.Nullable
+  public List<ComputeLaneModel> getModels() {
+    return models;
+  }
+
+  public void setModels(@javax.annotation.Nullable List<ComputeLaneModel> models) {
+    this.models = models;
   }
 
 
@@ -644,9 +709,11 @@ public class ComputeByoWorker {
         Objects.equals(this.hostname, computeByoWorker.hostname) &&
         Objects.equals(this.id, computeByoWorker.id) &&
         Objects.equals(this.jobQueue, computeByoWorker.jobQueue) &&
+        Objects.equals(this.lanes, computeByoWorker.lanes) &&
         Objects.equals(this.lastHeartbeat, computeByoWorker.lastHeartbeat) &&
         Objects.equals(this.location, computeByoWorker.location) &&
         Objects.equals(this.memory, computeByoWorker.memory) &&
+        Objects.equals(this.models, computeByoWorker.models) &&
         Objects.equals(this.os, computeByoWorker.os) &&
         Objects.equals(this.provider, computeByoWorker.provider) &&
         Objects.equals(this.rocm, computeByoWorker.rocm) &&
@@ -657,7 +724,7 @@ public class ComputeByoWorker {
 
   @Override
   public int hashCode() {
-    return Objects.hash(arch, capabilities, cpuModel, cpus, cuda, driver, engine, firstSeen, gpus, hip, hostname, id, jobQueue, lastHeartbeat, location, memory, os, provider, rocm, status, version, additionalProperties);
+    return Objects.hash(arch, capabilities, cpuModel, cpus, cuda, driver, engine, firstSeen, gpus, hip, hostname, id, jobQueue, lanes, lastHeartbeat, location, memory, models, os, provider, rocm, status, version, additionalProperties);
   }
 
   @Override
@@ -677,9 +744,11 @@ public class ComputeByoWorker {
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    jobQueue: ").append(toIndentedString(jobQueue)).append("\n");
+    sb.append("    lanes: ").append(toIndentedString(lanes)).append("\n");
     sb.append("    lastHeartbeat: ").append(toIndentedString(lastHeartbeat)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
+    sb.append("    models: ").append(toIndentedString(models)).append("\n");
     sb.append("    os: ").append(toIndentedString(os)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    rocm: ").append(toIndentedString(rocm)).append("\n");
@@ -707,7 +776,7 @@ public class ComputeByoWorker {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("arch", "capabilities", "cpuModel", "cpus", "cuda", "driver", "engine", "firstSeen", "gpus", "hip", "hostname", "id", "jobQueue", "lastHeartbeat", "location", "memory", "os", "provider", "rocm", "status", "version"));
+    openapiFields = new HashSet<String>(Arrays.asList("arch", "capabilities", "cpuModel", "cpus", "cuda", "driver", "engine", "firstSeen", "gpus", "hip", "hostname", "id", "jobQueue", "lanes", "lastHeartbeat", "location", "memory", "models", "os", "provider", "rocm", "status", "version"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -775,11 +844,29 @@ public class ComputeByoWorker {
       if ((jsonObj.get("jobQueue") != null && !jsonObj.get("jobQueue").isJsonNull()) && !jsonObj.get("jobQueue").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `jobQueue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jobQueue").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("lanes") != null && !jsonObj.get("lanes").isJsonNull() && !jsonObj.get("lanes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lanes` to be an array in the JSON string but got `%s`", jsonObj.get("lanes").toString()));
+      }
       if ((jsonObj.get("lastHeartbeat") != null && !jsonObj.get("lastHeartbeat").isJsonNull()) && !jsonObj.get("lastHeartbeat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lastHeartbeat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastHeartbeat").toString()));
       }
       if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      }
+      if (jsonObj.get("models") != null && !jsonObj.get("models").isJsonNull()) {
+        JsonArray jsonArraymodels = jsonObj.getAsJsonArray("models");
+        if (jsonArraymodels != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("models").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `models` to be an array in the JSON string but got `%s`", jsonObj.get("models").toString()));
+          }
+
+          // validate the optional field `models` (array)
+          for (int i = 0; i < jsonArraymodels.size(); i++) {
+            ComputeLaneModel.validateJsonElement(jsonArraymodels.get(i));
+          };
+        }
       }
       if ((jsonObj.get("os") != null && !jsonObj.get("os").isJsonNull()) && !jsonObj.get("os").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `os` to be a primitive type in the JSON string but got `%s`", jsonObj.get("os").toString()));

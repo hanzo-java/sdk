@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.ProblemDetails;
 import ai.hanzo.cloud.model.ShareEnableResp;
+import ai.hanzo.cloud.model.ShareRotated;
 import ai.hanzo.cloud.model.ShareSharesOut;
 
 import java.lang.reflect.Type;
@@ -139,8 +140,8 @@ public class ShareApi {
     }
 
     /**
-     * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled.
-     * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
+     * Returns the tunnel shares the caller&#39;s account currently has open — their org&#39;s, or in a held org their own — across every environment it has enabled.
+     * Returns the tunnel shares the caller&#39;s account currently has open — their org&#39;s, or in a held org their own — across every environment it has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
      * @return ShareSharesOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -157,8 +158,8 @@ public class ShareApi {
     }
 
     /**
-     * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled.
-     * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
+     * Returns the tunnel shares the caller&#39;s account currently has open — their org&#39;s, or in a held org their own — across every environment it has enabled.
+     * Returns the tunnel shares the caller&#39;s account currently has open — their org&#39;s, or in a held org their own — across every environment it has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
      * @return ApiResponse&lt;ShareSharesOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -176,8 +177,8 @@ public class ShareApi {
     }
 
     /**
-     * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled. (asynchronously)
-     * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
+     * Returns the tunnel shares the caller&#39;s account currently has open — their org&#39;s, or in a held org their own — across every environment it has enabled. (asynchronously)
+     * Returns the tunnel shares the caller&#39;s account currently has open — their org&#39;s, or in a held org their own — across every environment it has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -261,8 +262,8 @@ public class ShareApi {
     }
 
     /**
-     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
-     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
+     * Provisions the caller&#39;s tunnel account — their org&#39;s, or in a held org, where every self-serve signup lands, their own — and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
+     * Provisions the caller&#39;s tunnel account — their org&#39;s, or in a held org, where every self-serve signup lands, their own — and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org and, in a held org, the caller&#39;s attested subject, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
      * @return ShareEnableResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -279,8 +280,8 @@ public class ShareApi {
     }
 
     /**
-     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
-     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
+     * Provisions the caller&#39;s tunnel account — their org&#39;s, or in a held org, where every self-serve signup lands, their own — and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
+     * Provisions the caller&#39;s tunnel account — their org&#39;s, or in a held org, where every self-serve signup lands, their own — and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org and, in a held org, the caller&#39;s attested subject, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
      * @return ApiResponse&lt;ShareEnableResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -298,8 +299,8 @@ public class ShareApi {
     }
 
     /**
-     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. (asynchronously)
-     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
+     * Provisions the caller&#39;s tunnel account — their org&#39;s, or in a held org, where every self-serve signup lands, their own — and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. (asynchronously)
+     * Provisions the caller&#39;s tunnel account — their org&#39;s, or in a held org, where every self-serve signup lands, their own — and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org and, in a held org, the caller&#39;s attested subject, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -315,6 +316,128 @@ public class ShareApi {
 
         okhttp3.Call localVarCall = postShareEnableValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ShareEnableResp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postShareRotate
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postShareRotateCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/share/rotate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postShareRotateValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postShareRotateCall(_callback);
+
+    }
+
+    /**
+     * Replaces the credential of a tunnel account and ends every environment enabled with it, shares and all, so a credential handed out before — to a member who has left, or to anyone who read it — opens nothing from now on.
+     * Replaces the credential of a tunnel account and ends every environment enabled with it, shares and all, so a credential handed out before — to a member who has left, or to anyone who read it — opens nothing from now on. The account is kept: enable hands its holder the new credential.  In a customer&#39;s org the account is the org&#39;s, which its members share, and an admin of the org or a SuperAdmin rotates it. In a held org each person&#39;s account is their own, and they rotate it — every account they hold, the one an API key of theirs was handed before included, so none stays live. An admin of the org or a SuperAdmin then rotates the org&#39;s own account, which no call there hands out, whether or not they hold an account of their own; when that one cannot be rotated, &#x60;pending&#x60; says so and their own are rotated still.  An account never provisioned has nothing to rotate and counts 0. 503 when the deployment has no share controller configured; 502 when that controller is unreachable, or holds the caller&#39;s account under a credential this deployment does not derive — out of a rotation&#39;s reach, so it is refused rather than reported done.
+     * @return ShareRotated
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ShareRotated postShareRotate() throws ApiException {
+        ApiResponse<ShareRotated> localVarResp = postShareRotateWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Replaces the credential of a tunnel account and ends every environment enabled with it, shares and all, so a credential handed out before — to a member who has left, or to anyone who read it — opens nothing from now on.
+     * Replaces the credential of a tunnel account and ends every environment enabled with it, shares and all, so a credential handed out before — to a member who has left, or to anyone who read it — opens nothing from now on. The account is kept: enable hands its holder the new credential.  In a customer&#39;s org the account is the org&#39;s, which its members share, and an admin of the org or a SuperAdmin rotates it. In a held org each person&#39;s account is their own, and they rotate it — every account they hold, the one an API key of theirs was handed before included, so none stays live. An admin of the org or a SuperAdmin then rotates the org&#39;s own account, which no call there hands out, whether or not they hold an account of their own; when that one cannot be rotated, &#x60;pending&#x60; says so and their own are rotated still.  An account never provisioned has nothing to rotate and counts 0. 503 when the deployment has no share controller configured; 502 when that controller is unreachable, or holds the caller&#39;s account under a credential this deployment does not derive — out of a rotation&#39;s reach, so it is refused rather than reported done.
+     * @return ApiResponse&lt;ShareRotated&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ShareRotated> postShareRotateWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postShareRotateValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ShareRotated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Replaces the credential of a tunnel account and ends every environment enabled with it, shares and all, so a credential handed out before — to a member who has left, or to anyone who read it — opens nothing from now on. (asynchronously)
+     * Replaces the credential of a tunnel account and ends every environment enabled with it, shares and all, so a credential handed out before — to a member who has left, or to anyone who read it — opens nothing from now on. The account is kept: enable hands its holder the new credential.  In a customer&#39;s org the account is the org&#39;s, which its members share, and an admin of the org or a SuperAdmin rotates it. In a held org each person&#39;s account is their own, and they rotate it — every account they hold, the one an API key of theirs was handed before included, so none stays live. An admin of the org or a SuperAdmin then rotates the org&#39;s own account, which no call there hands out, whether or not they hold an account of their own; when that one cannot be rotated, &#x60;pending&#x60; says so and their own are rotated still.  An account never provisioned has nothing to rotate and counts 0. 503 when the deployment has no share controller configured; 502 when that controller is unreachable, or holds the caller&#39;s account under a credential this deployment does not derive — out of a rotation&#39;s reach, so it is refused rather than reported done.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postShareRotateAsync(final ApiCallback<ShareRotated> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postShareRotateValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ShareRotated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

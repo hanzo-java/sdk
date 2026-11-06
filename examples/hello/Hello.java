@@ -37,7 +37,7 @@ public final class Hello {
                 return;
             }
             for (AccountApiKey key : owned) {
-                System.out.printf("%-8s %-24s %s%n", key.getType(), key.getPrefix(), key.getCreatedAt());
+                System.out.printf("%-8s %-24s %s%n", key.getType(), key.getPrefix(), key.getCreated());
             }
         } catch (ApiException e) {
             System.err.printf("keys refused: HTTP %d %s%n", e.getCode(), e.getResponseBody());

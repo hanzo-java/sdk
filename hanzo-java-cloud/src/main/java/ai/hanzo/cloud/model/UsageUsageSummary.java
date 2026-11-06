@@ -15,6 +15,7 @@ package ai.hanzo.cloud.model;
 
 import java.util.Objects;
 import ai.hanzo.cloud.model.UsageAccounts;
+import ai.hanzo.cloud.model.UsageKai;
 import ai.hanzo.cloud.model.UsageLLM;
 import ai.hanzo.cloud.model.UsageSources;
 import ai.hanzo.cloud.model.UsageSpend;
@@ -69,6 +70,11 @@ public class UsageUsageSummary {
   @SerializedName(SERIALIZED_NAME_INTERVAL)
   @javax.annotation.Nullable
   private String interval;
+
+  public static final String SERIALIZED_NAME_KAI = "kai";
+  @SerializedName(SERIALIZED_NAME_KAI)
+  @javax.annotation.Nullable
+  private UsageKai kai;
 
   public static final String SERIALIZED_NAME_LLM = "llm";
   @SerializedName(SERIALIZED_NAME_LLM)
@@ -157,6 +163,25 @@ public class UsageUsageSummary {
 
   public void setInterval(@javax.annotation.Nullable String interval) {
     this.interval = interval;
+  }
+
+
+  public UsageUsageSummary kai(@javax.annotation.Nullable UsageKai kai) {
+    this.kai = kai;
+    return this;
+  }
+
+  /**
+   * Kai is the org&#39;s Kai decisions: count, input tokens and cost. Also counted in LLM.
+   * @return kai
+   */
+  @javax.annotation.Nullable
+  public UsageKai getKai() {
+    return kai;
+  }
+
+  public void setKai(@javax.annotation.Nullable UsageKai kai) {
+    this.kai = kai;
   }
 
 
@@ -331,6 +356,7 @@ public class UsageUsageSummary {
     return Objects.equals(this.accounts, usageUsageSummary.accounts) &&
         Objects.equals(this.end, usageUsageSummary.end) &&
         Objects.equals(this.interval, usageUsageSummary.interval) &&
+        Objects.equals(this.kai, usageUsageSummary.kai) &&
         Objects.equals(this.llm, usageUsageSummary.llm) &&
         Objects.equals(this.range, usageUsageSummary.range) &&
         Objects.equals(this.scope, usageUsageSummary.scope) &&
@@ -342,7 +368,7 @@ public class UsageUsageSummary {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accounts, end, interval, llm, range, scope, sources, spend, start, additionalProperties);
+    return Objects.hash(accounts, end, interval, kai, llm, range, scope, sources, spend, start, additionalProperties);
   }
 
   @Override
@@ -352,6 +378,7 @@ public class UsageUsageSummary {
     sb.append("    accounts: ").append(toIndentedString(accounts)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
+    sb.append("    kai: ").append(toIndentedString(kai)).append("\n");
     sb.append("    llm: ").append(toIndentedString(llm)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
@@ -380,7 +407,7 @@ public class UsageUsageSummary {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accounts", "end", "interval", "llm", "range", "scope", "sources", "spend", "start"));
+    openapiFields = new HashSet<String>(Arrays.asList("accounts", "end", "interval", "kai", "llm", "range", "scope", "sources", "spend", "start"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -408,6 +435,10 @@ public class UsageUsageSummary {
       }
       if ((jsonObj.get("interval") != null && !jsonObj.get("interval").isJsonNull()) && !jsonObj.get("interval").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `interval` to be a primitive type in the JSON string but got `%s`", jsonObj.get("interval").toString()));
+      }
+      // validate the optional field `kai`
+      if (jsonObj.get("kai") != null && !jsonObj.get("kai").isJsonNull()) {
+        UsageKai.validateJsonElement(jsonObj.get("kai"));
       }
       // validate the optional field `llm`
       if (jsonObj.get("llm") != null && !jsonObj.get("llm").isJsonNull()) {

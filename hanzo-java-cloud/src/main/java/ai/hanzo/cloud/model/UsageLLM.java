@@ -55,6 +55,26 @@ public class UsageLLM {
   @javax.annotation.Nullable
   private Boolean available;
 
+  public static final String SERIALIZED_NAME_CACHE_READ_TOKENS = "cacheReadTokens";
+  @SerializedName(SERIALIZED_NAME_CACHE_READ_TOKENS)
+  @javax.annotation.Nullable
+  private Long cacheReadTokens;
+
+  public static final String SERIALIZED_NAME_CACHE_SAVED_CENTS = "cacheSavedCents";
+  @SerializedName(SERIALIZED_NAME_CACHE_SAVED_CENTS)
+  @javax.annotation.Nullable
+  private Long cacheSavedCents;
+
+  public static final String SERIALIZED_NAME_CACHE_WRITE_TOKENS = "cacheWriteTokens";
+  @SerializedName(SERIALIZED_NAME_CACHE_WRITE_TOKENS)
+  @javax.annotation.Nullable
+  private Long cacheWriteTokens;
+
+  public static final String SERIALIZED_NAME_CACHED_SHARE = "cachedShare";
+  @SerializedName(SERIALIZED_NAME_CACHED_SHARE)
+  @javax.annotation.Nullable
+  private Double cachedShare;
+
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
@@ -109,6 +129,82 @@ public class UsageLLM {
 
   public void setAvailable(@javax.annotation.Nullable Boolean available) {
     this.available = available;
+  }
+
+
+  public UsageLLM cacheReadTokens(@javax.annotation.Nullable Long cacheReadTokens) {
+    this.cacheReadTokens = cacheReadTokens;
+    return this;
+  }
+
+  /**
+   * CacheReadTokens is how many of the prompt tokens the provider&#39;s prompt cache served, at the cache-read price.
+   * @return cacheReadTokens
+   */
+  @javax.annotation.Nullable
+  public Long getCacheReadTokens() {
+    return cacheReadTokens;
+  }
+
+  public void setCacheReadTokens(@javax.annotation.Nullable Long cacheReadTokens) {
+    this.cacheReadTokens = cacheReadTokens;
+  }
+
+
+  public UsageLLM cacheSavedCents(@javax.annotation.Nullable Long cacheSavedCents) {
+    this.cacheSavedCents = cacheSavedCents;
+    return this;
+  }
+
+  /**
+   * CacheSavedCents is what the prompt cache took off the bill, in US cents: each call&#39;s cache-read tokens at the model&#39;s input price less the same tokens at its cache-read price, from the price that call was billed at. A call recorded before this was measured counts 0, so it is a floor.
+   * @return cacheSavedCents
+   */
+  @javax.annotation.Nullable
+  public Long getCacheSavedCents() {
+    return cacheSavedCents;
+  }
+
+  public void setCacheSavedCents(@javax.annotation.Nullable Long cacheSavedCents) {
+    this.cacheSavedCents = cacheSavedCents;
+  }
+
+
+  public UsageLLM cacheWriteTokens(@javax.annotation.Nullable Long cacheWriteTokens) {
+    this.cacheWriteTokens = cacheWriteTokens;
+    return this;
+  }
+
+  /**
+   * CacheWriteTokens is how many prompt tokens were written to the prompt cache.
+   * @return cacheWriteTokens
+   */
+  @javax.annotation.Nullable
+  public Long getCacheWriteTokens() {
+    return cacheWriteTokens;
+  }
+
+  public void setCacheWriteTokens(@javax.annotation.Nullable Long cacheWriteTokens) {
+    this.cacheWriteTokens = cacheWriteTokens;
+  }
+
+
+  public UsageLLM cachedShare(@javax.annotation.Nullable Double cachedShare) {
+    this.cachedShare = cachedShare;
+    return this;
+  }
+
+  /**
+   * CachedShare is CacheReadTokens over PromptTokens, 0 to 1 at four decimals; 0 when nothing was prompted.
+   * @return cachedShare
+   */
+  @javax.annotation.Nullable
+  public Double getCachedShare() {
+    return cachedShare;
+  }
+
+  public void setCachedShare(@javax.annotation.Nullable Double cachedShare) {
+    this.cachedShare = cachedShare;
   }
 
 
@@ -300,6 +396,10 @@ public class UsageLLM {
     }
     UsageLLM usageLLM = (UsageLLM) o;
     return Objects.equals(this.available, usageLLM.available) &&
+        Objects.equals(this.cacheReadTokens, usageLLM.cacheReadTokens) &&
+        Objects.equals(this.cacheSavedCents, usageLLM.cacheSavedCents) &&
+        Objects.equals(this.cacheWriteTokens, usageLLM.cacheWriteTokens) &&
+        Objects.equals(this.cachedShare, usageLLM.cachedShare) &&
         Objects.equals(this.completionTokens, usageLLM.completionTokens) &&
         Objects.equals(this.costCents, usageLLM.costCents) &&
         Objects.equals(this.models, usageLLM.models) &&
@@ -312,7 +412,7 @@ public class UsageLLM {
 
   @Override
   public int hashCode() {
-    return Objects.hash(available, completionTokens, costCents, models, promptTokens, requests, source, tokens, additionalProperties);
+    return Objects.hash(available, cacheReadTokens, cacheSavedCents, cacheWriteTokens, cachedShare, completionTokens, costCents, models, promptTokens, requests, source, tokens, additionalProperties);
   }
 
   @Override
@@ -320,6 +420,10 @@ public class UsageLLM {
     StringBuilder sb = new StringBuilder();
     sb.append("class UsageLLM {\n");
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
+    sb.append("    cacheReadTokens: ").append(toIndentedString(cacheReadTokens)).append("\n");
+    sb.append("    cacheSavedCents: ").append(toIndentedString(cacheSavedCents)).append("\n");
+    sb.append("    cacheWriteTokens: ").append(toIndentedString(cacheWriteTokens)).append("\n");
+    sb.append("    cachedShare: ").append(toIndentedString(cachedShare)).append("\n");
     sb.append("    completionTokens: ").append(toIndentedString(completionTokens)).append("\n");
     sb.append("    costCents: ").append(toIndentedString(costCents)).append("\n");
     sb.append("    models: ").append(toIndentedString(models)).append("\n");
@@ -349,7 +453,7 @@ public class UsageLLM {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("available", "completionTokens", "costCents", "models", "promptTokens", "requests", "source", "tokens"));
+    openapiFields = new HashSet<String>(Arrays.asList("available", "cacheReadTokens", "cacheSavedCents", "cacheWriteTokens", "cachedShare", "completionTokens", "costCents", "models", "promptTokens", "requests", "source", "tokens"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

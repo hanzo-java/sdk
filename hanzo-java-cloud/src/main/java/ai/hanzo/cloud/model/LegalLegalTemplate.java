@@ -102,7 +102,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get body
+   * Body is the text/template source, markdown, referencing each declared field as {{.key}}. Rendering is pure — no clock, no I/O — so a template version and a data map always produce identical bytes. Only the single-template read carries it; the catalog listing does not.
    * @return body
    */
   @javax.annotation.Nullable
@@ -121,7 +121,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get category
+   * Category is the corporate need the template serves: formation, equity, ops or sales. Formation and equity are the securities-class categories, which is what forces CounselReview.
    * @return category
    */
   @javax.annotation.Nullable
@@ -140,7 +140,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get counselReview
+   * CounselReview marks a template whose rendered documents open with CounselNotice. It can be raised but never lowered, and the engine also raises it for any formation or equity template whatever the flag says — so no org can render a securities-class document without the notice.
    * @return counselReview
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get fields
+   * Fields declares the merge fields Body consumes, each with its human label. Every one is REQUIRED at generation: a missing or blank value is refused rather than rendered as a silent blank into a contract.
    * @return fields
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get id
+   * ID is the template&#39;s stable id and the path segment that addresses it — \&quot;nda\&quot;, \&quot;msa\&quot;, \&quot;safe\&quot;. An override keeps the built-in&#39;s id, so the id names the DOCUMENT KIND rather than a particular version of it.
    * @return id
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get origin
+   * Origin is \&quot;builtin\&quot; for a template the platform ships or \&quot;org\&quot; for one this org saved. It separates the catalog every tenant sees from this tenant&#39;s own.
    * @return origin
    */
   @javax.annotation.Nullable
@@ -224,7 +224,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get title
+   * Title is the display name, e.g. \&quot;Mutual Non-Disclosure Agreement\&quot;. A generated document inherits it.
    * @return title
    */
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class LegalLegalTemplate {
   }
 
   /**
-   * Get version
+   * Version is which version of this template the caller resolved to, and what a generated document records so it stays reproducible. A built-in is version 1; an org&#39;s first override is 2 and each save increments, so an override version never collides with the built-in&#39;s.
    * @return version
    */
   @javax.annotation.Nullable

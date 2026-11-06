@@ -130,15 +130,15 @@ public class AgentMetrics {
   @javax.annotation.Nullable
   private Double load1;
 
-  public static final String SERIALIZED_NAME_LOAD15 = "load15";
-  @SerializedName(SERIALIZED_NAME_LOAD15)
-  @javax.annotation.Nullable
-  private Double load15;
-
   public static final String SERIALIZED_NAME_LOAD5 = "load5";
   @SerializedName(SERIALIZED_NAME_LOAD5)
   @javax.annotation.Nullable
   private Double load5;
+
+  public static final String SERIALIZED_NAME_LOAD15 = "load15";
+  @SerializedName(SERIALIZED_NAME_LOAD15)
+  @javax.annotation.Nullable
+  private Double load15;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
@@ -492,25 +492,6 @@ public class AgentMetrics {
   }
 
 
-  public AgentMetrics load15(@javax.annotation.Nullable Double load15) {
-    this.load15 = load15;
-    return this;
-  }
-
-  /**
-   * Load15 is the same figure over fifteen. The three together are what separate a machine that is busy right now from one that has been busy all along — which is the question a dispatcher is really asking.
-   * @return load15
-   */
-  @javax.annotation.Nullable
-  public Double getLoad15() {
-    return load15;
-  }
-
-  public void setLoad15(@javax.annotation.Nullable Double load15) {
-    this.load15 = load15;
-  }
-
-
   public AgentMetrics load5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
     return this;
@@ -527,6 +508,25 @@ public class AgentMetrics {
 
   public void setLoad5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
+  }
+
+
+  public AgentMetrics load15(@javax.annotation.Nullable Double load15) {
+    this.load15 = load15;
+    return this;
+  }
+
+  /**
+   * Load15 is the same figure over fifteen. The three together are what separate a machine that is busy right now from one that has been busy all along — which is the question a dispatcher is really asking.
+   * @return load15
+   */
+  @javax.annotation.Nullable
+  public Double getLoad15() {
+    return load15;
+  }
+
+  public void setLoad15(@javax.annotation.Nullable Double load15) {
+    this.load15 = load15;
   }
 
 
@@ -771,8 +771,8 @@ public class AgentMetrics {
         Objects.equals(this.gpuUtil, agentMetrics.gpuUtil) &&
         Objects.equals(this.kvCache, agentMetrics.kvCache) &&
         Objects.equals(this.load1, agentMetrics.load1) &&
-        Objects.equals(this.load15, agentMetrics.load15) &&
         Objects.equals(this.load5, agentMetrics.load5) &&
+        Objects.equals(this.load15, agentMetrics.load15) &&
         Objects.equals(this.memFree, agentMetrics.memFree) &&
         Objects.equals(this.memUsed, agentMetrics.memUsed) &&
         Objects.equals(this.model, agentMetrics.model) &&
@@ -787,7 +787,7 @@ public class AgentMetrics {
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, cpuTemp, cpuUtil, decode, diskRead, diskTotal, diskUsed, diskWrite, gpuMemTotal, gpuMemUsed, gpuPower, gpuPowerLimit, gpuTemp, gpuUtil, kvCache, load1, load15, load5, memFree, memUsed, model, netRx, netTx, prefill, running, ttft, waiting, additionalProperties);
+    return Objects.hash(at, cpuTemp, cpuUtil, decode, diskRead, diskTotal, diskUsed, diskWrite, gpuMemTotal, gpuMemUsed, gpuPower, gpuPowerLimit, gpuTemp, gpuUtil, kvCache, load1, load5, load15, memFree, memUsed, model, netRx, netTx, prefill, running, ttft, waiting, additionalProperties);
   }
 
   @Override
@@ -810,8 +810,8 @@ public class AgentMetrics {
     sb.append("    gpuUtil: ").append(toIndentedString(gpuUtil)).append("\n");
     sb.append("    kvCache: ").append(toIndentedString(kvCache)).append("\n");
     sb.append("    load1: ").append(toIndentedString(load1)).append("\n");
-    sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
     sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
+    sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
     sb.append("    memFree: ").append(toIndentedString(memFree)).append("\n");
     sb.append("    memUsed: ").append(toIndentedString(memUsed)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
@@ -843,7 +843,7 @@ public class AgentMetrics {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "cpuTemp", "cpuUtil", "decode", "diskRead", "diskTotal", "diskUsed", "diskWrite", "gpuMemTotal", "gpuMemUsed", "gpuPower", "gpuPowerLimit", "gpuTemp", "gpuUtil", "kvCache", "load1", "load15", "load5", "memFree", "memUsed", "model", "netRx", "netTx", "prefill", "running", "ttft", "waiting"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "cpuTemp", "cpuUtil", "decode", "diskRead", "diskTotal", "diskUsed", "diskWrite", "gpuMemTotal", "gpuMemUsed", "gpuPower", "gpuPowerLimit", "gpuTemp", "gpuUtil", "kvCache", "load1", "load5", "load15", "memFree", "memUsed", "model", "netRx", "netTx", "prefill", "running", "ttft", "waiting"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

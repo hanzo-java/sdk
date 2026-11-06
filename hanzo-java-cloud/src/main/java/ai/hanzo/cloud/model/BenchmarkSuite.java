@@ -52,20 +52,10 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class BenchmarkSuite {
-  public static final String SERIALIZED_NAME_ATTEMPTS = "attempts";
-  @SerializedName(SERIALIZED_NAME_ATTEMPTS)
-  @javax.annotation.Nullable
-  private Long attempts;
-
   public static final String SERIALIZED_NAME_BENCHMARKS = "benchmarks";
   @SerializedName(SERIALIZED_NAME_BENCHMARKS)
   @javax.annotation.Nonnull
   private List<String> benchmarks = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_ENDPOINT = "endpoint";
-  @SerializedName(SERIALIZED_NAME_ENDPOINT)
-  @javax.annotation.Nullable
-  private String endpoint;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -74,25 +64,6 @@ public class BenchmarkSuite {
 
   public BenchmarkSuite() {
   }
-
-  public BenchmarkSuite attempts(@javax.annotation.Nullable Long attempts) {
-    this.attempts = attempts;
-    return this;
-  }
-
-  /**
-   * Attempts is how many times to try each item; the harness&#39;s default applies when it is omitted.
-   * @return attempts
-   */
-  @javax.annotation.Nullable
-  public Long getAttempts() {
-    return attempts;
-  }
-
-  public void setAttempts(@javax.annotation.Nullable Long attempts) {
-    this.attempts = attempts;
-  }
-
 
   public BenchmarkSuite benchmarks(@javax.annotation.Nonnull List<String> benchmarks) {
     this.benchmarks = benchmarks;
@@ -108,7 +79,7 @@ public class BenchmarkSuite {
   }
 
   /**
-   * Benchmarks are the catalog ids to run. At least one is required, and every id must be in the catalog.
+   * Benchmarks are the catalog ids to ask about. At least one is required, and every id must be in the catalog.
    * @return benchmarks
    */
   @javax.annotation.Nonnull
@@ -121,32 +92,13 @@ public class BenchmarkSuite {
   }
 
 
-  public BenchmarkSuite endpoint(@javax.annotation.Nullable String endpoint) {
-    this.endpoint = endpoint;
-    return this;
-  }
-
-  /**
-   * Endpoint is your own chat-completions URL, for benchmarking a model this arena does not host. Either this or model is required.
-   * @return endpoint
-   */
-  @javax.annotation.Nullable
-  public String getEndpoint() {
-    return endpoint;
-  }
-
-  public void setEndpoint(@javax.annotation.Nullable String endpoint) {
-    this.endpoint = endpoint;
-  }
-
-
   public BenchmarkSuite model(@javax.annotation.Nullable String model) {
     this.model = model;
     return this;
   }
 
   /**
-   * Model is the catalog model id to run. Either this or endpoint is required.
+   * Model is the model to ask about, by the id its attempts are stored under. Required.
    * @return model
    */
   @javax.annotation.Nullable
@@ -213,25 +165,21 @@ public class BenchmarkSuite {
       return false;
     }
     BenchmarkSuite benchmarkSuite = (BenchmarkSuite) o;
-    return Objects.equals(this.attempts, benchmarkSuite.attempts) &&
-        Objects.equals(this.benchmarks, benchmarkSuite.benchmarks) &&
-        Objects.equals(this.endpoint, benchmarkSuite.endpoint) &&
+    return Objects.equals(this.benchmarks, benchmarkSuite.benchmarks) &&
         Objects.equals(this.model, benchmarkSuite.model)&&
         Objects.equals(this.additionalProperties, benchmarkSuite.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attempts, benchmarks, endpoint, model, additionalProperties);
+    return Objects.hash(benchmarks, model, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BenchmarkSuite {\n");
-    sb.append("    attempts: ").append(toIndentedString(attempts)).append("\n");
     sb.append("    benchmarks: ").append(toIndentedString(benchmarks)).append("\n");
-    sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -255,7 +203,7 @@ public class BenchmarkSuite {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("attempts", "benchmarks", "endpoint", "model"));
+    openapiFields = new HashSet<String>(Arrays.asList("benchmarks", "model"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("benchmarks"));
@@ -286,9 +234,6 @@ public class BenchmarkSuite {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("benchmarks").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `benchmarks` to be an array in the JSON string but got `%s`", jsonObj.get("benchmarks").toString()));
-      }
-      if ((jsonObj.get("endpoint") != null && !jsonObj.get("endpoint").isJsonNull()) && !jsonObj.get("endpoint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpoint").toString()));
       }
       if ((jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull()) && !jsonObj.get("model").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("model").toString()));

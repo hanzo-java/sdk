@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class KmsKmsHealth {
+  public static final String SERIALIZED_NAME_AUDIT = "audit";
+  @SerializedName(SERIALIZED_NAME_AUDIT)
+  @javax.annotation.Nullable
+  private String audit;
+
   public static final String SERIALIZED_NAME_ENFORCING = "enforcing";
   @SerializedName(SERIALIZED_NAME_ENFORCING)
   @javax.annotation.Nullable
@@ -92,6 +97,25 @@ public class KmsKmsHealth {
 
   public KmsKmsHealth() {
   }
+
+  public KmsKmsHealth audit(@javax.annotation.Nullable String audit) {
+    this.audit = audit;
+    return this;
+  }
+
+  /**
+   * Audit is the state of the audit trail every access is recorded to: &#x60;ok&#x60;, &#x60;failing&#x60; when it did not take the last record, or &#x60;absent&#x60; when this process has none. Every access is refused in the last two. Absent from the answer when there is no in-process client to audit.
+   * @return audit
+   */
+  @javax.annotation.Nullable
+  public String getAudit() {
+    return audit;
+  }
+
+  public void setAudit(@javax.annotation.Nullable String audit) {
+    this.audit = audit;
+  }
+
 
   public KmsKmsHealth enforcing(@javax.annotation.Nullable Boolean enforcing) {
     this.enforcing = enforcing;
@@ -156,7 +180,7 @@ public class KmsKmsHealth {
   }
 
   /**
-   * Ready is whether a secret operation would actually succeed right now. These are exactly the two states in which the secret operations refuse.
+   * Ready is whether a secret operation would actually succeed right now. These are exactly the states in which the secret operations refuse.
    * @return ready
    */
   @javax.annotation.Nullable
@@ -299,7 +323,8 @@ public class KmsKmsHealth {
       return false;
     }
     KmsKmsHealth kmsKmsHealth = (KmsKmsHealth) o;
-    return Objects.equals(this.enforcing, kmsKmsHealth.enforcing) &&
+    return Objects.equals(this.audit, kmsKmsHealth.audit) &&
+        Objects.equals(this.enforcing, kmsKmsHealth.enforcing) &&
         Objects.equals(this.error, kmsKmsHealth.error) &&
         Objects.equals(this.policy, kmsKmsHealth.policy) &&
         Objects.equals(this.ready, kmsKmsHealth.ready) &&
@@ -312,13 +337,14 @@ public class KmsKmsHealth {
 
   @Override
   public int hashCode() {
-    return Objects.hash(enforcing, error, policy, ready, refused, service, signing, status, additionalProperties);
+    return Objects.hash(audit, enforcing, error, policy, ready, refused, service, signing, status, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class KmsKmsHealth {\n");
+    sb.append("    audit: ").append(toIndentedString(audit)).append("\n");
     sb.append("    enforcing: ").append(toIndentedString(enforcing)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
@@ -349,7 +375,7 @@ public class KmsKmsHealth {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("enforcing", "error", "policy", "ready", "refused", "service", "signing", "status"));
+    openapiFields = new HashSet<String>(Arrays.asList("audit", "enforcing", "error", "policy", "ready", "refused", "service", "signing", "status"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -368,6 +394,9 @@ public class KmsKmsHealth {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("audit") != null && !jsonObj.get("audit").isJsonNull()) && !jsonObj.get("audit").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audit").toString()));
+      }
       if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }

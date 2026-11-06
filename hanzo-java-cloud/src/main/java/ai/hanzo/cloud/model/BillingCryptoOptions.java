@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.BillingCryptoPair;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,6 +53,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class BillingCryptoOptions {
+  public static final String SERIALIZED_NAME_ASSETS = "assets";
+  @SerializedName(SERIALIZED_NAME_ASSETS)
+  @javax.annotation.Nullable
+  private List<BillingCryptoPair> assets = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_CHAINS = "chains";
   @SerializedName(SERIALIZED_NAME_CHAINS)
   @javax.annotation.Nullable
@@ -64,6 +70,33 @@ public class BillingCryptoOptions {
 
   public BillingCryptoOptions() {
   }
+
+  public BillingCryptoOptions assets(@javax.annotation.Nullable List<BillingCryptoPair> assets) {
+    this.assets = assets;
+    return this;
+  }
+
+  public BillingCryptoOptions addAssetsItem(BillingCryptoPair assetsItem) {
+    if (this.assets == null) {
+      this.assets = new ArrayList<>();
+    }
+    this.assets.add(assetsItem);
+    return this;
+  }
+
+  /**
+   * Assets is every (chain, token) pair the deposit-address rail accepts. Chains and Tokens are its two axes: a chain and a token each on offer are not a pair on offer, so a picker that crosses them can name an asset the rail will refuse.
+   * @return assets
+   */
+  @javax.annotation.Nullable
+  public List<BillingCryptoPair> getAssets() {
+    return assets;
+  }
+
+  public void setAssets(@javax.annotation.Nullable List<BillingCryptoPair> assets) {
+    this.assets = assets;
+  }
+
 
   public BillingCryptoOptions chains(@javax.annotation.Nullable List<String> chains) {
     this.chains = chains;
@@ -173,20 +206,22 @@ public class BillingCryptoOptions {
       return false;
     }
     BillingCryptoOptions billingCryptoOptions = (BillingCryptoOptions) o;
-    return Objects.equals(this.chains, billingCryptoOptions.chains) &&
+    return Objects.equals(this.assets, billingCryptoOptions.assets) &&
+        Objects.equals(this.chains, billingCryptoOptions.chains) &&
         Objects.equals(this.tokens, billingCryptoOptions.tokens)&&
         Objects.equals(this.additionalProperties, billingCryptoOptions.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(chains, tokens, additionalProperties);
+    return Objects.hash(assets, chains, tokens, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingCryptoOptions {\n");
+    sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
     sb.append("    chains: ").append(toIndentedString(chains)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -211,7 +246,7 @@ public class BillingCryptoOptions {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("chains", "tokens"));
+    openapiFields = new HashSet<String>(Arrays.asList("assets", "chains", "tokens"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -230,6 +265,20 @@ public class BillingCryptoOptions {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
+        JsonArray jsonArrayassets = jsonObj.getAsJsonArray("assets");
+        if (jsonArrayassets != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("assets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `assets` to be an array in the JSON string but got `%s`", jsonObj.get("assets").toString()));
+          }
+
+          // validate the optional field `assets` (array)
+          for (int i = 0; i < jsonArrayassets.size(); i++) {
+            BillingCryptoPair.validateJsonElement(jsonArrayassets.get(i));
+          };
+        }
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("chains") != null && !jsonObj.get("chains").isJsonNull() && !jsonObj.get("chains").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `chains` to be an array in the JSON string but got `%s`", jsonObj.get("chains").toString()));

@@ -73,6 +73,11 @@ public class AutoAutomationRun {
   @javax.annotation.Nullable
   private String id;
 
+  public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
+  @SerializedName(SERIALIZED_NAME_OUTPUTS)
+  @javax.annotation.Nullable
+  private List<String> outputs = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_POSTS = "posts";
   @SerializedName(SERIALIZED_NAME_POSTS)
   @javax.annotation.Nullable
@@ -169,6 +174,33 @@ public class AutoAutomationRun {
 
   public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
+  }
+
+
+  public AutoAutomationRun outputs(@javax.annotation.Nullable List<String> outputs) {
+    this.outputs = outputs;
+    return this;
+  }
+
+  public AutoAutomationRun addOutputsItem(String outputsItem) {
+    if (this.outputs == null) {
+      this.outputs = new ArrayList<>();
+    }
+    this.outputs.add(outputsItem);
+    return this;
+  }
+
+  /**
+   * Outputs are the Library items the run made: its answer, kept as a document. Never null.
+   * @return outputs
+   */
+  @javax.annotation.Nullable
+  public List<String> getOutputs() {
+    return outputs;
+  }
+
+  public void setOutputs(@javax.annotation.Nullable List<String> outputs) {
+    this.outputs = outputs;
   }
 
 
@@ -314,6 +346,7 @@ public class AutoAutomationRun {
         Objects.equals(this.draft, autoAutomationRun.draft) &&
         Objects.equals(this.finished, autoAutomationRun.finished) &&
         Objects.equals(this.id, autoAutomationRun.id) &&
+        Objects.equals(this.outputs, autoAutomationRun.outputs) &&
         Objects.equals(this.posts, autoAutomationRun.posts) &&
         Objects.equals(this.status, autoAutomationRun.status) &&
         Objects.equals(this.summary, autoAutomationRun.summary) &&
@@ -323,7 +356,7 @@ public class AutoAutomationRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, draft, finished, id, posts, status, summary, transcript, additionalProperties);
+    return Objects.hash(at, draft, finished, id, outputs, posts, status, summary, transcript, additionalProperties);
   }
 
   @Override
@@ -334,6 +367,7 @@ public class AutoAutomationRun {
     sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    finished: ").append(toIndentedString(finished)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
     sb.append("    posts: ").append(toIndentedString(posts)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
@@ -360,7 +394,7 @@ public class AutoAutomationRun {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "draft", "finished", "id", "posts", "status", "summary", "transcript"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "draft", "finished", "id", "outputs", "posts", "status", "summary", "transcript"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -390,6 +424,10 @@ public class AutoAutomationRun {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("outputs") != null && !jsonObj.get("outputs").isJsonNull() && !jsonObj.get("outputs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `outputs` to be an array in the JSON string but got `%s`", jsonObj.get("outputs").toString()));
       }
       if (jsonObj.get("posts") != null && !jsonObj.get("posts").isJsonNull()) {
         JsonArray jsonArrayposts = jsonObj.getAsJsonArray("posts");

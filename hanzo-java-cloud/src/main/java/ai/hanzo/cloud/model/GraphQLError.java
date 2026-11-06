@@ -60,7 +60,7 @@ public class GraphQLError {
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
   @javax.annotation.Nullable
-  private List<String> path = new ArrayList<>();
+  private List<Object> path = new ArrayList<>();
 
   public GraphQLError() {
   }
@@ -84,12 +84,12 @@ public class GraphQLError {
   }
 
 
-  public GraphQLError path(@javax.annotation.Nullable List<String> path) {
+  public GraphQLError path(@javax.annotation.Nullable List<Object> path) {
     this.path = path;
     return this;
   }
 
-  public GraphQLError addPathItem(String pathItem) {
+  public GraphQLError addPathItem(Object pathItem) {
     if (this.path == null) {
       this.path = new ArrayList<>();
     }
@@ -102,11 +102,11 @@ public class GraphQLError {
    * @return path
    */
   @javax.annotation.Nullable
-  public List<String> getPath() {
+  public List<Object> getPath() {
     return path;
   }
 
-  public void setPath(@javax.annotation.Nullable List<String> path) {
+  public void setPath(@javax.annotation.Nullable List<Object> path) {
     this.path = path;
   }
 

@@ -246,7 +246,7 @@ public class IamWorkspace {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable

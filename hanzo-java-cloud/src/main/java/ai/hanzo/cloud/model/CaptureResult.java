@@ -60,6 +60,11 @@ public class CaptureResult {
   @javax.annotation.Nullable
   private Integer dropped;
 
+  public static final String SERIALIZED_NAME_WITHHELD = "withheld";
+  @SerializedName(SERIALIZED_NAME_WITHHELD)
+  @javax.annotation.Nullable
+  private Integer withheld;
+
   public CaptureResult() {
   }
 
@@ -98,6 +103,25 @@ public class CaptureResult {
 
   public void setDropped(@javax.annotation.Nullable Integer dropped) {
     this.dropped = dropped;
+  }
+
+
+  public CaptureResult withheld(@javax.annotation.Nullable Integer withheld) {
+    this.withheld = withheld;
+    return this;
+  }
+
+  /**
+   * Get withheld
+   * @return withheld
+   */
+  @javax.annotation.Nullable
+  public Integer getWithheld() {
+    return withheld;
+  }
+
+  public void setWithheld(@javax.annotation.Nullable Integer withheld) {
+    this.withheld = withheld;
   }
 
   /**
@@ -156,13 +180,14 @@ public class CaptureResult {
     }
     CaptureResult captureResult = (CaptureResult) o;
     return Objects.equals(this.accepted, captureResult.accepted) &&
-        Objects.equals(this.dropped, captureResult.dropped)&&
+        Objects.equals(this.dropped, captureResult.dropped) &&
+        Objects.equals(this.withheld, captureResult.withheld)&&
         Objects.equals(this.additionalProperties, captureResult.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accepted, dropped, additionalProperties);
+    return Objects.hash(accepted, dropped, withheld, additionalProperties);
   }
 
   @Override
@@ -171,6 +196,7 @@ public class CaptureResult {
     sb.append("class CaptureResult {\n");
     sb.append("    accepted: ").append(toIndentedString(accepted)).append("\n");
     sb.append("    dropped: ").append(toIndentedString(dropped)).append("\n");
+    sb.append("    withheld: ").append(toIndentedString(withheld)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -193,7 +219,7 @@ public class CaptureResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accepted", "dropped"));
+    openapiFields = new HashSet<String>(Arrays.asList("accepted", "dropped", "withheld"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

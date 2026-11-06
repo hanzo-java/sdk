@@ -56,20 +56,20 @@ public class Decision {
   @javax.annotation.Nullable
   private Grants defaults;
 
-  public static final String SERIALIZED_NAME_GPC = "gpc";
-  @SerializedName(SERIALIZED_NAME_GPC)
+  public static final String SERIALIZED_NAME_FLOOR = "floor";
+  @SerializedName(SERIALIZED_NAME_FLOOR)
   @javax.annotation.Nullable
-  private Boolean gpc;
+  private Integer floor;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
   @javax.annotation.Nullable
   private String mode;
 
-  public static final String SERIALIZED_NAME_NOTICE = "notice";
-  @SerializedName(SERIALIZED_NAME_NOTICE)
+  public static final String SERIALIZED_NAME_REFUSED = "refused";
+  @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private String notice;
+  private Boolean refused;
 
   public static final String SERIALIZED_NAME_REGION = "region";
   @SerializedName(SERIALIZED_NAME_REGION)
@@ -103,22 +103,22 @@ public class Decision {
   }
 
 
-  public Decision gpc(@javax.annotation.Nullable Boolean gpc) {
-    this.gpc = gpc;
+  public Decision floor(@javax.annotation.Nullable Integer floor) {
+    this.floor = floor;
     return this;
   }
 
   /**
-   * Get gpc
-   * @return gpc
+   * Get floor
+   * @return floor
    */
   @javax.annotation.Nullable
-  public Boolean getGpc() {
-    return gpc;
+  public Integer getFloor() {
+    return floor;
   }
 
-  public void setGpc(@javax.annotation.Nullable Boolean gpc) {
-    this.gpc = gpc;
+  public void setFloor(@javax.annotation.Nullable Integer floor) {
+    this.floor = floor;
   }
 
 
@@ -141,22 +141,22 @@ public class Decision {
   }
 
 
-  public Decision notice(@javax.annotation.Nullable String notice) {
-    this.notice = notice;
+  public Decision refused(@javax.annotation.Nullable Boolean refused) {
+    this.refused = refused;
     return this;
   }
 
   /**
-   * Get notice
-   * @return notice
+   * Get refused
+   * @return refused
    */
   @javax.annotation.Nullable
-  public String getNotice() {
-    return notice;
+  public Boolean getRefused() {
+    return refused;
   }
 
-  public void setNotice(@javax.annotation.Nullable String notice) {
-    this.notice = notice;
+  public void setRefused(@javax.annotation.Nullable Boolean refused) {
+    this.refused = refused;
   }
 
 
@@ -253,9 +253,9 @@ public class Decision {
     }
     Decision decision = (Decision) o;
     return Objects.equals(this.defaults, decision.defaults) &&
-        Objects.equals(this.gpc, decision.gpc) &&
+        Objects.equals(this.floor, decision.floor) &&
         Objects.equals(this.mode, decision.mode) &&
-        Objects.equals(this.notice, decision.notice) &&
+        Objects.equals(this.refused, decision.refused) &&
         Objects.equals(this.region, decision.region) &&
         Objects.equals(this.version, decision.version)&&
         Objects.equals(this.additionalProperties, decision.additionalProperties);
@@ -263,7 +263,7 @@ public class Decision {
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaults, gpc, mode, notice, region, version, additionalProperties);
+    return Objects.hash(defaults, floor, mode, refused, region, version, additionalProperties);
   }
 
   @Override
@@ -271,9 +271,9 @@ public class Decision {
     StringBuilder sb = new StringBuilder();
     sb.append("class Decision {\n");
     sb.append("    defaults: ").append(toIndentedString(defaults)).append("\n");
-    sb.append("    gpc: ").append(toIndentedString(gpc)).append("\n");
+    sb.append("    floor: ").append(toIndentedString(floor)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
-    sb.append("    notice: ").append(toIndentedString(notice)).append("\n");
+    sb.append("    refused: ").append(toIndentedString(refused)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -298,7 +298,7 @@ public class Decision {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("defaults", "gpc", "mode", "notice", "region", "version"));
+    openapiFields = new HashSet<String>(Arrays.asList("defaults", "floor", "mode", "refused", "region", "version"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -323,9 +323,6 @@ public class Decision {
       }
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
-      }
-      if ((jsonObj.get("notice") != null && !jsonObj.get("notice").isJsonNull()) && !jsonObj.get("notice").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `notice` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notice").toString()));
       }
       if ((jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull()) && !jsonObj.get("region").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("region").toString()));

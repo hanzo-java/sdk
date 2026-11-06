@@ -111,7 +111,7 @@ public class MarketplaceMarketItem {
   }
 
   /**
-   * Get activated
+   * Activated is filled by the registry from the activation store for the requesting (org,project); providers leave it zero. An unactivated tool is discoverable but refused 403 at dispatch.
    * @return activated
    */
   @javax.annotation.Nullable
@@ -149,7 +149,7 @@ public class MarketplaceMarketItem {
   }
 
   /**
-   * Get description
+   * Description is the prose a model reads to decide whether to call the tool.
    * @return description
    */
   @javax.annotation.Nullable
@@ -168,7 +168,7 @@ public class MarketplaceMarketItem {
   }
 
   /**
-   * Get dispatchable
+   * Dispatchable is whether the tool can be CALLED. False for a listing-only entry: a skill is activated and attached to an agent, never called.
    * @return dispatchable
    */
   @javax.annotation.Nullable
@@ -225,7 +225,7 @@ public class MarketplaceMarketItem {
   }
 
   /**
-   * Get name
+   * Name is the tool&#39;s id in the flat, fleet-wide tool namespace — the value a tools/call passes. Unique across sources: a collision is resolved by source precedence before the caller ever sees it.
    * @return name
    */
   @javax.annotation.Nullable
@@ -244,7 +244,7 @@ public class MarketplaceMarketItem {
   }
 
   /**
-   * Get price
+   * Price is what a call costs and who is paid, absent for a free tool. Enforcement is the x402 settlement client; this is the declaration.
    * @return price
    */
   @javax.annotation.Nullable
@@ -263,7 +263,7 @@ public class MarketplaceMarketItem {
   }
 
   /**
-   * Get source
+   * Source is where the tool comes from: connector, function, zap-service, agent, skill or mcp.
    * @return source
    */
   @javax.annotation.Nullable

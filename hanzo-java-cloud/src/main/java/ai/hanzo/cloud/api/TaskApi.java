@@ -29,13 +29,13 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.ProblemDetails;
 import ai.hanzo.cloud.model.TaskBoardView;
+import ai.hanzo.cloud.model.TaskChannelWork;
 import ai.hanzo.cloud.model.TaskCommentList;
 import ai.hanzo.cloud.model.TaskIssueEdit;
 import ai.hanzo.cloud.model.TaskIssueHit;
 import ai.hanzo.cloud.model.TaskIssueHits;
 import ai.hanzo.cloud.model.TaskIssueView;
 import ai.hanzo.cloud.model.TaskNewIssue;
-import ai.hanzo.cloud.model.TaskRoomWork;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -357,13 +357,145 @@ public class TaskApi {
         return localVarCall;
     }
     /**
+     * Build call for getTaskChannelsByChannel
+     * @param channel Channel is the channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the channel identically. From the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTaskChannelsByChannelCall(@javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/task/channels/{channel}"
+            .replace("{" + "channel" + "}", localVarApiClient.escapeString(channel.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTaskChannelsByChannelValidateBeforeCall(@javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'channel' is set
+        if (channel == null) {
+            throw new ApiException("Missing the required parameter 'channel' when calling getTaskChannelsByChannel(Async)");
+        }
+
+        return getTaskChannelsByChannelCall(channel, _callback);
+
+    }
+
+    /**
+     * Summarises one channel&#39;s work.
+     * Summarises one channel&#39;s work.  The channel is opaque here and is deliberately not resolved: this package cannot say whether a channel exists — apps/team owns that document — so an unknown channel answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the channel list (HIP-0523 §2 forbids it, and it would drift the first time a channel was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its channel.
+     * @param channel Channel is the channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the channel identically. From the path. (required)
+     * @return TaskChannelWork
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TaskChannelWork getTaskChannelsByChannel(@javax.annotation.Nonnull String channel) throws ApiException {
+        ApiResponse<TaskChannelWork> localVarResp = getTaskChannelsByChannelWithHttpInfo(channel);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Summarises one channel&#39;s work.
+     * Summarises one channel&#39;s work.  The channel is opaque here and is deliberately not resolved: this package cannot say whether a channel exists — apps/team owns that document — so an unknown channel answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the channel list (HIP-0523 §2 forbids it, and it would drift the first time a channel was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its channel.
+     * @param channel Channel is the channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the channel identically. From the path. (required)
+     * @return ApiResponse&lt;TaskChannelWork&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TaskChannelWork> getTaskChannelsByChannelWithHttpInfo(@javax.annotation.Nonnull String channel) throws ApiException {
+        okhttp3.Call localVarCall = getTaskChannelsByChannelValidateBeforeCall(channel, null);
+        Type localVarReturnType = new TypeToken<TaskChannelWork>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Summarises one channel&#39;s work. (asynchronously)
+     * Summarises one channel&#39;s work.  The channel is opaque here and is deliberately not resolved: this package cannot say whether a channel exists — apps/team owns that document — so an unknown channel answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the channel list (HIP-0523 §2 forbids it, and it would drift the first time a channel was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its channel.
+     * @param channel Channel is the channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the channel identically. From the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTaskChannelsByChannelAsync(@javax.annotation.Nonnull String channel, final ApiCallback<TaskChannelWork> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaskChannelsByChannelValidateBeforeCall(channel, _callback);
+        Type localVarReturnType = new TypeToken<TaskChannelWork>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getTaskIssues
      * @param q Q matches an issue&#39;s title or description. A word from the issue, which is what someone remembers — not its number, which is what they are looking up. (optional)
      * @param project Project narrows to one team key; \&quot;\&quot; searches every project in the org, which is the point of this op. (optional)
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
-     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
+     * @param channel Channel keeps issues bound to one collaboration channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the channel the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -378,7 +510,7 @@ public class TaskApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTaskIssuesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTaskIssuesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -423,8 +555,8 @@ public class TaskApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("repo", repo));
         }
 
-        if (room != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        if (channel != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("channel", channel));
         }
 
         if (source != null) {
@@ -460,8 +592,8 @@ public class TaskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTaskIssuesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
-        return getTaskIssuesCall(q, project, status, kind, repo, room, source, assignee, limit, _callback);
+    private okhttp3.Call getTaskIssuesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getTaskIssuesCall(q, project, status, kind, repo, channel, source, assignee, limit, _callback);
 
     }
 
@@ -473,7 +605,7 @@ public class TaskApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
-     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
+     * @param channel Channel keeps issues bound to one collaboration channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the channel the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -487,8 +619,8 @@ public class TaskApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TaskIssueHits getTaskIssues(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<TaskIssueHits> localVarResp = getTaskIssuesWithHttpInfo(q, project, status, kind, repo, room, source, assignee, limit);
+    public TaskIssueHits getTaskIssues(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<TaskIssueHits> localVarResp = getTaskIssuesWithHttpInfo(q, project, status, kind, repo, channel, source, assignee, limit);
         return localVarResp.getData();
     }
 
@@ -500,7 +632,7 @@ public class TaskApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
-     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
+     * @param channel Channel keeps issues bound to one collaboration channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the channel the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -514,8 +646,8 @@ public class TaskApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TaskIssueHits> getTaskIssuesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = getTaskIssuesValidateBeforeCall(q, project, status, kind, repo, room, source, assignee, limit, null);
+    public ApiResponse<TaskIssueHits> getTaskIssuesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getTaskIssuesValidateBeforeCall(q, project, status, kind, repo, channel, source, assignee, limit, null);
         Type localVarReturnType = new TypeToken<TaskIssueHits>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -528,7 +660,7 @@ public class TaskApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
-     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
+     * @param channel Channel keeps issues bound to one collaboration channel, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its task list name the channel the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -543,9 +675,9 @@ public class TaskApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTaskIssuesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback<TaskIssueHits> _callback) throws ApiException {
+    public okhttp3.Call getTaskIssuesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback<TaskIssueHits> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTaskIssuesValidateBeforeCall(q, project, status, kind, repo, room, source, assignee, limit, _callback);
+        okhttp3.Call localVarCall = getTaskIssuesValidateBeforeCall(q, project, status, kind, repo, channel, source, assignee, limit, _callback);
         Type localVarReturnType = new TypeToken<TaskIssueHits>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1269,138 +1401,6 @@ public class TaskApi {
         return localVarCall;
     }
     /**
-     * Build call for getTaskRoomsByRoom
-     * @param room Room is the room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTaskRoomsByRoomCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/task/rooms/{room}"
-            .replace("{" + "room" + "}", localVarApiClient.escapeString(room.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTaskRoomsByRoomValidateBeforeCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'room' is set
-        if (room == null) {
-            throw new ApiException("Missing the required parameter 'room' when calling getTaskRoomsByRoom(Async)");
-        }
-
-        return getTaskRoomsByRoomCall(room, _callback);
-
-    }
-
-    /**
-     * Summarises one room&#39;s work.
-     * Summarises one room&#39;s work.  The room is opaque here and is deliberately not resolved: this package cannot say whether a room exists — apps/team owns that document — so an unknown room answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the room list (HIP-0523 §2 forbids it, and it would drift the first time a room was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its room.
-     * @param room Room is the room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
-     * @return TaskRoomWork
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TaskRoomWork getTaskRoomsByRoom(@javax.annotation.Nonnull String room) throws ApiException {
-        ApiResponse<TaskRoomWork> localVarResp = getTaskRoomsByRoomWithHttpInfo(room);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Summarises one room&#39;s work.
-     * Summarises one room&#39;s work.  The room is opaque here and is deliberately not resolved: this package cannot say whether a room exists — apps/team owns that document — so an unknown room answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the room list (HIP-0523 §2 forbids it, and it would drift the first time a room was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its room.
-     * @param room Room is the room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
-     * @return ApiResponse&lt;TaskRoomWork&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TaskRoomWork> getTaskRoomsByRoomWithHttpInfo(@javax.annotation.Nonnull String room) throws ApiException {
-        okhttp3.Call localVarCall = getTaskRoomsByRoomValidateBeforeCall(room, null);
-        Type localVarReturnType = new TypeToken<TaskRoomWork>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Summarises one room&#39;s work. (asynchronously)
-     * Summarises one room&#39;s work.  The room is opaque here and is deliberately not resolved: this package cannot say whether a room exists — apps/team owns that document — so an unknown room answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the room list (HIP-0523 §2 forbids it, and it would drift the first time a room was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its room.
-     * @param room Room is the room, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTaskRoomsByRoomAsync(@javax.annotation.Nonnull String room, final ApiCallback<TaskRoomWork> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getTaskRoomsByRoomValidateBeforeCall(room, _callback);
-        Type localVarReturnType = new TypeToken<TaskRoomWork>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for patchTaskProjectsByKey
      * @param key  (required)
      * @param _callback Callback for upload/download progress
@@ -1749,7 +1749,7 @@ public class TaskApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
@@ -1818,7 +1818,7 @@ public class TaskApi {
 
     /**
      * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all.
-     * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. Answers the card with the issue&#39;s address as &#x60;url&#x60;.  The column and priority are written as LABELS, which is what makes the card and the issue the same object: someone relabelling in the web UI has moved your card.  Asked for in a chat thread, the issue is bound to that thread, and what happens to it on GitHub is said there.
+     * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. Answers 201 with the card: its &#x60;number&#x60;, its &#x60;id&#x60;, and the issue&#39;s address as &#x60;url&#x60;. A create that cannot say what it made answers 502, never an empty 2xx.  The column and priority are written as LABELS, which is what makes the card and the issue the same object: someone relabelling in the web UI has moved your card.  Asked for in a chat thread, the issue is bound to that thread, and what happens to it on GitHub is said there.
      * @param key Key is the board — the repository name, from the path. &#x60;owner/name&#x60;, or &#x60;github.com/owner/name&#x60;, names a repository on GitHub that no board on the forge stands for. (required)
      * @param taskNewIssue  (required)
      * @return TaskIssueView
@@ -1827,7 +1827,7 @@ public class TaskApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
@@ -1838,7 +1838,7 @@ public class TaskApi {
 
     /**
      * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all.
-     * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. Answers the card with the issue&#39;s address as &#x60;url&#x60;.  The column and priority are written as LABELS, which is what makes the card and the issue the same object: someone relabelling in the web UI has moved your card.  Asked for in a chat thread, the issue is bound to that thread, and what happens to it on GitHub is said there.
+     * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. Answers 201 with the card: its &#x60;number&#x60;, its &#x60;id&#x60;, and the issue&#39;s address as &#x60;url&#x60;. A create that cannot say what it made answers 502, never an empty 2xx.  The column and priority are written as LABELS, which is what makes the card and the issue the same object: someone relabelling in the web UI has moved your card.  Asked for in a chat thread, the issue is bound to that thread, and what happens to it on GitHub is said there.
      * @param key Key is the board — the repository name, from the path. &#x60;owner/name&#x60;, or &#x60;github.com/owner/name&#x60;, names a repository on GitHub that no board on the forge stands for. (required)
      * @param taskNewIssue  (required)
      * @return ApiResponse&lt;TaskIssueView&gt;
@@ -1847,7 +1847,7 @@ public class TaskApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
@@ -1859,7 +1859,7 @@ public class TaskApi {
 
     /**
      * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. (asynchronously)
-     * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. Answers the card with the issue&#39;s address as &#x60;url&#x60;.  The column and priority are written as LABELS, which is what makes the card and the issue the same object: someone relabelling in the web UI has moved your card.  Asked for in a chat thread, the issue is bound to that thread, and what happens to it on GitHub is said there.
+     * Opens a work item on the board, filed as YOU, where the repository lives: an issue on the deployment&#39;s forge, or on GitHub for a repository the forge mirrors from there or does not hold at all. Answers 201 with the card: its &#x60;number&#x60;, its &#x60;id&#x60;, and the issue&#39;s address as &#x60;url&#x60;. A create that cannot say what it made answers 502, never an empty 2xx.  The column and priority are written as LABELS, which is what makes the card and the issue the same object: someone relabelling in the web UI has moved your card.  Asked for in a chat thread, the issue is bound to that thread, and what happens to it on GitHub is said there.
      * @param key Key is the board — the repository name, from the path. &#x60;owner/name&#x60;, or &#x60;github.com/owner/name&#x60;, names a repository on GitHub that no board on the forge stands for. (required)
      * @param taskNewIssue  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1869,7 +1869,7 @@ public class TaskApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */

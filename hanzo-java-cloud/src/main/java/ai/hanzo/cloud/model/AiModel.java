@@ -68,10 +68,20 @@ public class AiModel {
   @javax.annotation.Nullable
   private Long contextWindow;
 
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
+  @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nullable
+  private String expires;
+
   public static final String SERIALIZED_NAME_FAMILY = "family";
   @SerializedName(SERIALIZED_NAME_FAMILY)
   @javax.annotation.Nullable
   private String family;
+
+  public static final String SERIALIZED_NAME_FREE = "free";
+  @SerializedName(SERIALIZED_NAME_FREE)
+  @javax.annotation.Nullable
+  private Boolean free;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -82,6 +92,11 @@ public class AiModel {
   @SerializedName(SERIALIZED_NAME_INPUTS)
   @javax.annotation.Nullable
   private List<String> inputs = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_MAX_OUTPUT_TOKENS = "max_output_tokens";
+  @SerializedName(SERIALIZED_NAME_MAX_OUTPUT_TOKENS)
+  @javax.annotation.Nullable
+  private Long maxOutputTokens;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -166,6 +181,25 @@ public class AiModel {
   }
 
 
+  public AiModel expires(@javax.annotation.Nullable String expires) {
+    this.expires = expires;
+    return this;
+  }
+
+  /**
+   * Expires is the day the model&#39;s vendor stops serving it (2006-01-02), absent when it states none.
+   * @return expires
+   */
+  @javax.annotation.Nullable
+  public String getExpires() {
+    return expires;
+  }
+
+  public void setExpires(@javax.annotation.Nullable String expires) {
+    this.expires = expires;
+  }
+
+
   public AiModel family(@javax.annotation.Nullable String family) {
     this.family = family;
     return this;
@@ -182,6 +216,25 @@ public class AiModel {
 
   public void setFamily(@javax.annotation.Nullable String family) {
     this.family = family;
+  }
+
+
+  public AiModel free(@javax.annotation.Nullable Boolean free) {
+    this.free = free;
+    return this;
+  }
+
+  /**
+   * Free is whether a call bills nothing.
+   * @return free
+   */
+  @javax.annotation.Nullable
+  public Boolean getFree() {
+    return free;
+  }
+
+  public void setFree(@javax.annotation.Nullable Boolean free) {
+    this.free = free;
   }
 
 
@@ -228,6 +281,25 @@ public class AiModel {
 
   public void setInputs(@javax.annotation.Nullable List<String> inputs) {
     this.inputs = inputs;
+  }
+
+
+  public AiModel maxOutputTokens(@javax.annotation.Nullable Long maxOutputTokens) {
+    this.maxOutputTokens = maxOutputTokens;
+    return this;
+  }
+
+  /**
+   * MaxOutputTokens is the most one answer may hold, absent when the catalog does not say.
+   * @return maxOutputTokens
+   */
+  @javax.annotation.Nullable
+  public Long getMaxOutputTokens() {
+    return maxOutputTokens;
+  }
+
+  public void setMaxOutputTokens(@javax.annotation.Nullable Long maxOutputTokens) {
+    this.maxOutputTokens = maxOutputTokens;
   }
 
 
@@ -353,9 +425,12 @@ public class AiModel {
     return Objects.equals(this.capabilities, aiModel.capabilities) &&
         Objects.equals(this.propertyClass, aiModel.propertyClass) &&
         Objects.equals(this.contextWindow, aiModel.contextWindow) &&
+        Objects.equals(this.expires, aiModel.expires) &&
         Objects.equals(this.family, aiModel.family) &&
+        Objects.equals(this.free, aiModel.free) &&
         Objects.equals(this.id, aiModel.id) &&
         Objects.equals(this.inputs, aiModel.inputs) &&
+        Objects.equals(this.maxOutputTokens, aiModel.maxOutputTokens) &&
         Objects.equals(this.name, aiModel.name) &&
         Objects.equals(this.outputs, aiModel.outputs) &&
         Objects.equals(this.pricing, aiModel.pricing)&&
@@ -364,7 +439,7 @@ public class AiModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(capabilities, propertyClass, contextWindow, family, id, inputs, name, outputs, pricing, additionalProperties);
+    return Objects.hash(capabilities, propertyClass, contextWindow, expires, family, free, id, inputs, maxOutputTokens, name, outputs, pricing, additionalProperties);
   }
 
   @Override
@@ -374,9 +449,12 @@ public class AiModel {
     sb.append("    capabilities: ").append(toIndentedString(capabilities)).append("\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    contextWindow: ").append(toIndentedString(contextWindow)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("    family: ").append(toIndentedString(family)).append("\n");
+    sb.append("    free: ").append(toIndentedString(free)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
+    sb.append("    maxOutputTokens: ").append(toIndentedString(maxOutputTokens)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
     sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
@@ -402,7 +480,7 @@ public class AiModel {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("capabilities", "class", "context_window", "family", "id", "inputs", "name", "outputs", "pricing"));
+    openapiFields = new HashSet<String>(Arrays.asList("capabilities", "class", "context_window", "expires", "family", "free", "id", "inputs", "max_output_tokens", "name", "outputs", "pricing"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -427,6 +505,9 @@ public class AiModel {
       }
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
+      }
+      if ((jsonObj.get("expires") != null && !jsonObj.get("expires").isJsonNull()) && !jsonObj.get("expires").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `expires` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expires").toString()));
       }
       if ((jsonObj.get("family") != null && !jsonObj.get("family").isJsonNull()) && !jsonObj.get("family").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("family").toString()));

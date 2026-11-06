@@ -27,15 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BenchmarkAdmission;
 import ai.hanzo.cloud.model.BenchmarkBenchmarkCatalog;
 import ai.hanzo.cloud.model.BenchmarkClaimsOut;
 import ai.hanzo.cloud.model.BenchmarkHistoryOut;
 import ai.hanzo.cloud.model.BenchmarkLeaderboard;
+import ai.hanzo.cloud.model.BenchmarkMeasurements;
 import ai.hanzo.cloud.model.BenchmarkPairing;
 import ai.hanzo.cloud.model.BenchmarkPreset;
-import ai.hanzo.cloud.model.BenchmarkPresetAccepted;
 import ai.hanzo.cloud.model.BenchmarkPresetList;
+import ai.hanzo.cloud.model.BenchmarkPresetStored;
 import ai.hanzo.cloud.model.BenchmarkPutClaimsIn;
 import ai.hanzo.cloud.model.BenchmarkPutClaimsOut;
 import ai.hanzo.cloud.model.BenchmarkSuite;
@@ -149,8 +149,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * Is the canonical public benchmarks this arena runs — the id, title, axis, item count and upstream source of each, with native marking the ones the standardized harness runs today; the rest are registered and adapter-pending.
-     * Is the canonical public benchmarks this arena runs — the id, title, axis, item count and upstream source of each, with native marking the ones the standardized harness runs today; the rest are registered and adapter-pending.  These ids are the vocabulary the rest of the surface takes: a run names them, and the leaderboard and compare read them from ?benchmark&#x3D;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
+     * Is the canonical benchmarks this arena reads — the id, title, axis, item count, upstream source and direction of each, with native marking the ones the standardized harness runs today.
+     * Is the canonical benchmarks this arena reads — the id, title, axis, item count, upstream source and direction of each, with native marking the ones the standardized harness runs today. The first 14 are the public set every major provider reports; the next 4 are the tests coding agents are judged on — DeepSWE, Terminal-Bench 4.0, SWE-Atlas QnA and SWE-Bench Pro v2 — published as claims; the rest are the Decision Suite, scored by Kai&#39;s own harness and published as claims citing the research run each number came from.  direction is \&quot;higher\&quot; or \&quot;lower\&quot;: which way a score improves, and so which way the leaderboard orders its rows. Every score is a percentage; a latency is a fact about serving and lives in the research plane&#39;s runs, not here.  These ids are the vocabulary the rest of the surface takes: a run and a claim name them, and the leaderboard and compare read them from ?benchmark&#x3D;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
      * @return BenchmarkBenchmarkCatalog
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -167,8 +167,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * Is the canonical public benchmarks this arena runs — the id, title, axis, item count and upstream source of each, with native marking the ones the standardized harness runs today; the rest are registered and adapter-pending.
-     * Is the canonical public benchmarks this arena runs — the id, title, axis, item count and upstream source of each, with native marking the ones the standardized harness runs today; the rest are registered and adapter-pending.  These ids are the vocabulary the rest of the surface takes: a run names them, and the leaderboard and compare read them from ?benchmark&#x3D;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
+     * Is the canonical benchmarks this arena reads — the id, title, axis, item count, upstream source and direction of each, with native marking the ones the standardized harness runs today.
+     * Is the canonical benchmarks this arena reads — the id, title, axis, item count, upstream source and direction of each, with native marking the ones the standardized harness runs today. The first 14 are the public set every major provider reports; the next 4 are the tests coding agents are judged on — DeepSWE, Terminal-Bench 4.0, SWE-Atlas QnA and SWE-Bench Pro v2 — published as claims; the rest are the Decision Suite, scored by Kai&#39;s own harness and published as claims citing the research run each number came from.  direction is \&quot;higher\&quot; or \&quot;lower\&quot;: which way a score improves, and so which way the leaderboard orders its rows. Every score is a percentage; a latency is a fact about serving and lives in the research plane&#39;s runs, not here.  These ids are the vocabulary the rest of the surface takes: a run and a claim name them, and the leaderboard and compare read them from ?benchmark&#x3D;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
      * @return ApiResponse&lt;BenchmarkBenchmarkCatalog&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -186,8 +186,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * Is the canonical public benchmarks this arena runs — the id, title, axis, item count and upstream source of each, with native marking the ones the standardized harness runs today; the rest are registered and adapter-pending. (asynchronously)
-     * Is the canonical public benchmarks this arena runs — the id, title, axis, item count and upstream source of each, with native marking the ones the standardized harness runs today; the rest are registered and adapter-pending.  These ids are the vocabulary the rest of the surface takes: a run names them, and the leaderboard and compare read them from ?benchmark&#x3D;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
+     * Is the canonical benchmarks this arena reads — the id, title, axis, item count, upstream source and direction of each, with native marking the ones the standardized harness runs today. (asynchronously)
+     * Is the canonical benchmarks this arena reads — the id, title, axis, item count, upstream source and direction of each, with native marking the ones the standardized harness runs today. The first 14 are the public set every major provider reports; the next 4 are the tests coding agents are judged on — DeepSWE, Terminal-Bench 4.0, SWE-Atlas QnA and SWE-Bench Pro v2 — published as claims; the rest are the Decision Suite, scored by Kai&#39;s own harness and published as claims citing the research run each number came from.  direction is \&quot;higher\&quot; or \&quot;lower\&quot;: which way a score improves, and so which way the leaderboard orders its rows. Every score is a percentage; a latency is a fact about serving and lives in the research plane&#39;s runs, not here.  These ids are the vocabulary the rest of the surface takes: a run and a claim name them, and the leaderboard and compare read them from ?benchmark&#x3D;. The catalog is deployment-wide and identical for every caller — there is no tenant in it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -741,7 +741,7 @@ public class BenchmarkApi {
 
     /**
      * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.
-     * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.  The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows published null, a model with only a claim shows measured null, and gap exists only where both do.  Published, Claims, Spread and Mean read the platform&#39;s own public claims (org \&quot;admin\&quot;) and nothing else, whoever asks. Other orgs&#39; claims are at /v1/benchmark/claims, labelled, and never on this board.  n is coverage and is not decoration: two measured numbers taken over different item counts are not comparable, so read the row&#39;s n before reading its accuracy.
+     * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.  The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows published null, a model with only a claim shows measured null, and gap exists only where both do.  Published, Claims, Spread and Mean read the platform&#39;s own public claims (org \&quot;admin\&quot;) and nothing else, whoever asks. Other orgs&#39; claims are at /v1/benchmark/claims, labelled, and reach this board only when a SuperAdmin publishes them: writing under org admin, or promoting an org&#39;s public claims with POST /v1/benchmark/claims/promote, which keeps the org they came from in the row&#39;s from.  Rows are best first. A benchmark whose score improves downward — a false-alarm rate, a share of answers that moved — is ordered lowest first, and the answer says which with direction.  n is coverage and is not decoration: two measured numbers taken over different item counts are not comparable, so read the row&#39;s n before reading its accuracy.
      * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
      * @return BenchmarkLeaderboard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -760,7 +760,7 @@ public class BenchmarkApi {
 
     /**
      * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.
-     * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.  The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows published null, a model with only a claim shows measured null, and gap exists only where both do.  Published, Claims, Spread and Mean read the platform&#39;s own public claims (org \&quot;admin\&quot;) and nothing else, whoever asks. Other orgs&#39; claims are at /v1/benchmark/claims, labelled, and never on this board.  n is coverage and is not decoration: two measured numbers taken over different item counts are not comparable, so read the row&#39;s n before reading its accuracy.
+     * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.  The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows published null, a model with only a claim shows measured null, and gap exists only where both do.  Published, Claims, Spread and Mean read the platform&#39;s own public claims (org \&quot;admin\&quot;) and nothing else, whoever asks. Other orgs&#39; claims are at /v1/benchmark/claims, labelled, and reach this board only when a SuperAdmin publishes them: writing under org admin, or promoting an org&#39;s public claims with POST /v1/benchmark/claims/promote, which keeps the org they came from in the row&#39;s from.  Rows are best first. A benchmark whose score improves downward — a false-alarm rate, a share of answers that moved — is ordered lowest first, and the answer says which with direction.  n is coverage and is not decoration: two measured numbers taken over different item counts are not comparable, so read the row&#39;s n before reading its accuracy.
      * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
      * @return ApiResponse&lt;BenchmarkLeaderboard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -780,7 +780,7 @@ public class BenchmarkApi {
 
     /**
      * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them. (asynchronously)
-     * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.  The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows published null, a model with only a claim shows measured null, and gap exists only where both do.  Published, Claims, Spread and Mean read the platform&#39;s own public claims (org \&quot;admin\&quot;) and nothing else, whoever asks. Other orgs&#39; claims are at /v1/benchmark/claims, labelled, and never on this board.  n is coverage and is not decoration: two measured numbers taken over different item counts are not comparable, so read the row&#39;s n before reading its accuracy.
+     * Answers one row per model for the benchmark named — what our own harness measured, beside what the vendor claims, and the gap between them.  The gap is the point of the arena; provider-reported claims have run materially hot against one standardized harness.  The two planes are NEVER blended, and that is the rule to read the rows by: a model we have measured but no vendor has claimed for shows published null, a model with only a claim shows measured null, and gap exists only where both do.  Published, Claims, Spread and Mean read the platform&#39;s own public claims (org \&quot;admin\&quot;) and nothing else, whoever asks. Other orgs&#39; claims are at /v1/benchmark/claims, labelled, and reach this board only when a SuperAdmin publishes them: writing under org admin, or promoting an org&#39;s public claims with POST /v1/benchmark/claims/promote, which keeps the org they came from in the row&#39;s from.  Rows are best first. A benchmark whose score improves downward — a false-alarm rate, a share of answers that moved — is ordered lowest first, and the answer says which with direction.  n is coverage and is not decoration: two measured numbers taken over different item counts are not comparable, so read the row&#39;s n before reading its accuracy.
      * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -865,8 +865,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each served by the model layer as enso-&lt;name&gt;.
-     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each served by the model layer as enso-&lt;name&gt;.  Today it answers exactly one row, the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.
+     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each named for the model layer as enso-&lt;name&gt;.
+     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each named for the model layer as enso-&lt;name&gt;.  The first row is the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.  The rows after it are the caller&#39;s org&#39;s stored blends, by name, the latest version of each. Anyone reads the reference; only a member of the org reads the org&#39;s own, and a SuperAdmin acting in an org it does not belong to reads what a stranger reads.
      * @return BenchmarkPresetList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -883,8 +883,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each served by the model layer as enso-&lt;name&gt;.
-     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each served by the model layer as enso-&lt;name&gt;.  Today it answers exactly one row, the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.
+     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each named for the model layer as enso-&lt;name&gt;.
+     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each named for the model layer as enso-&lt;name&gt;.  The first row is the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.  The rows after it are the caller&#39;s org&#39;s stored blends, by name, the latest version of each. Anyone reads the reference; only a member of the org reads the org&#39;s own, and a SuperAdmin acting in an org it does not belong to reads what a stranger reads.
      * @return ApiResponse&lt;BenchmarkPresetList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -902,8 +902,8 @@ public class BenchmarkApi {
     }
 
     /**
-     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each served by the model layer as enso-&lt;name&gt;. (asynchronously)
-     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each served by the model layer as enso-&lt;name&gt;.  Today it answers exactly one row, the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.
+     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each named for the model layer as enso-&lt;name&gt;. (asynchronously)
+     * Are the router blends available to compose from — a named set of model arms, the rank they escalate through and the panel width that bounds fan-out — each named for the model layer as enso-&lt;name&gt;.  The first row is the reference blend: a worked example written in models we name, published as an example of the FORM. It is deliberately not the composition of a Hanzo-served tier — the tier name exists to abstract that — so fork it and swap arms by what the leaderboard measures on your own tasks rather than reading it as a disclosure.  The rows after it are the caller&#39;s org&#39;s stored blends, by name, the latest version of each. Anyone reads the reference; only a member of the org reads the org&#39;s own, and a SuperAdmin acting in an org it does not belong to reads what a stranger reads.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1064,7 +1064,7 @@ public class BenchmarkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
@@ -1126,47 +1126,47 @@ public class BenchmarkApi {
     }
 
     /**
-     * Validates a router blend — its name, its arms, the rank they escalate through and the panel fan-out width — and answers 202 with the preset and the enso-&lt;name&gt; it would be served as.
-     * Validates a router blend — its name, its arms, the rank they escalate through and the panel fan-out width — and answers 202 with the preset and the enso-&lt;name&gt; it would be served as.  It VALIDATES AND ECHOES: the definition is not persisted yet, so a preset accepted here is not one the model layer will resolve. Treat the response as a check on the blend, not a promise to serve it.  Any signed-in caller may compose; a caller with no verified principal is refused 401. Owner is the caller&#39;s verified org whatever the body says, so a blend is never checked or echoed as another org&#39;s.  Defaults fill the shape rather than refusing it: an omitted rank becomes the arms in declared order and a panel below 1 becomes 1. The one real invariant is that rank may only name arms the blend declares — the same rule the model catalog enforces — and a rank naming anything else is a 422 listing exactly which entries were undeclared. A blend with no name or no arms is a 400.
+     * Stores a router blend for the caller&#39;s org — its name, its arms, the rank they escalate through and the panel fan-out width — and answers with the stored blend and the enso-&lt;name&gt; it would be resolved under.
+     * Stores a router blend for the caller&#39;s org — its name, its arms, the rank they escalate through and the panel fan-out width — and answers with the stored blend and the enso-&lt;name&gt; it would be resolved under.  Storing is not serving: the model layer resolves no stored preset, and the answer&#39;s note says so.  Any signed-in caller may compose; a caller with no verified principal is refused 401. Owner, At and By are the server&#39;s, whatever the body says, so a blend is never stored as another org&#39;s. Posting a name the org already holds replaces that blend; an org holds at most 100 names and stores at most 500 versions per UTC day (429 past that).  Defaults fill the shape rather than refusing it: an omitted rank becomes the arms in declared order and a panel below 1 becomes 1. A blend with no name or no arms is a 400. A name is the part after enso-: 1 to 64 lowercase letters, digits and inner hyphens, never one of Hanzo&#39;s own tiers (auto, flash, pro, ultra, free, embed) and never beginning with enso-, or it is a 422. So is a blend of more than 32 arms, an arm named twice or past 128 characters, a rank naming an arm the blend does not declare, a panel wider than the rank, or a note past 1024 characters.
      * @param benchmarkPreset  (required)
-     * @return BenchmarkPresetAccepted
+     * @return BenchmarkPresetStored
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BenchmarkPresetAccepted postBenchmarkPresets(@javax.annotation.Nonnull BenchmarkPreset benchmarkPreset) throws ApiException {
-        ApiResponse<BenchmarkPresetAccepted> localVarResp = postBenchmarkPresetsWithHttpInfo(benchmarkPreset);
+    public BenchmarkPresetStored postBenchmarkPresets(@javax.annotation.Nonnull BenchmarkPreset benchmarkPreset) throws ApiException {
+        ApiResponse<BenchmarkPresetStored> localVarResp = postBenchmarkPresetsWithHttpInfo(benchmarkPreset);
         return localVarResp.getData();
     }
 
     /**
-     * Validates a router blend — its name, its arms, the rank they escalate through and the panel fan-out width — and answers 202 with the preset and the enso-&lt;name&gt; it would be served as.
-     * Validates a router blend — its name, its arms, the rank they escalate through and the panel fan-out width — and answers 202 with the preset and the enso-&lt;name&gt; it would be served as.  It VALIDATES AND ECHOES: the definition is not persisted yet, so a preset accepted here is not one the model layer will resolve. Treat the response as a check on the blend, not a promise to serve it.  Any signed-in caller may compose; a caller with no verified principal is refused 401. Owner is the caller&#39;s verified org whatever the body says, so a blend is never checked or echoed as another org&#39;s.  Defaults fill the shape rather than refusing it: an omitted rank becomes the arms in declared order and a panel below 1 becomes 1. The one real invariant is that rank may only name arms the blend declares — the same rule the model catalog enforces — and a rank naming anything else is a 422 listing exactly which entries were undeclared. A blend with no name or no arms is a 400.
+     * Stores a router blend for the caller&#39;s org — its name, its arms, the rank they escalate through and the panel fan-out width — and answers with the stored blend and the enso-&lt;name&gt; it would be resolved under.
+     * Stores a router blend for the caller&#39;s org — its name, its arms, the rank they escalate through and the panel fan-out width — and answers with the stored blend and the enso-&lt;name&gt; it would be resolved under.  Storing is not serving: the model layer resolves no stored preset, and the answer&#39;s note says so.  Any signed-in caller may compose; a caller with no verified principal is refused 401. Owner, At and By are the server&#39;s, whatever the body says, so a blend is never stored as another org&#39;s. Posting a name the org already holds replaces that blend; an org holds at most 100 names and stores at most 500 versions per UTC day (429 past that).  Defaults fill the shape rather than refusing it: an omitted rank becomes the arms in declared order and a panel below 1 becomes 1. A blend with no name or no arms is a 400. A name is the part after enso-: 1 to 64 lowercase letters, digits and inner hyphens, never one of Hanzo&#39;s own tiers (auto, flash, pro, ultra, free, embed) and never beginning with enso-, or it is a 422. So is a blend of more than 32 arms, an arm named twice or past 128 characters, a rank naming an arm the blend does not declare, a panel wider than the rank, or a note past 1024 characters.
      * @param benchmarkPreset  (required)
-     * @return ApiResponse&lt;BenchmarkPresetAccepted&gt;
+     * @return ApiResponse&lt;BenchmarkPresetStored&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BenchmarkPresetAccepted> postBenchmarkPresetsWithHttpInfo(@javax.annotation.Nonnull BenchmarkPreset benchmarkPreset) throws ApiException {
+    public ApiResponse<BenchmarkPresetStored> postBenchmarkPresetsWithHttpInfo(@javax.annotation.Nonnull BenchmarkPreset benchmarkPreset) throws ApiException {
         okhttp3.Call localVarCall = postBenchmarkPresetsValidateBeforeCall(benchmarkPreset, null);
-        Type localVarReturnType = new TypeToken<BenchmarkPresetAccepted>(){}.getType();
+        Type localVarReturnType = new TypeToken<BenchmarkPresetStored>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Validates a router blend — its name, its arms, the rank they escalate through and the panel fan-out width — and answers 202 with the preset and the enso-&lt;name&gt; it would be served as. (asynchronously)
-     * Validates a router blend — its name, its arms, the rank they escalate through and the panel fan-out width — and answers 202 with the preset and the enso-&lt;name&gt; it would be served as.  It VALIDATES AND ECHOES: the definition is not persisted yet, so a preset accepted here is not one the model layer will resolve. Treat the response as a check on the blend, not a promise to serve it.  Any signed-in caller may compose; a caller with no verified principal is refused 401. Owner is the caller&#39;s verified org whatever the body says, so a blend is never checked or echoed as another org&#39;s.  Defaults fill the shape rather than refusing it: an omitted rank becomes the arms in declared order and a panel below 1 becomes 1. The one real invariant is that rank may only name arms the blend declares — the same rule the model catalog enforces — and a rank naming anything else is a 422 listing exactly which entries were undeclared. A blend with no name or no arms is a 400.
+     * Stores a router blend for the caller&#39;s org — its name, its arms, the rank they escalate through and the panel fan-out width — and answers with the stored blend and the enso-&lt;name&gt; it would be resolved under. (asynchronously)
+     * Stores a router blend for the caller&#39;s org — its name, its arms, the rank they escalate through and the panel fan-out width — and answers with the stored blend and the enso-&lt;name&gt; it would be resolved under.  Storing is not serving: the model layer resolves no stored preset, and the answer&#39;s note says so.  Any signed-in caller may compose; a caller with no verified principal is refused 401. Owner, At and By are the server&#39;s, whatever the body says, so a blend is never stored as another org&#39;s. Posting a name the org already holds replaces that blend; an org holds at most 100 names and stores at most 500 versions per UTC day (429 past that).  Defaults fill the shape rather than refusing it: an omitted rank becomes the arms in declared order and a panel below 1 becomes 1. A blend with no name or no arms is a 400. A name is the part after enso-: 1 to 64 lowercase letters, digits and inner hyphens, never one of Hanzo&#39;s own tiers (auto, flash, pro, ultra, free, embed) and never beginning with enso-, or it is a 422. So is a blend of more than 32 arms, an arm named twice or past 128 characters, a rank naming an arm the blend does not declare, a panel wider than the rank, or a note past 1024 characters.
      * @param benchmarkPreset  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1175,14 +1175,14 @@ public class BenchmarkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBenchmarkPresetsAsync(@javax.annotation.Nonnull BenchmarkPreset benchmarkPreset, final ApiCallback<BenchmarkPresetAccepted> _callback) throws ApiException {
+    public okhttp3.Call postBenchmarkPresetsAsync(@javax.annotation.Nonnull BenchmarkPreset benchmarkPreset, final ApiCallback<BenchmarkPresetStored> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBenchmarkPresetsValidateBeforeCall(benchmarkPreset, _callback);
-        Type localVarReturnType = new TypeToken<BenchmarkPresetAccepted>(){}.getType();
+        Type localVarReturnType = new TypeToken<BenchmarkPresetStored>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1196,7 +1196,7 @@ public class BenchmarkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
@@ -1258,47 +1258,47 @@ public class BenchmarkApi {
     }
 
     /**
-     * Admits and queues a benchmark run against a model or your own endpoint, and answers 202 with the receipt.
-     * Admits and queues a benchmark run against a model or your own endpoint, and answers 202 with the receipt.  It is an ADMISSION, not a result: the work is done by the harness afterwards and the numbers appear on the leaderboard as it completes them.  Any signed-in caller may ask; a caller with no verified principal is refused 401. The receipt names the caller&#39;s verified org and user — nothing in the body names either — and stores nothing.  Cost is bounded by the store rather than by a quota: attempts are append-only and keyed by (benchmark, item, model), so an (item, model) pair already attempted is skipped instead of re-spent, and re-queuing the same run is close to free.  Validation is up front and total — a request with neither model nor endpoint is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown, so a typo never silently queues a partial run.
+     * Answers what the arena already holds for a model on each benchmark asked about, and spends nothing.
+     * Answers what the arena already holds for a model on each benchmark asked about, and spends nothing.  For a benchmark the store holds attempts for, the answer is the model&#39;s latest run — its id, when it was recorded, its accuracy and how many items it covered — served from the attempts already recorded. A measurement held is never run again from here.  For a benchmark it holds none for, nothing is queued, because this arena has no executor: the answer says so and names the harness that measures the benchmark, or, where none here does, the import a published run&#39;s items take. There is no flag to force a run, because nothing here would act on it.  Any signed-in caller may ask; a caller with no verified principal is refused 401. The answer names the caller&#39;s verified org and user — nothing in the body names either — and stores nothing.  Validation is up front and total — a request with no model is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown.
      * @param benchmarkSuite  (required)
-     * @return BenchmarkAdmission
+     * @return BenchmarkMeasurements
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BenchmarkAdmission postBenchmarkRuns(@javax.annotation.Nonnull BenchmarkSuite benchmarkSuite) throws ApiException {
-        ApiResponse<BenchmarkAdmission> localVarResp = postBenchmarkRunsWithHttpInfo(benchmarkSuite);
+    public BenchmarkMeasurements postBenchmarkRuns(@javax.annotation.Nonnull BenchmarkSuite benchmarkSuite) throws ApiException {
+        ApiResponse<BenchmarkMeasurements> localVarResp = postBenchmarkRunsWithHttpInfo(benchmarkSuite);
         return localVarResp.getData();
     }
 
     /**
-     * Admits and queues a benchmark run against a model or your own endpoint, and answers 202 with the receipt.
-     * Admits and queues a benchmark run against a model or your own endpoint, and answers 202 with the receipt.  It is an ADMISSION, not a result: the work is done by the harness afterwards and the numbers appear on the leaderboard as it completes them.  Any signed-in caller may ask; a caller with no verified principal is refused 401. The receipt names the caller&#39;s verified org and user — nothing in the body names either — and stores nothing.  Cost is bounded by the store rather than by a quota: attempts are append-only and keyed by (benchmark, item, model), so an (item, model) pair already attempted is skipped instead of re-spent, and re-queuing the same run is close to free.  Validation is up front and total — a request with neither model nor endpoint is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown, so a typo never silently queues a partial run.
+     * Answers what the arena already holds for a model on each benchmark asked about, and spends nothing.
+     * Answers what the arena already holds for a model on each benchmark asked about, and spends nothing.  For a benchmark the store holds attempts for, the answer is the model&#39;s latest run — its id, when it was recorded, its accuracy and how many items it covered — served from the attempts already recorded. A measurement held is never run again from here.  For a benchmark it holds none for, nothing is queued, because this arena has no executor: the answer says so and names the harness that measures the benchmark, or, where none here does, the import a published run&#39;s items take. There is no flag to force a run, because nothing here would act on it.  Any signed-in caller may ask; a caller with no verified principal is refused 401. The answer names the caller&#39;s verified org and user — nothing in the body names either — and stores nothing.  Validation is up front and total — a request with no model is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown.
      * @param benchmarkSuite  (required)
-     * @return ApiResponse&lt;BenchmarkAdmission&gt;
+     * @return ApiResponse&lt;BenchmarkMeasurements&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BenchmarkAdmission> postBenchmarkRunsWithHttpInfo(@javax.annotation.Nonnull BenchmarkSuite benchmarkSuite) throws ApiException {
+    public ApiResponse<BenchmarkMeasurements> postBenchmarkRunsWithHttpInfo(@javax.annotation.Nonnull BenchmarkSuite benchmarkSuite) throws ApiException {
         okhttp3.Call localVarCall = postBenchmarkRunsValidateBeforeCall(benchmarkSuite, null);
-        Type localVarReturnType = new TypeToken<BenchmarkAdmission>(){}.getType();
+        Type localVarReturnType = new TypeToken<BenchmarkMeasurements>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Admits and queues a benchmark run against a model or your own endpoint, and answers 202 with the receipt. (asynchronously)
-     * Admits and queues a benchmark run against a model or your own endpoint, and answers 202 with the receipt.  It is an ADMISSION, not a result: the work is done by the harness afterwards and the numbers appear on the leaderboard as it completes them.  Any signed-in caller may ask; a caller with no verified principal is refused 401. The receipt names the caller&#39;s verified org and user — nothing in the body names either — and stores nothing.  Cost is bounded by the store rather than by a quota: attempts are append-only and keyed by (benchmark, item, model), so an (item, model) pair already attempted is skipped instead of re-spent, and re-queuing the same run is close to free.  Validation is up front and total — a request with neither model nor endpoint is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown, so a typo never silently queues a partial run.
+     * Answers what the arena already holds for a model on each benchmark asked about, and spends nothing. (asynchronously)
+     * Answers what the arena already holds for a model on each benchmark asked about, and spends nothing.  For a benchmark the store holds attempts for, the answer is the model&#39;s latest run — its id, when it was recorded, its accuracy and how many items it covered — served from the attempts already recorded. A measurement held is never run again from here.  For a benchmark it holds none for, nothing is queued, because this arena has no executor: the answer says so and names the harness that measures the benchmark, or, where none here does, the import a published run&#39;s items take. There is no flag to force a run, because nothing here would act on it.  Any signed-in caller may ask; a caller with no verified principal is refused 401. The answer names the caller&#39;s verified org and user — nothing in the body names either — and stores nothing.  Validation is up front and total — a request with no model is a 400, one with no benchmarks is a 400, and any benchmark id outside the catalog is a 422 naming exactly which ids were unknown.
      * @param benchmarkSuite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1307,14 +1307,14 @@ public class BenchmarkApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBenchmarkRunsAsync(@javax.annotation.Nonnull BenchmarkSuite benchmarkSuite, final ApiCallback<BenchmarkAdmission> _callback) throws ApiException {
+    public okhttp3.Call postBenchmarkRunsAsync(@javax.annotation.Nonnull BenchmarkSuite benchmarkSuite, final ApiCallback<BenchmarkMeasurements> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBenchmarkRunsValidateBeforeCall(benchmarkSuite, _callback);
-        Type localVarReturnType = new TypeToken<BenchmarkAdmission>(){}.getType();
+        Type localVarReturnType = new TypeToken<BenchmarkMeasurements>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

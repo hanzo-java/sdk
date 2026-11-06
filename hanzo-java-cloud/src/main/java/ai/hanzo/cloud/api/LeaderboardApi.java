@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import ai.hanzo.cloud.model.LeaderboardActivityView;
+import ai.hanzo.cloud.model.LeaderboardBetaBoard;
 import ai.hanzo.cloud.model.LeaderboardLeaderboardView;
 import ai.hanzo.cloud.model.LeaderboardOptinView;
 import ai.hanzo.cloud.model.LeaderboardOrgOptinReq;
@@ -384,6 +385,136 @@ public class LeaderboardApi {
 
         okhttp3.Call localVarCall = getLeaderboardActivityValidateBeforeCall(subject, id, from, to, _callback);
         Type localVarReturnType = new TypeToken<LeaderboardActivityView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getLeaderboardBeta
+     * @param limit Limit caps the rows, clamped to 1..100. Defaults to 25, which is also what a non-positive value takes. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLeaderboardBetaCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/leaderboard/beta";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLeaderboardBetaValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getLeaderboardBetaCall(limit, _callback);
+
+    }
+
+    /**
+     * Ranks everyone on the hanzo.ai/beta waitlist by one score: the record&#39;s verified-action points, plus 1 per org that signed up with its referral code, plus 20 per such org that has made metered spend, plus 1 per 100,000 tokens the person used, all time.
+     * Ranks everyone on the hanzo.ai/beta waitlist by one score: the record&#39;s verified-action points, plus 1 per org that signed up with its referral code, plus 20 per such org that has made metered spend, plus 1 per 100,000 tokens the person used, all time. Ties go to the earlier application. Share clicks count for nothing.  Everyone who ever applied is on it. A form filed before the person had an account is a row of its own (no name, score 0, the day it was filed) until their account&#39;s record claims it, and the record then begins when the form did.  A row is named only for a person who opted into the public board (PUT /v1/leaderboard/optin); the caller always sees their own row named. Tokens are a range on every row and exact on a named row and the caller&#39;s. &#x60;tokens&#x60; and &#x60;referrals&#x60; say whether the warehouse and the referral service answered; a term that did not is left out of every score alike.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param limit Limit caps the rows, clamped to 1..100. Defaults to 25, which is also what a non-positive value takes. (optional)
+     * @return LeaderboardBetaBoard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public LeaderboardBetaBoard getLeaderboardBeta(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<LeaderboardBetaBoard> localVarResp = getLeaderboardBetaWithHttpInfo(limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Ranks everyone on the hanzo.ai/beta waitlist by one score: the record&#39;s verified-action points, plus 1 per org that signed up with its referral code, plus 20 per such org that has made metered spend, plus 1 per 100,000 tokens the person used, all time.
+     * Ranks everyone on the hanzo.ai/beta waitlist by one score: the record&#39;s verified-action points, plus 1 per org that signed up with its referral code, plus 20 per such org that has made metered spend, plus 1 per 100,000 tokens the person used, all time. Ties go to the earlier application. Share clicks count for nothing.  Everyone who ever applied is on it. A form filed before the person had an account is a row of its own (no name, score 0, the day it was filed) until their account&#39;s record claims it, and the record then begins when the form did.  A row is named only for a person who opted into the public board (PUT /v1/leaderboard/optin); the caller always sees their own row named. Tokens are a range on every row and exact on a named row and the caller&#39;s. &#x60;tokens&#x60; and &#x60;referrals&#x60; say whether the warehouse and the referral service answered; a term that did not is left out of every score alike.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param limit Limit caps the rows, clamped to 1..100. Defaults to 25, which is also what a non-positive value takes. (optional)
+     * @return ApiResponse&lt;LeaderboardBetaBoard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LeaderboardBetaBoard> getLeaderboardBetaWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getLeaderboardBetaValidateBeforeCall(limit, null);
+        Type localVarReturnType = new TypeToken<LeaderboardBetaBoard>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Ranks everyone on the hanzo.ai/beta waitlist by one score: the record&#39;s verified-action points, plus 1 per org that signed up with its referral code, plus 20 per such org that has made metered spend, plus 1 per 100,000 tokens the person used, all time. (asynchronously)
+     * Ranks everyone on the hanzo.ai/beta waitlist by one score: the record&#39;s verified-action points, plus 1 per org that signed up with its referral code, plus 20 per such org that has made metered spend, plus 1 per 100,000 tokens the person used, all time. Ties go to the earlier application. Share clicks count for nothing.  Everyone who ever applied is on it. A form filed before the person had an account is a row of its own (no name, score 0, the day it was filed) until their account&#39;s record claims it, and the record then begins when the form did.  A row is named only for a person who opted into the public board (PUT /v1/leaderboard/optin); the caller always sees their own row named. Tokens are a range on every row and exact on a named row and the caller&#39;s. &#x60;tokens&#x60; and &#x60;referrals&#x60; say whether the warehouse and the referral service answered; a term that did not is left out of every score alike.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param limit Limit caps the rows, clamped to 1..100. Defaults to 25, which is also what a non-positive value takes. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLeaderboardBetaAsync(@javax.annotation.Nullable Long limit, final ApiCallback<LeaderboardBetaBoard> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLeaderboardBetaValidateBeforeCall(limit, _callback);
+        Type localVarReturnType = new TypeToken<LeaderboardBetaBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

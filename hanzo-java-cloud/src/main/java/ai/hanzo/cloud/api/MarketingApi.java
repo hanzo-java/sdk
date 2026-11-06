@@ -30,30 +30,49 @@ import java.io.IOException;
 import ai.hanzo.cloud.model.MarketingAudience;
 import ai.hanzo.cloud.model.MarketingAudienceList;
 import ai.hanzo.cloud.model.MarketingAudiencePreview;
+import ai.hanzo.cloud.model.MarketingBeta;
+import ai.hanzo.cloud.model.MarketingBetaActIn;
+import ai.hanzo.cloud.model.MarketingBetaIn;
+import ai.hanzo.cloud.model.MarketingBetaInviteIn;
+import ai.hanzo.cloud.model.MarketingBetaInviteList;
+import ai.hanzo.cloud.model.MarketingBetaInviteRows;
+import ai.hanzo.cloud.model.MarketingBetaInviteSentIn;
+import ai.hanzo.cloud.model.MarketingBetaInvites;
+import ai.hanzo.cloud.model.MarketingBetaRequest;
 import ai.hanzo.cloud.model.MarketingCalendarPost;
 import ai.hanzo.cloud.model.MarketingCampaign;
 import ai.hanzo.cloud.model.MarketingCampaignList;
+import ai.hanzo.cloud.model.MarketingConfirmIn;
 import ai.hanzo.cloud.model.MarketingEnrollInput;
 import ai.hanzo.cloud.model.MarketingEnrollResult;
 import ai.hanzo.cloud.model.MarketingEnrollmentList;
+import ai.hanzo.cloud.model.MarketingEsignEvent;
 import ai.hanzo.cloud.model.MarketingLead;
 import ai.hanzo.cloud.model.MarketingLeadIn;
+import ai.hanzo.cloud.model.MarketingMailIn;
+import ai.hanzo.cloud.model.MarketingMailOut;
 import ai.hanzo.cloud.model.MarketingPostList;
 import ai.hanzo.cloud.model.MarketingPromoList;
 import ai.hanzo.cloud.model.MarketingQuote;
 import ai.hanzo.cloud.model.MarketingRedeemInput;
 import ai.hanzo.cloud.model.MarketingRedeemResult;
 import ai.hanzo.cloud.model.MarketingRedemption;
+import ai.hanzo.cloud.model.MarketingResumeForm;
+import ai.hanzo.cloud.model.MarketingResumeIn;
 import ai.hanzo.cloud.model.MarketingScheduleInput;
 import ai.hanzo.cloud.model.MarketingSequence;
 import ai.hanzo.cloud.model.MarketingSequenceList;
 import ai.hanzo.cloud.model.MarketingSequenceStatus;
 import ai.hanzo.cloud.model.MarketingSequenceView;
+import ai.hanzo.cloud.model.MarketingSigning;
 import ai.hanzo.cloud.model.MarketingStep;
 import ai.hanzo.cloud.model.MarketingStepInput;
 import ai.hanzo.cloud.model.MarketingStepList;
+import ai.hanzo.cloud.model.MarketingSubscribeIn;
+import ai.hanzo.cloud.model.MarketingSubscription;
 import ai.hanzo.cloud.model.MarketingSummary;
 import ai.hanzo.cloud.model.MarketingSuppression;
+import ai.hanzo.cloud.model.MarketingSuppressionCheck;
 import ai.hanzo.cloud.model.MarketingSuppressionList;
 import ai.hanzo.cloud.model.MarketingUnsubscribed;
 import ai.hanzo.cloud.model.ProblemDetails;
@@ -173,7 +192,7 @@ public class MarketingApi {
 
     /**
      * Removes one of the caller org&#39;s audiences and answers 204.
-     * Removes one of the caller org&#39;s audiences and answers 204. It deletes the saved filter only — no customer, event or enrollment is touched.
+     * Removes one of the caller org&#39;s audiences and answers 204. It deletes the saved filter only — no customer, event or enrollment is touched.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the audience id from the path, as returned by create. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -190,7 +209,7 @@ public class MarketingApi {
 
     /**
      * Removes one of the caller org&#39;s audiences and answers 204.
-     * Removes one of the caller org&#39;s audiences and answers 204. It deletes the saved filter only — no customer, event or enrollment is touched.
+     * Removes one of the caller org&#39;s audiences and answers 204. It deletes the saved filter only — no customer, event or enrollment is touched.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the audience id from the path, as returned by create. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -209,7 +228,7 @@ public class MarketingApi {
 
     /**
      * Removes one of the caller org&#39;s audiences and answers 204. (asynchronously)
-     * Removes one of the caller org&#39;s audiences and answers 204. It deletes the saved filter only — no customer, event or enrollment is touched.
+     * Removes one of the caller org&#39;s audiences and answers 204. It deletes the saved filter only — no customer, event or enrollment is touched.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the audience id from the path, as returned by create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -484,10 +503,8 @@ public class MarketingApi {
     }
     /**
      * Build call for deleteMarketingSuppressions
-     * @param channel Channel is the surface opted out of: email, sms, social, meta, google or tiktok. Empty means email. Opting out of one leaves the others reachable. (optional)
-     * @param address Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required. (optional)
-     * @param reason Reason is a free-text note, capped at 1024 bytes. The public one-click endpoint records \&quot;one-click unsubscribe\&quot;. (optional)
-     * @param createdAt CreatedAt is unix seconds, server-assigned. (optional)
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -499,7 +516,7 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteMarketingSuppressionsCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Long createdAt, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingSuppressionsCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -532,14 +549,6 @@ public class MarketingApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("address", address));
         }
 
-        if (reason != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("reason", reason));
-        }
-
-        if (createdAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAt", createdAt));
-        }
-
         final String[] localVarAccepts = {
             "application/problem+json"
         };
@@ -560,18 +569,16 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteMarketingSuppressionsValidateBeforeCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Long createdAt, final ApiCallback _callback) throws ApiException {
-        return deleteMarketingSuppressionsCall(channel, address, reason, createdAt, _callback);
+    private okhttp3.Call deleteMarketingSuppressionsValidateBeforeCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, final ApiCallback _callback) throws ApiException {
+        return deleteMarketingSuppressionsCall(channel, address, _callback);
 
     }
 
     /**
      * Re-subscribes an address on one channel and answers 204.
-     * Re-subscribes an address on one channel and answers 204. An address that is not on the list reads as not found.
-     * @param channel Channel is the surface opted out of: email, sms, social, meta, google or tiktok. Empty means email. Opting out of one leaves the others reachable. (optional)
-     * @param address Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required. (optional)
-     * @param reason Reason is a free-text note, capped at 1024 bytes. The public one-click endpoint records \&quot;one-click unsubscribe\&quot;. (optional)
-     * @param createdAt CreatedAt is unix seconds, server-assigned. (optional)
+     * Re-subscribes an address on one channel and answers 204. The entry is named in the query. An address that is not on the list reads as not found.  Org admin or SuperAdmin only; a member of the org is refused.
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -581,17 +588,15 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteMarketingSuppressions(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Long createdAt) throws ApiException {
-        deleteMarketingSuppressionsWithHttpInfo(channel, address, reason, createdAt);
+    public void deleteMarketingSuppressions(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address) throws ApiException {
+        deleteMarketingSuppressionsWithHttpInfo(channel, address);
     }
 
     /**
      * Re-subscribes an address on one channel and answers 204.
-     * Re-subscribes an address on one channel and answers 204. An address that is not on the list reads as not found.
-     * @param channel Channel is the surface opted out of: email, sms, social, meta, google or tiktok. Empty means email. Opting out of one leaves the others reachable. (optional)
-     * @param address Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required. (optional)
-     * @param reason Reason is a free-text note, capped at 1024 bytes. The public one-click endpoint records \&quot;one-click unsubscribe\&quot;. (optional)
-     * @param createdAt CreatedAt is unix seconds, server-assigned. (optional)
+     * Re-subscribes an address on one channel and answers 204. The entry is named in the query. An address that is not on the list reads as not found.  Org admin or SuperAdmin only; a member of the org is refused.
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -602,18 +607,16 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteMarketingSuppressionsWithHttpInfo(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Long createdAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteMarketingSuppressionsValidateBeforeCall(channel, address, reason, createdAt, null);
+    public ApiResponse<Void> deleteMarketingSuppressionsWithHttpInfo(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingSuppressionsValidateBeforeCall(channel, address, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Re-subscribes an address on one channel and answers 204. (asynchronously)
-     * Re-subscribes an address on one channel and answers 204. An address that is not on the list reads as not found.
-     * @param channel Channel is the surface opted out of: email, sms, social, meta, google or tiktok. Empty means email. Opting out of one leaves the others reachable. (optional)
-     * @param address Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required. (optional)
-     * @param reason Reason is a free-text note, capped at 1024 bytes. The public one-click endpoint records \&quot;one-click unsubscribe\&quot;. (optional)
-     * @param createdAt CreatedAt is unix seconds, server-assigned. (optional)
+     * Re-subscribes an address on one channel and answers 204. The entry is named in the query. An address that is not on the list reads as not found.  Org admin or SuperAdmin only; a member of the org is refused.
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -625,9 +628,9 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteMarketingSuppressionsAsync(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Long createdAt, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingSuppressionsAsync(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteMarketingSuppressionsValidateBeforeCall(channel, address, reason, createdAt, _callback);
+        okhttp3.Call localVarCall = deleteMarketingSuppressionsValidateBeforeCall(channel, address, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1022,6 +1025,250 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = getMarketingAudiencesByIdPreviewValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<MarketingAudiencePreview>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingBeta
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBetaCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingBetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingBetaCall(_callback);
+
+    }
+
+    /**
+     * Answers the signed-in caller&#39;s waitlist record: the application as it stands, the betas asked for, the points and the actions that earned them, and the place on the waitlist.
+     * Answers the signed-in caller&#39;s waitlist record: the application as it stands, the betas asked for, the points and the actions that earned them, and the place on the waitlist. An account that has not applied answers applied false and place 0.
+     * @return MarketingBeta
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBeta getMarketingBeta() throws ApiException {
+        ApiResponse<MarketingBeta> localVarResp = getMarketingBetaWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the signed-in caller&#39;s waitlist record: the application as it stands, the betas asked for, the points and the actions that earned them, and the place on the waitlist.
+     * Answers the signed-in caller&#39;s waitlist record: the application as it stands, the betas asked for, the points and the actions that earned them, and the place on the waitlist. An account that has not applied answers applied false and place 0.
+     * @return ApiResponse&lt;MarketingBeta&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBeta> getMarketingBetaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingBetaValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the signed-in caller&#39;s waitlist record: the application as it stands, the betas asked for, the points and the actions that earned them, and the place on the waitlist. (asynchronously)
+     * Answers the signed-in caller&#39;s waitlist record: the application as it stands, the betas asked for, the points and the actions that earned them, and the place on the waitlist. An account that has not applied answers applied false and place 0.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBetaAsync(final ApiCallback<MarketingBeta> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingBetaValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingBetaInvites
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBetaInvitesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta/invites";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingBetaInvitesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingBetaInvitesCall(_callback);
+
+    }
+
+    /**
+     * Answers the caller&#39;s invites, newest first, with how many were sent, how many joined, and how many more they may send now.
+     * Answers the caller&#39;s invites, newest first, with how many were sent, how many joined, and how many more they may send now. A reservation that lapsed unsent is not listed: it holds nothing.
+     * @return MarketingBetaInviteList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBetaInviteList getMarketingBetaInvites() throws ApiException {
+        ApiResponse<MarketingBetaInviteList> localVarResp = getMarketingBetaInvitesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the caller&#39;s invites, newest first, with how many were sent, how many joined, and how many more they may send now.
+     * Answers the caller&#39;s invites, newest first, with how many were sent, how many joined, and how many more they may send now. A reservation that lapsed unsent is not listed: it holds nothing.
+     * @return ApiResponse&lt;MarketingBetaInviteList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBetaInviteList> getMarketingBetaInvitesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingBetaInvitesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<MarketingBetaInviteList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the caller&#39;s invites, newest first, with how many were sent, how many joined, and how many more they may send now. (asynchronously)
+     * Answers the caller&#39;s invites, newest first, with how many were sent, how many joined, and how many more they may send now. A reservation that lapsed unsent is not listed: it holds nothing.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBetaInvitesAsync(final ApiCallback<MarketingBetaInviteList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingBetaInvitesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<MarketingBetaInviteList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1562,6 +1809,144 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = getMarketingCampaignsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<MarketingCampaign>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingClick
+     * @param userAgent Agent is the clicker&#39;s User-Agent header. Only its family (chrome, safari, automated, …) is kept. (optional)
+     * @param t T is the click token the send minted for this link and this recipient: base64url, signed under the deployment&#39;s KMS key marketing/click-hmac. It is the request&#39;s only authority. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 302 </td><td> found </td><td>  * Cache-Control - Set by GET /v1/marketing/click. <br>  * Location - Set by GET /v1/marketing/click. <br>  * Referrer-Policy - Set by GET /v1/marketing/click. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingClickCall(@javax.annotation.Nullable String userAgent, @javax.annotation.Nullable String t, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/click";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (t != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("t", t));
+        }
+
+        final String[] localVarAccepts = {
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (userAgent != null) {
+            localVarHeaderParams.put("User-Agent", localVarApiClient.parameterToString(userAgent));
+        }
+
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingClickValidateBeforeCall(@javax.annotation.Nullable String userAgent, @javax.annotation.Nullable String t, final ApiCallback _callback) throws ApiException {
+        return getMarketingClickCall(userAgent, t, _callback);
+
+    }
+
+    /**
+     * Follows a tracked email link.
+     * Follows a tracked email link. It is public — the person clicking has no session — and the token is its only authority: a token that verifies, for a sequence of one of Hanzo&#39;s own orgs that still exists, answers 302 to the destination it signs and records one click (time and user-agent family; no IP address), off the request path so the redirect never waits on storage. A token that is missing, altered, signed under another key, older than a year, or for any other org or a deleted sequence answers 302 to the brand&#39;s home page (https://hanzo.ai/ on Hanzo&#39;s deployment). The location is only ever a destination a token signs or that page, never a URL the request names.
+     * @param userAgent Agent is the clicker&#39;s User-Agent header. Only its family (chrome, safari, automated, …) is kept. (optional)
+     * @param t T is the click token the send minted for this link and this recipient: base64url, signed under the deployment&#39;s KMS key marketing/click-hmac. It is the request&#39;s only authority. (optional)
+     * @return ProblemDetails
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 302 </td><td> found </td><td>  * Cache-Control - Set by GET /v1/marketing/click. <br>  * Location - Set by GET /v1/marketing/click. <br>  * Referrer-Policy - Set by GET /v1/marketing/click. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProblemDetails getMarketingClick(@javax.annotation.Nullable String userAgent, @javax.annotation.Nullable String t) throws ApiException {
+        ApiResponse<ProblemDetails> localVarResp = getMarketingClickWithHttpInfo(userAgent, t);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Follows a tracked email link.
+     * Follows a tracked email link. It is public — the person clicking has no session — and the token is its only authority: a token that verifies, for a sequence of one of Hanzo&#39;s own orgs that still exists, answers 302 to the destination it signs and records one click (time and user-agent family; no IP address), off the request path so the redirect never waits on storage. A token that is missing, altered, signed under another key, older than a year, or for any other org or a deleted sequence answers 302 to the brand&#39;s home page (https://hanzo.ai/ on Hanzo&#39;s deployment). The location is only ever a destination a token signs or that page, never a URL the request names.
+     * @param userAgent Agent is the clicker&#39;s User-Agent header. Only its family (chrome, safari, automated, …) is kept. (optional)
+     * @param t T is the click token the send minted for this link and this recipient: base64url, signed under the deployment&#39;s KMS key marketing/click-hmac. It is the request&#39;s only authority. (optional)
+     * @return ApiResponse&lt;ProblemDetails&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 302 </td><td> found </td><td>  * Cache-Control - Set by GET /v1/marketing/click. <br>  * Location - Set by GET /v1/marketing/click. <br>  * Referrer-Policy - Set by GET /v1/marketing/click. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProblemDetails> getMarketingClickWithHttpInfo(@javax.annotation.Nullable String userAgent, @javax.annotation.Nullable String t) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingClickValidateBeforeCall(userAgent, t, null);
+        Type localVarReturnType = new TypeToken<ProblemDetails>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Follows a tracked email link. (asynchronously)
+     * Follows a tracked email link. It is public — the person clicking has no session — and the token is its only authority: a token that verifies, for a sequence of one of Hanzo&#39;s own orgs that still exists, answers 302 to the destination it signs and records one click (time and user-agent family; no IP address), off the request path so the redirect never waits on storage. A token that is missing, altered, signed under another key, older than a year, or for any other org or a deleted sequence answers 302 to the brand&#39;s home page (https://hanzo.ai/ on Hanzo&#39;s deployment). The location is only ever a destination a token signs or that page, never a URL the request names.
+     * @param userAgent Agent is the clicker&#39;s User-Agent header. Only its family (chrome, safari, automated, …) is kept. (optional)
+     * @param t T is the click token the send minted for this link and this recipient: base64url, signed under the deployment&#39;s KMS key marketing/click-hmac. It is the request&#39;s only authority. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 302 </td><td> found </td><td>  * Cache-Control - Set by GET /v1/marketing/click. <br>  * Location - Set by GET /v1/marketing/click. <br>  * Referrer-Policy - Set by GET /v1/marketing/click. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingClickAsync(@javax.annotation.Nullable String userAgent, @javax.annotation.Nullable String t, final ApiCallback<ProblemDetails> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingClickValidateBeforeCall(userAgent, t, _callback);
+        Type localVarReturnType = new TypeToken<ProblemDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2754,11 +3139,9 @@ public class MarketingApi {
         return localVarCall;
     }
     /**
-     * Build call for getMarketingUnsubscribe
-     * @param org Org is the org the link was minted for. (optional)
-     * @param channel Channel is the surface to opt out of. (optional)
-     * @param address Address is the recipient to opt out. (optional)
-     * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
+     * Build call for getMarketingSuppressionsCheck
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2770,7 +3153,148 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSuppressionsCheckCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/suppressions/check";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (channel != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("channel", channel));
+        }
+
+        if (address != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("address", address));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingSuppressionsCheckValidateBeforeCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, final ApiCallback _callback) throws ApiException {
+        return getMarketingSuppressionsCheckCall(channel, address, _callback);
+
+    }
+
+    /**
+     * Answers whether the org&#39;s send gate refuses an address, and which list holds it, by the same check every commercial send asks.
+     * Answers whether the org&#39;s send gate refuses an address, and which list holds it, by the same check every commercial send asks.
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
+     * @return MarketingSuppressionCheck
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSuppressionCheck getMarketingSuppressionsCheck(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address) throws ApiException {
+        ApiResponse<MarketingSuppressionCheck> localVarResp = getMarketingSuppressionsCheckWithHttpInfo(channel, address);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers whether the org&#39;s send gate refuses an address, and which list holds it, by the same check every commercial send asks.
+     * Answers whether the org&#39;s send gate refuses an address, and which list holds it, by the same check every commercial send asks.
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
+     * @return ApiResponse&lt;MarketingSuppressionCheck&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSuppressionCheck> getMarketingSuppressionsCheckWithHttpInfo(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSuppressionsCheckValidateBeforeCall(channel, address, null);
+        Type localVarReturnType = new TypeToken<MarketingSuppressionCheck>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers whether the org&#39;s send gate refuses an address, and which list holds it, by the same check every commercial send asks. (asynchronously)
+     * Answers whether the org&#39;s send gate refuses an address, and which list holds it, by the same check every commercial send asks.
+     * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
+     * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingSuppressionsCheckAsync(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, final ApiCallback<MarketingSuppressionCheck> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingSuppressionsCheckValidateBeforeCall(channel, address, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSuppressionCheck>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingUnsubscribe
+     * @param org Org is the org the link was minted for. (optional)
+     * @param channel Channel is the surface to opt out of. (optional)
+     * @param address Address is the recipient to opt out. (optional)
+     * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
+     * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2811,6 +3335,10 @@ public class MarketingApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
+        if (company != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("company", company));
+        }
+
         final String[] localVarAccepts = {
             "application/json",
             "application/problem+json"
@@ -2827,23 +3355,24 @@ public class MarketingApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
-        return getMarketingUnsubscribeCall(org, channel, address, token, _callback);
+    private okhttp3.Call getMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, final ApiCallback _callback) throws ApiException {
+        return getMarketingUnsubscribeCall(org, channel, address, token, company, _callback);
 
     }
 
     /**
      * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer.
-     * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. The token binds (org, channel, address), so a caller can only opt OUT exactly the tuple it was minted for — never another address and never another org. An invalid token is refused, and a deployment with no KMS-sealed key refuses rather than accepting anything.
+     * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. The token binds (org, channel, address), so a caller can only opt OUT exactly the tuple it was minted for — never another address and never another org. With company&#x3D;true the address&#39;s whole domain is opted out of this org&#39;s mail too, which a free mail address may not ask (422); without it, the answer offers the company&#39;s domain when there is one to offer. An invalid token is refused, and a deployment with no KMS-sealed key refuses rather than accepting anything.
      * @param org Org is the org the link was minted for. (optional)
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
+     * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
      * @return MarketingUnsubscribed
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2854,18 +3383,19 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MarketingUnsubscribed getMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token) throws ApiException {
-        ApiResponse<MarketingUnsubscribed> localVarResp = getMarketingUnsubscribeWithHttpInfo(org, channel, address, token);
+    public MarketingUnsubscribed getMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company) throws ApiException {
+        ApiResponse<MarketingUnsubscribed> localVarResp = getMarketingUnsubscribeWithHttpInfo(org, channel, address, token, company);
         return localVarResp.getData();
     }
 
     /**
      * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer.
-     * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. The token binds (org, channel, address), so a caller can only opt OUT exactly the tuple it was minted for — never another address and never another org. An invalid token is refused, and a deployment with no KMS-sealed key refuses rather than accepting anything.
+     * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. The token binds (org, channel, address), so a caller can only opt OUT exactly the tuple it was minted for — never another address and never another org. With company&#x3D;true the address&#39;s whole domain is opted out of this org&#39;s mail too, which a free mail address may not ask (422); without it, the answer offers the company&#39;s domain when there is one to offer. An invalid token is refused, and a deployment with no KMS-sealed key refuses rather than accepting anything.
      * @param org Org is the org the link was minted for. (optional)
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
+     * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
      * @return ApiResponse&lt;MarketingUnsubscribed&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2876,19 +3406,20 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MarketingUnsubscribed> getMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token) throws ApiException {
-        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, null);
+    public ApiResponse<MarketingUnsubscribed> getMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, company, null);
         Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. (asynchronously)
-     * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. The token binds (org, channel, address), so a caller can only opt OUT exactly the tuple it was minted for — never another address and never another org. An invalid token is refused, and a deployment with no KMS-sealed key refuses rather than accepting anything.
+     * Is the PUBLIC one-click endpoint (no principal): a recipient clicks the signed link in an email footer. The token binds (org, channel, address), so a caller can only opt OUT exactly the tuple it was minted for — never another address and never another org. With company&#x3D;true the address&#39;s whole domain is opted out of this org&#39;s mail too, which a free mail address may not ask (422); without it, the answer offers the company&#39;s domain when there is one to offer. An invalid token is refused, and a deployment with no KMS-sealed key refuses rather than accepting anything.
      * @param org Org is the org the link was minted for. (optional)
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
+     * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2900,9 +3431,9 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
+    public okhttp3.Call getMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, _callback);
+        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, company, _callback);
         Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2980,7 +3511,7 @@ public class MarketingApi {
 
     /**
      * Saves a cohort filter for the caller&#39;s org.
-     * Saves a cohort filter for the caller&#39;s org. Name is required. Omitting event saves the WHOLE-ORG audience — every mailable customer — which needs no analytics warehouse; naming one narrows that roster to the customers who fired it within windowDays.
+     * Saves a cohort filter for the caller&#39;s org. Name is required. Omitting event saves the WHOLE-ORG audience — every mailable customer — which needs no analytics warehouse; naming one narrows that roster to the customers who fired it within windowDays.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingAudience  (required)
      * @return MarketingAudience
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2999,7 +3530,7 @@ public class MarketingApi {
 
     /**
      * Saves a cohort filter for the caller&#39;s org.
-     * Saves a cohort filter for the caller&#39;s org. Name is required. Omitting event saves the WHOLE-ORG audience — every mailable customer — which needs no analytics warehouse; naming one narrows that roster to the customers who fired it within windowDays.
+     * Saves a cohort filter for the caller&#39;s org. Name is required. Omitting event saves the WHOLE-ORG audience — every mailable customer — which needs no analytics warehouse; naming one narrows that roster to the customers who fired it within windowDays.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingAudience  (required)
      * @return ApiResponse&lt;MarketingAudience&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3019,7 +3550,7 @@ public class MarketingApi {
 
     /**
      * Saves a cohort filter for the caller&#39;s org. (asynchronously)
-     * Saves a cohort filter for the caller&#39;s org. Name is required. Omitting event saves the WHOLE-ORG audience — every mailable customer — which needs no analytics warehouse; naming one narrows that roster to the customers who fired it within windowDays.
+     * Saves a cohort filter for the caller&#39;s org. Name is required. Omitting event saves the WHOLE-ORG audience — every mailable customer — which needs no analytics warehouse; naming one narrows that roster to the customers who fired it within windowDays.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingAudience  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3036,6 +3567,534 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = postMarketingAudiencesValidateBeforeCall(marketingAudience, _callback);
         Type localVarReturnType = new TypeToken<MarketingAudience>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBetaActions
+     * @param marketingBetaActIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaActionsCall(@javax.annotation.Nonnull MarketingBetaActIn marketingBetaActIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBetaActIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta/actions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBetaActionsValidateBeforeCall(@javax.annotation.Nonnull MarketingBetaActIn marketingBetaActIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingBetaActIn' is set
+        if (marketingBetaActIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBetaActIn' when calling postMarketingBetaActions(Async)");
+        }
+
+        return postMarketingBetaActionsCall(marketingBetaActIn, _callback);
+
+    }
+
+    /**
+     * Counts one action of the signed-in caller: a star on a Hanzo repository, verified on GitHub for the login named, or a follow of a founder&#39;s link, taken on trust.
+     * Counts one action of the signed-in caller: a star on a Hanzo repository, verified on GitHub for the login named, or a follow of a founder&#39;s link, taken on trust. An action already counted changes nothing. A star GitHub does not show answers 422, and a login another account&#39;s stars are counted for, 409.
+     * @param marketingBetaActIn  (required)
+     * @return MarketingBeta
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBeta postMarketingBetaActions(@javax.annotation.Nonnull MarketingBetaActIn marketingBetaActIn) throws ApiException {
+        ApiResponse<MarketingBeta> localVarResp = postMarketingBetaActionsWithHttpInfo(marketingBetaActIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Counts one action of the signed-in caller: a star on a Hanzo repository, verified on GitHub for the login named, or a follow of a founder&#39;s link, taken on trust.
+     * Counts one action of the signed-in caller: a star on a Hanzo repository, verified on GitHub for the login named, or a follow of a founder&#39;s link, taken on trust. An action already counted changes nothing. A star GitHub does not show answers 422, and a login another account&#39;s stars are counted for, 409.
+     * @param marketingBetaActIn  (required)
+     * @return ApiResponse&lt;MarketingBeta&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBeta> postMarketingBetaActionsWithHttpInfo(@javax.annotation.Nonnull MarketingBetaActIn marketingBetaActIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBetaActionsValidateBeforeCall(marketingBetaActIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Counts one action of the signed-in caller: a star on a Hanzo repository, verified on GitHub for the login named, or a follow of a founder&#39;s link, taken on trust. (asynchronously)
+     * Counts one action of the signed-in caller: a star on a Hanzo repository, verified on GitHub for the login named, or a follow of a founder&#39;s link, taken on trust. An action already counted changes nothing. A star GitHub does not show answers 422, and a login another account&#39;s stars are counted for, 409.
+     * @param marketingBetaActIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaActionsAsync(@javax.annotation.Nonnull MarketingBetaActIn marketingBetaActIn, final ApiCallback<MarketingBeta> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBetaActionsValidateBeforeCall(marketingBetaActIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBetaInvites
+     * @param marketingBetaInviteIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaInvitesCall(@javax.annotation.Nonnull MarketingBetaInviteIn marketingBetaInviteIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBetaInviteIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta/invites";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBetaInvitesValidateBeforeCall(@javax.annotation.Nonnull MarketingBetaInviteIn marketingBetaInviteIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingBetaInviteIn' is set
+        if (marketingBetaInviteIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBetaInviteIn' when calling postMarketingBetaInvites(Async)");
+        }
+
+        return postMarketingBetaInvitesCall(marketingBetaInviteIn, _callback);
+
+    }
+
+    /**
+     * Reserves an invite for each address the limits admit and answers the message the member&#39;s mailbox sends for each: subject, text and HTML, the unsubscribe headers, with the member&#39;s referral link for that invite and a one-click unsubscribe for that address.
+     * Reserves an invite for each address the limits admit and answers the message the member&#39;s mailbox sends for each: subject, text and HTML, the unsubscribe headers, with the member&#39;s referral link for that invite and a one-click unsubscribe for that address. Nothing is sent from here; the member&#39;s browser sends each from their own Gmail and reports it to POST /v1/marketing/beta/invites/sent.  An address is skipped, with why, when it is not an email address, is the member&#39;s own, cannot be invited (it opted out of the brand&#39;s email, its company did, the platform bars it, or it already holds an account: one reason for all, so no one learns which), was invited in the last 30 days, or is past the member&#39;s 20 a day or 100 a month. When the limits leave the member nothing to reserve the answer is 429, with Retry-After the seconds until a slot frees.
+     * @param marketingBetaInviteIn  (required)
+     * @return MarketingBetaInvites
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBetaInvites postMarketingBetaInvites(@javax.annotation.Nonnull MarketingBetaInviteIn marketingBetaInviteIn) throws ApiException {
+        ApiResponse<MarketingBetaInvites> localVarResp = postMarketingBetaInvitesWithHttpInfo(marketingBetaInviteIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reserves an invite for each address the limits admit and answers the message the member&#39;s mailbox sends for each: subject, text and HTML, the unsubscribe headers, with the member&#39;s referral link for that invite and a one-click unsubscribe for that address.
+     * Reserves an invite for each address the limits admit and answers the message the member&#39;s mailbox sends for each: subject, text and HTML, the unsubscribe headers, with the member&#39;s referral link for that invite and a one-click unsubscribe for that address. Nothing is sent from here; the member&#39;s browser sends each from their own Gmail and reports it to POST /v1/marketing/beta/invites/sent.  An address is skipped, with why, when it is not an email address, is the member&#39;s own, cannot be invited (it opted out of the brand&#39;s email, its company did, the platform bars it, or it already holds an account: one reason for all, so no one learns which), was invited in the last 30 days, or is past the member&#39;s 20 a day or 100 a month. When the limits leave the member nothing to reserve the answer is 429, with Retry-After the seconds until a slot frees.
+     * @param marketingBetaInviteIn  (required)
+     * @return ApiResponse&lt;MarketingBetaInvites&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBetaInvites> postMarketingBetaInvitesWithHttpInfo(@javax.annotation.Nonnull MarketingBetaInviteIn marketingBetaInviteIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBetaInvitesValidateBeforeCall(marketingBetaInviteIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBetaInvites>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reserves an invite for each address the limits admit and answers the message the member&#39;s mailbox sends for each: subject, text and HTML, the unsubscribe headers, with the member&#39;s referral link for that invite and a one-click unsubscribe for that address. (asynchronously)
+     * Reserves an invite for each address the limits admit and answers the message the member&#39;s mailbox sends for each: subject, text and HTML, the unsubscribe headers, with the member&#39;s referral link for that invite and a one-click unsubscribe for that address. Nothing is sent from here; the member&#39;s browser sends each from their own Gmail and reports it to POST /v1/marketing/beta/invites/sent.  An address is skipped, with why, when it is not an email address, is the member&#39;s own, cannot be invited (it opted out of the brand&#39;s email, its company did, the platform bars it, or it already holds an account: one reason for all, so no one learns which), was invited in the last 30 days, or is past the member&#39;s 20 a day or 100 a month. When the limits leave the member nothing to reserve the answer is 429, with Retry-After the seconds until a slot frees.
+     * @param marketingBetaInviteIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaInvitesAsync(@javax.annotation.Nonnull MarketingBetaInviteIn marketingBetaInviteIn, final ApiCallback<MarketingBetaInvites> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBetaInvitesValidateBeforeCall(marketingBetaInviteIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBetaInvites>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBetaInvitesSent
+     * @param marketingBetaInviteSentIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaInvitesSentCall(@javax.annotation.Nonnull MarketingBetaInviteSentIn marketingBetaInviteSentIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBetaInviteSentIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta/invites/sent";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBetaInvitesSentValidateBeforeCall(@javax.annotation.Nonnull MarketingBetaInviteSentIn marketingBetaInviteSentIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingBetaInviteSentIn' is set
+        if (marketingBetaInviteSentIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBetaInviteSentIn' when calling postMarketingBetaInvitesSent(Async)");
+        }
+
+        return postMarketingBetaInvitesSentCall(marketingBetaInviteSentIn, _callback);
+
+    }
+
+    /**
+     * Records what the member&#39;s browser did with its reservations: the invites sent, and the ones that failed with the mailbox&#39;s reason.
+     * Records what the member&#39;s browser did with its reservations: the invites sent, and the ones that failed with the mailbox&#39;s reason. Only the member who reserved an invite marks it, only while it is reserved, and only within the 24 hours it holds; anything else is left as it stands. Each invite that becomes sent is filed on its invitee&#39;s CRM timeline, the person made when the org held none, a CRM that cannot answer costing the timeline an entry and never the report. It answers the named invites that are the caller&#39;s, as they stand.
+     * @param marketingBetaInviteSentIn  (required)
+     * @return MarketingBetaInviteRows
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBetaInviteRows postMarketingBetaInvitesSent(@javax.annotation.Nonnull MarketingBetaInviteSentIn marketingBetaInviteSentIn) throws ApiException {
+        ApiResponse<MarketingBetaInviteRows> localVarResp = postMarketingBetaInvitesSentWithHttpInfo(marketingBetaInviteSentIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Records what the member&#39;s browser did with its reservations: the invites sent, and the ones that failed with the mailbox&#39;s reason.
+     * Records what the member&#39;s browser did with its reservations: the invites sent, and the ones that failed with the mailbox&#39;s reason. Only the member who reserved an invite marks it, only while it is reserved, and only within the 24 hours it holds; anything else is left as it stands. Each invite that becomes sent is filed on its invitee&#39;s CRM timeline, the person made when the org held none, a CRM that cannot answer costing the timeline an entry and never the report. It answers the named invites that are the caller&#39;s, as they stand.
+     * @param marketingBetaInviteSentIn  (required)
+     * @return ApiResponse&lt;MarketingBetaInviteRows&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBetaInviteRows> postMarketingBetaInvitesSentWithHttpInfo(@javax.annotation.Nonnull MarketingBetaInviteSentIn marketingBetaInviteSentIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBetaInvitesSentValidateBeforeCall(marketingBetaInviteSentIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBetaInviteRows>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Records what the member&#39;s browser did with its reservations: the invites sent, and the ones that failed with the mailbox&#39;s reason. (asynchronously)
+     * Records what the member&#39;s browser did with its reservations: the invites sent, and the ones that failed with the mailbox&#39;s reason. Only the member who reserved an invite marks it, only while it is reserved, and only within the 24 hours it holds; anything else is left as it stands. Each invite that becomes sent is filed on its invitee&#39;s CRM timeline, the person made when the org held none, a CRM that cannot answer costing the timeline an entry and never the report. It answers the named invites that are the caller&#39;s, as they stand.
+     * @param marketingBetaInviteSentIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaInvitesSentAsync(@javax.annotation.Nonnull MarketingBetaInviteSentIn marketingBetaInviteSentIn, final ApiCallback<MarketingBetaInviteRows> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBetaInvitesSentValidateBeforeCall(marketingBetaInviteSentIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBetaInviteRows>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBetaRequest
+     * @param marketingBetaRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaRequestCall(@javax.annotation.Nonnull MarketingBetaRequest marketingBetaRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBetaRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta/request";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBetaRequestValidateBeforeCall(@javax.annotation.Nonnull MarketingBetaRequest marketingBetaRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingBetaRequest' is set
+        if (marketingBetaRequest == null) {
+            throw new ApiException("Missing the required parameter 'marketingBetaRequest' when calling postMarketingBetaRequest(Async)");
+        }
+
+        return postMarketingBetaRequestCall(marketingBetaRequest, _callback);
+
+    }
+
+    /**
+     * Adds betas to those the signed-in caller asked for, creating the record when there is none.
+     * Adds betas to those the signed-in caller asked for, creating the record when there is none. Each new id is stamped with the time it was asked for and stated on the event plane as beta_requested.
+     * @param marketingBetaRequest  (required)
+     * @return MarketingBeta
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBeta postMarketingBetaRequest(@javax.annotation.Nonnull MarketingBetaRequest marketingBetaRequest) throws ApiException {
+        ApiResponse<MarketingBeta> localVarResp = postMarketingBetaRequestWithHttpInfo(marketingBetaRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Adds betas to those the signed-in caller asked for, creating the record when there is none.
+     * Adds betas to those the signed-in caller asked for, creating the record when there is none. Each new id is stamped with the time it was asked for and stated on the event plane as beta_requested.
+     * @param marketingBetaRequest  (required)
+     * @return ApiResponse&lt;MarketingBeta&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBeta> postMarketingBetaRequestWithHttpInfo(@javax.annotation.Nonnull MarketingBetaRequest marketingBetaRequest) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBetaRequestValidateBeforeCall(marketingBetaRequest, null);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Adds betas to those the signed-in caller asked for, creating the record when there is none. (asynchronously)
+     * Adds betas to those the signed-in caller asked for, creating the record when there is none. Each new id is stamped with the time it was asked for and stated on the event plane as beta_requested.
+     * @param marketingBetaRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBetaRequestAsync(@javax.annotation.Nonnull MarketingBetaRequest marketingBetaRequest, final ApiCallback<MarketingBeta> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBetaRequestValidateBeforeCall(marketingBetaRequest, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3517,8 +4576,8 @@ public class MarketingApi {
     }
 
     /**
-     * Files a sales inquiry as a new lead in the deployment&#39;s own CRM and states it on the event plane.
-     * Files a sales inquiry as a new lead in the deployment&#39;s own CRM and states it on the event plane. No account is needed and none is read: every lead lands in the brand&#39;s org. Answers 201 with an opaque reference.  A brand org without the CRM installed answers 503, a body over 16 KiB answers 413, and a missing or malformed email answers 400 — in that order.
+     * Files one public form in the deployment&#39;s own CRM.
+     * Files one public form in the deployment&#39;s own CRM. A sales inquiry or a program application becomes a lead: the person, and the form on their timeline with every answer, the campaign and coupon its page carried; it is stated on the event plane and mailed to the brand&#39;s sales mailbox. A body naming a job opening becomes a candidate and its form, mailed to the brand&#39;s careers mailbox and stated nowhere. Program investor is an investor and their form at status submitted, stated nowhere, mailed to nobody, and sent a SAFE to sign (&#x60;sent&#x60; says whether it went). No account is needed: every record lands in the brand&#39;s org. A person signed in who applies to the beta also opens the products in beta (the CRM) for the org they act in. Answers 201 with an opaque reference.  A person signed in files under the address their token was issued to: a body naming another address is 400, and so is a sign-in issued with no address. An order that upgrades an organization names it in &#x60;upgrade&#x60;, sent signed in and acting in that organization (X-Org-Id) as its owner or an admin, and the lead records that verified handle; anyone else naming one is 403. &#x60;payment&#x60; is card or invoice, and an Enterprise inquiry paying by invoice is also stated as invoice_requested. X-Idempotency-Key makes a retry safe: the same key from the same address answers the same reference, and files, mails and states nothing twice; the same key sent with another form is 409. The sales mail states the payment and the verified organization to upgrade beside the answers.  A brand org whose Base cannot hold the CRM answers 503, a caller past ten forms in an hour 429, a body over 16 KiB 413, and a missing or malformed email 400 — in that order; an investor&#39;s form then answers 400 for its name, its amount (\&quot;The minimum investment is $25,000.\&quot;), its address, entity, title and phone, in that order.
      * @param marketingLeadIn  (required)
      * @return MarketingLead
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3536,8 +4595,8 @@ public class MarketingApi {
     }
 
     /**
-     * Files a sales inquiry as a new lead in the deployment&#39;s own CRM and states it on the event plane.
-     * Files a sales inquiry as a new lead in the deployment&#39;s own CRM and states it on the event plane. No account is needed and none is read: every lead lands in the brand&#39;s org. Answers 201 with an opaque reference.  A brand org without the CRM installed answers 503, a body over 16 KiB answers 413, and a missing or malformed email answers 400 — in that order.
+     * Files one public form in the deployment&#39;s own CRM.
+     * Files one public form in the deployment&#39;s own CRM. A sales inquiry or a program application becomes a lead: the person, and the form on their timeline with every answer, the campaign and coupon its page carried; it is stated on the event plane and mailed to the brand&#39;s sales mailbox. A body naming a job opening becomes a candidate and its form, mailed to the brand&#39;s careers mailbox and stated nowhere. Program investor is an investor and their form at status submitted, stated nowhere, mailed to nobody, and sent a SAFE to sign (&#x60;sent&#x60; says whether it went). No account is needed: every record lands in the brand&#39;s org. A person signed in who applies to the beta also opens the products in beta (the CRM) for the org they act in. Answers 201 with an opaque reference.  A person signed in files under the address their token was issued to: a body naming another address is 400, and so is a sign-in issued with no address. An order that upgrades an organization names it in &#x60;upgrade&#x60;, sent signed in and acting in that organization (X-Org-Id) as its owner or an admin, and the lead records that verified handle; anyone else naming one is 403. &#x60;payment&#x60; is card or invoice, and an Enterprise inquiry paying by invoice is also stated as invoice_requested. X-Idempotency-Key makes a retry safe: the same key from the same address answers the same reference, and files, mails and states nothing twice; the same key sent with another form is 409. The sales mail states the payment and the verified organization to upgrade beside the answers.  A brand org whose Base cannot hold the CRM answers 503, a caller past ten forms in an hour 429, a body over 16 KiB 413, and a missing or malformed email 400 — in that order; an investor&#39;s form then answers 400 for its name, its amount (\&quot;The minimum investment is $25,000.\&quot;), its address, entity, title and phone, in that order.
      * @param marketingLeadIn  (required)
      * @return ApiResponse&lt;MarketingLead&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3556,8 +4615,8 @@ public class MarketingApi {
     }
 
     /**
-     * Files a sales inquiry as a new lead in the deployment&#39;s own CRM and states it on the event plane. (asynchronously)
-     * Files a sales inquiry as a new lead in the deployment&#39;s own CRM and states it on the event plane. No account is needed and none is read: every lead lands in the brand&#39;s org. Answers 201 with an opaque reference.  A brand org without the CRM installed answers 503, a body over 16 KiB answers 413, and a missing or malformed email answers 400 — in that order.
+     * Files one public form in the deployment&#39;s own CRM. (asynchronously)
+     * Files one public form in the deployment&#39;s own CRM. A sales inquiry or a program application becomes a lead: the person, and the form on their timeline with every answer, the campaign and coupon its page carried; it is stated on the event plane and mailed to the brand&#39;s sales mailbox. A body naming a job opening becomes a candidate and its form, mailed to the brand&#39;s careers mailbox and stated nowhere. Program investor is an investor and their form at status submitted, stated nowhere, mailed to nobody, and sent a SAFE to sign (&#x60;sent&#x60; says whether it went). No account is needed: every record lands in the brand&#39;s org. A person signed in who applies to the beta also opens the products in beta (the CRM) for the org they act in. Answers 201 with an opaque reference.  A person signed in files under the address their token was issued to: a body naming another address is 400, and so is a sign-in issued with no address. An order that upgrades an organization names it in &#x60;upgrade&#x60;, sent signed in and acting in that organization (X-Org-Id) as its owner or an admin, and the lead records that verified handle; anyone else naming one is 403. &#x60;payment&#x60; is card or invoice, and an Enterprise inquiry paying by invoice is also stated as invoice_requested. X-Idempotency-Key makes a retry safe: the same key from the same address answers the same reference, and files, mails and states nothing twice; the same key sent with another form is 409. The sales mail states the payment and the verified organization to upgrade beside the answers.  A brand org whose Base cannot hold the CRM answers 503, a caller past ten forms in an hour 429, a body over 16 KiB 413, and a missing or malformed email 400 — in that order; an investor&#39;s form then answers 400 for its name, its amount (\&quot;The minimum investment is $25,000.\&quot;), its address, entity, title and phone, in that order.
      * @param marketingLeadIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3574,6 +4633,402 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = postMarketingLeadsValidateBeforeCall(marketingLeadIn, _callback);
         Type localVarReturnType = new TypeToken<MarketingLead>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingLeadsEsign
+     * @param marketingEsignEvent  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingLeadsEsignCall(@javax.annotation.Nonnull MarketingEsignEvent marketingEsignEvent, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingEsignEvent;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/leads/esign";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingLeadsEsignValidateBeforeCall(@javax.annotation.Nonnull MarketingEsignEvent marketingEsignEvent, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingEsignEvent' is set
+        if (marketingEsignEvent == null) {
+            throw new ApiException("Missing the required parameter 'marketingEsignEvent' when calling postMarketingLeadsEsign(Async)");
+        }
+
+        return postMarketingLeadsEsignCall(marketingEsignEvent, _callback);
+
+    }
+
+    /**
+     * Takes Hanzo eSign&#39;s webhook: a SAFE was signed, countersigned, completed, declined or voided, and the investor&#39;s form in the brand&#39;s CRM moves to that status.
+     * Takes Hanzo eSign&#39;s webhook: a SAFE was signed, countersigned, completed, declined or voided, and the investor&#39;s form in the brand&#39;s CRM moves to that status. The caller is Hanzo eSign acting as itself: its own IAM client_credentials token, verified by the identity boundary like every other. No caller answers 401, and any caller but eSign&#39;s application 403.  A status only moves forward (submitted, investor signed, countersigned, completed; or declined, or voided), so a replay or a late event changes nothing. The document must be the one the form recorded; any other, and any reference that names no investor&#39;s form, answers 200 with no status and changes nothing.
+     * @param marketingEsignEvent  (required)
+     * @return MarketingSigning
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSigning postMarketingLeadsEsign(@javax.annotation.Nonnull MarketingEsignEvent marketingEsignEvent) throws ApiException {
+        ApiResponse<MarketingSigning> localVarResp = postMarketingLeadsEsignWithHttpInfo(marketingEsignEvent);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Takes Hanzo eSign&#39;s webhook: a SAFE was signed, countersigned, completed, declined or voided, and the investor&#39;s form in the brand&#39;s CRM moves to that status.
+     * Takes Hanzo eSign&#39;s webhook: a SAFE was signed, countersigned, completed, declined or voided, and the investor&#39;s form in the brand&#39;s CRM moves to that status. The caller is Hanzo eSign acting as itself: its own IAM client_credentials token, verified by the identity boundary like every other. No caller answers 401, and any caller but eSign&#39;s application 403.  A status only moves forward (submitted, investor signed, countersigned, completed; or declined, or voided), so a replay or a late event changes nothing. The document must be the one the form recorded; any other, and any reference that names no investor&#39;s form, answers 200 with no status and changes nothing.
+     * @param marketingEsignEvent  (required)
+     * @return ApiResponse&lt;MarketingSigning&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSigning> postMarketingLeadsEsignWithHttpInfo(@javax.annotation.Nonnull MarketingEsignEvent marketingEsignEvent) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingLeadsEsignValidateBeforeCall(marketingEsignEvent, null);
+        Type localVarReturnType = new TypeToken<MarketingSigning>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Takes Hanzo eSign&#39;s webhook: a SAFE was signed, countersigned, completed, declined or voided, and the investor&#39;s form in the brand&#39;s CRM moves to that status. (asynchronously)
+     * Takes Hanzo eSign&#39;s webhook: a SAFE was signed, countersigned, completed, declined or voided, and the investor&#39;s form in the brand&#39;s CRM moves to that status. The caller is Hanzo eSign acting as itself: its own IAM client_credentials token, verified by the identity boundary like every other. No caller answers 401, and any caller but eSign&#39;s application 403.  A status only moves forward (submitted, investor signed, countersigned, completed; or declined, or voided), so a replay or a late event changes nothing. The document must be the one the form recorded; any other, and any reference that names no investor&#39;s form, answers 200 with no status and changes nothing.
+     * @param marketingEsignEvent  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingLeadsEsignAsync(@javax.annotation.Nonnull MarketingEsignEvent marketingEsignEvent, final ApiCallback<MarketingSigning> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingLeadsEsignValidateBeforeCall(marketingEsignEvent, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSigning>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingLeadsResume
+     * @param marketingResumeIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingLeadsResumeCall(@javax.annotation.Nonnull MarketingResumeIn marketingResumeIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingResumeIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/leads/resume";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingLeadsResumeValidateBeforeCall(@javax.annotation.Nonnull MarketingResumeIn marketingResumeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingResumeIn' is set
+        if (marketingResumeIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingResumeIn' when calling postMarketingLeadsResume(Async)");
+        }
+
+        return postMarketingLeadsResumeCall(marketingResumeIn, _callback);
+
+    }
+
+    /**
+     * Signs a form the careers page posts one resume through, into the brand org&#39;s private careers bucket, and answers the key to name on the application (&#x60;resume_file&#x60;).
+     * Signs a form the careers page posts one resume through, into the brand org&#39;s private careers bucket, and answers the key to name on the application (&#x60;resume_file&#x60;). PUBLIC like the form itself: each caller is limited to ten an hour, a file that is not a PDF, DOC or DOCX of at most 10 MB is refused 400, and a deployment that cannot sign one answers 503.
+     * @param marketingResumeIn  (required)
+     * @return MarketingResumeForm
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingResumeForm postMarketingLeadsResume(@javax.annotation.Nonnull MarketingResumeIn marketingResumeIn) throws ApiException {
+        ApiResponse<MarketingResumeForm> localVarResp = postMarketingLeadsResumeWithHttpInfo(marketingResumeIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Signs a form the careers page posts one resume through, into the brand org&#39;s private careers bucket, and answers the key to name on the application (&#x60;resume_file&#x60;).
+     * Signs a form the careers page posts one resume through, into the brand org&#39;s private careers bucket, and answers the key to name on the application (&#x60;resume_file&#x60;). PUBLIC like the form itself: each caller is limited to ten an hour, a file that is not a PDF, DOC or DOCX of at most 10 MB is refused 400, and a deployment that cannot sign one answers 503.
+     * @param marketingResumeIn  (required)
+     * @return ApiResponse&lt;MarketingResumeForm&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingResumeForm> postMarketingLeadsResumeWithHttpInfo(@javax.annotation.Nonnull MarketingResumeIn marketingResumeIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingLeadsResumeValidateBeforeCall(marketingResumeIn, null);
+        Type localVarReturnType = new TypeToken<MarketingResumeForm>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Signs a form the careers page posts one resume through, into the brand org&#39;s private careers bucket, and answers the key to name on the application (&#x60;resume_file&#x60;). (asynchronously)
+     * Signs a form the careers page posts one resume through, into the brand org&#39;s private careers bucket, and answers the key to name on the application (&#x60;resume_file&#x60;). PUBLIC like the form itself: each caller is limited to ten an hour, a file that is not a PDF, DOC or DOCX of at most 10 MB is refused 400, and a deployment that cannot sign one answers 503.
+     * @param marketingResumeIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingLeadsResumeAsync(@javax.annotation.Nonnull MarketingResumeIn marketingResumeIn, final ApiCallback<MarketingResumeForm> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingLeadsResumeValidateBeforeCall(marketingResumeIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingResumeForm>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingMail
+     * @param marketingMailIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingMailCall(@javax.annotation.Nonnull MarketingMailIn marketingMailIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingMailIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/mail";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingMailValidateBeforeCall(@javax.annotation.Nonnull MarketingMailIn marketingMailIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingMailIn' is set
+        if (marketingMailIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingMailIn' when calling postMarketingMail(Async)");
+        }
+
+        return postMarketingMailCall(marketingMailIn, _callback);
+
+    }
+
+    /**
+     * Sends one email from the org to one person, the way a person on the org&#39;s team writes back to a lead from its record.
+     * Sends one email from the org to one person, the way a person on the org&#39;s team writes back to a lead from its record.  It leaves by the org&#39;s own path, the one every marketing send takes: the org&#39;s mailbox when it has one, else the platform&#39;s notify rail, and never to an address that opted out of the org&#39;s mail, whose company did, or that the platform blocks (Sent is false then, and that is not an error). It carries the opt-out footer and List-Unsubscribe. The org&#39;s mailbox caps hold: at its cap the send is refused with 429 and the time it frees.  An admin of the org acting, or SuperAdmin, may send: mail that leaves in the org&#39;s name is the team&#39;s to write, not every member&#39;s. The send is on the audit trail before it leaves (marketing.mail.send: the address, the subject and the person, never the text), and the mail, sent or refused, goes on the timeline of its person.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param marketingMailIn  (required)
+     * @return MarketingMailOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingMailOut postMarketingMail(@javax.annotation.Nonnull MarketingMailIn marketingMailIn) throws ApiException {
+        ApiResponse<MarketingMailOut> localVarResp = postMarketingMailWithHttpInfo(marketingMailIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sends one email from the org to one person, the way a person on the org&#39;s team writes back to a lead from its record.
+     * Sends one email from the org to one person, the way a person on the org&#39;s team writes back to a lead from its record.  It leaves by the org&#39;s own path, the one every marketing send takes: the org&#39;s mailbox when it has one, else the platform&#39;s notify rail, and never to an address that opted out of the org&#39;s mail, whose company did, or that the platform blocks (Sent is false then, and that is not an error). It carries the opt-out footer and List-Unsubscribe. The org&#39;s mailbox caps hold: at its cap the send is refused with 429 and the time it frees.  An admin of the org acting, or SuperAdmin, may send: mail that leaves in the org&#39;s name is the team&#39;s to write, not every member&#39;s. The send is on the audit trail before it leaves (marketing.mail.send: the address, the subject and the person, never the text), and the mail, sent or refused, goes on the timeline of its person.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param marketingMailIn  (required)
+     * @return ApiResponse&lt;MarketingMailOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingMailOut> postMarketingMailWithHttpInfo(@javax.annotation.Nonnull MarketingMailIn marketingMailIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingMailValidateBeforeCall(marketingMailIn, null);
+        Type localVarReturnType = new TypeToken<MarketingMailOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sends one email from the org to one person, the way a person on the org&#39;s team writes back to a lead from its record. (asynchronously)
+     * Sends one email from the org to one person, the way a person on the org&#39;s team writes back to a lead from its record.  It leaves by the org&#39;s own path, the one every marketing send takes: the org&#39;s mailbox when it has one, else the platform&#39;s notify rail, and never to an address that opted out of the org&#39;s mail, whose company did, or that the platform blocks (Sent is false then, and that is not an error). It carries the opt-out footer and List-Unsubscribe. The org&#39;s mailbox caps hold: at its cap the send is refused with 429 and the time it frees.  An admin of the org acting, or SuperAdmin, may send: mail that leaves in the org&#39;s name is the team&#39;s to write, not every member&#39;s. The send is on the audit trail before it leaves (marketing.mail.send: the address, the subject and the person, never the text), and the mail, sent or refused, goes on the timeline of its person.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param marketingMailIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingMailAsync(@javax.annotation.Nonnull MarketingMailIn marketingMailIn, final ApiCallback<MarketingMailOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingMailValidateBeforeCall(marketingMailIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingMailOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3792,7 +5247,7 @@ public class MarketingApi {
 
     /**
      * Registers a drip sequence in the caller&#39;s org.
-     * Registers a drip sequence in the caller&#39;s org. Name is required; status defaults to draft, and a sequence must be ACTIVE before it will accept enrollments. The id, createdAt and updatedAt of the input are ignored — the server assigns them.
+     * Registers a drip sequence in the caller&#39;s org. Name is required; status defaults to draft, and a sequence must be ACTIVE before it will accept enrollments. The id, createdAt and updatedAt of the input are ignored — the server assigns them.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingSequence  (required)
      * @return MarketingSequence
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3811,7 +5266,7 @@ public class MarketingApi {
 
     /**
      * Registers a drip sequence in the caller&#39;s org.
-     * Registers a drip sequence in the caller&#39;s org. Name is required; status defaults to draft, and a sequence must be ACTIVE before it will accept enrollments. The id, createdAt and updatedAt of the input are ignored — the server assigns them.
+     * Registers a drip sequence in the caller&#39;s org. Name is required; status defaults to draft, and a sequence must be ACTIVE before it will accept enrollments. The id, createdAt and updatedAt of the input are ignored — the server assigns them.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingSequence  (required)
      * @return ApiResponse&lt;MarketingSequence&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3831,7 +5286,7 @@ public class MarketingApi {
 
     /**
      * Registers a drip sequence in the caller&#39;s org. (asynchronously)
-     * Registers a drip sequence in the caller&#39;s org. Name is required; status defaults to draft, and a sequence must be ACTIVE before it will accept enrollments. The id, createdAt and updatedAt of the input are ignored — the server assigns them.
+     * Registers a drip sequence in the caller&#39;s org. Name is required; status defaults to draft, and a sequence must be ACTIVE before it will accept enrollments. The id, createdAt and updatedAt of the input are ignored — the server assigns them.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingSequence  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3931,7 +5386,7 @@ public class MarketingApi {
 
     /**
      * Adds one contact or a whole audience to a sequence and schedules the first step for each.
-     * Adds one contact or a whole audience to a sequence and schedules the first step for each. The sequence must be ACTIVE (a draft sends nothing), and the request must name exactly one of address or audienceId.  Enrolling is ALL this does: the message itself is sent later by the drip engine, through the suppression gate, so an opted-out customer can be enrolled here and still never be mailed. Re-posting is safe — an address this sequence already took is counted in alreadyEnrolled and never double-dripped — which is what makes retrying a partially-applied announcement a resume rather than a second send.
+     * Adds one contact or a whole audience to a sequence and schedules the first step for each. The sequence must be ACTIVE (a draft sends nothing), and the request must name exactly one of address or audienceId.  Enrolling is ALL this does: the message itself is sent later by the drip engine, through the suppression gate, so an opted-out customer can be enrolled here and still never be mailed. Re-posting is safe — an address this sequence already took is counted in alreadyEnrolled and never double-dripped — which is what makes retrying a partially-applied announcement a resume rather than a second send.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param marketingEnrollInput  (required)
      * @return MarketingEnrollResult
@@ -3951,7 +5406,7 @@ public class MarketingApi {
 
     /**
      * Adds one contact or a whole audience to a sequence and schedules the first step for each.
-     * Adds one contact or a whole audience to a sequence and schedules the first step for each. The sequence must be ACTIVE (a draft sends nothing), and the request must name exactly one of address or audienceId.  Enrolling is ALL this does: the message itself is sent later by the drip engine, through the suppression gate, so an opted-out customer can be enrolled here and still never be mailed. Re-posting is safe — an address this sequence already took is counted in alreadyEnrolled and never double-dripped — which is what makes retrying a partially-applied announcement a resume rather than a second send.
+     * Adds one contact or a whole audience to a sequence and schedules the first step for each. The sequence must be ACTIVE (a draft sends nothing), and the request must name exactly one of address or audienceId.  Enrolling is ALL this does: the message itself is sent later by the drip engine, through the suppression gate, so an opted-out customer can be enrolled here and still never be mailed. Re-posting is safe — an address this sequence already took is counted in alreadyEnrolled and never double-dripped — which is what makes retrying a partially-applied announcement a resume rather than a second send.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param marketingEnrollInput  (required)
      * @return ApiResponse&lt;MarketingEnrollResult&gt;
@@ -3972,7 +5427,7 @@ public class MarketingApi {
 
     /**
      * Adds one contact or a whole audience to a sequence and schedules the first step for each. (asynchronously)
-     * Adds one contact or a whole audience to a sequence and schedules the first step for each. The sequence must be ACTIVE (a draft sends nothing), and the request must name exactly one of address or audienceId.  Enrolling is ALL this does: the message itself is sent later by the drip engine, through the suppression gate, so an opted-out customer can be enrolled here and still never be mailed. Re-posting is safe — an address this sequence already took is counted in alreadyEnrolled and never double-dripped — which is what makes retrying a partially-applied announcement a resume rather than a second send.
+     * Adds one contact or a whole audience to a sequence and schedules the first step for each. The sequence must be ACTIVE (a draft sends nothing), and the request must name exactly one of address or audienceId.  Enrolling is ALL this does: the message itself is sent later by the drip engine, through the suppression gate, so an opted-out customer can be enrolled here and still never be mailed. Re-posting is safe — an address this sequence already took is counted in alreadyEnrolled and never double-dripped — which is what makes retrying a partially-applied announcement a resume rather than a second send.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param marketingEnrollInput  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4072,7 +5527,7 @@ public class MarketingApi {
 
     /**
      * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled.
-     * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. Only an ACTIVE enrollment can be canceled — one already completed or canceled reads as not found.
+     * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. Only an ACTIVE enrollment can be canceled — one already completed or canceled reads as not found.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param eid EID is the enrollment id from the path, as returned by a single-address enroll. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4090,7 +5545,7 @@ public class MarketingApi {
 
     /**
      * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled.
-     * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. Only an ACTIVE enrollment can be canceled — one already completed or canceled reads as not found.
+     * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. Only an ACTIVE enrollment can be canceled — one already completed or canceled reads as not found.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param eid EID is the enrollment id from the path, as returned by a single-address enroll. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -4110,7 +5565,7 @@ public class MarketingApi {
 
     /**
      * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. (asynchronously)
-     * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. Only an ACTIVE enrollment can be canceled — one already completed or canceled reads as not found.
+     * Stops one walk mid-sequence and answers 204: no further step is sent, and steps already delivered are not recalled. Only an ACTIVE enrollment can be canceled — one already completed or canceled reads as not found.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param eid EID is the enrollment id from the path, as returned by a single-address enroll. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4210,7 +5665,7 @@ public class MarketingApi {
 
     /**
      * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments.
-     * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. It does not touch enrollments already walking: archiving stops new ones, not in-flight ones.
+     * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. It does not touch enrollments already walking: archiving stops new ones, not in-flight ones.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param marketingSequenceStatus  (required)
      * @return MarketingSequenceStatus
@@ -4230,7 +5685,7 @@ public class MarketingApi {
 
     /**
      * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments.
-     * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. It does not touch enrollments already walking: archiving stops new ones, not in-flight ones.
+     * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. It does not touch enrollments already walking: archiving stops new ones, not in-flight ones.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param marketingSequenceStatus  (required)
      * @return ApiResponse&lt;MarketingSequenceStatus&gt;
@@ -4251,7 +5706,7 @@ public class MarketingApi {
 
     /**
      * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. (asynchronously)
-     * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. It does not touch enrollments already walking: archiving stops new ones, not in-flight ones.
+     * Flips draft/active/archived — the activation gate for sending, since only an active sequence accepts enrollments. It does not touch enrollments already walking: archiving stops new ones, not in-flight ones.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id ID is the sequence id from the path. (required)
      * @param marketingSequenceStatus  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4352,7 +5807,7 @@ public class MarketingApi {
 
     /**
      * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added.
-     * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. Body is required and delaySeconds must be &gt;&#x3D; 0. Adding a step does not disturb enrollments already walking — one that has passed this index simply never sees it.
+     * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. Body is required and delaySeconds must be &gt;&#x3D; 0. Adding a step does not disturb enrollments already walking — one that has passed this index simply never sees it.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id SequenceID is the sequence id from the path (the route&#39;s :id). (required)
      * @param marketingStepInput  (required)
      * @return MarketingStep
@@ -4372,7 +5827,7 @@ public class MarketingApi {
 
     /**
      * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added.
-     * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. Body is required and delaySeconds must be &gt;&#x3D; 0. Adding a step does not disturb enrollments already walking — one that has passed this index simply never sees it.
+     * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. Body is required and delaySeconds must be &gt;&#x3D; 0. Adding a step does not disturb enrollments already walking — one that has passed this index simply never sees it.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id SequenceID is the sequence id from the path (the route&#39;s :id). (required)
      * @param marketingStepInput  (required)
      * @return ApiResponse&lt;MarketingStep&gt;
@@ -4393,7 +5848,7 @@ public class MarketingApi {
 
     /**
      * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. (asynchronously)
-     * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. Body is required and delaySeconds must be &gt;&#x3D; 0. Adding a step does not disturb enrollments already walking — one that has passed this index simply never sees it.
+     * Appends a message to the END of a sequence: the new step&#39;s idx is one past the last, so steps arrive in the order they are added. Body is required and delaySeconds must be &gt;&#x3D; 0. Adding a step does not disturb enrollments already walking — one that has passed this index simply never sees it.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param id SequenceID is the sequence id from the path (the route&#39;s :id). (required)
      * @param marketingStepInput  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4411,6 +5866,270 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = postMarketingSequencesByIdStepsValidateBeforeCall(id, marketingStepInput, _callback);
         Type localVarReturnType = new TypeToken<MarketingStep>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingSubscribe
+     * @param marketingSubscribeIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingSubscribeCall(@javax.annotation.Nonnull MarketingSubscribeIn marketingSubscribeIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSubscribeIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/subscribe";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingSubscribeValidateBeforeCall(@javax.annotation.Nonnull MarketingSubscribeIn marketingSubscribeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingSubscribeIn' is set
+        if (marketingSubscribeIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingSubscribeIn' when calling postMarketingSubscribe(Async)");
+        }
+
+        return postMarketingSubscribeCall(marketingSubscribeIn, _callback);
+
+    }
+
+    /**
+     * Asks for the brand&#39;s newsletter for an address and answers 202 pending.
+     * Asks for the brand&#39;s newsletter for an address and answers 202 pending. Nothing is recorded: the address is mailed a link to confirm, good for seven days, and only a press on it subscribes. The answer is the same for an address that is new, already subscribed or unsubscribed, and each is mailed alike, so the answer says nothing about the address; one that unsubscribed gets the link too, which is how it comes back. No account is needed, and nothing is told to the sales mailbox or stated to an ad platform.  A deployment whose brand cannot hold the newsletter answers 503, a caller past ten requests in an hour 429, a body over 4 KiB 413, a missing or malformed email 400, and an address already sent three links today, or a deployment past its hourly ceiling, 429, in that order.
+     * @param marketingSubscribeIn  (required)
+     * @return MarketingSubscription
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSubscription postMarketingSubscribe(@javax.annotation.Nonnull MarketingSubscribeIn marketingSubscribeIn) throws ApiException {
+        ApiResponse<MarketingSubscription> localVarResp = postMarketingSubscribeWithHttpInfo(marketingSubscribeIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Asks for the brand&#39;s newsletter for an address and answers 202 pending.
+     * Asks for the brand&#39;s newsletter for an address and answers 202 pending. Nothing is recorded: the address is mailed a link to confirm, good for seven days, and only a press on it subscribes. The answer is the same for an address that is new, already subscribed or unsubscribed, and each is mailed alike, so the answer says nothing about the address; one that unsubscribed gets the link too, which is how it comes back. No account is needed, and nothing is told to the sales mailbox or stated to an ad platform.  A deployment whose brand cannot hold the newsletter answers 503, a caller past ten requests in an hour 429, a body over 4 KiB 413, a missing or malformed email 400, and an address already sent three links today, or a deployment past its hourly ceiling, 429, in that order.
+     * @param marketingSubscribeIn  (required)
+     * @return ApiResponse&lt;MarketingSubscription&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSubscription> postMarketingSubscribeWithHttpInfo(@javax.annotation.Nonnull MarketingSubscribeIn marketingSubscribeIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSubscribeValidateBeforeCall(marketingSubscribeIn, null);
+        Type localVarReturnType = new TypeToken<MarketingSubscription>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Asks for the brand&#39;s newsletter for an address and answers 202 pending. (asynchronously)
+     * Asks for the brand&#39;s newsletter for an address and answers 202 pending. Nothing is recorded: the address is mailed a link to confirm, good for seven days, and only a press on it subscribes. The answer is the same for an address that is new, already subscribed or unsubscribed, and each is mailed alike, so the answer says nothing about the address; one that unsubscribed gets the link too, which is how it comes back. No account is needed, and nothing is told to the sales mailbox or stated to an ad platform.  A deployment whose brand cannot hold the newsletter answers 503, a caller past ten requests in an hour 429, a body over 4 KiB 413, a missing or malformed email 400, and an address already sent three links today, or a deployment past its hourly ceiling, 429, in that order.
+     * @param marketingSubscribeIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingSubscribeAsync(@javax.annotation.Nonnull MarketingSubscribeIn marketingSubscribeIn, final ApiCallback<MarketingSubscription> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingSubscribeValidateBeforeCall(marketingSubscribeIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSubscription>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingSubscribeConfirm
+     * @param marketingConfirmIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingSubscribeConfirmCall(@javax.annotation.Nonnull MarketingConfirmIn marketingConfirmIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingConfirmIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/subscribe/confirm";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingSubscribeConfirmValidateBeforeCall(@javax.annotation.Nonnull MarketingConfirmIn marketingConfirmIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingConfirmIn' is set
+        if (marketingConfirmIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingConfirmIn' when calling postMarketingSubscribeConfirm(Async)");
+        }
+
+        return postMarketingSubscribeConfirmCall(marketingConfirmIn, _callback);
+
+    }
+
+    /**
+     * Subscribes the address a confirmation link names and answers 200 confirmed.
+     * Subscribes the address a confirmation link names and answers 200 confirmed. The token is the t value in the link&#39;s fragment, and it is the only authority. The subscriber is filed in the brand&#39;s CRM: the person, their place on the Newsletter list, and the confirmation on their timeline with the page and language it came from, when it was asked for, and when and from which address it was confirmed (double opt-in). The brand&#39;s opt-out for that address is lifted, since the person asked to come back. Pressing the same link again answers 200 and changes nothing.  A caller past thirty presses in an hour answers 429, a link that is missing, malformed, altered or signed elsewhere 400, one older than seven days 410, and a deployment whose brand cannot hold the CRM 503.
+     * @param marketingConfirmIn  (required)
+     * @return MarketingSubscription
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSubscription postMarketingSubscribeConfirm(@javax.annotation.Nonnull MarketingConfirmIn marketingConfirmIn) throws ApiException {
+        ApiResponse<MarketingSubscription> localVarResp = postMarketingSubscribeConfirmWithHttpInfo(marketingConfirmIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Subscribes the address a confirmation link names and answers 200 confirmed.
+     * Subscribes the address a confirmation link names and answers 200 confirmed. The token is the t value in the link&#39;s fragment, and it is the only authority. The subscriber is filed in the brand&#39;s CRM: the person, their place on the Newsletter list, and the confirmation on their timeline with the page and language it came from, when it was asked for, and when and from which address it was confirmed (double opt-in). The brand&#39;s opt-out for that address is lifted, since the person asked to come back. Pressing the same link again answers 200 and changes nothing.  A caller past thirty presses in an hour answers 429, a link that is missing, malformed, altered or signed elsewhere 400, one older than seven days 410, and a deployment whose brand cannot hold the CRM 503.
+     * @param marketingConfirmIn  (required)
+     * @return ApiResponse&lt;MarketingSubscription&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSubscription> postMarketingSubscribeConfirmWithHttpInfo(@javax.annotation.Nonnull MarketingConfirmIn marketingConfirmIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSubscribeConfirmValidateBeforeCall(marketingConfirmIn, null);
+        Type localVarReturnType = new TypeToken<MarketingSubscription>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Subscribes the address a confirmation link names and answers 200 confirmed. (asynchronously)
+     * Subscribes the address a confirmation link names and answers 200 confirmed. The token is the t value in the link&#39;s fragment, and it is the only authority. The subscriber is filed in the brand&#39;s CRM: the person, their place on the Newsletter list, and the confirmation on their timeline with the page and language it came from, when it was asked for, and when and from which address it was confirmed (double opt-in). The brand&#39;s opt-out for that address is lifted, since the person asked to come back. Pressing the same link again answers 200 and changes nothing.  A caller past thirty presses in an hour answers 429, a link that is missing, malformed, altered or signed elsewhere 400, one older than seven days 410, and a deployment whose brand cannot hold the CRM 503.
+     * @param marketingConfirmIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingSubscribeConfirmAsync(@javax.annotation.Nonnull MarketingConfirmIn marketingConfirmIn, final ApiCallback<MarketingSubscription> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingSubscribeConfirmValidateBeforeCall(marketingConfirmIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSubscription>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4487,7 +6206,7 @@ public class MarketingApi {
 
     /**
      * Records an opt-out for the org (admin / self-service management).
-     * Records an opt-out for the org (admin / self-service management). Address is required; channel defaults to email. It is idempotent: re-suppressing the same tuple keeps the original record rather than erroring. From here on the ONE send gate refuses that recipient on that channel.
+     * Records an opt-out for the org (admin / self-service management). Address is required; channel defaults to email. An address of the form \&quot;@example.com\&quot; opts out the whole domain, a company; a free mail provider&#39;s domain is refused 422. The admin org&#39;s list is the platform&#39;s: what it holds, every org&#39;s send gate refuses. It is idempotent: re-suppressing the same tuple keeps the original record rather than erroring. From here on the ONE send gate refuses that recipient on that channel.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingSuppression  (required)
      * @return MarketingSuppression
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4506,7 +6225,7 @@ public class MarketingApi {
 
     /**
      * Records an opt-out for the org (admin / self-service management).
-     * Records an opt-out for the org (admin / self-service management). Address is required; channel defaults to email. It is idempotent: re-suppressing the same tuple keeps the original record rather than erroring. From here on the ONE send gate refuses that recipient on that channel.
+     * Records an opt-out for the org (admin / self-service management). Address is required; channel defaults to email. An address of the form \&quot;@example.com\&quot; opts out the whole domain, a company; a free mail provider&#39;s domain is refused 422. The admin org&#39;s list is the platform&#39;s: what it holds, every org&#39;s send gate refuses. It is idempotent: re-suppressing the same tuple keeps the original record rather than erroring. From here on the ONE send gate refuses that recipient on that channel.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingSuppression  (required)
      * @return ApiResponse&lt;MarketingSuppression&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4526,7 +6245,7 @@ public class MarketingApi {
 
     /**
      * Records an opt-out for the org (admin / self-service management). (asynchronously)
-     * Records an opt-out for the org (admin / self-service management). Address is required; channel defaults to email. It is idempotent: re-suppressing the same tuple keeps the original record rather than erroring. From here on the ONE send gate refuses that recipient on that channel.
+     * Records an opt-out for the org (admin / self-service management). Address is required; channel defaults to email. An address of the form \&quot;@example.com\&quot; opts out the whole domain, a company; a free mail provider&#39;s domain is refused 422. The admin org&#39;s list is the platform&#39;s: what it holds, every org&#39;s send gate refuses. It is idempotent: re-suppressing the same tuple keeps the original record rather than erroring. From here on the ONE send gate refuses that recipient on that channel.  Org admin or SuperAdmin only; a member of the org is refused.
      * @param marketingSuppression  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4543,6 +6262,302 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = postMarketingSuppressionsValidateBeforeCall(marketingSuppression, _callback);
         Type localVarReturnType = new TypeToken<MarketingSuppression>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingUnsubscribe
+     * @param org Org is the org the link was minted for. (optional)
+     * @param channel Channel is the surface to opt out of. (optional)
+     * @param address Address is the recipient to opt out. (optional)
+     * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/unsubscribe";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (listUnsubscribe != null) {
+            localVarFormParams.put("List-Unsubscribe", listUnsubscribe);
+        }
+
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
+        if (channel != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("channel", channel));
+        }
+
+        if (address != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("address", address));
+        }
+
+        if (token != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/x-www-form-urlencoded",
+            "multipart/form-data"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback _callback) throws ApiException {
+        return postMarketingUnsubscribeCall(org, channel, address, token, listUnsubscribe, _callback);
+
+    }
+
+    /**
+     * Is the one-click unsubscribe a mail client sends from the List-Unsubscribe header (RFC 8058): the same signed link the footer carries, POSTed with the form body List-Unsubscribe&#x3D;One-Click.
+     * Is the one-click unsubscribe a mail client sends from the List-Unsubscribe header (RFC 8058): the same signed link the footer carries, POSTed with the form body List-Unsubscribe&#x3D;One-Click. It opts out exactly what a click on the link does, under the same token check, and is as public.
+     * @param org Org is the org the link was minted for. (optional)
+     * @param channel Channel is the surface to opt out of. (optional)
+     * @param address Address is the recipient to opt out. (optional)
+     * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
+     * @return MarketingUnsubscribed
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingUnsubscribed postMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe) throws ApiException {
+        ApiResponse<MarketingUnsubscribed> localVarResp = postMarketingUnsubscribeWithHttpInfo(org, channel, address, token, listUnsubscribe);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Is the one-click unsubscribe a mail client sends from the List-Unsubscribe header (RFC 8058): the same signed link the footer carries, POSTed with the form body List-Unsubscribe&#x3D;One-Click.
+     * Is the one-click unsubscribe a mail client sends from the List-Unsubscribe header (RFC 8058): the same signed link the footer carries, POSTed with the form body List-Unsubscribe&#x3D;One-Click. It opts out exactly what a click on the link does, under the same token check, and is as public.
+     * @param org Org is the org the link was minted for. (optional)
+     * @param channel Channel is the surface to opt out of. (optional)
+     * @param address Address is the recipient to opt out. (optional)
+     * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
+     * @return ApiResponse&lt;MarketingUnsubscribed&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingUnsubscribed> postMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, listUnsubscribe, null);
+        Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Is the one-click unsubscribe a mail client sends from the List-Unsubscribe header (RFC 8058): the same signed link the footer carries, POSTed with the form body List-Unsubscribe&#x3D;One-Click. (asynchronously)
+     * Is the one-click unsubscribe a mail client sends from the List-Unsubscribe header (RFC 8058): the same signed link the footer carries, POSTed with the form body List-Unsubscribe&#x3D;One-Click. It opts out exactly what a click on the link does, under the same token check, and is as public.
+     * @param org Org is the org the link was minted for. (optional)
+     * @param channel Channel is the surface to opt out of. (optional)
+     * @param address Address is the recipient to opt out. (optional)
+     * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, listUnsubscribe, _callback);
+        Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putMarketingBeta
+     * @param marketingBetaIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingBetaCall(@javax.annotation.Nonnull MarketingBetaIn marketingBetaIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBetaIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/beta";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putMarketingBetaValidateBeforeCall(@javax.annotation.Nonnull MarketingBetaIn marketingBetaIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingBetaIn' is set
+        if (marketingBetaIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBetaIn' when calling putMarketingBeta(Async)");
+        }
+
+        return putMarketingBetaCall(marketingBetaIn, _callback);
+
+    }
+
+    /**
+     * Writes the signed-in caller&#39;s application: the program, the answers, the betas asked for and the lead it was filed under.
+     * Writes the signed-in caller&#39;s application: the program, the answers, the betas asked for and the lead it was filed under. A field left out keeps what the record holds; betas replace the set, each new id stamped with the time it was asked for and stated on the event plane as beta_requested.
+     * @param marketingBetaIn  (required)
+     * @return MarketingBeta
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBeta putMarketingBeta(@javax.annotation.Nonnull MarketingBetaIn marketingBetaIn) throws ApiException {
+        ApiResponse<MarketingBeta> localVarResp = putMarketingBetaWithHttpInfo(marketingBetaIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Writes the signed-in caller&#39;s application: the program, the answers, the betas asked for and the lead it was filed under.
+     * Writes the signed-in caller&#39;s application: the program, the answers, the betas asked for and the lead it was filed under. A field left out keeps what the record holds; betas replace the set, each new id stamped with the time it was asked for and stated on the event plane as beta_requested.
+     * @param marketingBetaIn  (required)
+     * @return ApiResponse&lt;MarketingBeta&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBeta> putMarketingBetaWithHttpInfo(@javax.annotation.Nonnull MarketingBetaIn marketingBetaIn) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingBetaValidateBeforeCall(marketingBetaIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Writes the signed-in caller&#39;s application: the program, the answers, the betas asked for and the lead it was filed under. (asynchronously)
+     * Writes the signed-in caller&#39;s application: the program, the answers, the betas asked for and the lead it was filed under. A field left out keeps what the record holds; betas replace the set, each new id stamped with the time it was asked for and stated on the event plane as beta_requested.
+     * @param marketingBetaIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingBetaAsync(@javax.annotation.Nonnull MarketingBetaIn marketingBetaIn, final ApiCallback<MarketingBeta> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putMarketingBetaValidateBeforeCall(marketingBetaIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBeta>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

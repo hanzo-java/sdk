@@ -164,7 +164,7 @@ public class PlatformDomainView {
   }
 
   /**
-   * Kind is &#x60;default&#x60;, &#x60;subtree&#x60; or &#x60;custom&#x60; — how the org came to own it.
+   * Kind is &#x60;default&#x60; (the app&#39;s own name) or &#x60;custom&#x60; — how the org came to own it.
    * @return kind
    */
   @javax.annotation.Nullable

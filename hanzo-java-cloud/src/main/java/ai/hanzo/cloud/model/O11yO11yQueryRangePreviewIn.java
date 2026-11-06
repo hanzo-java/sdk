@@ -110,7 +110,7 @@ public class O11yO11yQueryRangePreviewIn {
   }
 
   /**
-   * Get compositeQuery
+   * CompositeQuery is the composite query to use for the request.
    * @return compositeQuery
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class O11yO11yQueryRangePreviewIn {
   }
 
   /**
-   * Get end
+   * End is the end time of the query in epoch milliseconds.
    * @return end
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class O11yO11yQueryRangePreviewIn {
   }
 
   /**
-   * Get noCache
+   * NoCache is a flag to disable caching for the request.
    * @return noCache
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class O11yO11yQueryRangePreviewIn {
   }
 
   /**
-   * Get schemaVersion
+   * SchemaVersion is the version of the schema to use for the request payload.
    * @return schemaVersion
    */
   @javax.annotation.Nullable
@@ -224,7 +224,7 @@ public class O11yO11yQueryRangePreviewIn {
   }
 
   /**
-   * Get start
+   * Start is the start time of the query in epoch milliseconds.
    * @return start
    */
   @javax.annotation.Nullable
@@ -251,7 +251,7 @@ public class O11yO11yQueryRangePreviewIn {
   }
 
   /**
-   * Get variables
+   * Variables is the variables to use for the request.
    * @return variables
    */
   @javax.annotation.Nullable

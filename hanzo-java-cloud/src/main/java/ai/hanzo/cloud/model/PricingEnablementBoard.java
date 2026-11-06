@@ -53,11 +53,6 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class PricingEnablementBoard {
-  public static final String SERIALIZED_NAME_BETAS = "betas";
-  @SerializedName(SERIALIZED_NAME_BETAS)
-  @javax.annotation.Nullable
-  private List<PricingUserEnablementItem> betas = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
@@ -70,33 +65,6 @@ public class PricingEnablementBoard {
 
   public PricingEnablementBoard() {
   }
-
-  public PricingEnablementBoard betas(@javax.annotation.Nullable List<PricingUserEnablementItem> betas) {
-    this.betas = betas;
-    return this;
-  }
-
-  public PricingEnablementBoard addBetasItem(PricingUserEnablementItem betasItem) {
-    if (this.betas == null) {
-      this.betas = new ArrayList<>();
-    }
-    this.betas.add(betasItem);
-    return this;
-  }
-
-  /**
-   * Betas are the subset of Items the caller&#39;s org may still opt into.
-   * @return betas
-   */
-  @javax.annotation.Nullable
-  public List<PricingUserEnablementItem> getBetas() {
-    return betas;
-  }
-
-  public void setBetas(@javax.annotation.Nullable List<PricingUserEnablementItem> betas) {
-    this.betas = betas;
-  }
-
 
   public PricingEnablementBoard items(@javax.annotation.Nullable List<PricingUserEnablementItem> items) {
     this.items = items;
@@ -112,7 +80,7 @@ public class PricingEnablementBoard {
   }
 
   /**
-   * Items is every managed item, each resolved for the caller&#39;s org.
+   * Items is every managed item, each resolved for the caller.
    * @return items
    */
   @javax.annotation.Nullable
@@ -198,22 +166,20 @@ public class PricingEnablementBoard {
       return false;
     }
     PricingEnablementBoard pricingEnablementBoard = (PricingEnablementBoard) o;
-    return Objects.equals(this.betas, pricingEnablementBoard.betas) &&
-        Objects.equals(this.items, pricingEnablementBoard.items) &&
+    return Objects.equals(this.items, pricingEnablementBoard.items) &&
         Objects.equals(this.org, pricingEnablementBoard.org)&&
         Objects.equals(this.additionalProperties, pricingEnablementBoard.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(betas, items, org, additionalProperties);
+    return Objects.hash(items, org, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PricingEnablementBoard {\n");
-    sb.append("    betas: ").append(toIndentedString(betas)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -238,7 +204,7 @@ public class PricingEnablementBoard {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("betas", "items", "org"));
+    openapiFields = new HashSet<String>(Arrays.asList("items", "org"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -257,20 +223,6 @@ public class PricingEnablementBoard {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("betas") != null && !jsonObj.get("betas").isJsonNull()) {
-        JsonArray jsonArraybetas = jsonObj.getAsJsonArray("betas");
-        if (jsonArraybetas != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("betas").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `betas` to be an array in the JSON string but got `%s`", jsonObj.get("betas").toString()));
-          }
-
-          // validate the optional field `betas` (array)
-          for (int i = 0; i < jsonArraybetas.size(); i++) {
-            PricingUserEnablementItem.validateJsonElement(jsonArraybetas.get(i));
-          };
-        }
-      }
       if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
         JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
         if (jsonArrayitems != null) {

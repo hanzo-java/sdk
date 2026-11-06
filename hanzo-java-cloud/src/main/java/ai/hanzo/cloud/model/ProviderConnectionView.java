@@ -77,6 +77,11 @@ public class ProviderConnectionView {
   @javax.annotation.Nullable
   private String id;
 
+  public static final String SERIALIZED_NAME_KIND = "kind";
+  @SerializedName(SERIALIZED_NAME_KIND)
+  @javax.annotation.Nullable
+  private String kind;
+
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
   @javax.annotation.Nullable
@@ -187,6 +192,25 @@ public class ProviderConnectionView {
 
   public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
+  }
+
+
+  public ProviderConnectionView kind(@javax.annotation.Nullable String kind) {
+    this.kind = kind;
+    return this;
+  }
+
+  /**
+   * Kind is personal or page for a social account that has one. Empty for every other connector.
+   * @return kind
+   */
+  @javax.annotation.Nullable
+  public String getKind() {
+    return kind;
+  }
+
+  public void setKind(@javax.annotation.Nullable String kind) {
+    this.kind = kind;
   }
 
 
@@ -314,6 +338,7 @@ public class ProviderConnectionView {
         Objects.equals(this.expiresAt, providerConnectionView.expiresAt) &&
         Objects.equals(this.externalId, providerConnectionView.externalId) &&
         Objects.equals(this.id, providerConnectionView.id) &&
+        Objects.equals(this.kind, providerConnectionView.kind) &&
         Objects.equals(this.label, providerConnectionView.label) &&
         Objects.equals(this.provider, providerConnectionView.provider) &&
         Objects.equals(this.scopes, providerConnectionView.scopes)&&
@@ -322,7 +347,7 @@ public class ProviderConnectionView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, connectedAt, expiresAt, externalId, id, label, provider, scopes, additionalProperties);
+    return Objects.hash(account, connectedAt, expiresAt, externalId, id, kind, label, provider, scopes, additionalProperties);
   }
 
   @Override
@@ -334,6 +359,7 @@ public class ProviderConnectionView {
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
@@ -359,7 +385,7 @@ public class ProviderConnectionView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "connectedAt", "expiresAt", "externalId", "id", "label", "provider", "scopes"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "connectedAt", "expiresAt", "externalId", "id", "kind", "label", "provider", "scopes"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -392,6 +418,9 @@ public class ProviderConnectionView {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
       }
       if ((jsonObj.get("label") != null && !jsonObj.get("label").isJsonNull()) && !jsonObj.get("label").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("label").toString()));

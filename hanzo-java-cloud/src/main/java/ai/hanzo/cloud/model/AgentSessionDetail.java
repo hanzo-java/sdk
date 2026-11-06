@@ -81,6 +81,11 @@ public class AgentSessionDetail {
   @javax.annotation.Nullable
   private String branch;
 
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
+
   public static final String SERIALIZED_NAME_CHILD_SESSIONS = "childSessions";
   @SerializedName(SERIALIZED_NAME_CHILD_SESSIONS)
   @javax.annotation.Nullable
@@ -110,6 +115,11 @@ public class AgentSessionDetail {
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)
   @javax.annotation.Nullable
   private String environment;
+
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  @javax.annotation.Nullable
+  private String error;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
@@ -186,11 +196,6 @@ public class AgentSessionDetail {
   @javax.annotation.Nullable
   private String repo;
 
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
-
   public static final String SERIALIZED_NAME_ROOT_SESSION_ID = "rootSessionId";
   @SerializedName(SERIALIZED_NAME_ROOT_SESSION_ID)
   @javax.annotation.Nullable
@@ -250,7 +255,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get account
+   * Account is which subscription or API account under that provider served it. Together with Provider it is what a login revoke matches on to stop the sessions a withdrawn account was paying for.
    * @return account
    */
   @javax.annotation.Nullable
@@ -269,7 +274,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get actor
+   * Actor is WHO this session belongs to, as \&quot;org/sub\&quot; — the same identity a run is billed under. A register that names none takes the calling principal. It is what scopes a login revoke, so a session with the wrong actor is a session the right person cannot stop.
    * @return actor
    */
   @javax.annotation.Nullable
@@ -288,7 +293,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get agent
+   * Agent is the label the surface running this session calls itself by (\&quot;hanzo-dev\&quot;), up to 128 characters. Required at register. It is free text, not a reference: it need not name a defined agent, and nothing resolves it.
    * @return agent
    */
   @javax.annotation.Nullable
@@ -307,7 +312,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get base
+   * Base is the branch the run started from. Empty when it took the repository&#39;s default and did not say which.
    * @return base
    */
   @javax.annotation.Nullable
@@ -326,7 +331,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get branch
+   * Branch is the branch the run pushes its work to, and the only one it may write.
    * @return branch
    */
   @javax.annotation.Nullable
@@ -336,6 +341,25 @@ public class AgentSessionDetail {
 
   public void setBranch(@javax.annotation.Nullable String branch) {
     this.branch = branch;
+  }
+
+
+  public AgentSessionDetail channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the collaborative channel this run was started in (HIP-0523), empty when it came from anywhere else — a CLI, a schedule, an API call. It is what lets a space view show the runs of one channel beside its messages.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
   }
 
 
@@ -372,7 +396,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get children
+   * Children is the DIRECT fan-out — how many sessions name this one as parent — and not the size of the subtree. Read the tree for that.
    * @return children
    */
   @javax.annotation.Nullable
@@ -391,7 +415,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the row was written, same format. Every path that opens a session stamps it and StartedAt from one clock reading, so the two are equal on every session this surface has ever produced.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -410,7 +434,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get cwd
+   * Cwd is the directory the session is working in NOW, not the one it started in: a linked shell moves around, and a card showing where &#x60;hanzo link&#x60; was run answers \&quot;which work is this\&quot; with something that was true once.
    * @return cwd
    */
   @javax.annotation.Nullable
@@ -429,7 +453,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get endedAt
+   * EndedAt is when it reached done or error, same format. Empty while it is still running or paused, which is how absence reads here: not over yet.
    * @return endedAt
    */
   @javax.annotation.Nullable
@@ -448,7 +472,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get environment
+   * Environment is where the run executes: \&quot;sandbox\&quot; for a Hanzo sandbox, or the id of the org&#39;s machine it was routed to (the same id Target carries).
    * @return environment
    */
   @javax.annotation.Nullable
@@ -461,13 +485,32 @@ public class AgentSessionDetail {
   }
 
 
+  public AgentSessionDetail error(@javax.annotation.Nullable String error) {
+    this.error = error;
+    return this;
+  }
+
+  /**
+   * Error explains why the session ended in error, when it did. Empty for any other status.
+   * @return error
+   */
+  @javax.annotation.Nullable
+  public String getError() {
+    return error;
+  }
+
+  public void setError(@javax.annotation.Nullable String error) {
+    this.error = error;
+  }
+
+
   public AgentSessionDetail events(@javax.annotation.Nullable Long events) {
     this.events = events;
     return this;
   }
 
   /**
-   * Get events
+   * Events is how many turns the session&#39;s log holds, counted at read time. It is the whole log, however few of them RecentEvents carries.
    * @return events
    */
   @javax.annotation.Nullable
@@ -486,7 +529,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get host
+   * Execution context (mission-control): the machine/repo/cwd a card shows and the run-target a session is dispatched to. Omitted when a surface didn&#39;t report it.
    * @return host
    */
   @javax.annotation.Nullable
@@ -505,7 +548,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get id
+   * ID is the session&#39;s handle, minted here as \&quot;sess_\&quot; + 32 hex characters. Every later read, patch, event append and control command is addressed with it, and a caller cannot choose it.
    * @return id
    */
   @javax.annotation.Nullable
@@ -524,7 +567,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get kind
+   * Kind is what sort of run this session is the view of — \&quot;coding\&quot; for a coding run. Empty for a session no run tagged.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -543,7 +586,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get lastEvent
+   * LastEvent is the compact latest-activity line for the list projection (nil in register/patch/tree responses; set by list + detail). It lets a swipe card show a live one-line preview without fetching full detail.
    * @return lastEvent
    */
   @javax.annotation.Nullable
@@ -562,7 +605,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get mode
+   * Mode is what the run may do to its repository: \&quot;build\&quot; edits, commits and pushes its branch; \&quot;plan\&quot; reads and answers with a plan, writing nothing. Empty for a session no run tagged.
    * @return mode
    */
   @javax.annotation.Nullable
@@ -581,7 +624,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get org
+   * Org is the caller&#39;s OWN tenant, echoed so a client can build the public build URL (/builds/:org/:project) without a second call or a guess. It is never another tenant&#39;s — every read is org-scoped before it gets here.
    * @return org
    */
   @javax.annotation.Nullable
@@ -600,7 +643,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get parentSessionId
+   * ParentSessionID is the session that spawned this one, making this a subagent of it. Empty means this session is a root — a flow of its own. A parent always belongs to the same org, so a tree never crosses a tenant.
    * @return parentSessionId
    */
   @javax.annotation.Nullable
@@ -619,7 +662,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get pr
+   * PR is the address of the pull request the run proposed. Empty until it proposes one, and for a run that changed nothing.
    * @return pr
    */
   @javax.annotation.Nullable
@@ -638,7 +681,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get progress
+   * Progress is how far along this run is — a share of its goal, a phase, and a line saying what it is doing. Always present, so a board never branches on whether it is there; &#x60;phase&#x60; says \&quot;unknown\&quot; when nothing has estimated it. It is a MODEL ESTIMATE wherever &#x60;estimated&#x60; is true, and the row&#39;s own word where it is false. See progress.go.
    * @return progress
    */
   @javax.annotation.Nullable
@@ -657,7 +700,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get project
+   * The readable build: the product this session built and whether its story is public (provenance.go).
    * @return project
    */
   @javax.annotation.Nullable
@@ -676,7 +719,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get provider
+   * Provider is the linked AI account&#39;s provider (claude | codex | hanzo | …) that served this run. Empty when the surface did not say.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -695,7 +738,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get published
+   * Published is the author&#39;s decision to let anyone read this session&#39;s story at the public build route. It only ever widens READ access to a session that already exists and grants nothing else; false, an unpublished session is invisible there no matter who asks. It cannot be true without a Project, because that route is keyed on (org, project).
    * @return published
    */
   @javax.annotation.Nullable
@@ -741,7 +784,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get repo
+   * Repo is the code the session is working on, as the surface reported it. It is truth the SURFACE states, so it is a label rather than something resolved here.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -754,32 +797,13 @@ public class AgentSessionDetail {
   }
 
 
-  public AgentSessionDetail room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Get room
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
-  }
-
-
   public AgentSessionDetail rootSessionId(@javax.annotation.Nullable String rootSessionId) {
     this.rootSessionId = rootSessionId;
     return this;
   }
 
   /**
-   * Get rootSessionId
+   * RootSessionID is the top of this session&#39;s tree, inherited from the parent and shared by every node in one flow. A root session&#39;s own id, when it has no parent. It is the key one indexed read pulls a whole flow by, and what ?root&#x3D; narrows a list or a stream to.
    * @return rootSessionId
    */
   @javax.annotation.Nullable
@@ -798,7 +822,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get sandbox
+   * Sandbox is the id of the sandbox the run works in (\&quot;m_\&quot; and 24 hex), the handle its terminal and its screen are opened with (/v1/sandbox/{id}/terminal, /screen). Set when the run leases it, and kept once the run gives it back, when the id opens nothing. Empty for a run that never leased one — a routed run, or a turn that only talked.
    * @return sandbox
    */
   @javax.annotation.Nullable
@@ -817,7 +841,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get startedAt
+   * StartedAt is when the session opened, RFC 3339 in UTC to the second.
    * @return startedAt
    */
   @javax.annotation.Nullable
@@ -836,7 +860,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get status
+   * Status is one of exactly four: running, paused, done, error. running and paused are LIVE; done and error are TERMINAL and monotonic — once a session reaches one it can never go back, because reopening a finished run would fabricate liveness. A control command never moves it: the surface running the agent reports the new status, and until it does the command is only recorded.
    * @return status
    */
   @javax.annotation.Nullable
@@ -855,7 +879,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get target
+   * Target is the registered run-target this session is dispatched to — a machine the org claimed, resolved same-org when it was set, so it can never point at another tenant&#39;s computer. Empty means the session names no machine.
    * @return target
    */
   @javax.annotation.Nullable
@@ -874,7 +898,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get taskRunId
+   * TaskRunID is that workflow&#39;s particular run. A workflow is the definition and a run is one execution of it, which is why both are carried.
    * @return taskRunId
    */
   @javax.annotation.Nullable
@@ -893,7 +917,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get taskWorkflowId
+   * TaskWorkflowID is the hanzoai/tasks durable workflow that actually EXECUTES this session — this registry is the view, control and stream layer over it. Set, a control command is FORWARDED to that engine; empty, the running surface polls for commands instead, which is every session today.
    * @return taskWorkflowId
    */
   @javax.annotation.Nullable
@@ -912,7 +936,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get terminal
+   * Terminal is where this session can be WATCHED — the URL the machine published for its live terminal. Omitted when it publishes none.
    * @return terminal
    */
   @javax.annotation.Nullable
@@ -931,7 +955,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get title
+   * Title is the human line a card shows (\&quot;ship the landing page\&quot;), up to 512 characters. Free text, and the one field a surface may rewrite as the work turns out to be something else.
    * @return title
    */
   @javax.annotation.Nullable
@@ -950,7 +974,7 @@ public class AgentSessionDetail {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is the session&#39;s last-activity clock, same format. It moves on a write to the row — a status, a title, a re-dispatch — AND on every appended turn, because the append bumps it in the same transaction. The list is ordered on CreatedAt, so this is the field that says whether a session is still saying anything.
    * @return updatedAt
    */
   @javax.annotation.Nullable
@@ -1022,12 +1046,14 @@ public class AgentSessionDetail {
         Objects.equals(this.agent, agentSessionDetail.agent) &&
         Objects.equals(this.base, agentSessionDetail.base) &&
         Objects.equals(this.branch, agentSessionDetail.branch) &&
+        Objects.equals(this.channel, agentSessionDetail.channel) &&
         Objects.equals(this.childSessions, agentSessionDetail.childSessions) &&
         Objects.equals(this.children, agentSessionDetail.children) &&
         Objects.equals(this.createdAt, agentSessionDetail.createdAt) &&
         Objects.equals(this.cwd, agentSessionDetail.cwd) &&
         Objects.equals(this.endedAt, agentSessionDetail.endedAt) &&
         Objects.equals(this.environment, agentSessionDetail.environment) &&
+        Objects.equals(this.error, agentSessionDetail.error) &&
         Objects.equals(this.events, agentSessionDetail.events) &&
         Objects.equals(this.host, agentSessionDetail.host) &&
         Objects.equals(this.id, agentSessionDetail.id) &&
@@ -1043,7 +1069,6 @@ public class AgentSessionDetail {
         Objects.equals(this.published, agentSessionDetail.published) &&
         Objects.equals(this.recentEvents, agentSessionDetail.recentEvents) &&
         Objects.equals(this.repo, agentSessionDetail.repo) &&
-        Objects.equals(this.room, agentSessionDetail.room) &&
         Objects.equals(this.rootSessionId, agentSessionDetail.rootSessionId) &&
         Objects.equals(this.sandbox, agentSessionDetail.sandbox) &&
         Objects.equals(this.startedAt, agentSessionDetail.startedAt) &&
@@ -1059,7 +1084,7 @@ public class AgentSessionDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, base, branch, childSessions, children, createdAt, cwd, endedAt, environment, events, host, id, kind, lastEvent, mode, org, parentSessionId, pr, progress, project, provider, published, recentEvents, repo, room, rootSessionId, sandbox, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt, additionalProperties);
+    return Objects.hash(account, actor, agent, base, branch, channel, childSessions, children, createdAt, cwd, endedAt, environment, error, events, host, id, kind, lastEvent, mode, org, parentSessionId, pr, progress, project, provider, published, recentEvents, repo, rootSessionId, sandbox, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt, additionalProperties);
   }
 
   @Override
@@ -1071,12 +1096,14 @@ public class AgentSessionDetail {
     sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
     sb.append("    branch: ").append(toIndentedString(branch)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    childSessions: ").append(toIndentedString(childSessions)).append("\n");
     sb.append("    children: ").append(toIndentedString(children)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    cwd: ").append(toIndentedString(cwd)).append("\n");
     sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
     sb.append("    environment: ").append(toIndentedString(environment)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -1092,7 +1119,6 @@ public class AgentSessionDetail {
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    recentEvents: ").append(toIndentedString(recentEvents)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    rootSessionId: ").append(toIndentedString(rootSessionId)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
@@ -1125,7 +1151,7 @@ public class AgentSessionDetail {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "base", "branch", "childSessions", "children", "createdAt", "cwd", "endedAt", "environment", "events", "host", "id", "kind", "lastEvent", "mode", "org", "parentSessionId", "pr", "progress", "project", "provider", "published", "recentEvents", "repo", "room", "rootSessionId", "sandbox", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "base", "branch", "channel", "childSessions", "children", "createdAt", "cwd", "endedAt", "environment", "error", "events", "host", "id", "kind", "lastEvent", "mode", "org", "parentSessionId", "pr", "progress", "project", "provider", "published", "recentEvents", "repo", "rootSessionId", "sandbox", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -1159,6 +1185,9 @@ public class AgentSessionDetail {
       if ((jsonObj.get("branch") != null && !jsonObj.get("branch").isJsonNull()) && !jsonObj.get("branch").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `branch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("branch").toString()));
       }
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
       if (jsonObj.get("childSessions") != null && !jsonObj.get("childSessions").isJsonNull()) {
         JsonArray jsonArraychildSessions = jsonObj.getAsJsonArray("childSessions");
         if (jsonArraychildSessions != null) {
@@ -1184,6 +1213,9 @@ public class AgentSessionDetail {
       }
       if ((jsonObj.get("environment") != null && !jsonObj.get("environment").isJsonNull()) && !jsonObj.get("environment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `environment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("environment").toString()));
+      }
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
       if ((jsonObj.get("host") != null && !jsonObj.get("host").isJsonNull()) && !jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
@@ -1236,9 +1268,6 @@ public class AgentSessionDetail {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("rootSessionId") != null && !jsonObj.get("rootSessionId").isJsonNull()) && !jsonObj.get("rootSessionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rootSessionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rootSessionId").toString()));

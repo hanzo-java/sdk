@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class TeamListed {
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
+
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
   @javax.annotation.Nullable
@@ -64,11 +69,6 @@ public class TeamListed {
   @SerializedName(SERIALIZED_NAME_ORG)
   @javax.annotation.Nullable
   private String org;
-
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
 
   public static final String SERIALIZED_NAME_SPACE = "space";
   @SerializedName(SERIALIZED_NAME_SPACE)
@@ -88,13 +88,32 @@ public class TeamListed {
   public TeamListed() {
   }
 
+  public TeamListed channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel addresses it in the owning store — what a join is called with.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+  }
+
+
   public TeamListed members(@javax.annotation.Nullable Long members) {
     this.members = members;
     return this;
   }
 
   /**
-   * Members counts the room, and never names anybody in it.
+   * Members counts the channel, and never names anybody in it.
    * @return members
    */
   @javax.annotation.Nullable
@@ -132,7 +151,7 @@ public class TeamListed {
   }
 
   /**
-   * Org owns the room. It is also what a caller filters by to browse one org.
+   * Org owns the channel. It is also what a caller filters by to browse one org.
    * @return org
    */
   @javax.annotation.Nullable
@@ -145,32 +164,13 @@ public class TeamListed {
   }
 
 
-  public TeamListed room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room addresses it in the owning store — what a join is called with.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
-  }
-
-
   public TeamListed space(@javax.annotation.Nullable String space) {
     this.space = space;
     return this;
   }
 
   /**
-   * Space is where the room lives inside that org.
+   * Space is where the channel lives inside that org.
    * @return space
    */
   @javax.annotation.Nullable
@@ -189,7 +189,7 @@ public class TeamListed {
   }
 
   /**
-   * Topic is the room&#39;s one-line subject, empty when it has none.
+   * Topic is the channel&#39;s one-line subject, empty when it has none.
    * @return topic
    */
   @javax.annotation.Nullable
@@ -275,10 +275,10 @@ public class TeamListed {
       return false;
     }
     TeamListed teamListed = (TeamListed) o;
-    return Objects.equals(this.members, teamListed.members) &&
+    return Objects.equals(this.channel, teamListed.channel) &&
+        Objects.equals(this.members, teamListed.members) &&
         Objects.equals(this.name, teamListed.name) &&
         Objects.equals(this.org, teamListed.org) &&
-        Objects.equals(this.room, teamListed.room) &&
         Objects.equals(this.space, teamListed.space) &&
         Objects.equals(this.topic, teamListed.topic) &&
         Objects.equals(this.updated, teamListed.updated)&&
@@ -287,17 +287,17 @@ public class TeamListed {
 
   @Override
   public int hashCode() {
-    return Objects.hash(members, name, org, room, space, topic, updated, additionalProperties);
+    return Objects.hash(channel, members, name, org, space, topic, updated, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TeamListed {\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    space: ").append(toIndentedString(space)).append("\n");
     sb.append("    topic: ").append(toIndentedString(topic)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
@@ -323,7 +323,7 @@ public class TeamListed {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("members", "name", "org", "room", "space", "topic", "updated"));
+    openapiFields = new HashSet<String>(Arrays.asList("channel", "members", "name", "org", "space", "topic", "updated"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -342,14 +342,14 @@ public class TeamListed {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("space") != null && !jsonObj.get("space").isJsonNull()) && !jsonObj.get("space").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `space` to be a primitive type in the JSON string but got `%s`", jsonObj.get("space").toString()));

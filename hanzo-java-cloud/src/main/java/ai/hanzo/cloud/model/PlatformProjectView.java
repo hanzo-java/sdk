@@ -122,7 +122,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get apps
+   * Apps is how many declarations name the project.
    * @return apps
    */
   @javax.annotation.Nullable
@@ -179,7 +179,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get drift
+   * Drift counts its apps by drift severity.
    * @return drift
    */
   @javax.annotation.Nullable
@@ -198,7 +198,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get health
+   * Health counts its apps by CD&#39;s health verdict.
    * @return health
    */
   @javax.annotation.Nullable
@@ -244,7 +244,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get name
+   * Name is the project, as the values files spell it in &#x60;partOf&#x60;.
    * @return name
    */
   @javax.annotation.Nullable
@@ -271,7 +271,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get namespaces
+   * Namespaces are the namespaces its apps deploy into, sorted.
    * @return namespaces
    */
   @javax.annotation.Nullable
@@ -290,7 +290,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get org
+   * Org is the organization that owns the project. Absent for the platform&#39;s own projects, whose apps live in the platform&#39;s directories.
    * @return org
    */
   @javax.annotation.Nullable
@@ -309,7 +309,7 @@ public class PlatformProjectView {
   }
 
   /**
-   * Get sync
+   * Sync counts its apps by CD&#39;s sync verdict.
    * @return sync
    */
   @javax.annotation.Nullable

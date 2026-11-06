@@ -55,6 +55,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProviderProviderView {
+  public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
+  @SerializedName(SERIALIZED_NAME_ACCOUNTS)
+  @javax.annotation.Nullable
+  private List<ProviderConnectionView> accounts = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
@@ -147,6 +152,33 @@ public class ProviderProviderView {
 
   public ProviderProviderView() {
   }
+
+  public ProviderProviderView accounts(@javax.annotation.Nullable List<ProviderConnectionView> accounts) {
+    this.accounts = accounts;
+    return this;
+  }
+
+  public ProviderProviderView addAccountsItem(ProviderConnectionView accountsItem) {
+    if (this.accounts == null) {
+      this.accounts = new ArrayList<>();
+    }
+    this.accounts.add(accountsItem);
+    return this;
+  }
+
+  /**
+   * Accounts is every account this org has connected for the provider, each with its own platform id. Tokens never appear here.
+   * @return accounts
+   */
+  @javax.annotation.Nullable
+  public List<ProviderConnectionView> getAccounts() {
+    return accounts;
+  }
+
+  public void setAccounts(@javax.annotation.Nullable List<ProviderConnectionView> accounts) {
+    this.accounts = accounts;
+  }
+
 
   public ProviderProviderView actions(@javax.annotation.Nullable List<ProviderOpView> actions) {
     this.actions = actions;
@@ -276,7 +308,7 @@ public class ProviderProviderView {
   }
 
   /**
-   * Connection is the connected account&#39;s non-secret detail. Absent when the org has no connection; tokens NEVER appear here (they live only in KMS).
+   * Connection is the connected account&#39;s non-secret detail. Absent when the org has no connection; tokens NEVER appear here (they live only in KMS). When the org holds several accounts, this is the first and Accounts is every one of them.
    * @return connection
    */
   @javax.annotation.Nullable
@@ -584,7 +616,8 @@ public class ProviderProviderView {
       return false;
     }
     ProviderProviderView providerProviderView = (ProviderProviderView) o;
-    return Objects.equals(this.actions, providerProviderView.actions) &&
+    return Objects.equals(this.accounts, providerProviderView.accounts) &&
+        Objects.equals(this.actions, providerProviderView.actions) &&
         Objects.equals(this.app, providerProviderView.app) &&
         Objects.equals(this.available, providerProviderView.available) &&
         Objects.equals(this.category, providerProviderView.category) &&
@@ -607,13 +640,14 @@ public class ProviderProviderView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, app, available, category, checks, connected, connection, description, fields, id, kind, logo, modes, name, note, runnable, scopes, triggers, additionalProperties);
+    return Objects.hash(accounts, actions, app, available, category, checks, connected, connection, description, fields, id, kind, logo, modes, name, note, runnable, scopes, triggers, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProviderProviderView {\n");
+    sb.append("    accounts: ").append(toIndentedString(accounts)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    app: ").append(toIndentedString(app)).append("\n");
     sb.append("    available: ").append(toIndentedString(available)).append("\n");
@@ -654,7 +688,7 @@ public class ProviderProviderView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("actions", "app", "available", "category", "checks", "connected", "connection", "description", "fields", "id", "kind", "logo", "modes", "name", "note", "runnable", "scopes", "triggers"));
+    openapiFields = new HashSet<String>(Arrays.asList("accounts", "actions", "app", "available", "category", "checks", "connected", "connection", "description", "fields", "id", "kind", "logo", "modes", "name", "note", "runnable", "scopes", "triggers"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -673,6 +707,20 @@ public class ProviderProviderView {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("accounts") != null && !jsonObj.get("accounts").isJsonNull()) {
+        JsonArray jsonArrayaccounts = jsonObj.getAsJsonArray("accounts");
+        if (jsonArrayaccounts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("accounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `accounts` to be an array in the JSON string but got `%s`", jsonObj.get("accounts").toString()));
+          }
+
+          // validate the optional field `accounts` (array)
+          for (int i = 0; i < jsonArrayaccounts.size(); i++) {
+            ProviderConnectionView.validateJsonElement(jsonArrayaccounts.get(i));
+          };
+        }
+      }
       if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull()) {
         JsonArray jsonArrayactions = jsonObj.getAsJsonArray("actions");
         if (jsonArrayactions != null) {

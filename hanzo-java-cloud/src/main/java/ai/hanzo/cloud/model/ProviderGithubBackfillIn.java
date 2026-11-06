@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProviderGithubBackfillIn {
+  public static final String SERIALIZED_NAME_REPO = "repo";
+  @SerializedName(SERIALIZED_NAME_REPO)
+  @javax.annotation.Nullable
+  private String repo;
+
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   @javax.annotation.Nullable
@@ -57,6 +62,25 @@ public class ProviderGithubBackfillIn {
 
   public ProviderGithubBackfillIn() {
   }
+
+  public ProviderGithubBackfillIn repo(@javax.annotation.Nullable String repo) {
+    this.repo = repo;
+    return this;
+  }
+
+  /**
+   * Repo narrows the pass to ONE granted repository, named &#x60;owner/name&#x60; or bare &#x60;name&#x60; (case-insensitive). Empty walks every granted repository. A project page syncs its own issues with this; the org-wide pass stays the default. A name the connection does not grant is a 404, never a silent empty pass that reads as \&quot;this repository has no issues\&quot;.
+   * @return repo
+   */
+  @javax.annotation.Nullable
+  public String getRepo() {
+    return repo;
+  }
+
+  public void setRepo(@javax.annotation.Nullable String repo) {
+    this.repo = repo;
+  }
+
 
   public ProviderGithubBackfillIn state(@javax.annotation.Nullable String state) {
     this.state = state;
@@ -131,19 +155,21 @@ public class ProviderGithubBackfillIn {
       return false;
     }
     ProviderGithubBackfillIn providerGithubBackfillIn = (ProviderGithubBackfillIn) o;
-    return Objects.equals(this.state, providerGithubBackfillIn.state)&&
+    return Objects.equals(this.repo, providerGithubBackfillIn.repo) &&
+        Objects.equals(this.state, providerGithubBackfillIn.state)&&
         Objects.equals(this.additionalProperties, providerGithubBackfillIn.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(state, additionalProperties);
+    return Objects.hash(repo, state, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProviderGithubBackfillIn {\n");
+    sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -167,7 +193,7 @@ public class ProviderGithubBackfillIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("state"));
+    openapiFields = new HashSet<String>(Arrays.asList("repo", "state"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -186,6 +212,9 @@ public class ProviderGithubBackfillIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
+      }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }

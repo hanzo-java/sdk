@@ -1866,7 +1866,7 @@ public class FrameworkApi {
 
     /**
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org.
-     * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
+     * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent: a DocType the org already has is reported as existing and never replaced. It only grows, by the fields the lane now declares and the stored definition lacks (reported as grown), so re-installing is how a lane&#39;s new fields reach an org that installed it earlier. Manager-only.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
      * @return FrameworkInstall
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1885,7 +1885,7 @@ public class FrameworkApi {
 
     /**
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org.
-     * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
+     * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent: a DocType the org already has is reported as existing and never replaced. It only grows, by the fields the lane now declares and the stored definition lacks (reported as grown), so re-installing is how a lane&#39;s new fields reach an org that installed it earlier. Manager-only.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
      * @return ApiResponse&lt;FrameworkInstall&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1905,7 +1905,7 @@ public class FrameworkApi {
 
     /**
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. (asynchronously)
-     * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
+     * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent: a DocType the org already has is reported as existing and never replaced. It only grows, by the fields the lane now declares and the stored definition lacks (reported as grown), so re-installing is how a lane&#39;s new fields reach an org that installed it earlier. Manager-only.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

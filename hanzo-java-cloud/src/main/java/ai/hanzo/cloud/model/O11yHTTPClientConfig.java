@@ -265,7 +265,7 @@ public class O11yHTTPClientConfig {
   }
 
   /**
-   * Get noProxy
+   * NoProxy contains addresses that should not use a proxy.
    * @return noProxy
    */
   @javax.annotation.Nullable
@@ -311,7 +311,7 @@ public class O11yHTTPClientConfig {
   }
 
   /**
-   * Get proxyConnectHeader
+   * ProxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests. Assume that at least _some_ of these headers are going to contain secrets and use Secret as the value type instead of string.
    * @return proxyConnectHeader
    */
   @javax.annotation.Nullable
@@ -330,7 +330,7 @@ public class O11yHTTPClientConfig {
   }
 
   /**
-   * Get proxyFromEnvironment
+   * ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function to determine proxies.
    * @return proxyFromEnvironment
    */
   @javax.annotation.Nullable

@@ -39,6 +39,7 @@ import ai.hanzo.cloud.model.ProviderCredentialOut;
 import ai.hanzo.cloud.model.ProviderDevicePollOut;
 import ai.hanzo.cloud.model.ProviderDeviceStartIn;
 import ai.hanzo.cloud.model.ProviderDeviceStartOut;
+import ai.hanzo.cloud.model.ProviderDisconnectIn;
 import ai.hanzo.cloud.model.ProviderDisconnectOut;
 import ai.hanzo.cloud.model.ProviderGithubBackfillIn;
 import ai.hanzo.cloud.model.ProviderGithubBackfillResult;
@@ -63,6 +64,11 @@ import ai.hanzo.cloud.model.ProviderGithubUserConnectOut;
 import ai.hanzo.cloud.model.ProviderGithubUserDisconnectOut;
 import ai.hanzo.cloud.model.ProviderGithubUserOut;
 import ai.hanzo.cloud.model.ProviderGitlabProjectsOut;
+import ai.hanzo.cloud.model.ProviderGoogleUserCompleteIn;
+import ai.hanzo.cloud.model.ProviderGoogleUserConnectIn;
+import ai.hanzo.cloud.model.ProviderGoogleUserConnectOut;
+import ai.hanzo.cloud.model.ProviderGoogleUserDisconnectOut;
+import ai.hanzo.cloud.model.ProviderGoogleUserOut;
 import ai.hanzo.cloud.model.ProviderLinearBackfillIn;
 import ai.hanzo.cloud.model.ProviderLinearBackfillResult;
 import ai.hanzo.cloud.model.ProviderLinearClaimIn;
@@ -2532,6 +2538,216 @@ public class ProviderApi {
         return localVarCall;
     }
     /**
+     * Build call for getProviderGoogleUser
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProviderGoogleUserCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/google/user";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getProviderGoogleUserValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getProviderGoogleUserCall(_callback);
+
+    }
+
+    /**
+     * Reports whether the caller has connected their own Google account in the org they act in, and as whom.
+     * Reports whether the caller has connected their own Google account in the org they act in, and as whom.
+     * @return ProviderGoogleUserOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProviderGoogleUserOut getProviderGoogleUser() throws ApiException {
+        ApiResponse<ProviderGoogleUserOut> localVarResp = getProviderGoogleUserWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reports whether the caller has connected their own Google account in the org they act in, and as whom.
+     * Reports whether the caller has connected their own Google account in the org they act in, and as whom.
+     * @return ApiResponse&lt;ProviderGoogleUserOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProviderGoogleUserOut> getProviderGoogleUserWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getProviderGoogleUserValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reports whether the caller has connected their own Google account in the org they act in, and as whom. (asynchronously)
+     * Reports whether the caller has connected their own Google account in the org they act in, and as whom.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProviderGoogleUserAsync(final ApiCallback<ProviderGoogleUserOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getProviderGoogleUserValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getProviderGoogleUserCallback
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getProviderGoogleUserCallbackCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/google/user/callback";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getProviderGoogleUserCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getProviderGoogleUserCallbackCall(_callback);
+
+    }
+
+    /**
+     * Is where Google returns the person.
+     * Is where Google returns the person. It verifies the state, burns its nonce, and parks the code for the return page to complete; it exchanges nothing. PUBLIC and state-authed, like every OAuth return, and raw because it answers a browser with a redirect.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getProviderGoogleUserCallback() throws ApiException {
+        getProviderGoogleUserCallbackWithHttpInfo();
+    }
+
+    /**
+     * Is where Google returns the person.
+     * Is where Google returns the person. It verifies the state, burns its nonce, and parks the code for the return page to complete; it exchanges nothing. PUBLIC and state-authed, like every OAuth return, and raw because it answers a browser with a redirect.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getProviderGoogleUserCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getProviderGoogleUserCallbackValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Is where Google returns the person. (asynchronously)
+     * Is where Google returns the person. It verifies the state, burns its nonce, and parks the code for the return page to complete; it exchanges nothing. PUBLIC and state-authed, like every OAuth return, and raw because it answers a browser with a redirect.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getProviderGoogleUserCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getProviderGoogleUserCallbackValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getProviderSlackChannels
      * @param types Types selects public_channel, private_channel, im or mpim, comma-separated. Defaults to public_channel; each selected type requires its own read scope. (optional)
      * @param cursor Cursor continues the previous page&#39;s next_cursor. (optional)
@@ -3808,6 +4024,94 @@ public class ProviderApi {
         return localVarCall;
     }
     /**
+     * Build call for getProviderTwitterCallback
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getProviderTwitterCallbackCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/twitter/callback";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getProviderTwitterCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getProviderTwitterCallbackCall(_callback);
+
+    }
+
+    /**
+     * Completes an X consent that arrived on the twitter spelling of the callback.
+     * Completes an X consent that arrived on the twitter spelling of the callback. The consent URL this process sends is /v1/provider/x/callback. The X app is also registered at this address, so a browser sent there still finishes the same flow. State is signed for provider x, and the answer is a redirect.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getProviderTwitterCallback() throws ApiException {
+        getProviderTwitterCallbackWithHttpInfo();
+    }
+
+    /**
+     * Completes an X consent that arrived on the twitter spelling of the callback.
+     * Completes an X consent that arrived on the twitter spelling of the callback. The consent URL this process sends is /v1/provider/x/callback. The X app is also registered at this address, so a browser sent there still finishes the same flow. State is signed for provider x, and the answer is a redirect.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getProviderTwitterCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getProviderTwitterCallbackValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Completes an X consent that arrived on the twitter spelling of the callback. (asynchronously)
+     * Completes an X consent that arrived on the twitter spelling of the callback. The consent URL this process sends is /v1/provider/x/callback. The X app is also registered at this address, so a browser sent there still finishes the same flow. State is signed for provider x, and the answer is a redirect.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getProviderTwitterCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getProviderTwitterCallbackValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getProviderWhatsappWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4597,7 +4901,8 @@ public class ProviderApi {
     }
     /**
      * Build call for postProviderByProviderDisconnect
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connection) providers, which this surface never resolves. (required)
+     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param providerDisconnectIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4609,7 +4914,7 @@ public class ProviderApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProviderByProviderDisconnectCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProviderByProviderDisconnectCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ProviderDisconnectIn providerDisconnectIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4623,7 +4928,7 @@ public class ProviderApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = providerDisconnectIn;
 
         // create path and map variables
         String localVarPath = "/v1/provider/{provider}/disconnect"
@@ -4645,6 +4950,7 @@ public class ProviderApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -4656,20 +4962,26 @@ public class ProviderApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProviderByProviderDisconnectValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postProviderByProviderDisconnectValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ProviderDisconnectIn providerDisconnectIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
             throw new ApiException("Missing the required parameter 'provider' when calling postProviderByProviderDisconnect(Async)");
         }
 
-        return postProviderByProviderDisconnectCall(provider, _callback);
+        // verify the required parameter 'providerDisconnectIn' is set
+        if (providerDisconnectIn == null) {
+            throw new ApiException("Missing the required parameter 'providerDisconnectIn' when calling postProviderByProviderDisconnect(Async)");
+        }
+
+        return postProviderByProviderDisconnectCall(provider, providerDisconnectIn, _callback);
 
     }
 
     /**
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row.
-     * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connection) providers, which this surface never resolves. (required)
+     * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.  An &#x60;account&#x60; disconnects that one account and leaves the org&#39;s others; without it every account goes. A provider with an App installation (GitHub) also removes the installation at the provider for each account no other org still holds, so connecting that account again is a fresh install rather than GitHub&#39;s Configure page, which returns nothing the connect can bind.
+     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param providerDisconnectIn  (required)
      * @return ProviderDisconnectOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4680,15 +4992,16 @@ public class ProviderApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProviderDisconnectOut postProviderByProviderDisconnect(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<ProviderDisconnectOut> localVarResp = postProviderByProviderDisconnectWithHttpInfo(provider);
+    public ProviderDisconnectOut postProviderByProviderDisconnect(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ProviderDisconnectIn providerDisconnectIn) throws ApiException {
+        ApiResponse<ProviderDisconnectOut> localVarResp = postProviderByProviderDisconnectWithHttpInfo(provider, providerDisconnectIn);
         return localVarResp.getData();
     }
 
     /**
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row.
-     * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connection) providers, which this surface never resolves. (required)
+     * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.  An &#x60;account&#x60; disconnects that one account and leaves the org&#39;s others; without it every account goes. A provider with an App installation (GitHub) also removes the installation at the provider for each account no other org still holds, so connecting that account again is a fresh install rather than GitHub&#39;s Configure page, which returns nothing the connect can bind.
+     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param providerDisconnectIn  (required)
      * @return ApiResponse&lt;ProviderDisconnectOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4699,16 +5012,17 @@ public class ProviderApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProviderDisconnectOut> postProviderByProviderDisconnectWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = postProviderByProviderDisconnectValidateBeforeCall(provider, null);
+    public ApiResponse<ProviderDisconnectOut> postProviderByProviderDisconnectWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ProviderDisconnectIn providerDisconnectIn) throws ApiException {
+        okhttp3.Call localVarCall = postProviderByProviderDisconnectValidateBeforeCall(provider, providerDisconnectIn, null);
         Type localVarReturnType = new TypeToken<ProviderDisconnectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. (asynchronously)
-     * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.
-     * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connection) providers, which this surface never resolves. (required)
+     * Revokes (best-effort) and forgets an org&#39;s connection: it deletes every custodied KMS secret and the connection row. Idempotent — disconnecting a provider that was never connected still returns {disconnected:true}. Symmetric with connect: an AdminOnly connector needs the caller&#39;s own-org admin bit.  An &#x60;account&#x60; disconnects that one account and leaves the org&#39;s others; without it every account goes. A provider with an App installation (GitHub) also removes the installation at the provider for each account no other org still holds, so connecting that account again is a fresh install rather than GitHub&#39;s Configure page, which returns nothing the connect can bind.
+     * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
+     * @param providerDisconnectIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4720,9 +5034,9 @@ public class ProviderApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProviderByProviderDisconnectAsync(@javax.annotation.Nonnull String provider, final ApiCallback<ProviderDisconnectOut> _callback) throws ApiException {
+    public okhttp3.Call postProviderByProviderDisconnectAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ProviderDisconnectIn providerDisconnectIn, final ApiCallback<ProviderDisconnectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProviderByProviderDisconnectValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = postProviderByProviderDisconnectValidateBeforeCall(provider, providerDisconnectIn, _callback);
         Type localVarReturnType = new TypeToken<ProviderDisconnectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6485,6 +6799,392 @@ public class ProviderApi {
 
         okhttp3.Call localVarCall = postProviderGithubWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postProviderGoogleUserComplete
+     * @param providerGoogleUserCompleteIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderGoogleUserCompleteCall(@javax.annotation.Nonnull ProviderGoogleUserCompleteIn providerGoogleUserCompleteIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = providerGoogleUserCompleteIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/google/user/complete";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postProviderGoogleUserCompleteValidateBeforeCall(@javax.annotation.Nonnull ProviderGoogleUserCompleteIn providerGoogleUserCompleteIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'providerGoogleUserCompleteIn' is set
+        if (providerGoogleUserCompleteIn == null) {
+            throw new ApiException("Missing the required parameter 'providerGoogleUserCompleteIn' when calling postProviderGoogleUserComplete(Async)");
+        }
+
+        return postProviderGoogleUserCompleteCall(providerGoogleUserCompleteIn, _callback);
+
+    }
+
+    /**
+     * Finishes connecting the caller&#39;s Google account: it takes the authorization the callback parked, trades it for the person&#39;s tokens, and seals them.
+     * Finishes connecting the caller&#39;s Google account: it takes the authorization the callback parked, trades it for the person&#39;s tokens, and seals them. Only the person who started the flow can complete it — another person&#39;s grant id is simply not found — and a grant completes once. A grant that leaves out sending mail, or offline access, is refused and nothing is kept: a connection that cannot send is not one this surface offers.
+     * @param providerGoogleUserCompleteIn  (required)
+     * @return ProviderGoogleUserOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProviderGoogleUserOut postProviderGoogleUserComplete(@javax.annotation.Nonnull ProviderGoogleUserCompleteIn providerGoogleUserCompleteIn) throws ApiException {
+        ApiResponse<ProviderGoogleUserOut> localVarResp = postProviderGoogleUserCompleteWithHttpInfo(providerGoogleUserCompleteIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Finishes connecting the caller&#39;s Google account: it takes the authorization the callback parked, trades it for the person&#39;s tokens, and seals them.
+     * Finishes connecting the caller&#39;s Google account: it takes the authorization the callback parked, trades it for the person&#39;s tokens, and seals them. Only the person who started the flow can complete it — another person&#39;s grant id is simply not found — and a grant completes once. A grant that leaves out sending mail, or offline access, is refused and nothing is kept: a connection that cannot send is not one this surface offers.
+     * @param providerGoogleUserCompleteIn  (required)
+     * @return ApiResponse&lt;ProviderGoogleUserOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProviderGoogleUserOut> postProviderGoogleUserCompleteWithHttpInfo(@javax.annotation.Nonnull ProviderGoogleUserCompleteIn providerGoogleUserCompleteIn) throws ApiException {
+        okhttp3.Call localVarCall = postProviderGoogleUserCompleteValidateBeforeCall(providerGoogleUserCompleteIn, null);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Finishes connecting the caller&#39;s Google account: it takes the authorization the callback parked, trades it for the person&#39;s tokens, and seals them. (asynchronously)
+     * Finishes connecting the caller&#39;s Google account: it takes the authorization the callback parked, trades it for the person&#39;s tokens, and seals them. Only the person who started the flow can complete it — another person&#39;s grant id is simply not found — and a grant completes once. A grant that leaves out sending mail, or offline access, is refused and nothing is kept: a connection that cannot send is not one this surface offers.
+     * @param providerGoogleUserCompleteIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderGoogleUserCompleteAsync(@javax.annotation.Nonnull ProviderGoogleUserCompleteIn providerGoogleUserCompleteIn, final ApiCallback<ProviderGoogleUserOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postProviderGoogleUserCompleteValidateBeforeCall(providerGoogleUserCompleteIn, _callback);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postProviderGoogleUserConnect
+     * @param providerGoogleUserConnectIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderGoogleUserConnectCall(@javax.annotation.Nonnull ProviderGoogleUserConnectIn providerGoogleUserConnectIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = providerGoogleUserConnectIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/google/user/connect";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postProviderGoogleUserConnectValidateBeforeCall(@javax.annotation.Nonnull ProviderGoogleUserConnectIn providerGoogleUserConnectIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'providerGoogleUserConnectIn' is set
+        if (providerGoogleUserConnectIn == null) {
+            throw new ApiException("Missing the required parameter 'providerGoogleUserConnectIn' when calling postProviderGoogleUserConnect(Async)");
+        }
+
+        return postProviderGoogleUserConnectCall(providerGoogleUserConnectIn, _callback);
+
+    }
+
+    /**
+     * Begins connecting the caller&#39;s own Google account: it answers Google&#39;s consent page, asking offline access to send mail as them, carrying a state signed for this org and this person.
+     * Begins connecting the caller&#39;s own Google account: it answers Google&#39;s consent page, asking offline access to send mail as them, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold at Google.
+     * @param providerGoogleUserConnectIn  (required)
+     * @return ProviderGoogleUserConnectOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProviderGoogleUserConnectOut postProviderGoogleUserConnect(@javax.annotation.Nonnull ProviderGoogleUserConnectIn providerGoogleUserConnectIn) throws ApiException {
+        ApiResponse<ProviderGoogleUserConnectOut> localVarResp = postProviderGoogleUserConnectWithHttpInfo(providerGoogleUserConnectIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Begins connecting the caller&#39;s own Google account: it answers Google&#39;s consent page, asking offline access to send mail as them, carrying a state signed for this org and this person.
+     * Begins connecting the caller&#39;s own Google account: it answers Google&#39;s consent page, asking offline access to send mail as them, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold at Google.
+     * @param providerGoogleUserConnectIn  (required)
+     * @return ApiResponse&lt;ProviderGoogleUserConnectOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProviderGoogleUserConnectOut> postProviderGoogleUserConnectWithHttpInfo(@javax.annotation.Nonnull ProviderGoogleUserConnectIn providerGoogleUserConnectIn) throws ApiException {
+        okhttp3.Call localVarCall = postProviderGoogleUserConnectValidateBeforeCall(providerGoogleUserConnectIn, null);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserConnectOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Begins connecting the caller&#39;s own Google account: it answers Google&#39;s consent page, asking offline access to send mail as them, carrying a state signed for this org and this person. (asynchronously)
+     * Begins connecting the caller&#39;s own Google account: it answers Google&#39;s consent page, asking offline access to send mail as them, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold at Google.
+     * @param providerGoogleUserConnectIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderGoogleUserConnectAsync(@javax.annotation.Nonnull ProviderGoogleUserConnectIn providerGoogleUserConnectIn, final ApiCallback<ProviderGoogleUserConnectOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postProviderGoogleUserConnectValidateBeforeCall(providerGoogleUserConnectIn, _callback);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserConnectOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postProviderGoogleUserDisconnect
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderGoogleUserDisconnectCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/google/user/disconnect";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postProviderGoogleUserDisconnectValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postProviderGoogleUserDisconnectCall(_callback);
+
+    }
+
+    /**
+     * Forgets the caller&#39;s Google connection in this org: the grant is revoked at Google, and the sealed secrets and the row go.
+     * Forgets the caller&#39;s Google connection in this org: the grant is revoked at Google, and the sealed secrets and the row go. It says whether Google confirmed the revocation rather than reporting a success it did not see. Disconnecting what is not connected succeeds.
+     * @return ProviderGoogleUserDisconnectOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProviderGoogleUserDisconnectOut postProviderGoogleUserDisconnect() throws ApiException {
+        ApiResponse<ProviderGoogleUserDisconnectOut> localVarResp = postProviderGoogleUserDisconnectWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Forgets the caller&#39;s Google connection in this org: the grant is revoked at Google, and the sealed secrets and the row go.
+     * Forgets the caller&#39;s Google connection in this org: the grant is revoked at Google, and the sealed secrets and the row go. It says whether Google confirmed the revocation rather than reporting a success it did not see. Disconnecting what is not connected succeeds.
+     * @return ApiResponse&lt;ProviderGoogleUserDisconnectOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProviderGoogleUserDisconnectOut> postProviderGoogleUserDisconnectWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postProviderGoogleUserDisconnectValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserDisconnectOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Forgets the caller&#39;s Google connection in this org: the grant is revoked at Google, and the sealed secrets and the row go. (asynchronously)
+     * Forgets the caller&#39;s Google connection in this org: the grant is revoked at Google, and the sealed secrets and the row go. It says whether Google confirmed the revocation rather than reporting a success it did not see. Disconnecting what is not connected succeeds.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderGoogleUserDisconnectAsync(final ApiCallback<ProviderGoogleUserDisconnectOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postProviderGoogleUserDisconnectValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ProviderGoogleUserDisconnectOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

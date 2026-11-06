@@ -79,7 +79,7 @@ public class ShareEnableResp {
   }
 
   /**
-   * AccountToken is the org&#39;s own tunnel-account credential. Treat it as a secret: it is what the CLI enables an environment with.
+   * AccountToken is the caller&#39;s tunnel-account credential: their org&#39;s, or in a held org their own. Treat it as a secret: it is what the CLI enables an environment with.
    * @return accountToken
    */
   @javax.annotation.Nullable

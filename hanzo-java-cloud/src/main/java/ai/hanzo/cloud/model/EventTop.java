@@ -59,6 +59,11 @@ public class EventTop {
   @javax.annotation.Nullable
   private String end;
 
+  public static final String SERIALIZED_NAME_IMPERSONATED = "impersonated";
+  @SerializedName(SERIALIZED_NAME_IMPERSONATED)
+  @javax.annotation.Nullable
+  private String impersonated;
+
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
@@ -118,6 +123,25 @@ public class EventTop {
 
   public void setEnd(@javax.annotation.Nullable String end) {
     this.end = end;
+  }
+
+
+  public EventTop impersonated(@javax.annotation.Nullable String impersonated) {
+    this.impersonated = impersonated;
+    return this;
+  }
+
+  /**
+   * Impersonated is which events products, topPages, topReferrers and topSources counted against the mark a platform operator leaves acting as someone else: exclude (the tenant&#39;s own traffic), include, or only. Models reads the usage ledger, which carries no mark.
+   * @return impersonated
+   */
+  @javax.annotation.Nullable
+  public String getImpersonated() {
+    return impersonated;
+  }
+
+  public void setImpersonated(@javax.annotation.Nullable String impersonated) {
+    this.impersonated = impersonated;
   }
 
 
@@ -328,6 +352,7 @@ public class EventTop {
     }
     EventTop eventTop = (EventTop) o;
     return Objects.equals(this.end, eventTop.end) &&
+        Objects.equals(this.impersonated, eventTop.impersonated) &&
         Objects.equals(this.models, eventTop.models) &&
         Objects.equals(this.products, eventTop.products) &&
         Objects.equals(this.range, eventTop.range) &&
@@ -341,7 +366,7 @@ public class EventTop {
 
   @Override
   public int hashCode() {
-    return Objects.hash(end, models, products, range, scope, start, topPages, topReferrers, topSources, additionalProperties);
+    return Objects.hash(end, impersonated, models, products, range, scope, start, topPages, topReferrers, topSources, additionalProperties);
   }
 
   @Override
@@ -349,6 +374,7 @@ public class EventTop {
     StringBuilder sb = new StringBuilder();
     sb.append("class EventTop {\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    impersonated: ").append(toIndentedString(impersonated)).append("\n");
     sb.append("    models: ").append(toIndentedString(models)).append("\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
@@ -379,7 +405,7 @@ public class EventTop {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("end", "models", "products", "range", "scope", "start", "topPages", "topReferrers", "topSources"));
+    openapiFields = new HashSet<String>(Arrays.asList("end", "impersonated", "models", "products", "range", "scope", "start", "topPages", "topReferrers", "topSources"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -400,6 +426,9 @@ public class EventTop {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("end") != null && !jsonObj.get("end").isJsonNull()) && !jsonObj.get("end").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `end` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end").toString()));
+      }
+      if ((jsonObj.get("impersonated") != null && !jsonObj.get("impersonated").isJsonNull()) && !jsonObj.get("impersonated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `impersonated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("impersonated").toString()));
       }
       // validate the optional field `models`
       if (jsonObj.get("models") != null && !jsonObj.get("models").isJsonNull()) {

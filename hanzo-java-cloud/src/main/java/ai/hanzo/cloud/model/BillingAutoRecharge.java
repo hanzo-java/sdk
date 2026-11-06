@@ -70,6 +70,11 @@ public class BillingAutoRecharge {
   @javax.annotation.Nullable
   private String lastRechargedAt;
 
+  public static final String SERIALIZED_NAME_PER_DAY = "perDay";
+  @SerializedName(SERIALIZED_NAME_PER_DAY)
+  @javax.annotation.Nullable
+  private Long perDay;
+
   public static final String SERIALIZED_NAME_STORED = "stored";
   @SerializedName(SERIALIZED_NAME_STORED)
   @javax.annotation.Nullable
@@ -161,6 +166,25 @@ public class BillingAutoRecharge {
 
   public void setLastRechargedAt(@javax.annotation.Nullable String lastRechargedAt) {
     this.lastRechargedAt = lastRechargedAt;
+  }
+
+
+  public BillingAutoRecharge perDay(@javax.annotation.Nullable Long perDay) {
+    this.perDay = perDay;
+    return this;
+  }
+
+  /**
+   * PerDay is the most times the sweep reloads the balance in one UTC day.
+   * @return perDay
+   */
+  @javax.annotation.Nullable
+  public Long getPerDay() {
+    return perDay;
+  }
+
+  public void setPerDay(@javax.annotation.Nullable Long perDay) {
+    this.perDay = perDay;
   }
 
 
@@ -279,6 +303,7 @@ public class BillingAutoRecharge {
         Objects.equals(this.currency, billingAutoRecharge.currency) &&
         Objects.equals(this.enabled, billingAutoRecharge.enabled) &&
         Objects.equals(this.lastRechargedAt, billingAutoRecharge.lastRechargedAt) &&
+        Objects.equals(this.perDay, billingAutoRecharge.perDay) &&
         Objects.equals(this.stored, billingAutoRecharge.stored) &&
         Objects.equals(this.subject, billingAutoRecharge.subject) &&
         Objects.equals(this.thresholdCents, billingAutoRecharge.thresholdCents)&&
@@ -287,7 +312,7 @@ public class BillingAutoRecharge {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amountCents, currency, enabled, lastRechargedAt, stored, subject, thresholdCents, additionalProperties);
+    return Objects.hash(amountCents, currency, enabled, lastRechargedAt, perDay, stored, subject, thresholdCents, additionalProperties);
   }
 
   @Override
@@ -298,6 +323,7 @@ public class BillingAutoRecharge {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    lastRechargedAt: ").append(toIndentedString(lastRechargedAt)).append("\n");
+    sb.append("    perDay: ").append(toIndentedString(perDay)).append("\n");
     sb.append("    stored: ").append(toIndentedString(stored)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    thresholdCents: ").append(toIndentedString(thresholdCents)).append("\n");
@@ -323,7 +349,7 @@ public class BillingAutoRecharge {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("amountCents", "currency", "enabled", "lastRechargedAt", "stored", "subject", "thresholdCents"));
+    openapiFields = new HashSet<String>(Arrays.asList("amountCents", "currency", "enabled", "lastRechargedAt", "perDay", "stored", "subject", "thresholdCents"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

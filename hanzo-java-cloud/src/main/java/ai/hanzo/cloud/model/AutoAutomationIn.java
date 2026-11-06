@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AutoOutcomeTrigger;
 import ai.hanzo.cloud.model.AutoSchedule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,6 +59,11 @@ public class AutoAutomationIn {
   @javax.annotation.Nullable
   private Boolean enabled;
 
+  public static final String SERIALIZED_NAME_EVENT = "event";
+  @SerializedName(SERIALIZED_NAME_EVENT)
+  @javax.annotation.Nullable
+  private AutoOutcomeTrigger event;
+
   public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
   @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
   @javax.annotation.Nullable
@@ -98,6 +104,16 @@ public class AutoAutomationIn {
   @javax.annotation.Nullable
   private AutoSchedule schedule;
 
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  @javax.annotation.Nullable
+  private String source;
+
+  public static final String SERIALIZED_NAME_TARGET = "target";
+  @SerializedName(SERIALIZED_NAME_TARGET)
+  @javax.annotation.Nullable
+  private String target;
+
   public AutoAutomationIn() {
   }
 
@@ -117,6 +133,25 @@ public class AutoAutomationIn {
 
   public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
     this.enabled = enabled;
+  }
+
+
+  public AutoAutomationIn event(@javax.annotation.Nullable AutoOutcomeTrigger event) {
+    this.event = event;
+    return this;
+  }
+
+  /**
+   * Event arms a product-outcome trigger; it is mutually exclusive with a timed schedule.
+   * @return event
+   */
+  @javax.annotation.Nullable
+  public AutoOutcomeTrigger getEvent() {
+    return event;
+  }
+
+  public void setEvent(@javax.annotation.Nullable AutoOutcomeTrigger event) {
+    this.event = event;
   }
 
 
@@ -279,6 +314,44 @@ public class AutoAutomationIn {
     this.schedule = schedule;
   }
 
+
+  public AutoAutomationIn source(@javax.annotation.Nullable String source) {
+    this.source = source;
+    return this;
+  }
+
+  /**
+   * Source is the product it is made in: chat, dev, studio or workflow. Absent is dev.
+   * @return source
+   */
+  @javax.annotation.Nullable
+  public String getSource() {
+    return source;
+  }
+
+  public void setSource(@javax.annotation.Nullable String source) {
+    this.source = source;
+  }
+
+
+  public AutoAutomationIn target(@javax.annotation.Nullable String target) {
+    this.target = target;
+    return this;
+  }
+
+  /**
+   * Target selects a registered execution target for the coding run.
+   * @return target
+   */
+  @javax.annotation.Nullable
+  public String getTarget() {
+    return target;
+  }
+
+  public void setTarget(@javax.annotation.Nullable String target) {
+    this.target = target;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -335,6 +408,7 @@ public class AutoAutomationIn {
     }
     AutoAutomationIn autoAutomationIn = (AutoAutomationIn) o;
     return Objects.equals(this.enabled, autoAutomationIn.enabled) &&
+        Objects.equals(this.event, autoAutomationIn.event) &&
         Objects.equals(this.instructions, autoAutomationIn.instructions) &&
         Objects.equals(this.model, autoAutomationIn.model) &&
         Objects.equals(this.name, autoAutomationIn.name) &&
@@ -342,13 +416,15 @@ public class AutoAutomationIn {
         Objects.equals(this.permissions, autoAutomationIn.permissions) &&
         Objects.equals(this.postTo, autoAutomationIn.postTo) &&
         Objects.equals(this.project, autoAutomationIn.project) &&
-        Objects.equals(this.schedule, autoAutomationIn.schedule)&&
+        Objects.equals(this.schedule, autoAutomationIn.schedule) &&
+        Objects.equals(this.source, autoAutomationIn.source) &&
+        Objects.equals(this.target, autoAutomationIn.target)&&
         Objects.equals(this.additionalProperties, autoAutomationIn.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, instructions, model, name, notify, permissions, postTo, project, schedule, additionalProperties);
+    return Objects.hash(enabled, event, instructions, model, name, notify, permissions, postTo, project, schedule, source, target, additionalProperties);
   }
 
   @Override
@@ -356,6 +432,7 @@ public class AutoAutomationIn {
     StringBuilder sb = new StringBuilder();
     sb.append("class AutoAutomationIn {\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -364,6 +441,8 @@ public class AutoAutomationIn {
     sb.append("    postTo: ").append(toIndentedString(postTo)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -386,7 +465,7 @@ public class AutoAutomationIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("enabled", "instructions", "model", "name", "notify", "permissions", "postTo", "project", "schedule"));
+    openapiFields = new HashSet<String>(Arrays.asList("enabled", "event", "instructions", "model", "name", "notify", "permissions", "postTo", "project", "schedule", "source", "target"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -405,6 +484,10 @@ public class AutoAutomationIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `event`
+      if (jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) {
+        AutoOutcomeTrigger.validateJsonElement(jsonObj.get("event"));
+      }
       if ((jsonObj.get("instructions") != null && !jsonObj.get("instructions").isJsonNull()) && !jsonObj.get("instructions").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instructions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instructions").toString()));
       }
@@ -427,6 +510,12 @@ public class AutoAutomationIn {
       // validate the optional field `schedule`
       if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {
         AutoSchedule.validateJsonElement(jsonObj.get("schedule"));
+      }
+      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      }
+      if ((jsonObj.get("target") != null && !jsonObj.get("target").isJsonNull()) && !jsonObj.get("target").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `target` to be a primitive type in the JSON string but got `%s`", jsonObj.get("target").toString()));
       }
   }
 

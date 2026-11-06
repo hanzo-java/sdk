@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.TeamTeamRoom;
+import ai.hanzo.cloud.model.TeamTeamChannel;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,18 +51,37 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class TeamTeamDirect {
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private TeamTeamChannel channel;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
   private Boolean created;
 
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private TeamTeamRoom room;
-
   public TeamTeamDirect() {
   }
+
+  public TeamTeamDirect channel(@javax.annotation.Nullable TeamTeamChannel channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the direct message, as the channel listing answers it.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public TeamTeamChannel getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable TeamTeamChannel channel) {
+    this.channel = channel;
+  }
+
 
   public TeamTeamDirect created(@javax.annotation.Nullable Boolean created) {
     this.created = created;
@@ -80,25 +99,6 @@ public class TeamTeamDirect {
 
   public void setCreated(@javax.annotation.Nullable Boolean created) {
     this.created = created;
-  }
-
-
-  public TeamTeamDirect room(@javax.annotation.Nullable TeamTeamRoom room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room is the direct message, as the room listing answers it.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public TeamTeamRoom getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable TeamTeamRoom room) {
-    this.room = room;
   }
 
   /**
@@ -156,22 +156,22 @@ public class TeamTeamDirect {
       return false;
     }
     TeamTeamDirect teamTeamDirect = (TeamTeamDirect) o;
-    return Objects.equals(this.created, teamTeamDirect.created) &&
-        Objects.equals(this.room, teamTeamDirect.room)&&
+    return Objects.equals(this.channel, teamTeamDirect.channel) &&
+        Objects.equals(this.created, teamTeamDirect.created)&&
         Objects.equals(this.additionalProperties, teamTeamDirect.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, room, additionalProperties);
+    return Objects.hash(channel, created, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TeamTeamDirect {\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,7 +194,7 @@ public class TeamTeamDirect {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("created", "room"));
+    openapiFields = new HashSet<String>(Arrays.asList("channel", "created"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -213,9 +213,9 @@ public class TeamTeamDirect {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `room`
-      if (jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) {
-        TeamTeamRoom.validateJsonElement(jsonObj.get("room"));
+      // validate the optional field `channel`
+      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
+        TeamTeamChannel.validateJsonElement(jsonObj.get("channel"));
       }
   }
 

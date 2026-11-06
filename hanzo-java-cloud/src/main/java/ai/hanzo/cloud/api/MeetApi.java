@@ -292,8 +292,8 @@ public class MeetApi {
     }
     /**
      * Build call for meetCall
-     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
+     * @param space Space is the space uuid holding the channel, as GET /v1/team/channels reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param channel Channel is the channel&#39;s own id within that space, as GET /v1/team/channels reports it. It is opaque here: meet keeps no channels and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -305,7 +305,7 @@ public class MeetApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call meetCallCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call meetCallCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -334,8 +334,8 @@ public class MeetApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
         }
 
-        if (room != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        if (channel != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("channel", channel));
         }
 
         final String[] localVarAccepts = {
@@ -359,26 +359,26 @@ public class MeetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call meetCallValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call meetCallValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'space' is set
         if (space == null) {
             throw new ApiException("Missing the required parameter 'space' when calling meetCall(Async)");
         }
 
-        // verify the required parameter 'room' is set
-        if (room == null) {
-            throw new ApiException("Missing the required parameter 'room' when calling meetCall(Async)");
+        // verify the required parameter 'channel' is set
+        if (channel == null) {
+            throw new ApiException("Missing the required parameter 'channel' when calling meetCall(Async)");
         }
 
-        return meetCallCall(space, room, _callback);
+        return meetCallCall(space, channel, _callback);
 
     }
 
     /**
      * Where a room&#39;s call happens
-     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
-     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
+     * Answers where a channel&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the channel&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the channel. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a channel id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param space Space is the space uuid holding the channel, as GET /v1/team/channels reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param channel Channel is the channel&#39;s own id within that space, as GET /v1/team/channels reports it. It is opaque here: meet keeps no channels and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @return MeetVenue
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -389,16 +389,16 @@ public class MeetApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MeetVenue meetCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room) throws ApiException {
-        ApiResponse<MeetVenue> localVarResp = meetCallWithHttpInfo(space, room);
+    public MeetVenue meetCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String channel) throws ApiException {
+        ApiResponse<MeetVenue> localVarResp = meetCallWithHttpInfo(space, channel);
         return localVarResp.getData();
     }
 
     /**
      * Where a room&#39;s call happens
-     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
-     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
+     * Answers where a channel&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the channel&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the channel. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a channel id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param space Space is the space uuid holding the channel, as GET /v1/team/channels reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param channel Channel is the channel&#39;s own id within that space, as GET /v1/team/channels reports it. It is opaque here: meet keeps no channels and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @return ApiResponse&lt;MeetVenue&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -409,17 +409,17 @@ public class MeetApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MeetVenue> meetCallWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room) throws ApiException {
-        okhttp3.Call localVarCall = meetCallValidateBeforeCall(space, room, null);
+    public ApiResponse<MeetVenue> meetCallWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String channel) throws ApiException {
+        okhttp3.Call localVarCall = meetCallValidateBeforeCall(space, channel, null);
         Type localVarReturnType = new TypeToken<MeetVenue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Where a room&#39;s call happens (asynchronously)
-     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
-     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
+     * Answers where a channel&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the channel&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the channel. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a channel id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param space Space is the space uuid holding the channel, as GET /v1/team/channels reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param channel Channel is the channel&#39;s own id within that space, as GET /v1/team/channels reports it. It is opaque here: meet keeps no channels and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -431,9 +431,9 @@ public class MeetApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call meetCallAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room, final ApiCallback<MeetVenue> _callback) throws ApiException {
+    public okhttp3.Call meetCallAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String channel, final ApiCallback<MeetVenue> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = meetCallValidateBeforeCall(space, room, _callback);
+        okhttp3.Call localVarCall = meetCallValidateBeforeCall(space, channel, _callback);
         Type localVarReturnType = new TypeToken<MeetVenue>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

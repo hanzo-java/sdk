@@ -55,11 +55,6 @@ public class AgentRegisterReq {
   @javax.annotation.Nullable
   private String account;
 
-  public static final String SERIALIZED_NAME_ACTOR = "actor";
-  @SerializedName(SERIALIZED_NAME_ACTOR)
-  @javax.annotation.Nullable
-  private String actor;
-
   public static final String SERIALIZED_NAME_AGENT = "agent";
   @SerializedName(SERIALIZED_NAME_AGENT)
   @javax.annotation.Nullable
@@ -69,6 +64,11 @@ public class AgentRegisterReq {
   @SerializedName(SERIALIZED_NAME_BUDGET_MICRO_USD)
   @javax.annotation.Nullable
   private Long budgetMicroUsd;
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
 
   public static final String SERIALIZED_NAME_CWD = "cwd";
   @SerializedName(SERIALIZED_NAME_CWD)
@@ -104,11 +104,6 @@ public class AgentRegisterReq {
   @SerializedName(SERIALIZED_NAME_REPO)
   @javax.annotation.Nullable
   private String repo;
-
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -162,25 +157,6 @@ public class AgentRegisterReq {
   }
 
 
-  public AgentRegisterReq actor(@javax.annotation.Nullable String actor) {
-    this.actor = actor;
-    return this;
-  }
-
-  /**
-   * Actor is the \&quot;org/sub\&quot; identity to record the session under, up to 256 characters. Omit it and the calling principal is used, which is almost always what you want: it is what a login revoke matches on to stop this session.
-   * @return actor
-   */
-  @javax.annotation.Nullable
-  public String getActor() {
-    return actor;
-  }
-
-  public void setActor(@javax.annotation.Nullable String actor) {
-    this.actor = actor;
-  }
-
-
   public AgentRegisterReq agent(@javax.annotation.Nullable String agent) {
     this.agent = agent;
     return this;
@@ -216,6 +192,25 @@ public class AgentRegisterReq {
 
   public void setBudgetMicroUsd(@javax.annotation.Nullable Long budgetMicroUsd) {
     this.budgetMicroUsd = budgetMicroUsd;
+  }
+
+
+  public AgentRegisterReq channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the collaborative channel this run was started in (HIP-0523), so a space view can list the sessions of one channel. It is PROVENANCE and is set only here: there is deliberately no way to move a session to another channel, so it is absent from the patch input and from UpdateSession&#39;s SET list.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
   }
 
 
@@ -349,25 +344,6 @@ public class AgentRegisterReq {
 
   public void setRepo(@javax.annotation.Nullable String repo) {
     this.repo = repo;
-  }
-
-
-  public AgentRegisterReq room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room is the collaborative room this run was started in (HIP-0523), so a space view can list the sessions of one room. It is PROVENANCE and is set only here: there is deliberately no way to move a session to another room, so it is absent from the patch input and from UpdateSession&#39;s SET list.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
   }
 
 
@@ -540,9 +516,9 @@ public class AgentRegisterReq {
     }
     AgentRegisterReq agentRegisterReq = (AgentRegisterReq) o;
     return Objects.equals(this.account, agentRegisterReq.account) &&
-        Objects.equals(this.actor, agentRegisterReq.actor) &&
         Objects.equals(this.agent, agentRegisterReq.agent) &&
         Objects.equals(this.budgetMicroUsd, agentRegisterReq.budgetMicroUsd) &&
+        Objects.equals(this.channel, agentRegisterReq.channel) &&
         Objects.equals(this.cwd, agentRegisterReq.cwd) &&
         Objects.equals(this.host, agentRegisterReq.host) &&
         Objects.equals(this.parentSessionId, agentRegisterReq.parentSessionId) &&
@@ -550,7 +526,6 @@ public class AgentRegisterReq {
         Objects.equals(this.provider, agentRegisterReq.provider) &&
         Objects.equals(this.published, agentRegisterReq.published) &&
         Objects.equals(this.repo, agentRegisterReq.repo) &&
-        Objects.equals(this.room, agentRegisterReq.room) &&
         Objects.equals(this.status, agentRegisterReq.status) &&
         Objects.equals(this.target, agentRegisterReq.target) &&
         Objects.equals(this.taskRunId, agentRegisterReq.taskRunId) &&
@@ -562,7 +537,7 @@ public class AgentRegisterReq {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, budgetMicroUsd, cwd, host, parentSessionId, project, provider, published, repo, room, status, target, taskRunId, taskWorkflowId, terminal, title, additionalProperties);
+    return Objects.hash(account, agent, budgetMicroUsd, channel, cwd, host, parentSessionId, project, provider, published, repo, status, target, taskRunId, taskWorkflowId, terminal, title, additionalProperties);
   }
 
   @Override
@@ -570,9 +545,9 @@ public class AgentRegisterReq {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentRegisterReq {\n");
     sb.append("    account: ").append(toIndentedString(account)).append("\n");
-    sb.append("    actor: ").append(toIndentedString(actor)).append("\n");
     sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
     sb.append("    budgetMicroUsd: ").append(toIndentedString(budgetMicroUsd)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    cwd: ").append(toIndentedString(cwd)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    parentSessionId: ").append(toIndentedString(parentSessionId)).append("\n");
@@ -580,7 +555,6 @@ public class AgentRegisterReq {
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    taskRunId: ").append(toIndentedString(taskRunId)).append("\n");
@@ -609,7 +583,7 @@ public class AgentRegisterReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "budget_micro_usd", "cwd", "host", "parentSessionId", "project", "provider", "published", "repo", "room", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "agent", "budget_micro_usd", "channel", "cwd", "host", "parentSessionId", "project", "provider", "published", "repo", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -631,11 +605,11 @@ public class AgentRegisterReq {
       if ((jsonObj.get("account") != null && !jsonObj.get("account").isJsonNull()) && !jsonObj.get("account").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account").toString()));
       }
-      if ((jsonObj.get("actor") != null && !jsonObj.get("actor").isJsonNull()) && !jsonObj.get("actor").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `actor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actor").toString()));
-      }
       if ((jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonNull()) && !jsonObj.get("agent").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agent").toString()));
+      }
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
       if ((jsonObj.get("cwd") != null && !jsonObj.get("cwd").isJsonNull()) && !jsonObj.get("cwd").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cwd` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cwd").toString()));
@@ -654,9 +628,6 @@ public class AgentRegisterReq {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

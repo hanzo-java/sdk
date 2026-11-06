@@ -14,14 +14,18 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.BillingSubscriptionLine;
 import ai.hanzo.cloud.model.BillingSubscriptionPlan;
+import ai.hanzo.cloud.model.BillingSubscriptionSeat;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,6 +55,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class BillingSubscription {
+  public static final String SERIALIZED_NAME_ASSIGNED = "assigned";
+  @SerializedName(SERIALIZED_NAME_ASSIGNED)
+  @javax.annotation.Nullable
+  private List<BillingSubscriptionSeat> assigned = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_CANCEL_AT_PERIOD_END = "cancelAtPeriodEnd";
   @SerializedName(SERIALIZED_NAME_CANCEL_AT_PERIOD_END)
   @javax.annotation.Nullable
@@ -65,6 +74,11 @@ public class BillingSubscription {
   @SerializedName(SERIALIZED_NAME_CHARGED_CENTS)
   @javax.annotation.Nullable
   private Long chargedCents;
+
+  public static final String SERIALIZED_NAME_COUPON = "coupon";
+  @SerializedName(SERIALIZED_NAME_COUPON)
+  @javax.annotation.Nullable
+  private String coupon;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -91,10 +105,25 @@ public class BillingSubscription {
   @javax.annotation.Nullable
   private String endedAt;
 
+  public static final String SERIALIZED_NAME_HELD = "held";
+  @SerializedName(SERIALIZED_NAME_HELD)
+  @javax.annotation.Nullable
+  private Boolean held;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
+
+  public static final String SERIALIZED_NAME_LAST_PAID = "lastPaid";
+  @SerializedName(SERIALIZED_NAME_LAST_PAID)
+  @javax.annotation.Nullable
+  private String lastPaid;
+
+  public static final String SERIALIZED_NAME_LINES = "lines";
+  @SerializedName(SERIALIZED_NAME_LINES)
+  @javax.annotation.Nullable
+  private List<BillingSubscriptionLine> lines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_MRR_CENTS = "mrrCents";
   @SerializedName(SERIALIZED_NAME_MRR_CENTS)
@@ -136,6 +165,11 @@ public class BillingSubscription {
   @javax.annotation.Nullable
   private String status;
 
+  public static final String SERIALIZED_NAME_TEST = "test";
+  @SerializedName(SERIALIZED_NAME_TEST)
+  @javax.annotation.Nullable
+  private Boolean test;
+
   public static final String SERIALIZED_NAME_TRIAL_END = "trialEnd";
   @SerializedName(SERIALIZED_NAME_TRIAL_END)
   @javax.annotation.Nullable
@@ -158,6 +192,33 @@ public class BillingSubscription {
 
   public BillingSubscription() {
   }
+
+  public BillingSubscription assigned(@javax.annotation.Nullable List<BillingSubscriptionSeat> assigned) {
+    this.assigned = assigned;
+    return this;
+  }
+
+  public BillingSubscription addAssignedItem(BillingSubscriptionSeat assignedItem) {
+    if (this.assigned == null) {
+      this.assigned = new ArrayList<>();
+    }
+    this.assigned.add(assignedItem);
+    return this;
+  }
+
+  /**
+   * Assigned is which member holds which seat type, as the org&#39;s admin set it.
+   * @return assigned
+   */
+  @javax.annotation.Nullable
+  public List<BillingSubscriptionSeat> getAssigned() {
+    return assigned;
+  }
+
+  public void setAssigned(@javax.annotation.Nullable List<BillingSubscriptionSeat> assigned) {
+    this.assigned = assigned;
+  }
+
 
   public BillingSubscription cancelAtPeriodEnd(@javax.annotation.Nullable Boolean cancelAtPeriodEnd) {
     this.cancelAtPeriodEnd = cancelAtPeriodEnd;
@@ -213,6 +274,25 @@ public class BillingSubscription {
 
   public void setChargedCents(@javax.annotation.Nullable Long chargedCents) {
     this.chargedCents = chargedCents;
+  }
+
+
+  public BillingSubscription coupon(@javax.annotation.Nullable String coupon) {
+    this.coupon = coupon;
+    return this;
+  }
+
+  /**
+   * Coupon is the plan coupon code the first period was bought with, as commerce stores it (upper case); absent when none was.
+   * @return coupon
+   */
+  @javax.annotation.Nullable
+  public String getCoupon() {
+    return coupon;
+  }
+
+  public void setCoupon(@javax.annotation.Nullable String coupon) {
+    this.coupon = coupon;
   }
 
 
@@ -311,6 +391,25 @@ public class BillingSubscription {
   }
 
 
+  public BillingSubscription held(@javax.annotation.Nullable Boolean held) {
+    this.held = held;
+    return this;
+  }
+
+  /**
+   * Held reports that this row is the subject&#39;s one paid plan: while it stands, commerce refuses a second paid sale (409).
+   * @return held
+   */
+  @javax.annotation.Nullable
+  public Boolean getHeld() {
+    return held;
+  }
+
+  public void setHeld(@javax.annotation.Nullable Boolean held) {
+    this.held = held;
+  }
+
+
   public BillingSubscription id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
@@ -327,6 +426,52 @@ public class BillingSubscription {
 
   public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
+  }
+
+
+  public BillingSubscription lastPaid(@javax.annotation.Nullable String lastPaid) {
+    this.lastPaid = lastPaid;
+    return this;
+  }
+
+  /**
+   * LastPaid is when the latest payment for this subscription arrived, RFC 3339: its latest paid invoice&#39;s paid time, or, for a period recorded as collected outside commerce, which keeps no time of its own record, the start of the latest period recorded — whichever is later. Any period, not only the one in hand: a plan past due still says when it was last paid. Empty when nothing was, or when the invoices did not read. Last, so every field before it keeps its place on the ZAP wire.
+   * @return lastPaid
+   */
+  @javax.annotation.Nullable
+  public String getLastPaid() {
+    return lastPaid;
+  }
+
+  public void setLastPaid(@javax.annotation.Nullable String lastPaid) {
+    this.lastPaid = lastPaid;
+  }
+
+
+  public BillingSubscription lines(@javax.annotation.Nullable List<BillingSubscriptionLine> lines) {
+    this.lines = lines;
+    return this;
+  }
+
+  public BillingSubscription addLinesItem(BillingSubscriptionLine linesItem) {
+    if (this.lines == null) {
+      this.lines = new ArrayList<>();
+    }
+    this.lines.add(linesItem);
+    return this;
+  }
+
+  /**
+   * Lines are a team&#39;s other seat types beside Plan (a team of standard and premium seats is Plan \&quot;team\&quot; and one line of \&quot;team-premium\&quot;), each with the seats of it the period in hand was paid for. Seats above counts them too. After Held, so the fields before them keep their places on the ZAP wire.
+   * @return lines
+   */
+  @javax.annotation.Nullable
+  public List<BillingSubscriptionLine> getLines() {
+    return lines;
+  }
+
+  public void setLines(@javax.annotation.Nullable List<BillingSubscriptionLine> lines) {
+    this.lines = lines;
   }
 
 
@@ -482,6 +627,25 @@ public class BillingSubscription {
   }
 
 
+  public BillingSubscription test(@javax.annotation.Nullable Boolean test) {
+    this.test = test;
+    return this;
+  }
+
+  /**
+   * Test marks a sandbox subscription: sold while its org was in test mode, paid with sandbox money. It is listed and never revenue.
+   * @return test
+   */
+  @javax.annotation.Nullable
+  public Boolean getTest() {
+    return test;
+  }
+
+  public void setTest(@javax.annotation.Nullable Boolean test) {
+    this.test = test;
+  }
+
+
   public BillingSubscription trialEnd(@javax.annotation.Nullable String trialEnd) {
     this.trialEnd = trialEnd;
     return this;
@@ -612,15 +776,20 @@ public class BillingSubscription {
       return false;
     }
     BillingSubscription billingSubscription = (BillingSubscription) o;
-    return Objects.equals(this.cancelAtPeriodEnd, billingSubscription.cancelAtPeriodEnd) &&
+    return Objects.equals(this.assigned, billingSubscription.assigned) &&
+        Objects.equals(this.cancelAtPeriodEnd, billingSubscription.cancelAtPeriodEnd) &&
         Objects.equals(this.canceledAt, billingSubscription.canceledAt) &&
         Objects.equals(this.chargedCents, billingSubscription.chargedCents) &&
+        Objects.equals(this.coupon, billingSubscription.coupon) &&
         Objects.equals(this.createdAt, billingSubscription.createdAt) &&
         Objects.equals(this.currentPeriodEnd, billingSubscription.currentPeriodEnd) &&
         Objects.equals(this.currentPeriodStart, billingSubscription.currentPeriodStart) &&
         Objects.equals(this.defaultPaymentMethod, billingSubscription.defaultPaymentMethod) &&
         Objects.equals(this.endedAt, billingSubscription.endedAt) &&
+        Objects.equals(this.held, billingSubscription.held) &&
         Objects.equals(this.id, billingSubscription.id) &&
+        Objects.equals(this.lastPaid, billingSubscription.lastPaid) &&
+        Objects.equals(this.lines, billingSubscription.lines) &&
         Objects.equals(this.mrrCents, billingSubscription.mrrCents) &&
         Objects.equals(this.plan, billingSubscription.plan) &&
         Objects.equals(this.planId, billingSubscription.planId) &&
@@ -629,6 +798,7 @@ public class BillingSubscription {
         Objects.equals(this.seats, billingSubscription.seats) &&
         Objects.equals(this.settled, billingSubscription.settled) &&
         Objects.equals(this.status, billingSubscription.status) &&
+        Objects.equals(this.test, billingSubscription.test) &&
         Objects.equals(this.trialEnd, billingSubscription.trialEnd) &&
         Objects.equals(this.trialStart, billingSubscription.trialStart) &&
         Objects.equals(this.updatedAt, billingSubscription.updatedAt) &&
@@ -638,22 +808,27 @@ public class BillingSubscription {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cancelAtPeriodEnd, canceledAt, chargedCents, createdAt, currentPeriodEnd, currentPeriodStart, defaultPaymentMethod, endedAt, id, mrrCents, plan, planId, providerType, quantity, seats, settled, status, trialEnd, trialStart, updatedAt, userId, additionalProperties);
+    return Objects.hash(assigned, cancelAtPeriodEnd, canceledAt, chargedCents, coupon, createdAt, currentPeriodEnd, currentPeriodStart, defaultPaymentMethod, endedAt, held, id, lastPaid, lines, mrrCents, plan, planId, providerType, quantity, seats, settled, status, test, trialEnd, trialStart, updatedAt, userId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingSubscription {\n");
+    sb.append("    assigned: ").append(toIndentedString(assigned)).append("\n");
     sb.append("    cancelAtPeriodEnd: ").append(toIndentedString(cancelAtPeriodEnd)).append("\n");
     sb.append("    canceledAt: ").append(toIndentedString(canceledAt)).append("\n");
     sb.append("    chargedCents: ").append(toIndentedString(chargedCents)).append("\n");
+    sb.append("    coupon: ").append(toIndentedString(coupon)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    currentPeriodEnd: ").append(toIndentedString(currentPeriodEnd)).append("\n");
     sb.append("    currentPeriodStart: ").append(toIndentedString(currentPeriodStart)).append("\n");
     sb.append("    defaultPaymentMethod: ").append(toIndentedString(defaultPaymentMethod)).append("\n");
     sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
+    sb.append("    held: ").append(toIndentedString(held)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    lastPaid: ").append(toIndentedString(lastPaid)).append("\n");
+    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    mrrCents: ").append(toIndentedString(mrrCents)).append("\n");
     sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
     sb.append("    planId: ").append(toIndentedString(planId)).append("\n");
@@ -662,6 +837,7 @@ public class BillingSubscription {
     sb.append("    seats: ").append(toIndentedString(seats)).append("\n");
     sb.append("    settled: ").append(toIndentedString(settled)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    test: ").append(toIndentedString(test)).append("\n");
     sb.append("    trialEnd: ").append(toIndentedString(trialEnd)).append("\n");
     sb.append("    trialStart: ").append(toIndentedString(trialStart)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -688,7 +864,7 @@ public class BillingSubscription {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("cancelAtPeriodEnd", "canceledAt", "chargedCents", "createdAt", "currentPeriodEnd", "currentPeriodStart", "defaultPaymentMethod", "endedAt", "id", "mrrCents", "plan", "planId", "providerType", "quantity", "seats", "settled", "status", "trialEnd", "trialStart", "updatedAt", "userId"));
+    openapiFields = new HashSet<String>(Arrays.asList("assigned", "cancelAtPeriodEnd", "canceledAt", "chargedCents", "coupon", "createdAt", "currentPeriodEnd", "currentPeriodStart", "defaultPaymentMethod", "endedAt", "held", "id", "lastPaid", "lines", "mrrCents", "plan", "planId", "providerType", "quantity", "seats", "settled", "status", "test", "trialEnd", "trialStart", "updatedAt", "userId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -707,8 +883,25 @@ public class BillingSubscription {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("assigned") != null && !jsonObj.get("assigned").isJsonNull()) {
+        JsonArray jsonArrayassigned = jsonObj.getAsJsonArray("assigned");
+        if (jsonArrayassigned != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("assigned").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `assigned` to be an array in the JSON string but got `%s`", jsonObj.get("assigned").toString()));
+          }
+
+          // validate the optional field `assigned` (array)
+          for (int i = 0; i < jsonArrayassigned.size(); i++) {
+            BillingSubscriptionSeat.validateJsonElement(jsonArrayassigned.get(i));
+          };
+        }
+      }
       if ((jsonObj.get("canceledAt") != null && !jsonObj.get("canceledAt").isJsonNull()) && !jsonObj.get("canceledAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `canceledAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("canceledAt").toString()));
+      }
+      if ((jsonObj.get("coupon") != null && !jsonObj.get("coupon").isJsonNull()) && !jsonObj.get("coupon").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `coupon` to be a primitive type in the JSON string but got `%s`", jsonObj.get("coupon").toString()));
       }
       if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
@@ -727,6 +920,23 @@ public class BillingSubscription {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("lastPaid") != null && !jsonObj.get("lastPaid").isJsonNull()) && !jsonObj.get("lastPaid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lastPaid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastPaid").toString()));
+      }
+      if (jsonObj.get("lines") != null && !jsonObj.get("lines").isJsonNull()) {
+        JsonArray jsonArraylines = jsonObj.getAsJsonArray("lines");
+        if (jsonArraylines != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("lines").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `lines` to be an array in the JSON string but got `%s`", jsonObj.get("lines").toString()));
+          }
+
+          // validate the optional field `lines` (array)
+          for (int i = 0; i < jsonArraylines.size(); i++) {
+            BillingSubscriptionLine.validateJsonElement(jsonArraylines.get(i));
+          };
+        }
       }
       // validate the optional field `plan`
       if (jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) {

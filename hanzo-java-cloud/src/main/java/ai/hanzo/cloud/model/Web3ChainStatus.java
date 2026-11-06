@@ -84,7 +84,7 @@ public class Web3ChainStatus {
   }
 
   /**
-   * Get chainId
+   * ChainID is the EIP-155 id, so a caller can check it matches the wallet they are about to sign with.
    * @return chainId
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class Web3ChainStatus {
   }
 
   /**
-   * Get id
+   * ID is the URL name: the value of :chain.
    * @return id
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class Web3ChainStatus {
   }
 
   /**
-   * Get name
+   * Name is for humans.
    * @return name
    */
   @javax.annotation.Nullable

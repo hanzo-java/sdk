@@ -77,6 +77,11 @@ public class AgentSessionView {
   @javax.annotation.Nullable
   private String branch;
 
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
+
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
   @javax.annotation.Nullable
@@ -101,6 +106,11 @@ public class AgentSessionView {
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)
   @javax.annotation.Nullable
   private String environment;
+
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  @javax.annotation.Nullable
+  private String error;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
@@ -171,11 +181,6 @@ public class AgentSessionView {
   @SerializedName(SERIALIZED_NAME_REPO)
   @javax.annotation.Nullable
   private String repo;
-
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
 
   public static final String SERIALIZED_NAME_ROOT_SESSION_ID = "rootSessionId";
   @SerializedName(SERIALIZED_NAME_ROOT_SESSION_ID)
@@ -325,6 +330,25 @@ public class AgentSessionView {
   }
 
 
+  public AgentSessionView channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the collaborative channel this run was started in (HIP-0523), empty when it came from anywhere else — a CLI, a schedule, an API call. It is what lets a space view show the runs of one channel beside its messages.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+  }
+
+
   public AgentSessionView children(@javax.annotation.Nullable Long children) {
     this.children = children;
     return this;
@@ -417,6 +441,25 @@ public class AgentSessionView {
 
   public void setEnvironment(@javax.annotation.Nullable String environment) {
     this.environment = environment;
+  }
+
+
+  public AgentSessionView error(@javax.annotation.Nullable String error) {
+    this.error = error;
+    return this;
+  }
+
+  /**
+   * Error explains why the session ended in error, when it did. Empty for any other status.
+   * @return error
+   */
+  @javax.annotation.Nullable
+  public String getError() {
+    return error;
+  }
+
+  public void setError(@javax.annotation.Nullable String error) {
+    this.error = error;
   }
 
 
@@ -686,25 +729,6 @@ public class AgentSessionView {
   }
 
 
-  public AgentSessionView room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room is the collaborative room this run was started in (HIP-0523), empty when it came from anywhere else — a CLI, a schedule, an API call. It is what lets a space view show the runs of one room beside its messages.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
-  }
-
-
   public AgentSessionView rootSessionId(@javax.annotation.Nullable String rootSessionId) {
     this.rootSessionId = rootSessionId;
     return this;
@@ -954,11 +978,13 @@ public class AgentSessionView {
         Objects.equals(this.agent, agentSessionView.agent) &&
         Objects.equals(this.base, agentSessionView.base) &&
         Objects.equals(this.branch, agentSessionView.branch) &&
+        Objects.equals(this.channel, agentSessionView.channel) &&
         Objects.equals(this.children, agentSessionView.children) &&
         Objects.equals(this.createdAt, agentSessionView.createdAt) &&
         Objects.equals(this.cwd, agentSessionView.cwd) &&
         Objects.equals(this.endedAt, agentSessionView.endedAt) &&
         Objects.equals(this.environment, agentSessionView.environment) &&
+        Objects.equals(this.error, agentSessionView.error) &&
         Objects.equals(this.events, agentSessionView.events) &&
         Objects.equals(this.host, agentSessionView.host) &&
         Objects.equals(this.id, agentSessionView.id) &&
@@ -973,7 +999,6 @@ public class AgentSessionView {
         Objects.equals(this.provider, agentSessionView.provider) &&
         Objects.equals(this.published, agentSessionView.published) &&
         Objects.equals(this.repo, agentSessionView.repo) &&
-        Objects.equals(this.room, agentSessionView.room) &&
         Objects.equals(this.rootSessionId, agentSessionView.rootSessionId) &&
         Objects.equals(this.sandbox, agentSessionView.sandbox) &&
         Objects.equals(this.startedAt, agentSessionView.startedAt) &&
@@ -989,7 +1014,7 @@ public class AgentSessionView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, base, branch, children, createdAt, cwd, endedAt, environment, events, host, id, kind, lastEvent, mode, org, parentSessionId, pr, progress, project, provider, published, repo, room, rootSessionId, sandbox, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt, additionalProperties);
+    return Objects.hash(account, actor, agent, base, branch, channel, children, createdAt, cwd, endedAt, environment, error, events, host, id, kind, lastEvent, mode, org, parentSessionId, pr, progress, project, provider, published, repo, rootSessionId, sandbox, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt, additionalProperties);
   }
 
   @Override
@@ -1001,11 +1026,13 @@ public class AgentSessionView {
     sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
     sb.append("    branch: ").append(toIndentedString(branch)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    children: ").append(toIndentedString(children)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    cwd: ").append(toIndentedString(cwd)).append("\n");
     sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
     sb.append("    environment: ").append(toIndentedString(environment)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -1020,7 +1047,6 @@ public class AgentSessionView {
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    rootSessionId: ").append(toIndentedString(rootSessionId)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
@@ -1053,7 +1079,7 @@ public class AgentSessionView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "base", "branch", "children", "createdAt", "cwd", "endedAt", "environment", "events", "host", "id", "kind", "lastEvent", "mode", "org", "parentSessionId", "pr", "progress", "project", "provider", "published", "repo", "room", "rootSessionId", "sandbox", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "base", "branch", "channel", "children", "createdAt", "cwd", "endedAt", "environment", "error", "events", "host", "id", "kind", "lastEvent", "mode", "org", "parentSessionId", "pr", "progress", "project", "provider", "published", "repo", "rootSessionId", "sandbox", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -1087,6 +1113,9 @@ public class AgentSessionView {
       if ((jsonObj.get("branch") != null && !jsonObj.get("branch").isJsonNull()) && !jsonObj.get("branch").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `branch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("branch").toString()));
       }
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
       if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
       }
@@ -1098,6 +1127,9 @@ public class AgentSessionView {
       }
       if ((jsonObj.get("environment") != null && !jsonObj.get("environment").isJsonNull()) && !jsonObj.get("environment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `environment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("environment").toString()));
+      }
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
       if ((jsonObj.get("host") != null && !jsonObj.get("host").isJsonNull()) && !jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
@@ -1136,9 +1168,6 @@ public class AgentSessionView {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("rootSessionId") != null && !jsonObj.get("rootSessionId").isJsonNull()) && !jsonObj.get("rootSessionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rootSessionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rootSessionId").toString()));

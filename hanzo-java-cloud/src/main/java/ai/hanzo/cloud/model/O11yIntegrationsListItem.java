@@ -109,7 +109,7 @@ public class O11yIntegrationsListItem {
   }
 
   /**
-   * Get description
+   * A short description
    * @return description
    */
   @javax.annotation.Nullable

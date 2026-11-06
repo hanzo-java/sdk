@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class AiResponsesInputDetails {
+  public static final String SERIALIZED_NAME_CACHE_WRITE_TOKENS = "cache_write_tokens";
+  @SerializedName(SERIALIZED_NAME_CACHE_WRITE_TOKENS)
+  @javax.annotation.Nullable
+  private Integer cacheWriteTokens;
+
   public static final String SERIALIZED_NAME_CACHED_TOKENS = "cached_tokens";
   @SerializedName(SERIALIZED_NAME_CACHED_TOKENS)
   @javax.annotation.Nullable
@@ -57,6 +62,25 @@ public class AiResponsesInputDetails {
 
   public AiResponsesInputDetails() {
   }
+
+  public AiResponsesInputDetails cacheWriteTokens(@javax.annotation.Nullable Integer cacheWriteTokens) {
+    this.cacheWriteTokens = cacheWriteTokens;
+    return this;
+  }
+
+  /**
+   * Get cacheWriteTokens
+   * @return cacheWriteTokens
+   */
+  @javax.annotation.Nullable
+  public Integer getCacheWriteTokens() {
+    return cacheWriteTokens;
+  }
+
+  public void setCacheWriteTokens(@javax.annotation.Nullable Integer cacheWriteTokens) {
+    this.cacheWriteTokens = cacheWriteTokens;
+  }
+
 
   public AiResponsesInputDetails cachedTokens(@javax.annotation.Nullable Integer cachedTokens) {
     this.cachedTokens = cachedTokens;
@@ -131,19 +155,21 @@ public class AiResponsesInputDetails {
       return false;
     }
     AiResponsesInputDetails aiResponsesInputDetails = (AiResponsesInputDetails) o;
-    return Objects.equals(this.cachedTokens, aiResponsesInputDetails.cachedTokens)&&
+    return Objects.equals(this.cacheWriteTokens, aiResponsesInputDetails.cacheWriteTokens) &&
+        Objects.equals(this.cachedTokens, aiResponsesInputDetails.cachedTokens)&&
         Objects.equals(this.additionalProperties, aiResponsesInputDetails.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cachedTokens, additionalProperties);
+    return Objects.hash(cacheWriteTokens, cachedTokens, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AiResponsesInputDetails {\n");
+    sb.append("    cacheWriteTokens: ").append(toIndentedString(cacheWriteTokens)).append("\n");
     sb.append("    cachedTokens: ").append(toIndentedString(cachedTokens)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -167,7 +193,7 @@ public class AiResponsesInputDetails {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("cached_tokens"));
+    openapiFields = new HashSet<String>(Arrays.asList("cache_write_tokens", "cached_tokens"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

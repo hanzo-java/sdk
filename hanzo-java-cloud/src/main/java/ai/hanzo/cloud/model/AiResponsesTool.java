@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -75,6 +77,11 @@ public class AiResponsesTool {
   @SerializedName(SERIALIZED_NAME_STRICT)
   @javax.annotation.Nullable
   private Boolean strict;
+
+  public static final String SERIALIZED_NAME_TOOLS = "tools";
+  @SerializedName(SERIALIZED_NAME_TOOLS)
+  @javax.annotation.Nullable
+  private List<AiResponsesTool> tools = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -179,6 +186,33 @@ public class AiResponsesTool {
   }
 
 
+  public AiResponsesTool tools(@javax.annotation.Nullable List<AiResponsesTool> tools) {
+    this.tools = tools;
+    return this;
+  }
+
+  public AiResponsesTool addToolsItem(AiResponsesTool toolsItem) {
+    if (this.tools == null) {
+      this.tools = new ArrayList<>();
+    }
+    this.tools.add(toolsItem);
+    return this;
+  }
+
+  /**
+   * Get tools
+   * @return tools
+   */
+  @javax.annotation.Nullable
+  public List<AiResponsesTool> getTools() {
+    return tools;
+  }
+
+  public void setTools(@javax.annotation.Nullable List<AiResponsesTool> tools) {
+    this.tools = tools;
+  }
+
+
   public AiResponsesTool type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
@@ -257,6 +291,7 @@ public class AiResponsesTool {
         Objects.equals(this.name, aiResponsesTool.name) &&
         Objects.equals(this.parameters, aiResponsesTool.parameters) &&
         Objects.equals(this.strict, aiResponsesTool.strict) &&
+        Objects.equals(this.tools, aiResponsesTool.tools) &&
         Objects.equals(this.type, aiResponsesTool.type)&&
         Objects.equals(this.additionalProperties, aiResponsesTool.additionalProperties);
   }
@@ -267,7 +302,7 @@ public class AiResponsesTool {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, format, name, parameters, strict, type, additionalProperties);
+    return Objects.hash(description, format, name, parameters, strict, tools, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,6 +321,7 @@ public class AiResponsesTool {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
     sb.append("    strict: ").append(toIndentedString(strict)).append("\n");
+    sb.append("    tools: ").append(toIndentedString(tools)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -309,7 +345,7 @@ public class AiResponsesTool {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("description", "format", "name", "parameters", "strict", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("description", "format", "name", "parameters", "strict", "tools", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -333,6 +369,20 @@ public class AiResponsesTool {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (jsonObj.get("tools") != null && !jsonObj.get("tools").isJsonNull()) {
+        JsonArray jsonArraytools = jsonObj.getAsJsonArray("tools");
+        if (jsonArraytools != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("tools").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `tools` to be an array in the JSON string but got `%s`", jsonObj.get("tools").toString()));
+          }
+
+          // validate the optional field `tools` (array)
+          for (int i = 0; i < jsonArraytools.size(); i++) {
+            AiResponsesTool.validateJsonElement(jsonArraytools.get(i));
+          };
+        }
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

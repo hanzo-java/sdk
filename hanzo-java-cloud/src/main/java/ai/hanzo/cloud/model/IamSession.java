@@ -207,7 +207,7 @@ public class IamSession {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable

@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.BenchmarkPublishedClaim;
+import ai.hanzo.cloud.model.BenchmarkClaim;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,7 +56,7 @@ public class BenchmarkPutClaimsIn {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BenchmarkPublishedClaim> data = new ArrayList<>();
+  private List<BenchmarkClaim> data = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
   @SerializedName(SERIALIZED_NAME_VISIBILITY)
@@ -66,12 +66,12 @@ public class BenchmarkPutClaimsIn {
   public BenchmarkPutClaimsIn() {
   }
 
-  public BenchmarkPutClaimsIn data(@javax.annotation.Nullable List<BenchmarkPublishedClaim> data) {
+  public BenchmarkPutClaimsIn data(@javax.annotation.Nullable List<BenchmarkClaim> data) {
     this.data = data;
     return this;
   }
 
-  public BenchmarkPutClaimsIn addDataItem(BenchmarkPublishedClaim dataItem) {
+  public BenchmarkPutClaimsIn addDataItem(BenchmarkClaim dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -84,11 +84,11 @@ public class BenchmarkPutClaimsIn {
    * @return data
    */
   @javax.annotation.Nullable
-  public List<BenchmarkPublishedClaim> getData() {
+  public List<BenchmarkClaim> getData() {
     return data;
   }
 
-  public void setData(@javax.annotation.Nullable List<BenchmarkPublishedClaim> data) {
+  public void setData(@javax.annotation.Nullable List<BenchmarkClaim> data) {
     this.data = data;
   }
 
@@ -233,7 +233,7 @@ public class BenchmarkPutClaimsIn {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            BenchmarkPublishedClaim.validateJsonElement(jsonArraydata.get(i));
+            BenchmarkClaim.validateJsonElement(jsonArraydata.get(i));
           };
         }
       }

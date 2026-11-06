@@ -75,7 +75,7 @@ public class BenchmarkPresetList {
   }
 
   /**
-   * Data is the blends available to compose from.
+   * Data is the reference blend, then the caller&#39;s org&#39;s stored blends by name.
    * @return data
    */
   @javax.annotation.Nullable

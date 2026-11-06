@@ -28,15 +28,16 @@ import java.io.IOException;
 
 
 import java.io.File;
+import ai.hanzo.cloud.model.GitActivityOut;
 import ai.hanzo.cloud.model.GitBlobJSON;
 import ai.hanzo.cloud.model.GitCommitsJSON;
 import ai.hanzo.cloud.model.GitCreateReq;
 import ai.hanzo.cloud.model.GitFilesJSON;
 import ai.hanzo.cloud.model.GitGcOut;
-import ai.hanzo.cloud.model.GitKeyList;
-import ai.hanzo.cloud.model.GitKeyView;
+import ai.hanzo.cloud.model.GitLinkAll;
+import ai.hanzo.cloud.model.GitLinkReq;
+import ai.hanzo.cloud.model.GitLinked;
 import ai.hanzo.cloud.model.GitMirrorList;
-import ai.hanzo.cloud.model.GitMirrorReq;
 import ai.hanzo.cloud.model.GitMirrorTargetReq;
 import ai.hanzo.cloud.model.GitMirrorTargetView;
 import ai.hanzo.cloud.model.GitOpenReq;
@@ -50,7 +51,6 @@ import ai.hanzo.cloud.model.GitPushReq;
 import ai.hanzo.cloud.model.GitPushResp;
 import ai.hanzo.cloud.model.GitReadmeJSON;
 import ai.hanzo.cloud.model.GitRefsJSON;
-import ai.hanzo.cloud.model.GitRegisterKeyReq;
 import ai.hanzo.cloud.model.GitRepoList;
 import ai.hanzo.cloud.model.GitRepoView;
 import ai.hanzo.cloud.model.GitRunStart;
@@ -119,133 +119,6 @@ public class GitApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteGitKeysById
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteGitKeysByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/keys/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteGitKeysByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteGitKeysById(Async)");
-        }
-
-        return deleteGitKeysByIdCall(id, _callback);
-
-    }
-
-    /**
-     * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found.
-     * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteGitKeysById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteGitKeysByIdWithHttpInfo(id);
-    }
-
-    /**
-     * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found.
-     * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteGitKeysByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteGitKeysByIdValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. (asynchronously)
-     * Removes a registered SSH key, scoped to the caller&#39;s org: an org can only delete its own, and a key id it does not own is not found. Answers 204 with no body. Once removed the key no longer authenticates any SSH git access.
-     * @param id ID is the key&#39;s identifier (\&quot;gitkey_…\&quot;), from the :id path segment. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteGitKeysByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteGitKeysByIdValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for deleteGitReposByName
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
@@ -733,6 +606,160 @@ public class GitApi {
 
         okhttp3.Call localVarCall = getGitValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGitActivity
+     * @param org Org lists one org&#39;s repositories; empty lists every org&#39;s. (optional)
+     * @param group Group lists one group&#39;s repositories (hanzo, lux, zoo); empty lists every group&#39;s. (optional)
+     * @param page Page is the repository page, from 1. Anything not positive means 1. (optional)
+     * @param limit Limit is the page size. Anything not positive means 50; the cap is 200. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGitActivityCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String group, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/git/activity";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
+        if (group != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group", group));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGitActivityValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String group, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getGitActivityCall(org, group, page, limit, _callback);
+
+    }
+
+    /**
+     * Answers the estate&#39;s last 365 days: distinct commits, merges, active repositories and contributors, for the whole estate, each group and each org, a commit count per day, the newest public commits, and one page of public repositories.
+     * Answers the estate&#39;s last 365 days: distinct commits, merges, active repositories and contributors, for the whole estate, each group and each org, a commit count per day, the newest public commits, and one page of public repositories. Public: private repositories are counted and never named.
+     * @param org Org lists one org&#39;s repositories; empty lists every org&#39;s. (optional)
+     * @param group Group lists one group&#39;s repositories (hanzo, lux, zoo); empty lists every group&#39;s. (optional)
+     * @param page Page is the repository page, from 1. Anything not positive means 1. (optional)
+     * @param limit Limit is the page size. Anything not positive means 50; the cap is 200. (optional)
+     * @return GitActivityOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GitActivityOut getGitActivity(@javax.annotation.Nullable String org, @javax.annotation.Nullable String group, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<GitActivityOut> localVarResp = getGitActivityWithHttpInfo(org, group, page, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the estate&#39;s last 365 days: distinct commits, merges, active repositories and contributors, for the whole estate, each group and each org, a commit count per day, the newest public commits, and one page of public repositories.
+     * Answers the estate&#39;s last 365 days: distinct commits, merges, active repositories and contributors, for the whole estate, each group and each org, a commit count per day, the newest public commits, and one page of public repositories. Public: private repositories are counted and never named.
+     * @param org Org lists one org&#39;s repositories; empty lists every org&#39;s. (optional)
+     * @param group Group lists one group&#39;s repositories (hanzo, lux, zoo); empty lists every group&#39;s. (optional)
+     * @param page Page is the repository page, from 1. Anything not positive means 1. (optional)
+     * @param limit Limit is the page size. Anything not positive means 50; the cap is 200. (optional)
+     * @return ApiResponse&lt;GitActivityOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GitActivityOut> getGitActivityWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String group, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getGitActivityValidateBeforeCall(org, group, page, limit, null);
+        Type localVarReturnType = new TypeToken<GitActivityOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the estate&#39;s last 365 days: distinct commits, merges, active repositories and contributors, for the whole estate, each group and each org, a commit count per day, the newest public commits, and one page of public repositories. (asynchronously)
+     * Answers the estate&#39;s last 365 days: distinct commits, merges, active repositories and contributors, for the whole estate, each group and each org, a commit count per day, the newest public commits, and one page of public repositories. Public: private repositories are counted and never named.
+     * @param org Org lists one org&#39;s repositories; empty lists every org&#39;s. (optional)
+     * @param group Group lists one group&#39;s repositories (hanzo, lux, zoo); empty lists every group&#39;s. (optional)
+     * @param page Page is the repository page, from 1. Anything not positive means 1. (optional)
+     * @param limit Limit is the page size. Anything not positive means 50; the cap is 200. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGitActivityAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String group, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback<GitActivityOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGitActivityValidateBeforeCall(org, group, page, limit, _callback);
+        Type localVarReturnType = new TypeToken<GitActivityOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1263,128 +1290,6 @@ public class GitApi {
 
         okhttp3.Call localVarCall = getGitExploreValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getGitKeys
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGitKeysCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/keys";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGitKeysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getGitKeysCall(_callback);
-
-    }
-
-    /**
-     * Returns the SSH public keys registered to the caller&#39;s org — the keys that authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60;.
-     * Returns the SSH public keys registered to the caller&#39;s org — the keys that authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60;. Keys are org-scoped on read even though the fingerprint index is global, so one org never sees another&#39;s.
-     * @return GitKeyList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public GitKeyList getGitKeys() throws ApiException {
-        ApiResponse<GitKeyList> localVarResp = getGitKeysWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the SSH public keys registered to the caller&#39;s org — the keys that authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60;.
-     * Returns the SSH public keys registered to the caller&#39;s org — the keys that authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60;. Keys are org-scoped on read even though the fingerprint index is global, so one org never sees another&#39;s.
-     * @return ApiResponse&lt;GitKeyList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GitKeyList> getGitKeysWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getGitKeysValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GitKeyList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the SSH public keys registered to the caller&#39;s org — the keys that authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60;. (asynchronously)
-     * Returns the SSH public keys registered to the caller&#39;s org — the keys that authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60;. Keys are org-scoped on read even though the fingerprint index is global, so one org never sees another&#39;s.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGitKeysAsync(final ApiCallback<GitKeyList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getGitKeysValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GitKeyList>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -4448,8 +4353,8 @@ public class GitApi {
         return localVarCall;
     }
     /**
-     * Build call for postGitKeys
-     * @param gitRegisterKeyReq  (required)
+     * Build call for postGitLink
+     * @param gitLinkAll  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4457,11 +4362,11 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGitKeysCall(@javax.annotation.Nonnull GitRegisterKeyReq gitRegisterKeyReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitLinkCall(@javax.annotation.Nonnull GitLinkAll gitLinkAll, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4475,10 +4380,10 @@ public class GitApi {
             basePath = null;
         }
 
-        Object localVarPostBody = gitRegisterKeyReq;
+        Object localVarPostBody = gitLinkAll;
 
         // create path and map variables
-        String localVarPath = "/v1/git/keys";
+        String localVarPath = "/v1/git/link";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4508,59 +4413,59 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitKeysValidateBeforeCall(@javax.annotation.Nonnull GitRegisterKeyReq gitRegisterKeyReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'gitRegisterKeyReq' is set
-        if (gitRegisterKeyReq == null) {
-            throw new ApiException("Missing the required parameter 'gitRegisterKeyReq' when calling postGitKeys(Async)");
+    private okhttp3.Call postGitLinkValidateBeforeCall(@javax.annotation.Nonnull GitLinkAll gitLinkAll, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'gitLinkAll' is set
+        if (gitLinkAll == null) {
+            throw new ApiException("Missing the required parameter 'gitLinkAll' when calling postGitLink(Async)");
         }
 
-        return postGitKeysCall(gitRegisterKeyReq, _callback);
+        return postGitLinkCall(gitLinkAll, _callback);
 
     }
 
     /**
-     * Registers an SSH public key so it can authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60; for the caller&#39;s org.
-     * Registers an SSH public key so it can authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60; for the caller&#39;s org. The key line is parsed and canonicalized before storage, its SHA256 fingerprint becomes the auth lookup handle, and the full public key round-trips (it is public). Answers 201. Fingerprints are globally unique, so a key already registered — to this org or any other — is a 409: one key belongs to exactly one org.
-     * @param gitRegisterKeyReq  (required)
-     * @return GitKeyView
+     * Links every repository of the caller&#39;s org that holds no history here and names no link to github.com/&lt;owner&gt;/&lt;name&gt;, where GitHub lets the caller read it.
+     * Links every repository of the caller&#39;s org that holds no history here and names no link to github.com/&lt;owner&gt;/&lt;name&gt;, where GitHub lets the caller read it. A repository with no such namesake is listed and left alone, and one holding history here is listed and never touched. Nothing is fetched: a linked repository&#39;s cache fills on its first read. Org admins only.
+     * @param gitLinkAll  (required)
+     * @return GitLinked
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GitKeyView postGitKeys(@javax.annotation.Nonnull GitRegisterKeyReq gitRegisterKeyReq) throws ApiException {
-        ApiResponse<GitKeyView> localVarResp = postGitKeysWithHttpInfo(gitRegisterKeyReq);
+    public GitLinked postGitLink(@javax.annotation.Nonnull GitLinkAll gitLinkAll) throws ApiException {
+        ApiResponse<GitLinked> localVarResp = postGitLinkWithHttpInfo(gitLinkAll);
         return localVarResp.getData();
     }
 
     /**
-     * Registers an SSH public key so it can authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60; for the caller&#39;s org.
-     * Registers an SSH public key so it can authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60; for the caller&#39;s org. The key line is parsed and canonicalized before storage, its SHA256 fingerprint becomes the auth lookup handle, and the full public key round-trips (it is public). Answers 201. Fingerprints are globally unique, so a key already registered — to this org or any other — is a 409: one key belongs to exactly one org.
-     * @param gitRegisterKeyReq  (required)
-     * @return ApiResponse&lt;GitKeyView&gt;
+     * Links every repository of the caller&#39;s org that holds no history here and names no link to github.com/&lt;owner&gt;/&lt;name&gt;, where GitHub lets the caller read it.
+     * Links every repository of the caller&#39;s org that holds no history here and names no link to github.com/&lt;owner&gt;/&lt;name&gt;, where GitHub lets the caller read it. A repository with no such namesake is listed and left alone, and one holding history here is listed and never touched. Nothing is fetched: a linked repository&#39;s cache fills on its first read. Org admins only.
+     * @param gitLinkAll  (required)
+     * @return ApiResponse&lt;GitLinked&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GitKeyView> postGitKeysWithHttpInfo(@javax.annotation.Nonnull GitRegisterKeyReq gitRegisterKeyReq) throws ApiException {
-        okhttp3.Call localVarCall = postGitKeysValidateBeforeCall(gitRegisterKeyReq, null);
-        Type localVarReturnType = new TypeToken<GitKeyView>(){}.getType();
+    public ApiResponse<GitLinked> postGitLinkWithHttpInfo(@javax.annotation.Nonnull GitLinkAll gitLinkAll) throws ApiException {
+        okhttp3.Call localVarCall = postGitLinkValidateBeforeCall(gitLinkAll, null);
+        Type localVarReturnType = new TypeToken<GitLinked>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Registers an SSH public key so it can authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60; for the caller&#39;s org. (asynchronously)
-     * Registers an SSH public key so it can authenticate &#x60;git clone git@&lt;host&gt;:&lt;org&gt;/&lt;repo&gt;.git&#x60; for the caller&#39;s org. The key line is parsed and canonicalized before storage, its SHA256 fingerprint becomes the auth lookup handle, and the full public key round-trips (it is public). Answers 201. Fingerprints are globally unique, so a key already registered — to this org or any other — is a 409: one key belongs to exactly one org.
-     * @param gitRegisterKeyReq  (required)
+     * Links every repository of the caller&#39;s org that holds no history here and names no link to github.com/&lt;owner&gt;/&lt;name&gt;, where GitHub lets the caller read it. (asynchronously)
+     * Links every repository of the caller&#39;s org that holds no history here and names no link to github.com/&lt;owner&gt;/&lt;name&gt;, where GitHub lets the caller read it. A repository with no such namesake is listed and left alone, and one holding history here is listed and never touched. Nothing is fetched: a linked repository&#39;s cache fills on its first read. Org admins only.
+     * @param gitLinkAll  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4568,14 +4473,14 @@ public class GitApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGitKeysAsync(@javax.annotation.Nonnull GitRegisterKeyReq gitRegisterKeyReq, final ApiCallback<GitKeyView> _callback) throws ApiException {
+    public okhttp3.Call postGitLinkAsync(@javax.annotation.Nonnull GitLinkAll gitLinkAll, final ApiCallback<GitLinked> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postGitKeysValidateBeforeCall(gitRegisterKeyReq, _callback);
-        Type localVarReturnType = new TypeToken<GitKeyView>(){}.getType();
+        okhttp3.Call localVarCall = postGitLinkValidateBeforeCall(gitLinkAll, _callback);
+        Type localVarReturnType = new TypeToken<GitLinked>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4976,9 +4881,8 @@ public class GitApi {
         return localVarCall;
     }
     /**
-     * Build call for postGitReposByNameMirror
-     * @param name Name is the local repo to mirror into, from the :name path segment. It is CREATED on first use. (required)
-     * @param gitMirrorReq  (required)
+     * Build call for postGitReposByNameHome
+     * @param name Name is the repository, from the :name path segment. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4990,7 +4894,7 @@ public class GitApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGitReposByNameMirrorCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitMirrorReq gitMirrorReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameHomeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5004,10 +4908,143 @@ public class GitApi {
             basePath = null;
         }
 
-        Object localVarPostBody = gitMirrorReq;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/git/repos/{name}/mirror"
+        String localVarPath = "/v1/git/repos/{name}/home"
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postGitReposByNameHomeValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameHome(Async)");
+        }
+
+        return postGitReposByNameHomeCall(name, _callback);
+
+    }
+
+    /**
+     * Moves a repository whose history is HERE to the forge (git.hanzo.ai), the one home of a repository no other host holds, and links it there: the repository is made in the org&#39;s own namespace on the forge, every branch and tag is pushed to it, the forge&#39;s refs are read back and must equal these, and only then does the row name the forge as its link, so this copy becomes the cache it can be fetched back into.
+     * Moves a repository whose history is HERE to the forge (git.hanzo.ai), the one home of a repository no other host holds, and links it there: the repository is made in the org&#39;s own namespace on the forge, every branch and tag is pushed to it, the forge&#39;s refs are read back and must equal these, and only then does the row name the forge as its link, so this copy becomes the cache it can be fetched back into. A forge repository of that name that already exists is refused, never overwritten. Org admins only.
+     * @param name Name is the repository, from the :name path segment. (required)
+     * @return GitRepoView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GitRepoView postGitReposByNameHome(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<GitRepoView> localVarResp = postGitReposByNameHomeWithHttpInfo(name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Moves a repository whose history is HERE to the forge (git.hanzo.ai), the one home of a repository no other host holds, and links it there: the repository is made in the org&#39;s own namespace on the forge, every branch and tag is pushed to it, the forge&#39;s refs are read back and must equal these, and only then does the row name the forge as its link, so this copy becomes the cache it can be fetched back into.
+     * Moves a repository whose history is HERE to the forge (git.hanzo.ai), the one home of a repository no other host holds, and links it there: the repository is made in the org&#39;s own namespace on the forge, every branch and tag is pushed to it, the forge&#39;s refs are read back and must equal these, and only then does the row name the forge as its link, so this copy becomes the cache it can be fetched back into. A forge repository of that name that already exists is refused, never overwritten. Org admins only.
+     * @param name Name is the repository, from the :name path segment. (required)
+     * @return ApiResponse&lt;GitRepoView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GitRepoView> postGitReposByNameHomeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameHomeValidateBeforeCall(name, null);
+        Type localVarReturnType = new TypeToken<GitRepoView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Moves a repository whose history is HERE to the forge (git.hanzo.ai), the one home of a repository no other host holds, and links it there: the repository is made in the org&#39;s own namespace on the forge, every branch and tag is pushed to it, the forge&#39;s refs are read back and must equal these, and only then does the row name the forge as its link, so this copy becomes the cache it can be fetched back into. (asynchronously)
+     * Moves a repository whose history is HERE to the forge (git.hanzo.ai), the one home of a repository no other host holds, and links it there: the repository is made in the org&#39;s own namespace on the forge, every branch and tag is pushed to it, the forge&#39;s refs are read back and must equal these, and only then does the row name the forge as its link, so this copy becomes the cache it can be fetched back into. A forge repository of that name that already exists is refused, never overwritten. Org admins only.
+     * @param name Name is the repository, from the :name path segment. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postGitReposByNameHomeAsync(@javax.annotation.Nonnull String name, final ApiCallback<GitRepoView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postGitReposByNameHomeValidateBeforeCall(name, _callback);
+        Type localVarReturnType = new TypeToken<GitRepoView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postGitReposByNameLink
+     * @param name Name is the repository, from the :name path segment. It is made when the org has none of that name. (required)
+     * @param gitLinkReq  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postGitReposByNameLinkCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitLinkReq gitLinkReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = gitLinkReq;
+
+        // create path and map variables
+        String localVarPath = "/v1/git/repos/{name}/link"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -5038,26 +5075,26 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitReposByNameMirrorValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitMirrorReq gitMirrorReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNameLinkValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitLinkReq gitLinkReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameMirror(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameLink(Async)");
         }
 
-        // verify the required parameter 'gitMirrorReq' is set
-        if (gitMirrorReq == null) {
-            throw new ApiException("Missing the required parameter 'gitMirrorReq' when calling postGitReposByNameMirror(Async)");
+        // verify the required parameter 'gitLinkReq' is set
+        if (gitLinkReq == null) {
+            throw new ApiException("Missing the required parameter 'gitLinkReq' when calling postGitReposByNameLink(Async)");
         }
 
-        return postGitReposByNameMirrorCall(name, gitMirrorReq, _callback);
+        return postGitReposByNameLinkCall(name, gitLinkReq, _callback);
 
     }
 
     /**
-     * Imports an external git repository into the caller&#39;s repo, provisioning it on first use.
-     * Imports an external git repository into the caller&#39;s repo, provisioning it on first use. Fetch is FORCED and covers every ref, so a first call clones the source and a repeat call re-syncs it — the endpoint is idempotent by mirror semantics. Mirrored bytes are metered exactly like a push, and a push.landed event is emitted for the default branch so the code index picks the repo up.
-     * @param name Name is the local repo to mirror into, from the :name path segment. It is CREATED on first use. (required)
-     * @param gitMirrorReq  (required)
+     * Records that a repository&#39;s history lives on another host, making the repository first when the org has none of that name.
+     * Records that a repository&#39;s history lives on another host, making the repository first when the org has none of that name. Nothing is copied: a read is served from a cache filled from the host, as the host lets the caller read, and a push goes to the host. A repository whose history is HERE is refused (409): a link would hide what only this store holds.
+     * @param name Name is the repository, from the :name path segment. It is made when the org has none of that name. (required)
+     * @param gitLinkReq  (required)
      * @return GitRepoView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5068,16 +5105,16 @@ public class GitApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GitRepoView postGitReposByNameMirror(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitMirrorReq gitMirrorReq) throws ApiException {
-        ApiResponse<GitRepoView> localVarResp = postGitReposByNameMirrorWithHttpInfo(name, gitMirrorReq);
+    public GitRepoView postGitReposByNameLink(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitLinkReq gitLinkReq) throws ApiException {
+        ApiResponse<GitRepoView> localVarResp = postGitReposByNameLinkWithHttpInfo(name, gitLinkReq);
         return localVarResp.getData();
     }
 
     /**
-     * Imports an external git repository into the caller&#39;s repo, provisioning it on first use.
-     * Imports an external git repository into the caller&#39;s repo, provisioning it on first use. Fetch is FORCED and covers every ref, so a first call clones the source and a repeat call re-syncs it — the endpoint is idempotent by mirror semantics. Mirrored bytes are metered exactly like a push, and a push.landed event is emitted for the default branch so the code index picks the repo up.
-     * @param name Name is the local repo to mirror into, from the :name path segment. It is CREATED on first use. (required)
-     * @param gitMirrorReq  (required)
+     * Records that a repository&#39;s history lives on another host, making the repository first when the org has none of that name.
+     * Records that a repository&#39;s history lives on another host, making the repository first when the org has none of that name. Nothing is copied: a read is served from a cache filled from the host, as the host lets the caller read, and a push goes to the host. A repository whose history is HERE is refused (409): a link would hide what only this store holds.
+     * @param name Name is the repository, from the :name path segment. It is made when the org has none of that name. (required)
+     * @param gitLinkReq  (required)
      * @return ApiResponse&lt;GitRepoView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5088,17 +5125,17 @@ public class GitApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GitRepoView> postGitReposByNameMirrorWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitMirrorReq gitMirrorReq) throws ApiException {
-        okhttp3.Call localVarCall = postGitReposByNameMirrorValidateBeforeCall(name, gitMirrorReq, null);
+    public ApiResponse<GitRepoView> postGitReposByNameLinkWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitLinkReq gitLinkReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameLinkValidateBeforeCall(name, gitLinkReq, null);
         Type localVarReturnType = new TypeToken<GitRepoView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Imports an external git repository into the caller&#39;s repo, provisioning it on first use. (asynchronously)
-     * Imports an external git repository into the caller&#39;s repo, provisioning it on first use. Fetch is FORCED and covers every ref, so a first call clones the source and a repeat call re-syncs it — the endpoint is idempotent by mirror semantics. Mirrored bytes are metered exactly like a push, and a push.landed event is emitted for the default branch so the code index picks the repo up.
-     * @param name Name is the local repo to mirror into, from the :name path segment. It is CREATED on first use. (required)
-     * @param gitMirrorReq  (required)
+     * Records that a repository&#39;s history lives on another host, making the repository first when the org has none of that name. (asynchronously)
+     * Records that a repository&#39;s history lives on another host, making the repository first when the org has none of that name. Nothing is copied: a read is served from a cache filled from the host, as the host lets the caller read, and a push goes to the host. A repository whose history is HERE is refused (409): a link would hide what only this store holds.
+     * @param name Name is the repository, from the :name path segment. It is made when the org has none of that name. (required)
+     * @param gitLinkReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5110,9 +5147,9 @@ public class GitApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGitReposByNameMirrorAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitMirrorReq gitMirrorReq, final ApiCallback<GitRepoView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNameLinkAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull GitLinkReq gitLinkReq, final ApiCallback<GitRepoView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postGitReposByNameMirrorValidateBeforeCall(name, gitMirrorReq, _callback);
+        okhttp3.Call localVarCall = postGitReposByNameLinkValidateBeforeCall(name, gitLinkReq, _callback);
         Type localVarReturnType = new TypeToken<GitRepoView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

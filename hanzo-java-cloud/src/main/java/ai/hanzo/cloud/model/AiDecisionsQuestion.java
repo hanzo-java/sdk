@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AiDecisionsBoolean;
 import ai.hanzo.cloud.model.AiDecisionsChoice;
 import ai.hanzo.cloud.model.AiDecisionsNoul;
 import ai.hanzo.cloud.model.AiDecisionsScore;
@@ -77,6 +78,7 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'AiDecisionsQuestion' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AiDecisionsBoolean> adapterAiDecisionsBoolean = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsBoolean.class));
             final TypeAdapter<AiDecisionsNoul> adapterAiDecisionsNoul = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsNoul.class));
             final TypeAdapter<AiDecisionsChoice> adapterAiDecisionsChoice = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsChoice.class));
             final TypeAdapter<AiDecisionsScore> adapterAiDecisionsScore = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsScore.class));
@@ -89,6 +91,12 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
                         return;
                     }
 
+                    // check if the actual instance is of the type `AiDecisionsBoolean`
+                    if (value.getActualInstance() instanceof AiDecisionsBoolean) {
+                        JsonElement element = adapterAiDecisionsBoolean.toJsonTree((AiDecisionsBoolean)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
                     // check if the actual instance is of the type `AiDecisionsNoul`
                     if (value.getActualInstance() instanceof AiDecisionsNoul) {
                         JsonElement element = adapterAiDecisionsNoul.toJsonTree((AiDecisionsNoul)value.getActualInstance());
@@ -107,7 +115,7 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: AiDecisionsBoolean, AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore");
                 }
 
                 @Override
@@ -119,6 +127,18 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
+                    // deserialize AiDecisionsBoolean
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        AiDecisionsBoolean.validateJsonElement(jsonElement);
+                        actualAdapter = adapterAiDecisionsBoolean;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'AiDecisionsBoolean'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for AiDecisionsBoolean failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'AiDecisionsBoolean'", e);
+                    }
                     // deserialize AiDecisionsNoul
                     try {
                         // validate the JSON object to see if any exception is thrown
@@ -181,6 +201,7 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
     }
 
     static {
+        schemas.put("AiDecisionsBoolean", AiDecisionsBoolean.class);
         schemas.put("AiDecisionsNoul", AiDecisionsNoul.class);
         schemas.put("AiDecisionsChoice", AiDecisionsChoice.class);
         schemas.put("AiDecisionsScore", AiDecisionsScore.class);
@@ -194,12 +215,17 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore
+     * AiDecisionsBoolean, AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
+        if (instance instanceof AiDecisionsBoolean) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof AiDecisionsNoul) {
             super.setActualInstance(instance);
             return;
@@ -215,19 +241,30 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore");
+        throw new RuntimeException("Invalid instance type. Must be AiDecisionsBoolean, AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore
+     * AiDecisionsBoolean, AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore
      *
-     * @return The actual instance (AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore)
+     * @return The actual instance (AiDecisionsBoolean, AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore)
      */
     @SuppressWarnings("unchecked")
     @Override
     public Object getActualInstance() {
         return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `AiDecisionsBoolean`. If the actual instance is not `AiDecisionsBoolean`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `AiDecisionsBoolean`
+     * @throws ClassCastException if the instance is not `AiDecisionsBoolean`
+     */
+    public AiDecisionsBoolean getAiDecisionsBoolean() throws ClassCastException {
+        return (AiDecisionsBoolean)super.getActualInstance();
     }
 
     /**
@@ -273,6 +310,14 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
         // validate oneOf schemas one by one
         int validCount = 0;
         ArrayList<String> errorMessages = new ArrayList<>();
+        // validate the json string with AiDecisionsBoolean
+        try {
+            AiDecisionsBoolean.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for AiDecisionsBoolean failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         // validate the json string with AiDecisionsNoul
         try {
             AiDecisionsNoul.validateJsonElement(jsonElement);
@@ -298,7 +343,7 @@ public class AiDecisionsQuestion extends AbstractOpenApiSchema {
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for AiDecisionsQuestion with oneOf schemas: AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for AiDecisionsQuestion with oneOf schemas: AiDecisionsBoolean, AiDecisionsChoice, AiDecisionsNoul, AiDecisionsScore. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -160,7 +160,7 @@ public class AgentSessionProgress {
   }
 
   /**
-   * Phase is what shape the run is in: running, blocked, done, error, or unknown when nothing has estimated it yet. blocked means the transcript shows the run waiting on something — an approval, a credential, an answer — which is the one state the running surface cannot report about itself. error only ever comes from the session&#39;s own terminal status.
+   * Phase is what shape the run is in: queued, running, blocked, done, error, or unknown when nothing has estimated it yet. blocked means the transcript shows the run waiting on something — an approval, a credential, an answer — which is the one state the running surface cannot report about itself. error only ever comes from the session&#39;s own terminal status. queued is the run&#39;s own word that it is accepted and waiting for a place to start.
    * @return phase
    */
   @javax.annotation.Nullable

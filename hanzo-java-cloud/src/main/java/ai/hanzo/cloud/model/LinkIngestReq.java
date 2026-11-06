@@ -172,7 +172,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get account
+   * Account is the provider-side account the sample belongs to.
    * @return account
    */
   @javax.annotation.Nullable
@@ -191,7 +191,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get cachedInputTokens
+   * CachedInputTokens is the window&#39;s cached-prompt-token count.
    * @return cachedInputTokens
    */
   @javax.annotation.Nullable
@@ -210,7 +210,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get confidence
+   * Confidence says how real the counters are, as the meter graded itself.
    * @return confidence
    */
   @javax.annotation.Nullable
@@ -229,7 +229,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get costCents
+   * CostCents is the window&#39;s spend in cents, as the provider&#39;s meter states it.
    * @return costCents
    */
   @javax.annotation.Nullable
@@ -248,7 +248,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get costLimitCents
+   * CostLimitCents is the window&#39;s spend cap in cents, when the meter knows one.
    * @return costLimitCents
    */
   @javax.annotation.Nullable
@@ -267,7 +267,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get currency
+   * Currency is the ISO currency the cost fields are stated in.
    * @return currency
    */
   @javax.annotation.Nullable
@@ -286,7 +286,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get inputTokens
+   * InputTokens is the window&#39;s prompt-token count.
    * @return inputTokens
    */
   @javax.annotation.Nullable
@@ -305,7 +305,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get kind
+   * Kind is subscription or apikey; anything else is refused.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -324,7 +324,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get lane
+   * Lane names the meter&#39;s own lane label for this measurement.
    * @return lane
    */
   @javax.annotation.Nullable
@@ -343,7 +343,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get machine
+   * Machine is the machine the collector observed the account on. Required.
    * @return machine
    */
   @javax.annotation.Nullable
@@ -362,7 +362,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get outputTokens
+   * OutputTokens is the window&#39;s completion-token count.
    * @return outputTokens
    */
   @javax.annotation.Nullable
@@ -381,7 +381,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get plan
+   * Plan is the provider plan label the account is on.
    * @return plan
    */
   @javax.annotation.Nullable
@@ -400,7 +400,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get provider
+   * Provider is the AI provider whose meter reported this sample. Required.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -419,7 +419,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get requests
+   * Requests is the window&#39;s request count.
    * @return requests
    */
   @javax.annotation.Nullable
@@ -438,7 +438,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get resetsAt
+   * ResetsAt is when the window resets, RFC 3339, bounded.
    * @return resetsAt
    */
   @javax.annotation.Nullable
@@ -484,7 +484,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get synthetic
+   * Synthetic marks a sample the collector derived rather than observed.
    * @return synthetic
    */
   @javax.annotation.Nullable
@@ -503,7 +503,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get totalTokens
+   * TotalTokens is the window&#39;s total token count.
    * @return totalTokens
    */
   @javax.annotation.Nullable
@@ -522,7 +522,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get usedPct
+   * UsedPct is how much of the window&#39;s allowance is consumed, clamped 0..100.
    * @return usedPct
    */
   @javax.annotation.Nullable
@@ -541,7 +541,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get window
+   * Window is the window class, one of 6h, day, week, month; anything else is refused rather than silently reclassified.
    * @return window
    */
   @javax.annotation.Nullable
@@ -560,7 +560,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get windowMinutes
+   * WindowMinutes is the window&#39;s length as the meter reported it.
    * @return windowMinutes
    */
   @javax.annotation.Nullable
@@ -579,7 +579,7 @@ public class LinkIngestReq {
   }
 
   /**
-   * Get windowStart
+   * WindowStart is when the measured window opened, RFC 3339, bounded to a sane interval around now.
    * @return windowStart
    */
   @javax.annotation.Nullable

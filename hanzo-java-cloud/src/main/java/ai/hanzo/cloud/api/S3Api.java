@@ -159,7 +159,7 @@ public class S3Api {
 
     /**
      * Removes an EMPTY bucket and answers 204.
-     * Removes an EMPTY bucket and answers 204.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing deleted, and the debit lands only once the bucket is gone.
+     * Removes an EMPTY bucket and answers 204.  It requires an admin of the org, or a SuperAdmin, as creating one does; anyone else is refused 403 with nothing deleted.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing deleted, and the debit lands only once the bucket is gone.
      * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -176,7 +176,7 @@ public class S3Api {
 
     /**
      * Removes an EMPTY bucket and answers 204.
-     * Removes an EMPTY bucket and answers 204.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing deleted, and the debit lands only once the bucket is gone.
+     * Removes an EMPTY bucket and answers 204.  It requires an admin of the org, or a SuperAdmin, as creating one does; anyone else is refused 403 with nothing deleted.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing deleted, and the debit lands only once the bucket is gone.
      * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -195,7 +195,7 @@ public class S3Api {
 
     /**
      * Removes an EMPTY bucket and answers 204. (asynchronously)
-     * Removes an EMPTY bucket and answers 204.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing deleted, and the debit lands only once the bucket is gone.
+     * Removes an EMPTY bucket and answers 204.  It requires an admin of the org, or a SuperAdmin, as creating one does; anyone else is refused 403 with nothing deleted.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing deleted, and the debit lands only once the bucket is gone.
      * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -983,7 +983,7 @@ public class S3Api {
 
     /**
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.
-     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  It requires an admin of the org, a SuperAdmin, or the org&#39;s own application (CI makes its cache bucket on first use): every member of the org uses its buckets, and only an admin makes or removes one. Anyone else is refused 403 with nothing created.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
      * @param s3BucketIn  (required)
      * @return S3BucketItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1002,7 +1002,7 @@ public class S3Api {
 
     /**
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.
-     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  It requires an admin of the org, a SuperAdmin, or the org&#39;s own application (CI makes its cache bucket on first use): every member of the org uses its buckets, and only an admin makes or removes one. Anyone else is refused 403 with nothing created.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
      * @param s3BucketIn  (required)
      * @return ApiResponse&lt;S3BucketItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1022,7 +1022,7 @@ public class S3Api {
 
     /**
      * Makes a new bucket for the caller&#39;s org and answers 201 with it. (asynchronously)
-     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  It requires an admin of the org, a SuperAdmin, or the org&#39;s own application (CI makes its cache bucket on first use): every member of the org uses its buckets, and only an admin makes or removes one. Anyone else is refused 403 with nothing created.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
      * @param s3BucketIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

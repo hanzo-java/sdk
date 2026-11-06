@@ -60,6 +60,16 @@ public class MarketingUnsubscribed {
   @javax.annotation.Nullable
   private String channel;
 
+  public static final String SERIALIZED_NAME_COMPANY = "company";
+  @SerializedName(SERIALIZED_NAME_COMPANY)
+  @javax.annotation.Nullable
+  private String company;
+
+  public static final String SERIALIZED_NAME_OFFER = "offer";
+  @SerializedName(SERIALIZED_NAME_OFFER)
+  @javax.annotation.Nullable
+  private String offer;
+
   public static final String SERIALIZED_NAME_UNSUBSCRIBED = "unsubscribed";
   @SerializedName(SERIALIZED_NAME_UNSUBSCRIBED)
   @javax.annotation.Nullable
@@ -103,6 +113,44 @@ public class MarketingUnsubscribed {
 
   public void setChannel(@javax.annotation.Nullable String channel) {
     this.channel = channel;
+  }
+
+
+  public MarketingUnsubscribed company(@javax.annotation.Nullable String company) {
+    this.company = company;
+    return this;
+  }
+
+  /**
+   * Company is the domain opted out whole, when the link asked for it.
+   * @return company
+   */
+  @javax.annotation.Nullable
+  public String getCompany() {
+    return company;
+  }
+
+  public void setCompany(@javax.annotation.Nullable String company) {
+    this.company = company;
+  }
+
+
+  public MarketingUnsubscribed offer(@javax.annotation.Nullable String offer) {
+    this.offer = offer;
+    return this;
+  }
+
+  /**
+   * Offer is the domain the reader may opt out whole by asking again with company&#x3D;true: the company&#39;s own domain, never a free mail provider&#39;s. Absent when the company is already out, or for free mail.
+   * @return offer
+   */
+  @javax.annotation.Nullable
+  public String getOffer() {
+    return offer;
+  }
+
+  public void setOffer(@javax.annotation.Nullable String offer) {
+    this.offer = offer;
   }
 
 
@@ -181,13 +229,15 @@ public class MarketingUnsubscribed {
     MarketingUnsubscribed marketingUnsubscribed = (MarketingUnsubscribed) o;
     return Objects.equals(this.address, marketingUnsubscribed.address) &&
         Objects.equals(this.channel, marketingUnsubscribed.channel) &&
+        Objects.equals(this.company, marketingUnsubscribed.company) &&
+        Objects.equals(this.offer, marketingUnsubscribed.offer) &&
         Objects.equals(this.unsubscribed, marketingUnsubscribed.unsubscribed)&&
         Objects.equals(this.additionalProperties, marketingUnsubscribed.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, channel, unsubscribed, additionalProperties);
+    return Objects.hash(address, channel, company, offer, unsubscribed, additionalProperties);
   }
 
   @Override
@@ -196,6 +246,8 @@ public class MarketingUnsubscribed {
     sb.append("class MarketingUnsubscribed {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    company: ").append(toIndentedString(company)).append("\n");
+    sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
     sb.append("    unsubscribed: ").append(toIndentedString(unsubscribed)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -219,7 +271,7 @@ public class MarketingUnsubscribed {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("address", "channel", "unsubscribed"));
+    openapiFields = new HashSet<String>(Arrays.asList("address", "channel", "company", "offer", "unsubscribed"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -243,6 +295,12 @@ public class MarketingUnsubscribed {
       }
       if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
+      if ((jsonObj.get("company") != null && !jsonObj.get("company").isJsonNull()) && !jsonObj.get("company").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
+      }
+      if ((jsonObj.get("offer") != null && !jsonObj.get("offer").isJsonNull()) && !jsonObj.get("offer").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `offer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offer").toString()));
       }
   }
 

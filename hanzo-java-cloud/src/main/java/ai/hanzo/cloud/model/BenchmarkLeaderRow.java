@@ -21,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,6 +67,16 @@ public class BenchmarkLeaderRow {
   @SerializedName(SERIALIZED_NAME_CLAIMS)
   @javax.annotation.Nullable
   private Long claims;
+
+  public static final String SERIALIZED_NAME_EVIDENCE = "evidence";
+  @SerializedName(SERIALIZED_NAME_EVIDENCE)
+  @javax.annotation.Nullable
+  private List<String> evidence = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_FROM = "from";
+  @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
+  private String from;
 
   public static final String SERIALIZED_NAME_GAP = "gap";
   @SerializedName(SERIALIZED_NAME_GAP)
@@ -110,6 +122,11 @@ public class BenchmarkLeaderRow {
   @SerializedName(SERIALIZED_NAME_RUN)
   @javax.annotation.Nullable
   private String run;
+
+  public static final String SERIALIZED_NAME_RUNS = "runs";
+  @SerializedName(SERIALIZED_NAME_RUNS)
+  @javax.annotation.Nullable
+  private List<String> runs = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SPREAD = "spread";
   @SerializedName(SERIALIZED_NAME_SPREAD)
@@ -173,6 +190,52 @@ public class BenchmarkLeaderRow {
 
   public void setClaims(@javax.annotation.Nullable Long claims) {
     this.claims = claims;
+  }
+
+
+  public BenchmarkLeaderRow evidence(@javax.annotation.Nullable List<String> evidence) {
+    this.evidence = evidence;
+    return this;
+  }
+
+  public BenchmarkLeaderRow addEvidenceItem(String evidenceItem) {
+    if (this.evidence == null) {
+      this.evidence = new ArrayList<>();
+    }
+    this.evidence.add(evidenceItem);
+    return this;
+  }
+
+  /**
+   * Evidence are the evidence uris the Published claim rests on (GET /v1/research/evidence?uri&#x3D;).
+   * @return evidence
+   */
+  @javax.annotation.Nullable
+  public List<String> getEvidence() {
+    return evidence;
+  }
+
+  public void setEvidence(@javax.annotation.Nullable List<String> evidence) {
+    this.evidence = evidence;
+  }
+
+
+  public BenchmarkLeaderRow from(@javax.annotation.Nullable String from) {
+    this.from = from;
+    return this;
+  }
+
+  /**
+   * From is the org whose claim Published was promoted from, when a SuperAdmin published another org&#39;s claim rather than writing one under org admin: \&quot;hanzo\&quot; on a row Hanzo measured and the platform published.
+   * @return from
+   */
+  @javax.annotation.Nullable
+  public String getFrom() {
+    return from;
+  }
+
+  public void setFrom(@javax.annotation.Nullable String from) {
+    this.from = from;
   }
 
 
@@ -347,6 +410,33 @@ public class BenchmarkLeaderRow {
   }
 
 
+  public BenchmarkLeaderRow runs(@javax.annotation.Nullable List<String> runs) {
+    this.runs = runs;
+    return this;
+  }
+
+  public BenchmarkLeaderRow addRunsItem(String runsItem) {
+    if (this.runs == null) {
+      this.runs = new ArrayList<>();
+    }
+    this.runs.add(runsItem);
+    return this;
+  }
+
+  /**
+   * Runs are the research run ids the Published claim rests on (GET /v1/research/runs?id&#x3D;).
+   * @return runs
+   */
+  @javax.annotation.Nullable
+  public List<String> getRuns() {
+    return runs;
+  }
+
+  public void setRuns(@javax.annotation.Nullable List<String> runs) {
+    this.runs = runs;
+  }
+
+
   public BenchmarkLeaderRow spread(@javax.annotation.Nullable Double spread) {
     this.spread = spread;
     return this;
@@ -423,6 +513,8 @@ public class BenchmarkLeaderRow {
     return Objects.equals(this.ciHigh, benchmarkLeaderRow.ciHigh) &&
         Objects.equals(this.ciLow, benchmarkLeaderRow.ciLow) &&
         Objects.equals(this.claims, benchmarkLeaderRow.claims) &&
+        Objects.equals(this.evidence, benchmarkLeaderRow.evidence) &&
+        Objects.equals(this.from, benchmarkLeaderRow.from) &&
         Objects.equals(this.gap, benchmarkLeaderRow.gap) &&
         Objects.equals(this.mean, benchmarkLeaderRow.mean) &&
         Objects.equals(this.measured, benchmarkLeaderRow.measured) &&
@@ -432,13 +524,14 @@ public class BenchmarkLeaderRow {
         Objects.equals(this.protocol, benchmarkLeaderRow.protocol) &&
         Objects.equals(this.published, benchmarkLeaderRow.published) &&
         Objects.equals(this.run, benchmarkLeaderRow.run) &&
+        Objects.equals(this.runs, benchmarkLeaderRow.runs) &&
         Objects.equals(this.spread, benchmarkLeaderRow.spread)&&
         Objects.equals(this.additionalProperties, benchmarkLeaderRow.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ciHigh, ciLow, claims, gap, mean, measured, measuredAt, model, n, protocol, published, run, spread, additionalProperties);
+    return Objects.hash(ciHigh, ciLow, claims, evidence, from, gap, mean, measured, measuredAt, model, n, protocol, published, run, runs, spread, additionalProperties);
   }
 
   @Override
@@ -448,6 +541,8 @@ public class BenchmarkLeaderRow {
     sb.append("    ciHigh: ").append(toIndentedString(ciHigh)).append("\n");
     sb.append("    ciLow: ").append(toIndentedString(ciLow)).append("\n");
     sb.append("    claims: ").append(toIndentedString(claims)).append("\n");
+    sb.append("    evidence: ").append(toIndentedString(evidence)).append("\n");
+    sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    gap: ").append(toIndentedString(gap)).append("\n");
     sb.append("    mean: ").append(toIndentedString(mean)).append("\n");
     sb.append("    measured: ").append(toIndentedString(measured)).append("\n");
@@ -457,6 +552,7 @@ public class BenchmarkLeaderRow {
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    run: ").append(toIndentedString(run)).append("\n");
+    sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
     sb.append("    spread: ").append(toIndentedString(spread)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -480,7 +576,7 @@ public class BenchmarkLeaderRow {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("ciHigh", "ciLow", "claims", "gap", "mean", "measured", "measuredAt", "model", "n", "protocol", "published", "run", "spread"));
+    openapiFields = new HashSet<String>(Arrays.asList("ciHigh", "ciLow", "claims", "evidence", "from", "gap", "mean", "measured", "measuredAt", "model", "n", "protocol", "published", "run", "runs", "spread"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -499,6 +595,13 @@ public class BenchmarkLeaderRow {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("evidence") != null && !jsonObj.get("evidence").isJsonNull() && !jsonObj.get("evidence").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `evidence` to be an array in the JSON string but got `%s`", jsonObj.get("evidence").toString()));
+      }
+      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      }
       if ((jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull()) && !jsonObj.get("model").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("model").toString()));
       }
@@ -507,6 +610,10 @@ public class BenchmarkLeaderRow {
       }
       if ((jsonObj.get("run") != null && !jsonObj.get("run").isJsonNull()) && !jsonObj.get("run").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `run` to be a primitive type in the JSON string but got `%s`", jsonObj.get("run").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("runs") != null && !jsonObj.get("runs").isJsonNull() && !jsonObj.get("runs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `runs` to be an array in the JSON string but got `%s`", jsonObj.get("runs").toString()));
       }
   }
 

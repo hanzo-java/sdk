@@ -74,6 +74,11 @@ public class AiRoutingView {
   @javax.annotation.Nullable
   private String family;
 
+  public static final String SERIALIZED_NAME_REDEPLOYED = "redeployed";
+  @SerializedName(SERIALIZED_NAME_REDEPLOYED)
+  @javax.annotation.Nullable
+  private Boolean redeployed;
+
   public static final String SERIALIZED_NAME_STATS = "stats";
   @SerializedName(SERIALIZED_NAME_STATS)
   @javax.annotation.Nullable
@@ -165,6 +170,25 @@ public class AiRoutingView {
 
   public void setFamily(@javax.annotation.Nullable String family) {
     this.family = family;
+  }
+
+
+  public AiRoutingView redeployed(@javax.annotation.Nullable Boolean redeployed) {
+    this.redeployed = redeployed;
+    return this;
+  }
+
+  /**
+   * Get redeployed
+   * @return redeployed
+   */
+  @javax.annotation.Nullable
+  public Boolean getRedeployed() {
+    return redeployed;
+  }
+
+  public void setRedeployed(@javax.annotation.Nullable Boolean redeployed) {
+    this.redeployed = redeployed;
   }
 
 
@@ -291,6 +315,7 @@ public class AiRoutingView {
         Objects.equals(this.drift, aiRoutingView.drift) &&
         Objects.equals(this.error, aiRoutingView.error) &&
         Objects.equals(this.family, aiRoutingView.family) &&
+        Objects.equals(this.redeployed, aiRoutingView.redeployed) &&
         Objects.equals(this.stats, aiRoutingView.stats) &&
         Objects.equals(this.version, aiRoutingView.version) &&
         Objects.equals(this.versions, aiRoutingView.versions)&&
@@ -303,7 +328,7 @@ public class AiRoutingView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalog, drift, error, family, stats, version, versions, additionalProperties);
+    return Objects.hash(catalog, drift, error, family, redeployed, stats, version, versions, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -321,6 +346,7 @@ public class AiRoutingView {
     sb.append("    drift: ").append(toIndentedString(drift)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    family: ").append(toIndentedString(family)).append("\n");
+    sb.append("    redeployed: ").append(toIndentedString(redeployed)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    versions: ").append(toIndentedString(versions)).append("\n");
@@ -346,7 +372,7 @@ public class AiRoutingView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("catalog", "drift", "error", "family", "stats", "version", "versions"));
+    openapiFields = new HashSet<String>(Arrays.asList("catalog", "drift", "error", "family", "redeployed", "stats", "version", "versions"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

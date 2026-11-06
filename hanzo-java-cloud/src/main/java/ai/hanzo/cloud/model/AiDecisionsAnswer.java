@@ -89,6 +89,11 @@ public class AiDecisionsAnswer {
   @javax.annotation.Nullable
   private Map<String, BigDecimal> probabilities = new HashMap<>();
 
+  public static final String SERIALIZED_NAME_PROBABILITY = "probability";
+  @SerializedName(SERIALIZED_NAME_PROBABILITY)
+  @javax.annotation.Nullable
+  private BigDecimal probability;
+
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
@@ -99,6 +104,8 @@ public class AiDecisionsAnswer {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
+    BOOLEAN("boolean"),
+    
     NOUL("noul"),
     
     CHOICE("choice"),
@@ -305,6 +312,25 @@ public class AiDecisionsAnswer {
   }
 
 
+  public AiDecisionsAnswer probability(@javax.annotation.Nullable BigDecimal probability) {
+    this.probability = probability;
+    return this;
+  }
+
+  /**
+   * Get probability
+   * @return probability
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getProbability() {
+    return probability;
+  }
+
+  public void setProbability(@javax.annotation.Nullable BigDecimal probability) {
+    this.probability = probability;
+  }
+
+
   public AiDecisionsAnswer score(@javax.annotation.Nullable BigDecimal score) {
     this.score = score;
     return this;
@@ -404,6 +430,7 @@ public class AiDecisionsAnswer {
         Objects.equals(this.legend, aiDecisionsAnswer.legend) &&
         Objects.equals(this.noul, aiDecisionsAnswer.noul) &&
         Objects.equals(this.probabilities, aiDecisionsAnswer.probabilities) &&
+        Objects.equals(this.probability, aiDecisionsAnswer.probability) &&
         Objects.equals(this.score, aiDecisionsAnswer.score) &&
         Objects.equals(this.type, aiDecisionsAnswer.type)&&
         Objects.equals(this.additionalProperties, aiDecisionsAnswer.additionalProperties);
@@ -411,7 +438,7 @@ public class AiDecisionsAnswer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, answerConfidence, choice, confidence, legend, noul, probabilities, score, type, additionalProperties);
+    return Objects.hash(action, answerConfidence, choice, confidence, legend, noul, probabilities, probability, score, type, additionalProperties);
   }
 
   @Override
@@ -425,6 +452,7 @@ public class AiDecisionsAnswer {
     sb.append("    legend: ").append(toIndentedString(legend)).append("\n");
     sb.append("    noul: ").append(toIndentedString(noul)).append("\n");
     sb.append("    probabilities: ").append(toIndentedString(probabilities)).append("\n");
+    sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -449,7 +477,7 @@ public class AiDecisionsAnswer {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("action", "answer_confidence", "choice", "confidence", "legend", "noul", "probabilities", "score", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("action", "answer_confidence", "choice", "confidence", "legend", "noul", "probabilities", "probability", "score", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("type"));

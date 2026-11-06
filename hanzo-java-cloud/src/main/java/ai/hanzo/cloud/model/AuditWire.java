@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AuditAct;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,6 +52,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class AuditWire {
+  public static final String SERIALIZED_NAME_ACT = "act";
+  @SerializedName(SERIALIZED_NAME_ACT)
+  @javax.annotation.Nullable
+  private AuditAct act;
+
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
   @javax.annotation.Nullable
@@ -60,6 +66,11 @@ public class AuditWire {
   @SerializedName(SERIALIZED_NAME_AFTER)
   @javax.annotation.Nullable
   private Object after = null;
+
+  public static final String SERIALIZED_NAME_AGENT = "agent";
+  @SerializedName(SERIALIZED_NAME_AGENT)
+  @javax.annotation.Nullable
+  private String agent;
 
   public static final String SERIALIZED_NAME_AUTH_METHOD = "authMethod";
   @SerializedName(SERIALIZED_NAME_AUTH_METHOD)
@@ -169,6 +180,25 @@ public class AuditWire {
   public AuditWire() {
   }
 
+  public AuditWire act(@javax.annotation.Nullable AuditAct act) {
+    this.act = act;
+    return this;
+  }
+
+  /**
+   * Act is present ONLY on an action taken in a support session: the platform operator IAM signed in AS this row&#39;s sub, while org, sub and email stay the person&#39;s. A console row carrying &#x60;act&#x60; was done by the operator it names.
+   * @return act
+   */
+  @javax.annotation.Nullable
+  public AuditAct getAct() {
+    return act;
+  }
+
+  public void setAct(@javax.annotation.Nullable AuditAct act) {
+    this.act = act;
+  }
+
+
   public AuditWire action(@javax.annotation.Nullable String action) {
     this.action = action;
     return this;
@@ -204,6 +234,25 @@ public class AuditWire {
 
   public void setAfter(@javax.annotation.Nullable Object after) {
     this.after = after;
+  }
+
+
+  public AuditWire agent(@javax.annotation.Nullable String agent) {
+    this.agent = agent;
+    return this;
+  }
+
+  /**
+   * Agent is present ONLY on an action a delegated token took: who acted for this row&#39;s sub — the deployment that ran their work in a sandbox — while org, sub and email stay the person&#39;s, who is billed for it.
+   * @return agent
+   */
+  @javax.annotation.Nullable
+  public String getAgent() {
+    return agent;
+  }
+
+  public void setAgent(@javax.annotation.Nullable String agent) {
+    this.agent = agent;
   }
 
 
@@ -660,8 +709,10 @@ public class AuditWire {
       return false;
     }
     AuditWire auditWire = (AuditWire) o;
-    return Objects.equals(this.action, auditWire.action) &&
+    return Objects.equals(this.act, auditWire.act) &&
+        Objects.equals(this.action, auditWire.action) &&
         Objects.equals(this.after, auditWire.after) &&
+        Objects.equals(this.agent, auditWire.agent) &&
         Objects.equals(this.authMethod, auditWire.authMethod) &&
         Objects.equals(this.before, auditWire.before) &&
         Objects.equals(this.email, auditWire.email) &&
@@ -692,7 +743,7 @@ public class AuditWire {
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, after, authMethod, before, email, hash, home, isAdmin, method, org, path, prevHash, reason, requestId, resource, resourceId, result, seq, sourceIp, status, sub, time, userAgent, additionalProperties);
+    return Objects.hash(act, action, after, agent, authMethod, before, email, hash, home, isAdmin, method, org, path, prevHash, reason, requestId, resource, resourceId, result, seq, sourceIp, status, sub, time, userAgent, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -706,8 +757,10 @@ public class AuditWire {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AuditWire {\n");
+    sb.append("    act: ").append(toIndentedString(act)).append("\n");
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    after: ").append(toIndentedString(after)).append("\n");
+    sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
     sb.append("    authMethod: ").append(toIndentedString(authMethod)).append("\n");
     sb.append("    before: ").append(toIndentedString(before)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -751,7 +804,7 @@ public class AuditWire {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("action", "after", "authMethod", "before", "email", "hash", "home", "isAdmin", "method", "org", "path", "prevHash", "reason", "requestId", "resource", "resourceId", "result", "seq", "sourceIp", "status", "sub", "time", "userAgent"));
+    openapiFields = new HashSet<String>(Arrays.asList("act", "action", "after", "agent", "authMethod", "before", "email", "hash", "home", "isAdmin", "method", "org", "path", "prevHash", "reason", "requestId", "resource", "resourceId", "result", "seq", "sourceIp", "status", "sub", "time", "userAgent"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -770,8 +823,15 @@ public class AuditWire {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `act`
+      if (jsonObj.get("act") != null && !jsonObj.get("act").isJsonNull()) {
+        AuditAct.validateJsonElement(jsonObj.get("act"));
+      }
       if ((jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) && !jsonObj.get("action").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
+      }
+      if ((jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonNull()) && !jsonObj.get("agent").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agent").toString()));
       }
       if ((jsonObj.get("authMethod") != null && !jsonObj.get("authMethod").isJsonNull()) && !jsonObj.get("authMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `authMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authMethod").toString()));

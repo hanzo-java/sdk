@@ -75,7 +75,7 @@ public class O11yO11yDashboardViewUpdateIn {
   }
 
   /**
-   * Get data
+   * Data is the listing state the view captures.
    * @return data
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class O11yO11yDashboardViewUpdateIn {
   }
 
   /**
-   * Get name
+   * Name is the saved view&#39;s name; at most 32 characters, no surrounding space.
    * @return name
    */
   @javax.annotation.Nullable

@@ -93,7 +93,7 @@ public class BillingCryptoAsset {
   }
 
   /**
-   * Chain is the network to receive on. Empty takes the rail&#39;s default.
+   * Chain is the network to receive on, one of GET /v1/billing/crypto/options chains. Empty takes the rail&#39;s default.
    * @return chain
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class BillingCryptoAsset {
   }
 
   /**
-   * Token is the asset on that chain. Empty takes the chain&#39;s native one.
+   * Token is the asset on that chain, one of the options&#39; tokens. Empty takes the rail&#39;s default.
    * @return token
    */
   @javax.annotation.Nullable

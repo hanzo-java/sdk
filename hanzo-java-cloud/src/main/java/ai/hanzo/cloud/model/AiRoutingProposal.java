@@ -65,6 +65,11 @@ public class AiRoutingProposal {
   @javax.annotation.Nullable
   private String family;
 
+  public static final String SERIALIZED_NAME_REFUSED = "refused";
+  @SerializedName(SERIALIZED_NAME_REFUSED)
+  @javax.annotation.Nullable
+  private String refused;
+
   public AiRoutingProposal() {
   }
 
@@ -124,6 +129,25 @@ public class AiRoutingProposal {
     this.family = family;
   }
 
+
+  public AiRoutingProposal refused(@javax.annotation.Nullable String refused) {
+    this.refused = refused;
+    return this;
+  }
+
+  /**
+   * Get refused
+   * @return refused
+   */
+  @javax.annotation.Nullable
+  public String getRefused() {
+    return refused;
+  }
+
+  public void setRefused(@javax.annotation.Nullable String refused) {
+    this.refused = refused;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -181,13 +205,14 @@ public class AiRoutingProposal {
     AiRoutingProposal aiRoutingProposal = (AiRoutingProposal) o;
     return Objects.equals(this.base, aiRoutingProposal.base) &&
         Objects.equals(this.diff, aiRoutingProposal.diff) &&
-        Objects.equals(this.family, aiRoutingProposal.family)&&
+        Objects.equals(this.family, aiRoutingProposal.family) &&
+        Objects.equals(this.refused, aiRoutingProposal.refused)&&
         Objects.equals(this.additionalProperties, aiRoutingProposal.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(base, diff, family, additionalProperties);
+    return Objects.hash(base, diff, family, refused, additionalProperties);
   }
 
   @Override
@@ -197,6 +222,7 @@ public class AiRoutingProposal {
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
     sb.append("    diff: ").append(toIndentedString(diff)).append("\n");
     sb.append("    family: ").append(toIndentedString(family)).append("\n");
+    sb.append("    refused: ").append(toIndentedString(refused)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -219,7 +245,7 @@ public class AiRoutingProposal {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("base", "diff", "family"));
+    openapiFields = new HashSet<String>(Arrays.asList("base", "diff", "family", "refused"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -243,6 +269,9 @@ public class AiRoutingProposal {
       }
       if ((jsonObj.get("family") != null && !jsonObj.get("family").isJsonNull()) && !jsonObj.get("family").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("family").toString()));
+      }
+      if ((jsonObj.get("refused") != null && !jsonObj.get("refused").isJsonNull()) && !jsonObj.get("refused").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `refused` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refused").toString()));
       }
   }
 

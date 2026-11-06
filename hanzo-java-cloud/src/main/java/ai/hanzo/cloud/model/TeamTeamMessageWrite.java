@@ -109,7 +109,7 @@ public class TeamTeamMessageWrite {
   }
 
   /**
-   * ID is the room to say it in, from the path.
+   * ID is the channel to say it in, from the path.
    * @return id
    */
   @javax.annotation.Nullable
@@ -128,7 +128,7 @@ public class TeamTeamMessageWrite {
   }
 
   /**
-   * Space names the space holding the room. Body-only: a query string may not redirect a write.
+   * Space names the space holding the channel. Body-only: a query string may not redirect a write.
    * @return space
    */
   @javax.annotation.Nullable

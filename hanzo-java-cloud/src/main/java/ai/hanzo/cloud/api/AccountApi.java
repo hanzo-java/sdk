@@ -27,15 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AccountApiKey;
 import ai.hanzo.cloud.model.AccountApiKeyList;
 import ai.hanzo.cloud.model.AccountAppearance;
 import ai.hanzo.cloud.model.AccountCsrfResp;
 import ai.hanzo.cloud.model.AccountEmbedStatusResp;
-import ai.hanzo.cloud.model.AccountKeyTypeIn;
-import ai.hanzo.cloud.model.AccountMintedKey;
+import ai.hanzo.cloud.model.AccountKeyEdit;
+import ai.hanzo.cloud.model.AccountKeyIn;
 import ai.hanzo.cloud.model.AccountOnboardReq;
 import ai.hanzo.cloud.model.AccountOnboardResp;
-import ai.hanzo.cloud.model.AccountRevokedKey;
 import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
@@ -82,8 +82,8 @@ public class AccountApi {
     }
 
     /**
-     * Build call for deleteAccountKeys
-     * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
+     * Build call for deleteAccountKeysById
+     * @param id ID is the key to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -95,7 +95,7 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAccountKeysCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAccountKeysByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -112,17 +112,14 @@ public class AccountApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/account/keys";
+        String localVarPath = "/v1/account/keys/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (type != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
-        }
 
         final String[] localVarAccepts = {
             "application/json",
@@ -145,16 +142,21 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAccountKeysValidateBeforeCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
-        return deleteAccountKeysCall(type, _callback);
+    private okhttp3.Call deleteAccountKeysByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAccountKeysById(Async)");
+        }
+
+        return deleteAccountKeysByIdCall(id, _callback);
 
     }
 
     /**
-     * Revokes the caller&#39;s own API key of the requested class.
-     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but cloud caches a home key&#39;s principal for up to 60s, so a request inside that window may still be served. A member&#39;s key is never cached.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
-     * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
-     * @return AccountRevokedKey
+     * Revokes exactly one API key, by id.
+     * Revokes exactly one API key, by id. Every other key keeps working. The key stays listed as revoked, with who revoked it and when, and can never be used again. IAM refuses it at once; cloud caches a resolved key for up to 60 seconds, so a request inside that window may still be served.  A member revokes their own keys; an org admin revokes any of the org&#39;s, and revoking someone else&#39;s is recorded on the audit trail.
+     * @param id ID is the key to act on, from the path. (required)
+     * @return AccountApiKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -164,16 +166,16 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccountRevokedKey deleteAccountKeys(@javax.annotation.Nullable String type) throws ApiException {
-        ApiResponse<AccountRevokedKey> localVarResp = deleteAccountKeysWithHttpInfo(type);
+    public AccountApiKey deleteAccountKeysById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AccountApiKey> localVarResp = deleteAccountKeysByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Revokes the caller&#39;s own API key of the requested class.
-     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but cloud caches a home key&#39;s principal for up to 60s, so a request inside that window may still be served. A member&#39;s key is never cached.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
-     * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
-     * @return ApiResponse&lt;AccountRevokedKey&gt;
+     * Revokes exactly one API key, by id.
+     * Revokes exactly one API key, by id. Every other key keeps working. The key stays listed as revoked, with who revoked it and when, and can never be used again. IAM refuses it at once; cloud caches a resolved key for up to 60 seconds, so a request inside that window may still be served.  A member revokes their own keys; an org admin revokes any of the org&#39;s, and revoking someone else&#39;s is recorded on the audit trail.
+     * @param id ID is the key to act on, from the path. (required)
+     * @return ApiResponse&lt;AccountApiKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -183,16 +185,16 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountRevokedKey> deleteAccountKeysWithHttpInfo(@javax.annotation.Nullable String type) throws ApiException {
-        okhttp3.Call localVarCall = deleteAccountKeysValidateBeforeCall(type, null);
-        Type localVarReturnType = new TypeToken<AccountRevokedKey>(){}.getType();
+    public ApiResponse<AccountApiKey> deleteAccountKeysByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAccountKeysByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AccountApiKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Revokes the caller&#39;s own API key of the requested class. (asynchronously)
-     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but cloud caches a home key&#39;s principal for up to 60s, so a request inside that window may still be served. A member&#39;s key is never cached.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
-     * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
+     * Revokes exactly one API key, by id. (asynchronously)
+     * Revokes exactly one API key, by id. Every other key keeps working. The key stays listed as revoked, with who revoked it and when, and can never be used again. IAM refuses it at once; cloud caches a resolved key for up to 60 seconds, so a request inside that window may still be served.  A member revokes their own keys; an org admin revokes any of the org&#39;s, and revoking someone else&#39;s is recorded on the audit trail.
+     * @param id ID is the key to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -204,10 +206,10 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAccountKeysAsync(@javax.annotation.Nullable String type, final ApiCallback<AccountRevokedKey> _callback) throws ApiException {
+    public okhttp3.Call deleteAccountKeysByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AccountApiKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAccountKeysValidateBeforeCall(type, _callback);
-        Type localVarReturnType = new TypeToken<AccountRevokedKey>(){}.getType();
+        okhttp3.Call localVarCall = deleteAccountKeysByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AccountApiKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -768,8 +770,8 @@ public class AccountApi {
     }
 
     /**
-     * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago.
-     * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago. No secret material comes back: a secret key is represented by its prefix, and only a publishable key (public by construction) carries its full value.  A transient IAM read failure reports an empty set rather than a 5xx, so the page shows the honest empty state and never a fabricated key.
+     * Returns the API keys the caller may see, newest first: their own, or every key the org holds when the caller administers it.
+     * Returns the API keys the caller may see, newest first: their own, or every key the org holds when the caller administers it. Each is its own credential with its own name, prefix, status, expiry and limit. Revoked keys stay listed. No secret material comes back; a publishable key, which is public by construction, carries its full value.
      * @return AccountApiKeyList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -786,8 +788,8 @@ public class AccountApi {
     }
 
     /**
-     * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago.
-     * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago. No secret material comes back: a secret key is represented by its prefix, and only a publishable key (public by construction) carries its full value.  A transient IAM read failure reports an empty set rather than a 5xx, so the page shows the honest empty state and never a fabricated key.
+     * Returns the API keys the caller may see, newest first: their own, or every key the org holds when the caller administers it.
+     * Returns the API keys the caller may see, newest first: their own, or every key the org holds when the caller administers it. Each is its own credential with its own name, prefix, status, expiry and limit. Revoked keys stay listed. No secret material comes back; a publishable key, which is public by construction, carries its full value.
      * @return ApiResponse&lt;AccountApiKeyList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -805,8 +807,8 @@ public class AccountApi {
     }
 
     /**
-     * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago. (asynchronously)
-     * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago. No secret material comes back: a secret key is represented by its prefix, and only a publishable key (public by construction) carries its full value.  A transient IAM read failure reports an empty set rather than a 5xx, so the page shows the honest empty state and never a fabricated key.
+     * Returns the API keys the caller may see, newest first: their own, or every key the org holds when the caller administers it. (asynchronously)
+     * Returns the API keys the caller may see, newest first: their own, or every key the org holds when the caller administers it. Each is its own credential with its own name, prefix, status, expiry and limit. Revoked keys stay listed. No secret material comes back; a publishable key, which is public by construction, carries its full value.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -822,6 +824,148 @@ public class AccountApi {
 
         okhttp3.Call localVarCall = getAccountKeysValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AccountApiKeyList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchAccountKeysById
+     * @param id ID is the key to edit, from the path. (required)
+     * @param accountKeyEdit  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAccountKeysByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccountKeyEdit accountKeyEdit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = accountKeyEdit;
+
+        // create path and map variables
+        String localVarPath = "/v1/account/keys/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchAccountKeysByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccountKeyEdit accountKeyEdit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchAccountKeysById(Async)");
+        }
+
+        // verify the required parameter 'accountKeyEdit' is set
+        if (accountKeyEdit == null) {
+            throw new ApiException("Missing the required parameter 'accountKeyEdit' when calling patchAccountKeysById(Async)");
+        }
+
+        return patchAccountKeysByIdCall(id, accountKeyEdit, _callback);
+
+    }
+
+    /**
+     * Changes one key&#39;s name, permissions, budget, rate or expiry.
+     * Changes one key&#39;s name, permissions, budget, rate or expiry. The secret is not reissued: the key in your deployment keeps working, under its new policy. Only the person the key belongs to may edit it, and a revoked key cannot be edited.
+     * @param id ID is the key to edit, from the path. (required)
+     * @param accountKeyEdit  (required)
+     * @return AccountApiKey
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AccountApiKey patchAccountKeysById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccountKeyEdit accountKeyEdit) throws ApiException {
+        ApiResponse<AccountApiKey> localVarResp = patchAccountKeysByIdWithHttpInfo(id, accountKeyEdit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes one key&#39;s name, permissions, budget, rate or expiry.
+     * Changes one key&#39;s name, permissions, budget, rate or expiry. The secret is not reissued: the key in your deployment keeps working, under its new policy. Only the person the key belongs to may edit it, and a revoked key cannot be edited.
+     * @param id ID is the key to edit, from the path. (required)
+     * @param accountKeyEdit  (required)
+     * @return ApiResponse&lt;AccountApiKey&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AccountApiKey> patchAccountKeysByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccountKeyEdit accountKeyEdit) throws ApiException {
+        okhttp3.Call localVarCall = patchAccountKeysByIdValidateBeforeCall(id, accountKeyEdit, null);
+        Type localVarReturnType = new TypeToken<AccountApiKey>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes one key&#39;s name, permissions, budget, rate or expiry. (asynchronously)
+     * Changes one key&#39;s name, permissions, budget, rate or expiry. The secret is not reissued: the key in your deployment keeps working, under its new policy. Only the person the key belongs to may edit it, and a revoked key cannot be edited.
+     * @param id ID is the key to edit, from the path. (required)
+     * @param accountKeyEdit  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAccountKeysByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccountKeyEdit accountKeyEdit, final ApiCallback<AccountApiKey> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchAccountKeysByIdValidateBeforeCall(id, accountKeyEdit, _callback);
+        Type localVarReturnType = new TypeToken<AccountApiKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1047,7 +1191,7 @@ public class AccountApi {
     }
     /**
      * Build call for postAccountKeys
-     * @param accountKeyTypeIn  (required)
+     * @param accountKeyIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1059,7 +1203,7 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountKeysCall(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAccountKeysCall(@javax.annotation.Nonnull AccountKeyIn accountKeyIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1073,7 +1217,7 @@ public class AccountApi {
             basePath = null;
         }
 
-        Object localVarPostBody = accountKeyTypeIn;
+        Object localVarPostBody = accountKeyIn;
 
         // create path and map variables
         String localVarPath = "/v1/account/keys";
@@ -1106,21 +1250,21 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAccountKeysValidateBeforeCall(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountKeyTypeIn' is set
-        if (accountKeyTypeIn == null) {
-            throw new ApiException("Missing the required parameter 'accountKeyTypeIn' when calling postAccountKeys(Async)");
+    private okhttp3.Call postAccountKeysValidateBeforeCall(@javax.annotation.Nonnull AccountKeyIn accountKeyIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountKeyIn' is set
+        if (accountKeyIn == null) {
+            throw new ApiException("Missing the required parameter 'accountKeyIn' when calling postAccountKeys(Async)");
         }
 
-        return postAccountKeysCall(accountKeyTypeIn, _callback);
+        return postAccountKeysCall(accountKeyIn, _callback);
 
     }
 
     /**
-     * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE.
-     * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. A real IAM failure surfaces as 502, never a fabricated key.  Rotating is what creating means here: a user holds one key per type, so the endpoint is idempotent by (caller, type) and the superseded credential stops working. Two live secrets for one user would make \&quot;revoke my key\&quot; a lie.
-     * @param accountKeyTypeIn  (required)
-     * @return AccountMintedKey
+     * Creates a NEW API key and returns its secret ONCE.
+     * Creates a NEW API key and returns its secret ONCE. It never revokes or changes any other key: every key the caller already holds keeps working. The key is filed in the org the caller acts in and names them as its creator.  An org holds at most 1,000 live keys; past that the create is refused until one is revoked.
+     * @param accountKeyIn  (required)
+     * @return AccountApiKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1130,16 +1274,16 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccountMintedKey postAccountKeys(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn) throws ApiException {
-        ApiResponse<AccountMintedKey> localVarResp = postAccountKeysWithHttpInfo(accountKeyTypeIn);
+    public AccountApiKey postAccountKeys(@javax.annotation.Nonnull AccountKeyIn accountKeyIn) throws ApiException {
+        ApiResponse<AccountApiKey> localVarResp = postAccountKeysWithHttpInfo(accountKeyIn);
         return localVarResp.getData();
     }
 
     /**
-     * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE.
-     * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. A real IAM failure surfaces as 502, never a fabricated key.  Rotating is what creating means here: a user holds one key per type, so the endpoint is idempotent by (caller, type) and the superseded credential stops working. Two live secrets for one user would make \&quot;revoke my key\&quot; a lie.
-     * @param accountKeyTypeIn  (required)
-     * @return ApiResponse&lt;AccountMintedKey&gt;
+     * Creates a NEW API key and returns its secret ONCE.
+     * Creates a NEW API key and returns its secret ONCE. It never revokes or changes any other key: every key the caller already holds keeps working. The key is filed in the org the caller acts in and names them as its creator.  An org holds at most 1,000 live keys; past that the create is refused until one is revoked.
+     * @param accountKeyIn  (required)
+     * @return ApiResponse&lt;AccountApiKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1149,16 +1293,16 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountMintedKey> postAccountKeysWithHttpInfo(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn) throws ApiException {
-        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(accountKeyTypeIn, null);
-        Type localVarReturnType = new TypeToken<AccountMintedKey>(){}.getType();
+    public ApiResponse<AccountApiKey> postAccountKeysWithHttpInfo(@javax.annotation.Nonnull AccountKeyIn accountKeyIn) throws ApiException {
+        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(accountKeyIn, null);
+        Type localVarReturnType = new TypeToken<AccountApiKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. (asynchronously)
-     * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. A real IAM failure surfaces as 502, never a fabricated key.  Rotating is what creating means here: a user holds one key per type, so the endpoint is idempotent by (caller, type) and the superseded credential stops working. Two live secrets for one user would make \&quot;revoke my key\&quot; a lie.
-     * @param accountKeyTypeIn  (required)
+     * Creates a NEW API key and returns its secret ONCE. (asynchronously)
+     * Creates a NEW API key and returns its secret ONCE. It never revokes or changes any other key: every key the caller already holds keeps working. The key is filed in the org the caller acts in and names them as its creator.  An org holds at most 1,000 live keys; past that the create is refused until one is revoked.
+     * @param accountKeyIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1170,10 +1314,10 @@ public class AccountApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountKeysAsync(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn, final ApiCallback<AccountMintedKey> _callback) throws ApiException {
+    public okhttp3.Call postAccountKeysAsync(@javax.annotation.Nonnull AccountKeyIn accountKeyIn, final ApiCallback<AccountApiKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(accountKeyTypeIn, _callback);
-        Type localVarReturnType = new TypeToken<AccountMintedKey>(){}.getType();
+        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(accountKeyIn, _callback);
+        Type localVarReturnType = new TypeToken<AccountApiKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1249,8 +1393,8 @@ public class AccountApi {
     }
 
     /**
-     * Creates the caller&#39;s organization.
-     * Creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
+     * Creates an organization and makes the caller its owner.
+     * Creates an organization and makes the caller its owner.  The caller&#39;s own account is not touched: who they are, the org their account lives in and how they sign in are the same before and after. The new org is a separate organization they belong to by membership, carried in the signed &#x60;orgs&#x60; claim of their next token, and reached by selecting it (X-Org-Id, the org switcher). Teammates join it the same way. The org starts at a zero balance, and its default API key is minted for the creator and returned once.  Moving the creator into the org instead re-keyed their identity to \&quot;&lt;org&gt;/&lt;name&gt;\&quot;, and sign-in, which resolves an address in the signup org, then found nobody: the person was offered a second account for their own address.
      * @param accountOnboardReq  (required)
      * @return AccountOnboardResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1268,8 +1412,8 @@ public class AccountApi {
     }
 
     /**
-     * Creates the caller&#39;s organization.
-     * Creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
+     * Creates an organization and makes the caller its owner.
+     * Creates an organization and makes the caller its owner.  The caller&#39;s own account is not touched: who they are, the org their account lives in and how they sign in are the same before and after. The new org is a separate organization they belong to by membership, carried in the signed &#x60;orgs&#x60; claim of their next token, and reached by selecting it (X-Org-Id, the org switcher). Teammates join it the same way. The org starts at a zero balance, and its default API key is minted for the creator and returned once.  Moving the creator into the org instead re-keyed their identity to \&quot;&lt;org&gt;/&lt;name&gt;\&quot;, and sign-in, which resolves an address in the signup org, then found nobody: the person was offered a second account for their own address.
      * @param accountOnboardReq  (required)
      * @return ApiResponse&lt;AccountOnboardResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1288,8 +1432,8 @@ public class AccountApi {
     }
 
     /**
-     * Creates the caller&#39;s organization. (asynchronously)
-     * Creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
+     * Creates an organization and makes the caller its owner. (asynchronously)
+     * Creates an organization and makes the caller its owner.  The caller&#39;s own account is not touched: who they are, the org their account lives in and how they sign in are the same before and after. The new org is a separate organization they belong to by membership, carried in the signed &#x60;orgs&#x60; claim of their next token, and reached by selecting it (X-Org-Id, the org switcher). Teammates join it the same way. The org starts at a zero balance, and its default API key is minted for the creator and returned once.  Moving the creator into the org instead re-keyed their identity to \&quot;&lt;org&gt;/&lt;name&gt;\&quot;, and sign-in, which resolves an address in the signup org, then found nobody: the person was offered a second account for their own address.
      * @param accountOnboardReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

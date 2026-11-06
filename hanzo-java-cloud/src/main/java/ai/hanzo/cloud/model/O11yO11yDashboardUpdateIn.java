@@ -112,7 +112,7 @@ public class O11yO11yDashboardUpdateIn {
   }
 
   /**
-   * Get image
+   * Image is an optional cover image reference.
    * @return image
    */
   @javax.annotation.Nullable
@@ -131,7 +131,7 @@ public class O11yO11yDashboardUpdateIn {
   }
 
   /**
-   * Get name
+   * Name must equal the dashboard&#39;s existing name — it is immutable.
    * @return name
    */
   @javax.annotation.Nullable
@@ -150,7 +150,7 @@ public class O11yO11yDashboardUpdateIn {
   }
 
   /**
-   * Get schemaVersion
+   * SchemaVersion is the dashboard schema version; must be the current v6.
    * @return schemaVersion
    */
   @javax.annotation.Nullable
@@ -196,7 +196,7 @@ public class O11yO11yDashboardUpdateIn {
   }
 
   /**
-   * Get tags
+   * Tags replace the dashboard&#39;s tags; at most ten.
    * @return tags
    */
   @javax.annotation.Nullable

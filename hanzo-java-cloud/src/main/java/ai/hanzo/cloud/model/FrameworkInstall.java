@@ -62,6 +62,11 @@ public class FrameworkInstall {
   @javax.annotation.Nullable
   private List<String> existing = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_GROWN = "grown";
+  @SerializedName(SERIALIZED_NAME_GROWN)
+  @javax.annotation.Nullable
+  private List<String> grown = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_MODULE = "module";
   @SerializedName(SERIALIZED_NAME_MODULE)
   @javax.annotation.Nullable
@@ -121,6 +126,33 @@ public class FrameworkInstall {
 
   public void setExisting(@javax.annotation.Nullable List<String> existing) {
     this.existing = existing;
+  }
+
+
+  public FrameworkInstall grown(@javax.annotation.Nullable List<String> grown) {
+    this.grown = grown;
+    return this;
+  }
+
+  public FrameworkInstall addGrownItem(String grownItem) {
+    if (this.grown == null) {
+      this.grown = new ArrayList<>();
+    }
+    this.grown.add(grownItem);
+    return this;
+  }
+
+  /**
+   * Grown names the existing DocTypes that gained the fields the module now declares and the org&#39;s stored definition lacked.
+   * @return grown
+   */
+  @javax.annotation.Nullable
+  public List<String> getGrown() {
+    return grown;
+  }
+
+  public void setGrown(@javax.annotation.Nullable List<String> grown) {
+    this.grown = grown;
   }
 
 
@@ -199,13 +231,14 @@ public class FrameworkInstall {
     FrameworkInstall frameworkInstall = (FrameworkInstall) o;
     return Objects.equals(this.created, frameworkInstall.created) &&
         Objects.equals(this.existing, frameworkInstall.existing) &&
+        Objects.equals(this.grown, frameworkInstall.grown) &&
         Objects.equals(this.module, frameworkInstall.module)&&
         Objects.equals(this.additionalProperties, frameworkInstall.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, existing, module, additionalProperties);
+    return Objects.hash(created, existing, grown, module, additionalProperties);
   }
 
   @Override
@@ -214,6 +247,7 @@ public class FrameworkInstall {
     sb.append("class FrameworkInstall {\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    existing: ").append(toIndentedString(existing)).append("\n");
+    sb.append("    grown: ").append(toIndentedString(grown)).append("\n");
     sb.append("    module: ").append(toIndentedString(module)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -237,7 +271,7 @@ public class FrameworkInstall {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("created", "existing", "module"));
+    openapiFields = new HashSet<String>(Arrays.asList("created", "existing", "grown", "module"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -263,6 +297,10 @@ public class FrameworkInstall {
       // ensure the optional json data is an array if present
       if (jsonObj.get("existing") != null && !jsonObj.get("existing").isJsonNull() && !jsonObj.get("existing").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `existing` to be an array in the JSON string but got `%s`", jsonObj.get("existing").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("grown") != null && !jsonObj.get("grown").isJsonNull() && !jsonObj.get("grown").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `grown` to be an array in the JSON string but got `%s`", jsonObj.get("grown").toString()));
       }
       if ((jsonObj.get("module") != null && !jsonObj.get("module").isJsonNull()) && !jsonObj.get("module").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `module` to be a primitive type in the JSON string but got `%s`", jsonObj.get("module").toString()));

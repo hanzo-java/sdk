@@ -34,10 +34,16 @@ import ai.hanzo.cloud.model.AgentAgentView;
 import ai.hanzo.cloud.model.AgentBuildList;
 import ai.hanzo.cloud.model.AgentBuildView;
 import ai.hanzo.cloud.model.AgentClaimKeyOut;
+import ai.hanzo.cloud.model.AgentCodingAck;
 import ai.hanzo.cloud.model.AgentCodingArtifacts;
 import ai.hanzo.cloud.model.AgentCodingBlob;
 import ai.hanzo.cloud.model.AgentCodingChanges;
+import ai.hanzo.cloud.model.AgentCodingExtendIn;
+import ai.hanzo.cloud.model.AgentCodingExtended;
+import ai.hanzo.cloud.model.AgentCodingInstruction;
 import ai.hanzo.cloud.model.AgentCodingMerged;
+import ai.hanzo.cloud.model.AgentCodingPullIn;
+import ai.hanzo.cloud.model.AgentCodingPulled;
 import ai.hanzo.cloud.model.AgentCodingStartIn;
 import ai.hanzo.cloud.model.AgentCodingStarted;
 import ai.hanzo.cloud.model.AgentCodingTree;
@@ -46,6 +52,7 @@ import ai.hanzo.cloud.model.AgentControlIn;
 import ai.hanzo.cloud.model.AgentControlResult;
 import ai.hanzo.cloud.model.AgentCreateAgentIn;
 import ai.hanzo.cloud.model.AgentEventIn;
+import ai.hanzo.cloud.model.AgentEventList;
 import ai.hanzo.cloud.model.AgentEventView;
 import ai.hanzo.cloud.model.AgentMetricsView;
 import ai.hanzo.cloud.model.AgentPatchSessionIn;
@@ -237,6 +244,104 @@ public class AgentApi {
     public okhttp3.Call deleteAgentByRefAsync(@javax.annotation.Nonnull String ref, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAgentByRefValidateBeforeCall(ref, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAgentChatConversationsById
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteAgentChatConversationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/agent/chat/conversations/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAgentChatConversationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAgentChatConversationsById(Async)");
+        }
+
+        return deleteAgentChatConversationsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Delete one of your conversations
+     * Removes the conversation for good: every turn of it, and every link it was shared by, which stops opening and leaves the lists of the people it was open to. Only the member who opened it may delete it; anyone else is answered 404, as for one that is not there. Every delete is written to the audit trail.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteAgentChatConversationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteAgentChatConversationsByIdWithHttpInfo(id);
+    }
+
+    /**
+     * Delete one of your conversations
+     * Removes the conversation for good: every turn of it, and every link it was shared by, which stops opening and leaves the lists of the people it was open to. Only the member who opened it may delete it; anyone else is answered 404, as for one that is not there. Every delete is written to the audit trail.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteAgentChatConversationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAgentChatConversationsByIdValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete one of your conversations (asynchronously)
+     * Removes the conversation for good: every turn of it, and every link it was shared by, which stops opening and leaves the lists of the people it was open to. Only the member who opened it may delete it; anyone else is answered 404, as for one that is not there. Every delete is written to the audit trail.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteAgentChatConversationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAgentChatConversationsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -530,7 +635,7 @@ public class AgentApi {
 
     /**
      * Revoke any link in your organization
-     * For an admin of the caller&#39;s organization: ends one share made in it, for every viewer, exactly as its owner&#39;s revoke does. Anyone else is answered 403, and a share of another organization 404. Every revoke is written to the audit trail.
+     * For an admin of the caller&#39;s organization: ends one share made in it, for every viewer, exactly as its owner&#39;s revoke does. Anyone else is answered 403 (an admin of a held org included), and a share of another organization 404. Every revoke is written to the audit trail.
      * @param share  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -540,7 +645,7 @@ public class AgentApi {
 
     /**
      * Revoke any link in your organization
-     * For an admin of the caller&#39;s organization: ends one share made in it, for every viewer, exactly as its owner&#39;s revoke does. Anyone else is answered 403, and a share of another organization 404. Every revoke is written to the audit trail.
+     * For an admin of the caller&#39;s organization: ends one share made in it, for every viewer, exactly as its owner&#39;s revoke does. Anyone else is answered 403 (an admin of a held org included), and a share of another organization 404. Every revoke is written to the audit trail.
      * @param share  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -552,7 +657,7 @@ public class AgentApi {
 
     /**
      * Revoke any link in your organization (asynchronously)
-     * For an admin of the caller&#39;s organization: ends one share made in it, for every viewer, exactly as its owner&#39;s revoke does. Anyone else is answered 403, and a share of another organization 404. Every revoke is written to the audit trail.
+     * For an admin of the caller&#39;s organization: ends one share made in it, for every viewer, exactly as its owner&#39;s revoke does. Anyone else is answered 403 (an admin of a held org included), and a share of another organization 404. Every revoke is written to the audit trail.
      * @param share  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -883,8 +988,8 @@ public class AgentApi {
     }
 
     /**
-     * Serves the org-wide recent-activity feed.
-     * Serves the org-wide recent-activity feed. Events are REAL: each recorded run is an invoked (ok) or failed (error) event; each agent&#39;s own create/update timestamps are created/updated events. Merged, newest first, capped. Nothing is invented — an org with no agents and no runs gets [].
+     * Serves the recent-activity feed.
+     * Serves the recent-activity feed. Events are REAL: each of the caller&#39;s own recorded runs is an invoked (ok) or failed (error) event; each of the org&#39;s agents&#39; create/update timestamps are created/updated events. Merged, newest first, capped. Nothing is invented — an org with no agents and no runs gets [].
      * @return AgentActivityFeed
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -901,8 +1006,8 @@ public class AgentApi {
     }
 
     /**
-     * Serves the org-wide recent-activity feed.
-     * Serves the org-wide recent-activity feed. Events are REAL: each recorded run is an invoked (ok) or failed (error) event; each agent&#39;s own create/update timestamps are created/updated events. Merged, newest first, capped. Nothing is invented — an org with no agents and no runs gets [].
+     * Serves the recent-activity feed.
+     * Serves the recent-activity feed. Events are REAL: each of the caller&#39;s own recorded runs is an invoked (ok) or failed (error) event; each of the org&#39;s agents&#39; create/update timestamps are created/updated events. Merged, newest first, capped. Nothing is invented — an org with no agents and no runs gets [].
      * @return ApiResponse&lt;AgentActivityFeed&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -920,8 +1025,8 @@ public class AgentApi {
     }
 
     /**
-     * Serves the org-wide recent-activity feed. (asynchronously)
-     * Serves the org-wide recent-activity feed. Events are REAL: each recorded run is an invoked (ok) or failed (error) event; each agent&#39;s own create/update timestamps are created/updated events. Merged, newest first, capped. Nothing is invented — an org with no agents and no runs gets [].
+     * Serves the recent-activity feed. (asynchronously)
+     * Serves the recent-activity feed. Events are REAL: each of the caller&#39;s own recorded runs is an invoked (ok) or failed (error) event; each of the org&#39;s agents&#39; create/update timestamps are created/updated events. Merged, newest first, capped. Nothing is invented — an org with no agents and no runs gets [].
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1284,8 +1389,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns one agent with its system prompt and its 20 most recent runs.
-     * Returns one agent with its system prompt and its 20 most recent runs. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
+     * Returns one agent with its system prompt and the caller&#39;s own 20 most recent runs of it: a run&#39;s input and output are its person&#39;s.
+     * Returns one agent with its system prompt and the caller&#39;s own 20 most recent runs of it: a run&#39;s input and output are its person&#39;s. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
      * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
      * @return AgentAgentDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1303,8 +1408,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns one agent with its system prompt and its 20 most recent runs.
-     * Returns one agent with its system prompt and its 20 most recent runs. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
+     * Returns one agent with its system prompt and the caller&#39;s own 20 most recent runs of it: a run&#39;s input and output are its person&#39;s.
+     * Returns one agent with its system prompt and the caller&#39;s own 20 most recent runs of it: a run&#39;s input and output are its person&#39;s. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
      * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
      * @return ApiResponse&lt;AgentAgentDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1323,8 +1428,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns one agent with its system prompt and its 20 most recent runs. (asynchronously)
-     * Returns one agent with its system prompt and its 20 most recent runs. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
+     * Returns one agent with its system prompt and the caller&#39;s own 20 most recent runs of it: a run&#39;s input and output are its person&#39;s. (asynchronously)
+     * Returns one agent with its system prompt and the caller&#39;s own 20 most recent runs of it: a run&#39;s input and output are its person&#39;s. The ref is the agent&#39;s public id or its org-unique name — a created agent is immediately gettable by whatever create handed back.
      * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1421,8 +1526,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took.
-     * Returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. Every row is a run that actually happened.
+     * Returns the caller&#39;s own runs of one agent, newest first — each run&#39;s input, its output or its error, and how long it took.
+     * Returns the caller&#39;s own runs of one agent, newest first — each run&#39;s input, its output or its error, and how long it took. A run is the person&#39;s who asked for it, so another member&#39;s runs are not listed, nor an org admin&#39;s view of them; a run no person asked for (a schedule) is listed to a SuperAdmin alone. Every row is a run that actually happened.
      * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @return AgentRunList
@@ -1441,8 +1546,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took.
-     * Returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. Every row is a run that actually happened.
+     * Returns the caller&#39;s own runs of one agent, newest first — each run&#39;s input, its output or its error, and how long it took.
+     * Returns the caller&#39;s own runs of one agent, newest first — each run&#39;s input, its output or its error, and how long it took. A run is the person&#39;s who asked for it, so another member&#39;s runs are not listed, nor an org admin&#39;s view of them; a run no person asked for (a schedule) is listed to a SuperAdmin alone. Every row is a run that actually happened.
      * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @return ApiResponse&lt;AgentRunList&gt;
@@ -1462,8 +1567,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. (asynchronously)
-     * Returns one agent&#39;s execution history, newest first — each run&#39;s input, its output or its error, and how long it took. Every row is a run that actually happened.
+     * Returns the caller&#39;s own runs of one agent, newest first — each run&#39;s input, its output or its error, and how long it took. (asynchronously)
+     * Returns the caller&#39;s own runs of one agent, newest first — each run&#39;s input, its output or its error, and how long it took. A run is the person&#39;s who asked for it, so another member&#39;s runs are not listed, nor an org admin&#39;s view of them; a run no person asked for (a schedule) is listed to a SuperAdmin alone. Every row is a run that actually happened.
      * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1680,8 +1785,8 @@ public class AgentApi {
     }
 
     /**
-     * List the agent threads in your org
-     * Returns a summary of every agent conversation in the caller&#39;s org — id, derived title, and when it was last appended to — for populating a thread list.  Scoped to the caller&#39;s org and nothing else, and that isolation is structural rather than a filter: conversations are persisted in a store opened PER ORG, so there is no query in which another tenant&#39;s threads could appear. A validated principal with a non-empty org is required: 401 without a principal, 403 without an org.
+     * List your own conversations
+     * Returns a summary of each conversation the caller opened — id, title, when it was last appended to, and whether it is pinned or archived — for populating a thread list: pinned first, then most recent. Archived conversations are left out; &#x60;?archived&#x3D;true&#x60; lists them alone.  A conversation is the person&#39;s who opened it, not the org&#39;s: another member of the same org lists none of it. Each org&#39;s conversations live in a store of its own, and inside it only the caller&#39;s are listed. One recorded before members were kept names nobody and is nobody&#39;s: &#x60;?memberless&#x3D;true&#x60; lists those instead, for a SuperAdmin alone (403 for anyone else), and each such list is audited. A validated principal naming an org and a user the identity boundary attests no two people share is required: 401 without a principal, 403 without an org or such a user.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getAgentChatConversations() throws ApiException {
@@ -1689,8 +1794,8 @@ public class AgentApi {
     }
 
     /**
-     * List the agent threads in your org
-     * Returns a summary of every agent conversation in the caller&#39;s org — id, derived title, and when it was last appended to — for populating a thread list.  Scoped to the caller&#39;s org and nothing else, and that isolation is structural rather than a filter: conversations are persisted in a store opened PER ORG, so there is no query in which another tenant&#39;s threads could appear. A validated principal with a non-empty org is required: 401 without a principal, 403 without an org.
+     * List your own conversations
+     * Returns a summary of each conversation the caller opened — id, title, when it was last appended to, and whether it is pinned or archived — for populating a thread list: pinned first, then most recent. Archived conversations are left out; &#x60;?archived&#x3D;true&#x60; lists them alone.  A conversation is the person&#39;s who opened it, not the org&#39;s: another member of the same org lists none of it. Each org&#39;s conversations live in a store of its own, and inside it only the caller&#39;s are listed. One recorded before members were kept names nobody and is nobody&#39;s: &#x60;?memberless&#x3D;true&#x60; lists those instead, for a SuperAdmin alone (403 for anyone else), and each such list is audited. A validated principal naming an org and a user the identity boundary attests no two people share is required: 401 without a principal, 403 without an org or such a user.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1700,8 +1805,8 @@ public class AgentApi {
     }
 
     /**
-     * List the agent threads in your org (asynchronously)
-     * Returns a summary of every agent conversation in the caller&#39;s org — id, derived title, and when it was last appended to — for populating a thread list.  Scoped to the caller&#39;s org and nothing else, and that isolation is structural rather than a filter: conversations are persisted in a store opened PER ORG, so there is no query in which another tenant&#39;s threads could appear. A validated principal with a non-empty org is required: 401 without a principal, 403 without an org.
+     * List your own conversations (asynchronously)
+     * Returns a summary of each conversation the caller opened — id, title, when it was last appended to, and whether it is pinned or archived — for populating a thread list: pinned first, then most recent. Archived conversations are left out; &#x60;?archived&#x3D;true&#x60; lists them alone.  A conversation is the person&#39;s who opened it, not the org&#39;s: another member of the same org lists none of it. Each org&#39;s conversations live in a store of its own, and inside it only the caller&#39;s are listed. One recorded before members were kept names nobody and is nobody&#39;s: &#x60;?memberless&#x3D;true&#x60; lists those instead, for a SuperAdmin alone (403 for anyone else), and each such list is audited. A validated principal naming an org and a user the identity boundary attests no two people share is required: 401 without a principal, 403 without an org or such a user.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1776,7 +1881,7 @@ public class AgentApi {
 
     /**
      * Read one agent thread in full
-     * Returns every message of one conversation in order — role, content, the assistant&#39;s tool calls where it made any, and each message&#39;s creation time — which is the transcript a client replays to resume a thread.  The lookup happens inside the caller&#39;s OWN per-org store, so an id belonging to another tenant is not refused, it is simply absent: the answer is 200 with an empty message list. Read it as \&quot;no such conversation for you\&quot; rather than as an empty thread. A validated principal with a non-empty org is required: 401 without a principal, 403 without an org.
+     * Returns every message of one of the caller&#39;s conversations in order — role, content, the assistant&#39;s tool calls where it made any, and each message&#39;s creation time — which is the transcript a client replays to resume a thread.  Another member&#39;s conversation, another org&#39;s, and one recorded with no member are answered 404, exactly as an id that never existed, so an id says nothing about whose it is (a SuperAdmin alone reads one with no member, and each read is audited). A turn sent under such an id opens a fresh conversation of the caller&#39;s. A validated principal naming an org and a user is required: 401 without a principal, 403 without an org or a user.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1786,7 +1891,7 @@ public class AgentApi {
 
     /**
      * Read one agent thread in full
-     * Returns every message of one conversation in order — role, content, the assistant&#39;s tool calls where it made any, and each message&#39;s creation time — which is the transcript a client replays to resume a thread.  The lookup happens inside the caller&#39;s OWN per-org store, so an id belonging to another tenant is not refused, it is simply absent: the answer is 200 with an empty message list. Read it as \&quot;no such conversation for you\&quot; rather than as an empty thread. A validated principal with a non-empty org is required: 401 without a principal, 403 without an org.
+     * Returns every message of one of the caller&#39;s conversations in order — role, content, the assistant&#39;s tool calls where it made any, and each message&#39;s creation time — which is the transcript a client replays to resume a thread.  Another member&#39;s conversation, another org&#39;s, and one recorded with no member are answered 404, exactly as an id that never existed, so an id says nothing about whose it is (a SuperAdmin alone reads one with no member, and each read is audited). A turn sent under such an id opens a fresh conversation of the caller&#39;s. A validated principal naming an org and a user is required: 401 without a principal, 403 without an org or a user.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1798,7 +1903,7 @@ public class AgentApi {
 
     /**
      * Read one agent thread in full (asynchronously)
-     * Returns every message of one conversation in order — role, content, the assistant&#39;s tool calls where it made any, and each message&#39;s creation time — which is the transcript a client replays to resume a thread.  The lookup happens inside the caller&#39;s OWN per-org store, so an id belonging to another tenant is not refused, it is simply absent: the answer is 200 with an empty message list. Read it as \&quot;no such conversation for you\&quot; rather than as an empty thread. A validated principal with a non-empty org is required: 401 without a principal, 403 without an org.
+     * Returns every message of one of the caller&#39;s conversations in order — role, content, the assistant&#39;s tool calls where it made any, and each message&#39;s creation time — which is the transcript a client replays to resume a thread.  Another member&#39;s conversation, another org&#39;s, and one recorded with no member are answered 404, exactly as an id that never existed, so an id says nothing about whose it is (a SuperAdmin alone reads one with no member, and each read is audited). A turn sent under such an id opens a fresh conversation of the caller&#39;s. A validated principal naming an org and a user is required: 401 without a principal, 403 without an org or a user.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2239,7 +2344,7 @@ public class AgentApi {
 
     /**
      * List every live link in your organization
-     * For an admin of the caller&#39;s organization: every unrevoked share made in it, with the conversation&#39;s id and title, the member who made it, when, and how many people it is open to. &#x60;?user&#x3D;&#x60; narrows it to one member&#39;s. Anyone else is answered 403.
+     * For an admin of the caller&#39;s organization: every unrevoked share made in it, with the conversation&#39;s id and title, the member who made it, when, and how many people it is open to. &#x60;?user&#x3D;&#x60; narrows it to one member&#39;s. Anyone else is answered 403, and so is an admin of a held org such as hanzo, whose members are customers who are strangers to each other.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getAgentChatShares() throws ApiException {
@@ -2248,7 +2353,7 @@ public class AgentApi {
 
     /**
      * List every live link in your organization
-     * For an admin of the caller&#39;s organization: every unrevoked share made in it, with the conversation&#39;s id and title, the member who made it, when, and how many people it is open to. &#x60;?user&#x3D;&#x60; narrows it to one member&#39;s. Anyone else is answered 403.
+     * For an admin of the caller&#39;s organization: every unrevoked share made in it, with the conversation&#39;s id and title, the member who made it, when, and how many people it is open to. &#x60;?user&#x3D;&#x60; narrows it to one member&#39;s. Anyone else is answered 403, and so is an admin of a held org such as hanzo, whose members are customers who are strangers to each other.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2259,7 +2364,7 @@ public class AgentApi {
 
     /**
      * List every live link in your organization (asynchronously)
-     * For an admin of the caller&#39;s organization: every unrevoked share made in it, with the conversation&#39;s id and title, the member who made it, when, and how many people it is open to. &#x60;?user&#x3D;&#x60; narrows it to one member&#39;s. Anyone else is answered 403.
+     * For an admin of the caller&#39;s organization: every unrevoked share made in it, with the conversation&#39;s id and title, the member who made it, when, and how many people it is open to. &#x60;?user&#x3D;&#x60; narrows it to one member&#39;s. Anyone else is answered 403, and so is an admin of a held org such as hanzo, whose members are customers who are strangers to each other.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2884,8 +2989,8 @@ public class AgentApi {
     }
 
     /**
-     * Serves the invocations-over-time histogram for the org&#39;s Agents dashboard.
-     * Serves the invocations-over-time histogram for the org&#39;s Agents dashboard. Every point is a REAL count of recorded runs in that time bucket — one series line per agent that ran in the window. The Resource Usage rollup is all-null because this store meters no CPU/memory/storage/cost; the console renders those as \&quot;—\&quot; rather than a fabricated figure. No runs &#x3D;&gt; empty series (an honest \&quot;not connected / no activity yet\&quot;), never a synthesized trend.
+     * Serves the invocations-over-time histogram for the Agents dashboard, over the caller&#39;s own runs.
+     * Serves the invocations-over-time histogram for the Agents dashboard, over the caller&#39;s own runs. Every point is a REAL count of recorded runs in that time bucket — one series line per agent that ran in the window. The Resource Usage rollup is all-null because this store meters no CPU/memory/storage/cost; the console renders those as \&quot;—\&quot; rather than a fabricated figure. No runs &#x3D;&gt; empty series (an honest \&quot;not connected / no activity yet\&quot;), never a synthesized trend.
      * @param range Range is the window to bucket: 24H, 7D or 30D. Anything else reads as 30D. (optional)
      * @return AgentMetricsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2903,8 +3008,8 @@ public class AgentApi {
     }
 
     /**
-     * Serves the invocations-over-time histogram for the org&#39;s Agents dashboard.
-     * Serves the invocations-over-time histogram for the org&#39;s Agents dashboard. Every point is a REAL count of recorded runs in that time bucket — one series line per agent that ran in the window. The Resource Usage rollup is all-null because this store meters no CPU/memory/storage/cost; the console renders those as \&quot;—\&quot; rather than a fabricated figure. No runs &#x3D;&gt; empty series (an honest \&quot;not connected / no activity yet\&quot;), never a synthesized trend.
+     * Serves the invocations-over-time histogram for the Agents dashboard, over the caller&#39;s own runs.
+     * Serves the invocations-over-time histogram for the Agents dashboard, over the caller&#39;s own runs. Every point is a REAL count of recorded runs in that time bucket — one series line per agent that ran in the window. The Resource Usage rollup is all-null because this store meters no CPU/memory/storage/cost; the console renders those as \&quot;—\&quot; rather than a fabricated figure. No runs &#x3D;&gt; empty series (an honest \&quot;not connected / no activity yet\&quot;), never a synthesized trend.
      * @param range Range is the window to bucket: 24H, 7D or 30D. Anything else reads as 30D. (optional)
      * @return ApiResponse&lt;AgentMetricsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2923,8 +3028,8 @@ public class AgentApi {
     }
 
     /**
-     * Serves the invocations-over-time histogram for the org&#39;s Agents dashboard. (asynchronously)
-     * Serves the invocations-over-time histogram for the org&#39;s Agents dashboard. Every point is a REAL count of recorded runs in that time bucket — one series line per agent that ran in the window. The Resource Usage rollup is all-null because this store meters no CPU/memory/storage/cost; the console renders those as \&quot;—\&quot; rather than a fabricated figure. No runs &#x3D;&gt; empty series (an honest \&quot;not connected / no activity yet\&quot;), never a synthesized trend.
+     * Serves the invocations-over-time histogram for the Agents dashboard, over the caller&#39;s own runs. (asynchronously)
+     * Serves the invocations-over-time histogram for the Agents dashboard, over the caller&#39;s own runs. Every point is a REAL count of recorded runs in that time bucket — one series line per agent that ran in the window. The Resource Usage rollup is all-null because this store meters no CPU/memory/storage/cost; the console renders those as \&quot;—\&quot; rather than a fabricated figure. No runs &#x3D;&gt; empty series (an honest \&quot;not connected / no activity yet\&quot;), never a synthesized trend.
      * @param range Range is the window to bucket: 24H, 7D or 30D. Anything else reads as 30D. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3019,8 +3124,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns the org&#39;s agent runs across EVERY agent, newest first — what ran here, for whom, on which model, how long it took, and why it failed.
-     * Returns the org&#39;s agent runs across EVERY agent, newest first — what ran here, for whom, on which model, how long it took, and why it failed.  It is the feed the per-agent history could not be: an operator asking \&quot;what is this tenant&#39;s agent plane doing\&quot; does not start out knowing an agent ref, and answering by listing the agents and then paging each one&#39;s history is N+1 round trips to reconstruct one ordering the database already has (RunsSince, ordered by created_at over the org index).  The org is the CALLER&#39;s, resolved from identity by tenantStore — never a parameter. There is deliberately no org field on orgRunsQuery to forge: run history is the tenant&#39;s own record, and the only tenant this can answer for is the one asking.
+     * Returns the caller&#39;s own agent runs across EVERY agent of the org, newest first — what ran, on which model, how long it took, and why it failed.
+     * Returns the caller&#39;s own agent runs across EVERY agent of the org, newest first — what ran, on which model, how long it took, and why it failed. A run is the person&#39;s who asked for it: another member&#39;s never appears, and a run no person asked for (a schedule) appears to a SuperAdmin alone.  It is the feed the per-agent history could not be: an operator asking \&quot;what is this tenant&#39;s agent plane doing\&quot; does not start out knowing an agent ref, and answering by listing the agents and then paging each one&#39;s history is N+1 round trips to reconstruct one ordering the database already has (RunsSince, ordered by created_at over the org index).  The org is the CALLER&#39;s, resolved from identity by tenantStore — never a parameter. There is deliberately no org field on orgRunsQuery to forge: run history is the tenant&#39;s own record, and the only tenant this can answer for is the one asking.
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param status Status keeps only runs with this outcome (\&quot;ok\&quot; or \&quot;error\&quot;). Empty keeps both. It is the filter an operator reaches for first — \&quot;show me what broke\&quot; — and answering it here rather than by paging the whole history client-side is the difference between a usable feed and a download. (optional)
      * @return AgentRunList
@@ -3039,8 +3144,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns the org&#39;s agent runs across EVERY agent, newest first — what ran here, for whom, on which model, how long it took, and why it failed.
-     * Returns the org&#39;s agent runs across EVERY agent, newest first — what ran here, for whom, on which model, how long it took, and why it failed.  It is the feed the per-agent history could not be: an operator asking \&quot;what is this tenant&#39;s agent plane doing\&quot; does not start out knowing an agent ref, and answering by listing the agents and then paging each one&#39;s history is N+1 round trips to reconstruct one ordering the database already has (RunsSince, ordered by created_at over the org index).  The org is the CALLER&#39;s, resolved from identity by tenantStore — never a parameter. There is deliberately no org field on orgRunsQuery to forge: run history is the tenant&#39;s own record, and the only tenant this can answer for is the one asking.
+     * Returns the caller&#39;s own agent runs across EVERY agent of the org, newest first — what ran, on which model, how long it took, and why it failed.
+     * Returns the caller&#39;s own agent runs across EVERY agent of the org, newest first — what ran, on which model, how long it took, and why it failed. A run is the person&#39;s who asked for it: another member&#39;s never appears, and a run no person asked for (a schedule) appears to a SuperAdmin alone.  It is the feed the per-agent history could not be: an operator asking \&quot;what is this tenant&#39;s agent plane doing\&quot; does not start out knowing an agent ref, and answering by listing the agents and then paging each one&#39;s history is N+1 round trips to reconstruct one ordering the database already has (RunsSince, ordered by created_at over the org index).  The org is the CALLER&#39;s, resolved from identity by tenantStore — never a parameter. There is deliberately no org field on orgRunsQuery to forge: run history is the tenant&#39;s own record, and the only tenant this can answer for is the one asking.
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param status Status keeps only runs with this outcome (\&quot;ok\&quot; or \&quot;error\&quot;). Empty keeps both. It is the filter an operator reaches for first — \&quot;show me what broke\&quot; — and answering it here rather than by paging the whole history client-side is the difference between a usable feed and a download. (optional)
      * @return ApiResponse&lt;AgentRunList&gt;
@@ -3060,8 +3165,8 @@ public class AgentApi {
     }
 
     /**
-     * Returns the org&#39;s agent runs across EVERY agent, newest first — what ran here, for whom, on which model, how long it took, and why it failed. (asynchronously)
-     * Returns the org&#39;s agent runs across EVERY agent, newest first — what ran here, for whom, on which model, how long it took, and why it failed.  It is the feed the per-agent history could not be: an operator asking \&quot;what is this tenant&#39;s agent plane doing\&quot; does not start out knowing an agent ref, and answering by listing the agents and then paging each one&#39;s history is N+1 round trips to reconstruct one ordering the database already has (RunsSince, ordered by created_at over the org index).  The org is the CALLER&#39;s, resolved from identity by tenantStore — never a parameter. There is deliberately no org field on orgRunsQuery to forge: run history is the tenant&#39;s own record, and the only tenant this can answer for is the one asking.
+     * Returns the caller&#39;s own agent runs across EVERY agent of the org, newest first — what ran, on which model, how long it took, and why it failed. (asynchronously)
+     * Returns the caller&#39;s own agent runs across EVERY agent of the org, newest first — what ran, on which model, how long it took, and why it failed. A run is the person&#39;s who asked for it: another member&#39;s never appears, and a run no person asked for (a schedule) appears to a SuperAdmin alone.  It is the feed the per-agent history could not be: an operator asking \&quot;what is this tenant&#39;s agent plane doing\&quot; does not start out knowing an agent ref, and answering by listing the agents and then paging each one&#39;s history is N+1 round trips to reconstruct one ordering the database already has (RunsSince, ordered by created_at over the org index).  The org is the CALLER&#39;s, resolved from identity by tenantStore — never a parameter. There is deliberately no org field on orgRunsQuery to forge: run history is the tenant&#39;s own record, and the only tenant this can answer for is the one asking.
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param status Status keeps only runs with this outcome (\&quot;ok\&quot; or \&quot;error\&quot;). Empty keeps both. It is the filter an operator reaches for first — \&quot;show me what broke\&quot; — and answering it here rather than by paging the whole history client-side is the difference between a usable feed and a download. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -3088,7 +3193,7 @@ public class AgentApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
+     * @param channel Channel filters to the sessions started in one collaborative channel — the query a space view runs to show what has been run in it. (optional)
      * @param kind Kind filters to the sessions of one kind of run: \&quot;coding\&quot; lists coding runs, each carrying its repo, base, branch, environment and pull request. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param after After is the &#x60;next&#x60; of the previous page. Absent starts at the newest. (optional)
@@ -3103,7 +3208,7 @@ public class AgentApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3144,8 +3249,8 @@ public class AgentApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
         }
 
-        if (room != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        if (channel != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("channel", channel));
         }
 
         if (kind != null) {
@@ -3181,8 +3286,8 @@ public class AgentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after, final ApiCallback _callback) throws ApiException {
-        return getAgentSessionsCall(root, parent, status, project, room, kind, limit, after, _callback);
+    private okhttp3.Call getAgentSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after, final ApiCallback _callback) throws ApiException {
+        return getAgentSessionsCall(root, parent, status, project, channel, kind, limit, after, _callback);
 
     }
 
@@ -3193,7 +3298,7 @@ public class AgentApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
+     * @param channel Channel filters to the sessions started in one collaborative channel — the query a space view runs to show what has been run in it. (optional)
      * @param kind Kind filters to the sessions of one kind of run: \&quot;coding\&quot; lists coding runs, each carrying its repo, base, branch, environment and pull request. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param after After is the &#x60;next&#x60; of the previous page. Absent starts at the newest. (optional)
@@ -3207,8 +3312,8 @@ public class AgentApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AgentSessionList getAgentSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after) throws ApiException {
-        ApiResponse<AgentSessionList> localVarResp = getAgentSessionsWithHttpInfo(root, parent, status, project, room, kind, limit, after);
+    public AgentSessionList getAgentSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after) throws ApiException {
+        ApiResponse<AgentSessionList> localVarResp = getAgentSessionsWithHttpInfo(root, parent, status, project, channel, kind, limit, after);
         return localVarResp.getData();
     }
 
@@ -3219,7 +3324,7 @@ public class AgentApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
+     * @param channel Channel filters to the sessions started in one collaborative channel — the query a space view runs to show what has been run in it. (optional)
      * @param kind Kind filters to the sessions of one kind of run: \&quot;coding\&quot; lists coding runs, each carrying its repo, base, branch, environment and pull request. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param after After is the &#x60;next&#x60; of the previous page. Absent starts at the newest. (optional)
@@ -3233,8 +3338,8 @@ public class AgentApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentSessionList> getAgentSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after) throws ApiException {
-        okhttp3.Call localVarCall = getAgentSessionsValidateBeforeCall(root, parent, status, project, room, kind, limit, after, null);
+    public ApiResponse<AgentSessionList> getAgentSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsValidateBeforeCall(root, parent, status, project, channel, kind, limit, after, null);
         Type localVarReturnType = new TypeToken<AgentSessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3246,7 +3351,7 @@ public class AgentApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
+     * @param channel Channel filters to the sessions started in one collaborative channel — the query a space view runs to show what has been run in it. (optional)
      * @param kind Kind filters to the sessions of one kind of run: \&quot;coding\&quot; lists coding runs, each carrying its repo, base, branch, environment and pull request. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param after After is the &#x60;next&#x60; of the previous page. Absent starts at the newest. (optional)
@@ -3261,9 +3366,9 @@ public class AgentApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after, final ApiCallback<AgentSessionList> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String kind, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String after, final ApiCallback<AgentSessionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentSessionsValidateBeforeCall(root, parent, status, project, room, kind, limit, after, _callback);
+        okhttp3.Call localVarCall = getAgentSessionsValidateBeforeCall(root, parent, status, project, channel, kind, limit, after, _callback);
         Type localVarReturnType = new TypeToken<AgentSessionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3341,7 +3446,7 @@ public class AgentApi {
 
     /**
      * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
-     * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. The children are those the caller may see, by the rule the session itself is read by: a member&#39;s own, and every one for an admin of the org.
+     * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. The children are those the caller may see, by the rule the session itself is read by: a member&#39;s own, and every one for an admin of the org. In a held org, where self-serve signups land beside the platform&#39;s staff, a session is its person&#39;s alone.
      * @param id ID is the session to act on, from the path. (required)
      * @return AgentSessionDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3360,7 +3465,7 @@ public class AgentApi {
 
     /**
      * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first.
-     * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. The children are those the caller may see, by the rule the session itself is read by: a member&#39;s own, and every one for an admin of the org.
+     * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. The children are those the caller may see, by the rule the session itself is read by: a member&#39;s own, and every one for an admin of the org. In a held org, where self-serve signups land beside the platform&#39;s staff, a session is its person&#39;s alone.
      * @param id ID is the session to act on, from the path. (required)
      * @return ApiResponse&lt;AgentSessionDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3380,7 +3485,7 @@ public class AgentApi {
 
     /**
      * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. (asynchronously)
-     * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. The children are those the caller may see, by the rule the session itself is read by: a member&#39;s own, and every one for an admin of the org.
+     * Returns one session with its direct child sessions and its 50 most recent events, oldest of those first. The children are those the caller may see, by the rule the session itself is read by: a member&#39;s own, and every one for an admin of the org. In a held org, where self-serve signups land beside the platform&#39;s staff, a session is its person&#39;s alone.
      * @param id ID is the session to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3537,6 +3642,154 @@ public class AgentApi {
 
         okhttp3.Call localVarCall = getAgentSessionsByIdControlValidateBeforeCall(id, after, _callback);
         Type localVarReturnType = new TypeToken<AgentControlDrain>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAgentSessionsByIdEvents
+     * @param id ID is the session to read, from the path. (required)
+     * @param after After is the seq of the last event already read; the page starts after it. Absent or zero starts at the first event. (optional)
+     * @param limit Limit caps the page. Absent, zero or over 1000 reads as 200. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAgentSessionsByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/agent/sessions/{id}/events"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (after != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("after", after));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAgentSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentSessionsByIdEvents(Async)");
+        }
+
+        return getAgentSessionsByIdEventsCall(id, after, limit, _callback);
+
+    }
+
+    /**
+     * Reads a session&#39;s log in order, a page at a time: everything after the seq a reader last saw, so a poll resumes exactly where it stopped.
+     * Reads a session&#39;s log in order, a page at a time: everything after the seq a reader last saw, so a poll resumes exactly where it stopped. It is how to see what a run did and why it ended — each model turn, tool call, status and log line, as the run wrote them. A run whose process went away is ended first, with its reason as the last event.
+     * @param id ID is the session to read, from the path. (required)
+     * @param after After is the seq of the last event already read; the page starts after it. Absent or zero starts at the first event. (optional)
+     * @param limit Limit caps the page. Absent, zero or over 1000 reads as 200. (optional)
+     * @return AgentEventList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AgentEventList getAgentSessionsByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AgentEventList> localVarResp = getAgentSessionsByIdEventsWithHttpInfo(id, after, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads a session&#39;s log in order, a page at a time: everything after the seq a reader last saw, so a poll resumes exactly where it stopped.
+     * Reads a session&#39;s log in order, a page at a time: everything after the seq a reader last saw, so a poll resumes exactly where it stopped. It is how to see what a run did and why it ended — each model turn, tool call, status and log line, as the run wrote them. A run whose process went away is ended first, with its reason as the last event.
+     * @param id ID is the session to read, from the path. (required)
+     * @param after After is the seq of the last event already read; the page starts after it. Absent or zero starts at the first event. (optional)
+     * @param limit Limit caps the page. Absent, zero or over 1000 reads as 200. (optional)
+     * @return ApiResponse&lt;AgentEventList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AgentEventList> getAgentSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsByIdEventsValidateBeforeCall(id, after, limit, null);
+        Type localVarReturnType = new TypeToken<AgentEventList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads a session&#39;s log in order, a page at a time: everything after the seq a reader last saw, so a poll resumes exactly where it stopped. (asynchronously)
+     * Reads a session&#39;s log in order, a page at a time: everything after the seq a reader last saw, so a poll resumes exactly where it stopped. It is how to see what a run did and why it ended — each model turn, tool call, status and log line, as the run wrote them. A run whose process went away is ended first, with its reason as the last event.
+     * @param id ID is the session to read, from the path. (required)
+     * @param after After is the seq of the last event already read; the page starts after it. Absent or zero starts at the first event. (optional)
+     * @param limit Limit caps the page. Absent, zero or over 1000 reads as 200. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAgentSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, @javax.annotation.Nullable Long limit, final ApiCallback<AgentEventList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAgentSessionsByIdEventsValidateBeforeCall(id, after, limit, _callback);
+        Type localVarReturnType = new TypeToken<AgentEventList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3958,7 +4211,7 @@ public class AgentApi {
 
     /**
      * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load.
-     * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load.
+     * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load. In a held org, where self-serve signups land beside the platform&#39;s staff, it is only the caller&#39;s own.
      * @return AgentTargetList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3976,7 +4229,7 @@ public class AgentApi {
 
     /**
      * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load.
-     * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load.
+     * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load. In a held org, where self-serve signups land beside the platform&#39;s staff, it is only the caller&#39;s own.
      * @return ApiResponse&lt;AgentTargetList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3995,7 +4248,7 @@ public class AgentApi {
 
     /**
      * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load. (asynchronously)
-     * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load.
+     * Returns every machine registered to the caller&#39;s org, newest first, each with its live session load. In a held org, where self-serve signups land beside the platform&#39;s staff, it is only the caller&#39;s own.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4286,6 +4539,104 @@ public class AgentApi {
         okhttp3.Call localVarCall = patchAgentByRefValidateBeforeCall(ref, agentUpdateAgentIn, _callback);
         Type localVarReturnType = new TypeToken<AgentAgentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchAgentChatConversationsById
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call patchAgentChatConversationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/agent/chat/conversations/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchAgentChatConversationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchAgentChatConversationsById(Async)");
+        }
+
+        return patchAgentChatConversationsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Rename, pin or archive one of your conversations
+     * Takes &#x60;{title?, pinned?, archived?}&#x60; and changes what it names, leaving the rest; a body naming none is refused 400, and so is an empty title. A title is cut to one line of at most 80 characters. Answers the conversation as the list does — id, title, updatedAt, pinned, archived — and the change does not move &#x60;updatedAt&#x60;, which stays when it was last spoken in.  The list puts pinned conversations first and leaves archived ones out; &#x60;?archived&#x3D;true&#x60; lists those alone. Only the member who opened the conversation may change it; another member&#39;s, another org&#39;s, and one recorded with no member answer 404. Every change is written to the audit trail.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void patchAgentChatConversationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        patchAgentChatConversationsByIdWithHttpInfo(id);
+    }
+
+    /**
+     * Rename, pin or archive one of your conversations
+     * Takes &#x60;{title?, pinned?, archived?}&#x60; and changes what it names, leaving the rest; a body naming none is refused 400, and so is an empty title. A title is cut to one line of at most 80 characters. Answers the conversation as the list does — id, title, updatedAt, pinned, archived — and the change does not move &#x60;updatedAt&#x60;, which stays when it was last spoken in.  The list puts pinned conversations first and leaves archived ones out; &#x60;?archived&#x3D;true&#x60; lists those alone. Only the member who opened the conversation may change it; another member&#39;s, another org&#39;s, and one recorded with no member answer 404. Every change is written to the audit trail.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> patchAgentChatConversationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = patchAgentChatConversationsByIdValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Rename, pin or archive one of your conversations (asynchronously)
+     * Takes &#x60;{title?, pinned?, archived?}&#x60; and changes what it names, leaving the rest; a body naming none is refused 400, and so is an empty title. A title is cut to one line of at most 80 characters. Answers the conversation as the list does — id, title, updatedAt, pinned, archived — and the change does not move &#x60;updatedAt&#x60;, which stays when it was last spoken in.  The list puts pinned conversations first and leaves archived ones out; &#x60;?archived&#x3D;true&#x60; lists those alone. Only the member who opened the conversation may change it; another member&#39;s, another org&#39;s, and one recorded with no member answer 404. Every change is written to the audit trail.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call patchAgentChatConversationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchAgentChatConversationsByIdValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -5325,7 +5676,7 @@ public class AgentApi {
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org
-     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  Name no repo and the run works in an empty workspace of its own: nothing is cloned and nothing is pushed, and what it makes is kept in its sandbox and as its artifacts. Name a repository the caller can read and not push to — a public one — and it is cloned read-only, the same way.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agent/sessions/stream?root&#x3D;&lt;id&gt;), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
+     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  Name no repo and the run works in an empty workspace of its own: nothing is cloned and nothing is pushed, and what it makes is kept in its sandbox and as its artifacts. Name a repository the caller can read and not push to — a public one — and it is cloned read-only, the same way.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agent/sessions/stream?root&#x3D;&lt;id&gt;), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up has its own session and writes the same branch, so one piece of work is one branch and one pull request however many instructions it takes.  Pass &#x60;branch&#x60; to name the branch the run writes (&#x60;agent/&lt;name&gt;&#x60;), and &#x60;pull&#x60; as false to push it without opening a pull request.
      * @param agentCodingStartIn  (required)
      * @return AgentCodingStarted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5344,7 +5695,7 @@ public class AgentApi {
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org
-     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  Name no repo and the run works in an empty workspace of its own: nothing is cloned and nothing is pushed, and what it makes is kept in its sandbox and as its artifacts. Name a repository the caller can read and not push to — a public one — and it is cloned read-only, the same way.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agent/sessions/stream?root&#x3D;&lt;id&gt;), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
+     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  Name no repo and the run works in an empty workspace of its own: nothing is cloned and nothing is pushed, and what it makes is kept in its sandbox and as its artifacts. Name a repository the caller can read and not push to — a public one — and it is cloned read-only, the same way.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agent/sessions/stream?root&#x3D;&lt;id&gt;), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up has its own session and writes the same branch, so one piece of work is one branch and one pull request however many instructions it takes.  Pass &#x60;branch&#x60; to name the branch the run writes (&#x60;agent/&lt;name&gt;&#x60;), and &#x60;pull&#x60; as false to push it without opening a pull request.
      * @param agentCodingStartIn  (required)
      * @return ApiResponse&lt;AgentCodingStarted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5364,7 +5715,7 @@ public class AgentApi {
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org (asynchronously)
-     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  Name no repo and the run works in an empty workspace of its own: nothing is cloned and nothing is pushed, and what it makes is kept in its sandbox and as its artifacts. Name a repository the caller can read and not push to — a public one — and it is cloned read-only, the same way.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agent/sessions/stream?root&#x3D;&lt;id&gt;), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
+     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  Name no repo and the run works in an empty workspace of its own: nothing is cloned and nothing is pushed, and what it makes is kept in its sandbox and as its artifacts. Name a repository the caller can read and not push to — a public one — and it is cloned read-only, the same way.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agent/sessions/stream?root&#x3D;&lt;id&gt;), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up has its own session and writes the same branch, so one piece of work is one branch and one pull request however many instructions it takes.  Pass &#x60;branch&#x60; to name the branch the run writes (&#x60;agent/&lt;name&gt;&#x60;), and &#x60;pull&#x60; as false to push it without opening a pull request.
      * @param agentCodingStartIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5381,6 +5732,148 @@ public class AgentApi {
 
         okhttp3.Call localVarCall = postAgentCodingValidateBeforeCall(agentCodingStartIn, _callback);
         Type localVarReturnType = new TypeToken<AgentCodingStarted>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAgentCodingBySessionExtend
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingExtendIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAgentCodingBySessionExtendCall(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingExtendIn agentCodingExtendIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = agentCodingExtendIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/agent/coding/{session}/extend"
+            .replace("{" + "session" + "}", localVarApiClient.escapeString(session.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAgentCodingBySessionExtendValidateBeforeCall(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingExtendIn agentCodingExtendIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'session' is set
+        if (session == null) {
+            throw new ApiException("Missing the required parameter 'session' when calling postAgentCodingBySessionExtend(Async)");
+        }
+
+        // verify the required parameter 'agentCodingExtendIn' is set
+        if (agentCodingExtendIn == null) {
+            throw new ApiException("Missing the required parameter 'agentCodingExtendIn' when calling postAgentCodingBySessionExtend(Async)");
+        }
+
+        return postAgentCodingBySessionExtendCall(session, agentCodingExtendIn, _callback);
+
+    }
+
+    /**
+     * Gives your running coding run more time.
+     * Gives your running coding run more time. A run is held to the time it was asked for (&#x60;timeoutSeconds&#x60;) and, when it is up, keeps its work on its branch and ends; this moves that time later while the run works, so a task expected to take five minutes that is nearly done is given two more rather than restarted. &#x60;seconds&#x60; is added to the time the run has left, as far as the longest a run may be given; the answer says when the run is up now, so asking for more than that reads what you got.  The run must be yours and still working: a run that is paused or already out of time is a conflict (start a new one with &#x60;after&#x60; set to its session), and one that is not running is not found. A run sent to a machine of your own keeps that machine&#39;s time and cannot be extended.
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingExtendIn  (required)
+     * @return AgentCodingExtended
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AgentCodingExtended postAgentCodingBySessionExtend(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingExtendIn agentCodingExtendIn) throws ApiException {
+        ApiResponse<AgentCodingExtended> localVarResp = postAgentCodingBySessionExtendWithHttpInfo(session, agentCodingExtendIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Gives your running coding run more time.
+     * Gives your running coding run more time. A run is held to the time it was asked for (&#x60;timeoutSeconds&#x60;) and, when it is up, keeps its work on its branch and ends; this moves that time later while the run works, so a task expected to take five minutes that is nearly done is given two more rather than restarted. &#x60;seconds&#x60; is added to the time the run has left, as far as the longest a run may be given; the answer says when the run is up now, so asking for more than that reads what you got.  The run must be yours and still working: a run that is paused or already out of time is a conflict (start a new one with &#x60;after&#x60; set to its session), and one that is not running is not found. A run sent to a machine of your own keeps that machine&#39;s time and cannot be extended.
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingExtendIn  (required)
+     * @return ApiResponse&lt;AgentCodingExtended&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AgentCodingExtended> postAgentCodingBySessionExtendWithHttpInfo(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingExtendIn agentCodingExtendIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentCodingBySessionExtendValidateBeforeCall(session, agentCodingExtendIn, null);
+        Type localVarReturnType = new TypeToken<AgentCodingExtended>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Gives your running coding run more time. (asynchronously)
+     * Gives your running coding run more time. A run is held to the time it was asked for (&#x60;timeoutSeconds&#x60;) and, when it is up, keeps its work on its branch and ends; this moves that time later while the run works, so a task expected to take five minutes that is nearly done is given two more rather than restarted. &#x60;seconds&#x60; is added to the time the run has left, as far as the longest a run may be given; the answer says when the run is up now, so asking for more than that reads what you got.  The run must be yours and still working: a run that is paused or already out of time is a conflict (start a new one with &#x60;after&#x60; set to its session), and one that is not running is not found. A run sent to a machine of your own keeps that machine&#39;s time and cannot be extended.
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingExtendIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAgentCodingBySessionExtendAsync(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingExtendIn agentCodingExtendIn, final ApiCallback<AgentCodingExtended> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAgentCodingBySessionExtendValidateBeforeCall(session, agentCodingExtendIn, _callback);
+        Type localVarReturnType = new TypeToken<AgentCodingExtended>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5513,6 +6006,290 @@ public class AgentApi {
 
         okhttp3.Call localVarCall = postAgentCodingBySessionMergeValidateBeforeCall(session, _callback);
         Type localVarReturnType = new TypeToken<AgentCodingMerged>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAgentCodingBySessionPull
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingPullIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAgentCodingBySessionPullCall(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingPullIn agentCodingPullIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = agentCodingPullIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/agent/coding/{session}/pull"
+            .replace("{" + "session" + "}", localVarApiClient.escapeString(session.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAgentCodingBySessionPullValidateBeforeCall(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingPullIn agentCodingPullIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'session' is set
+        if (session == null) {
+            throw new ApiException("Missing the required parameter 'session' when calling postAgentCodingBySessionPull(Async)");
+        }
+
+        // verify the required parameter 'agentCodingPullIn' is set
+        if (agentCodingPullIn == null) {
+            throw new ApiException("Missing the required parameter 'agentCodingPullIn' when calling postAgentCodingBySessionPull(Async)");
+        }
+
+        return postAgentCodingBySessionPullCall(session, agentCodingPullIn, _callback);
+
+    }
+
+    /**
+     * Opens the pull request for the branch a coding run pushed, as the run&#39;s person and with no agent run, and answers its number and address.
+     * Opens the pull request for the branch a coding run pushed, as the run&#39;s person and with no agent run, and answers its number and address.  A run pushes its branch and stops; the pull request is the step after, taken when the work is ready. A run that already has an open pull request, or a branch that has one on its host, answers with that one, so asking twice is safe. Title, body, base and draft are optional: the title and body come from the run&#39;s task, the base is the branch the run started from, and draft opens it as one a reviewer cannot merge yet. The run&#39;s branch must be on its host: a run that pushed nothing, or has not pushed yet, is 409. Who may is who may read the run, and the pull request is read back at GET /v1/agent/coding/{session}/changes.
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingPullIn  (required)
+     * @return AgentCodingPulled
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AgentCodingPulled postAgentCodingBySessionPull(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingPullIn agentCodingPullIn) throws ApiException {
+        ApiResponse<AgentCodingPulled> localVarResp = postAgentCodingBySessionPullWithHttpInfo(session, agentCodingPullIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens the pull request for the branch a coding run pushed, as the run&#39;s person and with no agent run, and answers its number and address.
+     * Opens the pull request for the branch a coding run pushed, as the run&#39;s person and with no agent run, and answers its number and address.  A run pushes its branch and stops; the pull request is the step after, taken when the work is ready. A run that already has an open pull request, or a branch that has one on its host, answers with that one, so asking twice is safe. Title, body, base and draft are optional: the title and body come from the run&#39;s task, the base is the branch the run started from, and draft opens it as one a reviewer cannot merge yet. The run&#39;s branch must be on its host: a run that pushed nothing, or has not pushed yet, is 409. Who may is who may read the run, and the pull request is read back at GET /v1/agent/coding/{session}/changes.
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingPullIn  (required)
+     * @return ApiResponse&lt;AgentCodingPulled&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AgentCodingPulled> postAgentCodingBySessionPullWithHttpInfo(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingPullIn agentCodingPullIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentCodingBySessionPullValidateBeforeCall(session, agentCodingPullIn, null);
+        Type localVarReturnType = new TypeToken<AgentCodingPulled>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens the pull request for the branch a coding run pushed, as the run&#39;s person and with no agent run, and answers its number and address. (asynchronously)
+     * Opens the pull request for the branch a coding run pushed, as the run&#39;s person and with no agent run, and answers its number and address.  A run pushes its branch and stops; the pull request is the step after, taken when the work is ready. A run that already has an open pull request, or a branch that has one on its host, answers with that one, so asking twice is safe. Title, body, base and draft are optional: the title and body come from the run&#39;s task, the base is the branch the run started from, and draft opens it as one a reviewer cannot merge yet. The run&#39;s branch must be on its host: a run that pushed nothing, or has not pushed yet, is 409. Who may is who may read the run, and the pull request is read back at GET /v1/agent/coding/{session}/changes.
+     * @param session Session is the run&#39;s handle, from the path. (required)
+     * @param agentCodingPullIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAgentCodingBySessionPullAsync(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingPullIn agentCodingPullIn, final ApiCallback<AgentCodingPulled> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAgentCodingBySessionPullValidateBeforeCall(session, agentCodingPullIn, _callback);
+        Type localVarReturnType = new TypeToken<AgentCodingPulled>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAgentCodingBySessionSteer
+     * @param session Session identifies the running or paused coding session from the path. (required)
+     * @param agentCodingInstruction  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAgentCodingBySessionSteerCall(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingInstruction agentCodingInstruction, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = agentCodingInstruction;
+
+        // create path and map variables
+        String localVarPath = "/v1/agent/coding/{session}/steer"
+            .replace("{" + "session" + "}", localVarApiClient.escapeString(session.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAgentCodingBySessionSteerValidateBeforeCall(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingInstruction agentCodingInstruction, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'session' is set
+        if (session == null) {
+            throw new ApiException("Missing the required parameter 'session' when calling postAgentCodingBySessionSteer(Async)");
+        }
+
+        // verify the required parameter 'agentCodingInstruction' is set
+        if (agentCodingInstruction == null) {
+            throw new ApiException("Missing the required parameter 'agentCodingInstruction' when calling postAgentCodingBySessionSteer(Async)");
+        }
+
+        return postAgentCodingBySessionSteerCall(session, agentCodingInstruction, _callback);
+
+    }
+
+    /**
+     * Redirect your running or paused coding session.
+     * Redirect your running or paused coding session. The current run keeps its work before starting a follow-up; its status events report the next session. Ownership comes from the authenticated credential, never the request body.
+     * @param session Session identifies the running or paused coding session from the path. (required)
+     * @param agentCodingInstruction  (required)
+     * @return AgentCodingAck
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AgentCodingAck postAgentCodingBySessionSteer(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingInstruction agentCodingInstruction) throws ApiException {
+        ApiResponse<AgentCodingAck> localVarResp = postAgentCodingBySessionSteerWithHttpInfo(session, agentCodingInstruction);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Redirect your running or paused coding session.
+     * Redirect your running or paused coding session. The current run keeps its work before starting a follow-up; its status events report the next session. Ownership comes from the authenticated credential, never the request body.
+     * @param session Session identifies the running or paused coding session from the path. (required)
+     * @param agentCodingInstruction  (required)
+     * @return ApiResponse&lt;AgentCodingAck&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AgentCodingAck> postAgentCodingBySessionSteerWithHttpInfo(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingInstruction agentCodingInstruction) throws ApiException {
+        okhttp3.Call localVarCall = postAgentCodingBySessionSteerValidateBeforeCall(session, agentCodingInstruction, null);
+        Type localVarReturnType = new TypeToken<AgentCodingAck>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Redirect your running or paused coding session. (asynchronously)
+     * Redirect your running or paused coding session. The current run keeps its work before starting a follow-up; its status events report the next session. Ownership comes from the authenticated credential, never the request body.
+     * @param session Session identifies the running or paused coding session from the path. (required)
+     * @param agentCodingInstruction  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAgentCodingBySessionSteerAsync(@javax.annotation.Nonnull String session, @javax.annotation.Nonnull AgentCodingInstruction agentCodingInstruction, final ApiCallback<AgentCodingAck> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAgentCodingBySessionSteerValidateBeforeCall(session, agentCodingInstruction, _callback);
+        Type localVarReturnType = new TypeToken<AgentCodingAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

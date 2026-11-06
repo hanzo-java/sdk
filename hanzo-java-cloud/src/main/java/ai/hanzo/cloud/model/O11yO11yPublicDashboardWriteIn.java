@@ -74,7 +74,7 @@ public class O11yO11yPublicDashboardWriteIn {
   }
 
   /**
-   * Get defaultTimeRange
+   * DefaultTimeRange is the fixed window as a Go duration, e.g. 1h, 30m.
    * @return defaultTimeRange
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class O11yO11yPublicDashboardWriteIn {
   }
 
   /**
-   * Get timeRangeEnabled
+   * TimeRangeEnabled lets the public page pick its own time range; when false the share fixes DefaultTimeRange.
    * @return timeRangeEnabled
    */
   @javax.annotation.Nullable

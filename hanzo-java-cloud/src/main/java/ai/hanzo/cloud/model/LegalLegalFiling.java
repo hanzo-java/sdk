@@ -106,7 +106,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the filing was recorded, in unix seconds.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -133,7 +133,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get documentIds
+   * DocumentIDs are the generated documents this filing covers. At least one, and each must already belong to Org — a filing can never reach across tenants.
    * @return documentIds
    */
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get id
+   * ID is the filing&#39;s server-minted handle, \&quot;filing_\&quot;-prefixed. It is OURS, not the state&#39;s — a state file number arrives only from a real filing partner.
    * @return id
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get jurisdiction
+   * Jurisdiction is the state or agency the filing is for, as the caller wrote it (\&quot;DE\&quot;). Free text, not validated against a list. Absent when the caller sent none.
    * @return jurisdiction
    */
   @javax.annotation.Nullable
@@ -190,7 +190,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get note
+   * Note is the provider&#39;s explanation of Status, in prose meant for a person. On the manual default it says the documents were generated for signature and the org files them through its registered agent. Absent when the provider offered nothing.
    * @return note
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get org
+   * Org owns the filing. Every query is scoped to it, so another tenant&#39;s filing is indistinguishable from a missing one.
    * @return org
    */
   @javax.annotation.Nullable
@@ -228,7 +228,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get provider
+   * Provider is the filing partner that took the submission, or \&quot;manual\&quot; when no partner is wired on this deployment.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -247,7 +247,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get status
+   * Status is where the filing stands: manual (no partner wired — file through your registered agent), submitted (a partner accepted it), filed (the state accepted it) or rejected.
    * @return status
    */
   @javax.annotation.Nullable
@@ -266,7 +266,7 @@ public class LegalLegalFiling {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is when it last changed, in unix seconds. Equal to CreatedAt until a provider reports movement.
    * @return updatedAt
    */
   @javax.annotation.Nullable

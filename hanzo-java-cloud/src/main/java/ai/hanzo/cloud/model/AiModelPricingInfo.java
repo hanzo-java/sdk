@@ -21,7 +21,11 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,10 +70,20 @@ public class AiModelPricingInfo {
   @javax.annotation.Nullable
   private BigDecimal outputPerMillion;
 
+  public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
+  @SerializedName(SERIALIZED_NAME_OVERRIDES)
+  @javax.annotation.Nullable
+  private List<Map<String, Object>> overrides = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_PROMPT = "prompt";
   @SerializedName(SERIALIZED_NAME_PROMPT)
   @javax.annotation.Nullable
   private String prompt;
+
+  public static final String SERIALIZED_NAME_RATES = "rates";
+  @SerializedName(SERIALIZED_NAME_RATES)
+  @javax.annotation.Nullable
+  private Map<String, String> rates = new HashMap<>();
 
   public static final String SERIALIZED_NAME_VARIABLE = "variable";
   @SerializedName(SERIALIZED_NAME_VARIABLE)
@@ -136,6 +150,33 @@ public class AiModelPricingInfo {
   }
 
 
+  public AiModelPricingInfo overrides(@javax.annotation.Nullable List<Map<String, Object>> overrides) {
+    this.overrides = overrides;
+    return this;
+  }
+
+  public AiModelPricingInfo addOverridesItem(Map<String, Object> overridesItem) {
+    if (this.overrides == null) {
+      this.overrides = new ArrayList<>();
+    }
+    this.overrides.add(overridesItem);
+    return this;
+  }
+
+  /**
+   * Get overrides
+   * @return overrides
+   */
+  @javax.annotation.Nullable
+  public List<Map<String, Object>> getOverrides() {
+    return overrides;
+  }
+
+  public void setOverrides(@javax.annotation.Nullable List<Map<String, Object>> overrides) {
+    this.overrides = overrides;
+  }
+
+
   public AiModelPricingInfo prompt(@javax.annotation.Nullable String prompt) {
     this.prompt = prompt;
     return this;
@@ -152,6 +193,33 @@ public class AiModelPricingInfo {
 
   public void setPrompt(@javax.annotation.Nullable String prompt) {
     this.prompt = prompt;
+  }
+
+
+  public AiModelPricingInfo rates(@javax.annotation.Nullable Map<String, String> rates) {
+    this.rates = rates;
+    return this;
+  }
+
+  public AiModelPricingInfo putRatesItem(String key, String ratesItem) {
+    if (this.rates == null) {
+      this.rates = new HashMap<>();
+    }
+    this.rates.put(key, ratesItem);
+    return this;
+  }
+
+  /**
+   * Get rates
+   * @return rates
+   */
+  @javax.annotation.Nullable
+  public Map<String, String> getRates() {
+    return rates;
+  }
+
+  public void setRates(@javax.annotation.Nullable Map<String, String> rates) {
+    this.rates = rates;
   }
 
 
@@ -231,14 +299,16 @@ public class AiModelPricingInfo {
     return Objects.equals(this.completion, aiModelPricingInfo.completion) &&
         Objects.equals(this.inputPerMillion, aiModelPricingInfo.inputPerMillion) &&
         Objects.equals(this.outputPerMillion, aiModelPricingInfo.outputPerMillion) &&
+        Objects.equals(this.overrides, aiModelPricingInfo.overrides) &&
         Objects.equals(this.prompt, aiModelPricingInfo.prompt) &&
+        Objects.equals(this.rates, aiModelPricingInfo.rates) &&
         Objects.equals(this.variable, aiModelPricingInfo.variable)&&
         Objects.equals(this.additionalProperties, aiModelPricingInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(completion, inputPerMillion, outputPerMillion, prompt, variable, additionalProperties);
+    return Objects.hash(completion, inputPerMillion, outputPerMillion, overrides, prompt, rates, variable, additionalProperties);
   }
 
   @Override
@@ -248,7 +318,9 @@ public class AiModelPricingInfo {
     sb.append("    completion: ").append(toIndentedString(completion)).append("\n");
     sb.append("    inputPerMillion: ").append(toIndentedString(inputPerMillion)).append("\n");
     sb.append("    outputPerMillion: ").append(toIndentedString(outputPerMillion)).append("\n");
+    sb.append("    overrides: ").append(toIndentedString(overrides)).append("\n");
     sb.append("    prompt: ").append(toIndentedString(prompt)).append("\n");
+    sb.append("    rates: ").append(toIndentedString(rates)).append("\n");
     sb.append("    variable: ").append(toIndentedString(variable)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -272,7 +344,7 @@ public class AiModelPricingInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("completion", "input_per_million", "output_per_million", "prompt", "variable"));
+    openapiFields = new HashSet<String>(Arrays.asList("completion", "input_per_million", "output_per_million", "overrides", "prompt", "rates", "variable"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -293,6 +365,10 @@ public class AiModelPricingInfo {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("completion") != null && !jsonObj.get("completion").isJsonNull()) && !jsonObj.get("completion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `completion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completion").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("overrides") != null && !jsonObj.get("overrides").isJsonNull() && !jsonObj.get("overrides").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `overrides` to be an array in the JSON string but got `%s`", jsonObj.get("overrides").toString()));
       }
       if ((jsonObj.get("prompt") != null && !jsonObj.get("prompt").isJsonNull()) && !jsonObj.get("prompt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `prompt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prompt").toString()));

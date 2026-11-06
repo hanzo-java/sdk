@@ -297,7 +297,7 @@ public class PlatformAppOut {
   }
 
   /**
-   * Domains are the ingress hosts rendered into the app&#39;s CR, its own &#x60;&lt;slug&gt;.&lt;org&gt;.&lt;sites host&gt;&#x60; first. That one is seeded at create and cannot be removed; a custom host joins only after add-domain and DNS verification.
+   * Domains are the ingress hosts rendered into the app&#39;s CR, its own &#x60;&lt;slug&gt;.&lt;sites host&gt;&#x60; first. That one is seeded at create and cannot be removed; a custom host joins only after add-domain and DNS verification.
    * @return domains
    */
   @javax.annotation.Nullable

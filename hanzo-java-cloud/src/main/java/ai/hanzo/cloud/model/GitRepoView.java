@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.GitLink;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -86,6 +87,11 @@ public class GitRepoView {
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
+
+  public static final String SERIALIZED_NAME_LINK = "link";
+  @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
+  private GitLink link;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -263,6 +269,25 @@ public class GitRepoView {
 
   public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
+  }
+
+
+  public GitRepoView link(@javax.annotation.Nullable GitLink link) {
+    this.link = link;
+    return this;
+  }
+
+  /**
+   * Link is where the repo&#39;s history lives when it is on another host: reads are served from a cache filled from there and pushes go there. Absent for a repo whose history is here.
+   * @return link
+   */
+  @javax.annotation.Nullable
+  public GitLink getLink() {
+    return link;
+  }
+
+  public void setLink(@javax.annotation.Nullable GitLink link) {
+    this.link = link;
   }
 
 
@@ -460,6 +485,7 @@ public class GitRepoView {
         Objects.equals(this.description, gitRepoView.description) &&
         Objects.equals(this.head, gitRepoView.head) &&
         Objects.equals(this.id, gitRepoView.id) &&
+        Objects.equals(this.link, gitRepoView.link) &&
         Objects.equals(this.name, gitRepoView.name) &&
         Objects.equals(this.org, gitRepoView.org) &&
         Objects.equals(this.project, gitRepoView.project) &&
@@ -472,7 +498,7 @@ public class GitRepoView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(branches, cloneUrl, createdAt, defaultBranch, description, head, id, name, org, project, _public, sizeBytes, sshUrl, updatedAt, additionalProperties);
+    return Objects.hash(branches, cloneUrl, createdAt, defaultBranch, description, head, id, link, name, org, project, _public, sizeBytes, sshUrl, updatedAt, additionalProperties);
   }
 
   @Override
@@ -486,6 +512,7 @@ public class GitRepoView {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    head: ").append(toIndentedString(head)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
@@ -515,7 +542,7 @@ public class GitRepoView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("branches", "cloneUrl", "createdAt", "defaultBranch", "description", "head", "id", "name", "org", "project", "public", "sizeBytes", "sshUrl", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("branches", "cloneUrl", "createdAt", "defaultBranch", "description", "head", "id", "link", "name", "org", "project", "public", "sizeBytes", "sshUrl", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -555,6 +582,10 @@ public class GitRepoView {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // validate the optional field `link`
+      if (jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) {
+        GitLink.validateJsonElement(jsonObj.get("link"));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

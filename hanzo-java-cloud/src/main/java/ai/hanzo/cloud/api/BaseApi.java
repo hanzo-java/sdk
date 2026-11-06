@@ -329,6 +329,94 @@ public class BaseApi {
         return localVarCall;
     }
     /**
+     * Build call for getBaseGraphql
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getBaseGraphqlCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/base/graphql";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBaseGraphqlValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBaseGraphqlCall(_callback);
+
+    }
+
+    /**
+     * Read your org Base&#39;s GraphQL schema
+     * The schema of the caller&#39;s org Base as GraphQL SDL: a type per collection with its fields, relations and the records pointing at it, a filter input per collection, orderBy, connections, aggregates and the writes. It is that org&#39;s own, so it changes with its collections. /v1/graphql carries the same schema under &#x60;base&#x60;.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getBaseGraphql() throws ApiException {
+        getBaseGraphqlWithHttpInfo();
+    }
+
+    /**
+     * Read your org Base&#39;s GraphQL schema
+     * The schema of the caller&#39;s org Base as GraphQL SDL: a type per collection with its fields, relations and the records pointing at it, a filter input per collection, orderBy, connections, aggregates and the writes. It is that org&#39;s own, so it changes with its collections. /v1/graphql carries the same schema under &#x60;base&#x60;.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getBaseGraphqlWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBaseGraphqlValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Read your org Base&#39;s GraphQL schema (asynchronously)
+     * The schema of the caller&#39;s org Base as GraphQL SDL: a type per collection with its fields, relations and the records pointing at it, a filter input per collection, orderBy, connections, aggregates and the writes. It is that org&#39;s own, so it changes with its collections. /v1/graphql carries the same schema under &#x60;base&#x60;.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getBaseGraphqlAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBaseGraphqlValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getBaseHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -448,6 +536,94 @@ public class BaseApi {
         okhttp3.Call localVarCall = getBaseHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BaseBaseHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postBaseGraphql
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postBaseGraphqlCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/base/graphql";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBaseGraphqlValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBaseGraphqlCall(_callback);
+
+    }
+
+    /**
+     * Query or write your org Base with GraphQL
+     * Runs one GraphQL request against the caller&#39;s org Base. Every field is answered by the Base&#39;s own record, aggregate and history routes as the caller, so what a field reads or writes is what the same request over /v1/base/collections may. No subscriptions: realtime is /v1/base/realtime.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postBaseGraphql() throws ApiException {
+        postBaseGraphqlWithHttpInfo();
+    }
+
+    /**
+     * Query or write your org Base with GraphQL
+     * Runs one GraphQL request against the caller&#39;s org Base. Every field is answered by the Base&#39;s own record, aggregate and history routes as the caller, so what a field reads or writes is what the same request over /v1/base/collections may. No subscriptions: realtime is /v1/base/realtime.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postBaseGraphqlWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBaseGraphqlValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Query or write your org Base with GraphQL (asynchronously)
+     * Runs one GraphQL request against the caller&#39;s org Base. Every field is answered by the Base&#39;s own record, aggregate and history routes as the caller, so what a field reads or writes is what the same request over /v1/base/collections may. No subscriptions: realtime is /v1/base/realtime.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postBaseGraphqlAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBaseGraphqlValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

@@ -144,7 +144,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get application
+   * Application is the CD Application name the generator mints from the path — the directory joined to the file name, less any words the two share (applicationName). It is how cd.hanzo.ai names the app.
    * @return application
    */
   @javax.annotation.Nullable
@@ -163,7 +163,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get automated
+   * Automated is cd.automated: false means the Application reports drift and NOTHING moves. It is off by default for a new file on purpose.
    * @return automated
    */
   @javax.annotation.Nullable
@@ -201,7 +201,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get component
+   * Component is the app&#39;s role within its project (&#x60;component&#x60;), \&quot;\&quot; when unnamed.
    * @return component
    */
   @javax.annotation.Nullable
@@ -220,7 +220,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get digest
+   * image.digest — wins over tag
    * @return digest
    */
   @javax.annotation.Nullable
@@ -247,7 +247,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get env
+   * Env is the declared container environment, as the chart&#39;s list of {name,value}. It is read back so a re-declare of an identical body is a no-op rather than a refusal — idempotency is what makes a retry safe.
    * @return env
    */
   @javax.annotation.Nullable
@@ -274,7 +274,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get hosts
+   * ingress.hosts, both shapes flattened
    * @return hosts
    */
   @javax.annotation.Nullable
@@ -293,7 +293,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get name
+   * the Helm release name — the file&#39;s basename
    * @return name
    */
   @javax.annotation.Nullable
@@ -312,7 +312,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get org
+   * Org is the owner. It is ALSO the values directory and the destination namespace, because those are one value under one name — see the header.
    * @return org
    */
   @javax.annotation.Nullable
@@ -331,7 +331,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get partOf
+   * PartOf is the platform project this app belongs to: the values file&#39;s own &#x60;partOf&#x60; key, which the chart also stamps on every object it renders as app.kubernetes.io/part-of. It is the ONE declaration of membership — there is no project table — and \&quot;\&quot; means the file names none.
    * @return partOf
    */
   @javax.annotation.Nullable
@@ -350,7 +350,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get path
+   * Path is the file, relative to the repository root.
    * @return path
    */
   @javax.annotation.Nullable
@@ -369,7 +369,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get project
+   * Project is the AppProject the sync is admitted under, derived from the directory exactly as the ApplicationSet derives it. It differs from Org for a reserved directory, which syncs under the platform fence.
    * @return project
    */
   @javax.annotation.Nullable
@@ -407,7 +407,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get repository
+   * image.repository
    * @return repository
    */
   @javax.annotation.Nullable
@@ -434,7 +434,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get secrets
+   * Secrets are the KMS coordinates the app reads — kmsSecrets and secrets.paths — as paths and key names. A values file never carries a secret value, so neither does this.
    * @return secrets
    */
   @javax.annotation.Nullable
@@ -453,7 +453,7 @@ public class PlatformDeclared {
   }
 
   /**
-   * Get tag
+   * image.tag
    * @return tag
    */
   @javax.annotation.Nullable

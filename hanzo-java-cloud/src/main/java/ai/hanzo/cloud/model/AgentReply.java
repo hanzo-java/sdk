@@ -84,7 +84,7 @@ public class AgentReply {
   }
 
   /**
-   * Channel is the room inside that workspace, and it is what decides whether there is an address at all. Empty is the ordinary case: a caller of /v1/agent/coding holds a session id and reads the stream instead.
+   * Channel is the conversation inside that workspace, and it is what decides whether there is an address at all. Empty is the ordinary case: a caller of /v1/agent/coding holds a session id and reads the stream instead.
    * @return channel
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class AgentReply {
   }
 
   /**
-   * Provider is the transport the conversation is on — slack, discord, telegram, teams — and it is what decides who can carry the text at all. An address without it names a room in no particular workspace.
+   * Provider is the transport the conversation is on — slack, discord, telegram, teams — and it is what decides who can carry the text at all. An address without it names a channel in no particular workspace.
    * @return provider
    */
   @javax.annotation.Nullable

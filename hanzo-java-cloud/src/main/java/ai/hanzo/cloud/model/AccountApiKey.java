@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AccountKeyBudget;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,10 +53,30 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class AccountApiKey {
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private String createdAt;
+  private AccountKeyBudget budget;
+
+  public static final String SERIALIZED_NAME_CREATED = "created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  @javax.annotation.Nullable
+  private String created;
+
+  public static final String SERIALIZED_NAME_CREATOR = "creator";
+  @SerializedName(SERIALIZED_NAME_CREATOR)
+  @javax.annotation.Nullable
+  private String creator;
+
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
+  @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nullable
+  private String expires;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private String id;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -67,35 +88,146 @@ public class AccountApiKey {
   @javax.annotation.Nullable
   private List<String> limit = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
+  private String name;
+
   public static final String SERIALIZED_NAME_PREFIX = "prefix";
   @SerializedName(SERIALIZED_NAME_PREFIX)
   @javax.annotation.Nullable
   private String prefix;
+
+  public static final String SERIALIZED_NAME_RATE = "rate";
+  @SerializedName(SERIALIZED_NAME_RATE)
+  @javax.annotation.Nullable
+  private Long rate;
+
+  public static final String SERIALIZED_NAME_REVOKED = "revoked";
+  @SerializedName(SERIALIZED_NAME_REVOKED)
+  @javax.annotation.Nullable
+  private String revoked;
+
+  public static final String SERIALIZED_NAME_REVOKER = "revoker";
+  @SerializedName(SERIALIZED_NAME_REVOKER)
+  @javax.annotation.Nullable
+  private String revoker;
+
+  public static final String SERIALIZED_NAME_SPEND = "spend";
+  @SerializedName(SERIALIZED_NAME_SPEND)
+  @javax.annotation.Nullable
+  private AccountKeyBudget spend;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
+  private String status;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nullable
   private String type;
 
+  public static final String SERIALIZED_NAME_USED = "used";
+  @SerializedName(SERIALIZED_NAME_USED)
+  @javax.annotation.Nullable
+  private String used;
+
   public AccountApiKey() {
   }
 
-  public AccountApiKey createdAt(@javax.annotation.Nullable String createdAt) {
-    this.createdAt = createdAt;
+  public AccountApiKey budget(@javax.annotation.Nullable AccountKeyBudget budget) {
+    this.budget = budget;
     return this;
   }
 
   /**
-   * CreatedAt is when the key last changed, as IAM records it.
-   * @return createdAt
+   * Budget is what the key may spend on models, in cents. Absent means no cap.
+   * @return budget
    */
   @javax.annotation.Nullable
-  public String getCreatedAt() {
-    return createdAt;
+  public AccountKeyBudget getBudget() {
+    return budget;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable String createdAt) {
-    this.createdAt = createdAt;
+  public void setBudget(@javax.annotation.Nullable AccountKeyBudget budget) {
+    this.budget = budget;
+  }
+
+
+  public AccountApiKey created(@javax.annotation.Nullable String created) {
+    this.created = created;
+    return this;
+  }
+
+  /**
+   * Created is when the key was minted (RFC 3339).
+   * @return created
+   */
+  @javax.annotation.Nullable
+  public String getCreated() {
+    return created;
+  }
+
+  public void setCreated(@javax.annotation.Nullable String created) {
+    this.created = created;
+  }
+
+
+  public AccountApiKey creator(@javax.annotation.Nullable String creator) {
+    this.creator = creator;
+    return this;
+  }
+
+  /**
+   * Creator is the person the key speaks for, &#x60;&lt;org&gt;/&lt;user&gt;&#x60;: who created it.
+   * @return creator
+   */
+  @javax.annotation.Nullable
+  public String getCreator() {
+    return creator;
+  }
+
+  public void setCreator(@javax.annotation.Nullable String creator) {
+    this.creator = creator;
+  }
+
+
+  public AccountApiKey expires(@javax.annotation.Nullable String expires) {
+    this.expires = expires;
+    return this;
+  }
+
+  /**
+   * Expires is when the key stops working (RFC 3339). Absent means never.
+   * @return expires
+   */
+  @javax.annotation.Nullable
+  public String getExpires() {
+    return expires;
+  }
+
+  public void setExpires(@javax.annotation.Nullable String expires) {
+    this.expires = expires;
+  }
+
+
+  public AccountApiKey id(@javax.annotation.Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * ID addresses this key in PATCH and DELETE /v1/account/keys/{id}.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+  public void setId(@javax.annotation.Nullable String id) {
+    this.id = id;
   }
 
 
@@ -105,7 +237,7 @@ public class AccountApiKey {
   }
 
   /**
-   * Key is the FULL value, and is present for a publishable key only: it is public by construction and useless to its holder if it cannot be read back.
+   * Key is the full credential. A publishable key always carries it; a secret key carries it once, in the answer to the POST that created it.
    * @return key
    */
   @javax.annotation.Nullable
@@ -132,7 +264,7 @@ public class AccountApiKey {
   }
 
   /**
-   * Limit is what this key may reach, as &#x60;kind:name&#x60; entries — &#x60;model:zen5&#x60;, &#x60;project:acme&#x60;, &#x60;product:commerce&#x60;. Absent means the key reaches whatever its holder does, which is what every key minted before limits existed does and must keep doing.
+   * Limit is what this key may reach, as &#x60;kind:name&#x60; entries — &#x60;model:zen5&#x60;, &#x60;project:acme&#x60;, &#x60;product:train&#x60; (read and write), &#x60;read:billing&#x60; (read only), &#x60;read:*&#x60; (a read-only key). Absent means the key reaches whatever its holder does.
    * @return limit
    */
   @javax.annotation.Nullable
@@ -145,13 +277,32 @@ public class AccountApiKey {
   }
 
 
+  public AccountApiKey name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name is the key&#39;s label, chosen by the person who made it.
+   * @return name
+   */
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
+  }
+
+
   public AccountApiKey prefix(@javax.annotation.Nullable String prefix) {
     this.prefix = prefix;
     return this;
   }
 
   /**
-   * Prefix is the recognizable, non-secret head of the key — enough to tell two keys apart, never enough to use one.
+   * Prefix is the head of the credential this key&#39;s holder presents — the sk- of a secret key — enough to tell which string a row is, never enough to use. Absent on a key minted before prefixes were recorded.
    * @return prefix
    */
   @javax.annotation.Nullable
@@ -161,6 +312,101 @@ public class AccountApiKey {
 
   public void setPrefix(@javax.annotation.Nullable String prefix) {
     this.prefix = prefix;
+  }
+
+
+  public AccountApiKey rate(@javax.annotation.Nullable Long rate) {
+    this.rate = rate;
+    return this;
+  }
+
+  /**
+   * Rate is how many requests a minute the key may make. Absent means no limit of its own.
+   * @return rate
+   */
+  @javax.annotation.Nullable
+  public Long getRate() {
+    return rate;
+  }
+
+  public void setRate(@javax.annotation.Nullable Long rate) {
+    this.rate = rate;
+  }
+
+
+  public AccountApiKey revoked(@javax.annotation.Nullable String revoked) {
+    this.revoked = revoked;
+    return this;
+  }
+
+  /**
+   * Get revoked
+   * @return revoked
+   */
+  @javax.annotation.Nullable
+  public String getRevoked() {
+    return revoked;
+  }
+
+  public void setRevoked(@javax.annotation.Nullable String revoked) {
+    this.revoked = revoked;
+  }
+
+
+  public AccountApiKey revoker(@javax.annotation.Nullable String revoker) {
+    this.revoker = revoker;
+    return this;
+  }
+
+  /**
+   * Revoker is who revoked the key, &#x60;&lt;org&gt;/&lt;user&gt;&#x60;, and Revoked when.
+   * @return revoker
+   */
+  @javax.annotation.Nullable
+  public String getRevoker() {
+    return revoker;
+  }
+
+  public void setRevoker(@javax.annotation.Nullable String revoker) {
+    this.revoker = revoker;
+  }
+
+
+  public AccountApiKey spend(@javax.annotation.Nullable AccountKeyBudget spend) {
+    this.spend = spend;
+    return this;
+  }
+
+  /**
+   * Spend is what the key has spent on models, in cents rounded up. Absent when it could not be read just now.
+   * @return spend
+   */
+  @javax.annotation.Nullable
+  public AccountKeyBudget getSpend() {
+    return spend;
+  }
+
+  public void setSpend(@javax.annotation.Nullable AccountKeyBudget spend) {
+    this.spend = spend;
+  }
+
+
+  public AccountApiKey status(@javax.annotation.Nullable String status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Status is active, expired, revoked, or disabled (switched off in IAM).
+   * @return status
+   */
+  @javax.annotation.Nullable
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(@javax.annotation.Nullable String status) {
+    this.status = status;
   }
 
 
@@ -180,6 +426,25 @@ public class AccountApiKey {
 
   public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
+  }
+
+
+  public AccountApiKey used(@javax.annotation.Nullable String used) {
+    this.used = used;
+    return this;
+  }
+
+  /**
+   * Used is when the key was last used (RFC 3339). Absent means never.
+   * @return used
+   */
+  @javax.annotation.Nullable
+  public String getUsed() {
+    return used;
+  }
+
+  public void setUsed(@javax.annotation.Nullable String used) {
+    this.used = used;
   }
 
   /**
@@ -237,28 +502,50 @@ public class AccountApiKey {
       return false;
     }
     AccountApiKey accountApiKey = (AccountApiKey) o;
-    return Objects.equals(this.createdAt, accountApiKey.createdAt) &&
+    return Objects.equals(this.budget, accountApiKey.budget) &&
+        Objects.equals(this.created, accountApiKey.created) &&
+        Objects.equals(this.creator, accountApiKey.creator) &&
+        Objects.equals(this.expires, accountApiKey.expires) &&
+        Objects.equals(this.id, accountApiKey.id) &&
         Objects.equals(this.key, accountApiKey.key) &&
         Objects.equals(this.limit, accountApiKey.limit) &&
+        Objects.equals(this.name, accountApiKey.name) &&
         Objects.equals(this.prefix, accountApiKey.prefix) &&
-        Objects.equals(this.type, accountApiKey.type)&&
+        Objects.equals(this.rate, accountApiKey.rate) &&
+        Objects.equals(this.revoked, accountApiKey.revoked) &&
+        Objects.equals(this.revoker, accountApiKey.revoker) &&
+        Objects.equals(this.spend, accountApiKey.spend) &&
+        Objects.equals(this.status, accountApiKey.status) &&
+        Objects.equals(this.type, accountApiKey.type) &&
+        Objects.equals(this.used, accountApiKey.used)&&
         Objects.equals(this.additionalProperties, accountApiKey.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, key, limit, prefix, type, additionalProperties);
+    return Objects.hash(budget, created, creator, expires, id, key, limit, name, prefix, rate, revoked, revoker, spend, status, type, used, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AccountApiKey {\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    creator: ").append(toIndentedString(creator)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
+    sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
+    sb.append("    revoked: ").append(toIndentedString(revoked)).append("\n");
+    sb.append("    revoker: ").append(toIndentedString(revoker)).append("\n");
+    sb.append("    spend: ").append(toIndentedString(spend)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    used: ").append(toIndentedString(used)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -281,7 +568,7 @@ public class AccountApiKey {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "key", "limit", "prefix", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("budget", "created", "creator", "expires", "id", "key", "limit", "name", "prefix", "rate", "revoked", "revoker", "spend", "status", "type", "used"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -300,8 +587,21 @@ public class AccountApiKey {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
+      // validate the optional field `budget`
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        AccountKeyBudget.validateJsonElement(jsonObj.get("budget"));
+      }
+      if ((jsonObj.get("created") != null && !jsonObj.get("created").isJsonNull()) && !jsonObj.get("created").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
+      }
+      if ((jsonObj.get("creator") != null && !jsonObj.get("creator").isJsonNull()) && !jsonObj.get("creator").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creator").toString()));
+      }
+      if ((jsonObj.get("expires") != null && !jsonObj.get("expires").isJsonNull()) && !jsonObj.get("expires").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `expires` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expires").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
@@ -310,11 +610,30 @@ public class AccountApiKey {
       if (jsonObj.get("limit") != null && !jsonObj.get("limit").isJsonNull() && !jsonObj.get("limit").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `limit` to be an array in the JSON string but got `%s`", jsonObj.get("limit").toString()));
       }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
       if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));
       }
+      if ((jsonObj.get("revoked") != null && !jsonObj.get("revoked").isJsonNull()) && !jsonObj.get("revoked").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `revoked` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revoked").toString()));
+      }
+      if ((jsonObj.get("revoker") != null && !jsonObj.get("revoker").isJsonNull()) && !jsonObj.get("revoker").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `revoker` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revoker").toString()));
+      }
+      // validate the optional field `spend`
+      if (jsonObj.get("spend") != null && !jsonObj.get("spend").isJsonNull()) {
+        AccountKeyBudget.validateJsonElement(jsonObj.get("spend"));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("used") != null && !jsonObj.get("used").isJsonNull()) && !jsonObj.get("used").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `used` to be a primitive type in the JSON string but got `%s`", jsonObj.get("used").toString()));
       }
   }
 

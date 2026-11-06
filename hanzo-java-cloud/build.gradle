@@ -15,7 +15,7 @@ group = 'ai.hanzo'
 // 8.0.1 is the projection of the document that declares its bearer scheme.
 // What a version NAMES is a tag; `git ls-remote --tags` is the authority on
 // which numbers are taken, and this repo has none, so nothing is claimed twice.
-version = '8.5.640'
+version = '8.5.988'
 
 dependencies {
     // What the generated sources actually import — see the java row in

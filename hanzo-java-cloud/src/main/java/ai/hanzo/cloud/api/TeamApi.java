@@ -35,8 +35,15 @@ import ai.hanzo.cloud.model.TeamCollabResult;
 import ai.hanzo.cloud.model.TeamCookieAck;
 import ai.hanzo.cloud.model.TeamPlanInfo;
 import ai.hanzo.cloud.model.TeamProviderInfo;
-import ai.hanzo.cloud.model.TeamPublicRooms;
+import ai.hanzo.cloud.model.TeamPublicChannels;
 import ai.hanzo.cloud.model.TeamStatsOut;
+import ai.hanzo.cloud.model.TeamTeamChannelBind;
+import ai.hanzo.cloud.model.TeamTeamChannelEdit;
+import ai.hanzo.cloud.model.TeamTeamChannelJoin;
+import ai.hanzo.cloud.model.TeamTeamChannelMembers;
+import ai.hanzo.cloud.model.TeamTeamChannelNew;
+import ai.hanzo.cloud.model.TeamTeamChannelOne;
+import ai.hanzo.cloud.model.TeamTeamChannels;
 import ai.hanzo.cloud.model.TeamTeamCommentWrite;
 import ai.hanzo.cloud.model.TeamTeamDirect;
 import ai.hanzo.cloud.model.TeamTeamDirectOpen;
@@ -56,13 +63,6 @@ import ai.hanzo.cloud.model.TeamTeamMessageWrite;
 import ai.hanzo.cloud.model.TeamTeamMessages;
 import ai.hanzo.cloud.model.TeamTeamReactionWrite;
 import ai.hanzo.cloud.model.TeamTeamReplyWrite;
-import ai.hanzo.cloud.model.TeamTeamRoom;
-import ai.hanzo.cloud.model.TeamTeamRoomBind;
-import ai.hanzo.cloud.model.TeamTeamRoomEdit;
-import ai.hanzo.cloud.model.TeamTeamRoomJoin;
-import ai.hanzo.cloud.model.TeamTeamRoomMembers;
-import ai.hanzo.cloud.model.TeamTeamRoomNew;
-import ai.hanzo.cloud.model.TeamTeamRooms;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -227,6 +227,151 @@ public class TeamApi {
         okhttp3.Call localVarCall = deleteTeamAccountCookieValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TeamCookieAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteTeamChannelsByIdMembersByAccount
+     * @param id ID is the channel, from the path. (required)
+     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
+     * @param space Space is the space uuid holding the channel. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteTeamChannelsByIdMembersByAccountCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}/members/{account}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "account" + "}", localVarApiClient.escapeString(account.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (space != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
+        }
+
+        final String[] localVarAccepts = {
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteTeamChannelsByIdMembersByAccountValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteTeamChannelsByIdMembersByAccount(Async)");
+        }
+
+        // verify the required parameter 'account' is set
+        if (account == null) {
+            throw new ApiException("Missing the required parameter 'account' when calling deleteTeamChannelsByIdMembersByAccount(Async)");
+        }
+
+        return deleteTeamChannelsByIdMembersByAccountCall(id, account, space, _callback);
+
+    }
+
+    /**
+     * Takes one person out of a channel — the caller leaving, when the account is their own.
+     * Takes one person out of a channel — the caller leaving, when the account is their own. Removing somebody else takes owning the channel or administering the space. Leaving a channel you are not in, or removing somebody who is not there, changes nothing. A direct message cannot be left: its people are what it is. Answers 204.
+     * @param id ID is the channel, from the path. (required)
+     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
+     * @param space Space is the space uuid holding the channel. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteTeamChannelsByIdMembersByAccount(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space) throws ApiException {
+        deleteTeamChannelsByIdMembersByAccountWithHttpInfo(id, account, space);
+    }
+
+    /**
+     * Takes one person out of a channel — the caller leaving, when the account is their own.
+     * Takes one person out of a channel — the caller leaving, when the account is their own. Removing somebody else takes owning the channel or administering the space. Leaving a channel you are not in, or removing somebody who is not there, changes nothing. A direct message cannot be left: its people are what it is. Answers 204.
+     * @param id ID is the channel, from the path. (required)
+     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
+     * @param space Space is the space uuid holding the channel. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteTeamChannelsByIdMembersByAccountWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space) throws ApiException {
+        okhttp3.Call localVarCall = deleteTeamChannelsByIdMembersByAccountValidateBeforeCall(id, account, space, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Takes one person out of a channel — the caller leaving, when the account is their own. (asynchronously)
+     * Takes one person out of a channel — the caller leaving, when the account is their own. Removing somebody else takes owning the channel or administering the space. Leaving a channel you are not in, or removing somebody who is not there, changes nothing. A direct message cannot be left: its people are what it is. Answers 204.
+     * @param id ID is the channel, from the path. (required)
+     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
+     * @param space Space is the space uuid holding the channel. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteTeamChannelsByIdMembersByAccountAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTeamChannelsByIdMembersByAccountValidateBeforeCall(id, account, space, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -795,151 +940,6 @@ public class TeamApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteTeamRoomsByIdMembersByAccount
-     * @param id ID is the room, from the path. (required)
-     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
-     * @param space Space is the space uuid holding the room. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTeamRoomsByIdMembersByAccountCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}/members/{account}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
-            .replace("{" + "account" + "}", localVarApiClient.escapeString(account.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (space != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
-        }
-
-        final String[] localVarAccepts = {
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTeamRoomsByIdMembersByAccountValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteTeamRoomsByIdMembersByAccount(Async)");
-        }
-
-        // verify the required parameter 'account' is set
-        if (account == null) {
-            throw new ApiException("Missing the required parameter 'account' when calling deleteTeamRoomsByIdMembersByAccount(Async)");
-        }
-
-        return deleteTeamRoomsByIdMembersByAccountCall(id, account, space, _callback);
-
-    }
-
-    /**
-     * Takes one person out of a room — the caller leaving, when the account is their own.
-     * Takes one person out of a room — the caller leaving, when the account is their own. Removing somebody else takes owning the room or administering the space. Leaving a room you are not in, or removing somebody who is not there, changes nothing. A direct message cannot be left: its people are what it is. Answers 204.
-     * @param id ID is the room, from the path. (required)
-     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
-     * @param space Space is the space uuid holding the room. (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteTeamRoomsByIdMembersByAccount(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space) throws ApiException {
-        deleteTeamRoomsByIdMembersByAccountWithHttpInfo(id, account, space);
-    }
-
-    /**
-     * Takes one person out of a room — the caller leaving, when the account is their own.
-     * Takes one person out of a room — the caller leaving, when the account is their own. Removing somebody else takes owning the room or administering the space. Leaving a room you are not in, or removing somebody who is not there, changes nothing. A direct message cannot be left: its people are what it is. Answers 204.
-     * @param id ID is the room, from the path. (required)
-     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
-     * @param space Space is the space uuid holding the room. (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteTeamRoomsByIdMembersByAccountWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space) throws ApiException {
-        okhttp3.Call localVarCall = deleteTeamRoomsByIdMembersByAccountValidateBeforeCall(id, account, space, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Takes one person out of a room — the caller leaving, when the account is their own. (asynchronously)
-     * Takes one person out of a room — the caller leaving, when the account is their own. Removing somebody else takes owning the room or administering the space. Leaving a room you are not in, or removing somebody who is not there, changes nothing. A direct message cannot be left: its people are what it is. Answers 204.
-     * @param id ID is the room, from the path. (required)
-     * @param account Account is the account uuid to remove, from the path. Your own is leaving. (required)
-     * @param space Space is the space uuid holding the room. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteTeamRoomsByIdMembersByAccountAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String account, @javax.annotation.Nullable String space, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteTeamRoomsByIdMembersByAccountValidateBeforeCall(id, account, space, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getTeamAccountAuthByProvider
      * @param provider  (required)
      * @param _callback Callback for upload/download progress
@@ -1497,6 +1497,408 @@ public class TeamApi {
         return localVarCall;
     }
     /**
+     * Build call for getTeamChannels
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamChannelsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTeamChannelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTeamChannelsCall(_callback);
+
+    }
+
+    /**
+     * Returns the channels the caller may see, with the kind and work facet each carries.
+     * Returns the channels the caller may see, with the kind and work facet each carries.  A signed-in TEAM MEMBER reads every channel of every space they are in that is open to them: public channels, and the private channels and direct messages that name them. An APPLICATION of the org (its own machine credential) reads the public channels of the org&#39;s spaces and nothing that belongs to particular people. Anybody else without a team session is 401.  It reads the SAME Chunter documents the transactor serves, so a channel opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document.
+     * @return TeamTeamChannels
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamChannels getTeamChannels() throws ApiException {
+        ApiResponse<TeamTeamChannels> localVarResp = getTeamChannelsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the channels the caller may see, with the kind and work facet each carries.
+     * Returns the channels the caller may see, with the kind and work facet each carries.  A signed-in TEAM MEMBER reads every channel of every space they are in that is open to them: public channels, and the private channels and direct messages that name them. An APPLICATION of the org (its own machine credential) reads the public channels of the org&#39;s spaces and nothing that belongs to particular people. Anybody else without a team session is 401.  It reads the SAME Chunter documents the transactor serves, so a channel opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document.
+     * @return ApiResponse&lt;TeamTeamChannels&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamChannels> getTeamChannelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTeamChannelsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<TeamTeamChannels>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the channels the caller may see, with the kind and work facet each carries. (asynchronously)
+     * Returns the channels the caller may see, with the kind and work facet each carries.  A signed-in TEAM MEMBER reads every channel of every space they are in that is open to them: public channels, and the private channels and direct messages that name them. An APPLICATION of the org (its own machine credential) reads the public channels of the org&#39;s spaces and nothing that belongs to particular people. Anybody else without a team session is 401.  It reads the SAME Chunter documents the transactor serves, so a channel opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamChannelsAsync(final ApiCallback<TeamTeamChannels> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTeamChannelsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<TeamTeamChannels>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTeamChannelsByIdMembers
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamChannelsByIdMembersCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}/members"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (space != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTeamChannelsByIdMembersValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getTeamChannelsByIdMembers(Async)");
+        }
+
+        return getTeamChannelsByIdMembersCall(id, space, _callback);
+
+    }
+
+    /**
+     * Returns the people and agents in one channel, as the roster describes them.
+     * Returns the people and agents in one channel, as the roster describes them. The caller must be able to see the channel.
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @return TeamTeamChannelMembers
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamChannelMembers getTeamChannelsByIdMembers(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
+        ApiResponse<TeamTeamChannelMembers> localVarResp = getTeamChannelsByIdMembersWithHttpInfo(id, space);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the people and agents in one channel, as the roster describes them.
+     * Returns the people and agents in one channel, as the roster describes them. The caller must be able to see the channel.
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @return ApiResponse&lt;TeamTeamChannelMembers&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamChannelMembers> getTeamChannelsByIdMembersWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
+        okhttp3.Call localVarCall = getTeamChannelsByIdMembersValidateBeforeCall(id, space, null);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelMembers>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the people and agents in one channel, as the roster describes them. (asynchronously)
+     * Returns the people and agents in one channel, as the roster describes them. The caller must be able to see the channel.
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamChannelsByIdMembersAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback<TeamTeamChannelMembers> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTeamChannelsByIdMembersValidateBeforeCall(id, space, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelMembers>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTeamChannelsByIdMessages
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamChannelsByIdMessagesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}/messages"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (space != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTeamChannelsByIdMessagesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getTeamChannelsByIdMessages(Async)");
+        }
+
+        return getTeamChannelsByIdMessagesCall(id, space, _callback);
+
+    }
+
+    /**
+     * Returns the tail of one channel&#39;s conversation, oldest first, each message with its reactions, files and thread count.
+     * Returns the tail of one channel&#39;s conversation, oldest first, each message with its reactions, files and thread count.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A team member reads any channel they may see; an application of the org reads public channels only; anybody else without a team session is 401. A channel the caller may not read answers 404 rather than 403, so a probe learns nothing about what exists.
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @return TeamTeamMessages
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamMessages getTeamChannelsByIdMessages(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
+        ApiResponse<TeamTeamMessages> localVarResp = getTeamChannelsByIdMessagesWithHttpInfo(id, space);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the tail of one channel&#39;s conversation, oldest first, each message with its reactions, files and thread count.
+     * Returns the tail of one channel&#39;s conversation, oldest first, each message with its reactions, files and thread count.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A team member reads any channel they may see; an application of the org reads public channels only; anybody else without a team session is 401. A channel the caller may not read answers 404 rather than 403, so a probe learns nothing about what exists.
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @return ApiResponse&lt;TeamTeamMessages&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamMessages> getTeamChannelsByIdMessagesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
+        okhttp3.Call localVarCall = getTeamChannelsByIdMessagesValidateBeforeCall(id, space, null);
+        Type localVarReturnType = new TypeToken<TeamTeamMessages>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the tail of one channel&#39;s conversation, oldest first, each message with its reactions, files and thread count. (asynchronously)
+     * Returns the tail of one channel&#39;s conversation, oldest first, each message with its reactions, files and thread count.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A team member reads any channel they may see; an application of the org reads public channels only; anybody else without a team session is 401. A channel the caller may not read answers 404 rather than 403, so a probe learns nothing about what exists.
+     * @param id ID is the channel, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the channel, and is required for the reason the bind op requires it: a channel id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamChannelsByIdMessagesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback<TeamTeamMessages> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTeamChannelsByIdMessagesValidateBeforeCall(id, space, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamMessages>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getTeamCollaborator
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1947,8 +2349,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the comments on a document, oldest first — the same message shape a room&#39;s conversation answers.
-     * Returns the comments on a document, oldest first — the same message shape a room&#39;s conversation answers.
+     * Returns the comments on a document, oldest first — the same message shape a channel&#39;s conversation answers.
+     * Returns the comments on a document, oldest first — the same message shape a channel&#39;s conversation answers.
      * @param id ID is the document, from the path. (required)
      * @param space Space is the space uuid holding it. (optional)
      * @return TeamTeamMessages
@@ -1967,8 +2369,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the comments on a document, oldest first — the same message shape a room&#39;s conversation answers.
-     * Returns the comments on a document, oldest first — the same message shape a room&#39;s conversation answers.
+     * Returns the comments on a document, oldest first — the same message shape a channel&#39;s conversation answers.
+     * Returns the comments on a document, oldest first — the same message shape a channel&#39;s conversation answers.
      * @param id ID is the document, from the path. (required)
      * @param space Space is the space uuid holding it. (optional)
      * @return ApiResponse&lt;TeamTeamMessages&gt;
@@ -1988,8 +2390,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the comments on a document, oldest first — the same message shape a room&#39;s conversation answers. (asynchronously)
-     * Returns the comments on a document, oldest first — the same message shape a room&#39;s conversation answers.
+     * Returns the comments on a document, oldest first — the same message shape a channel&#39;s conversation answers. (asynchronously)
+     * Returns the comments on a document, oldest first — the same message shape a channel&#39;s conversation answers.
      * @param id ID is the document, from the path. (required)
      * @param space Space is the space uuid holding it. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -2074,7 +2476,7 @@ public class TeamApi {
 
     /**
      * Stream live changes to what the caller may see, as Server-Sent Events
-     * Holds one text/event-stream open per caller and pushes each change as it is written — by the Team client, a typed op or an agent — filtered to the rooms, documents and inbox the caller may see under the same rule the ops apply. Authenticate with &#x60;Authorization: Bearer&#x60; (a fetch-based SSE reader; a browser EventSource cannot set it). &#x60;?space&#x3D;&#x60; narrows the stream to one space; without it the stream covers every space the caller is a member of at connect.  Each frame is &#x60;event: &lt;name&gt;&#x60; and a JSON &#x60;data:&#x60; line carrying &#x60;space&#x60; and one of: - &#x60;message.created&#x60;, &#x60;message.updated&#x60; — &#x60;message&#x60;, the message as the message ops answer it (a room message, a thread reply or a document comment; a count or reaction change is an update); - &#x60;message.deleted&#x60; — &#x60;id&#x60;, and &#x60;room&#x60;/&#x60;doc&#x60;/&#x60;thread&#x60; where known; - &#x60;reaction.changed&#x60; — &#x60;message&#x60;, with its reactions as they now stand; - &#x60;room.changed&#x60; — &#x60;room&#x60;, as the room listing answers it, sent to those who can see it after the change (somebody removed from a private room is not told; the room list is the truth); - &#x60;doc.changed&#x60; — &#x60;doc&#x60;, as the document ops answer it (&#x60;removed: true&#x60; and &#x60;id&#x60; when deleted); body edits happen on the collaborator socket and are not streamed here; - &#x60;inbox.created&#x60;, &#x60;inbox.updated&#x60; — &#x60;item&#x60;, one of the caller&#39;s own notifications.  A &#x60;: ping&#x60; comment is written every 25 seconds. There is no resume: the server keeps no event sequence, so frames carry no &#x60;id&#x60; and Last-Event-ID is ignored; on reconnect, re-read the ops. A stream that falls too far behind is closed rather than allowed to slow a writer, and so is one whose caller is no longer a member of the space an event is in. 401 without a verified team credential; 404 for a named space the caller is not in.
+     * Holds one text/event-stream open per caller and pushes each change as it is written — by the Team client, a typed op or an agent — filtered to the channels, documents and inbox the caller may see under the same rule the ops apply. Authenticate with &#x60;Authorization: Bearer&#x60; (a fetch-based SSE reader; a browser EventSource cannot set it). &#x60;?space&#x3D;&#x60; narrows the stream to one space; without it the stream covers every space the caller is a member of at connect.  Each frame is &#x60;event: &lt;name&gt;&#x60; and a JSON &#x60;data:&#x60; line carrying &#x60;space&#x60; and one of: - &#x60;message.created&#x60;, &#x60;message.updated&#x60; — &#x60;message&#x60;, the message as the message ops answer it (a channel message, a thread reply or a document comment; a count or reaction change is an update); - &#x60;message.deleted&#x60; — &#x60;id&#x60;, and &#x60;channel&#x60;/&#x60;doc&#x60;/&#x60;thread&#x60; where known; - &#x60;reaction.changed&#x60; — &#x60;message&#x60;, with its reactions as they now stand; - &#x60;channel.changed&#x60; — &#x60;channel&#x60;, as the channel listing answers it, sent to those who can see it after the change (somebody removed from a private channel is not told; the channel list is the truth); - &#x60;doc.changed&#x60; — &#x60;doc&#x60;, as the document ops answer it (&#x60;removed: true&#x60; and &#x60;id&#x60; when deleted); body edits happen on the collaborator socket and are not streamed here; - &#x60;inbox.created&#x60;, &#x60;inbox.updated&#x60; — &#x60;item&#x60;, one of the caller&#39;s own notifications.  A &#x60;: ping&#x60; comment is written every 25 seconds. There is no resume: the server keeps no event sequence, so frames carry no &#x60;id&#x60; and Last-Event-ID is ignored; on reconnect, re-read the ops. A stream that falls too far behind is closed rather than allowed to slow a writer, and so is one whose caller is no longer a member of the space an event is in. 401 without a verified team credential; 404 for a named space the caller is not in.
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2091,7 +2493,7 @@ public class TeamApi {
 
     /**
      * Stream live changes to what the caller may see, as Server-Sent Events
-     * Holds one text/event-stream open per caller and pushes each change as it is written — by the Team client, a typed op or an agent — filtered to the rooms, documents and inbox the caller may see under the same rule the ops apply. Authenticate with &#x60;Authorization: Bearer&#x60; (a fetch-based SSE reader; a browser EventSource cannot set it). &#x60;?space&#x3D;&#x60; narrows the stream to one space; without it the stream covers every space the caller is a member of at connect.  Each frame is &#x60;event: &lt;name&gt;&#x60; and a JSON &#x60;data:&#x60; line carrying &#x60;space&#x60; and one of: - &#x60;message.created&#x60;, &#x60;message.updated&#x60; — &#x60;message&#x60;, the message as the message ops answer it (a room message, a thread reply or a document comment; a count or reaction change is an update); - &#x60;message.deleted&#x60; — &#x60;id&#x60;, and &#x60;room&#x60;/&#x60;doc&#x60;/&#x60;thread&#x60; where known; - &#x60;reaction.changed&#x60; — &#x60;message&#x60;, with its reactions as they now stand; - &#x60;room.changed&#x60; — &#x60;room&#x60;, as the room listing answers it, sent to those who can see it after the change (somebody removed from a private room is not told; the room list is the truth); - &#x60;doc.changed&#x60; — &#x60;doc&#x60;, as the document ops answer it (&#x60;removed: true&#x60; and &#x60;id&#x60; when deleted); body edits happen on the collaborator socket and are not streamed here; - &#x60;inbox.created&#x60;, &#x60;inbox.updated&#x60; — &#x60;item&#x60;, one of the caller&#39;s own notifications.  A &#x60;: ping&#x60; comment is written every 25 seconds. There is no resume: the server keeps no event sequence, so frames carry no &#x60;id&#x60; and Last-Event-ID is ignored; on reconnect, re-read the ops. A stream that falls too far behind is closed rather than allowed to slow a writer, and so is one whose caller is no longer a member of the space an event is in. 401 without a verified team credential; 404 for a named space the caller is not in.
+     * Holds one text/event-stream open per caller and pushes each change as it is written — by the Team client, a typed op or an agent — filtered to the channels, documents and inbox the caller may see under the same rule the ops apply. Authenticate with &#x60;Authorization: Bearer&#x60; (a fetch-based SSE reader; a browser EventSource cannot set it). &#x60;?space&#x3D;&#x60; narrows the stream to one space; without it the stream covers every space the caller is a member of at connect.  Each frame is &#x60;event: &lt;name&gt;&#x60; and a JSON &#x60;data:&#x60; line carrying &#x60;space&#x60; and one of: - &#x60;message.created&#x60;, &#x60;message.updated&#x60; — &#x60;message&#x60;, the message as the message ops answer it (a channel message, a thread reply or a document comment; a count or reaction change is an update); - &#x60;message.deleted&#x60; — &#x60;id&#x60;, and &#x60;channel&#x60;/&#x60;doc&#x60;/&#x60;thread&#x60; where known; - &#x60;reaction.changed&#x60; — &#x60;message&#x60;, with its reactions as they now stand; - &#x60;channel.changed&#x60; — &#x60;channel&#x60;, as the channel listing answers it, sent to those who can see it after the change (somebody removed from a private channel is not told; the channel list is the truth); - &#x60;doc.changed&#x60; — &#x60;doc&#x60;, as the document ops answer it (&#x60;removed: true&#x60; and &#x60;id&#x60; when deleted); body edits happen on the collaborator socket and are not streamed here; - &#x60;inbox.created&#x60;, &#x60;inbox.updated&#x60; — &#x60;item&#x60;, one of the caller&#39;s own notifications.  A &#x60;: ping&#x60; comment is written every 25 seconds. There is no resume: the server keeps no event sequence, so frames carry no &#x60;id&#x60; and Last-Event-ID is ignored; on reconnect, re-read the ops. A stream that falls too far behind is closed rather than allowed to slow a writer, and so is one whose caller is no longer a member of the space an event is in. 401 without a verified team credential; 404 for a named space the caller is not in.
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2109,7 +2511,7 @@ public class TeamApi {
 
     /**
      * Stream live changes to what the caller may see, as Server-Sent Events (asynchronously)
-     * Holds one text/event-stream open per caller and pushes each change as it is written — by the Team client, a typed op or an agent — filtered to the rooms, documents and inbox the caller may see under the same rule the ops apply. Authenticate with &#x60;Authorization: Bearer&#x60; (a fetch-based SSE reader; a browser EventSource cannot set it). &#x60;?space&#x3D;&#x60; narrows the stream to one space; without it the stream covers every space the caller is a member of at connect.  Each frame is &#x60;event: &lt;name&gt;&#x60; and a JSON &#x60;data:&#x60; line carrying &#x60;space&#x60; and one of: - &#x60;message.created&#x60;, &#x60;message.updated&#x60; — &#x60;message&#x60;, the message as the message ops answer it (a room message, a thread reply or a document comment; a count or reaction change is an update); - &#x60;message.deleted&#x60; — &#x60;id&#x60;, and &#x60;room&#x60;/&#x60;doc&#x60;/&#x60;thread&#x60; where known; - &#x60;reaction.changed&#x60; — &#x60;message&#x60;, with its reactions as they now stand; - &#x60;room.changed&#x60; — &#x60;room&#x60;, as the room listing answers it, sent to those who can see it after the change (somebody removed from a private room is not told; the room list is the truth); - &#x60;doc.changed&#x60; — &#x60;doc&#x60;, as the document ops answer it (&#x60;removed: true&#x60; and &#x60;id&#x60; when deleted); body edits happen on the collaborator socket and are not streamed here; - &#x60;inbox.created&#x60;, &#x60;inbox.updated&#x60; — &#x60;item&#x60;, one of the caller&#39;s own notifications.  A &#x60;: ping&#x60; comment is written every 25 seconds. There is no resume: the server keeps no event sequence, so frames carry no &#x60;id&#x60; and Last-Event-ID is ignored; on reconnect, re-read the ops. A stream that falls too far behind is closed rather than allowed to slow a writer, and so is one whose caller is no longer a member of the space an event is in. 401 without a verified team credential; 404 for a named space the caller is not in.
+     * Holds one text/event-stream open per caller and pushes each change as it is written — by the Team client, a typed op or an agent — filtered to the channels, documents and inbox the caller may see under the same rule the ops apply. Authenticate with &#x60;Authorization: Bearer&#x60; (a fetch-based SSE reader; a browser EventSource cannot set it). &#x60;?space&#x3D;&#x60; narrows the stream to one space; without it the stream covers every space the caller is a member of at connect.  Each frame is &#x60;event: &lt;name&gt;&#x60; and a JSON &#x60;data:&#x60; line carrying &#x60;space&#x60; and one of: - &#x60;message.created&#x60;, &#x60;message.updated&#x60; — &#x60;message&#x60;, the message as the message ops answer it (a channel message, a thread reply or a document comment; a count or reaction change is an update); - &#x60;message.deleted&#x60; — &#x60;id&#x60;, and &#x60;channel&#x60;/&#x60;doc&#x60;/&#x60;thread&#x60; where known; - &#x60;reaction.changed&#x60; — &#x60;message&#x60;, with its reactions as they now stand; - &#x60;channel.changed&#x60; — &#x60;channel&#x60;, as the channel listing answers it, sent to those who can see it after the change (somebody removed from a private channel is not told; the channel list is the truth); - &#x60;doc.changed&#x60; — &#x60;doc&#x60;, as the document ops answer it (&#x60;removed: true&#x60; and &#x60;id&#x60; when deleted); body edits happen on the collaborator socket and are not streamed here; - &#x60;inbox.created&#x60;, &#x60;inbox.updated&#x60; — &#x60;item&#x60;, one of the caller&#39;s own notifications.  A &#x60;: ping&#x60; comment is written every 25 seconds. There is no resume: the server keeps no event sequence, so frames carry no &#x60;id&#x60; and Last-Event-ID is ignored; on reconnect, re-read the ops. A stream that falls too far behind is closed rather than allowed to slow a writer, and so is one whose caller is no longer a member of the space an event is in. 401 without a verified team credential; 404 for a named space the caller is not in.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2339,8 +2741,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the caller&#39;s notifications, newest first, each with the room or document it is about and the message that caused it.
-     * Returns the caller&#39;s notifications, newest first, each with the room or document it is about and the message that caused it.  These are the rows the Team client&#39;s Inbox reads, so a notification cleared there is cleared here. Only the caller&#39;s own notifications are ever listed.
+     * Returns the caller&#39;s notifications, newest first, each with the channel or document it is about and the message that caused it.
+     * Returns the caller&#39;s notifications, newest first, each with the channel or document it is about and the message that caused it.  These are the rows the Team client&#39;s Inbox reads, so a notification cleared there is cleared here. Only the caller&#39;s own notifications are ever listed.
      * @param space Space is the space uuid. Optional for a caller in exactly one space. (optional)
      * @param archived Archived lists the archived notifications instead of the live ones. (optional)
      * @return TeamTeamInbox
@@ -2359,8 +2761,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the caller&#39;s notifications, newest first, each with the room or document it is about and the message that caused it.
-     * Returns the caller&#39;s notifications, newest first, each with the room or document it is about and the message that caused it.  These are the rows the Team client&#39;s Inbox reads, so a notification cleared there is cleared here. Only the caller&#39;s own notifications are ever listed.
+     * Returns the caller&#39;s notifications, newest first, each with the channel or document it is about and the message that caused it.
+     * Returns the caller&#39;s notifications, newest first, each with the channel or document it is about and the message that caused it.  These are the rows the Team client&#39;s Inbox reads, so a notification cleared there is cleared here. Only the caller&#39;s own notifications are ever listed.
      * @param space Space is the space uuid. Optional for a caller in exactly one space. (optional)
      * @param archived Archived lists the archived notifications instead of the live ones. (optional)
      * @return ApiResponse&lt;TeamTeamInbox&gt;
@@ -2380,8 +2782,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the caller&#39;s notifications, newest first, each with the room or document it is about and the message that caused it. (asynchronously)
-     * Returns the caller&#39;s notifications, newest first, each with the room or document it is about and the message that caused it.  These are the rows the Team client&#39;s Inbox reads, so a notification cleared there is cleared here. Only the caller&#39;s own notifications are ever listed.
+     * Returns the caller&#39;s notifications, newest first, each with the channel or document it is about and the message that caused it. (asynchronously)
+     * Returns the caller&#39;s notifications, newest first, each with the channel or document it is about and the message that caused it.  These are the rows the Team client&#39;s Inbox reads, so a notification cleared there is cleared here. Only the caller&#39;s own notifications are ever listed.
      * @param space Space is the space uuid. Optional for a caller in exactly one space. (optional)
      * @param archived Archived lists the archived notifications instead of the live ones. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -2674,8 +3076,8 @@ public class TeamApi {
     }
     /**
      * Build call for getTeamPublic
-     * @param q Q matches a room&#39;s name or its topic. (optional)
-     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * @param q Q matches a channel&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published channels. (optional)
      * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2752,12 +3154,12 @@ public class TeamApi {
     }
 
     /**
-     * Lists the rooms orgs have published, across every org.
-     * Lists the rooms orgs have published, across every org.  It is NOT part of GET /rooms, and the separation is the point: that address answers the CALLER&#39;S rooms, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a room public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
-     * @param q Q matches a room&#39;s name or its topic. (optional)
-     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * Lists the channels orgs have published, across every org.
+     * Lists the channels orgs have published, across every org.  It is NOT part of GET /channels, and the separation is the point: that address answers the CALLER&#39;S channels, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a channel public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
+     * @param q Q matches a channel&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published channels. (optional)
      * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
-     * @return TeamPublicRooms
+     * @return TeamPublicChannels
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2767,18 +3169,18 @@ public class TeamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TeamPublicRooms getTeamPublic(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<TeamPublicRooms> localVarResp = getTeamPublicWithHttpInfo(q, org, limit);
+    public TeamPublicChannels getTeamPublic(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<TeamPublicChannels> localVarResp = getTeamPublicWithHttpInfo(q, org, limit);
         return localVarResp.getData();
     }
 
     /**
-     * Lists the rooms orgs have published, across every org.
-     * Lists the rooms orgs have published, across every org.  It is NOT part of GET /rooms, and the separation is the point: that address answers the CALLER&#39;S rooms, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a room public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
-     * @param q Q matches a room&#39;s name or its topic. (optional)
-     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * Lists the channels orgs have published, across every org.
+     * Lists the channels orgs have published, across every org.  It is NOT part of GET /channels, and the separation is the point: that address answers the CALLER&#39;S channels, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a channel public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
+     * @param q Q matches a channel&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published channels. (optional)
      * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
-     * @return ApiResponse&lt;TeamPublicRooms&gt;
+     * @return ApiResponse&lt;TeamPublicChannels&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2788,17 +3190,17 @@ public class TeamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TeamPublicRooms> getTeamPublicWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<TeamPublicChannels> getTeamPublicWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getTeamPublicValidateBeforeCall(q, org, limit, null);
-        Type localVarReturnType = new TypeToken<TeamPublicRooms>(){}.getType();
+        Type localVarReturnType = new TypeToken<TeamPublicChannels>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Lists the rooms orgs have published, across every org. (asynchronously)
-     * Lists the rooms orgs have published, across every org.  It is NOT part of GET /rooms, and the separation is the point: that address answers the CALLER&#39;S rooms, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a room public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
-     * @param q Q matches a room&#39;s name or its topic. (optional)
-     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * Lists the channels orgs have published, across every org. (asynchronously)
+     * Lists the channels orgs have published, across every org.  It is NOT part of GET /channels, and the separation is the point: that address answers the CALLER&#39;S channels, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a channel public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
+     * @param q Q matches a channel&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published channels. (optional)
      * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2811,412 +3213,10 @@ public class TeamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTeamPublicAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit, final ApiCallback<TeamPublicRooms> _callback) throws ApiException {
+    public okhttp3.Call getTeamPublicAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit, final ApiCallback<TeamPublicChannels> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTeamPublicValidateBeforeCall(q, org, limit, _callback);
-        Type localVarReturnType = new TypeToken<TeamPublicRooms>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getTeamRooms
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTeamRoomsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTeamRoomsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getTeamRoomsCall(_callback);
-
-    }
-
-    /**
-     * Returns the rooms the caller may see, with the kind and work facet each carries.
-     * Returns the rooms the caller may see, with the kind and work facet each carries.  A signed-in TEAM MEMBER reads every room of every space they are in that is open to them: public channels, and the private channels and direct messages that name them. An APPLICATION of the org (its own machine credential) reads the public channels of the org&#39;s spaces and nothing that belongs to particular people. Anybody else without a team session is 401.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document.
-     * @return TeamTeamRooms
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamRooms getTeamRooms() throws ApiException {
-        ApiResponse<TeamTeamRooms> localVarResp = getTeamRoomsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the rooms the caller may see, with the kind and work facet each carries.
-     * Returns the rooms the caller may see, with the kind and work facet each carries.  A signed-in TEAM MEMBER reads every room of every space they are in that is open to them: public channels, and the private channels and direct messages that name them. An APPLICATION of the org (its own machine credential) reads the public channels of the org&#39;s spaces and nothing that belongs to particular people. Anybody else without a team session is 401.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document.
-     * @return ApiResponse&lt;TeamTeamRooms&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamRooms> getTeamRoomsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getTeamRoomsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TeamTeamRooms>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the rooms the caller may see, with the kind and work facet each carries. (asynchronously)
-     * Returns the rooms the caller may see, with the kind and work facet each carries.  A signed-in TEAM MEMBER reads every room of every space they are in that is open to them: public channels, and the private channels and direct messages that name them. An APPLICATION of the org (its own machine credential) reads the public channels of the org&#39;s spaces and nothing that belongs to particular people. Anybody else without a team session is 401.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTeamRoomsAsync(final ApiCallback<TeamTeamRooms> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getTeamRoomsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TeamTeamRooms>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getTeamRoomsByIdMembers
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTeamRoomsByIdMembersCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}/members"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (space != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTeamRoomsByIdMembersValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getTeamRoomsByIdMembers(Async)");
-        }
-
-        return getTeamRoomsByIdMembersCall(id, space, _callback);
-
-    }
-
-    /**
-     * Returns the people and agents in one room, as the roster describes them.
-     * Returns the people and agents in one room, as the roster describes them. The caller must be able to see the room.
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @return TeamTeamRoomMembers
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamRoomMembers getTeamRoomsByIdMembers(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
-        ApiResponse<TeamTeamRoomMembers> localVarResp = getTeamRoomsByIdMembersWithHttpInfo(id, space);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the people and agents in one room, as the roster describes them.
-     * Returns the people and agents in one room, as the roster describes them. The caller must be able to see the room.
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @return ApiResponse&lt;TeamTeamRoomMembers&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamRoomMembers> getTeamRoomsByIdMembersWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
-        okhttp3.Call localVarCall = getTeamRoomsByIdMembersValidateBeforeCall(id, space, null);
-        Type localVarReturnType = new TypeToken<TeamTeamRoomMembers>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the people and agents in one room, as the roster describes them. (asynchronously)
-     * Returns the people and agents in one room, as the roster describes them. The caller must be able to see the room.
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTeamRoomsByIdMembersAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback<TeamTeamRoomMembers> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getTeamRoomsByIdMembersValidateBeforeCall(id, space, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamRoomMembers>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getTeamRoomsByIdMessages
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTeamRoomsByIdMessagesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}/messages"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (space != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTeamRoomsByIdMessagesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getTeamRoomsByIdMessages(Async)");
-        }
-
-        return getTeamRoomsByIdMessagesCall(id, space, _callback);
-
-    }
-
-    /**
-     * Returns the tail of one room&#39;s conversation, oldest first, each message with its reactions, files and thread count.
-     * Returns the tail of one room&#39;s conversation, oldest first, each message with its reactions, files and thread count.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A team member reads any room they may see; an application of the org reads public channels only; anybody else without a team session is 401. A room the caller may not read answers 404 rather than 403, so a probe learns nothing about what exists.
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @return TeamTeamMessages
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamMessages getTeamRoomsByIdMessages(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
-        ApiResponse<TeamTeamMessages> localVarResp = getTeamRoomsByIdMessagesWithHttpInfo(id, space);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the tail of one room&#39;s conversation, oldest first, each message with its reactions, files and thread count.
-     * Returns the tail of one room&#39;s conversation, oldest first, each message with its reactions, files and thread count.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A team member reads any room they may see; an application of the org reads public channels only; anybody else without a team session is 401. A room the caller may not read answers 404 rather than 403, so a probe learns nothing about what exists.
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @return ApiResponse&lt;TeamTeamMessages&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamMessages> getTeamRoomsByIdMessagesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
-        okhttp3.Call localVarCall = getTeamRoomsByIdMessagesValidateBeforeCall(id, space, null);
-        Type localVarReturnType = new TypeToken<TeamTeamMessages>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the tail of one room&#39;s conversation, oldest first, each message with its reactions, files and thread count. (asynchronously)
-     * Returns the tail of one room&#39;s conversation, oldest first, each message with its reactions, files and thread count.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A team member reads any room they may see; an application of the org reads public channels only; anybody else without a team session is 401. A room the caller may not read answers 404 rather than 403, so a probe learns nothing about what exists.
-     * @param id ID is the room, from the path. The URL is the authority. (required)
-     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getTeamRoomsByIdMessagesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback<TeamTeamMessages> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getTeamRoomsByIdMessagesValidateBeforeCall(id, space, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamMessages>(){}.getType();
+        Type localVarReturnType = new TypeToken<TeamPublicChannels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3445,6 +3445,148 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = getTeamTransactorStatisticsValidateBeforeCall(token, _callback);
         Type localVarReturnType = new TypeToken<TeamStatsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchTeamChannelsById
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelEdit  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchTeamChannelsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelEdit teamTeamChannelEdit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamTeamChannelEdit;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchTeamChannelsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelEdit teamTeamChannelEdit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchTeamChannelsById(Async)");
+        }
+
+        // verify the required parameter 'teamTeamChannelEdit' is set
+        if (teamTeamChannelEdit == null) {
+            throw new ApiException("Missing the required parameter 'teamTeamChannelEdit' when calling patchTeamChannelsById(Async)");
+        }
+
+        return patchTeamChannelsByIdCall(id, teamTeamChannelEdit, _callback);
+
+    }
+
+    /**
+     * Renames a channel, sets its topic, or archives or reopens it, and answers the channel as it now stands.
+     * Renames a channel, sets its topic, or archives or reopens it, and answers the channel as it now stands.  Its owners and the space&#39;s admins may edit a channel; a channel nobody owns — one opened by an integration — may be edited by anyone in it, and a direct message by either person in it. Archiving withdraws a public channel from the cross-org directory in the same write; reopening lists it again.
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelEdit  (required)
+     * @return TeamTeamChannelOne
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamChannelOne patchTeamChannelsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelEdit teamTeamChannelEdit) throws ApiException {
+        ApiResponse<TeamTeamChannelOne> localVarResp = patchTeamChannelsByIdWithHttpInfo(id, teamTeamChannelEdit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Renames a channel, sets its topic, or archives or reopens it, and answers the channel as it now stands.
+     * Renames a channel, sets its topic, or archives or reopens it, and answers the channel as it now stands.  Its owners and the space&#39;s admins may edit a channel; a channel nobody owns — one opened by an integration — may be edited by anyone in it, and a direct message by either person in it. Archiving withdraws a public channel from the cross-org directory in the same write; reopening lists it again.
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelEdit  (required)
+     * @return ApiResponse&lt;TeamTeamChannelOne&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamChannelOne> patchTeamChannelsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelEdit teamTeamChannelEdit) throws ApiException {
+        okhttp3.Call localVarCall = patchTeamChannelsByIdValidateBeforeCall(id, teamTeamChannelEdit, null);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Renames a channel, sets its topic, or archives or reopens it, and answers the channel as it now stands. (asynchronously)
+     * Renames a channel, sets its topic, or archives or reopens it, and answers the channel as it now stands.  Its owners and the space&#39;s admins may edit a channel; a channel nobody owns — one opened by an integration — may be edited by anyone in it, and a direct message by either person in it. Archiving withdraws a public channel from the cross-org directory in the same write; reopening lists it again.
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelEdit  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchTeamChannelsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelEdit teamTeamChannelEdit, final ApiCallback<TeamTeamChannelOne> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchTeamChannelsByIdValidateBeforeCall(id, teamTeamChannelEdit, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3733,148 +3875,6 @@ public class TeamApi {
         return localVarCall;
     }
     /**
-     * Build call for patchTeamRoomsById
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomEdit  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchTeamRoomsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomEdit teamTeamRoomEdit, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = teamTeamRoomEdit;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchTeamRoomsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomEdit teamTeamRoomEdit, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchTeamRoomsById(Async)");
-        }
-
-        // verify the required parameter 'teamTeamRoomEdit' is set
-        if (teamTeamRoomEdit == null) {
-            throw new ApiException("Missing the required parameter 'teamTeamRoomEdit' when calling patchTeamRoomsById(Async)");
-        }
-
-        return patchTeamRoomsByIdCall(id, teamTeamRoomEdit, _callback);
-
-    }
-
-    /**
-     * Renames a channel, sets its topic, or archives or reopens it, and answers the room as it now stands.
-     * Renames a channel, sets its topic, or archives or reopens it, and answers the room as it now stands.  Its owners and the space&#39;s admins may edit a room; a room nobody owns — one opened by an integration — may be edited by anyone in it, and a direct message by either person in it. Archiving withdraws a public channel from the cross-org directory in the same write; reopening lists it again.
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomEdit  (required)
-     * @return TeamTeamRoom
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamRoom patchTeamRoomsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomEdit teamTeamRoomEdit) throws ApiException {
-        ApiResponse<TeamTeamRoom> localVarResp = patchTeamRoomsByIdWithHttpInfo(id, teamTeamRoomEdit);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Renames a channel, sets its topic, or archives or reopens it, and answers the room as it now stands.
-     * Renames a channel, sets its topic, or archives or reopens it, and answers the room as it now stands.  Its owners and the space&#39;s admins may edit a room; a room nobody owns — one opened by an integration — may be edited by anyone in it, and a direct message by either person in it. Archiving withdraws a public channel from the cross-org directory in the same write; reopening lists it again.
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomEdit  (required)
-     * @return ApiResponse&lt;TeamTeamRoom&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamRoom> patchTeamRoomsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomEdit teamTeamRoomEdit) throws ApiException {
-        okhttp3.Call localVarCall = patchTeamRoomsByIdValidateBeforeCall(id, teamTeamRoomEdit, null);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Renames a channel, sets its topic, or archives or reopens it, and answers the room as it now stands. (asynchronously)
-     * Renames a channel, sets its topic, or archives or reopens it, and answers the room as it now stands.  Its owners and the space&#39;s admins may edit a room; a room nobody owns — one opened by an integration — may be edited by anyone in it, and a direct message by either person in it. Archiving withdraws a public channel from the cross-org directory in the same write; reopening lists it again.
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomEdit  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call patchTeamRoomsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomEdit teamTeamRoomEdit, final ApiCallback<TeamTeamRoom> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchTeamRoomsByIdValidateBeforeCall(id, teamTeamRoomEdit, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postTeamAccount
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3960,6 +3960,422 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = postTeamAccountValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postTeamChannels
+     * @param teamTeamChannelNew  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamChannelsCall(@javax.annotation.Nonnull TeamTeamChannelNew teamTeamChannelNew, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamTeamChannelNew;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postTeamChannelsValidateBeforeCall(@javax.annotation.Nonnull TeamTeamChannelNew teamTeamChannelNew, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'teamTeamChannelNew' is set
+        if (teamTeamChannelNew == null) {
+            throw new ApiException("Missing the required parameter 'teamTeamChannelNew' when calling postTeamChannels(Async)");
+        }
+
+        return postTeamChannelsCall(teamTeamChannelNew, _callback);
+
+    }
+
+    /**
+     * Opens a named channel and answers it as the store now holds it.
+     * Opens a named channel and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a channel opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listChannels rests on, read from the write side.  A SIGNED-IN TEAM MEMBER opens it as themselves: they are its first member and its owner, every other member named must be somebody the space knows (a person in it, or one of the org&#39;s agents), and a guest may not open channels at all. An application of the org opens it as the org, with exactly the members it names. Anybody else without a team session is 401.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindChannel writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a channel with default intent, which is the honest partial state.
+     * @param teamTeamChannelNew  (required)
+     * @return TeamTeamChannelOne
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamChannelOne postTeamChannels(@javax.annotation.Nonnull TeamTeamChannelNew teamTeamChannelNew) throws ApiException {
+        ApiResponse<TeamTeamChannelOne> localVarResp = postTeamChannelsWithHttpInfo(teamTeamChannelNew);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens a named channel and answers it as the store now holds it.
+     * Opens a named channel and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a channel opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listChannels rests on, read from the write side.  A SIGNED-IN TEAM MEMBER opens it as themselves: they are its first member and its owner, every other member named must be somebody the space knows (a person in it, or one of the org&#39;s agents), and a guest may not open channels at all. An application of the org opens it as the org, with exactly the members it names. Anybody else without a team session is 401.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindChannel writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a channel with default intent, which is the honest partial state.
+     * @param teamTeamChannelNew  (required)
+     * @return ApiResponse&lt;TeamTeamChannelOne&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamChannelOne> postTeamChannelsWithHttpInfo(@javax.annotation.Nonnull TeamTeamChannelNew teamTeamChannelNew) throws ApiException {
+        okhttp3.Call localVarCall = postTeamChannelsValidateBeforeCall(teamTeamChannelNew, null);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens a named channel and answers it as the store now holds it. (asynchronously)
+     * Opens a named channel and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a channel opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listChannels rests on, read from the write side.  A SIGNED-IN TEAM MEMBER opens it as themselves: they are its first member and its owner, every other member named must be somebody the space knows (a person in it, or one of the org&#39;s agents), and a guest may not open channels at all. An application of the org opens it as the org, with exactly the members it names. Anybody else without a team session is 401.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindChannel writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a channel with default intent, which is the honest partial state.
+     * @param teamTeamChannelNew  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamChannelsAsync(@javax.annotation.Nonnull TeamTeamChannelNew teamTeamChannelNew, final ApiCallback<TeamTeamChannelOne> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postTeamChannelsValidateBeforeCall(teamTeamChannelNew, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postTeamChannelsByIdMembers
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelJoin  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamChannelsByIdMembersCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelJoin teamTeamChannelJoin, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamTeamChannelJoin;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}/members"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postTeamChannelsByIdMembersValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelJoin teamTeamChannelJoin, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postTeamChannelsByIdMembers(Async)");
+        }
+
+        // verify the required parameter 'teamTeamChannelJoin' is set
+        if (teamTeamChannelJoin == null) {
+            throw new ApiException("Missing the required parameter 'teamTeamChannelJoin' when calling postTeamChannelsByIdMembers(Async)");
+        }
+
+        return postTeamChannelsByIdMembersCall(id, teamTeamChannelJoin, _callback);
+
+    }
+
+    /**
+     * Adds people to a channel and answers the channel as it now stands.
+     * Adds people to a channel and answers the channel as it now stands.  Anyone in the space except a guest may join a public channel by naming themselves. Adding somebody else takes being in the channel already (or administering the space, for a channel they can see). A direct message&#39;s people are what it is, so none can be added — open another one. Everyone added must be a member of the space or one of the org&#39;s agents; an agent added to a channel answers when it is @-mentioned there.
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelJoin  (required)
+     * @return TeamTeamChannelOne
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamChannelOne postTeamChannelsByIdMembers(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelJoin teamTeamChannelJoin) throws ApiException {
+        ApiResponse<TeamTeamChannelOne> localVarResp = postTeamChannelsByIdMembersWithHttpInfo(id, teamTeamChannelJoin);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Adds people to a channel and answers the channel as it now stands.
+     * Adds people to a channel and answers the channel as it now stands.  Anyone in the space except a guest may join a public channel by naming themselves. Adding somebody else takes being in the channel already (or administering the space, for a channel they can see). A direct message&#39;s people are what it is, so none can be added — open another one. Everyone added must be a member of the space or one of the org&#39;s agents; an agent added to a channel answers when it is @-mentioned there.
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelJoin  (required)
+     * @return ApiResponse&lt;TeamTeamChannelOne&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamChannelOne> postTeamChannelsByIdMembersWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelJoin teamTeamChannelJoin) throws ApiException {
+        okhttp3.Call localVarCall = postTeamChannelsByIdMembersValidateBeforeCall(id, teamTeamChannelJoin, null);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Adds people to a channel and answers the channel as it now stands. (asynchronously)
+     * Adds people to a channel and answers the channel as it now stands.  Anyone in the space except a guest may join a public channel by naming themselves. Adding somebody else takes being in the channel already (or administering the space, for a channel they can see). A direct message&#39;s people are what it is, so none can be added — open another one. Everyone added must be a member of the space or one of the org&#39;s agents; an agent added to a channel answers when it is @-mentioned there.
+     * @param id ID is the channel, from the path. (required)
+     * @param teamTeamChannelJoin  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamChannelsByIdMembersAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelJoin teamTeamChannelJoin, final ApiCallback<TeamTeamChannelOne> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postTeamChannelsByIdMembersValidateBeforeCall(id, teamTeamChannelJoin, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postTeamChannelsByIdMessages
+     * @param id ID is the channel to say it in, from the path. (required)
+     * @param teamTeamMessageWrite  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamChannelsByIdMessagesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamTeamMessageWrite;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}/messages"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postTeamChannelsByIdMessagesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postTeamChannelsByIdMessages(Async)");
+        }
+
+        // verify the required parameter 'teamTeamMessageWrite' is set
+        if (teamTeamMessageWrite == null) {
+            throw new ApiException("Missing the required parameter 'teamTeamMessageWrite' when calling postTeamChannelsByIdMessages(Async)");
+        }
+
+        return postTeamChannelsByIdMessagesCall(id, teamTeamMessageWrite, _callback);
+
+    }
+
+    /**
+     * Says one thing in a channel, as the caller.
+     * Says one thing in a channel, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open channel rather than on the next reload. It answers the message as the store now HOLDS it.  &#x60;&lt;@account-uuid&gt;&#x60; in the text is stored as the platform&#39;s mention, so the person is notified in their inbox. Mentioning one of the org&#39;s agents — or writing in a direct message with one — wakes it: it runs as itself, on behalf of the caller, and posts its answer into the same channel. The caller must be able to see the channel, and an archived channel refuses new messages (409).
+     * @param id ID is the channel to say it in, from the path. (required)
+     * @param teamTeamMessageWrite  (required)
+     * @return TeamTeamMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamMessage postTeamChannelsByIdMessages(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite) throws ApiException {
+        ApiResponse<TeamTeamMessage> localVarResp = postTeamChannelsByIdMessagesWithHttpInfo(id, teamTeamMessageWrite);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Says one thing in a channel, as the caller.
+     * Says one thing in a channel, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open channel rather than on the next reload. It answers the message as the store now HOLDS it.  &#x60;&lt;@account-uuid&gt;&#x60; in the text is stored as the platform&#39;s mention, so the person is notified in their inbox. Mentioning one of the org&#39;s agents — or writing in a direct message with one — wakes it: it runs as itself, on behalf of the caller, and posts its answer into the same channel. The caller must be able to see the channel, and an archived channel refuses new messages (409).
+     * @param id ID is the channel to say it in, from the path. (required)
+     * @param teamTeamMessageWrite  (required)
+     * @return ApiResponse&lt;TeamTeamMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamMessage> postTeamChannelsByIdMessagesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite) throws ApiException {
+        okhttp3.Call localVarCall = postTeamChannelsByIdMessagesValidateBeforeCall(id, teamTeamMessageWrite, null);
+        Type localVarReturnType = new TypeToken<TeamTeamMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Says one thing in a channel, as the caller. (asynchronously)
+     * Says one thing in a channel, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open channel rather than on the next reload. It answers the message as the store now HOLDS it.  &#x60;&lt;@account-uuid&gt;&#x60; in the text is stored as the platform&#39;s mention, so the person is notified in their inbox. Mentioning one of the org&#39;s agents — or writing in a direct message with one — wakes it: it runs as itself, on behalf of the caller, and posts its answer into the same channel. The caller must be able to see the channel, and an archived channel refuses new messages (409).
+     * @param id ID is the channel to say it in, from the path. (required)
+     * @param teamTeamMessageWrite  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamChannelsByIdMessagesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite, final ApiCallback<TeamTeamMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postTeamChannelsByIdMessagesValidateBeforeCall(id, teamTeamMessageWrite, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -5205,422 +5621,6 @@ public class TeamApi {
         return localVarCall;
     }
     /**
-     * Build call for postTeamRooms
-     * @param teamTeamRoomNew  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postTeamRoomsCall(@javax.annotation.Nonnull TeamTeamRoomNew teamTeamRoomNew, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = teamTeamRoomNew;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTeamRoomsValidateBeforeCall(@javax.annotation.Nonnull TeamTeamRoomNew teamTeamRoomNew, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'teamTeamRoomNew' is set
-        if (teamTeamRoomNew == null) {
-            throw new ApiException("Missing the required parameter 'teamTeamRoomNew' when calling postTeamRooms(Async)");
-        }
-
-        return postTeamRoomsCall(teamTeamRoomNew, _callback);
-
-    }
-
-    /**
-     * Opens a named room and answers it as the store now holds it.
-     * Opens a named room and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a room opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listRooms rests on, read from the write side.  A SIGNED-IN TEAM MEMBER opens it as themselves: they are its first member and its owner, every other member named must be somebody the space knows (a person in it, or one of the org&#39;s agents), and a guest may not open rooms at all. An application of the org opens it as the org, with exactly the members it names. Anybody else without a team session is 401.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindRoom writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a room with default intent, which is the honest partial state.
-     * @param teamTeamRoomNew  (required)
-     * @return TeamTeamRoom
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamRoom postTeamRooms(@javax.annotation.Nonnull TeamTeamRoomNew teamTeamRoomNew) throws ApiException {
-        ApiResponse<TeamTeamRoom> localVarResp = postTeamRoomsWithHttpInfo(teamTeamRoomNew);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Opens a named room and answers it as the store now holds it.
-     * Opens a named room and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a room opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listRooms rests on, read from the write side.  A SIGNED-IN TEAM MEMBER opens it as themselves: they are its first member and its owner, every other member named must be somebody the space knows (a person in it, or one of the org&#39;s agents), and a guest may not open rooms at all. An application of the org opens it as the org, with exactly the members it names. Anybody else without a team session is 401.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindRoom writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a room with default intent, which is the honest partial state.
-     * @param teamTeamRoomNew  (required)
-     * @return ApiResponse&lt;TeamTeamRoom&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamRoom> postTeamRoomsWithHttpInfo(@javax.annotation.Nonnull TeamTeamRoomNew teamTeamRoomNew) throws ApiException {
-        okhttp3.Call localVarCall = postTeamRoomsValidateBeforeCall(teamTeamRoomNew, null);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Opens a named room and answers it as the store now holds it. (asynchronously)
-     * Opens a named room and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a room opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listRooms rests on, read from the write side.  A SIGNED-IN TEAM MEMBER opens it as themselves: they are its first member and its owner, every other member named must be somebody the space knows (a person in it, or one of the org&#39;s agents), and a guest may not open rooms at all. An application of the org opens it as the org, with exactly the members it names. Anybody else without a team session is 401.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindRoom writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a room with default intent, which is the honest partial state.
-     * @param teamTeamRoomNew  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postTeamRoomsAsync(@javax.annotation.Nonnull TeamTeamRoomNew teamTeamRoomNew, final ApiCallback<TeamTeamRoom> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postTeamRoomsValidateBeforeCall(teamTeamRoomNew, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postTeamRoomsByIdMembers
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomJoin  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postTeamRoomsByIdMembersCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomJoin teamTeamRoomJoin, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = teamTeamRoomJoin;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}/members"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTeamRoomsByIdMembersValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomJoin teamTeamRoomJoin, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postTeamRoomsByIdMembers(Async)");
-        }
-
-        // verify the required parameter 'teamTeamRoomJoin' is set
-        if (teamTeamRoomJoin == null) {
-            throw new ApiException("Missing the required parameter 'teamTeamRoomJoin' when calling postTeamRoomsByIdMembers(Async)");
-        }
-
-        return postTeamRoomsByIdMembersCall(id, teamTeamRoomJoin, _callback);
-
-    }
-
-    /**
-     * Adds people to a room and answers the room as it now stands.
-     * Adds people to a room and answers the room as it now stands.  Anyone in the space except a guest may join a public channel by naming themselves. Adding somebody else takes being in the room already (or administering the space, for a room they can see). A direct message&#39;s people are what it is, so none can be added — open another one. Everyone added must be a member of the space or one of the org&#39;s agents; an agent added to a room answers when it is @-mentioned there.
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomJoin  (required)
-     * @return TeamTeamRoom
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamRoom postTeamRoomsByIdMembers(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomJoin teamTeamRoomJoin) throws ApiException {
-        ApiResponse<TeamTeamRoom> localVarResp = postTeamRoomsByIdMembersWithHttpInfo(id, teamTeamRoomJoin);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Adds people to a room and answers the room as it now stands.
-     * Adds people to a room and answers the room as it now stands.  Anyone in the space except a guest may join a public channel by naming themselves. Adding somebody else takes being in the room already (or administering the space, for a room they can see). A direct message&#39;s people are what it is, so none can be added — open another one. Everyone added must be a member of the space or one of the org&#39;s agents; an agent added to a room answers when it is @-mentioned there.
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomJoin  (required)
-     * @return ApiResponse&lt;TeamTeamRoom&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamRoom> postTeamRoomsByIdMembersWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomJoin teamTeamRoomJoin) throws ApiException {
-        okhttp3.Call localVarCall = postTeamRoomsByIdMembersValidateBeforeCall(id, teamTeamRoomJoin, null);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Adds people to a room and answers the room as it now stands. (asynchronously)
-     * Adds people to a room and answers the room as it now stands.  Anyone in the space except a guest may join a public channel by naming themselves. Adding somebody else takes being in the room already (or administering the space, for a room they can see). A direct message&#39;s people are what it is, so none can be added — open another one. Everyone added must be a member of the space or one of the org&#39;s agents; an agent added to a room answers when it is @-mentioned there.
-     * @param id ID is the room, from the path. (required)
-     * @param teamTeamRoomJoin  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postTeamRoomsByIdMembersAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomJoin teamTeamRoomJoin, final ApiCallback<TeamTeamRoom> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postTeamRoomsByIdMembersValidateBeforeCall(id, teamTeamRoomJoin, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postTeamRoomsByIdMessages
-     * @param id ID is the room to say it in, from the path. (required)
-     * @param teamTeamMessageWrite  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postTeamRoomsByIdMessagesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = teamTeamMessageWrite;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}/messages"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTeamRoomsByIdMessagesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postTeamRoomsByIdMessages(Async)");
-        }
-
-        // verify the required parameter 'teamTeamMessageWrite' is set
-        if (teamTeamMessageWrite == null) {
-            throw new ApiException("Missing the required parameter 'teamTeamMessageWrite' when calling postTeamRoomsByIdMessages(Async)");
-        }
-
-        return postTeamRoomsByIdMessagesCall(id, teamTeamMessageWrite, _callback);
-
-    }
-
-    /**
-     * Says one thing in a room, as the caller.
-     * Says one thing in a room, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open room rather than on the next reload. It answers the message as the store now HOLDS it.  &#x60;&lt;@account-uuid&gt;&#x60; in the text is stored as the platform&#39;s mention, so the person is notified in their inbox. Mentioning one of the org&#39;s agents — or writing in a direct message with one — wakes it: it runs as itself, on behalf of the caller, and posts its answer into the same room. The caller must be able to see the room, and an archived room refuses new messages (409).
-     * @param id ID is the room to say it in, from the path. (required)
-     * @param teamTeamMessageWrite  (required)
-     * @return TeamTeamMessage
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamMessage postTeamRoomsByIdMessages(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite) throws ApiException {
-        ApiResponse<TeamTeamMessage> localVarResp = postTeamRoomsByIdMessagesWithHttpInfo(id, teamTeamMessageWrite);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Says one thing in a room, as the caller.
-     * Says one thing in a room, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open room rather than on the next reload. It answers the message as the store now HOLDS it.  &#x60;&lt;@account-uuid&gt;&#x60; in the text is stored as the platform&#39;s mention, so the person is notified in their inbox. Mentioning one of the org&#39;s agents — or writing in a direct message with one — wakes it: it runs as itself, on behalf of the caller, and posts its answer into the same room. The caller must be able to see the room, and an archived room refuses new messages (409).
-     * @param id ID is the room to say it in, from the path. (required)
-     * @param teamTeamMessageWrite  (required)
-     * @return ApiResponse&lt;TeamTeamMessage&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamMessage> postTeamRoomsByIdMessagesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite) throws ApiException {
-        okhttp3.Call localVarCall = postTeamRoomsByIdMessagesValidateBeforeCall(id, teamTeamMessageWrite, null);
-        Type localVarReturnType = new TypeToken<TeamTeamMessage>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Says one thing in a room, as the caller. (asynchronously)
-     * Says one thing in a room, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open room rather than on the next reload. It answers the message as the store now HOLDS it.  &#x60;&lt;@account-uuid&gt;&#x60; in the text is stored as the platform&#39;s mention, so the person is notified in their inbox. Mentioning one of the org&#39;s agents — or writing in a direct message with one — wakes it: it runs as itself, on behalf of the caller, and posts its answer into the same room. The caller must be able to see the room, and an archived room refuses new messages (409).
-     * @param id ID is the room to say it in, from the path. (required)
-     * @param teamTeamMessageWrite  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postTeamRoomsByIdMessagesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamMessageWrite teamTeamMessageWrite, final ApiCallback<TeamTeamMessage> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postTeamRoomsByIdMessagesValidateBeforeCall(id, teamTeamMessageWrite, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamMessage>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for putTeamAccountCookie
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5734,6 +5734,148 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = putTeamAccountCookieValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CookieAck>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putTeamChannelsById
+     * @param id ID is the channel to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamTeamChannelBind  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putTeamChannelsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelBind teamTeamChannelBind, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamTeamChannelBind;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/channels/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putTeamChannelsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelBind teamTeamChannelBind, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling putTeamChannelsById(Async)");
+        }
+
+        // verify the required parameter 'teamTeamChannelBind' is set
+        if (teamTeamChannelBind == null) {
+            throw new ApiException("Missing the required parameter 'teamTeamChannelBind' when calling putTeamChannelsById(Async)");
+        }
+
+        return putTeamChannelsByIdCall(id, teamTeamChannelBind, _callback);
+
+    }
+
+    /**
+     * States what a channel is for: its lifecycle intent, and what it is about.
+     * States what a channel is for: its lifecycle intent, and what it is about. It answers the channel as it now stands.  The write is a platform MIXIN on the channel document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a channel bound here updates live in an open space rather than on the next reload. A team member binds a channel they can see; an application of the org binds its public channels only; anybody else without a team session is 401.
+     * @param id ID is the channel to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamTeamChannelBind  (required)
+     * @return TeamTeamChannelOne
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamTeamChannelOne putTeamChannelsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelBind teamTeamChannelBind) throws ApiException {
+        ApiResponse<TeamTeamChannelOne> localVarResp = putTeamChannelsByIdWithHttpInfo(id, teamTeamChannelBind);
+        return localVarResp.getData();
+    }
+
+    /**
+     * States what a channel is for: its lifecycle intent, and what it is about.
+     * States what a channel is for: its lifecycle intent, and what it is about. It answers the channel as it now stands.  The write is a platform MIXIN on the channel document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a channel bound here updates live in an open space rather than on the next reload. A team member binds a channel they can see; an application of the org binds its public channels only; anybody else without a team session is 401.
+     * @param id ID is the channel to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamTeamChannelBind  (required)
+     * @return ApiResponse&lt;TeamTeamChannelOne&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamTeamChannelOne> putTeamChannelsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelBind teamTeamChannelBind) throws ApiException {
+        okhttp3.Call localVarCall = putTeamChannelsByIdValidateBeforeCall(id, teamTeamChannelBind, null);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * States what a channel is for: its lifecycle intent, and what it is about. (asynchronously)
+     * States what a channel is for: its lifecycle intent, and what it is about. It answers the channel as it now stands.  The write is a platform MIXIN on the channel document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a channel bound here updates live in an open space rather than on the next reload. A team member binds a channel they can see; an application of the org binds its public channels only; anybody else without a team session is 401.
+     * @param id ID is the channel to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamTeamChannelBind  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putTeamChannelsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamChannelBind teamTeamChannelBind, final ApiCallback<TeamTeamChannelOne> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putTeamChannelsByIdValidateBeforeCall(id, teamTeamChannelBind, _callback);
+        Type localVarReturnType = new TypeToken<TeamTeamChannelOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5886,148 +6028,6 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = putTeamMessagesByIdReactionsByEmojiValidateBeforeCall(id, emoji, teamTeamReactionWrite, _callback);
         Type localVarReturnType = new TypeToken<TeamTeamMessage>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putTeamRoomsById
-     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
-     * @param teamTeamRoomBind  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putTeamRoomsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomBind teamTeamRoomBind, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = teamTeamRoomBind;
-
-        // create path and map variables
-        String localVarPath = "/v1/team/rooms/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTeamRoomsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomBind teamTeamRoomBind, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putTeamRoomsById(Async)");
-        }
-
-        // verify the required parameter 'teamTeamRoomBind' is set
-        if (teamTeamRoomBind == null) {
-            throw new ApiException("Missing the required parameter 'teamTeamRoomBind' when calling putTeamRoomsById(Async)");
-        }
-
-        return putTeamRoomsByIdCall(id, teamTeamRoomBind, _callback);
-
-    }
-
-    /**
-     * States what a room is for: its lifecycle intent, and what it is about.
-     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open space rather than on the next reload. A team member binds a room they can see; an application of the org binds its public channels only; anybody else without a team session is 401.
-     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
-     * @param teamTeamRoomBind  (required)
-     * @return TeamTeamRoom
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public TeamTeamRoom putTeamRoomsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomBind teamTeamRoomBind) throws ApiException {
-        ApiResponse<TeamTeamRoom> localVarResp = putTeamRoomsByIdWithHttpInfo(id, teamTeamRoomBind);
-        return localVarResp.getData();
-    }
-
-    /**
-     * States what a room is for: its lifecycle intent, and what it is about.
-     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open space rather than on the next reload. A team member binds a room they can see; an application of the org binds its public channels only; anybody else without a team session is 401.
-     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
-     * @param teamTeamRoomBind  (required)
-     * @return ApiResponse&lt;TeamTeamRoom&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<TeamTeamRoom> putTeamRoomsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomBind teamTeamRoomBind) throws ApiException {
-        okhttp3.Call localVarCall = putTeamRoomsByIdValidateBeforeCall(id, teamTeamRoomBind, null);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * States what a room is for: its lifecycle intent, and what it is about. (asynchronously)
-     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open space rather than on the next reload. A team member binds a room they can see; an application of the org binds its public channels only; anybody else without a team session is 401.
-     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
-     * @param teamTeamRoomBind  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putTeamRoomsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamTeamRoomBind teamTeamRoomBind, final ApiCallback<TeamTeamRoom> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putTeamRoomsByIdValidateBeforeCall(id, teamTeamRoomBind, _callback);
-        Type localVarReturnType = new TypeToken<TeamTeamRoom>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

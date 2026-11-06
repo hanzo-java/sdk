@@ -164,7 +164,7 @@ public class CompanyApi {
 
     /**
      * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
-     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -182,7 +182,7 @@ public class CompanyApi {
 
     /**
      * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
-     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -201,7 +201,7 @@ public class CompanyApi {
 
     /**
      * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one. (asynchronously)
-     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -699,7 +699,7 @@ public class CompanyApi {
 
     /**
      * Starts the org&#39;s one formation and returns it with the stages reachable from it.
-     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyBeginIn  (required)
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -718,7 +718,7 @@ public class CompanyApi {
 
     /**
      * Starts the org&#39;s one formation and returns it with the stages reachable from it.
-     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyBeginIn  (required)
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -738,7 +738,7 @@ public class CompanyApi {
 
     /**
      * Starts the org&#39;s one formation and returns it with the stages reachable from it. (asynchronously)
-     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyBeginIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -831,7 +831,7 @@ public class CompanyApi {
 
     /**
      * Runs the ONE guarded transition of the formation machine.
-     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
+     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyAdvanceIn  (required)
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -850,7 +850,7 @@ public class CompanyApi {
 
     /**
      * Runs the ONE guarded transition of the formation machine.
-     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
+     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyAdvanceIn  (required)
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -870,7 +870,7 @@ public class CompanyApi {
 
     /**
      * Runs the ONE guarded transition of the formation machine. (asynchronously)
-     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
+     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyAdvanceIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -956,7 +956,7 @@ public class CompanyApi {
 
     /**
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -974,7 +974,7 @@ public class CompanyApi {
 
     /**
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -993,7 +993,7 @@ public class CompanyApi {
 
     /**
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client. (asynchronously)
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1210,7 +1210,7 @@ public class CompanyApi {
 
     /**
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation.
-     * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.
+     * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyEsignOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1228,7 +1228,7 @@ public class CompanyApi {
 
     /**
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation.
-     * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.
+     * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyEsignOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1247,7 +1247,7 @@ public class CompanyApi {
 
     /**
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. (asynchronously)
-     * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.
+     * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1339,7 +1339,7 @@ public class CompanyApi {
 
     /**
      * Records whether the formation documents have been signed.
-     * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.
+     * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyEsignCompleteIn  (required)
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1358,7 +1358,7 @@ public class CompanyApi {
 
     /**
      * Records whether the formation documents have been signed.
-     * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.
+     * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyEsignCompleteIn  (required)
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1378,7 +1378,7 @@ public class CompanyApi {
 
     /**
      * Records whether the formation documents have been signed. (asynchronously)
-     * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.
+     * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyEsignCompleteIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1471,7 +1471,7 @@ public class CompanyApi {
 
     /**
      * Replaces the formation&#39;s founders.
-     * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.
+     * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyFoundersIn  (required)
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1490,7 +1490,7 @@ public class CompanyApi {
 
     /**
      * Replaces the formation&#39;s founders.
-     * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.
+     * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyFoundersIn  (required)
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1510,7 +1510,7 @@ public class CompanyApi {
 
     /**
      * Replaces the formation&#39;s founders. (asynchronously)
-     * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.
+     * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyFoundersIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1596,7 +1596,7 @@ public class CompanyApi {
 
     /**
      * Share a pitch deck in the org&#39;s data room
-     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
+     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, for a SuperAdmin or an admin of that org (a member who is neither is refused 403), and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
      * @param body  (optional)
      * @return DeckOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1614,7 +1614,7 @@ public class CompanyApi {
 
     /**
      * Share a pitch deck in the org&#39;s data room
-     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
+     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, for a SuperAdmin or an admin of that org (a member who is neither is refused 403), and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
      * @param body  (optional)
      * @return ApiResponse&lt;DeckOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1633,7 +1633,7 @@ public class CompanyApi {
 
     /**
      * Share a pitch deck in the org&#39;s data room (asynchronously)
-     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
+     * Stores the request body as a document in the caller org&#39;s data room and answers with the data room id to reference it by. The deck is RAW BYTES of whatever content type is sent — a PDF, a slide export — not a JSON document: the Content-Type header is carried through to the data room as given, and &#x60;?name&#x3D;&#x60; names the document, defaulting to &#x60;pitch-deck&#x60;.  Scoped to the caller&#39;s validated org, for a SuperAdmin or an admin of that org (a member who is neither is refused 403), and only after incorporation: a formation still short of stage &#x60;company&#x60; is refused 409 and an org that never began one is 404. The route is registered AHEAD of the surface&#39;s JSON body cap deliberately, so a deck&#39;s size ceiling is the edge&#39;s rather than the cap meant for small structured records. An empty body is 400; a data room that will not take the bytes is 502.
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1725,7 +1725,7 @@ public class CompanyApi {
 
     /**
      * Records a fundraising round on the org&#39;s canonical cap table.
-     * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.
+     * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyRoundInput  (required)
      * @return CompanyRoundOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1744,7 +1744,7 @@ public class CompanyApi {
 
     /**
      * Records a fundraising round on the org&#39;s canonical cap table.
-     * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.
+     * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyRoundInput  (required)
      * @return ApiResponse&lt;CompanyRoundOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1764,7 +1764,7 @@ public class CompanyApi {
 
     /**
      * Records a fundraising round on the org&#39;s canonical cap table. (asynchronously)
-     * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.
+     * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyRoundInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1857,7 +1857,7 @@ public class CompanyApi {
 
     /**
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper.
-     * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).
+     * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companySafeIn  (required)
      * @return CompanySafeOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1876,7 +1876,7 @@ public class CompanyApi {
 
     /**
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper.
-     * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).
+     * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companySafeIn  (required)
      * @return ApiResponse&lt;CompanySafeOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1896,7 +1896,7 @@ public class CompanyApi {
 
     /**
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. (asynchronously)
-     * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).
+     * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companySafeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1982,7 +1982,7 @@ public class CompanyApi {
 
     /**
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.
-     * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.
+     * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2000,7 +2000,7 @@ public class CompanyApi {
 
     /**
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.
-     * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.
+     * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2019,7 +2019,7 @@ public class CompanyApi {
 
     /**
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain. (asynchronously)
-     * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.
+     * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2111,7 +2111,7 @@ public class CompanyApi {
 
     /**
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.
-     * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.
+     * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyImportCapTableIn  (required)
      * @return CompanyImportCapTableOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2130,7 +2130,7 @@ public class CompanyApi {
 
     /**
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.
-     * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.
+     * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyImportCapTableIn  (required)
      * @return ApiResponse&lt;CompanyImportCapTableOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2150,7 +2150,7 @@ public class CompanyApi {
 
     /**
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table. (asynchronously)
-     * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.
+     * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyImportCapTableIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2243,7 +2243,7 @@ public class CompanyApi {
 
     /**
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room.
-     * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.
+     * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyImportDocumentsIn  (required)
      * @return CompanyImportDocumentsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2262,7 +2262,7 @@ public class CompanyApi {
 
     /**
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room.
-     * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.
+     * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyImportDocumentsIn  (required)
      * @return ApiResponse&lt;CompanyImportDocumentsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2282,7 +2282,7 @@ public class CompanyApi {
 
     /**
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. (asynchronously)
-     * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.
+     * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyImportDocumentsIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2368,7 +2368,7 @@ public class CompanyApi {
 
     /**
      * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.
-     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyKycStartOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2386,7 +2386,7 @@ public class CompanyApi {
 
     /**
      * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.
-     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyKycStartOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2405,7 +2405,7 @@ public class CompanyApi {
 
     /**
      * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation. (asynchronously)
-     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2490,7 +2490,7 @@ public class CompanyApi {
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status.
-     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
+     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyKycRefreshOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2508,7 +2508,7 @@ public class CompanyApi {
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status.
-     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
+     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyKycRefreshOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2527,7 +2527,7 @@ public class CompanyApi {
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. (asynchronously)
-     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
+     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2612,7 +2612,7 @@ public class CompanyApi {
 
     /**
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.
-     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2630,7 +2630,7 @@ public class CompanyApi {
 
     /**
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.
-     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2649,7 +2649,7 @@ public class CompanyApi {
 
     /**
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee. (asynchronously)
-     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2734,7 +2734,7 @@ public class CompanyApi {
 
     /**
      * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity.
-     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2752,7 +2752,7 @@ public class CompanyApi {
 
     /**
      * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity.
-     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2771,7 +2771,7 @@ public class CompanyApi {
 
     /**
      * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. (asynchronously)
-     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2995,7 +2995,7 @@ public class CompanyApi {
 
     /**
      * Records the entity kind, the state of formation and the proposed name.
-     * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.
+     * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyStructureIn  (required)
      * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3014,7 +3014,7 @@ public class CompanyApi {
 
     /**
      * Records the entity kind, the state of formation and the proposed name.
-     * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.
+     * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyStructureIn  (required)
      * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3034,7 +3034,7 @@ public class CompanyApi {
 
     /**
      * Records the entity kind, the state of formation and the proposed name. (asynchronously)
-     * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.
+     * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param companyStructureIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

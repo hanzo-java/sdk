@@ -145,6 +145,11 @@ public class ProjectProjectsProject {
   @javax.annotation.Nullable
   private String name;
 
+  public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
+  @SerializedName(SERIALIZED_NAME_NAMESPACE)
+  @javax.annotation.Nullable
+  private String namespace;
+
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
   @javax.annotation.Nullable
@@ -548,6 +553,25 @@ public class ProjectProjectsProject {
   }
 
 
+  public ProjectProjectsProject namespace(@javax.annotation.Nullable String namespace) {
+    this.namespace = namespace;
+    return this;
+  }
+
+  /**
+   * Namespace is where the site&#39;s files are kept: &#x60;&lt;namespace&gt;/&lt;slug&gt;/&#x60; in the sites bucket. It is the GitHub org the project&#39;s repository lives in when this org holds that GitHub account, and the org otherwise, decided when the repository is linked.
+   * @return namespace
+   */
+  @javax.annotation.Nullable
+  public String getNamespace() {
+    return namespace;
+  }
+
+  public void setNamespace(@javax.annotation.Nullable String namespace) {
+    this.namespace = namespace;
+  }
+
+
   public ProjectProjectsProject org(@javax.annotation.Nullable String org) {
     this.org = org;
     return this;
@@ -818,6 +842,7 @@ public class ProjectProjectsProject {
         Objects.equals(this.license, projectProjectsProject.license) &&
         Objects.equals(this.liveUrl, projectProjectsProject.liveUrl) &&
         Objects.equals(this.name, projectProjectsProject.name) &&
+        Objects.equals(this.namespace, projectProjectsProject.namespace) &&
         Objects.equals(this.org, projectProjectsProject.org) &&
         Objects.equals(this.repo, projectProjectsProject.repo) &&
         Objects.equals(this.slug, projectProjectsProject.slug) &&
@@ -833,7 +858,7 @@ public class ProjectProjectsProject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(analytics, bucket, cacheControl, createdAt, currentDeploymentId, description, dropLocal, forkedFrom, framework, hidden, hiddenReason, id, internalNetworks, key, lastPurgeAt, license, liveUrl, name, org, repo, slug, space, starred, status, tags, updatedAt, upstream, visibility, additionalProperties);
+    return Objects.hash(analytics, bucket, cacheControl, createdAt, currentDeploymentId, description, dropLocal, forkedFrom, framework, hidden, hiddenReason, id, internalNetworks, key, lastPurgeAt, license, liveUrl, name, namespace, org, repo, slug, space, starred, status, tags, updatedAt, upstream, visibility, additionalProperties);
   }
 
   @Override
@@ -858,6 +883,7 @@ public class ProjectProjectsProject {
     sb.append("    license: ").append(toIndentedString(license)).append("\n");
     sb.append("    liveUrl: ").append(toIndentedString(liveUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
@@ -890,7 +916,7 @@ public class ProjectProjectsProject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("analytics", "bucket", "cacheControl", "createdAt", "currentDeploymentId", "description", "dropLocal", "forkedFrom", "framework", "hidden", "hiddenReason", "id", "internalNetworks", "key", "lastPurgeAt", "license", "liveUrl", "name", "org", "repo", "slug", "space", "starred", "status", "tags", "updatedAt", "upstream", "visibility"));
+    openapiFields = new HashSet<String>(Arrays.asList("analytics", "bucket", "cacheControl", "createdAt", "currentDeploymentId", "description", "dropLocal", "forkedFrom", "framework", "hidden", "hiddenReason", "id", "internalNetworks", "key", "lastPurgeAt", "license", "liveUrl", "name", "namespace", "org", "repo", "slug", "space", "starred", "status", "tags", "updatedAt", "upstream", "visibility"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -948,6 +974,9 @@ public class ProjectProjectsProject {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
       }
       if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));

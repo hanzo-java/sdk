@@ -285,7 +285,7 @@ public class AiLimits {
   }
 
   /**
-   * PeriodStart and PeriodEnd bound the billing period (RFC3339).
+   * PeriodStart and PeriodEnd bound the month the plan&#39;s usage renews over (RFC3339): the billing period, or one month of a yearly one.
    * @return periodStart
    */
   @javax.annotation.Nullable
@@ -304,7 +304,7 @@ public class AiLimits {
   }
 
   /**
-   * Plan is the plan the caller is served as (\&quot;dev\&quot;, \&quot;max-5x\&quot;, \&quot;max-20x\&quot;, \&quot;team\&quot;, \&quot;team-annual\&quot;, \&quot;agency\&quot;, \&quot;advisory\&quot;, \&quot;dedicated\&quot;, ...), \&quot;free\&quot; when none counts.
+   * Plan is the plan the caller is served as (\&quot;dev\&quot;, \&quot;max-5x\&quot;, \&quot;max-20x\&quot;, \&quot;team\&quot;, \&quot;agency\&quot;, \&quot;advisory\&quot;, \&quot;dedicated\&quot;, ...), \&quot;free\&quot; when none counts.
    * @return plan
    */
   @javax.annotation.Nullable

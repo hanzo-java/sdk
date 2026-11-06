@@ -157,7 +157,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get allowed
+   * Allowed is true when nothing is required first and no fact blocks.
    * @return allowed
    */
   @javax.annotation.Nullable
@@ -241,7 +241,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get factsRequired
+   * Facts are what a rule turns on that the platform does not know.
    * @return factsRequired
    */
   @javax.annotation.Nullable
@@ -401,7 +401,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get reportingObligations
+   * Reporting are the returns this payment makes someone owe.
    * @return reportingObligations
    */
   @javax.annotation.Nullable
@@ -428,7 +428,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get requiredBeforePayment
+   * Required are the steps before the payment.
    * @return requiredBeforePayment
    */
   @javax.annotation.Nullable
@@ -455,7 +455,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get rules
+   * Rules names the rule behind each field above.
    * @return rules
    */
   @javax.annotation.Nullable
@@ -482,7 +482,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get settlementMethods
+   * Settlement are the ways it may settle, net of what is withheld.
    * @return settlementMethods
    */
   @javax.annotation.Nullable
@@ -501,7 +501,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get status
+   * Status is what the payer may treat the payee as: us, foreign or unknown — read off the form the payee granted the payer, and unknown without one.
    * @return status
    */
   @javax.annotation.Nullable
@@ -520,7 +520,7 @@ public class PrincipalClearance {
   }
 
   /**
-   * Get withholding
+   * Withholding is what must be withheld.
    * @return withholding
    */
   @javax.annotation.Nullable

@@ -60,6 +60,11 @@ public class RoutingVersion {
   @javax.annotation.Nullable
   private Integer base;
 
+  public static final String SERIALIZED_NAME_BOOT = "boot";
+  @SerializedName(SERIALIZED_NAME_BOOT)
+  @javax.annotation.Nullable
+  private String boot;
+
   public static final String SERIALIZED_NAME_CATALOG = "catalog";
   @SerializedName(SERIALIZED_NAME_CATALOG)
   @javax.annotation.Nullable
@@ -133,6 +138,25 @@ public class RoutingVersion {
 
   public void setBase(@javax.annotation.Nullable Integer base) {
     this.base = base;
+  }
+
+
+  public RoutingVersion boot(@javax.annotation.Nullable String boot) {
+    this.boot = boot;
+    return this;
+  }
+
+  /**
+   * Get boot
+   * @return boot
+   */
+  @javax.annotation.Nullable
+  public String getBoot() {
+    return boot;
+  }
+
+  public void setBoot(@javax.annotation.Nullable String boot) {
+    this.boot = boot;
   }
 
 
@@ -325,6 +349,7 @@ public class RoutingVersion {
     RoutingVersion routingVersion = (RoutingVersion) o;
     return Objects.equals(this.actor, routingVersion.actor) &&
         Objects.equals(this.base, routingVersion.base) &&
+        Objects.equals(this.boot, routingVersion.boot) &&
         Objects.equals(this.catalog, routingVersion.catalog) &&
         Objects.equals(this.createdTime, routingVersion.createdTime) &&
         Objects.equals(this.diff, routingVersion.diff) &&
@@ -337,7 +362,7 @@ public class RoutingVersion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actor, base, catalog, createdTime, diff, family, id, note, sum, additionalProperties);
+    return Objects.hash(actor, base, boot, catalog, createdTime, diff, family, id, note, sum, additionalProperties);
   }
 
   @Override
@@ -346,6 +371,7 @@ public class RoutingVersion {
     sb.append("class RoutingVersion {\n");
     sb.append("    actor: ").append(toIndentedString(actor)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
+    sb.append("    boot: ").append(toIndentedString(boot)).append("\n");
     sb.append("    catalog: ").append(toIndentedString(catalog)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    diff: ").append(toIndentedString(diff)).append("\n");
@@ -375,7 +401,7 @@ public class RoutingVersion {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("actor", "base", "catalog", "createdTime", "diff", "family", "id", "note", "sum"));
+    openapiFields = new HashSet<String>(Arrays.asList("actor", "base", "boot", "catalog", "createdTime", "diff", "family", "id", "note", "sum"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -396,6 +422,9 @@ public class RoutingVersion {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("actor") != null && !jsonObj.get("actor").isJsonNull()) && !jsonObj.get("actor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actor").toString()));
+      }
+      if ((jsonObj.get("boot") != null && !jsonObj.get("boot").isJsonNull()) && !jsonObj.get("boot").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `boot` to be a primitive type in the JSON string but got `%s`", jsonObj.get("boot").toString()));
       }
       if ((jsonObj.get("catalog") != null && !jsonObj.get("catalog").isJsonNull()) && !jsonObj.get("catalog").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `catalog` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog").toString()));

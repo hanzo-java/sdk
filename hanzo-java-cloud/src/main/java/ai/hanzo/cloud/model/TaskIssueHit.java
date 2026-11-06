@@ -55,6 +55,11 @@ public class TaskIssueHit {
   @javax.annotation.Nullable
   private String assignee;
 
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
+
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   @javax.annotation.Nullable
@@ -79,11 +84,6 @@ public class TaskIssueHit {
   @SerializedName(SERIALIZED_NAME_REPO)
   @javax.annotation.Nullable
   private String repo;
-
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -124,6 +124,25 @@ public class TaskIssueHit {
 
   public void setAssignee(@javax.annotation.Nullable String assignee) {
     this.assignee = assignee;
+  }
+
+
+  public TaskIssueHit channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the collaboration channel the issue belongs to, spelled \&quot;&lt;space&gt;_&lt;channel&gt;\&quot; — empty when it is not channel-bound, which is most of them. It is here so an org-wide search says which channel each item came from without a second read.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
   }
 
 
@@ -219,25 +238,6 @@ public class TaskIssueHit {
 
   public void setRepo(@javax.annotation.Nullable String repo) {
     this.repo = repo;
-  }
-
-
-  public TaskIssueHit room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room is the collaboration room the issue belongs to, spelled \&quot;&lt;space&gt;_&lt;room&gt;\&quot; — empty when it is not room-bound, which is most of them. It is here so an org-wide search says which channel each item came from without a second read.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
   }
 
 
@@ -372,12 +372,12 @@ public class TaskIssueHit {
     }
     TaskIssueHit taskIssueHit = (TaskIssueHit) o;
     return Objects.equals(this.assignee, taskIssueHit.assignee) &&
+        Objects.equals(this.channel, taskIssueHit.channel) &&
         Objects.equals(this.kind, taskIssueHit.kind) &&
         Objects.equals(this.number, taskIssueHit.number) &&
         Objects.equals(this.priority, taskIssueHit.priority) &&
         Objects.equals(this.project, taskIssueHit.project) &&
         Objects.equals(this.repo, taskIssueHit.repo) &&
-        Objects.equals(this.room, taskIssueHit.room) &&
         Objects.equals(this.source, taskIssueHit.source) &&
         Objects.equals(this.status, taskIssueHit.status) &&
         Objects.equals(this.title, taskIssueHit.title) &&
@@ -387,7 +387,7 @@ public class TaskIssueHit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignee, kind, number, priority, project, repo, room, source, status, title, url, additionalProperties);
+    return Objects.hash(assignee, channel, kind, number, priority, project, repo, source, status, title, url, additionalProperties);
   }
 
   @Override
@@ -395,12 +395,12 @@ public class TaskIssueHit {
     StringBuilder sb = new StringBuilder();
     sb.append("class TaskIssueHit {\n");
     sb.append("    assignee: ").append(toIndentedString(assignee)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    number: ").append(toIndentedString(number)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
@@ -427,7 +427,7 @@ public class TaskIssueHit {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("assignee", "kind", "number", "priority", "project", "repo", "room", "source", "status", "title", "url"));
+    openapiFields = new HashSet<String>(Arrays.asList("assignee", "channel", "kind", "number", "priority", "project", "repo", "source", "status", "title", "url"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -449,6 +449,9 @@ public class TaskIssueHit {
       if ((jsonObj.get("assignee") != null && !jsonObj.get("assignee").isJsonNull()) && !jsonObj.get("assignee").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `assignee` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assignee").toString()));
       }
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
       if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
       }
@@ -460,9 +463,6 @@ public class TaskIssueHit {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));

@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class SandboxLeased {
+  public static final String SERIALIZED_NAME_CARRIED = "carried";
+  @SerializedName(SERIALIZED_NAME_CARRIED)
+  @javax.annotation.Nullable
+  private Boolean carried;
+
   public static final String SERIALIZED_NAME_PROPERTY_CLASS = "class";
   @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
   @javax.annotation.Nullable
@@ -59,6 +64,11 @@ public class SandboxLeased {
   @SerializedName(SERIALIZED_NAME_CLUSTER)
   @javax.annotation.Nullable
   private String cluster;
+
+  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
+  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
+  @javax.annotation.Nullable
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -83,13 +93,32 @@ public class SandboxLeased {
   public SandboxLeased() {
   }
 
+  public SandboxLeased carried(@javax.annotation.Nullable Boolean carried) {
+    this.carried = carried;
+    return this;
+  }
+
+  /**
+   * Carried says the lease is extended for as long as it works and its wallet pays for the next hour. A lease that is not carried ends at ExpiresAt whatever it is doing: a free one.
+   * @return carried
+   */
+  @javax.annotation.Nullable
+  public Boolean getCarried() {
+    return carried;
+  }
+
+  public void setCarried(@javax.annotation.Nullable Boolean carried) {
+    this.carried = carried;
+  }
+
+
   public SandboxLeased propertyClass(@javax.annotation.Nullable String propertyClass) {
     this.propertyClass = propertyClass;
     return this;
   }
 
   /**
-   * Class is what was actually leased, from the closed set LeaseIn.Class names: exec | dev | desktop | android. A request that named none leased an &#x60;exec&#x60;, so this is where a caller learns which kind of computer it is holding, and it is what Workdir below follows from.
+   * Class is what was actually leased, from the closed set LeaseIn.Class names: exec | dev | desktop | browser | android. A request that named none leased an &#x60;exec&#x60;, so this is where a caller learns which kind of computer it is holding, and it is what Workdir below follows from.
    * @return propertyClass
    */
   @javax.annotation.Nullable
@@ -118,6 +147,25 @@ public class SandboxLeased {
 
   public void setCluster(@javax.annotation.Nullable String cluster) {
     this.cluster = cluster;
+  }
+
+
+  public SandboxLeased expiresAt(@javax.annotation.Nullable Long expiresAt) {
+    this.expiresAt = expiresAt;
+    return this;
+  }
+
+  /**
+   * ExpiresAt is when the lease ends, Unix seconds. A resumed sandbox keeps the expiry it had, so this is not always a fresh lease&#39;s.
+   * @return expiresAt
+   */
+  @javax.annotation.Nullable
+  public Long getExpiresAt() {
+    return expiresAt;
+  }
+
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
+    this.expiresAt = expiresAt;
   }
 
 
@@ -251,8 +299,10 @@ public class SandboxLeased {
       return false;
     }
     SandboxLeased sandboxLeased = (SandboxLeased) o;
-    return Objects.equals(this.propertyClass, sandboxLeased.propertyClass) &&
+    return Objects.equals(this.carried, sandboxLeased.carried) &&
+        Objects.equals(this.propertyClass, sandboxLeased.propertyClass) &&
         Objects.equals(this.cluster, sandboxLeased.cluster) &&
+        Objects.equals(this.expiresAt, sandboxLeased.expiresAt) &&
         Objects.equals(this.id, sandboxLeased.id) &&
         Objects.equals(this.runtime, sandboxLeased.runtime) &&
         Objects.equals(this.status, sandboxLeased.status) &&
@@ -262,15 +312,17 @@ public class SandboxLeased {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyClass, cluster, id, runtime, status, workdir, additionalProperties);
+    return Objects.hash(carried, propertyClass, cluster, expiresAt, id, runtime, status, workdir, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SandboxLeased {\n");
+    sb.append("    carried: ").append(toIndentedString(carried)).append("\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    cluster: ").append(toIndentedString(cluster)).append("\n");
+    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    runtime: ").append(toIndentedString(runtime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -297,7 +349,7 @@ public class SandboxLeased {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("class", "cluster", "id", "runtime", "status", "workdir"));
+    openapiFields = new HashSet<String>(Arrays.asList("carried", "class", "cluster", "expiresAt", "id", "runtime", "status", "workdir"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

@@ -31,6 +31,7 @@ import ai.hanzo.cloud.model.ProblemDetails;
 import ai.hanzo.cloud.model.ReferralClaimRequest;
 import ai.hanzo.cloud.model.ReferralClaimView;
 import ai.hanzo.cloud.model.ReferralMyReferrals;
+import ai.hanzo.cloud.model.ReferralSetCodeRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -326,6 +327,138 @@ public class ReferralApi {
 
         okhttp3.Call localVarCall = postReferralClaimValidateBeforeCall(referralClaimRequest, _callback);
         Type localVarReturnType = new TypeToken<ReferralClaimView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putReferral
+     * @param referralSetCodeRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putReferralCall(@javax.annotation.Nonnull ReferralSetCodeRequest referralSetCodeRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = referralSetCodeRequest;
+
+        // create path and map variables
+        String localVarPath = "/v1/referral";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putReferralValidateBeforeCall(@javax.annotation.Nonnull ReferralSetCodeRequest referralSetCodeRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'referralSetCodeRequest' is set
+        if (referralSetCodeRequest == null) {
+            throw new ApiException("Missing the required parameter 'referralSetCodeRequest' when calling putReferral(Async)");
+        }
+
+        return putReferralCall(referralSetCodeRequest, _callback);
+
+    }
+
+    /**
+     * Updates the caller&#39;s referral code and returns the updated referral summary.
+     * Updates the caller&#39;s referral code and returns the updated referral summary.
+     * @param referralSetCodeRequest  (required)
+     * @return ReferralMyReferrals
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReferralMyReferrals putReferral(@javax.annotation.Nonnull ReferralSetCodeRequest referralSetCodeRequest) throws ApiException {
+        ApiResponse<ReferralMyReferrals> localVarResp = putReferralWithHttpInfo(referralSetCodeRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Updates the caller&#39;s referral code and returns the updated referral summary.
+     * Updates the caller&#39;s referral code and returns the updated referral summary.
+     * @param referralSetCodeRequest  (required)
+     * @return ApiResponse&lt;ReferralMyReferrals&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReferralMyReferrals> putReferralWithHttpInfo(@javax.annotation.Nonnull ReferralSetCodeRequest referralSetCodeRequest) throws ApiException {
+        okhttp3.Call localVarCall = putReferralValidateBeforeCall(referralSetCodeRequest, null);
+        Type localVarReturnType = new TypeToken<ReferralMyReferrals>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Updates the caller&#39;s referral code and returns the updated referral summary. (asynchronously)
+     * Updates the caller&#39;s referral code and returns the updated referral summary.
+     * @param referralSetCodeRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putReferralAsync(@javax.annotation.Nonnull ReferralSetCodeRequest referralSetCodeRequest, final ApiCallback<ReferralMyReferrals> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putReferralValidateBeforeCall(referralSetCodeRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReferralMyReferrals>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

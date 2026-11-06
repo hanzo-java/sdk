@@ -30,6 +30,7 @@ import java.io.IOException;
 import ai.hanzo.cloud.model.Approval;
 import ai.hanzo.cloud.model.IamAcceptBody;
 import ai.hanzo.cloud.model.IamAccountBody;
+import ai.hanzo.cloud.model.IamAddressBody;
 import ai.hanzo.cloud.model.IamAnswer;
 import ai.hanzo.cloud.model.IamApplication;
 import ai.hanzo.cloud.model.IamApplicationListResult;
@@ -5305,8 +5306,8 @@ public class IamApi {
     }
 
     /**
-     * Returns an organization&#39;s API keys, newest first — what each is called, what it may reach, and its publishable half.
-     * Returns an organization&#39;s API keys, newest first — what each is called, what it may reach, and its publishable half. Secret halves are never listed.  Which organization comes from your credentials, not from the request: you read your own and no one else&#39;s. The capability that admits a confidential client to this collection does not itself name a tenant, so the tenant is decided here.
+     * Returns the API keys of an organization that you may see, newest first — what each is called, what it may reach, its publishable half, and when it was last used.
+     * Returns the API keys of an organization that you may see, newest first — what each is called, what it may reach, its publishable half, and when it was last used. Secret halves are never listed.  Which keys come from your credentials, not from the request. You may name an organization you belong to: its admin sees every key it holds, and a member sees the keys they hold there. Naming any other organization is refused.
      * @param owner  (optional)
      * @return IamKeysListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5325,8 +5326,8 @@ public class IamApi {
     }
 
     /**
-     * Returns an organization&#39;s API keys, newest first — what each is called, what it may reach, and its publishable half.
-     * Returns an organization&#39;s API keys, newest first — what each is called, what it may reach, and its publishable half. Secret halves are never listed.  Which organization comes from your credentials, not from the request: you read your own and no one else&#39;s. The capability that admits a confidential client to this collection does not itself name a tenant, so the tenant is decided here.
+     * Returns the API keys of an organization that you may see, newest first — what each is called, what it may reach, its publishable half, and when it was last used.
+     * Returns the API keys of an organization that you may see, newest first — what each is called, what it may reach, its publishable half, and when it was last used. Secret halves are never listed.  Which keys come from your credentials, not from the request. You may name an organization you belong to: its admin sees every key it holds, and a member sees the keys they hold there. Naming any other organization is refused.
      * @param owner  (optional)
      * @return ApiResponse&lt;IamKeysListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5346,8 +5347,8 @@ public class IamApi {
     }
 
     /**
-     * Returns an organization&#39;s API keys, newest first — what each is called, what it may reach, and its publishable half. (asynchronously)
-     * Returns an organization&#39;s API keys, newest first — what each is called, what it may reach, and its publishable half. Secret halves are never listed.  Which organization comes from your credentials, not from the request: you read your own and no one else&#39;s. The capability that admits a confidential client to this collection does not itself name a tenant, so the tenant is decided here.
+     * Returns the API keys of an organization that you may see, newest first — what each is called, what it may reach, its publishable half, and when it was last used. (asynchronously)
+     * Returns the API keys of an organization that you may see, newest first — what each is called, what it may reach, its publishable half, and when it was last used. Secret halves are never listed.  Which keys come from your credentials, not from the request. You may name an organization you belong to: its admin sees every key it holds, and a member sees the keys they hold there. Naming any other organization is refused.
      * @param owner  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5687,6 +5688,94 @@ public class IamApi {
     public okhttp3.Call getIamKeysPrincipalAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIamKeysPrincipalValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamLink
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getIamLinkCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/link";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIamLinkCall(_callback);
+
+    }
+
+    /**
+     * Continues a link in the browser of the person it is for: the browser opens the address POST /v1/iam/link answered, as a top-level navigation, signed in here as that person, and is sent on to the provider.
+     * Continues a link in the browser of the person it is for: the browser opens the address POST /v1/iam/link answered, as a top-level navigation, signed in here as that person, and is sent on to the provider.  The address works once. The provider leg runs on a fresh transaction, bound to this browser by a cookie set on this navigation, so that transaction and its binding exist only here.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getIamLink() throws ApiException {
+        getIamLinkWithHttpInfo();
+    }
+
+    /**
+     * Continues a link in the browser of the person it is for: the browser opens the address POST /v1/iam/link answered, as a top-level navigation, signed in here as that person, and is sent on to the provider.
+     * Continues a link in the browser of the person it is for: the browser opens the address POST /v1/iam/link answered, as a top-level navigation, signed in here as that person, and is sent on to the provider.  The address works once. The provider leg runs on a fresh transaction, bound to this browser by a cookie set on this navigation, so that transaction and its binding exist only here.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getIamLinkWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIamLinkValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Continues a link in the browser of the person it is for: the browser opens the address POST /v1/iam/link answered, as a top-level navigation, signed in here as that person, and is sent on to the provider. (asynchronously)
+     * Continues a link in the browser of the person it is for: the browser opens the address POST /v1/iam/link answered, as a top-level navigation, signed in here as that person, and is sent on to the provider.  The address works once. The provider leg runs on a fresh transaction, bound to this browser by a cookie set on this navigation, so that transaction and its binding exist only here.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getIamLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamLinkValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -6069,7 +6158,7 @@ public class IamApi {
 
     /**
      * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
-     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. A redirect provider&#39;s reply is read from the query of its GET. A form_post provider&#39;s POST is answered with a 303 to a GET of this address naming a single-use handoff that holds the reply, and that GET finishes the sign-in.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getIamOauthCallback() throws ApiException {
@@ -6078,7 +6167,7 @@ public class IamApi {
 
     /**
      * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
-     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. A redirect provider&#39;s reply is read from the query of its GET. A form_post provider&#39;s POST is answered with a 303 to a GET of this address naming a single-use handoff that holds the reply, and that GET finishes the sign-in.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -6089,7 +6178,7 @@ public class IamApi {
 
     /**
      * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. (asynchronously)
-     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. A redirect provider&#39;s reply is read from the query of its GET. A form_post provider&#39;s POST is answered with a 303 to a GET of this address naming a single-use handoff that holds the reply, and that GET finishes the sign-in.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6097,6 +6186,94 @@ public class IamApi {
     public okhttp3.Call getIamOauthCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIamOauthCallbackValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamOauthDelegationKeys
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getIamOauthDelegationKeysCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/oauth/delegation/keys";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamOauthDelegationKeysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIamOauthDelegationKeysCall(_callback);
+
+    }
+
+    /**
+     * Serves the public half of every delegation key, as a JWKS, to a confidential client allowed to delegate — the one resource server that verifies what it is handed, reading with the credential it delegates with.
+     * Serves the public half of every delegation key, as a JWKS, to a confidential client allowed to delegate — the one resource server that verifies what it is handed, reading with the credential it delegates with. To anyone else it answers as the token endpoint does: who are you, or not you.  The key is not a secret; publishing it is the hazard. A verifier that fetches the public JWKS and trusts what verifies would admit a delegated token as the person. So it is not in that document, and this one is not an address a relying party is ever pointed at.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getIamOauthDelegationKeys() throws ApiException {
+        getIamOauthDelegationKeysWithHttpInfo();
+    }
+
+    /**
+     * Serves the public half of every delegation key, as a JWKS, to a confidential client allowed to delegate — the one resource server that verifies what it is handed, reading with the credential it delegates with.
+     * Serves the public half of every delegation key, as a JWKS, to a confidential client allowed to delegate — the one resource server that verifies what it is handed, reading with the credential it delegates with. To anyone else it answers as the token endpoint does: who are you, or not you.  The key is not a secret; publishing it is the hazard. A verifier that fetches the public JWKS and trusts what verifies would admit a delegated token as the person. So it is not in that document, and this one is not an address a relying party is ever pointed at.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getIamOauthDelegationKeysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIamOauthDelegationKeysValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Serves the public half of every delegation key, as a JWKS, to a confidential client allowed to delegate — the one resource server that verifies what it is handed, reading with the credential it delegates with. (asynchronously)
+     * Serves the public half of every delegation key, as a JWKS, to a confidential client allowed to delegate — the one resource server that verifies what it is handed, reading with the credential it delegates with. To anyone else it answers as the token endpoint does: who are you, or not you.  The key is not a secret; publishing it is the hazard. A verifier that fetches the public JWKS and trusts what verifies would admit a delegated token as the person. So it is not in that document, and this one is not an address a relying party is ever pointed at.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getIamOauthDelegationKeysAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamOauthDelegationKeysValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -8931,7 +9108,7 @@ public class IamApi {
 
     /**
      * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign.
-     * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. The challenge is good once and is tied to the site that asked for it, so a signature collected elsewhere cannot be replayed here.
+     * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. The challenge is good once and is tied to the site that asked for it, so a signature collected elsewhere cannot be replayed here. Pass your application&#39;s clientId and, from a page at one of its registered redirect origins, the challenge names that page&#39;s site, which is what the wallet shows the person.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getIamWeb3Nonce() throws ApiException {
@@ -8940,7 +9117,7 @@ public class IamApi {
 
     /**
      * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign.
-     * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. The challenge is good once and is tied to the site that asked for it, so a signature collected elsewhere cannot be replayed here.
+     * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. The challenge is good once and is tied to the site that asked for it, so a signature collected elsewhere cannot be replayed here. Pass your application&#39;s clientId and, from a page at one of its registered redirect origins, the challenge names that page&#39;s site, which is what the wallet shows the person.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -8951,7 +9128,7 @@ public class IamApi {
 
     /**
      * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. (asynchronously)
-     * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. The challenge is good once and is tied to the site that asked for it, so a signature collected elsewhere cannot be replayed here.
+     * Starts a wallet sign-in: it returns a one-time challenge for the wallet to sign. The challenge is good once and is tied to the site that asked for it, so a signature collected elsewhere cannot be replayed here. Pass your application&#39;s clientId and, from a page at one of its registered redirect origins, the challenge names that page&#39;s site, which is what the wallet shows the person.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11539,8 +11716,8 @@ public class IamApi {
     }
 
     /**
-     * Sets up an account on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.
-     * Sets up an account on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.  It authenticates as your service rather than as a person, which is why the person to provision is named in the request. The setup it performs is identical to self-service onboarding; there is one provisioning path, not two that can drift.
+     * Founds an org on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.
+     * Founds an org on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them. The person keeps their account and owns the org by membership.  It authenticates as your service rather than as a person, which is why the person to provision is named in the request. The setup it performs is identical to self-service onboarding; there is one provisioning path, not two that can drift.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamAdminProvision() throws ApiException {
@@ -11548,8 +11725,8 @@ public class IamApi {
     }
 
     /**
-     * Sets up an account on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.
-     * Sets up an account on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.  It authenticates as your service rather than as a person, which is why the person to provision is named in the request. The setup it performs is identical to self-service onboarding; there is one provisioning path, not two that can drift.
+     * Founds an org on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.
+     * Founds an org on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them. The person keeps their account and owns the org by membership.  It authenticates as your service rather than as a person, which is why the person to provision is named in the request. The setup it performs is identical to self-service onboarding; there is one provisioning path, not two that can drift.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -11559,8 +11736,8 @@ public class IamApi {
     }
 
     /**
-     * Sets up an account on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them. (asynchronously)
-     * Sets up an account on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them.  It authenticates as your service rather than as a person, which is why the person to provision is named in the request. The setup it performs is identical to self-service onboarding; there is one provisioning path, not two that can drift.
+     * Founds an org on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them. (asynchronously)
+     * Founds an org on someone&#39;s behalf — the same onboarding a person gets themselves, driven by one of your own services instead of by them. The person keeps their account and owns the org by membership.  It authenticates as your service rather than as a person, which is why the person to provision is named in the request. The setup it performs is identical to self-service onboarding; there is one provisioning path, not two that can drift.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11645,7 +11822,7 @@ public class IamApi {
 
     /**
      * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
+     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten. An application that serves other organizations — isShared, or any orgChoiceMode but \&quot;\&quot; and \&quot;None\&quot; — is created by a SuperAdmin only.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
      * @param iamApplication  (required)
      * @return IamApplication
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11665,7 +11842,7 @@ public class IamApi {
 
     /**
      * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
+     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten. An application that serves other organizations — isShared, or any orgChoiceMode but \&quot;\&quot; and \&quot;None\&quot; — is created by a SuperAdmin only.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
      * @param iamApplication  (required)
      * @return ApiResponse&lt;IamApplication&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11686,7 +11863,7 @@ public class IamApi {
 
     /**
      * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. (asynchronously)
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
+     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten. An application that serves other organizations — isShared, or any orgChoiceMode but \&quot;\&quot; and \&quot;None\&quot; — is created by a SuperAdmin only.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
      * @param iamApplication  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -12367,6 +12544,8 @@ public class IamApi {
      * @param cookie  (optional)
      * @param authorization  (optional)
      * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
      * @param contentType  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -12384,7 +12563,7 @@ public class IamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIamInvitationsAcceptCall(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamInvitationsAcceptCall(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -12441,6 +12620,16 @@ public class IamApi {
         }
 
 
+        if (origin != null) {
+            localVarHeaderParams.put("Origin", localVarApiClient.parameterToString(origin));
+        }
+
+
+        if (host != null) {
+            localVarHeaderParams.put("Host", localVarApiClient.parameterToString(host));
+        }
+
+
         if (contentType != null) {
             localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
         }
@@ -12451,13 +12640,13 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamInvitationsAcceptValidateBeforeCall(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIamInvitationsAcceptValidateBeforeCall(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamAcceptBody' is set
         if (iamAcceptBody == null) {
             throw new ApiException("Missing the required parameter 'iamAcceptBody' when calling postIamInvitationsAccept(Async)");
         }
 
-        return postIamInvitationsAcceptCall(iamAcceptBody, cookie, authorization, secFetchSite, contentType, _callback);
+        return postIamInvitationsAcceptCall(iamAcceptBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
 
     }
 
@@ -12468,6 +12657,8 @@ public class IamApi {
      * @param cookie  (optional)
      * @param authorization  (optional)
      * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
      * @param contentType  (optional)
      * @return IamAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -12484,8 +12675,8 @@ public class IamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IamAnswer postIamInvitationsAccept(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String contentType) throws ApiException {
-        ApiResponse<IamAnswer> localVarResp = postIamInvitationsAcceptWithHttpInfo(iamAcceptBody, cookie, authorization, secFetchSite, contentType);
+    public IamAnswer postIamInvitationsAccept(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        ApiResponse<IamAnswer> localVarResp = postIamInvitationsAcceptWithHttpInfo(iamAcceptBody, cookie, authorization, secFetchSite, origin, host, contentType);
         return localVarResp.getData();
     }
 
@@ -12496,6 +12687,8 @@ public class IamApi {
      * @param cookie  (optional)
      * @param authorization  (optional)
      * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
      * @param contentType  (optional)
      * @return ApiResponse&lt;IamAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -12512,8 +12705,8 @@ public class IamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamAnswer> postIamInvitationsAcceptWithHttpInfo(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String contentType) throws ApiException {
-        okhttp3.Call localVarCall = postIamInvitationsAcceptValidateBeforeCall(iamAcceptBody, cookie, authorization, secFetchSite, contentType, null);
+    public ApiResponse<IamAnswer> postIamInvitationsAcceptWithHttpInfo(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        okhttp3.Call localVarCall = postIamInvitationsAcceptValidateBeforeCall(iamAcceptBody, cookie, authorization, secFetchSite, origin, host, contentType, null);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -12525,6 +12718,8 @@ public class IamApi {
      * @param cookie  (optional)
      * @param authorization  (optional)
      * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
      * @param contentType  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -12542,9 +12737,9 @@ public class IamApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIamInvitationsAcceptAsync(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String contentType, final ApiCallback<IamAnswer> _callback) throws ApiException {
+    public okhttp3.Call postIamInvitationsAcceptAsync(@javax.annotation.Nonnull IamAcceptBody iamAcceptBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback<IamAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIamInvitationsAcceptValidateBeforeCall(iamAcceptBody, cookie, authorization, secFetchSite, contentType, _callback);
+        okhttp3.Call localVarCall = postIamInvitationsAcceptValidateBeforeCall(iamAcceptBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12897,7 +13092,7 @@ public class IamApi {
 
     /**
      * Starts connecting another sign-in identity to the account you are already signed in as.
-     * Starts connecting another sign-in identity to the account you are already signed in as. It answers with the provider&#39;s URL for the browser to follow; when the provider returns, that identity is attached and you come back to returnUri.  Your account is fixed here, from the credential you are already holding, and is carried server-side for the rest of the round-trip — so nothing that happens at the provider can point the link at somebody else.
+     * Starts connecting another sign-in identity to the account you are already signed in as. It answers with an address for your browser to open; from there you go to the provider, and when it returns, that identity is attached and you come back to returnUri. Only the browser where you are signed in here can carry a link through.  Your account is fixed here, from the credential you are already holding, and is carried server-side for the rest of the round-trip — so nothing that happens at the provider can point the link at somebody else.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamLink() throws ApiException {
@@ -12906,7 +13101,7 @@ public class IamApi {
 
     /**
      * Starts connecting another sign-in identity to the account you are already signed in as.
-     * Starts connecting another sign-in identity to the account you are already signed in as. It answers with the provider&#39;s URL for the browser to follow; when the provider returns, that identity is attached and you come back to returnUri.  Your account is fixed here, from the credential you are already holding, and is carried server-side for the rest of the round-trip — so nothing that happens at the provider can point the link at somebody else.
+     * Starts connecting another sign-in identity to the account you are already signed in as. It answers with an address for your browser to open; from there you go to the provider, and when it returns, that identity is attached and you come back to returnUri. Only the browser where you are signed in here can carry a link through.  Your account is fixed here, from the credential you are already holding, and is carried server-side for the rest of the round-trip — so nothing that happens at the provider can point the link at somebody else.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -12917,7 +13112,7 @@ public class IamApi {
 
     /**
      * Starts connecting another sign-in identity to the account you are already signed in as. (asynchronously)
-     * Starts connecting another sign-in identity to the account you are already signed in as. It answers with the provider&#39;s URL for the browser to follow; when the provider returns, that identity is attached and you come back to returnUri.  Your account is fixed here, from the credential you are already holding, and is carried server-side for the rest of the round-trip — so nothing that happens at the provider can point the link at somebody else.
+     * Starts connecting another sign-in identity to the account you are already signed in as. It answers with an address for your browser to open; from there you go to the provider, and when it returns, that identity is attached and you come back to returnUri. Only the browser where you are signed in here can carry a link through.  Your account is fixed here, from the credential you are already holding, and is carried server-side for the rest of the round-trip — so nothing that happens at the provider can point the link at somebody else.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13453,6 +13648,94 @@ public class IamApi {
     public okhttp3.Call postIamOauthAuthorizeAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postIamOauthAuthorizeValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIamOauthCallback
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postIamOauthCallbackCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/oauth/callback";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIamOauthCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIamOauthCallbackCall(_callback);
+
+    }
+
+    /**
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. A redirect provider&#39;s reply is read from the query of its GET. A form_post provider&#39;s POST is answered with a 303 to a GET of this address naming a single-use handoff that holds the reply, and that GET finishes the sign-in.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postIamOauthCallback() throws ApiException {
+        postIamOauthCallbackWithHttpInfo();
+    }
+
+    /**
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state.
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. A redirect provider&#39;s reply is read from the query of its GET. A form_post provider&#39;s POST is answered with a 303 to a GET of this address naming a single-use handoff that holds the reply, and that GET finishes the sign-in.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postIamOauthCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIamOauthCallbackValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. (asynchronously)
+     * Completes the round-trip: it resolves and burns the single-use transaction (checking expiry + browser binding), exchanges and verifies the IdP response, links or provisions the local user, and mints the iam authorization code the relying party expects — then redirects to the original redirect_uri with code + state. A redirect provider&#39;s reply is read from the query of its GET. A form_post provider&#39;s POST is answered with a 303 to a GET of this address naming a single-use handoff that holds the reply, and that GET finishes the sign-in.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postIamOauthCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIamOauthCallbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -15983,7 +16266,7 @@ public class IamApi {
 
     /**
      * Validates the request and asks otp to get a code to the person.
-     * Validates the request and asks otp to get a code to the person. The request fields are read via fiber&#39;s FormValue — the escape hatch zip exposes for form bodies (multipart or urlencoded) — since the typed JSON Bind does not apply here. v1 also accepts countryCode/method/checkUser/captchaType; iam ignores them (the captcha/forget/MFA flows those drive are not ported), and CAPTCHA verification is likewise not enforced — iam models no captcha provider — so the code is issued once the destination and application validate.
+     * Validates the request and asks otp to get a code to the person. The request fields are read via fiber&#39;s FormValue — the escape hatch zip exposes for form bodies (multipart or urlencoded) — since the typed JSON Bind does not apply here. v1 also accepts countryCode/method/checkUser/captchaType; iam ignores them (the captcha/forget/MFA flows those drive are not ported), and CAPTCHA verification is likewise not enforced — iam models no captcha provider — so the code is issued once the destination and application validate.  An email is the designed sign-in mail, a link beside the code and from the application&#39;s org as its reader knows it (otp.IssueLink), when the request&#39;s Origin is the origin of one of the application&#39;s redirect URIs ([Landing]); otherwise it is the code alone.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamVerificationCodes() throws ApiException {
@@ -15992,7 +16275,7 @@ public class IamApi {
 
     /**
      * Validates the request and asks otp to get a code to the person.
-     * Validates the request and asks otp to get a code to the person. The request fields are read via fiber&#39;s FormValue — the escape hatch zip exposes for form bodies (multipart or urlencoded) — since the typed JSON Bind does not apply here. v1 also accepts countryCode/method/checkUser/captchaType; iam ignores them (the captcha/forget/MFA flows those drive are not ported), and CAPTCHA verification is likewise not enforced — iam models no captcha provider — so the code is issued once the destination and application validate.
+     * Validates the request and asks otp to get a code to the person. The request fields are read via fiber&#39;s FormValue — the escape hatch zip exposes for form bodies (multipart or urlencoded) — since the typed JSON Bind does not apply here. v1 also accepts countryCode/method/checkUser/captchaType; iam ignores them (the captcha/forget/MFA flows those drive are not ported), and CAPTCHA verification is likewise not enforced — iam models no captcha provider — so the code is issued once the destination and application validate.  An email is the designed sign-in mail, a link beside the code and from the application&#39;s org as its reader knows it (otp.IssueLink), when the request&#39;s Origin is the origin of one of the application&#39;s redirect URIs ([Landing]); otherwise it is the code alone.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -16003,7 +16286,7 @@ public class IamApi {
 
     /**
      * Validates the request and asks otp to get a code to the person. (asynchronously)
-     * Validates the request and asks otp to get a code to the person. The request fields are read via fiber&#39;s FormValue — the escape hatch zip exposes for form bodies (multipart or urlencoded) — since the typed JSON Bind does not apply here. v1 also accepts countryCode/method/checkUser/captchaType; iam ignores them (the captcha/forget/MFA flows those drive are not ported), and CAPTCHA verification is likewise not enforced — iam models no captcha provider — so the code is issued once the destination and application validate.
+     * Validates the request and asks otp to get a code to the person. The request fields are read via fiber&#39;s FormValue — the escape hatch zip exposes for form bodies (multipart or urlencoded) — since the typed JSON Bind does not apply here. v1 also accepts countryCode/method/checkUser/captchaType; iam ignores them (the captcha/forget/MFA flows those drive are not ported), and CAPTCHA verification is likewise not enforced — iam models no captcha provider — so the code is issued once the destination and application validate.  An email is the designed sign-in mail, a link beside the code and from the application&#39;s org as its reader knows it (otp.IssueLink), when the request&#39;s Origin is the origin of one of the application&#39;s redirect URIs ([Landing]); otherwise it is the code alone.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16071,7 +16354,7 @@ public class IamApi {
 
     /**
      * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.
-     * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.  This IS the login — it answers exactly as a password sign-in does, so the rest of your flow does not branch on how somebody arrived.
+     * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.  This IS the login — it answers exactly as a password sign-in does, so the rest of your flow does not branch on how somebody arrived.  A wallet no account holds yet creates one, and one address or one network creates only so many in a window, a day by default. Past that the answer is 429 with Retry-After and code wallet_signup_capped; data names the bound (\&quot;ip\&quot; or \&quot;subnet\&quot;), its limit, and its window in seconds. A wallet already on file is never counted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamWeb3Verify() throws ApiException {
@@ -16080,7 +16363,7 @@ public class IamApi {
 
     /**
      * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.
-     * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.  This IS the login — it answers exactly as a password sign-in does, so the rest of your flow does not branch on how somebody arrived.
+     * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.  This IS the login — it answers exactly as a password sign-in does, so the rest of your flow does not branch on how somebody arrived.  A wallet no account holds yet creates one, and one address or one network creates only so many in a window, a day by default. Past that the answer is 429 with Retry-After and code wallet_signup_capped; data names the bound (\&quot;ip\&quot; or \&quot;subnet\&quot;), its limit, and its window in seconds. A wallet already on file is never counted.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -16091,7 +16374,7 @@ public class IamApi {
 
     /**
      * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in. (asynchronously)
-     * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.  This IS the login — it answers exactly as a password sign-in does, so the rest of your flow does not branch on how somebody arrived.
+     * Completes a wallet sign-in: it verifies the signed challenge and, if it holds, signs the wallet&#39;s owner in.  This IS the login — it answers exactly as a password sign-in does, so the rest of your flow does not branch on how somebody arrived.  A wallet no account holds yet creates one, and one address or one network creates only so many in a window, a day by default. Past that the answer is 429 with Retry-After and code wallet_signup_capped; data names the bound (\&quot;ip\&quot; or \&quot;subnet\&quot;), its limit, and its window in seconds. A wallet already on file is never counted.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16247,7 +16530,7 @@ public class IamApi {
 
     /**
      * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.
-     * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.
+     * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.  Only this site&#39;s own pages may finish an enrollment, and only as JSON.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamWebauthnSignupFinish() throws ApiException {
@@ -16256,7 +16539,7 @@ public class IamApi {
 
     /**
      * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.
-     * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.
+     * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.  Only this site&#39;s own pages may finish an enrollment, and only as JSON.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -16267,7 +16550,7 @@ public class IamApi {
 
     /**
      * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on. (asynchronously)
-     * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.
+     * Verifies the newly created passkey and stores it, so the person can sign in with their device from then on.  Only this site&#39;s own pages may finish an enrollment, and only as JSON.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16419,6 +16702,10 @@ public class IamApi {
      * @param iamAccountBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -16428,10 +16715,11 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamAccountCall(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIamAccountCall(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -16483,18 +16771,38 @@ public class IamApi {
         }
 
 
+        if (secFetchSite != null) {
+            localVarHeaderParams.put("Sec-Fetch-Site", localVarApiClient.parameterToString(secFetchSite));
+        }
+
+
+        if (origin != null) {
+            localVarHeaderParams.put("Origin", localVarApiClient.parameterToString(origin));
+        }
+
+
+        if (host != null) {
+            localVarHeaderParams.put("Host", localVarApiClient.parameterToString(host));
+        }
+
+
+        if (contentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIamAccountValidateBeforeCall(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIamAccountValidateBeforeCall(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamAccountBody' is set
         if (iamAccountBody == null) {
             throw new ApiException("Missing the required parameter 'iamAccountBody' when calling putIamAccount(Async)");
         }
 
-        return putIamAccountCall(iamAccountBody, cookie, authorization, _callback);
+        return putIamAccountCall(iamAccountBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
 
     }
 
@@ -16504,6 +16812,10 @@ public class IamApi {
      * @param iamAccountBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @return IamAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -16512,11 +16824,12 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IamAnswer putIamAccount(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<IamAnswer> localVarResp = putIamAccountWithHttpInfo(iamAccountBody, cookie, authorization);
+    public IamAnswer putIamAccount(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        ApiResponse<IamAnswer> localVarResp = putIamAccountWithHttpInfo(iamAccountBody, cookie, authorization, secFetchSite, origin, host, contentType);
         return localVarResp.getData();
     }
 
@@ -16526,6 +16839,10 @@ public class IamApi {
      * @param iamAccountBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @return ApiResponse&lt;IamAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -16534,11 +16851,12 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamAnswer> putIamAccountWithHttpInfo(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = putIamAccountValidateBeforeCall(iamAccountBody, cookie, authorization, null);
+    public ApiResponse<IamAnswer> putIamAccountWithHttpInfo(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        okhttp3.Call localVarCall = putIamAccountValidateBeforeCall(iamAccountBody, cookie, authorization, secFetchSite, origin, host, contentType, null);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -16549,6 +16867,10 @@ public class IamApi {
      * @param iamAccountBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16558,12 +16880,211 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamAccountAsync(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, final ApiCallback<IamAnswer> _callback) throws ApiException {
+    public okhttp3.Call putIamAccountAsync(@javax.annotation.Nonnull IamAccountBody iamAccountBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback<IamAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIamAccountValidateBeforeCall(iamAccountBody, cookie, authorization, _callback);
+        okhttp3.Call localVarCall = putIamAccountValidateBeforeCall(iamAccountBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
+        Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamAddress
+     * @param iamAddressBody  (required)
+     * @param cookie  (optional)
+     * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> conflict </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamAddressCall(@javax.annotation.Nonnull IamAddressBody iamAddressBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamAddressBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/address";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (cookie != null) {
+            localVarHeaderParams.put("Cookie", localVarApiClient.parameterToString(cookie));
+        }
+
+
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+
+        if (secFetchSite != null) {
+            localVarHeaderParams.put("Sec-Fetch-Site", localVarApiClient.parameterToString(secFetchSite));
+        }
+
+
+        if (origin != null) {
+            localVarHeaderParams.put("Origin", localVarApiClient.parameterToString(origin));
+        }
+
+
+        if (host != null) {
+            localVarHeaderParams.put("Host", localVarApiClient.parameterToString(host));
+        }
+
+
+        if (contentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
+        }
+
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamAddressValidateBeforeCall(@javax.annotation.Nonnull IamAddressBody iamAddressBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'iamAddressBody' is set
+        if (iamAddressBody == null) {
+            throw new ApiException("Missing the required parameter 'iamAddressBody' when calling putIamAddress(Async)");
+        }
+
+        return putIamAddressCall(iamAddressBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
+
+    }
+
+    /**
+     * Adds an email address or a phone number to the calling person&#39;s own account, so they can sign in with it — by a code sent there, or to recover a password.
+     * Adds an email address or a phone number to the calling person&#39;s own account, so they can sign in with it — by a code sent there, or to recover a password.  First ask POST /v1/iam/verification-codes to send a code to the new address, with the applicationId of the application you sign in at, then send that application&#39;s clientId, the address and the code here. Only the caller&#39;s own account is written; the request names nobody.  It adds and never replaces: an account that already has an email keeps it, and asking again with the same address answers ok. An address another account at that application already signs in with is refused with the same words a wrong code gets.
+     * @param iamAddressBody  (required)
+     * @param cookie  (optional)
+     * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
+     * @return IamAnswer
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> conflict </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamAnswer putIamAddress(@javax.annotation.Nonnull IamAddressBody iamAddressBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        ApiResponse<IamAnswer> localVarResp = putIamAddressWithHttpInfo(iamAddressBody, cookie, authorization, secFetchSite, origin, host, contentType);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Adds an email address or a phone number to the calling person&#39;s own account, so they can sign in with it — by a code sent there, or to recover a password.
+     * Adds an email address or a phone number to the calling person&#39;s own account, so they can sign in with it — by a code sent there, or to recover a password.  First ask POST /v1/iam/verification-codes to send a code to the new address, with the applicationId of the application you sign in at, then send that application&#39;s clientId, the address and the code here. Only the caller&#39;s own account is written; the request names nobody.  It adds and never replaces: an account that already has an email keeps it, and asking again with the same address answers ok. An address another account at that application already signs in with is refused with the same words a wrong code gets.
+     * @param iamAddressBody  (required)
+     * @param cookie  (optional)
+     * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
+     * @return ApiResponse&lt;IamAnswer&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> conflict </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamAnswer> putIamAddressWithHttpInfo(@javax.annotation.Nonnull IamAddressBody iamAddressBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        okhttp3.Call localVarCall = putIamAddressValidateBeforeCall(iamAddressBody, cookie, authorization, secFetchSite, origin, host, contentType, null);
+        Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Adds an email address or a phone number to the calling person&#39;s own account, so they can sign in with it — by a code sent there, or to recover a password. (asynchronously)
+     * Adds an email address or a phone number to the calling person&#39;s own account, so they can sign in with it — by a code sent there, or to recover a password.  First ask POST /v1/iam/verification-codes to send a code to the new address, with the applicationId of the application you sign in at, then send that application&#39;s clientId, the address and the code here. Only the caller&#39;s own account is written; the request names nobody.  It adds and never replaces: an account that already has an email keeps it, and asking again with the same address answers ok. An address another account at that application already signs in with is refused with the same words a wrong code gets.
+     * @param iamAddressBody  (required)
+     * @param cookie  (optional)
+     * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> conflict </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamAddressAsync(@javax.annotation.Nonnull IamAddressBody iamAddressBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback<IamAnswer> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamAddressValidateBeforeCall(iamAddressBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -16656,7 +17177,7 @@ public class IamApi {
 
     /**
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host.
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
+     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here. An application that serves other organizations — isShared, or any orgChoiceMode but \&quot;\&quot; and \&quot;None\&quot; — is written by a SuperAdmin only, before and after the change.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
      * @param owner  (required)
      * @param name  (required)
      * @param iamApplication  (required)
@@ -16678,7 +17199,7 @@ public class IamApi {
 
     /**
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host.
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
+     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here. An application that serves other organizations — isShared, or any orgChoiceMode but \&quot;\&quot; and \&quot;None\&quot; — is written by a SuperAdmin only, before and after the change.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
      * @param owner  (required)
      * @param name  (required)
      * @param iamApplication  (required)
@@ -16701,7 +17222,7 @@ public class IamApi {
 
     /**
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. (asynchronously)
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
+     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here. An application that serves other organizations — isShared, or any orgChoiceMode but \&quot;\&quot; and \&quot;None\&quot; — is written by a SuperAdmin only, before and after the change.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
      * @param owner  (required)
      * @param name  (required)
      * @param iamApplication  (required)
@@ -17367,8 +17888,8 @@ public class IamApi {
     }
 
     /**
-     * Changes what a key is called or what it may reach.
-     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
+     * Changes what a key is called, what it may reach, when it expires, or revokes it.
+     * Changes what a key is called, what it may reach, when it expires, or revokes it. The credential itself is not reissued — the key in your deployment keeps working until it expires or is revoked.  An update writes the whole set of editable fields, so send the key as you read it with your changes made. The class in its scope (publishable or secret) is fixed at creation and an update naming the other is refused. Setting state to \&quot;Revoked\&quot; revokes the key: the row stays, records who revoked it and when, and is never updated again.
      * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
      * @param name  (required)
      * @param iamKey  (required)
@@ -17389,8 +17910,8 @@ public class IamApi {
     }
 
     /**
-     * Changes what a key is called or what it may reach.
-     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
+     * Changes what a key is called, what it may reach, when it expires, or revokes it.
+     * Changes what a key is called, what it may reach, when it expires, or revokes it. The credential itself is not reissued — the key in your deployment keeps working until it expires or is revoked.  An update writes the whole set of editable fields, so send the key as you read it with your changes made. The class in its scope (publishable or secret) is fixed at creation and an update naming the other is refused. Setting state to \&quot;Revoked\&quot; revokes the key: the row stays, records who revoked it and when, and is never updated again.
      * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
      * @param name  (required)
      * @param iamKey  (required)
@@ -17412,8 +17933,8 @@ public class IamApi {
     }
 
     /**
-     * Changes what a key is called or what it may reach. (asynchronously)
-     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
+     * Changes what a key is called, what it may reach, when it expires, or revokes it. (asynchronously)
+     * Changes what a key is called, what it may reach, when it expires, or revokes it. The credential itself is not reissued — the key in your deployment keeps working until it expires or is revoked.  An update writes the whole set of editable fields, so send the key as you read it with your changes made. The class in its scope (publishable or secret) is fixed at creation and an update naming the other is refused. Setting state to \&quot;Revoked\&quot; revokes the key: the row stays, records who revoked it and when, and is never updated again.
      * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
      * @param name  (required)
      * @param iamKey  (required)
@@ -17441,6 +17962,10 @@ public class IamApi {
      * @param iamPasswordBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -17450,10 +17975,11 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamPasswordCall(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIamPasswordCall(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -17505,18 +18031,38 @@ public class IamApi {
         }
 
 
+        if (secFetchSite != null) {
+            localVarHeaderParams.put("Sec-Fetch-Site", localVarApiClient.parameterToString(secFetchSite));
+        }
+
+
+        if (origin != null) {
+            localVarHeaderParams.put("Origin", localVarApiClient.parameterToString(origin));
+        }
+
+
+        if (host != null) {
+            localVarHeaderParams.put("Host", localVarApiClient.parameterToString(host));
+        }
+
+
+        if (contentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIamPasswordValidateBeforeCall(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIamPasswordValidateBeforeCall(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamPasswordBody' is set
         if (iamPasswordBody == null) {
             throw new ApiException("Missing the required parameter 'iamPasswordBody' when calling putIamPassword(Async)");
         }
 
-        return putIamPasswordCall(iamPasswordBody, cookie, authorization, _callback);
+        return putIamPasswordCall(iamPasswordBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
 
     }
 
@@ -17526,6 +18072,10 @@ public class IamApi {
      * @param iamPasswordBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @return IamAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -17534,11 +18084,12 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IamAnswer putIamPassword(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<IamAnswer> localVarResp = putIamPasswordWithHttpInfo(iamPasswordBody, cookie, authorization);
+    public IamAnswer putIamPassword(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        ApiResponse<IamAnswer> localVarResp = putIamPasswordWithHttpInfo(iamPasswordBody, cookie, authorization, secFetchSite, origin, host, contentType);
         return localVarResp.getData();
     }
 
@@ -17548,6 +18099,10 @@ public class IamApi {
      * @param iamPasswordBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @return ApiResponse&lt;IamAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -17556,11 +18111,12 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamAnswer> putIamPasswordWithHttpInfo(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = putIamPasswordValidateBeforeCall(iamPasswordBody, cookie, authorization, null);
+    public ApiResponse<IamAnswer> putIamPasswordWithHttpInfo(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType) throws ApiException {
+        okhttp3.Call localVarCall = putIamPasswordValidateBeforeCall(iamPasswordBody, cookie, authorization, secFetchSite, origin, host, contentType, null);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -17571,6 +18127,10 @@ public class IamApi {
      * @param iamPasswordBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -17580,12 +18140,13 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamPasswordAsync(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, final ApiCallback<IamAnswer> _callback) throws ApiException {
+    public okhttp3.Call putIamPasswordAsync(@javax.annotation.Nonnull IamPasswordBody iamPasswordBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, final ApiCallback<IamAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIamPasswordValidateBeforeCall(iamPasswordBody, cookie, authorization, _callback);
+        okhttp3.Call localVarCall = putIamPasswordValidateBeforeCall(iamPasswordBody, cookie, authorization, secFetchSite, origin, host, contentType, _callback);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -18317,6 +18878,10 @@ public class IamApi {
      * @param iamTermsBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param xForwardedFor  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -18327,10 +18892,11 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamTermsCall(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String xForwardedFor, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIamTermsCall(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String xForwardedFor, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -18382,6 +18948,26 @@ public class IamApi {
         }
 
 
+        if (secFetchSite != null) {
+            localVarHeaderParams.put("Sec-Fetch-Site", localVarApiClient.parameterToString(secFetchSite));
+        }
+
+
+        if (origin != null) {
+            localVarHeaderParams.put("Origin", localVarApiClient.parameterToString(origin));
+        }
+
+
+        if (host != null) {
+            localVarHeaderParams.put("Host", localVarApiClient.parameterToString(host));
+        }
+
+
+        if (contentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
+        }
+
+
         if (xForwardedFor != null) {
             localVarHeaderParams.put("X-Forwarded-For", localVarApiClient.parameterToString(xForwardedFor));
         }
@@ -18392,13 +18978,13 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIamTermsValidateBeforeCall(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String xForwardedFor, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIamTermsValidateBeforeCall(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String xForwardedFor, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'iamTermsBody' is set
         if (iamTermsBody == null) {
             throw new ApiException("Missing the required parameter 'iamTermsBody' when calling putIamTerms(Async)");
         }
 
-        return putIamTermsCall(iamTermsBody, cookie, authorization, xForwardedFor, _callback);
+        return putIamTermsCall(iamTermsBody, cookie, authorization, secFetchSite, origin, host, contentType, xForwardedFor, _callback);
 
     }
 
@@ -18408,6 +18994,10 @@ public class IamApi {
      * @param iamTermsBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param xForwardedFor  (optional)
      * @return IamAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -18417,11 +19007,12 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IamAnswer putIamTerms(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String xForwardedFor) throws ApiException {
-        ApiResponse<IamAnswer> localVarResp = putIamTermsWithHttpInfo(iamTermsBody, cookie, authorization, xForwardedFor);
+    public IamAnswer putIamTerms(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String xForwardedFor) throws ApiException {
+        ApiResponse<IamAnswer> localVarResp = putIamTermsWithHttpInfo(iamTermsBody, cookie, authorization, secFetchSite, origin, host, contentType, xForwardedFor);
         return localVarResp.getData();
     }
 
@@ -18431,6 +19022,10 @@ public class IamApi {
      * @param iamTermsBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param xForwardedFor  (optional)
      * @return ApiResponse&lt;IamAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -18440,11 +19035,12 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamAnswer> putIamTermsWithHttpInfo(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String xForwardedFor) throws ApiException {
-        okhttp3.Call localVarCall = putIamTermsValidateBeforeCall(iamTermsBody, cookie, authorization, xForwardedFor, null);
+    public ApiResponse<IamAnswer> putIamTermsWithHttpInfo(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String xForwardedFor) throws ApiException {
+        okhttp3.Call localVarCall = putIamTermsValidateBeforeCall(iamTermsBody, cookie, authorization, secFetchSite, origin, host, contentType, xForwardedFor, null);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -18455,6 +19051,10 @@ public class IamApi {
      * @param iamTermsBody  (required)
      * @param cookie  (optional)
      * @param authorization  (optional)
+     * @param secFetchSite  (optional)
+     * @param origin  (optional)
+     * @param host  (optional)
+     * @param contentType  (optional)
      * @param xForwardedFor  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -18465,12 +19065,13 @@ public class IamApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamTermsAsync(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String xForwardedFor, final ApiCallback<IamAnswer> _callback) throws ApiException {
+    public okhttp3.Call putIamTermsAsync(@javax.annotation.Nonnull IamTermsBody iamTermsBody, @javax.annotation.Nullable String cookie, @javax.annotation.Nullable String authorization, @javax.annotation.Nullable String secFetchSite, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String host, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String xForwardedFor, final ApiCallback<IamAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIamTermsValidateBeforeCall(iamTermsBody, cookie, authorization, xForwardedFor, _callback);
+        okhttp3.Call localVarCall = putIamTermsValidateBeforeCall(iamTermsBody, cookie, authorization, secFetchSite, origin, host, contentType, xForwardedFor, _callback);
         Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

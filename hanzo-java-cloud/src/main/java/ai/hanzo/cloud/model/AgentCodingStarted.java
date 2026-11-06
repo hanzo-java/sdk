@@ -55,6 +55,11 @@ public class AgentCodingStarted {
   @javax.annotation.Nullable
   private String branch;
 
+  public static final String SERIALIZED_NAME_PULL = "pull";
+  @SerializedName(SERIALIZED_NAME_PULL)
+  @javax.annotation.Nullable
+  private String pull;
+
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
   @javax.annotation.Nullable
@@ -94,6 +99,25 @@ public class AgentCodingStarted {
 
   public void setBranch(@javax.annotation.Nullable String branch) {
     this.branch = branch;
+  }
+
+
+  public AgentCodingStarted pull(@javax.annotation.Nullable String pull) {
+    this.pull = pull;
+    return this;
+  }
+
+  /**
+   * Pull is the CLI command or instruction to pull this run locally, e.g. &#x60;hanzo pull &lt;sessionId&gt;&#x60;.
+   * @return pull
+   */
+  @javax.annotation.Nullable
+  public String getPull() {
+    return pull;
+  }
+
+  public void setPull(@javax.annotation.Nullable String pull) {
+    this.pull = pull;
   }
 
 
@@ -228,6 +252,7 @@ public class AgentCodingStarted {
     }
     AgentCodingStarted agentCodingStarted = (AgentCodingStarted) o;
     return Objects.equals(this.branch, agentCodingStarted.branch) &&
+        Objects.equals(this.pull, agentCodingStarted.pull) &&
         Objects.equals(this.repo, agentCodingStarted.repo) &&
         Objects.equals(this.routed, agentCodingStarted.routed) &&
         Objects.equals(this.sessionId, agentCodingStarted.sessionId) &&
@@ -237,7 +262,7 @@ public class AgentCodingStarted {
 
   @Override
   public int hashCode() {
-    return Objects.hash(branch, repo, routed, sessionId, targetId, additionalProperties);
+    return Objects.hash(branch, pull, repo, routed, sessionId, targetId, additionalProperties);
   }
 
   @Override
@@ -245,6 +270,7 @@ public class AgentCodingStarted {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentCodingStarted {\n");
     sb.append("    branch: ").append(toIndentedString(branch)).append("\n");
+    sb.append("    pull: ").append(toIndentedString(pull)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("    routed: ").append(toIndentedString(routed)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
@@ -271,7 +297,7 @@ public class AgentCodingStarted {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("branch", "repo", "routed", "sessionId", "targetId"));
+    openapiFields = new HashSet<String>(Arrays.asList("branch", "pull", "repo", "routed", "sessionId", "targetId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -292,6 +318,9 @@ public class AgentCodingStarted {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("branch") != null && !jsonObj.get("branch").isJsonNull()) && !jsonObj.get("branch").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `branch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("branch").toString()));
+      }
+      if ((jsonObj.get("pull") != null && !jsonObj.get("pull").isJsonNull()) && !jsonObj.get("pull").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pull` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pull").toString()));
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));

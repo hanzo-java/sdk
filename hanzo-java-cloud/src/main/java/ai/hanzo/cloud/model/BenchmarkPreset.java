@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,6 +57,16 @@ public class BenchmarkPreset {
   @SerializedName(SERIALIZED_NAME_ARMS)
   @javax.annotation.Nullable
   private List<String> arms = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_AT = "at";
+  @SerializedName(SERIALIZED_NAME_AT)
+  @javax.annotation.Nullable
+  private OffsetDateTime at;
+
+  public static final String SERIALIZED_NAME_BY = "by";
+  @SerializedName(SERIALIZED_NAME_BY)
+  @javax.annotation.Nullable
+  private String by;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -112,13 +123,51 @@ public class BenchmarkPreset {
   }
 
 
+  public BenchmarkPreset at(@javax.annotation.Nullable OffsetDateTime at) {
+    this.at = at;
+    return this;
+  }
+
+  /**
+   * At is when this version was stored. Set by the server; a value sent is not read. Zero on the reference blend.
+   * @return at
+   */
+  @javax.annotation.Nullable
+  public OffsetDateTime getAt() {
+    return at;
+  }
+
+  public void setAt(@javax.annotation.Nullable OffsetDateTime at) {
+    this.at = at;
+  }
+
+
+  public BenchmarkPreset by(@javax.annotation.Nullable String by) {
+    this.by = by;
+    return this;
+  }
+
+  /**
+   * By is the verified user who stored it. Set by the server; a value sent is not read.
+   * @return by
+   */
+  @javax.annotation.Nullable
+  public String getBy() {
+    return by;
+  }
+
+  public void setBy(@javax.annotation.Nullable String by) {
+    this.by = by;
+  }
+
+
   public BenchmarkPreset name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * served as enso-&lt;name&gt;
+   * the part after enso-: lowercase letters, digits and inner hyphens, at most 64
    * @return name
    */
   @javax.annotation.Nullable
@@ -270,6 +319,8 @@ public class BenchmarkPreset {
     }
     BenchmarkPreset benchmarkPreset = (BenchmarkPreset) o;
     return Objects.equals(this.arms, benchmarkPreset.arms) &&
+        Objects.equals(this.at, benchmarkPreset.at) &&
+        Objects.equals(this.by, benchmarkPreset.by) &&
         Objects.equals(this.name, benchmarkPreset.name) &&
         Objects.equals(this.note, benchmarkPreset.note) &&
         Objects.equals(this.owner, benchmarkPreset.owner) &&
@@ -280,7 +331,7 @@ public class BenchmarkPreset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(arms, name, note, owner, panel, rank, additionalProperties);
+    return Objects.hash(arms, at, by, name, note, owner, panel, rank, additionalProperties);
   }
 
   @Override
@@ -288,6 +339,8 @@ public class BenchmarkPreset {
     StringBuilder sb = new StringBuilder();
     sb.append("class BenchmarkPreset {\n");
     sb.append("    arms: ").append(toIndentedString(arms)).append("\n");
+    sb.append("    at: ").append(toIndentedString(at)).append("\n");
+    sb.append("    by: ").append(toIndentedString(by)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
@@ -315,7 +368,7 @@ public class BenchmarkPreset {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("arms", "name", "note", "owner", "panel", "rank"));
+    openapiFields = new HashSet<String>(Arrays.asList("arms", "at", "by", "name", "note", "owner", "panel", "rank"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -337,6 +390,9 @@ public class BenchmarkPreset {
       // ensure the optional json data is an array if present
       if (jsonObj.get("arms") != null && !jsonObj.get("arms").isJsonNull() && !jsonObj.get("arms").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `arms` to be an array in the JSON string but got `%s`", jsonObj.get("arms").toString()));
+      }
+      if ((jsonObj.get("by") != null && !jsonObj.get("by").isJsonNull()) && !jsonObj.get("by").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("by").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

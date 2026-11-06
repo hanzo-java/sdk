@@ -40,6 +40,8 @@ import ai.hanzo.cloud.model.AutoFlow;
 import ai.hanzo.cloud.model.AutoFlowPage;
 import ai.hanzo.cloud.model.AutoFlowRun;
 import ai.hanzo.cloud.model.AutoFlowVersion;
+import ai.hanzo.cloud.model.AutoJob;
+import ai.hanzo.cloud.model.AutoJobPage;
 import ai.hanzo.cloud.model.AutoPatchFlowIn;
 import ai.hanzo.cloud.model.AutoPopulatedFlow;
 import ai.hanzo.cloud.model.AutoReviewIn;
@@ -49,6 +51,9 @@ import ai.hanzo.cloud.model.AutoRunResp;
 import ai.hanzo.cloud.model.AutoRunStarted;
 import ai.hanzo.cloud.model.AutoStarterPage;
 import ai.hanzo.cloud.model.AutoVersionPage;
+import ai.hanzo.cloud.model.AutoWhenIn;
+import ai.hanzo.cloud.model.AutoWhenOut;
+import java.io.File;
 import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
@@ -352,6 +357,7 @@ public class AutoApi {
      * Build call for getAutoAutomations
      * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
      * @param sort Sort is name, next or updated (the default, newest first). (optional)
+     * @param source Source keeps the automations made in one product: chat, dev, studio or workflow. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -363,7 +369,7 @@ public class AutoApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoAutomationsCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoAutomationsCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String source, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -396,6 +402,10 @@ public class AutoApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
         }
 
+        if (source != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
+        }
+
         final String[] localVarAccepts = {
             "application/json",
             "application/problem+json"
@@ -417,16 +427,17 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAutoAutomationsValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, final ApiCallback _callback) throws ApiException {
-        return getAutoAutomationsCall(q, sort, _callback);
+    private okhttp3.Call getAutoAutomationsValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String source, final ApiCallback _callback) throws ApiException {
+        return getAutoAutomationsCall(q, sort, source, _callback);
 
     }
 
     /**
-     * Returns the org&#39;s automations.
-     * Returns the org&#39;s automations. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
+     * Returns your automations — another member&#39;s are never listed.
+     * Returns your automations — another member&#39;s are never listed. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;source&#x60; keeps those made in one product; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
      * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
      * @param sort Sort is name, next or updated (the default, newest first). (optional)
+     * @param source Source keeps the automations made in one product: chat, dev, studio or workflow. (optional)
      * @return AutoAutomationPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -437,16 +448,17 @@ public class AutoApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AutoAutomationPage getAutoAutomations(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort) throws ApiException {
-        ApiResponse<AutoAutomationPage> localVarResp = getAutoAutomationsWithHttpInfo(q, sort);
+    public AutoAutomationPage getAutoAutomations(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String source) throws ApiException {
+        ApiResponse<AutoAutomationPage> localVarResp = getAutoAutomationsWithHttpInfo(q, sort, source);
         return localVarResp.getData();
     }
 
     /**
-     * Returns the org&#39;s automations.
-     * Returns the org&#39;s automations. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
+     * Returns your automations — another member&#39;s are never listed.
+     * Returns your automations — another member&#39;s are never listed. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;source&#x60; keeps those made in one product; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
      * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
      * @param sort Sort is name, next or updated (the default, newest first). (optional)
+     * @param source Source keeps the automations made in one product: chat, dev, studio or workflow. (optional)
      * @return ApiResponse&lt;AutoAutomationPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -457,17 +469,18 @@ public class AutoApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AutoAutomationPage> getAutoAutomationsWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort) throws ApiException {
-        okhttp3.Call localVarCall = getAutoAutomationsValidateBeforeCall(q, sort, null);
+    public ApiResponse<AutoAutomationPage> getAutoAutomationsWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String source) throws ApiException {
+        okhttp3.Call localVarCall = getAutoAutomationsValidateBeforeCall(q, sort, source, null);
         Type localVarReturnType = new TypeToken<AutoAutomationPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns the org&#39;s automations. (asynchronously)
-     * Returns the org&#39;s automations. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
+     * Returns your automations — another member&#39;s are never listed. (asynchronously)
+     * Returns your automations — another member&#39;s are never listed. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;source&#x60; keeps those made in one product; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
      * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
      * @param sort Sort is name, next or updated (the default, newest first). (optional)
+     * @param source Source keeps the automations made in one product: chat, dev, studio or workflow. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -479,9 +492,9 @@ public class AutoApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoAutomationsAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, final ApiCallback<AutoAutomationPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoAutomationsAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String source, final ApiCallback<AutoAutomationPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAutoAutomationsValidateBeforeCall(q, sort, _callback);
+        okhttp3.Call localVarCall = getAutoAutomationsValidateBeforeCall(q, sort, source, _callback);
         Type localVarReturnType = new TypeToken<AutoAutomationPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -695,8 +708,8 @@ public class AutoApi {
     }
 
     /**
-     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org.
-     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
      * @param id ID is the automation, from the path. (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @return AutoAutomationRunPage
@@ -715,8 +728,8 @@ public class AutoApi {
     }
 
     /**
-     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org.
-     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
      * @param id ID is the automation, from the path. (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @return ApiResponse&lt;AutoAutomationRunPage&gt;
@@ -736,8 +749,8 @@ public class AutoApi {
     }
 
     /**
-     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. (asynchronously)
-     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as. (asynchronously)
+     * Returns one automation&#39;s runs, newest first, to the person it runs as. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
      * @param id ID is the automation, from the path. (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -755,6 +768,123 @@ public class AutoApi {
 
         okhttp3.Call localVarCall = getAutoAutomationsByIdRunsValidateBeforeCall(id, limit, _callback);
         Type localVarReturnType = new TypeToken<AutoAutomationRunPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAutoEvents
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoEventsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/events";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/event-stream"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutoEventsCall(_callback);
+
+    }
+
+    /**
+     * Stream your jobs and automations as they change, as Server-Sent Events
+     * Holds one text/event-stream open and writes a frame each time one of your jobs or automations changes: &#x60;event: job&#x60; with the job as GET /v1/auto/jobs/{id} answers it, and &#x60;event: automation&#x60; with the automation as GET /v1/auto/automations/{id} answers it. Only your own rows are sent; another member&#39;s never are. Authenticate with &#x60;Authorization: Bearer&#x60; — a fetch-based reader, since a browser EventSource cannot set it. A &#x60;: ping&#x60; comment is written every 15 seconds, and the server closes the stream after 15 minutes; reconnect and re-read the lists. Frames carry no &#x60;id&#x60;: the lists are the truth, and the stream is a live hint over them.
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getAutoEvents() throws ApiException {
+        ApiResponse<File> localVarResp = getAutoEventsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stream your jobs and automations as they change, as Server-Sent Events
+     * Holds one text/event-stream open and writes a frame each time one of your jobs or automations changes: &#x60;event: job&#x60; with the job as GET /v1/auto/jobs/{id} answers it, and &#x60;event: automation&#x60; with the automation as GET /v1/auto/automations/{id} answers it. Only your own rows are sent; another member&#39;s never are. Authenticate with &#x60;Authorization: Bearer&#x60; — a fetch-based reader, since a browser EventSource cannot set it. A &#x60;: ping&#x60; comment is written every 15 seconds, and the server closes the stream after 15 minutes; reconnect and re-read the lists. Frames carry no &#x60;id&#x60;: the lists are the truth, and the stream is a live hint over them.
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getAutoEventsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutoEventsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stream your jobs and automations as they change, as Server-Sent Events (asynchronously)
+     * Holds one text/event-stream open and writes a frame each time one of your jobs or automations changes: &#x60;event: job&#x60; with the job as GET /v1/auto/jobs/{id} answers it, and &#x60;event: automation&#x60; with the automation as GET /v1/auto/automations/{id} answers it. Only your own rows are sent; another member&#39;s never are. Authenticate with &#x60;Authorization: Bearer&#x60; — a fetch-based reader, since a browser EventSource cannot set it. A &#x60;: ping&#x60; comment is written every 15 seconds, and the server closes the stream after 15 minutes; reconnect and re-read the lists. Frames carry no &#x60;id&#x60;: the lists are the truth, and the stream is a live hint over them.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoEventsAsync(final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoEventsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1161,6 +1291,284 @@ public class AutoApi {
         return localVarCall;
     }
     /**
+     * Build call for getAutoJobs
+     * @param product Product keeps one product&#39;s jobs: chat, dev, studio or workflow. (optional)
+     * @param state State keeps one state: scheduled, running, succeeded, failed or cancelled. (optional)
+     * @param limit Limit bounds the page (default 100, at most 500). (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoJobsCall(@javax.annotation.Nullable String product, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/jobs";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (product != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("product", product));
+        }
+
+        if (state != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoJobsValidateBeforeCall(@javax.annotation.Nullable String product, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getAutoJobsCall(product, state, limit, _callback);
+
+    }
+
+    /**
+     * Lists everything of yours that runs without you watching, across every product: each run of your automations and workflows, and every Studio render, long video or other background run a product recorded for you.
+     * Lists everything of yours that runs without you watching, across every product: each run of your automations and workflows, and every Studio render, long video or other background run a product recorded for you. Each is in one of five states — scheduled, running, succeeded, failed, cancelled — with what it made (Library item ids) and what it cost when that is known. Another member&#39;s jobs are never listed.
+     * @param product Product keeps one product&#39;s jobs: chat, dev, studio or workflow. (optional)
+     * @param state State keeps one state: scheduled, running, succeeded, failed or cancelled. (optional)
+     * @param limit Limit bounds the page (default 100, at most 500). (optional)
+     * @return AutoJobPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoJobPage getAutoJobs(@javax.annotation.Nullable String product, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AutoJobPage> localVarResp = getAutoJobsWithHttpInfo(product, state, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists everything of yours that runs without you watching, across every product: each run of your automations and workflows, and every Studio render, long video or other background run a product recorded for you.
+     * Lists everything of yours that runs without you watching, across every product: each run of your automations and workflows, and every Studio render, long video or other background run a product recorded for you. Each is in one of five states — scheduled, running, succeeded, failed, cancelled — with what it made (Library item ids) and what it cost when that is known. Another member&#39;s jobs are never listed.
+     * @param product Product keeps one product&#39;s jobs: chat, dev, studio or workflow. (optional)
+     * @param state State keeps one state: scheduled, running, succeeded, failed or cancelled. (optional)
+     * @param limit Limit bounds the page (default 100, at most 500). (optional)
+     * @return ApiResponse&lt;AutoJobPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoJobPage> getAutoJobsWithHttpInfo(@javax.annotation.Nullable String product, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getAutoJobsValidateBeforeCall(product, state, limit, null);
+        Type localVarReturnType = new TypeToken<AutoJobPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists everything of yours that runs without you watching, across every product: each run of your automations and workflows, and every Studio render, long video or other background run a product recorded for you. (asynchronously)
+     * Lists everything of yours that runs without you watching, across every product: each run of your automations and workflows, and every Studio render, long video or other background run a product recorded for you. Each is in one of five states — scheduled, running, succeeded, failed, cancelled — with what it made (Library item ids) and what it cost when that is known. Another member&#39;s jobs are never listed.
+     * @param product Product keeps one product&#39;s jobs: chat, dev, studio or workflow. (optional)
+     * @param state State keeps one state: scheduled, running, succeeded, failed or cancelled. (optional)
+     * @param limit Limit bounds the page (default 100, at most 500). (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoJobsAsync(@javax.annotation.Nullable String product, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback<AutoJobPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoJobsValidateBeforeCall(product, state, limit, _callback);
+        Type localVarReturnType = new TypeToken<AutoJobPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAutoJobsById
+     * @param id ID is the job, from the path: a run_ or a job_ id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoJobsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/jobs/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoJobsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getAutoJobsById(Async)");
+        }
+
+        return getAutoJobsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Reads one of your jobs.
+     * Reads one of your jobs. A job that is not yours answers 404, as one that does not exist.
+     * @param id ID is the job, from the path: a run_ or a job_ id. (required)
+     * @return AutoJob
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoJob getAutoJobsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoJob> localVarResp = getAutoJobsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads one of your jobs.
+     * Reads one of your jobs. A job that is not yours answers 404, as one that does not exist.
+     * @param id ID is the job, from the path: a run_ or a job_ id. (required)
+     * @return ApiResponse&lt;AutoJob&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoJob> getAutoJobsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAutoJobsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AutoJob>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads one of your jobs. (asynchronously)
+     * Reads one of your jobs. A job that is not yours answers 404, as one that does not exist.
+     * @param id ID is the job, from the path: a run_ or a job_ id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoJobsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoJob> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoJobsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AutoJob>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAutoProvider
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1357,8 +1765,8 @@ public class AutoApi {
     }
 
     /**
-     * Returns the caller org&#39;s run history, newest first.
-     * Returns the caller org&#39;s run history, newest first. The optional &#x60;flowId&#x60; query narrows it to one flow and &#x60;limit&#x60; bounds the page.
+     * Returns your run history, newest first: the runs of the flows you hold.
+     * Returns your run history, newest first: the runs of the flows you hold. The optional &#x60;flowId&#x60; query narrows it to one of them and &#x60;limit&#x60; bounds the page.
      * @param flowId FlowID narrows the history to one flow. Omit it for the whole org&#39;s runs. (optional)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @return AutoRunPage
@@ -1377,8 +1785,8 @@ public class AutoApi {
     }
 
     /**
-     * Returns the caller org&#39;s run history, newest first.
-     * Returns the caller org&#39;s run history, newest first. The optional &#x60;flowId&#x60; query narrows it to one flow and &#x60;limit&#x60; bounds the page.
+     * Returns your run history, newest first: the runs of the flows you hold.
+     * Returns your run history, newest first: the runs of the flows you hold. The optional &#x60;flowId&#x60; query narrows it to one of them and &#x60;limit&#x60; bounds the page.
      * @param flowId FlowID narrows the history to one flow. Omit it for the whole org&#39;s runs. (optional)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @return ApiResponse&lt;AutoRunPage&gt;
@@ -1398,8 +1806,8 @@ public class AutoApi {
     }
 
     /**
-     * Returns the caller org&#39;s run history, newest first. (asynchronously)
-     * Returns the caller org&#39;s run history, newest first. The optional &#x60;flowId&#x60; query narrows it to one flow and &#x60;limit&#x60; bounds the page.
+     * Returns your run history, newest first: the runs of the flows you hold. (asynchronously)
+     * Returns your run history, newest first: the runs of the flows you hold. The optional &#x60;flowId&#x60; query narrows it to one of them and &#x60;limit&#x60; bounds the page.
      * @param flowId FlowID narrows the history to one flow. Omit it for the whole org&#39;s runs. (optional)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1753,8 +2161,8 @@ public class AutoApi {
     }
 
     /**
-     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule.
-     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
+     * Changes an automation, for the person it runs as: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule.
+     * Changes an automation, for the person it runs as: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
      * @param id ID is the automation, from the path. (required)
      * @param autoAutomationPatch  (required)
      * @return AutoAutomation
@@ -1773,8 +2181,8 @@ public class AutoApi {
     }
 
     /**
-     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule.
-     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
+     * Changes an automation, for the person it runs as: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule.
+     * Changes an automation, for the person it runs as: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
      * @param id ID is the automation, from the path. (required)
      * @param autoAutomationPatch  (required)
      * @return ApiResponse&lt;AutoAutomation&gt;
@@ -1794,8 +2202,8 @@ public class AutoApi {
     }
 
     /**
-     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. (asynchronously)
-     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
+     * Changes an automation, for the person it runs as: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. (asynchronously)
+     * Changes an automation, for the person it runs as: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
      * @param id ID is the automation, from the path. (required)
      * @param autoAutomationPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2163,7 +2571,7 @@ public class AutoApi {
 
     /**
      * Starts one run now, whether or not its schedule is armed.
-     * Starts one run now, whether or not its schedule is armed. Only the person it runs as, or an admin of the org, may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
+     * Starts one run now, whether or not its schedule is armed. Only the person it runs as may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
      * @param id ID is the automation, from the path. (required)
      * @return AutoRunStarted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2182,7 +2590,7 @@ public class AutoApi {
 
     /**
      * Starts one run now, whether or not its schedule is armed.
-     * Starts one run now, whether or not its schedule is armed. Only the person it runs as, or an admin of the org, may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
+     * Starts one run now, whether or not its schedule is armed. Only the person it runs as may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
      * @param id ID is the automation, from the path. (required)
      * @return ApiResponse&lt;AutoRunStarted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2202,7 +2610,7 @@ public class AutoApi {
 
     /**
      * Starts one run now, whether or not its schedule is armed. (asynchronously)
-     * Starts one run now, whether or not its schedule is armed. Only the person it runs as, or an admin of the org, may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
+     * Starts one run now, whether or not its schedule is armed. Only the person it runs as may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
      * @param id ID is the automation, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2308,8 +2716,8 @@ public class AutoApi {
     }
 
     /**
-     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it.
-     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
+     * Answers a run that holds a post for review, for the person the automation runs as: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it.
+     * Answers a run that holds a post for review, for the person the automation runs as: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
      * @param id ID is the automation, and Run its run in review, from the path. (required)
      * @param run  (required)
      * @param autoReviewIn  (required)
@@ -2329,8 +2737,8 @@ public class AutoApi {
     }
 
     /**
-     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it.
-     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
+     * Answers a run that holds a post for review, for the person the automation runs as: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it.
+     * Answers a run that holds a post for review, for the person the automation runs as: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
      * @param id ID is the automation, and Run its run in review, from the path. (required)
      * @param run  (required)
      * @param autoReviewIn  (required)
@@ -2351,8 +2759,8 @@ public class AutoApi {
     }
 
     /**
-     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. (asynchronously)
-     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
+     * Answers a run that holds a post for review, for the person the automation runs as: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. (asynchronously)
+     * Answers a run that holds a post for review, for the person the automation runs as: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
      * @param id ID is the automation, and Run its run in review, from the path. (required)
      * @param run  (required)
      * @param autoReviewIn  (required)
@@ -2371,6 +2779,138 @@ public class AutoApi {
 
         okhttp3.Call localVarCall = postAutoAutomationsByIdRunsByRunReviewValidateBeforeCall(id, run, autoReviewIn, _callback);
         Type localVarReturnType = new TypeToken<AutoAutomationRun>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAutoCron
+     * @param autoWhenIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoCronCall(@javax.annotation.Nonnull AutoWhenIn autoWhenIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoWhenIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/cron";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAutoCronValidateBeforeCall(@javax.annotation.Nonnull AutoWhenIn autoWhenIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'autoWhenIn' is set
+        if (autoWhenIn == null) {
+            throw new ApiException("Missing the required parameter 'autoWhenIn' when calling postAutoCron(Async)");
+        }
+
+        return postAutoCronCall(autoWhenIn, _callback);
+
+    }
+
+    /**
+     * Reads a schedule said in words — \&quot;every 5 minutes\&quot;, \&quot;weekdays at 8:30\&quot;, \&quot;every monday at 9am\&quot;, \&quot;tomorrow at 7pm\&quot;, \&quot;in 20 minutes\&quot;, or a five-field cron expression — in your time zone, and answers the schedule an automation takes, said back in plain words, with when it would first run.
+     * Reads a schedule said in words — \&quot;every 5 minutes\&quot;, \&quot;weekdays at 8:30\&quot;, \&quot;every monday at 9am\&quot;, \&quot;tomorrow at 7pm\&quot;, \&quot;in 20 minutes\&quot;, or a five-field cron expression — in your time zone, and answers the schedule an automation takes, said back in plain words, with when it would first run. Nothing is created: send the schedule to POST /v1/auto/automations. A phrase that no rule reads is read by a model; a phrase that names no schedule answers 422.
+     * @param autoWhenIn  (required)
+     * @return AutoWhenOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoWhenOut postAutoCron(@javax.annotation.Nonnull AutoWhenIn autoWhenIn) throws ApiException {
+        ApiResponse<AutoWhenOut> localVarResp = postAutoCronWithHttpInfo(autoWhenIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads a schedule said in words — \&quot;every 5 minutes\&quot;, \&quot;weekdays at 8:30\&quot;, \&quot;every monday at 9am\&quot;, \&quot;tomorrow at 7pm\&quot;, \&quot;in 20 minutes\&quot;, or a five-field cron expression — in your time zone, and answers the schedule an automation takes, said back in plain words, with when it would first run.
+     * Reads a schedule said in words — \&quot;every 5 minutes\&quot;, \&quot;weekdays at 8:30\&quot;, \&quot;every monday at 9am\&quot;, \&quot;tomorrow at 7pm\&quot;, \&quot;in 20 minutes\&quot;, or a five-field cron expression — in your time zone, and answers the schedule an automation takes, said back in plain words, with when it would first run. Nothing is created: send the schedule to POST /v1/auto/automations. A phrase that no rule reads is read by a model; a phrase that names no schedule answers 422.
+     * @param autoWhenIn  (required)
+     * @return ApiResponse&lt;AutoWhenOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoWhenOut> postAutoCronWithHttpInfo(@javax.annotation.Nonnull AutoWhenIn autoWhenIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutoCronValidateBeforeCall(autoWhenIn, null);
+        Type localVarReturnType = new TypeToken<AutoWhenOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads a schedule said in words — \&quot;every 5 minutes\&quot;, \&quot;weekdays at 8:30\&quot;, \&quot;every monday at 9am\&quot;, \&quot;tomorrow at 7pm\&quot;, \&quot;in 20 minutes\&quot;, or a five-field cron expression — in your time zone, and answers the schedule an automation takes, said back in plain words, with when it would first run. (asynchronously)
+     * Reads a schedule said in words — \&quot;every 5 minutes\&quot;, \&quot;weekdays at 8:30\&quot;, \&quot;every monday at 9am\&quot;, \&quot;tomorrow at 7pm\&quot;, \&quot;in 20 minutes\&quot;, or a five-field cron expression — in your time zone, and answers the schedule an automation takes, said back in plain words, with when it would first run. Nothing is created: send the schedule to POST /v1/auto/automations. A phrase that no rule reads is read by a model; a phrase that names no schedule answers 422.
+     * @param autoWhenIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoCronAsync(@javax.annotation.Nonnull AutoWhenIn autoWhenIn, final ApiCallback<AutoWhenOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAutoCronValidateBeforeCall(autoWhenIn, _callback);
+        Type localVarReturnType = new TypeToken<AutoWhenOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

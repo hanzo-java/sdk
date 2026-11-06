@@ -33,6 +33,11 @@ import ai.hanzo.cloud.model.FlagDefsOut;
 import ai.hanzo.cloud.model.FlagDeletedOut;
 import ai.hanzo.cloud.model.FlagEvaluateIn;
 import ai.hanzo.cloud.model.FlagHealthOut;
+import ai.hanzo.cloud.model.FlagOptinIn;
+import ai.hanzo.cloud.model.FlagOptinOut;
+import ai.hanzo.cloud.model.FlagOrgOptinIn;
+import ai.hanzo.cloud.model.FlagOrgOptinOut;
+import ai.hanzo.cloud.model.FlagPlatformOut;
 import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
@@ -717,6 +722,250 @@ public class FlagApi {
         return localVarCall;
     }
     /**
+     * Build call for getFlagOptin
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFlagOptinCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/flag/optin";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFlagOptinValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFlagOptinCall(_callback);
+
+    }
+
+    /**
+     * Answers the signed-in caller&#39;s opt-in to public betas: whether they opted in, whether the org they act in blocked it, and which betas are public.
+     * Answers the signed-in caller&#39;s opt-in to public betas: whether they opted in, whether the org they act in blocked it, and which betas are public. A beta not listed is private, granted person by person.
+     * @return FlagOptinOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public FlagOptinOut getFlagOptin() throws ApiException {
+        ApiResponse<FlagOptinOut> localVarResp = getFlagOptinWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the signed-in caller&#39;s opt-in to public betas: whether they opted in, whether the org they act in blocked it, and which betas are public.
+     * Answers the signed-in caller&#39;s opt-in to public betas: whether they opted in, whether the org they act in blocked it, and which betas are public. A beta not listed is private, granted person by person.
+     * @return ApiResponse&lt;FlagOptinOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FlagOptinOut> getFlagOptinWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFlagOptinValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<FlagOptinOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the signed-in caller&#39;s opt-in to public betas: whether they opted in, whether the org they act in blocked it, and which betas are public. (asynchronously)
+     * Answers the signed-in caller&#39;s opt-in to public betas: whether they opted in, whether the org they act in blocked it, and which betas are public. A beta not listed is private, granted person by person.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFlagOptinAsync(final ApiCallback<FlagOptinOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFlagOptinValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<FlagOptinOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getFlagPlatform
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFlagPlatformCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/flag/platform";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFlagPlatformValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFlagPlatformCall(_callback);
+
+    }
+
+    /**
+     * Answers the platform switches that are decided per caller — &#x60;beta&#x60;, whether the caller sees what is not yet generally available — as they apply to the signed-in caller: its validated org and user, never anything the request states.
+     * Answers the platform switches that are decided per caller — &#x60;beta&#x60;, whether the caller sees what is not yet generally available — as they apply to the signed-in caller: its validated org and user, never anything the request states. A SuperAdmin targets them from the admin cockpit; nothing here changes them. A request without a signed-in principal is refused, and a switch that cannot be read is 503, which a caller takes as off.
+     * @return FlagPlatformOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public FlagPlatformOut getFlagPlatform() throws ApiException {
+        ApiResponse<FlagPlatformOut> localVarResp = getFlagPlatformWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the platform switches that are decided per caller — &#x60;beta&#x60;, whether the caller sees what is not yet generally available — as they apply to the signed-in caller: its validated org and user, never anything the request states.
+     * Answers the platform switches that are decided per caller — &#x60;beta&#x60;, whether the caller sees what is not yet generally available — as they apply to the signed-in caller: its validated org and user, never anything the request states. A SuperAdmin targets them from the admin cockpit; nothing here changes them. A request without a signed-in principal is refused, and a switch that cannot be read is 503, which a caller takes as off.
+     * @return ApiResponse&lt;FlagPlatformOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FlagPlatformOut> getFlagPlatformWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFlagPlatformValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<FlagPlatformOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the platform switches that are decided per caller — &#x60;beta&#x60;, whether the caller sees what is not yet generally available — as they apply to the signed-in caller: its validated org and user, never anything the request states. (asynchronously)
+     * Answers the platform switches that are decided per caller — &#x60;beta&#x60;, whether the caller sees what is not yet generally available — as they apply to the signed-in caller: its validated org and user, never anything the request states. A SuperAdmin targets them from the admin cockpit; nothing here changes them. A request without a signed-in principal is refused, and a switch that cannot be read is 503, which a caller takes as off.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getFlagPlatformAsync(final ApiCallback<FlagPlatformOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFlagPlatformValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<FlagPlatformOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postFlag
      * @param flagEvaluateIn  (required)
      * @param _callback Callback for upload/download progress
@@ -1119,6 +1368,270 @@ public class FlagApi {
 
         okhttp3.Call localVarCall = putFlagDefsByKeyValidateBeforeCall(key, body, _callback);
         Type localVarReturnType = new TypeToken<FlagDefRow>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putFlagOptin
+     * @param flagOptinIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putFlagOptinCall(@javax.annotation.Nonnull FlagOptinIn flagOptinIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = flagOptinIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/flag/optin";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putFlagOptinValidateBeforeCall(@javax.annotation.Nonnull FlagOptinIn flagOptinIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'flagOptinIn' is set
+        if (flagOptinIn == null) {
+            throw new ApiException("Missing the required parameter 'flagOptinIn' when calling putFlagOptin(Async)");
+        }
+
+        return putFlagOptinCall(flagOptinIn, _callback);
+
+    }
+
+    /**
+     * Sets the signed-in caller&#39;s OWN opt-in to public betas: on, every public beta and each one promoted later is on for them; off, none is.
+     * Sets the signed-in caller&#39;s OWN opt-in to public betas: on, every public beta and each one promoted later is on for them; off, none is. Self only: the row written is the caller&#39;s validated subject, whatever the request says. Opting in while the org they act in blocked it is refused; opting out never is.
+     * @param flagOptinIn  (required)
+     * @return FlagOptinOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public FlagOptinOut putFlagOptin(@javax.annotation.Nonnull FlagOptinIn flagOptinIn) throws ApiException {
+        ApiResponse<FlagOptinOut> localVarResp = putFlagOptinWithHttpInfo(flagOptinIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sets the signed-in caller&#39;s OWN opt-in to public betas: on, every public beta and each one promoted later is on for them; off, none is.
+     * Sets the signed-in caller&#39;s OWN opt-in to public betas: on, every public beta and each one promoted later is on for them; off, none is. Self only: the row written is the caller&#39;s validated subject, whatever the request says. Opting in while the org they act in blocked it is refused; opting out never is.
+     * @param flagOptinIn  (required)
+     * @return ApiResponse&lt;FlagOptinOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FlagOptinOut> putFlagOptinWithHttpInfo(@javax.annotation.Nonnull FlagOptinIn flagOptinIn) throws ApiException {
+        okhttp3.Call localVarCall = putFlagOptinValidateBeforeCall(flagOptinIn, null);
+        Type localVarReturnType = new TypeToken<FlagOptinOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sets the signed-in caller&#39;s OWN opt-in to public betas: on, every public beta and each one promoted later is on for them; off, none is. (asynchronously)
+     * Sets the signed-in caller&#39;s OWN opt-in to public betas: on, every public beta and each one promoted later is on for them; off, none is. Self only: the row written is the caller&#39;s validated subject, whatever the request says. Opting in while the org they act in blocked it is refused; opting out never is.
+     * @param flagOptinIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putFlagOptinAsync(@javax.annotation.Nonnull FlagOptinIn flagOptinIn, final ApiCallback<FlagOptinOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putFlagOptinValidateBeforeCall(flagOptinIn, _callback);
+        Type localVarReturnType = new TypeToken<FlagOptinOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putFlagOptinOrg
+     * @param flagOrgOptinIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putFlagOptinOrgCall(@javax.annotation.Nonnull FlagOrgOptinIn flagOrgOptinIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = flagOrgOptinIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/flag/optin/org";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putFlagOptinOrgValidateBeforeCall(@javax.annotation.Nonnull FlagOrgOptinIn flagOrgOptinIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'flagOrgOptinIn' is set
+        if (flagOrgOptinIn == null) {
+            throw new ApiException("Missing the required parameter 'flagOrgOptinIn' when calling putFlagOptinOrg(Async)");
+        }
+
+        return putFlagOptinOrgCall(flagOrgOptinIn, _callback);
+
+    }
+
+    /**
+     * Blocks or unblocks the opt-in to public betas for every member of the org the caller acts in.
+     * Blocks or unblocks the opt-in to public betas for every member of the org the caller acts in. An owner or admin of that org, or a SuperAdmin, may; a member may not. It only withholds: blocked, no member gets a public beta by opting in, and their own choices are kept for when it is lifted; it never turns a beta on. A shared sign-up org has no admin to speak for its members and is refused. The change is on the audit trail before it lands.
+     * @param flagOrgOptinIn  (required)
+     * @return FlagOrgOptinOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public FlagOrgOptinOut putFlagOptinOrg(@javax.annotation.Nonnull FlagOrgOptinIn flagOrgOptinIn) throws ApiException {
+        ApiResponse<FlagOrgOptinOut> localVarResp = putFlagOptinOrgWithHttpInfo(flagOrgOptinIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Blocks or unblocks the opt-in to public betas for every member of the org the caller acts in.
+     * Blocks or unblocks the opt-in to public betas for every member of the org the caller acts in. An owner or admin of that org, or a SuperAdmin, may; a member may not. It only withholds: blocked, no member gets a public beta by opting in, and their own choices are kept for when it is lifted; it never turns a beta on. A shared sign-up org has no admin to speak for its members and is refused. The change is on the audit trail before it lands.
+     * @param flagOrgOptinIn  (required)
+     * @return ApiResponse&lt;FlagOrgOptinOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FlagOrgOptinOut> putFlagOptinOrgWithHttpInfo(@javax.annotation.Nonnull FlagOrgOptinIn flagOrgOptinIn) throws ApiException {
+        okhttp3.Call localVarCall = putFlagOptinOrgValidateBeforeCall(flagOrgOptinIn, null);
+        Type localVarReturnType = new TypeToken<FlagOrgOptinOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Blocks or unblocks the opt-in to public betas for every member of the org the caller acts in. (asynchronously)
+     * Blocks or unblocks the opt-in to public betas for every member of the org the caller acts in. An owner or admin of that org, or a SuperAdmin, may; a member may not. It only withholds: blocked, no member gets a public beta by opting in, and their own choices are kept for when it is lifted; it never turns a beta on. A shared sign-up org has no admin to speak for its members and is refused. The change is on the audit trail before it lands.
+     * @param flagOrgOptinIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putFlagOptinOrgAsync(@javax.annotation.Nonnull FlagOrgOptinIn flagOrgOptinIn, final ApiCallback<FlagOrgOptinOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putFlagOptinOrgValidateBeforeCall(flagOrgOptinIn, _callback);
+        Type localVarReturnType = new TypeToken<FlagOrgOptinOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

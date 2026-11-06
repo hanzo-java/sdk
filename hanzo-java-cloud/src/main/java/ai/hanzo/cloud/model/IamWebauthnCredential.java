@@ -376,7 +376,7 @@ public class IamWebauthnCredential {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable

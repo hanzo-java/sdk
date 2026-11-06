@@ -81,6 +81,11 @@ public class AllowanceAllowance {
   @javax.annotation.Nullable
   private Boolean spent;
 
+  public static final String SERIALIZED_NAME_START = "start";
+  @SerializedName(SERIALIZED_NAME_START)
+  @javax.annotation.Nullable
+  private Long start;
+
   public static final String SERIALIZED_NAME_USED = "used";
   @SerializedName(SERIALIZED_NAME_USED)
   @javax.annotation.Nullable
@@ -100,7 +105,7 @@ public class AllowanceAllowance {
   }
 
   /**
-   * calls the plan allows per period; 0 &#x3D; unbounded
+   * calls the plan allows in Window; 0 &#x3D; unbounded
    * @return limit
    */
   @javax.annotation.Nullable
@@ -176,7 +181,7 @@ public class AllowanceAllowance {
   }
 
   /**
-   * unix seconds; when THAT window starts again
+   * Resets is the instant THAT window reopens, unix seconds: the next UTC hour or midnight, or a session&#39;s start plus its length — exact, to the second, from the call that opened it. 0 for a session that is not running: it opens at the next call.
    * @return resets
    */
   @javax.annotation.Nullable
@@ -208,13 +213,32 @@ public class AllowanceAllowance {
   }
 
 
+  public AllowanceAllowance start(@javax.annotation.Nullable Long start) {
+    this.start = start;
+    return this;
+  }
+
+  /**
+   * Start is when the session this answer counts in opened, unix seconds: on a take, the session the call was counted in, which a give names back (AllowanceIn.Start); on a read, the session running. 0 where no session bounds the subject or none runs.
+   * @return start
+   */
+  @javax.annotation.Nullable
+  public Long getStart() {
+    return start;
+  }
+
+  public void setStart(@javax.annotation.Nullable Long start) {
+    this.start = start;
+  }
+
+
   public AllowanceAllowance used(@javax.annotation.Nullable Long used) {
     this.used = used;
     return this;
   }
 
   /**
-   * Used is how many free calls this subject has been admitted in the period ending at Resets — the UTC calendar day. A call counts when it is admitted, whatever its upstream then does; a refused call counts nothing. It stops AT Limit rather than climbing past it, so Limit-Used is what remains and never goes negative.
+   * Used is how many free calls this subject has been admitted in the window ending at Resets. A call counts when it is admitted, whatever its upstream then does; a refused call counts nothing. It stops AT Limit rather than climbing past it, so Limit-Used is what remains and never goes negative.
    * @return used
    */
   @javax.annotation.Nullable
@@ -233,7 +257,7 @@ public class AllowanceAllowance {
   }
 
   /**
-   * Window is which ceiling these numbers describe — \&quot;hour\&quot; or \&quot;day\&quot; — because a caller is held to both and only one of them is the answer. It is the window that REFUSED where one did, and otherwise the one with least left, so Limit-Used is always the number that will actually stop them next. Empty where no window bounds the subject at all.
+   * Window is which ceiling these numbers describe — \&quot;hour\&quot;, \&quot;session\&quot; or \&quot;day\&quot; — because a caller can be held to more than one and only one of them is the answer. A session is the Free plan&#39;s: it opens at the subject&#39;s first call after the last one ended and runs five hours (ai_plan_session_hours). It is the window that REFUSED where one did, and otherwise the one with least left, so Limit-Used is always the number that will actually stop them next. Empty where no window bounds the subject at all.
    * @return window
    */
   @javax.annotation.Nullable
@@ -306,6 +330,7 @@ public class AllowanceAllowance {
         Objects.equals(this.pooled, allowanceAllowance.pooled) &&
         Objects.equals(this.resets, allowanceAllowance.resets) &&
         Objects.equals(this.spent, allowanceAllowance.spent) &&
+        Objects.equals(this.start, allowanceAllowance.start) &&
         Objects.equals(this.used, allowanceAllowance.used) &&
         Objects.equals(this.window, allowanceAllowance.window)&&
         Objects.equals(this.additionalProperties, allowanceAllowance.additionalProperties);
@@ -313,7 +338,7 @@ public class AllowanceAllowance {
 
   @Override
   public int hashCode() {
-    return Objects.hash(limit, plan, pool, pooled, resets, spent, used, window, additionalProperties);
+    return Objects.hash(limit, plan, pool, pooled, resets, spent, start, used, window, additionalProperties);
   }
 
   @Override
@@ -326,6 +351,7 @@ public class AllowanceAllowance {
     sb.append("    pooled: ").append(toIndentedString(pooled)).append("\n");
     sb.append("    resets: ").append(toIndentedString(resets)).append("\n");
     sb.append("    spent: ").append(toIndentedString(spent)).append("\n");
+    sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    used: ").append(toIndentedString(used)).append("\n");
     sb.append("    window: ").append(toIndentedString(window)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -350,7 +376,7 @@ public class AllowanceAllowance {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("limit", "plan", "pool", "pooled", "resets", "spent", "used", "window"));
+    openapiFields = new HashSet<String>(Arrays.asList("limit", "plan", "pool", "pooled", "resets", "spent", "start", "used", "window"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

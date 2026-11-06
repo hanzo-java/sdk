@@ -6,7 +6,7 @@ import ai.hanzo.cloud.api.AiApi;
 import ai.hanzo.cloud.model.OpenaiChatCompletionChoice;
 import ai.hanzo.cloud.model.OpenaiChatCompletionMessage;
 import ai.hanzo.cloud.model.OpenaiChatCompletionRequest;
-import ai.hanzo.cloud.model.OpenaiChatCompletionResponse;
+import ai.hanzo.cloud.model.PostChat200Response;
 
 import java.util.List;
 
@@ -21,7 +21,8 @@ import java.util.List;
  * teach the wrong shape.
  *
  * <p>The document types the route — {@code OpenaiChatCompletionRequest} in,
- * {@code OpenaiChatCompletionResponse} out — so the prompt goes in as a value
+ * {@code PostChat200Response} out (the completion plus the {@code routing} the
+ * gateway chose) — so the prompt goes in as a value
  * and the reply is {@code choices[0].message.content}.
  *
  * <pre>
@@ -40,11 +41,13 @@ public final class Chat {
             model = DEFAULT_MODEL;
         }
         try {
-            OpenaiChatCompletionResponse reply = ai.postChatCompletions(new OpenaiChatCompletionRequest()
+            // The two nulls are the optional X-Max-Cost and X-Max-Latency-Ms
+            // routing bounds; unset, the gateway routes without a ceiling.
+            PostChat200Response reply = ai.postChatCompletions(new OpenaiChatCompletionRequest()
                     .model(model)
                     .messages(List.of(new OpenaiChatCompletionMessage()
                             .role("user")
-                            .content("Say hello in one short sentence."))));
+                            .content("Say hello in one short sentence."))), null, null);
             List<OpenaiChatCompletionChoice> choices = reply.getChoices();
             String content = choices == null || choices.isEmpty() || choices.get(0).getMessage() == null
                     ? ""

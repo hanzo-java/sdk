@@ -91,7 +91,7 @@ public class BillingAccounts {
   }
 
   /**
-   * Get accounts
+   * Accounts is one row per linked account the gateway actually routed through.
    * @return accounts
    */
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class BillingAccounts {
   }
 
   /**
-   * Get scope
+   * Scope is always \&quot;user\&quot;: the caller&#39;s own linked accounts.
    * @return scope
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class BillingAccounts {
   }
 
   /**
-   * Get source
+   * Source is always \&quot;routed\&quot;: the gateway&#39;s own routed ledger.
    * @return source
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class BillingAccounts {
   }
 
   /**
-   * Get total
+   * Total is the honest sum across the rows.
    * @return total
    */
   @javax.annotation.Nullable

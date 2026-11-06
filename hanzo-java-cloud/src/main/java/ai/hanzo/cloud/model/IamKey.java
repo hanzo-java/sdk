@@ -121,6 +121,21 @@ public class IamKey {
   @javax.annotation.Nullable
   private String owner;
 
+  public static final String SERIALIZED_NAME_PREFIX = "prefix";
+  @SerializedName(SERIALIZED_NAME_PREFIX)
+  @javax.annotation.Nullable
+  private String prefix;
+
+  public static final String SERIALIZED_NAME_REVOKE_TIME = "revokeTime";
+  @SerializedName(SERIALIZED_NAME_REVOKE_TIME)
+  @javax.annotation.Nullable
+  private String revokeTime;
+
+  public static final String SERIALIZED_NAME_REVOKER = "revoker";
+  @SerializedName(SERIALIZED_NAME_REVOKER)
+  @javax.annotation.Nullable
+  private String revoker;
+
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   @javax.annotation.Nullable
@@ -145,6 +160,11 @@ public class IamKey {
   @SerializedName(SERIALIZED_NAME_UPDATED_TIME)
   @javax.annotation.Nullable
   private String updatedTime;
+
+  public static final String SERIALIZED_NAME_USED_TIME = "usedTime";
+  @SerializedName(SERIALIZED_NAME_USED_TIME)
+  @javax.annotation.Nullable
+  private String usedTime;
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)
@@ -350,7 +370,7 @@ public class IamKey {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable
@@ -417,6 +437,63 @@ public class IamKey {
 
   public void setOwner(@javax.annotation.Nullable String owner) {
     this.owner = owner;
+  }
+
+
+  public IamKey prefix(@javax.annotation.Nullable String prefix) {
+    this.prefix = prefix;
+    return this;
+  }
+
+  /**
+   * Prefix is the head of the credential the holder presents — the sk- of a secret key, the pk- of a publishable one — recorded when the key is minted (PrefixOf). It lets a listing say which string a row is, and is far too short to use: the secret itself is never stored.
+   * @return prefix
+   */
+  @javax.annotation.Nullable
+  public String getPrefix() {
+    return prefix;
+  }
+
+  public void setPrefix(@javax.annotation.Nullable String prefix) {
+    this.prefix = prefix;
+  }
+
+
+  public IamKey revokeTime(@javax.annotation.Nullable String revokeTime) {
+    this.revokeTime = revokeTime;
+    return this;
+  }
+
+  /**
+   * Get revokeTime
+   * @return revokeTime
+   */
+  @javax.annotation.Nullable
+  public String getRevokeTime() {
+    return revokeTime;
+  }
+
+  public void setRevokeTime(@javax.annotation.Nullable String revokeTime) {
+    this.revokeTime = revokeTime;
+  }
+
+
+  public IamKey revoker(@javax.annotation.Nullable String revoker) {
+    this.revoker = revoker;
+    return this;
+  }
+
+  /**
+   * Revoker is who revoked the key and RevokeTime when. Revoking sets State to KeyStateRevoked and keeps the row, so the key is still listed and its history can be read; the resolvers refuse it, and no update reopens it.
+   * @return revoker
+   */
+  @javax.annotation.Nullable
+  public String getRevoker() {
+    return revoker;
+  }
+
+  public void setRevoker(@javax.annotation.Nullable String revoker) {
+    this.revoker = revoker;
   }
 
 
@@ -515,6 +592,25 @@ public class IamKey {
   }
 
 
+  public IamKey usedTime(@javax.annotation.Nullable String usedTime) {
+    this.usedTime = usedTime;
+    return this;
+  }
+
+  /**
+   * UsedTime is when the key was last presented and resolved. A list read fills it from the key&#39;s Sighting; the key row itself never holds it, so recording a use never rewrites the row a person may be editing.
+   * @return usedTime
+   */
+  @javax.annotation.Nullable
+  public String getUsedTime() {
+    return usedTime;
+  }
+
+  public void setUsedTime(@javax.annotation.Nullable String usedTime) {
+    this.usedTime = usedTime;
+  }
+
+
   public IamKey user(@javax.annotation.Nullable String user) {
     this.user = user;
     return this;
@@ -602,18 +698,22 @@ public class IamKey {
         Objects.equals(this.name, iamKey.name) &&
         Objects.equals(this.organization, iamKey.organization) &&
         Objects.equals(this.owner, iamKey.owner) &&
+        Objects.equals(this.prefix, iamKey.prefix) &&
+        Objects.equals(this.revokeTime, iamKey.revokeTime) &&
+        Objects.equals(this.revoker, iamKey.revoker) &&
         Objects.equals(this.scope, iamKey.scope) &&
         Objects.equals(this.state, iamKey.state) &&
         Objects.equals(this.type, iamKey.type) &&
         Objects.equals(this.updatedAt, iamKey.updatedAt) &&
         Objects.equals(this.updatedTime, iamKey.updatedTime) &&
+        Objects.equals(this.usedTime, iamKey.usedTime) &&
         Objects.equals(this.user, iamKey.user)&&
         Objects.equals(this.additionalProperties, iamKey.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, accessSecretDigest, act, application, createdAt, createdTime, deleted, displayName, expireTime, id, name, organization, owner, scope, state, type, updatedAt, updatedTime, user, additionalProperties);
+    return Objects.hash(accessKey, accessSecret, accessSecretDigest, act, application, createdAt, createdTime, deleted, displayName, expireTime, id, name, organization, owner, prefix, revokeTime, revoker, scope, state, type, updatedAt, updatedTime, usedTime, user, additionalProperties);
   }
 
   @Override
@@ -634,11 +734,15 @@ public class IamKey {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
+    sb.append("    revokeTime: ").append(toIndentedString(revokeTime)).append("\n");
+    sb.append("    revoker: ").append(toIndentedString(revoker)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
+    sb.append("    usedTime: ").append(toIndentedString(usedTime)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -662,7 +766,7 @@ public class IamKey {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretDigest", "act", "application", "createdAt", "createdTime", "deleted", "displayName", "expireTime", "id", "name", "organization", "owner", "scope", "state", "type", "updatedAt", "updatedTime", "user"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretDigest", "act", "application", "createdAt", "createdTime", "deleted", "displayName", "expireTime", "id", "name", "organization", "owner", "prefix", "revokeTime", "revoker", "scope", "state", "type", "updatedAt", "updatedTime", "usedTime", "user"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -714,6 +818,15 @@ public class IamKey {
       if ((jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) && !jsonObj.get("owner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
       }
+      if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));
+      }
+      if ((jsonObj.get("revokeTime") != null && !jsonObj.get("revokeTime").isJsonNull()) && !jsonObj.get("revokeTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `revokeTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revokeTime").toString()));
+      }
+      if ((jsonObj.get("revoker") != null && !jsonObj.get("revoker").isJsonNull()) && !jsonObj.get("revoker").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `revoker` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revoker").toString()));
+      }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
@@ -725,6 +838,9 @@ public class IamKey {
       }
       if ((jsonObj.get("updatedTime") != null && !jsonObj.get("updatedTime").isJsonNull()) && !jsonObj.get("updatedTime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updatedTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedTime").toString()));
+      }
+      if ((jsonObj.get("usedTime") != null && !jsonObj.get("usedTime").isJsonNull()) && !jsonObj.get("usedTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `usedTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("usedTime").toString()));
       }
       if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user").toString()));

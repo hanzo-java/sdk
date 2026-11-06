@@ -50,11 +50,6 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class PricingUserEnablementItem {
-  public static final String SERIALIZED_NAME_CAN_OPT_IN = "canOptIn";
-  @SerializedName(SERIALIZED_NAME_CAN_OPT_IN)
-  @javax.annotation.Nullable
-  private Boolean canOptIn;
-
   public static final String SERIALIZED_NAME_EFFECTIVE = "effective";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE)
   @javax.annotation.Nullable
@@ -70,11 +65,6 @@ public class PricingUserEnablementItem {
   @javax.annotation.Nullable
   private String kind;
 
-  public static final String SERIALIZED_NAME_OPTED_IN = "optedIn";
-  @SerializedName(SERIALIZED_NAME_OPTED_IN)
-  @javax.annotation.Nullable
-  private Boolean optedIn;
-
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   @javax.annotation.Nullable
@@ -83,32 +73,13 @@ public class PricingUserEnablementItem {
   public PricingUserEnablementItem() {
   }
 
-  public PricingUserEnablementItem canOptIn(@javax.annotation.Nullable Boolean canOptIn) {
-    this.canOptIn = canOptIn;
-    return this;
-  }
-
-  /**
-   * CanOptIn is whether POST /v1/pricing/enablement/optin would do anything here: the item is in beta and this org is not on its list yet. False for a caller with no validated org, who has no org to enrol.
-   * @return canOptIn
-   */
-  @javax.annotation.Nullable
-  public Boolean getCanOptIn() {
-    return canOptIn;
-  }
-
-  public void setCanOptIn(@javax.annotation.Nullable Boolean canOptIn) {
-    this.canOptIn = canOptIn;
-  }
-
-
   public PricingUserEnablementItem effective(@javax.annotation.Nullable Boolean effective) {
     this.effective = effective;
     return this;
   }
 
   /**
-   * Effective is whether the caller&#39;s org may use the item right now, which is the field to branch on: true for any ga item, for a beta this org holds, and never for an off one.
+   * Effective is whether the caller may use the item right now, which is the field to branch on: true for any ga item, for a beta item while the platform&#39;s &#x60;beta&#x60; switch is on for the caller, and never for an off one.
    * @return effective
    */
   @javax.annotation.Nullable
@@ -156,25 +127,6 @@ public class PricingUserEnablementItem {
 
   public void setKind(@javax.annotation.Nullable String kind) {
     this.kind = kind;
-  }
-
-
-  public PricingUserEnablementItem optedIn(@javax.annotation.Nullable Boolean optedIn) {
-    this.optedIn = optedIn;
-    return this;
-  }
-
-  /**
-   * OptedIn is whether the caller&#39;s org is on this item&#39;s beta grant list. It can be true on an \&quot;off\&quot; item — the list survives the kill switch and is simply ignored while it is thrown — so it does not imply Effective.
-   * @return optedIn
-   */
-  @javax.annotation.Nullable
-  public Boolean getOptedIn() {
-    return optedIn;
-  }
-
-  public void setOptedIn(@javax.annotation.Nullable Boolean optedIn) {
-    this.optedIn = optedIn;
   }
 
 
@@ -251,29 +203,25 @@ public class PricingUserEnablementItem {
       return false;
     }
     PricingUserEnablementItem pricingUserEnablementItem = (PricingUserEnablementItem) o;
-    return Objects.equals(this.canOptIn, pricingUserEnablementItem.canOptIn) &&
-        Objects.equals(this.effective, pricingUserEnablementItem.effective) &&
+    return Objects.equals(this.effective, pricingUserEnablementItem.effective) &&
         Objects.equals(this.id, pricingUserEnablementItem.id) &&
         Objects.equals(this.kind, pricingUserEnablementItem.kind) &&
-        Objects.equals(this.optedIn, pricingUserEnablementItem.optedIn) &&
         Objects.equals(this.state, pricingUserEnablementItem.state)&&
         Objects.equals(this.additionalProperties, pricingUserEnablementItem.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(canOptIn, effective, id, kind, optedIn, state, additionalProperties);
+    return Objects.hash(effective, id, kind, state, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PricingUserEnablementItem {\n");
-    sb.append("    canOptIn: ").append(toIndentedString(canOptIn)).append("\n");
     sb.append("    effective: ").append(toIndentedString(effective)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    optedIn: ").append(toIndentedString(optedIn)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -297,7 +245,7 @@ public class PricingUserEnablementItem {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("canOptIn", "effective", "id", "kind", "optedIn", "state"));
+    openapiFields = new HashSet<String>(Arrays.asList("effective", "id", "kind", "state"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

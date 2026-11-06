@@ -25504,10 +25504,10 @@ public class O11yApi {
      * Build call for getRuleHistoryFilterValues
      * @param id  (required)
      * @param name Name is the label key whose values to list. Required. (required)
-     * @param startUnixMilli  (optional)
-     * @param endUnixMilli  (optional)
-     * @param searchText  (optional)
-     * @param limit  (optional)
+     * @param startUnixMilli StartUnixMilli is the window start, unix milliseconds. (optional)
+     * @param endUnixMilli EndUnixMilli is the window end, unix milliseconds. (optional)
+     * @param searchText SearchText narrows the keys to those containing it. (optional)
+     * @param limit Limit caps how many keys come back. Absent means 50, capped at 200. (optional)
      * @param existingQuery ExistingQuery is a filter expression scoping which values appear. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -25612,10 +25612,10 @@ public class O11yApi {
      * Returns the distinct values a given label key has taken across a rule&#39;s history entries. Viewer gate.
      * @param id  (required)
      * @param name Name is the label key whose values to list. Required. (required)
-     * @param startUnixMilli  (optional)
-     * @param endUnixMilli  (optional)
-     * @param searchText  (optional)
-     * @param limit  (optional)
+     * @param startUnixMilli StartUnixMilli is the window start, unix milliseconds. (optional)
+     * @param endUnixMilli EndUnixMilli is the window end, unix milliseconds. (optional)
+     * @param searchText SearchText narrows the keys to those containing it. (optional)
+     * @param limit Limit caps how many keys come back. Absent means 50, capped at 200. (optional)
      * @param existingQuery ExistingQuery is a filter expression scoping which values appear. (optional)
      * @return O11yO11yRuleHistoryFilterValuesOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -25638,10 +25638,10 @@ public class O11yApi {
      * Returns the distinct values a given label key has taken across a rule&#39;s history entries. Viewer gate.
      * @param id  (required)
      * @param name Name is the label key whose values to list. Required. (required)
-     * @param startUnixMilli  (optional)
-     * @param endUnixMilli  (optional)
-     * @param searchText  (optional)
-     * @param limit  (optional)
+     * @param startUnixMilli StartUnixMilli is the window start, unix milliseconds. (optional)
+     * @param endUnixMilli EndUnixMilli is the window end, unix milliseconds. (optional)
+     * @param searchText SearchText narrows the keys to those containing it. (optional)
+     * @param limit Limit caps how many keys come back. Absent means 50, capped at 200. (optional)
      * @param existingQuery ExistingQuery is a filter expression scoping which values appear. (optional)
      * @return ApiResponse&lt;O11yO11yRuleHistoryFilterValuesOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -25665,10 +25665,10 @@ public class O11yApi {
      * Returns the distinct values a given label key has taken across a rule&#39;s history entries. Viewer gate.
      * @param id  (required)
      * @param name Name is the label key whose values to list. Required. (required)
-     * @param startUnixMilli  (optional)
-     * @param endUnixMilli  (optional)
-     * @param searchText  (optional)
-     * @param limit  (optional)
+     * @param startUnixMilli StartUnixMilli is the window start, unix milliseconds. (optional)
+     * @param endUnixMilli EndUnixMilli is the window end, unix milliseconds. (optional)
+     * @param searchText SearchText narrows the keys to those containing it. (optional)
+     * @param limit Limit caps how many keys come back. Absent means 50, capped at 200. (optional)
      * @param existingQuery ExistingQuery is a filter expression scoping which values appear. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

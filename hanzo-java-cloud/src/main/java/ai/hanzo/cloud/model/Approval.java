@@ -74,7 +74,7 @@ public class Approval {
   }
 
   /**
-   * Get clause
+   * Clause names the clause of the rule that asked for sign-off.
    * @return clause
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class Approval {
   }
 
   /**
-   * Get reason
+   * Reason is what a person reads before answering.
    * @return reason
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class Approval {
   }
 
   /**
-   * Get status
+   * Status is always held: the op stopped for sign-off and did not run.
    * @return status
    */
   @javax.annotation.Nullable

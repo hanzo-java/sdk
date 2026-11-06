@@ -407,7 +407,7 @@ public class IamPermission {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable

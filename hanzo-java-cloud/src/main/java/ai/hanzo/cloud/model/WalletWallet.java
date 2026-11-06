@@ -119,7 +119,7 @@ public class WalletWallet {
   }
 
   /**
-   * Get accountId
+   * AccountID names the WalletAccount grouping. Required when creating a wallet and it must be an account of the caller&#39;s own org; empty in a lookup means no narrowing by account.
    * @return accountId
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class WalletWallet {
   }
 
   /**
-   * Get agent
+   * Agent narrows within the org to one agent. Empty means the dimension is unused — the wallet belongs to the org (or project) at large.
    * @return agent
    */
   @javax.annotation.Nullable
@@ -290,7 +290,7 @@ public class WalletWallet {
   }
 
   /**
-   * Get org
+   * Org is the tenant. It is the hard isolation boundary, always present and never crossed, stamped from the validated principal rather than read from a request. It is also the first segment of the key ref, which is what stops another tenant from addressing this material.
    * @return org
    */
   @javax.annotation.Nullable
@@ -309,7 +309,7 @@ public class WalletWallet {
   }
 
   /**
-   * Get project
+   * Project narrows within the org to one project. On a wallet it is the caller&#39;s ambient X-Project-Id at creation and never a body field, so key material cannot be addressed under a scope no minter validated; the DEFAULT project collapses to empty, which is what keeps an org&#39;s default-scope wallet on the un-suffixed ref. Empty means the dimension is unused.
    * @return project
    */
   @javax.annotation.Nullable

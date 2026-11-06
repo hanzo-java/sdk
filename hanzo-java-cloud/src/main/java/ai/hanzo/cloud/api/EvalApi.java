@@ -484,7 +484,7 @@ public class EvalApi {
     /**
      * Build call for getEvalDatasetsByNameItems
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -561,7 +561,7 @@ public class EvalApi {
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 401 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return EvalItemList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -581,7 +581,7 @@ public class EvalApi {
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 401 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return ApiResponse&lt;EvalItemList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -602,7 +602,7 @@ public class EvalApi {
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one. (asynchronously)
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 401 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1022,7 +1022,7 @@ public class EvalApi {
     /**
      * Build call for getEvalRuns
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1097,7 +1097,7 @@ public class EvalApi {
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 401 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return EvalRuns
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1117,7 +1117,7 @@ public class EvalApi {
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 401 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return ApiResponse&lt;EvalRuns&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1138,7 +1138,7 @@ public class EvalApi {
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened. (asynchronously)
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 401 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1162,7 +1162,7 @@ public class EvalApi {
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1247,7 +1247,7 @@ public class EvalApi {
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return EvalScoreList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1269,7 +1269,7 @@ public class EvalApi {
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return ApiResponse&lt;EvalScoreList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1292,7 +1292,7 @@ public class EvalApi {
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1316,7 +1316,7 @@ public class EvalApi {
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1401,7 +1401,7 @@ public class EvalApi {
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return EvalTraceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1423,7 +1423,7 @@ public class EvalApi {
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @return ApiResponse&lt;EvalTraceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1446,7 +1446,7 @@ public class EvalApi {
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
-     * @param limit  (optional)
+     * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

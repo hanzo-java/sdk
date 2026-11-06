@@ -120,7 +120,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get ackPolicy
+   * Ack is the acknowledgment policy: explicit (default), all, or none.
    * @return ackPolicy
    */
   @javax.annotation.Nullable
@@ -139,7 +139,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get ackWait
+   * AckWait is how long the broker waits for an ack before redelivering, e.g. \&quot;30s\&quot; (default).
    * @return ackWait
    */
   @javax.annotation.Nullable
@@ -158,7 +158,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get deliverPolicy
+   * Deliver is where delivery starts: all (default), last, new, by_start_sequence, by_start_time, or last_per_subject.
    * @return deliverPolicy
    */
   @javax.annotation.Nullable
@@ -177,7 +177,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get description
+   * Description says what this consumer is for.
    * @return description
    */
   @javax.annotation.Nullable
@@ -196,7 +196,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get durableName
+   * Name is the durable consumer name (alphanumeric, hyphens, underscores).
    * @return durableName
    */
   @javax.annotation.Nullable
@@ -215,7 +215,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get filterSubject
+   * Filter delivers only messages on this org-relative subject (wildcards supported).
    * @return filterSubject
    */
   @javax.annotation.Nullable
@@ -234,7 +234,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get maxAckPending
+   * MaxAckPending caps unacknowledged messages in flight (default 1000).
    * @return maxAckPending
    */
   @javax.annotation.Nullable
@@ -253,7 +253,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get maxDeliver
+   * MaxDeliver caps delivery attempts per message; -1 (default) is unlimited.
    * @return maxDeliver
    */
   @javax.annotation.Nullable
@@ -272,7 +272,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get optStartSeq
+   * StartSeq is the starting sequence for deliver_policy by_start_sequence.
    * @return optStartSeq
    */
   @javax.annotation.Nullable
@@ -291,7 +291,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get optStartTime
+   * StartTime is the starting instant for deliver_policy by_start_time.
    * @return optStartTime
    */
   @javax.annotation.Nullable
@@ -310,7 +310,7 @@ public class MqMakeIn {
   }
 
   /**
-   * Get replayPolicy
+   * Replay is the replay pacing: instant (default) or original.
    * @return replayPolicy
    */
   @javax.annotation.Nullable

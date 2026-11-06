@@ -421,7 +421,7 @@ public class IamUpdateOrganizationInput {
   }
 
   /**
-   * Get avatar
+   * How the organization appears across Hanzo — the square mark beside its name — as an image or as one emoji, never both. It is the pair a person carries (User.Avatar) under the same names, resolved the same way, so a screen draws a subject without asking which kind of subject it has. Both halves live on the row: a mark that appears everywhere cannot be kept on one device. Written through schema.MarkOf; Logo and LogoDark above are a different thing, the wordmark a login screen draws.
    * @return avatar
    */
   @javax.annotation.Nullable
@@ -752,7 +752,7 @@ public class IamUpdateOrganizationInput {
   }
 
   /**
-   * Get failedSigninLimit
+   * Per-organization signin throttle. Zero means \&quot;inherit the application default\&quot;; a non-zero value overrides it. Safe bounds are clamped by the resource service before persistence.
    * @return failedSigninLimit
    */
   @javax.annotation.Nullable
@@ -790,7 +790,7 @@ public class IamUpdateOrganizationInput {
   }
 
   /**
-   * Get founder
+   * Founder is the stable storage id of the identity that provisioned this org (self-service onboarding). It is the resume token that makes provisioning converge on a backend where each write autocommits independently (no transaction rollback): after a partial failure that created the org but did not move the founder in, a retry recognises the org as the founder&#39;s own and completes it, instead of refusing it as \&quot;already taken\&quot;. It also fences the org to ONE tenant — a different identity can never complete or join it.
    * @return founder
    */
   @javax.annotation.Nullable
@@ -828,7 +828,7 @@ public class IamUpdateOrganizationInput {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable
@@ -1240,7 +1240,7 @@ public class IamUpdateOrganizationInput {
   }
 
   /**
-   * Get orgBalance
+   * Balance fields are read-only mirrors; authoritative balances live in Commerce (billing.hanzo.ai). Carried for field-complete v1 parity.
    * @return orgBalance
    */
   @javax.annotation.Nullable
@@ -1400,7 +1400,7 @@ public class IamUpdateOrganizationInput {
   }
 
   /**
-   * Get platform
+   * Platform marks an organization the platform itself declares (init_data.json): the brand orgs and the others the seed creates, never one a customer made. The seed stamps it on every declared organization at boot, and no request sets or clears it. Only a SuperAdmin may delete an organization that carries it.
    * @return platform
    */
   @javax.annotation.Nullable

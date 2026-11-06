@@ -452,7 +452,7 @@ public class O11yOAuth2 {
   }
 
   /**
-   * Get noProxy
+   * NoProxy contains addresses that should not use a proxy.
    * @return noProxy
    */
   @javax.annotation.Nullable
@@ -479,7 +479,7 @@ public class O11yOAuth2 {
   }
 
   /**
-   * Get proxyConnectHeader
+   * ProxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests. Assume that at least _some_ of these headers are going to contain secrets and use Secret as the value type instead of string.
    * @return proxyConnectHeader
    */
   @javax.annotation.Nullable
@@ -498,7 +498,7 @@ public class O11yOAuth2 {
   }
 
   /**
-   * Get proxyFromEnvironment
+   * ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function to determine proxies.
    * @return proxyFromEnvironment
    */
   @javax.annotation.Nullable

@@ -134,7 +134,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the dashboard was created.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -153,7 +153,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get createdBy
+   * CreatedBy is who created it.
    * @return createdBy
    */
   @javax.annotation.Nullable
@@ -172,7 +172,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get id
+   * ID is the dashboard&#39;s id.
    * @return id
    */
   @javax.annotation.Nullable
@@ -191,7 +191,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get image
+   * Image is an optional cover image reference.
    * @return image
    */
   @javax.annotation.Nullable
@@ -210,7 +210,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get locked
+   * Locked reports whether the dashboard is locked against edits.
    * @return locked
    */
   @javax.annotation.Nullable
@@ -229,7 +229,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get name
+   * Name is the dashboard&#39;s unique internal name.
    * @return name
    */
   @javax.annotation.Nullable
@@ -248,7 +248,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get orgId
+   * OrgID is the org the dashboard belongs to.
    * @return orgId
    */
   @javax.annotation.Nullable
@@ -286,7 +286,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get schemaVersion
+   * SchemaVersion is the dashboard schema version.
    * @return schemaVersion
    */
   @javax.annotation.Nullable
@@ -305,7 +305,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get source
+   * Source is where the dashboard came from: user, system or integration.
    * @return source
    */
   @javax.annotation.Nullable
@@ -324,7 +324,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get spec
+   * Spec is the display-only slice of the dashboard spec.
    * @return spec
    */
   @javax.annotation.Nullable
@@ -351,7 +351,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get tags
+   * Tags are the dashboard&#39;s tags.
    * @return tags
    */
   @javax.annotation.Nullable
@@ -370,7 +370,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is when it last changed.
    * @return updatedAt
    */
   @javax.annotation.Nullable
@@ -389,7 +389,7 @@ public class O11yO11yDashboardListItemForUser {
   }
 
   /**
-   * Get updatedBy
+   * UpdatedBy is who last changed it.
    * @return updatedBy
    */
   @javax.annotation.Nullable

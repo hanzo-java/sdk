@@ -55,10 +55,30 @@ public class TranslateMemoryEntry {
   @javax.annotation.Nullable
   private String actor;
 
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  @javax.annotation.Nullable
+  private String format;
+
   public static final String SERIALIZED_NAME_GLOSSARY_VERSION = "glossary_version";
   @SerializedName(SERIALIZED_NAME_GLOSSARY_VERSION)
   @javax.annotation.Nullable
   private String glossaryVersion;
+
+  public static final String SERIALIZED_NAME_LANG = "lang";
+  @SerializedName(SERIALIZED_NAME_LANG)
+  @javax.annotation.Nullable
+  private String lang;
+
+  public static final String SERIALIZED_NAME_MODEL = "model";
+  @SerializedName(SERIALIZED_NAME_MODEL)
+  @javax.annotation.Nullable
+  private String model;
+
+  public static final String SERIALIZED_NAME_REQUEST_ID = "request_id";
+  @SerializedName(SERIALIZED_NAME_REQUEST_ID)
+  @javax.annotation.Nullable
+  private String requestId;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -112,6 +132,25 @@ public class TranslateMemoryEntry {
   }
 
 
+  public TranslateMemoryEntry format(@javax.annotation.Nullable String format) {
+    this.format = format;
+    return this;
+  }
+
+  /**
+   * Format is the markup the source carried: text, html or markdown. Part of the identity.
+   * @return format
+   */
+  @javax.annotation.Nullable
+  public String getFormat() {
+    return format;
+  }
+
+  public void setFormat(@javax.annotation.Nullable String format) {
+    this.format = format;
+  }
+
+
   public TranslateMemoryEntry glossaryVersion(@javax.annotation.Nullable String glossaryVersion) {
     this.glossaryVersion = glossaryVersion;
     return this;
@@ -128,6 +167,63 @@ public class TranslateMemoryEntry {
 
   public void setGlossaryVersion(@javax.annotation.Nullable String glossaryVersion) {
     this.glossaryVersion = glossaryVersion;
+  }
+
+
+  public TranslateMemoryEntry lang(@javax.annotation.Nullable String lang) {
+    this.lang = lang;
+    return this;
+  }
+
+  /**
+   * Lang is the source language the translate call declared, empty when the engine detected it. Part of the identity; an entry with none also serves a call that declares one.
+   * @return lang
+   */
+  @javax.annotation.Nullable
+  public String getLang() {
+    return lang;
+  }
+
+  public void setLang(@javax.annotation.Nullable String lang) {
+    this.lang = lang;
+  }
+
+
+  public TranslateMemoryEntry model(@javax.annotation.Nullable String model) {
+    this.model = model;
+    return this;
+  }
+
+  /**
+   * Model is the quality-tier model the translate call named, empty for the default. Part of the identity: one model&#39;s rendering never answers for another&#39;s.
+   * @return model
+   */
+  @javax.annotation.Nullable
+  public String getModel() {
+    return model;
+  }
+
+  public void setModel(@javax.annotation.Nullable String model) {
+    this.model = model;
+  }
+
+
+  public TranslateMemoryEntry requestId(@javax.annotation.Nullable String requestId) {
+    this.requestId = requestId;
+    return this;
+  }
+
+  /**
+   * RequestID is the X-Request-Id of the translate call whose engine produced the entry. Empty on an entry a human wrote, and on one older than the field.
+   * @return requestId
+   */
+  @javax.annotation.Nullable
+  public String getRequestId() {
+    return requestId;
+  }
+
+  public void setRequestId(@javax.annotation.Nullable String requestId) {
+    this.requestId = requestId;
   }
 
 
@@ -300,7 +396,11 @@ public class TranslateMemoryEntry {
     }
     TranslateMemoryEntry translateMemoryEntry = (TranslateMemoryEntry) o;
     return Objects.equals(this.actor, translateMemoryEntry.actor) &&
+        Objects.equals(this.format, translateMemoryEntry.format) &&
         Objects.equals(this.glossaryVersion, translateMemoryEntry.glossaryVersion) &&
+        Objects.equals(this.lang, translateMemoryEntry.lang) &&
+        Objects.equals(this.model, translateMemoryEntry.model) &&
+        Objects.equals(this.requestId, translateMemoryEntry.requestId) &&
         Objects.equals(this.source, translateMemoryEntry.source) &&
         Objects.equals(this.state, translateMemoryEntry.state) &&
         Objects.equals(this.target, translateMemoryEntry.target) &&
@@ -312,7 +412,7 @@ public class TranslateMemoryEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actor, glossaryVersion, source, state, target, text, tier, updatedAt, additionalProperties);
+    return Objects.hash(actor, format, glossaryVersion, lang, model, requestId, source, state, target, text, tier, updatedAt, additionalProperties);
   }
 
   @Override
@@ -320,7 +420,11 @@ public class TranslateMemoryEntry {
     StringBuilder sb = new StringBuilder();
     sb.append("class TranslateMemoryEntry {\n");
     sb.append("    actor: ").append(toIndentedString(actor)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    glossaryVersion: ").append(toIndentedString(glossaryVersion)).append("\n");
+    sb.append("    lang: ").append(toIndentedString(lang)).append("\n");
+    sb.append("    model: ").append(toIndentedString(model)).append("\n");
+    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
@@ -349,7 +453,7 @@ public class TranslateMemoryEntry {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("actor", "glossary_version", "source", "state", "target", "text", "tier", "updated_at"));
+    openapiFields = new HashSet<String>(Arrays.asList("actor", "format", "glossary_version", "lang", "model", "request_id", "source", "state", "target", "text", "tier", "updated_at"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -371,8 +475,20 @@ public class TranslateMemoryEntry {
       if ((jsonObj.get("actor") != null && !jsonObj.get("actor").isJsonNull()) && !jsonObj.get("actor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `actor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actor").toString()));
       }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
       if ((jsonObj.get("glossary_version") != null && !jsonObj.get("glossary_version").isJsonNull()) && !jsonObj.get("glossary_version").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `glossary_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("glossary_version").toString()));
+      }
+      if ((jsonObj.get("lang") != null && !jsonObj.get("lang").isJsonNull()) && !jsonObj.get("lang").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lang` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lang").toString()));
+      }
+      if ((jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull()) && !jsonObj.get("model").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("model").toString()));
+      }
+      if ((jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));

@@ -64,6 +64,11 @@ public class EventOverview {
   @javax.annotation.Nullable
   private String end;
 
+  public static final String SERIALIZED_NAME_IMPERSONATED = "impersonated";
+  @SerializedName(SERIALIZED_NAME_IMPERSONATED)
+  @javax.annotation.Nullable
+  private String impersonated;
+
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)
   @javax.annotation.Nullable
@@ -132,6 +137,25 @@ public class EventOverview {
 
   public void setEnd(@javax.annotation.Nullable String end) {
     this.end = end;
+  }
+
+
+  public EventOverview impersonated(@javax.annotation.Nullable String impersonated) {
+    this.impersonated = impersonated;
+    return this;
+  }
+
+  /**
+   * Impersonated is which events web and commerce counted against the mark a platform operator leaves acting as someone else: exclude (the tenant&#39;s own traffic), include, or only. LLM reads the usage ledger, which carries no mark.
+   * @return impersonated
+   */
+  @javax.annotation.Nullable
+  public String getImpersonated() {
+    return impersonated;
+  }
+
+  public void setImpersonated(@javax.annotation.Nullable String impersonated) {
+    this.impersonated = impersonated;
   }
 
 
@@ -305,6 +329,7 @@ public class EventOverview {
     EventOverview eventOverview = (EventOverview) o;
     return Objects.equals(this.commerce, eventOverview.commerce) &&
         Objects.equals(this.end, eventOverview.end) &&
+        Objects.equals(this.impersonated, eventOverview.impersonated) &&
         Objects.equals(this.interval, eventOverview.interval) &&
         Objects.equals(this.llm, eventOverview.llm) &&
         Objects.equals(this.range, eventOverview.range) &&
@@ -316,7 +341,7 @@ public class EventOverview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(commerce, end, interval, llm, range, scope, start, web, additionalProperties);
+    return Objects.hash(commerce, end, impersonated, interval, llm, range, scope, start, web, additionalProperties);
   }
 
   @Override
@@ -325,6 +350,7 @@ public class EventOverview {
     sb.append("class EventOverview {\n");
     sb.append("    commerce: ").append(toIndentedString(commerce)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    impersonated: ").append(toIndentedString(impersonated)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    llm: ").append(toIndentedString(llm)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
@@ -353,7 +379,7 @@ public class EventOverview {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("commerce", "end", "interval", "llm", "range", "scope", "start", "web"));
+    openapiFields = new HashSet<String>(Arrays.asList("commerce", "end", "impersonated", "interval", "llm", "range", "scope", "start", "web"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -378,6 +404,9 @@ public class EventOverview {
       }
       if ((jsonObj.get("end") != null && !jsonObj.get("end").isJsonNull()) && !jsonObj.get("end").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `end` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end").toString()));
+      }
+      if ((jsonObj.get("impersonated") != null && !jsonObj.get("impersonated").isJsonNull()) && !jsonObj.get("impersonated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `impersonated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("impersonated").toString()));
       }
       if ((jsonObj.get("interval") != null && !jsonObj.get("interval").isJsonNull()) && !jsonObj.get("interval").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `interval` to be a primitive type in the JSON string but got `%s`", jsonObj.get("interval").toString()));

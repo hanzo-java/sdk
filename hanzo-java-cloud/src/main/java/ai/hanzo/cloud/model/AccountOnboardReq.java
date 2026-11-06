@@ -88,7 +88,7 @@ public class AccountOnboardReq {
   }
 
   /**
-   * Personal asks for the caller&#39;s own space: the name is derived from their username and the slug auto-suffixes to stay unique. Meaningless — and refused — for a caller who already has an organization.
+   * Personal marks the organization as the caller&#39;s own space: the name is derived from their username and the slug auto-suffixes to stay unique.
    * @return personal
    */
   @javax.annotation.Nullable

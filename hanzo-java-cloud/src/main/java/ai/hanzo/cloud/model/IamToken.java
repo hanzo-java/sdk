@@ -61,6 +61,11 @@ public class IamToken {
   @javax.annotation.Nullable
   private String accessTokenHash;
 
+  public static final String SERIALIZED_NAME_ACTOR = "actor";
+  @SerializedName(SERIALIZED_NAME_ACTOR)
+  @javax.annotation.Nullable
+  private String actor;
+
   public static final String SERIALIZED_NAME_APPLICATION = "application";
   @SerializedName(SERIALIZED_NAME_APPLICATION)
   @javax.annotation.Nullable
@@ -140,6 +145,11 @@ public class IamToken {
   @SerializedName(SERIALIZED_NAME_PUBLIC_GRANT)
   @javax.annotation.Nullable
   private Boolean publicGrant;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  @javax.annotation.Nullable
+  private String reason;
 
   public static final String SERIALIZED_NAME_REDIRECT_URI = "redirectUri";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
@@ -239,6 +249,25 @@ public class IamToken {
 
   public void setAccessTokenHash(@javax.annotation.Nullable String accessTokenHash) {
     this.accessTokenHash = accessTokenHash;
+  }
+
+
+  public IamToken actor(@javax.annotation.Nullable String actor) {
+    this.actor = actor;
+    return this;
+  }
+
+  /**
+   * Actor is the SuperAdmin (\&quot;owner/name\&quot;) who opened this grant AS its User — impersonation, /v1/iam/impersonate — and Reason is why they said they did. Both empty on every grant a person established themselves. A grant with an Actor mints a short access token that names the actor in &#x60;act&#x60; and carries &#x60;imp&#x60;, and never a refresh token (issueTokens), and /v1/iam/signin refuses its code, so it cannot become a session at the issuer.
+   * @return actor
+   */
+  @javax.annotation.Nullable
+  public String getActor() {
+    return actor;
+  }
+
+  public void setActor(@javax.annotation.Nullable String actor) {
+    this.actor = actor;
   }
 
 
@@ -438,7 +467,7 @@ public class IamToken {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable
@@ -543,6 +572,25 @@ public class IamToken {
 
   public void setPublicGrant(@javax.annotation.Nullable Boolean publicGrant) {
     this.publicGrant = publicGrant;
+  }
+
+
+  public IamToken reason(@javax.annotation.Nullable String reason) {
+    this.reason = reason;
+    return this;
+  }
+
+  /**
+   * Get reason
+   * @return reason
+   */
+  @javax.annotation.Nullable
+  public String getReason() {
+    return reason;
+  }
+
+  public void setReason(@javax.annotation.Nullable String reason) {
+    this.reason = reason;
   }
 
 
@@ -830,6 +878,7 @@ public class IamToken {
     IamToken iamToken = (IamToken) o;
     return Objects.equals(this.accessToken, iamToken.accessToken) &&
         Objects.equals(this.accessTokenHash, iamToken.accessTokenHash) &&
+        Objects.equals(this.actor, iamToken.actor) &&
         Objects.equals(this.application, iamToken.application) &&
         Objects.equals(this.code, iamToken.code) &&
         Objects.equals(this.codeChallenge, iamToken.codeChallenge) &&
@@ -846,6 +895,7 @@ public class IamToken {
         Objects.equals(this.organization, iamToken.organization) &&
         Objects.equals(this.owner, iamToken.owner) &&
         Objects.equals(this.publicGrant, iamToken.publicGrant) &&
+        Objects.equals(this.reason, iamToken.reason) &&
         Objects.equals(this.redirectUri, iamToken.redirectUri) &&
         Objects.equals(this.refreshConsumed, iamToken.refreshConsumed) &&
         Objects.equals(this.refreshExpireIn, iamToken.refreshExpireIn) &&
@@ -863,7 +913,7 @@ public class IamToken {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken, accessTokenHash, application, code, codeChallenge, codeChallengeMethod, codeExpireIn, codeIsUsed, createdAt, createdTime, deleted, expiresIn, id, name, nonce, organization, owner, publicGrant, redirectUri, refreshConsumed, refreshExpireIn, refreshFamily, refreshToken, refreshTokenHash, resource, scope, tokenType, updatedAt, user, userCode, additionalProperties);
+    return Objects.hash(accessToken, accessTokenHash, actor, application, code, codeChallenge, codeChallengeMethod, codeExpireIn, codeIsUsed, createdAt, createdTime, deleted, expiresIn, id, name, nonce, organization, owner, publicGrant, reason, redirectUri, refreshConsumed, refreshExpireIn, refreshFamily, refreshToken, refreshTokenHash, resource, scope, tokenType, updatedAt, user, userCode, additionalProperties);
   }
 
   @Override
@@ -872,6 +922,7 @@ public class IamToken {
     sb.append("class IamToken {\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
     sb.append("    accessTokenHash: ").append(toIndentedString(accessTokenHash)).append("\n");
+    sb.append("    actor: ").append(toIndentedString(actor)).append("\n");
     sb.append("    application: ").append(toIndentedString(application)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeChallenge: ").append(toIndentedString(codeChallenge)).append("\n");
@@ -888,6 +939,7 @@ public class IamToken {
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    publicGrant: ").append(toIndentedString(publicGrant)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("    refreshConsumed: ").append(toIndentedString(refreshConsumed)).append("\n");
     sb.append("    refreshExpireIn: ").append(toIndentedString(refreshExpireIn)).append("\n");
@@ -922,7 +974,7 @@ public class IamToken {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessToken", "accessTokenHash", "application", "code", "codeChallenge", "codeChallengeMethod", "codeExpireIn", "codeIsUsed", "createdAt", "createdTime", "deleted", "expiresIn", "id", "name", "nonce", "organization", "owner", "publicGrant", "redirectUri", "refreshConsumed", "refreshExpireIn", "refreshFamily", "refreshToken", "refreshTokenHash", "resource", "scope", "tokenType", "updatedAt", "user", "userCode"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessToken", "accessTokenHash", "actor", "application", "code", "codeChallenge", "codeChallengeMethod", "codeExpireIn", "codeIsUsed", "createdAt", "createdTime", "deleted", "expiresIn", "id", "name", "nonce", "organization", "owner", "publicGrant", "reason", "redirectUri", "refreshConsumed", "refreshExpireIn", "refreshFamily", "refreshToken", "refreshTokenHash", "resource", "scope", "tokenType", "updatedAt", "user", "userCode"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -946,6 +998,9 @@ public class IamToken {
       }
       if ((jsonObj.get("accessTokenHash") != null && !jsonObj.get("accessTokenHash").isJsonNull()) && !jsonObj.get("accessTokenHash").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accessTokenHash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accessTokenHash").toString()));
+      }
+      if ((jsonObj.get("actor") != null && !jsonObj.get("actor").isJsonNull()) && !jsonObj.get("actor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `actor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("actor").toString()));
       }
       if ((jsonObj.get("application") != null && !jsonObj.get("application").isJsonNull()) && !jsonObj.get("application").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `application` to be a primitive type in the JSON string but got `%s`", jsonObj.get("application").toString()));
@@ -976,6 +1031,9 @@ public class IamToken {
       }
       if ((jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) && !jsonObj.get("owner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
+      }
+      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
       }
       if ((jsonObj.get("redirectUri") != null && !jsonObj.get("redirectUri").isJsonNull()) && !jsonObj.get("redirectUri").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectUri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUri").toString()));

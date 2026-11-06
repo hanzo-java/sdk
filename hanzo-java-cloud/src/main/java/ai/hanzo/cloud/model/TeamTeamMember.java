@@ -156,7 +156,7 @@ public class TeamTeamMember {
   }
 
   /**
-   * ID is the account uuid — the value every message&#39;s author, every room&#39;s members list and every &#x60;&lt;@id&gt;&#x60; mention token names.
+   * ID is the account uuid — the value every message&#39;s author, every channel&#39;s members list and every &#x60;&lt;@id&gt;&#x60; mention token names.
    * @return id
    */
   @javax.annotation.Nullable

@@ -149,8 +149,8 @@ public class X402Api {
     }
 
     /**
-     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when.
-     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the org whose ledger is debited, which for a SuperAdmin inspecting another org is still its own; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its wallet paid; as payee, what its org was paid — each settled payment with what it bought, both parties, the exact amount and when.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its wallet paid; as payee, what its org was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the caller&#39;s own account, which for a SuperAdmin inspecting another org is still its own and for a member of the signup org is their own wallet, never the org&#39;s; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
      * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
      * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
      * @return X402SettlementList
@@ -169,8 +169,8 @@ public class X402Api {
     }
 
     /**
-     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when.
-     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the org whose ledger is debited, which for a SuperAdmin inspecting another org is still its own; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its wallet paid; as payee, what its org was paid — each settled payment with what it bought, both parties, the exact amount and when.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its wallet paid; as payee, what its org was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the caller&#39;s own account, which for a SuperAdmin inspecting another org is still its own and for a member of the signup org is their own wallet, never the org&#39;s; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
      * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
      * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
      * @return ApiResponse&lt;X402SettlementList&gt;
@@ -190,8 +190,8 @@ public class X402Api {
     }
 
     /**
-     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. (asynchronously)
-     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the org whose ledger is debited, which for a SuperAdmin inspecting another org is still its own; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its wallet paid; as payee, what its org was paid — each settled payment with what it bought, both parties, the exact amount and when. (asynchronously)
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its wallet paid; as payee, what its org was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the caller&#39;s own account, which for a SuperAdmin inspecting another org is still its own and for a member of the signup org is their own wallet, never the org&#39;s; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
      * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
      * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -285,7 +285,7 @@ public class X402Api {
 
     /**
      * Reads one x402 payment receipt by id.
-     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
+     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s own account — the wallet that was drawn, in the books that hold it — so one tenant can never read another&#39;s settlement, nor one member of the signup org another&#39;s, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
      * @return X402Receipt
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -304,7 +304,7 @@ public class X402Api {
 
     /**
      * Reads one x402 payment receipt by id.
-     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
+     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s own account — the wallet that was drawn, in the books that hold it — so one tenant can never read another&#39;s settlement, nor one member of the signup org another&#39;s, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
      * @return ApiResponse&lt;X402Receipt&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -324,7 +324,7 @@ public class X402Api {
 
     /**
      * Reads one x402 payment receipt by id. (asynchronously)
-     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
+     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s own account — the wallet that was drawn, in the books that hold it — so one tenant can never read another&#39;s settlement, nor one member of the signup org another&#39;s, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

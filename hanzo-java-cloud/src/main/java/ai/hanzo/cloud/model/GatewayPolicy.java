@@ -79,6 +79,11 @@ public class GatewayPolicy {
   @javax.annotation.Nullable
   private String mode;
 
+  public static final String SERIALIZED_NAME_ORG_CAP = "org_cap";
+  @SerializedName(SERIALIZED_NAME_ORG_CAP)
+  @javax.annotation.Nullable
+  private Long orgCap;
+
   public static final String SERIALIZED_NAME_ORG_RPM = "org_rpm";
   @SerializedName(SERIALIZED_NAME_ORG_RPM)
   @javax.annotation.Nullable
@@ -226,13 +231,32 @@ public class GatewayPolicy {
   }
 
 
+  public GatewayPolicy orgCap(@javax.annotation.Nullable Long orgCap) {
+    this.orgCap = orgCap;
+    return this;
+  }
+
+  /**
+   * OrgCap is the most this organization&#39;s ceiling may be, requests per minute. Unset, it is the platform&#39;s org_rpm, else 60,000. Only a SuperAdmin sets it: it is how the platform raises one organization above the default, and the organization a limit governs does not get to remove it. It does not inherit from the platform row. Read back, it is the cap in force.
+   * @return orgCap
+   */
+  @javax.annotation.Nullable
+  public Long getOrgCap() {
+    return orgCap;
+  }
+
+  public void setOrgCap(@javax.annotation.Nullable Long orgCap) {
+    this.orgCap = orgCap;
+  }
+
+
   public GatewayPolicy orgRpm(@javax.annotation.Nullable Long orgRpm) {
     this.orgRpm = orgRpm;
     return this;
   }
 
   /**
-   * OrgRPM is the org&#39;s OWN authenticated rate ceiling, requests per minute, as ScopeRateLimit enforces it. Unset inherits the platform default, then the static boot default.
+   * OrgRPM is the org&#39;s OWN authenticated rate ceiling, requests per minute, as ScopeRateLimit enforces it across the deployment. An organization may lower it but never raise it past its cap (org_cap); unset, the org is held to its cap. On the platform row it is every organization&#39;s default cap, and it does not inherit into any organization&#39;s own row. Read back, it is the ceiling in force: the org&#39;s own, clipped to its cap.
    * @return orgRpm
    */
   @javax.annotation.Nullable
@@ -251,7 +275,7 @@ public class GatewayPolicy {
   }
 
   /**
-   * PerIPRPM is the PLATFORM-scope pre-auth flood cap: requests EdgeRateLimit admits per WindowSec from one client IP. SuperAdmin-only, same reason.
+   * PerIPRPM is the PLATFORM-scope flood cap: requests admitted per WindowSec from one client IP that presents no credential, or a credential that resolves to nobody. A request presenting a credential is held to ten times this from its address until the credential is checked; a validated caller is then held by its key and org ceilings instead. SuperAdmin-only, same reason.
    * @return perIpRpm
    */
   @javax.annotation.Nullable
@@ -380,6 +404,7 @@ public class GatewayPolicy {
         Objects.equals(this.corsOrigins, gatewayPolicy.corsOrigins) &&
         Objects.equals(this.methods, gatewayPolicy.methods) &&
         Objects.equals(this.mode, gatewayPolicy.mode) &&
+        Objects.equals(this.orgCap, gatewayPolicy.orgCap) &&
         Objects.equals(this.orgRpm, gatewayPolicy.orgRpm) &&
         Objects.equals(this.perIpRpm, gatewayPolicy.perIpRpm) &&
         Objects.equals(this.updatedAt, gatewayPolicy.updatedAt) &&
@@ -390,7 +415,7 @@ public class GatewayPolicy {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cachePaths, cacheTtlSec, corsOrigins, methods, mode, orgRpm, perIpRpm, updatedAt, updatedBy, windowSec, additionalProperties);
+    return Objects.hash(cachePaths, cacheTtlSec, corsOrigins, methods, mode, orgCap, orgRpm, perIpRpm, updatedAt, updatedBy, windowSec, additionalProperties);
   }
 
   @Override
@@ -402,6 +427,7 @@ public class GatewayPolicy {
     sb.append("    corsOrigins: ").append(toIndentedString(corsOrigins)).append("\n");
     sb.append("    methods: ").append(toIndentedString(methods)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    orgCap: ").append(toIndentedString(orgCap)).append("\n");
     sb.append("    orgRpm: ").append(toIndentedString(orgRpm)).append("\n");
     sb.append("    perIpRpm: ").append(toIndentedString(perIpRpm)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -429,7 +455,7 @@ public class GatewayPolicy {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("cache_paths", "cache_ttl_sec", "cors_origins", "methods", "mode", "org_rpm", "per_ip_rpm", "updated_at", "updated_by", "window_sec"));
+    openapiFields = new HashSet<String>(Arrays.asList("cache_paths", "cache_ttl_sec", "cors_origins", "methods", "mode", "org_cap", "org_rpm", "per_ip_rpm", "updated_at", "updated_by", "window_sec"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

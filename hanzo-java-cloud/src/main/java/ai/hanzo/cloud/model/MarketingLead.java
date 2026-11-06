@@ -55,6 +55,16 @@ public class MarketingLead {
   @javax.annotation.Nullable
   private String lead;
 
+  public static final String SERIALIZED_NAME_OFFER = "offer";
+  @SerializedName(SERIALIZED_NAME_OFFER)
+  @javax.annotation.Nullable
+  private String offer;
+
+  public static final String SERIALIZED_NAME_SENT = "sent";
+  @SerializedName(SERIALIZED_NAME_SENT)
+  @javax.annotation.Nullable
+  private Boolean sent;
+
   public static final String SERIALIZED_NAME_STAGE = "stage";
   @SerializedName(SERIALIZED_NAME_STAGE)
   @javax.annotation.Nullable
@@ -69,7 +79,7 @@ public class MarketingLead {
   }
 
   /**
-   * Lead is the lead&#39;s reference, \&quot;lead_\&quot; and 24 hex characters. It is random, not the lead&#39;s internal name, so it says nothing about how many leads the team has.
+   * Lead is the reference of what was filed: \&quot;lead_\&quot; and 24 hex characters for a lead, \&quot;cand_\&quot; and 24 for a job application. It is random, not a record&#39;s id, so it says nothing about how many the team has.
    * @return lead
    */
   @javax.annotation.Nullable
@@ -79,6 +89,44 @@ public class MarketingLead {
 
   public void setLead(@javax.annotation.Nullable String lead) {
     this.lead = lead;
+  }
+
+
+  public MarketingLead offer(@javax.annotation.Nullable String offer) {
+    this.offer = offer;
+    return this;
+  }
+
+  /**
+   * Offer says what an application&#39;s code did: \&quot;mailed\&quot;, a new code went to the address; \&quot;held\&quot;, the address already holds one. Absent when no code was given. The code itself is never answered here.
+   * @return offer
+   */
+  @javax.annotation.Nullable
+  public String getOffer() {
+    return offer;
+  }
+
+  public void setOffer(@javax.annotation.Nullable String offer) {
+    this.offer = offer;
+  }
+
+
+  public MarketingLead sent(@javax.annotation.Nullable Boolean sent) {
+    this.sent = sent;
+    return this;
+  }
+
+  /**
+   * Sent says whether an investor&#39;s SAFE went out for signature from Hanzo eSign: false when the deployment sends none yet, or eSign did not take it, and the investor is filed either way. Absent on every other form.
+   * @return sent
+   */
+  @javax.annotation.Nullable
+  public Boolean getSent() {
+    return sent;
+  }
+
+  public void setSent(@javax.annotation.Nullable Boolean sent) {
+    this.sent = sent;
   }
 
 
@@ -156,13 +204,15 @@ public class MarketingLead {
     }
     MarketingLead marketingLead = (MarketingLead) o;
     return Objects.equals(this.lead, marketingLead.lead) &&
+        Objects.equals(this.offer, marketingLead.offer) &&
+        Objects.equals(this.sent, marketingLead.sent) &&
         Objects.equals(this.stage, marketingLead.stage)&&
         Objects.equals(this.additionalProperties, marketingLead.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lead, stage, additionalProperties);
+    return Objects.hash(lead, offer, sent, stage, additionalProperties);
   }
 
   @Override
@@ -170,6 +220,8 @@ public class MarketingLead {
     StringBuilder sb = new StringBuilder();
     sb.append("class MarketingLead {\n");
     sb.append("    lead: ").append(toIndentedString(lead)).append("\n");
+    sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
+    sb.append("    sent: ").append(toIndentedString(sent)).append("\n");
     sb.append("    stage: ").append(toIndentedString(stage)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -193,7 +245,7 @@ public class MarketingLead {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("lead", "stage"));
+    openapiFields = new HashSet<String>(Arrays.asList("lead", "offer", "sent", "stage"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -214,6 +266,9 @@ public class MarketingLead {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("lead") != null && !jsonObj.get("lead").isJsonNull()) && !jsonObj.get("lead").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lead` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead").toString()));
+      }
+      if ((jsonObj.get("offer") != null && !jsonObj.get("offer").isJsonNull()) && !jsonObj.get("offer").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `offer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offer").toString()));
       }
       if ((jsonObj.get("stage") != null && !jsonObj.get("stage").isJsonNull()) && !jsonObj.get("stage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `stage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stage").toString()));

@@ -56,6 +56,11 @@ public class TeamTeamInboxItem {
   @javax.annotation.Nullable
   private Boolean archived;
 
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
+
   public static final String SERIALIZED_NAME_CREATED_ON = "createdOn";
   @SerializedName(SERIALIZED_NAME_CREATED_ON)
   @javax.annotation.Nullable
@@ -86,11 +91,6 @@ public class TeamTeamInboxItem {
   @javax.annotation.Nullable
   private String reason;
 
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
-
   public static final String SERIALIZED_NAME_SPACE = "space";
   @SerializedName(SERIALIZED_NAME_SPACE)
   @javax.annotation.Nullable
@@ -120,6 +120,25 @@ public class TeamTeamInboxItem {
 
   public void setArchived(@javax.annotation.Nullable Boolean archived) {
     this.archived = archived;
+  }
+
+
+  public TeamTeamInboxItem channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the channel it is about, when it is about a channel.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
   }
 
 
@@ -186,7 +205,7 @@ public class TeamTeamInboxItem {
   }
 
   /**
-   * Message is the message that caused it, as the message ops answer it. Absent when that message has since been deleted, or is in a room the caller can no longer see.
+   * Message is the message that caused it, as the message ops answer it. Absent when that message has since been deleted, or is in a channel the caller can no longer see.
    * @return message
    */
   @javax.annotation.Nullable
@@ -234,25 +253,6 @@ public class TeamTeamInboxItem {
 
   public void setReason(@javax.annotation.Nullable String reason) {
     this.reason = reason;
-  }
-
-
-  public TeamTeamInboxItem room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room is the room it is about, when it is about a room.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
   }
 
 
@@ -349,13 +349,13 @@ public class TeamTeamInboxItem {
     }
     TeamTeamInboxItem teamTeamInboxItem = (TeamTeamInboxItem) o;
     return Objects.equals(this.archived, teamTeamInboxItem.archived) &&
+        Objects.equals(this.channel, teamTeamInboxItem.channel) &&
         Objects.equals(this.createdOn, teamTeamInboxItem.createdOn) &&
         Objects.equals(this.doc, teamTeamInboxItem.doc) &&
         Objects.equals(this.id, teamTeamInboxItem.id) &&
         Objects.equals(this.message, teamTeamInboxItem.message) &&
         Objects.equals(this.read, teamTeamInboxItem.read) &&
         Objects.equals(this.reason, teamTeamInboxItem.reason) &&
-        Objects.equals(this.room, teamTeamInboxItem.room) &&
         Objects.equals(this.space, teamTeamInboxItem.space) &&
         Objects.equals(this.thread, teamTeamInboxItem.thread)&&
         Objects.equals(this.additionalProperties, teamTeamInboxItem.additionalProperties);
@@ -363,7 +363,7 @@ public class TeamTeamInboxItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(archived, createdOn, doc, id, message, read, reason, room, space, thread, additionalProperties);
+    return Objects.hash(archived, channel, createdOn, doc, id, message, read, reason, space, thread, additionalProperties);
   }
 
   @Override
@@ -371,13 +371,13 @@ public class TeamTeamInboxItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class TeamTeamInboxItem {\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    createdOn: ").append(toIndentedString(createdOn)).append("\n");
     sb.append("    doc: ").append(toIndentedString(doc)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    read: ").append(toIndentedString(read)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    space: ").append(toIndentedString(space)).append("\n");
     sb.append("    thread: ").append(toIndentedString(thread)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -402,7 +402,7 @@ public class TeamTeamInboxItem {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("archived", "createdOn", "doc", "id", "message", "read", "reason", "room", "space", "thread"));
+    openapiFields = new HashSet<String>(Arrays.asList("archived", "channel", "createdOn", "doc", "id", "message", "read", "reason", "space", "thread"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -421,6 +421,9 @@ public class TeamTeamInboxItem {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
       if ((jsonObj.get("doc") != null && !jsonObj.get("doc").isJsonNull()) && !jsonObj.get("doc").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `doc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("doc").toString()));
       }
@@ -433,9 +436,6 @@ public class TeamTeamInboxItem {
       }
       if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("space") != null && !jsonObj.get("space").isJsonNull()) && !jsonObj.get("space").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `space` to be a primitive type in the JSON string but got `%s`", jsonObj.get("space").toString()));

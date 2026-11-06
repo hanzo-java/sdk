@@ -55,6 +55,11 @@ public class SocialSocialAccount {
   @javax.annotation.Nullable
   private Long createdAt;
 
+  public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
+  @javax.annotation.Nullable
+  private String externalId;
+
   public static final String SERIALIZED_NAME_HANDLE = "handle";
   @SerializedName(SERIALIZED_NAME_HANDLE)
   @javax.annotation.Nullable
@@ -99,6 +104,25 @@ public class SocialSocialAccount {
 
   public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
+  }
+
+
+  public SocialSocialAccount externalId(@javax.annotation.Nullable String externalId) {
+    this.externalId = externalId;
+    return this;
+  }
+
+  /**
+   * ExternalID is the platform id the sealed token is stored under. Empty for an account recorded by hand, before a consent named one. A publish uses it to choose that token rather than another account on the same network.
+   * @return externalId
+   */
+  @javax.annotation.Nullable
+  public String getExternalId() {
+    return externalId;
+  }
+
+  public void setExternalId(@javax.annotation.Nullable String externalId) {
+    this.externalId = externalId;
   }
 
 
@@ -252,6 +276,7 @@ public class SocialSocialAccount {
     }
     SocialSocialAccount socialSocialAccount = (SocialSocialAccount) o;
     return Objects.equals(this.createdAt, socialSocialAccount.createdAt) &&
+        Objects.equals(this.externalId, socialSocialAccount.externalId) &&
         Objects.equals(this.handle, socialSocialAccount.handle) &&
         Objects.equals(this.id, socialSocialAccount.id) &&
         Objects.equals(this.provider, socialSocialAccount.provider) &&
@@ -262,7 +287,7 @@ public class SocialSocialAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, handle, id, provider, status, updatedAt, additionalProperties);
+    return Objects.hash(createdAt, externalId, handle, id, provider, status, updatedAt, additionalProperties);
   }
 
   @Override
@@ -270,6 +295,7 @@ public class SocialSocialAccount {
     StringBuilder sb = new StringBuilder();
     sb.append("class SocialSocialAccount {\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    handle: ").append(toIndentedString(handle)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
@@ -297,7 +323,7 @@ public class SocialSocialAccount {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "handle", "id", "provider", "status", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "externalId", "handle", "id", "provider", "status", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -316,6 +342,9 @@ public class SocialSocialAccount {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("externalId") != null && !jsonObj.get("externalId").isJsonNull()) && !jsonObj.get("externalId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `externalId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("externalId").toString()));
+      }
       if ((jsonObj.get("handle") != null && !jsonObj.get("handle").isJsonNull()) && !jsonObj.get("handle").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `handle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("handle").toString()));
       }

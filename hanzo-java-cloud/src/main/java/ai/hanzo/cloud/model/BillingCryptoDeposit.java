@@ -55,10 +55,25 @@ public class BillingCryptoDeposit {
   @javax.annotation.Nullable
   private String addressTag;
 
+  public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
+  @javax.annotation.Nullable
+  private Long amountCents;
+
   public static final String SERIALIZED_NAME_CHAIN = "chain";
   @SerializedName(SERIALIZED_NAME_CHAIN)
   @javax.annotation.Nullable
   private String chain;
+
+  public static final String SERIALIZED_NAME_CONFIRMATIONS = "confirmations";
+  @SerializedName(SERIALIZED_NAME_CONFIRMATIONS)
+  @javax.annotation.Nullable
+  private Long confirmations;
+
+  public static final String SERIALIZED_NAME_CREDITED_CENTS = "creditedCents";
+  @SerializedName(SERIALIZED_NAME_CREDITED_CENTS)
+  @javax.annotation.Nullable
+  private Long creditedCents;
 
   public static final String SERIALIZED_NAME_DEPOSIT_ADDRESS = "depositAddress";
   @SerializedName(SERIALIZED_NAME_DEPOSIT_ADDRESS)
@@ -70,10 +85,30 @@ public class BillingCryptoDeposit {
   @javax.annotation.Nullable
   private String expiresAt;
 
+  public static final String SERIALIZED_NAME_FEE_CENTS = "feeCents";
+  @SerializedName(SERIALIZED_NAME_FEE_CENTS)
+  @javax.annotation.Nullable
+  private Long feeCents;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
+
+  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
+  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
+  @javax.annotation.Nullable
+  private String instructions;
+
+  public static final String SERIALIZED_NAME_MINIMUM_CENTS = "minimumCents";
+  @SerializedName(SERIALIZED_NAME_MINIMUM_CENTS)
+  @javax.annotation.Nullable
+  private Long minimumCents;
+
+  public static final String SERIALIZED_NAME_REQUIRED_CONFIRMATIONS = "requiredConfirmations";
+  @SerializedName(SERIALIZED_NAME_REQUIRED_CONFIRMATIONS)
+  @javax.annotation.Nullable
+  private Long requiredConfirmations;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -94,7 +129,7 @@ public class BillingCryptoDeposit {
   }
 
   /**
-   * Get addressTag
+   * AddressTag is the destination tag the payment must carry, on a chain whose address is shared. Absent where the address alone names the payer.
    * @return addressTag
    */
   @javax.annotation.Nullable
@@ -107,13 +142,32 @@ public class BillingCryptoDeposit {
   }
 
 
+  public BillingCryptoDeposit amountCents(@javax.annotation.Nullable Long amountCents) {
+    this.amountCents = amountCents;
+    return this;
+  }
+
+  /**
+   * AmountCents is what the payer said they would send, in USD cents, when the address was asked for: a record of intent, not a quote. What is credited is what arrives. Absent when nothing was named.
+   * @return amountCents
+   */
+  @javax.annotation.Nullable
+  public Long getAmountCents() {
+    return amountCents;
+  }
+
+  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
+    this.amountCents = amountCents;
+  }
+
+
   public BillingCryptoDeposit chain(@javax.annotation.Nullable String chain) {
     this.chain = chain;
     return this;
   }
 
   /**
-   * Get chain
+   * Chain is the network to send on.
    * @return chain
    */
   @javax.annotation.Nullable
@@ -126,13 +180,51 @@ public class BillingCryptoDeposit {
   }
 
 
+  public BillingCryptoDeposit confirmations(@javax.annotation.Nullable Long confirmations) {
+    this.confirmations = confirmations;
+    return this;
+  }
+
+  /**
+   * Confirmations is how deep the transfer being confirmed is now; zero until one is seen.
+   * @return confirmations
+   */
+  @javax.annotation.Nullable
+  public Long getConfirmations() {
+    return confirmations;
+  }
+
+  public void setConfirmations(@javax.annotation.Nullable Long confirmations) {
+    this.confirmations = confirmations;
+  }
+
+
+  public BillingCryptoDeposit creditedCents(@javax.annotation.Nullable Long creditedCents) {
+    this.creditedCents = creditedCents;
+    return this;
+  }
+
+  /**
+   * CreditedCents is what the transfer this intent confirmed credited, in USD cents, once it succeeded. A later transfer to the same address is credited too, and shows in the balance rather than here.
+   * @return creditedCents
+   */
+  @javax.annotation.Nullable
+  public Long getCreditedCents() {
+    return creditedCents;
+  }
+
+  public void setCreditedCents(@javax.annotation.Nullable Long creditedCents) {
+    this.creditedCents = creditedCents;
+  }
+
+
   public BillingCryptoDeposit depositAddress(@javax.annotation.Nullable String depositAddress) {
     this.depositAddress = depositAddress;
     return this;
   }
 
   /**
-   * Get depositAddress
+   * DepositAddress is where to send it.
    * @return depositAddress
    */
   @javax.annotation.Nullable
@@ -151,7 +243,7 @@ public class BillingCryptoDeposit {
   }
 
   /**
-   * Get expiresAt
+   * ExpiresAt is when this address stops being handed out again (RFC3339). A transfer that arrives after it is still credited.
    * @return expiresAt
    */
   @javax.annotation.Nullable
@@ -164,13 +256,32 @@ public class BillingCryptoDeposit {
   }
 
 
+  public BillingCryptoDeposit feeCents(@javax.annotation.Nullable Long feeCents) {
+    this.feeCents = feeCents;
+    return this;
+  }
+
+  /**
+   * FeeCents is deducted from every deposit before it is credited: the cost of sweeping it out of the custody address. Absent deducts nothing.
+   * @return feeCents
+   */
+  @javax.annotation.Nullable
+  public Long getFeeCents() {
+    return feeCents;
+  }
+
+  public void setFeeCents(@javax.annotation.Nullable Long feeCents) {
+    this.feeCents = feeCents;
+  }
+
+
   public BillingCryptoDeposit id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
 
   /**
-   * Get id
+   * ID names the intent; read it back at GET /v1/billing/crypto/deposit/{id}.
    * @return id
    */
   @javax.annotation.Nullable
@@ -183,13 +294,70 @@ public class BillingCryptoDeposit {
   }
 
 
+  public BillingCryptoDeposit instructions(@javax.annotation.Nullable String instructions) {
+    this.instructions = instructions;
+    return this;
+  }
+
+  /**
+   * Instructions says, in one line, what to send where and when it is credited.
+   * @return instructions
+   */
+  @javax.annotation.Nullable
+  public String getInstructions() {
+    return instructions;
+  }
+
+  public void setInstructions(@javax.annotation.Nullable String instructions) {
+    this.instructions = instructions;
+  }
+
+
+  public BillingCryptoDeposit minimumCents(@javax.annotation.Nullable Long minimumCents) {
+    this.minimumCents = minimumCents;
+    return this;
+  }
+
+  /**
+   * MinimumCents is the smallest deposit, in USD cents, that credits anything; less credits nothing. Absent when nothing is watching this asset now, and then nothing sent to it is credited.
+   * @return minimumCents
+   */
+  @javax.annotation.Nullable
+  public Long getMinimumCents() {
+    return minimumCents;
+  }
+
+  public void setMinimumCents(@javax.annotation.Nullable Long minimumCents) {
+    this.minimumCents = minimumCents;
+  }
+
+
+  public BillingCryptoDeposit requiredConfirmations(@javax.annotation.Nullable Long requiredConfirmations) {
+    this.requiredConfirmations = requiredConfirmations;
+    return this;
+  }
+
+  /**
+   * RequiredConfirmations is how many blocks deep the transfer must be before it is credited.
+   * @return requiredConfirmations
+   */
+  @javax.annotation.Nullable
+  public Long getRequiredConfirmations() {
+    return requiredConfirmations;
+  }
+
+  public void setRequiredConfirmations(@javax.annotation.Nullable Long requiredConfirmations) {
+    this.requiredConfirmations = requiredConfirmations;
+  }
+
+
   public BillingCryptoDeposit status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
 
   /**
-   * Get status
+   * Status is pending until a transfer to the address is seen, confirming while the chain buries it, and succeeded once it is credited as cash in the payer&#39;s balance (GET /v1/billing/balance, cash).
    * @return status
    */
   @javax.annotation.Nullable
@@ -208,7 +376,7 @@ public class BillingCryptoDeposit {
   }
 
   /**
-   * Get token
+   * Token is the asset to send; this intent credits that token alone.
    * @return token
    */
   @javax.annotation.Nullable
@@ -276,10 +444,17 @@ public class BillingCryptoDeposit {
     }
     BillingCryptoDeposit billingCryptoDeposit = (BillingCryptoDeposit) o;
     return Objects.equals(this.addressTag, billingCryptoDeposit.addressTag) &&
+        Objects.equals(this.amountCents, billingCryptoDeposit.amountCents) &&
         Objects.equals(this.chain, billingCryptoDeposit.chain) &&
+        Objects.equals(this.confirmations, billingCryptoDeposit.confirmations) &&
+        Objects.equals(this.creditedCents, billingCryptoDeposit.creditedCents) &&
         Objects.equals(this.depositAddress, billingCryptoDeposit.depositAddress) &&
         Objects.equals(this.expiresAt, billingCryptoDeposit.expiresAt) &&
+        Objects.equals(this.feeCents, billingCryptoDeposit.feeCents) &&
         Objects.equals(this.id, billingCryptoDeposit.id) &&
+        Objects.equals(this.instructions, billingCryptoDeposit.instructions) &&
+        Objects.equals(this.minimumCents, billingCryptoDeposit.minimumCents) &&
+        Objects.equals(this.requiredConfirmations, billingCryptoDeposit.requiredConfirmations) &&
         Objects.equals(this.status, billingCryptoDeposit.status) &&
         Objects.equals(this.token, billingCryptoDeposit.token)&&
         Objects.equals(this.additionalProperties, billingCryptoDeposit.additionalProperties);
@@ -287,7 +462,7 @@ public class BillingCryptoDeposit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(addressTag, chain, depositAddress, expiresAt, id, status, token, additionalProperties);
+    return Objects.hash(addressTag, amountCents, chain, confirmations, creditedCents, depositAddress, expiresAt, feeCents, id, instructions, minimumCents, requiredConfirmations, status, token, additionalProperties);
   }
 
   @Override
@@ -295,10 +470,17 @@ public class BillingCryptoDeposit {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingCryptoDeposit {\n");
     sb.append("    addressTag: ").append(toIndentedString(addressTag)).append("\n");
+    sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("    chain: ").append(toIndentedString(chain)).append("\n");
+    sb.append("    confirmations: ").append(toIndentedString(confirmations)).append("\n");
+    sb.append("    creditedCents: ").append(toIndentedString(creditedCents)).append("\n");
     sb.append("    depositAddress: ").append(toIndentedString(depositAddress)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
+    sb.append("    feeCents: ").append(toIndentedString(feeCents)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
+    sb.append("    minimumCents: ").append(toIndentedString(minimumCents)).append("\n");
+    sb.append("    requiredConfirmations: ").append(toIndentedString(requiredConfirmations)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -323,7 +505,7 @@ public class BillingCryptoDeposit {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("addressTag", "chain", "depositAddress", "expiresAt", "id", "status", "token"));
+    openapiFields = new HashSet<String>(Arrays.asList("addressTag", "amountCents", "chain", "confirmations", "creditedCents", "depositAddress", "expiresAt", "feeCents", "id", "instructions", "minimumCents", "requiredConfirmations", "status", "token"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -356,6 +538,9 @@ public class BillingCryptoDeposit {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("instructions") != null && !jsonObj.get("instructions").isJsonNull()) && !jsonObj.get("instructions").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instructions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instructions").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

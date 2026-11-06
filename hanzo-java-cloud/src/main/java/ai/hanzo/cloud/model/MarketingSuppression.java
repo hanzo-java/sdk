@@ -79,7 +79,7 @@ public class MarketingSuppression {
   }
 
   /**
-   * Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required.
+   * Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required. An entry \&quot;@example.com\&quot; opts out everyone at that domain, a company&#39;s unsubscribe; a free mail provider&#39;s domain is refused.
    * @return address
    */
   @javax.annotation.Nullable

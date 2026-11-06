@@ -15,6 +15,7 @@ package ai.hanzo.cloud.model;
 
 import java.util.Objects;
 import ai.hanzo.cloud.model.AutoLastRun;
+import ai.hanzo.cloud.model.AutoOutcomeTrigger;
 import ai.hanzo.cloud.model.AutoSchedule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -68,6 +69,11 @@ public class AutoAutomation {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   @javax.annotation.Nullable
   private Boolean enabled;
+
+  public static final String SERIALIZED_NAME_EVENT = "event";
+  @SerializedName(SERIALIZED_NAME_EVENT)
+  @javax.annotation.Nullable
+  private AutoOutcomeTrigger event;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -123,6 +129,16 @@ public class AutoAutomation {
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   @javax.annotation.Nullable
   private AutoSchedule schedule;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  @javax.annotation.Nullable
+  private String source;
+
+  public static final String SERIALIZED_NAME_TARGET = "target";
+  @SerializedName(SERIALIZED_NAME_TARGET)
+  @javax.annotation.Nullable
+  private String target;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
@@ -186,6 +202,25 @@ public class AutoAutomation {
 
   public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
     this.enabled = enabled;
+  }
+
+
+  public AutoAutomation event(@javax.annotation.Nullable AutoOutcomeTrigger event) {
+    this.event = event;
+    return this;
+  }
+
+  /**
+   * Event runs the automation on a committed product outcome instead of a schedule.
+   * @return event
+   */
+  @javax.annotation.Nullable
+  public AutoOutcomeTrigger getEvent() {
+    return event;
+  }
+
+  public void setEvent(@javax.annotation.Nullable AutoOutcomeTrigger event) {
+    this.event = event;
   }
 
 
@@ -406,6 +441,44 @@ public class AutoAutomation {
   }
 
 
+  public AutoAutomation source(@javax.annotation.Nullable String source) {
+    this.source = source;
+    return this;
+  }
+
+  /**
+   * Source is the product it was made in: chat, dev, studio or workflow.
+   * @return source
+   */
+  @javax.annotation.Nullable
+  public String getSource() {
+    return source;
+  }
+
+  public void setSource(@javax.annotation.Nullable String source) {
+    this.source = source;
+  }
+
+
+  public AutoAutomation target(@javax.annotation.Nullable String target) {
+    this.target = target;
+    return this;
+  }
+
+  /**
+   * Target is an optional registered execution target, such as the person&#39;s local machine.
+   * @return target
+   */
+  @javax.annotation.Nullable
+  public String getTarget() {
+    return target;
+  }
+
+  public void setTarget(@javax.annotation.Nullable String target) {
+    this.target = target;
+  }
+
+
   public AutoAutomation updated(@javax.annotation.Nullable String updated) {
     this.updated = updated;
     return this;
@@ -482,6 +555,7 @@ public class AutoAutomation {
     return Objects.equals(this.created, autoAutomation.created) &&
         Objects.equals(this.draft, autoAutomation.draft) &&
         Objects.equals(this.enabled, autoAutomation.enabled) &&
+        Objects.equals(this.event, autoAutomation.event) &&
         Objects.equals(this.id, autoAutomation.id) &&
         Objects.equals(this.instructions, autoAutomation.instructions) &&
         Objects.equals(this.last, autoAutomation.last) &&
@@ -493,13 +567,15 @@ public class AutoAutomation {
         Objects.equals(this.postTo, autoAutomation.postTo) &&
         Objects.equals(this.project, autoAutomation.project) &&
         Objects.equals(this.schedule, autoAutomation.schedule) &&
+        Objects.equals(this.source, autoAutomation.source) &&
+        Objects.equals(this.target, autoAutomation.target) &&
         Objects.equals(this.updated, autoAutomation.updated)&&
         Objects.equals(this.additionalProperties, autoAutomation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, draft, enabled, id, instructions, last, model, name, next, notify, permissions, postTo, project, schedule, updated, additionalProperties);
+    return Objects.hash(created, draft, enabled, event, id, instructions, last, model, name, next, notify, permissions, postTo, project, schedule, source, target, updated, additionalProperties);
   }
 
   @Override
@@ -509,6 +585,7 @@ public class AutoAutomation {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
     sb.append("    last: ").append(toIndentedString(last)).append("\n");
@@ -520,6 +597,8 @@ public class AutoAutomation {
     sb.append("    postTo: ").append(toIndentedString(postTo)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -543,7 +622,7 @@ public class AutoAutomation {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("created", "draft", "enabled", "id", "instructions", "last", "model", "name", "next", "notify", "permissions", "postTo", "project", "schedule", "updated"));
+    openapiFields = new HashSet<String>(Arrays.asList("created", "draft", "enabled", "event", "id", "instructions", "last", "model", "name", "next", "notify", "permissions", "postTo", "project", "schedule", "source", "target", "updated"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -564,6 +643,10 @@ public class AutoAutomation {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("created") != null && !jsonObj.get("created").isJsonNull()) && !jsonObj.get("created").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
+      }
+      // validate the optional field `event`
+      if (jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) {
+        AutoOutcomeTrigger.validateJsonElement(jsonObj.get("event"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
@@ -597,6 +680,12 @@ public class AutoAutomation {
       // validate the optional field `schedule`
       if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {
         AutoSchedule.validateJsonElement(jsonObj.get("schedule"));
+      }
+      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      }
+      if ((jsonObj.get("target") != null && !jsonObj.get("target").isJsonNull()) && !jsonObj.get("target").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `target` to be a primitive type in the JSON string but got `%s`", jsonObj.get("target").toString()));
       }
       if ((jsonObj.get("updated") != null && !jsonObj.get("updated").isJsonNull()) && !jsonObj.get("updated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));

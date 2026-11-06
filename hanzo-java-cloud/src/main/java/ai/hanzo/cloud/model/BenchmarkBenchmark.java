@@ -55,6 +55,11 @@ public class BenchmarkBenchmark {
   @javax.annotation.Nullable
   private String axis;
 
+  public static final String SERIALIZED_NAME_DIRECTION = "direction";
+  @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
+  private String direction;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -99,6 +104,25 @@ public class BenchmarkBenchmark {
 
   public void setAxis(@javax.annotation.Nullable String axis) {
     this.axis = axis;
+  }
+
+
+  public BenchmarkBenchmark direction(@javax.annotation.Nullable String direction) {
+    this.direction = direction;
+    return this;
+  }
+
+  /**
+   * Direction is \&quot;higher\&quot; when a higher score is better and \&quot;lower\&quot; when a lower one is: a false-alarm rate, a share of answers that moved. The leaderboard orders its rows by it.
+   * @return direction
+   */
+  @javax.annotation.Nullable
+  public String getDirection() {
+    return direction;
+  }
+
+  public void setDirection(@javax.annotation.Nullable String direction) {
+    this.direction = direction;
   }
 
 
@@ -252,6 +276,7 @@ public class BenchmarkBenchmark {
     }
     BenchmarkBenchmark benchmarkBenchmark = (BenchmarkBenchmark) o;
     return Objects.equals(this.axis, benchmarkBenchmark.axis) &&
+        Objects.equals(this.direction, benchmarkBenchmark.direction) &&
         Objects.equals(this.id, benchmarkBenchmark.id) &&
         Objects.equals(this.items, benchmarkBenchmark.items) &&
         Objects.equals(this._native, benchmarkBenchmark._native) &&
@@ -262,7 +287,7 @@ public class BenchmarkBenchmark {
 
   @Override
   public int hashCode() {
-    return Objects.hash(axis, id, items, _native, source, title, additionalProperties);
+    return Objects.hash(axis, direction, id, items, _native, source, title, additionalProperties);
   }
 
   @Override
@@ -270,6 +295,7 @@ public class BenchmarkBenchmark {
     StringBuilder sb = new StringBuilder();
     sb.append("class BenchmarkBenchmark {\n");
     sb.append("    axis: ").append(toIndentedString(axis)).append("\n");
+    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    _native: ").append(toIndentedString(_native)).append("\n");
@@ -297,7 +323,7 @@ public class BenchmarkBenchmark {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("axis", "id", "items", "native", "source", "title"));
+    openapiFields = new HashSet<String>(Arrays.asList("axis", "direction", "id", "items", "native", "source", "title"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -318,6 +344,9 @@ public class BenchmarkBenchmark {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("axis") != null && !jsonObj.get("axis").isJsonNull()) && !jsonObj.get("axis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `axis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("axis").toString()));
+      }
+      if ((jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) && !jsonObj.get("direction").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `direction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("direction").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

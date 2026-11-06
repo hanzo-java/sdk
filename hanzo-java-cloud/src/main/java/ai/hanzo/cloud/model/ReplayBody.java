@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,6 +53,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ReplayBody {
+  public static final String SERIALIZED_NAME_CONSENT = "consent";
+  @SerializedName(SERIALIZED_NAME_CONSENT)
+  @javax.annotation.Nullable
+  private Object consent = null;
+
   public static final String SERIALIZED_NAME_DISTINCT_ID = "distinctId";
   @SerializedName(SERIALIZED_NAME_DISTINCT_ID)
   @javax.annotation.Nullable
@@ -74,6 +80,25 @@ public class ReplayBody {
 
   public ReplayBody() {
   }
+
+  public ReplayBody consent(@javax.annotation.Nullable Object consent) {
+    this.consent = consent;
+    return this;
+  }
+
+  /**
+   * Get consent
+   * @return consent
+   */
+  @javax.annotation.Nullable
+  public Object getConsent() {
+    return consent;
+  }
+
+  public void setConsent(@javax.annotation.Nullable Object consent) {
+    this.consent = consent;
+  }
+
 
   public ReplayBody distinctId(@javax.annotation.Nullable String distinctId) {
     this.distinctId = distinctId;
@@ -213,22 +238,35 @@ public class ReplayBody {
       return false;
     }
     ReplayBody replayBody = (ReplayBody) o;
-    return Objects.equals(this.distinctId, replayBody.distinctId) &&
+    return Objects.equals(this.consent, replayBody.consent) &&
+        Objects.equals(this.distinctId, replayBody.distinctId) &&
         Objects.equals(this.events, replayBody.events) &&
         Objects.equals(this.sessionId, replayBody.sessionId) &&
         Objects.equals(this.windowId, replayBody.windowId)&&
         Objects.equals(this.additionalProperties, replayBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(distinctId, events, sessionId, windowId, additionalProperties);
+    return Objects.hash(consent, distinctId, events, sessionId, windowId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReplayBody {\n");
+    sb.append("    consent: ").append(toIndentedString(consent)).append("\n");
     sb.append("    distinctId: ").append(toIndentedString(distinctId)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
@@ -255,7 +293,7 @@ public class ReplayBody {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("distinctId", "events", "sessionId", "windowId"));
+    openapiFields = new HashSet<String>(Arrays.asList("consent", "distinctId", "events", "sessionId", "windowId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

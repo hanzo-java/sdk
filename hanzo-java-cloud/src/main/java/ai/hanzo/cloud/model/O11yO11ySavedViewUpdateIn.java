@@ -200,7 +200,7 @@ public class O11yO11ySavedViewUpdateIn {
   }
 
   /**
-   * Get extraData
+   * ExtraData is JSON encoded data used by frontend to store additional data
    * @return extraData
    */
   @javax.annotation.Nullable

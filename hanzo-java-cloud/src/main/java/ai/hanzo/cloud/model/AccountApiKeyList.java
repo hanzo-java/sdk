@@ -75,7 +75,7 @@ public class AccountApiKeyList {
   }
 
   /**
-   * Keys is every key the caller holds, at most one per type.
+   * Keys is every key the caller may see, newest first: their own, or every key of the org when the caller administers it. Revoked keys stay listed.
    * @return keys
    */
   @javax.annotation.Nullable

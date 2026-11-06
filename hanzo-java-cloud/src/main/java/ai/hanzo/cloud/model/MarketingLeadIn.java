@@ -14,6 +14,9 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.MarketingAddress;
+import ai.hanzo.cloud.model.MarketingAnswer;
+import ai.hanzo.cloud.model.MarketingTags;
 import ai.hanzo.cloud.model.MarketingVisit;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,7 +24,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,20 +57,70 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class MarketingLeadIn {
+  public static final String SERIALIZED_NAME_ADDRESS = "address";
+  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  @javax.annotation.Nullable
+  private MarketingAddress address;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  @javax.annotation.Nullable
+  private Object amount = null;
+
+  public static final String SERIALIZED_NAME_ANSWERS = "answers";
+  @SerializedName(SERIALIZED_NAME_ANSWERS)
+  @javax.annotation.Nullable
+  private List<MarketingAnswer> answers = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
+  @javax.annotation.Nullable
+  private MarketingTags campaign;
+
   public static final String SERIALIZED_NAME_COMPANY = "company";
   @SerializedName(SERIALIZED_NAME_COMPANY)
   @javax.annotation.Nullable
   private String company;
+
+  public static final String SERIALIZED_NAME_CONSENT = "consent";
+  @SerializedName(SERIALIZED_NAME_CONSENT)
+  @javax.annotation.Nullable
+  private Boolean consent;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   @javax.annotation.Nullable
   private String country;
 
+  public static final String SERIALIZED_NAME_COUPON = "coupon";
+  @SerializedName(SERIALIZED_NAME_COUPON)
+  @javax.annotation.Nullable
+  private String coupon;
+
+  public static final String SERIALIZED_NAME_DEPARTMENT = "department";
+  @SerializedName(SERIALIZED_NAME_DEPARTMENT)
+  @javax.annotation.Nullable
+  private String department;
+
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   @javax.annotation.Nullable
   private String email;
+
+  public static final String SERIALIZED_NAME_ENTITY = "entity";
+  @SerializedName(SERIALIZED_NAME_ENTITY)
+  @javax.annotation.Nullable
+  private String entity;
+
+  public static final String SERIALIZED_NAME_JOB = "job";
+  @SerializedName(SERIALIZED_NAME_JOB)
+  @javax.annotation.Nullable
+  private String job;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  @javax.annotation.Nullable
+  private List<String> links = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -75,6 +131,31 @@ public class MarketingLeadIn {
   @SerializedName(SERIALIZED_NAME_NEED)
   @javax.annotation.Nullable
   private String need;
+
+  public static final String SERIALIZED_NAME_PAYMENT = "payment";
+  @SerializedName(SERIALIZED_NAME_PAYMENT)
+  @javax.annotation.Nullable
+  private String payment;
+
+  public static final String SERIALIZED_NAME_PHONE = "phone";
+  @SerializedName(SERIALIZED_NAME_PHONE)
+  @javax.annotation.Nullable
+  private String phone;
+
+  public static final String SERIALIZED_NAME_PROGRAM = "program";
+  @SerializedName(SERIALIZED_NAME_PROGRAM)
+  @javax.annotation.Nullable
+  private String program;
+
+  public static final String SERIALIZED_NAME_RESUME = "resume";
+  @SerializedName(SERIALIZED_NAME_RESUME)
+  @javax.annotation.Nullable
+  private String resume;
+
+  public static final String SERIALIZED_NAME_RESUME_FILE = "resume_file";
+  @SerializedName(SERIALIZED_NAME_RESUME_FILE)
+  @javax.annotation.Nullable
+  private String resumeFile;
 
   public static final String SERIALIZED_NAME_ROLE = "role";
   @SerializedName(SERIALIZED_NAME_ROLE)
@@ -91,6 +172,16 @@ public class MarketingLeadIn {
   @javax.annotation.Nullable
   private String source;
 
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
+  private String title;
+
+  public static final String SERIALIZED_NAME_UPGRADE = "upgrade";
+  @SerializedName(SERIALIZED_NAME_UPGRADE)
+  @javax.annotation.Nullable
+  private String upgrade;
+
   public static final String SERIALIZED_NAME_VISIT = "visit";
   @SerializedName(SERIALIZED_NAME_VISIT)
   @javax.annotation.Nullable
@@ -98,6 +189,90 @@ public class MarketingLeadIn {
 
   public MarketingLeadIn() {
   }
+
+  public MarketingLeadIn address(@javax.annotation.Nullable MarketingAddress address) {
+    this.address = address;
+    return this;
+  }
+
+  /**
+   * Address is where an investor lives, or where the entity they invest through is: street, city and country required, each at most 200 characters.
+   * @return address
+   */
+  @javax.annotation.Nullable
+  public MarketingAddress getAddress() {
+    return address;
+  }
+
+  public void setAddress(@javax.annotation.Nullable MarketingAddress address) {
+    this.address = address;
+  }
+
+
+  public MarketingLeadIn amount(@javax.annotation.Nullable Object amount) {
+    this.amount = amount;
+    return this;
+  }
+
+  /**
+   * Get amount
+   * @return amount
+   */
+  @javax.annotation.Nullable
+  public Object getAmount() {
+    return amount;
+  }
+
+  public void setAmount(@javax.annotation.Nullable Object amount) {
+    this.amount = amount;
+  }
+
+
+  public MarketingLeadIn answers(@javax.annotation.Nullable List<MarketingAnswer> answers) {
+    this.answers = answers;
+    return this;
+  }
+
+  public MarketingLeadIn addAnswersItem(MarketingAnswer answersItem) {
+    if (this.answers == null) {
+      this.answers = new ArrayList<>();
+    }
+    this.answers.add(answersItem);
+    return this;
+  }
+
+  /**
+   * Answers is the application question by question, as the form asked it: at most 40, each question clipped at 200 characters and each answer at 2 KiB. Recorded on the lead as they came; optional.
+   * @return answers
+   */
+  @javax.annotation.Nullable
+  public List<MarketingAnswer> getAnswers() {
+    return answers;
+  }
+
+  public void setAnswers(@javax.annotation.Nullable List<MarketingAnswer> answers) {
+    this.answers = answers;
+  }
+
+
+  public MarketingLeadIn campaign(@javax.annotation.Nullable MarketingTags campaign) {
+    this.campaign = campaign;
+    return this;
+  }
+
+  /**
+   * Campaign is the utm_* tags of the link the visit arrived on, recorded on the lead. Optional.
+   * @return campaign
+   */
+  @javax.annotation.Nullable
+  public MarketingTags getCampaign() {
+    return campaign;
+  }
+
+  public void setCampaign(@javax.annotation.Nullable MarketingTags campaign) {
+    this.campaign = campaign;
+  }
+
 
   public MarketingLeadIn company(@javax.annotation.Nullable String company) {
     this.company = company;
@@ -115,6 +290,25 @@ public class MarketingLeadIn {
 
   public void setCompany(@javax.annotation.Nullable String company) {
     this.company = company;
+  }
+
+
+  public MarketingLeadIn consent(@javax.annotation.Nullable Boolean consent) {
+    this.consent = consent;
+    return this;
+  }
+
+  /**
+   * Consent is the applicant ticking \&quot;Keep me posted about roles and news at Hanzo. Unsubscribe any time.\&quot; Unticked, they hear nothing but the reply to their application. Read only with Job.
+   * @return consent
+   */
+  @javax.annotation.Nullable
+  public Boolean getConsent() {
+    return consent;
+  }
+
+  public void setConsent(@javax.annotation.Nullable Boolean consent) {
+    this.consent = consent;
   }
 
 
@@ -137,6 +331,44 @@ public class MarketingLeadIn {
   }
 
 
+  public MarketingLeadIn coupon(@javax.annotation.Nullable String coupon) {
+    this.coupon = coupon;
+    return this;
+  }
+
+  /**
+   * Coupon is the offer code the visitor&#39;s page held: letters, digits, dash and underscore, at most 32. Any other value is recorded as none. Optional.
+   * @return coupon
+   */
+  @javax.annotation.Nullable
+  public String getCoupon() {
+    return coupon;
+  }
+
+  public void setCoupon(@javax.annotation.Nullable String coupon) {
+    this.coupon = coupon;
+  }
+
+
+  public MarketingLeadIn department(@javax.annotation.Nullable String department) {
+    this.department = department;
+    return this;
+  }
+
+  /**
+   * Department is the opening&#39;s department. Read only with Job.
+   * @return department
+   */
+  @javax.annotation.Nullable
+  public String getDepartment() {
+    return department;
+  }
+
+  public void setDepartment(@javax.annotation.Nullable String department) {
+    this.department = department;
+  }
+
+
   public MarketingLeadIn email(@javax.annotation.Nullable String email) {
     this.email = email;
     return this;
@@ -156,13 +388,78 @@ public class MarketingLeadIn {
   }
 
 
+  public MarketingLeadIn entity(@javax.annotation.Nullable String entity) {
+    this.entity = entity;
+    return this;
+  }
+
+  /**
+   * Entity is the legal name of the entity an investor invests through; empty, they invest in their own name. At most 200 characters. Read only with program investor, as are Title, Amount, Phone and Address.
+   * @return entity
+   */
+  @javax.annotation.Nullable
+  public String getEntity() {
+    return entity;
+  }
+
+  public void setEntity(@javax.annotation.Nullable String entity) {
+    this.entity = entity;
+  }
+
+
+  public MarketingLeadIn job(@javax.annotation.Nullable String job) {
+    this.job = job;
+    return this;
+  }
+
+  /**
+   * Job is the opening a careers form applies to, by its id on the careers page (senior-backend-engineer). A body naming one is a job application: it is filed as a candidate, never as a lead, so it is offered no call and no code, no ad platform hears of it, and the brand&#39;s careers mailbox is told instead of sales. Name, Email, Role (the opening&#39;s title), Country (where the person is), Need (what they wrote about themselves), Source and Answers carry over. Optional; clipped at 200 characters.
+   * @return job
+   */
+  @javax.annotation.Nullable
+  public String getJob() {
+    return job;
+  }
+
+  public void setJob(@javax.annotation.Nullable String job) {
+    this.job = job;
+  }
+
+
+  public MarketingLeadIn links(@javax.annotation.Nullable List<String> links) {
+    this.links = links;
+    return this;
+  }
+
+  public MarketingLeadIn addLinksItem(String linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+  /**
+   * Links are https addresses the applicant gave: a portfolio, a profile, a site. At most five, each at most 500 characters; any other value is dropped. Read only with Job.
+   * @return links
+   */
+  @javax.annotation.Nullable
+  public List<String> getLinks() {
+    return links;
+  }
+
+  public void setLinks(@javax.annotation.Nullable List<String> links) {
+    this.links = links;
+  }
+
+
   public MarketingLeadIn name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * Name is the person&#39;s name. Optional; clipped at 200 characters.
+   * Name is the person&#39;s name. Optional, and clipped at 200 characters, except for an investor, who must give it, in at most 200.
    * @return name
    */
   @javax.annotation.Nullable
@@ -191,6 +488,101 @@ public class MarketingLeadIn {
 
   public void setNeed(@javax.annotation.Nullable String need) {
     this.need = need;
+  }
+
+
+  public MarketingLeadIn payment(@javax.annotation.Nullable String payment) {
+    this.payment = payment;
+    return this;
+  }
+
+  /**
+   * Payment is how an order the form files would be paid: \&quot;card\&quot; or \&quot;invoice\&quot; (a bank transfer against an invoice sales sends). Empty is none; anything else is 400. An Enterprise inquiry asking to pay by invoice is stated on the event plane as invoice_requested beside its generate_lead.
+   * @return payment
+   */
+  @javax.annotation.Nullable
+  public String getPayment() {
+    return payment;
+  }
+
+  public void setPayment(@javax.annotation.Nullable String payment) {
+    this.payment = payment;
+  }
+
+
+  public MarketingLeadIn phone(@javax.annotation.Nullable String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  /**
+   * Phone is an investor&#39;s phone number: 3 to 20 digits, an optional leading +, and any spaces, dots, dashes or brackets between them. Optional.
+   * @return phone
+   */
+  @javax.annotation.Nullable
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(@javax.annotation.Nullable String phone) {
+    this.phone = phone;
+  }
+
+
+  public MarketingLeadIn program(@javax.annotation.Nullable String program) {
+    this.program = program;
+    return this;
+  }
+
+  /**
+   * Program is the program the person applies to: beta, research or partner. Any other value is recorded as none. An application is mailed a code for 50% off the first three months, once per address (offer.go). Optional. \&quot;enterprise\&quot; is a sales inquiry about the Enterprise plan: recorded as the lead&#39;s program, offered the intro call as every inquiry is, and mailed no code. \&quot;investor\&quot; is an investor&#39;s subscription (investor.go): it is mailed no code, it is sent a SAFE, and Name, Amount and Address are required.
+   * @return program
+   */
+  @javax.annotation.Nullable
+  public String getProgram() {
+    return program;
+  }
+
+  public void setProgram(@javax.annotation.Nullable String program) {
+    this.program = program;
+  }
+
+
+  public MarketingLeadIn resume(@javax.annotation.Nullable String resume) {
+    this.resume = resume;
+    return this;
+  }
+
+  /**
+   * Resume is an https address the applicant gave for their resume. Read only with Job; any other value is recorded as none.
+   * @return resume
+   */
+  @javax.annotation.Nullable
+  public String getResume() {
+    return resume;
+  }
+
+  public void setResume(@javax.annotation.Nullable String resume) {
+    this.resume = resume;
+  }
+
+
+  public MarketingLeadIn resumeFile(@javax.annotation.Nullable String resumeFile) {
+    this.resumeFile = resumeFile;
+    return this;
+  }
+
+  /**
+   * ResumeFile is the key POST /v1/marketing/leads/resume handed out for the resume the applicant uploaded. Any other value is recorded as none. Read only with Job.
+   * @return resumeFile
+   */
+  @javax.annotation.Nullable
+  public String getResumeFile() {
+    return resumeFile;
+  }
+
+  public void setResumeFile(@javax.annotation.Nullable String resumeFile) {
+    this.resumeFile = resumeFile;
   }
 
 
@@ -248,6 +640,44 @@ public class MarketingLeadIn {
 
   public void setSource(@javax.annotation.Nullable String source) {
     this.source = source;
+  }
+
+
+  public MarketingLeadIn title(@javax.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * Title is the investor&#39;s title at Entity, as the SAFE&#39;s signature block names it. At most 200 characters; read only with Entity.
+   * @return title
+   */
+  @javax.annotation.Nullable
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(@javax.annotation.Nullable String title) {
+    this.title = title;
+  }
+
+
+  public MarketingLeadIn upgrade(@javax.annotation.Nullable String upgrade) {
+    this.upgrade = upgrade;
+    return this;
+  }
+
+  /**
+   * Upgrade is the handle of the organization an order upgrades. It is filed only for a person signed in, acting in that organization (X-Org-Id) as its owner or an admin, which the identity boundary attests from the token; any other caller naming one is 403. Empty is a new organization, or none.
+   * @return upgrade
+   */
+  @javax.annotation.Nullable
+  public String getUpgrade() {
+    return upgrade;
+  }
+
+  public void setUpgrade(@javax.annotation.Nullable String upgrade) {
+    this.upgrade = upgrade;
   }
 
 
@@ -324,35 +754,80 @@ public class MarketingLeadIn {
       return false;
     }
     MarketingLeadIn marketingLeadIn = (MarketingLeadIn) o;
-    return Objects.equals(this.company, marketingLeadIn.company) &&
+    return Objects.equals(this.address, marketingLeadIn.address) &&
+        Objects.equals(this.amount, marketingLeadIn.amount) &&
+        Objects.equals(this.answers, marketingLeadIn.answers) &&
+        Objects.equals(this.campaign, marketingLeadIn.campaign) &&
+        Objects.equals(this.company, marketingLeadIn.company) &&
+        Objects.equals(this.consent, marketingLeadIn.consent) &&
         Objects.equals(this.country, marketingLeadIn.country) &&
+        Objects.equals(this.coupon, marketingLeadIn.coupon) &&
+        Objects.equals(this.department, marketingLeadIn.department) &&
         Objects.equals(this.email, marketingLeadIn.email) &&
+        Objects.equals(this.entity, marketingLeadIn.entity) &&
+        Objects.equals(this.job, marketingLeadIn.job) &&
+        Objects.equals(this.links, marketingLeadIn.links) &&
         Objects.equals(this.name, marketingLeadIn.name) &&
         Objects.equals(this.need, marketingLeadIn.need) &&
+        Objects.equals(this.payment, marketingLeadIn.payment) &&
+        Objects.equals(this.phone, marketingLeadIn.phone) &&
+        Objects.equals(this.program, marketingLeadIn.program) &&
+        Objects.equals(this.resume, marketingLeadIn.resume) &&
+        Objects.equals(this.resumeFile, marketingLeadIn.resumeFile) &&
         Objects.equals(this.role, marketingLeadIn.role) &&
         Objects.equals(this.size, marketingLeadIn.size) &&
         Objects.equals(this.source, marketingLeadIn.source) &&
+        Objects.equals(this.title, marketingLeadIn.title) &&
+        Objects.equals(this.upgrade, marketingLeadIn.upgrade) &&
         Objects.equals(this.visit, marketingLeadIn.visit)&&
         Objects.equals(this.additionalProperties, marketingLeadIn.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(company, country, email, name, need, role, size, source, visit, additionalProperties);
+    return Objects.hash(address, amount, answers, campaign, company, consent, country, coupon, department, email, entity, job, links, name, need, payment, phone, program, resume, resumeFile, role, size, source, title, upgrade, visit, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MarketingLeadIn {\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    answers: ").append(toIndentedString(answers)).append("\n");
+    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
+    sb.append("    consent: ").append(toIndentedString(consent)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    coupon: ").append(toIndentedString(coupon)).append("\n");
+    sb.append("    department: ").append(toIndentedString(department)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
+    sb.append("    job: ").append(toIndentedString(job)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    need: ").append(toIndentedString(need)).append("\n");
+    sb.append("    payment: ").append(toIndentedString(payment)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    program: ").append(toIndentedString(program)).append("\n");
+    sb.append("    resume: ").append(toIndentedString(resume)).append("\n");
+    sb.append("    resumeFile: ").append(toIndentedString(resumeFile)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    upgrade: ").append(toIndentedString(upgrade)).append("\n");
     sb.append("    visit: ").append(toIndentedString(visit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -376,7 +851,7 @@ public class MarketingLeadIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("company", "country", "email", "name", "need", "role", "size", "source", "visit"));
+    openapiFields = new HashSet<String>(Arrays.asList("address", "amount", "answers", "campaign", "company", "consent", "country", "coupon", "department", "email", "entity", "job", "links", "name", "need", "payment", "phone", "program", "resume", "resume_file", "role", "size", "source", "title", "upgrade", "visit"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -395,20 +870,73 @@ public class MarketingLeadIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `address`
+      if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+        MarketingAddress.validateJsonElement(jsonObj.get("address"));
+      }
+      if (jsonObj.get("answers") != null && !jsonObj.get("answers").isJsonNull()) {
+        JsonArray jsonArrayanswers = jsonObj.getAsJsonArray("answers");
+        if (jsonArrayanswers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("answers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `answers` to be an array in the JSON string but got `%s`", jsonObj.get("answers").toString()));
+          }
+
+          // validate the optional field `answers` (array)
+          for (int i = 0; i < jsonArrayanswers.size(); i++) {
+            MarketingAnswer.validateJsonElement(jsonArrayanswers.get(i));
+          };
+        }
+      }
+      // validate the optional field `campaign`
+      if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
+        MarketingTags.validateJsonElement(jsonObj.get("campaign"));
+      }
       if ((jsonObj.get("company") != null && !jsonObj.get("company").isJsonNull()) && !jsonObj.get("company").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
       }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
+      if ((jsonObj.get("coupon") != null && !jsonObj.get("coupon").isJsonNull()) && !jsonObj.get("coupon").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `coupon` to be a primitive type in the JSON string but got `%s`", jsonObj.get("coupon").toString()));
+      }
+      if ((jsonObj.get("department") != null && !jsonObj.get("department").isJsonNull()) && !jsonObj.get("department").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `department` to be a primitive type in the JSON string but got `%s`", jsonObj.get("department").toString()));
+      }
       if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
+      }
+      if ((jsonObj.get("entity") != null && !jsonObj.get("entity").isJsonNull()) && !jsonObj.get("entity").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `entity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entity").toString()));
+      }
+      if ((jsonObj.get("job") != null && !jsonObj.get("job").isJsonNull()) && !jsonObj.get("job").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `job` to be a primitive type in the JSON string but got `%s`", jsonObj.get("job").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull() && !jsonObj.get("links").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("need") != null && !jsonObj.get("need").isJsonNull()) && !jsonObj.get("need").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `need` to be a primitive type in the JSON string but got `%s`", jsonObj.get("need").toString()));
+      }
+      if ((jsonObj.get("payment") != null && !jsonObj.get("payment").isJsonNull()) && !jsonObj.get("payment").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `payment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment").toString()));
+      }
+      if ((jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonNull()) && !jsonObj.get("phone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `phone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phone").toString()));
+      }
+      if ((jsonObj.get("program") != null && !jsonObj.get("program").isJsonNull()) && !jsonObj.get("program").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `program` to be a primitive type in the JSON string but got `%s`", jsonObj.get("program").toString()));
+      }
+      if ((jsonObj.get("resume") != null && !jsonObj.get("resume").isJsonNull()) && !jsonObj.get("resume").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `resume` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resume").toString()));
+      }
+      if ((jsonObj.get("resume_file") != null && !jsonObj.get("resume_file").isJsonNull()) && !jsonObj.get("resume_file").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `resume_file` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resume_file").toString()));
       }
       if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
@@ -418,6 +946,12 @@ public class MarketingLeadIn {
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      }
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("upgrade") != null && !jsonObj.get("upgrade").isJsonNull()) && !jsonObj.get("upgrade").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `upgrade` to be a primitive type in the JSON string but got `%s`", jsonObj.get("upgrade").toString()));
       }
       // validate the optional field `visit`
       if (jsonObj.get("visit") != null && !jsonObj.get("visit").isJsonNull()) {

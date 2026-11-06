@@ -158,7 +158,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get avgDurationMs
+   * mean wall-clock of those runs
    * @return avgDurationMs
    */
   @javax.annotation.Nullable
@@ -177,7 +177,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get createdAt
+   * when it was first published
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -196,7 +196,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get endpoint
+   * the path that invokes it
    * @return endpoint
    */
   @javax.annotation.Nullable
@@ -215,7 +215,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get envCount
+   * how many secret NAMES it mounts; values are never carried
    * @return envCount
    */
   @javax.annotation.Nullable
@@ -234,7 +234,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get environment
+   * the language it runs under
    * @return environment
    */
   @javax.annotation.Nullable
@@ -253,7 +253,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get errors7d
+   * how many of those runs failed
    * @return errors7d
    */
   @javax.annotation.Nullable
@@ -272,7 +272,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get image
+   * the prebuilt image it runs, when it runs one instead of source
    * @return image
    */
   @javax.annotation.Nullable
@@ -291,7 +291,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get invocations7d
+   * runs in the last 7 days; ABSENT, never 0, when it has not run
    * @return invocations7d
    */
   @javax.annotation.Nullable
@@ -310,7 +310,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get lastDeployedAt
+   * when its code last changed
    * @return lastDeployedAt
    */
   @javax.annotation.Nullable
@@ -329,7 +329,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get memoryLimit
+   * the memory it runs with, and the multiplier on its compute charge
    * @return memoryLimit
    */
   @javax.annotation.Nullable
@@ -348,7 +348,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get name
+   * the function&#39;s org-unique handle
    * @return name
    */
   @javax.annotation.Nullable
@@ -367,7 +367,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get namespace
+   * the display group it belongs to; the org is the isolation key
    * @return namespace
    */
   @javax.annotation.Nullable
@@ -440,7 +440,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get status
+   * whether it is ready to serve
    * @return status
    */
   @javax.annotation.Nullable
@@ -459,7 +459,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get successRate
+   * share of those runs that succeeded, 0..1
    * @return successRate
    */
   @javax.annotation.Nullable
@@ -478,7 +478,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get target
+   * where it runs: empty for the sandbox, \&quot;fleet\&quot; for the org&#39;s GPU fleet
    * @return target
    */
   @javax.annotation.Nullable
@@ -497,7 +497,7 @@ public class FunctionFunctionDetail {
   }
 
   /**
-   * Get timeoutSec
+   * its per-invocation deadline
    * @return timeoutSec
    */
   @javax.annotation.Nullable

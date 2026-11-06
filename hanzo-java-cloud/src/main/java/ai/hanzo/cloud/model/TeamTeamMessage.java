@@ -59,6 +59,11 @@ public class TeamTeamMessage {
   @javax.annotation.Nullable
   private String author;
 
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private String channel;
+
   public static final String SERIALIZED_NAME_CREATED_ON = "createdOn";
   @SerializedName(SERIALIZED_NAME_CREATED_ON)
   @javax.annotation.Nullable
@@ -104,11 +109,6 @@ public class TeamTeamMessage {
   @javax.annotation.Nullable
   private Long replies;
 
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
-  @javax.annotation.Nullable
-  private String room;
-
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   @javax.annotation.Nullable
@@ -141,6 +141,25 @@ public class TeamTeamMessage {
   }
 
 
+  public TeamTeamMessage channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Channel is the channel it was said in — the same id the channel listing answers with, so a caller holding a message can name its channel without a second read. A reply names the channel its thread is in; a comment on a document has none.
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public String getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
+  }
+
+
   public TeamTeamMessage createdOn(@javax.annotation.Nullable Long createdOn) {
     this.createdOn = createdOn;
     return this;
@@ -166,7 +185,7 @@ public class TeamTeamMessage {
   }
 
   /**
-   * Doc is the document this message is a comment on. Empty for a message in a room.
+   * Doc is the document this message is a comment on. Empty for a message in a channel.
    * @return doc
    */
   @javax.annotation.Nullable
@@ -336,25 +355,6 @@ public class TeamTeamMessage {
   }
 
 
-  public TeamTeamMessage room(@javax.annotation.Nullable String room) {
-    this.room = room;
-    return this;
-  }
-
-  /**
-   * Room is the room it was said in — the same id the room listing answers with, so a caller holding a message can name its room without a second read. A reply names the room its thread is in; a comment on a document has none.
-   * @return room
-   */
-  @javax.annotation.Nullable
-  public String getRoom() {
-    return room;
-  }
-
-  public void setRoom(@javax.annotation.Nullable String room) {
-    this.room = room;
-  }
-
-
   public TeamTeamMessage text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
@@ -448,6 +448,7 @@ public class TeamTeamMessage {
     }
     TeamTeamMessage teamTeamMessage = (TeamTeamMessage) o;
     return Objects.equals(this.author, teamTeamMessage.author) &&
+        Objects.equals(this.channel, teamTeamMessage.channel) &&
         Objects.equals(this.createdOn, teamTeamMessage.createdOn) &&
         Objects.equals(this.doc, teamTeamMessage.doc) &&
         Objects.equals(this.editedOn, teamTeamMessage.editedOn) &&
@@ -457,7 +458,6 @@ public class TeamTeamMessage {
         Objects.equals(this.mentions, teamTeamMessage.mentions) &&
         Objects.equals(this.reactions, teamTeamMessage.reactions) &&
         Objects.equals(this.replies, teamTeamMessage.replies) &&
-        Objects.equals(this.room, teamTeamMessage.room) &&
         Objects.equals(this.text, teamTeamMessage.text) &&
         Objects.equals(this.thread, teamTeamMessage.thread)&&
         Objects.equals(this.additionalProperties, teamTeamMessage.additionalProperties);
@@ -465,7 +465,7 @@ public class TeamTeamMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(author, createdOn, doc, editedOn, files, id, lastReply, mentions, reactions, replies, room, text, thread, additionalProperties);
+    return Objects.hash(author, channel, createdOn, doc, editedOn, files, id, lastReply, mentions, reactions, replies, text, thread, additionalProperties);
   }
 
   @Override
@@ -473,6 +473,7 @@ public class TeamTeamMessage {
     StringBuilder sb = new StringBuilder();
     sb.append("class TeamTeamMessage {\n");
     sb.append("    author: ").append(toIndentedString(author)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    createdOn: ").append(toIndentedString(createdOn)).append("\n");
     sb.append("    doc: ").append(toIndentedString(doc)).append("\n");
     sb.append("    editedOn: ").append(toIndentedString(editedOn)).append("\n");
@@ -482,7 +483,6 @@ public class TeamTeamMessage {
     sb.append("    mentions: ").append(toIndentedString(mentions)).append("\n");
     sb.append("    reactions: ").append(toIndentedString(reactions)).append("\n");
     sb.append("    replies: ").append(toIndentedString(replies)).append("\n");
-    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    thread: ").append(toIndentedString(thread)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -507,7 +507,7 @@ public class TeamTeamMessage {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("author", "createdOn", "doc", "editedOn", "files", "id", "lastReply", "mentions", "reactions", "replies", "room", "text", "thread"));
+    openapiFields = new HashSet<String>(Arrays.asList("author", "channel", "createdOn", "doc", "editedOn", "files", "id", "lastReply", "mentions", "reactions", "replies", "text", "thread"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -528,6 +528,9 @@ public class TeamTeamMessage {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("author") != null && !jsonObj.get("author").isJsonNull()) && !jsonObj.get("author").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
+      }
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
       if ((jsonObj.get("doc") != null && !jsonObj.get("doc").isJsonNull()) && !jsonObj.get("doc").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `doc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("doc").toString()));
@@ -566,9 +569,6 @@ public class TeamTeamMessage {
             TeamTeamReaction.validateJsonElement(jsonArrayreactions.get(i));
           };
         }
-      }
-      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));

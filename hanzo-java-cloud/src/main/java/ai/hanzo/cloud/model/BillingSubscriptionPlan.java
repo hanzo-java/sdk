@@ -75,6 +75,11 @@ public class BillingSubscriptionPlan {
   @javax.annotation.Nullable
   private Long price;
 
+  public static final String SERIALIZED_NAME_SLUG = "slug";
+  @SerializedName(SERIALIZED_NAME_SLUG)
+  @javax.annotation.Nullable
+  private String slug;
+
   public BillingSubscriptionPlan() {
   }
 
@@ -172,6 +177,25 @@ public class BillingSubscriptionPlan {
     this.price = price;
   }
 
+
+  public BillingSubscriptionPlan slug(@javax.annotation.Nullable String slug) {
+    this.slug = slug;
+    return this;
+  }
+
+  /**
+   * Slug is the catalog plan it was opened on, e.g. \&quot;max-20x\&quot;: what a reader matches against GET /v1/billing/plans. Empty on a row that predates it.
+   * @return slug
+   */
+  @javax.annotation.Nullable
+  public String getSlug() {
+    return slug;
+  }
+
+  public void setSlug(@javax.annotation.Nullable String slug) {
+    this.slug = slug;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -231,13 +255,14 @@ public class BillingSubscriptionPlan {
         Objects.equals(this.id, billingSubscriptionPlan.id) &&
         Objects.equals(this.interval, billingSubscriptionPlan.interval) &&
         Objects.equals(this.name, billingSubscriptionPlan.name) &&
-        Objects.equals(this.price, billingSubscriptionPlan.price)&&
+        Objects.equals(this.price, billingSubscriptionPlan.price) &&
+        Objects.equals(this.slug, billingSubscriptionPlan.slug)&&
         Objects.equals(this.additionalProperties, billingSubscriptionPlan.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, id, interval, name, price, additionalProperties);
+    return Objects.hash(currency, id, interval, name, price, slug, additionalProperties);
   }
 
   @Override
@@ -249,6 +274,7 @@ public class BillingSubscriptionPlan {
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -271,7 +297,7 @@ public class BillingSubscriptionPlan {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("currency", "id", "interval", "name", "price"));
+    openapiFields = new HashSet<String>(Arrays.asList("currency", "id", "interval", "name", "price", "slug"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -301,6 +327,9 @@ public class BillingSubscriptionPlan {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("slug") != null && !jsonObj.get("slug").isJsonNull()) && !jsonObj.get("slug").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slug").toString()));
       }
   }
 

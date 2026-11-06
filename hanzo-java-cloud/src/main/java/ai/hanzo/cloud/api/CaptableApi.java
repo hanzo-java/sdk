@@ -175,7 +175,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals.
-     * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the convertible note to delete. (required)
      * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -194,7 +194,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals.
-     * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the convertible note to delete. (required)
      * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -214,7 +214,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. (asynchronously)
-     * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the convertible note to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -307,7 +307,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts.
-     * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the option grant to delete. (required)
      * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -326,7 +326,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts.
-     * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the option grant to delete. (required)
      * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -346,7 +346,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. (asynchronously)
-     * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the option grant to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -439,7 +439,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals.
-     * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the SAFE to delete. (required)
      * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -458,7 +458,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals.
-     * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the SAFE to delete. (required)
      * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -478,7 +478,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. (asynchronously)
-     * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the SAFE to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -571,7 +571,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts.
-     * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the share certificate to delete. (required)
      * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -590,7 +590,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts.
-     * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the share certificate to delete. (required)
      * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -610,7 +610,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. (asynchronously)
-     * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the share certificate to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -703,7 +703,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s stakeholders.
-     * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the stakeholder to delete. (required)
      * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -722,7 +722,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s stakeholders.
-     * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the stakeholder to delete. (required)
      * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -742,7 +742,7 @@ public class CaptableApi {
 
     /**
      * Removes one of the caller org&#39;s stakeholders. (asynchronously)
-     * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.
+     * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the stakeholder to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -828,7 +828,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s share classes, in creation order.
-     * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.
+     * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return List&lt;CaptableCaptableShareClass&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -846,7 +846,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s share classes, in creation order.
-     * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.
+     * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;List&lt;CaptableCaptableShareClass&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -865,7 +865,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s share classes, in creation order. (asynchronously)
-     * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.
+     * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -950,7 +950,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s cap-table company record.
-     * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.
+     * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableCompany
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -968,7 +968,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s cap-table company record.
-     * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.
+     * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableCompany&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -987,7 +987,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s cap-table company record. (asynchronously)
-     * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.
+     * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1072,7 +1072,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s convertible notes, newest first.
-     * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
+     * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableNotes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1090,7 +1090,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s convertible notes, newest first.
-     * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
+     * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableNotes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1109,7 +1109,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s convertible notes, newest first. (asynchronously)
-     * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
+     * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1194,7 +1194,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s investments, newest first.
-     * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.
+     * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableInvestments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1212,7 +1212,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s investments, newest first.
-     * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.
+     * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableInvestments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1231,7 +1231,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s investments, newest first. (asynchronously)
-     * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.
+     * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1316,7 +1316,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s option grants, newest first.
-     * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.
+     * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableOptions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1334,7 +1334,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s option grants, newest first.
-     * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.
+     * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableOptions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1353,7 +1353,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s option grants, newest first. (asynchronously)
-     * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.
+     * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1438,7 +1438,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s equity plans, newest first.
-     * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.
+     * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableEquityPlans
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1456,7 +1456,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s equity plans, newest first.
-     * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.
+     * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableEquityPlans&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1475,7 +1475,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s equity plans, newest first. (asynchronously)
-     * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.
+     * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1560,7 +1560,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s fundraising rounds, newest first.
-     * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.
+     * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableRounds
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1578,7 +1578,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s fundraising rounds, newest first.
-     * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.
+     * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableRounds&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1597,7 +1597,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s fundraising rounds, newest first. (asynchronously)
-     * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.
+     * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1689,7 +1689,7 @@ public class CaptableApi {
 
     /**
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first.
-     * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.
+     * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @return CaptableCaptableRoundDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1708,7 +1708,7 @@ public class CaptableApi {
 
     /**
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first.
-     * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.
+     * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @return ApiResponse&lt;CaptableCaptableRoundDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1728,7 +1728,7 @@ public class CaptableApi {
 
     /**
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. (asynchronously)
-     * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.
+     * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1814,7 +1814,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s SAFEs, newest first.
-     * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
+     * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableSafes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1832,7 +1832,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s SAFEs, newest first.
-     * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
+     * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableSafes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1851,7 +1851,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s SAFEs, newest first. (asynchronously)
-     * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
+     * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1936,7 +1936,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s share certificates, newest first.
-     * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.
+     * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableShares
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1954,7 +1954,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s share certificates, newest first.
-     * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.
+     * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableShares&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1973,7 +1973,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s share certificates, newest first. (asynchronously)
-     * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.
+     * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2058,7 +2058,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s stakeholders, newest first.
-     * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.
+     * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return List&lt;CaptableCaptableStakeholder&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2076,7 +2076,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s stakeholders, newest first.
-     * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.
+     * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;List&lt;CaptableCaptableStakeholder&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2095,7 +2095,7 @@ public class CaptableApi {
 
     /**
      * Returns the caller org&#39;s stakeholders, newest first. (asynchronously)
-     * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.
+     * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2180,7 +2180,7 @@ public class CaptableApi {
 
     /**
      * Computes the caller org&#39;s cap table.
-     * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.
+     * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return CaptableCaptableSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2198,7 +2198,7 @@ public class CaptableApi {
 
     /**
      * Computes the caller org&#39;s cap table.
-     * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.
+     * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @return ApiResponse&lt;CaptableCaptableSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2217,7 +2217,7 @@ public class CaptableApi {
 
     /**
      * Computes the caller org&#39;s cap table. (asynchronously)
-     * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.
+     * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2316,7 +2316,7 @@ public class CaptableApi {
 
     /**
      * Replaces one share class&#39;s terms.
-     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
+     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
      * @param captableCaptableShareClassAmend  (required)
      * @return CaptableCaptableUpdated
@@ -2336,7 +2336,7 @@ public class CaptableApi {
 
     /**
      * Replaces one share class&#39;s terms.
-     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
+     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
      * @param captableCaptableShareClassAmend  (required)
      * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
@@ -2357,7 +2357,7 @@ public class CaptableApi {
 
     /**
      * Replaces one share class&#39;s terms. (asynchronously)
-     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
+     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
      * @param captableCaptableShareClassAmend  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2458,7 +2458,7 @@ public class CaptableApi {
 
     /**
      * Changes one of the caller org&#39;s stakeholders.
-     * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.
+     * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableCaptableStakeholderPatch  (required)
      * @return CaptableCaptableUpdated
@@ -2478,7 +2478,7 @@ public class CaptableApi {
 
     /**
      * Changes one of the caller org&#39;s stakeholders.
-     * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.
+     * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableCaptableStakeholderPatch  (required)
      * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
@@ -2499,7 +2499,7 @@ public class CaptableApi {
 
     /**
      * Changes one of the caller org&#39;s stakeholders. (asynchronously)
-     * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.
+     * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableCaptableStakeholderPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2593,7 +2593,7 @@ public class CaptableApi {
 
     /**
      * Defines a new class of shares.
-     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
+     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareClassIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2612,7 +2612,7 @@ public class CaptableApi {
 
     /**
      * Defines a new class of shares.
-     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
+     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareClassIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2632,7 +2632,7 @@ public class CaptableApi {
 
     /**
      * Defines a new class of shares. (asynchronously)
-     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
+     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareClassIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2725,7 +2725,7 @@ public class CaptableApi {
 
     /**
      * Records a convertible note.
-     * Records a convertible note.
+     * Records a convertible note.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableConvertibleIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2744,7 +2744,7 @@ public class CaptableApi {
 
     /**
      * Records a convertible note.
-     * Records a convertible note.
+     * Records a convertible note.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableConvertibleIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2764,7 +2764,7 @@ public class CaptableApi {
 
     /**
      * Records a convertible note. (asynchronously)
-     * Records a convertible note.
+     * Records a convertible note.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableConvertibleIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2857,7 +2857,7 @@ public class CaptableApi {
 
     /**
      * Grants options to a stakeholder from an equity plan.
-     * Grants options to a stakeholder from an equity plan.
+     * Grants options to a stakeholder from an equity plan.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableOptionIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2876,7 +2876,7 @@ public class CaptableApi {
 
     /**
      * Grants options to a stakeholder from an equity plan.
-     * Grants options to a stakeholder from an equity plan.
+     * Grants options to a stakeholder from an equity plan.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableOptionIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2896,7 +2896,7 @@ public class CaptableApi {
 
     /**
      * Grants options to a stakeholder from an equity plan. (asynchronously)
-     * Grants options to a stakeholder from an equity plan.
+     * Grants options to a stakeholder from an equity plan.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableOptionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2989,7 +2989,7 @@ public class CaptableApi {
 
     /**
      * Opens an equity plan that options are granted from.
-     * Opens an equity plan that options are granted from.
+     * Opens an equity plan that options are granted from.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableEquityPlanIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3008,7 +3008,7 @@ public class CaptableApi {
 
     /**
      * Opens an equity plan that options are granted from.
-     * Opens an equity plan that options are granted from.
+     * Opens an equity plan that options are granted from.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableEquityPlanIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3028,7 +3028,7 @@ public class CaptableApi {
 
     /**
      * Opens an equity plan that options are granted from. (asynchronously)
-     * Opens an equity plan that options are granted from.
+     * Opens an equity plan that options are granted from.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableEquityPlanIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3121,7 +3121,7 @@ public class CaptableApi {
 
     /**
      * Opens a priced round that investments can be added to.
-     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
+     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableRoundIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3140,7 +3140,7 @@ public class CaptableApi {
 
     /**
      * Opens a priced round that investments can be added to.
-     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
+     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableRoundIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3160,7 +3160,7 @@ public class CaptableApi {
 
     /**
      * Opens a priced round that investments can be added to. (asynchronously)
-     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
+     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableRoundIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3260,7 +3260,7 @@ public class CaptableApi {
 
     /**
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED.
-     * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.
+     * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableCaptableRoundCloseRequest  (required)
      * @return CaptableCaptableUpdated
@@ -3280,7 +3280,7 @@ public class CaptableApi {
 
     /**
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED.
-     * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.
+     * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableCaptableRoundCloseRequest  (required)
      * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
@@ -3301,7 +3301,7 @@ public class CaptableApi {
 
     /**
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. (asynchronously)
-     * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.
+     * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param captableCaptableRoundCloseRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3402,7 +3402,7 @@ public class CaptableApi {
 
     /**
      * Records one investor&#39;s money into an open round.
-     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
+     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
      * @param captableCaptableInvestmentIn  (required)
      * @return CaptableCaptableInvested
@@ -3422,7 +3422,7 @@ public class CaptableApi {
 
     /**
      * Records one investor&#39;s money into an open round.
-     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
+     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
      * @param captableCaptableInvestmentIn  (required)
      * @return ApiResponse&lt;CaptableCaptableInvested&gt;
@@ -3443,7 +3443,7 @@ public class CaptableApi {
 
     /**
      * Records one investor&#39;s money into an open round. (asynchronously)
-     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
+     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
      * @param captableCaptableInvestmentIn  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3537,7 +3537,7 @@ public class CaptableApi {
 
     /**
      * Records a SAFE — a simple agreement for future equity.
-     * Records a SAFE — a simple agreement for future equity.
+     * Records a SAFE — a simple agreement for future equity.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableSafeIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3556,7 +3556,7 @@ public class CaptableApi {
 
     /**
      * Records a SAFE — a simple agreement for future equity.
-     * Records a SAFE — a simple agreement for future equity.
+     * Records a SAFE — a simple agreement for future equity.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableSafeIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3576,7 +3576,7 @@ public class CaptableApi {
 
     /**
      * Records a SAFE — a simple agreement for future equity. (asynchronously)
-     * Records a SAFE — a simple agreement for future equity.
+     * Records a SAFE — a simple agreement for future equity.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableSafeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3669,7 +3669,7 @@ public class CaptableApi {
 
     /**
      * Issues a share certificate to a stakeholder.
-     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
+     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareIn  (required)
      * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3688,7 +3688,7 @@ public class CaptableApi {
 
     /**
      * Issues a share certificate to a stakeholder.
-     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
+     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareIn  (required)
      * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3708,7 +3708,7 @@ public class CaptableApi {
 
     /**
      * Issues a share certificate to a stakeholder. (asynchronously)
-     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
+     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3801,7 +3801,7 @@ public class CaptableApi {
 
     /**
      * Moves shares from one stakeholder to another.
-     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
+     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareTransfer  (required)
      * @return CaptableCaptableTransferred
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3820,7 +3820,7 @@ public class CaptableApi {
 
     /**
      * Moves shares from one stakeholder to another.
-     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
+     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareTransfer  (required)
      * @return ApiResponse&lt;CaptableCaptableTransferred&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3840,7 +3840,7 @@ public class CaptableApi {
 
     /**
      * Moves shares from one stakeholder to another. (asynchronously)
-     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
+     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableShareTransfer  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3917,7 +3917,7 @@ public class CaptableApi {
 
     /**
      * Add stakeholders to the cap table
-     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused 401, and one from a member who is neither a SuperAdmin nor an admin of the org is refused 403. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postCaptableStakeholders() throws ApiException {
@@ -3926,7 +3926,7 @@ public class CaptableApi {
 
     /**
      * Add stakeholders to the cap table
-     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused 401, and one from a member who is neither a SuperAdmin nor an admin of the org is refused 403. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -3937,7 +3937,7 @@ public class CaptableApi {
 
     /**
      * Add stakeholders to the cap table (asynchronously)
-     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records the people and institutions that can hold equity — the rows every share, option, SAFE, note and investment is issued to.  The body is ONE stakeholder object or an ARRAY of them, and the array is the point: a whole roster loads in a single call. Email is the identity within the company, so a stakeholder whose email is already on the table is SKIPPED rather than duplicated or rejected — the 201 reports how many rows were actually inserted, which is what makes re-running an import safe. Validation is all-or-nothing across the batch: one bad entry refuses the whole array.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused 401, and one from a member who is neither a SuperAdmin nor an admin of the org is refused 403. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4021,7 +4021,7 @@ public class CaptableApi {
 
     /**
      * Sets the caller org&#39;s company name and incorporation details.
-     * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.
+     * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableCompanyUpdate  (required)
      * @return CaptableCaptableUpdated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4040,7 +4040,7 @@ public class CaptableApi {
 
     /**
      * Sets the caller org&#39;s company name and incorporation details.
-     * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.
+     * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableCompanyUpdate  (required)
      * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4060,7 +4060,7 @@ public class CaptableApi {
 
     /**
      * Sets the caller org&#39;s company name and incorporation details. (asynchronously)
-     * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.
+     * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.  Only a SuperAdmin or an admin of the org may call it; a member who is neither is refused 403.
      * @param captableCaptableCompanyUpdate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

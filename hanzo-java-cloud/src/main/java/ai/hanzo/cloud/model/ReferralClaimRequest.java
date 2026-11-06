@@ -55,6 +55,11 @@ public class ReferralClaimRequest {
   @javax.annotation.Nullable
   private String code;
 
+  public static final String SERIALIZED_NAME_INVITE = "invite";
+  @SerializedName(SERIALIZED_NAME_INVITE)
+  @javax.annotation.Nullable
+  private String invite;
+
   public ReferralClaimRequest() {
   }
 
@@ -74,6 +79,25 @@ public class ReferralClaimRequest {
 
   public void setCode(@javax.annotation.Nullable String code) {
     this.code = code;
+  }
+
+
+  public ReferralClaimRequest invite(@javax.annotation.Nullable String invite) {
+    this.invite = invite;
+    return this;
+  }
+
+  /**
+   * Invite is the beta invite the referee&#39;s link carried (its utm_content), when it carried one. Optional; it only lets the referrer&#39;s invite be marked joined, and never changes who the referral credits.
+   * @return invite
+   */
+  @javax.annotation.Nullable
+  public String getInvite() {
+    return invite;
+  }
+
+  public void setInvite(@javax.annotation.Nullable String invite) {
+    this.invite = invite;
   }
 
   /**
@@ -131,13 +155,14 @@ public class ReferralClaimRequest {
       return false;
     }
     ReferralClaimRequest referralClaimRequest = (ReferralClaimRequest) o;
-    return Objects.equals(this.code, referralClaimRequest.code)&&
+    return Objects.equals(this.code, referralClaimRequest.code) &&
+        Objects.equals(this.invite, referralClaimRequest.invite)&&
         Objects.equals(this.additionalProperties, referralClaimRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, additionalProperties);
+    return Objects.hash(code, invite, additionalProperties);
   }
 
   @Override
@@ -145,6 +170,7 @@ public class ReferralClaimRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReferralClaimRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    invite: ").append(toIndentedString(invite)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -167,7 +193,7 @@ public class ReferralClaimRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code"));
+    openapiFields = new HashSet<String>(Arrays.asList("code", "invite"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -188,6 +214,9 @@ public class ReferralClaimRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("invite") != null && !jsonObj.get("invite").isJsonNull()) && !jsonObj.get("invite").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `invite` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invite").toString()));
       }
   }
 

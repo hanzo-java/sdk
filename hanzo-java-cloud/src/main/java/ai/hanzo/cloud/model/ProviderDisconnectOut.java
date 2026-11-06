@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,13 +52,50 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProviderDisconnectOut {
+  public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
+  @SerializedName(SERIALIZED_NAME_ACCOUNTS)
+  @javax.annotation.Nullable
+  private List<String> accounts = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_DISCONNECTED = "disconnected";
   @SerializedName(SERIALIZED_NAME_DISCONNECTED)
   @javax.annotation.Nullable
   private Boolean disconnected;
 
+  public static final String SERIALIZED_NAME_UNINSTALLED = "uninstalled";
+  @SerializedName(SERIALIZED_NAME_UNINSTALLED)
+  @javax.annotation.Nullable
+  private List<String> uninstalled = new ArrayList<>();
+
   public ProviderDisconnectOut() {
   }
+
+  public ProviderDisconnectOut accounts(@javax.annotation.Nullable List<String> accounts) {
+    this.accounts = accounts;
+    return this;
+  }
+
+  public ProviderDisconnectOut addAccountsItem(String accountsItem) {
+    if (this.accounts == null) {
+      this.accounts = new ArrayList<>();
+    }
+    this.accounts.add(accountsItem);
+    return this;
+  }
+
+  /**
+   * Accounts are the account labels this disconnect removed. Omitted when none was connected.
+   * @return accounts
+   */
+  @javax.annotation.Nullable
+  public List<String> getAccounts() {
+    return accounts;
+  }
+
+  public void setAccounts(@javax.annotation.Nullable List<String> accounts) {
+    this.accounts = accounts;
+  }
+
 
   public ProviderDisconnectOut disconnected(@javax.annotation.Nullable Boolean disconnected) {
     this.disconnected = disconnected;
@@ -74,6 +113,33 @@ public class ProviderDisconnectOut {
 
   public void setDisconnected(@javax.annotation.Nullable Boolean disconnected) {
     this.disconnected = disconnected;
+  }
+
+
+  public ProviderDisconnectOut uninstalled(@javax.annotation.Nullable List<String> uninstalled) {
+    this.uninstalled = uninstalled;
+    return this;
+  }
+
+  public ProviderDisconnectOut addUninstalledItem(String uninstalledItem) {
+    if (this.uninstalled == null) {
+      this.uninstalled = new ArrayList<>();
+    }
+    this.uninstalled.add(uninstalledItem);
+    return this;
+  }
+
+  /**
+   * Uninstalled are the accounts whose provider installation was removed too, because no other org held them. An account another org still holds keeps its installation and is absent here.
+   * @return uninstalled
+   */
+  @javax.annotation.Nullable
+  public List<String> getUninstalled() {
+    return uninstalled;
+  }
+
+  public void setUninstalled(@javax.annotation.Nullable List<String> uninstalled) {
+    this.uninstalled = uninstalled;
   }
 
   /**
@@ -131,20 +197,24 @@ public class ProviderDisconnectOut {
       return false;
     }
     ProviderDisconnectOut providerDisconnectOut = (ProviderDisconnectOut) o;
-    return Objects.equals(this.disconnected, providerDisconnectOut.disconnected)&&
+    return Objects.equals(this.accounts, providerDisconnectOut.accounts) &&
+        Objects.equals(this.disconnected, providerDisconnectOut.disconnected) &&
+        Objects.equals(this.uninstalled, providerDisconnectOut.uninstalled)&&
         Objects.equals(this.additionalProperties, providerDisconnectOut.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(disconnected, additionalProperties);
+    return Objects.hash(accounts, disconnected, uninstalled, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProviderDisconnectOut {\n");
+    sb.append("    accounts: ").append(toIndentedString(accounts)).append("\n");
     sb.append("    disconnected: ").append(toIndentedString(disconnected)).append("\n");
+    sb.append("    uninstalled: ").append(toIndentedString(uninstalled)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -167,7 +237,7 @@ public class ProviderDisconnectOut {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("disconnected"));
+    openapiFields = new HashSet<String>(Arrays.asList("accounts", "disconnected", "uninstalled"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -186,6 +256,14 @@ public class ProviderDisconnectOut {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("accounts") != null && !jsonObj.get("accounts").isJsonNull() && !jsonObj.get("accounts").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accounts` to be an array in the JSON string but got `%s`", jsonObj.get("accounts").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("uninstalled") != null && !jsonObj.get("uninstalled").isJsonNull() && !jsonObj.get("uninstalled").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uninstalled` to be an array in the JSON string but got `%s`", jsonObj.get("uninstalled").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

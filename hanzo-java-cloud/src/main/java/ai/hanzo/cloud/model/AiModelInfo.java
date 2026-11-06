@@ -16,6 +16,8 @@ package ai.hanzo.cloud.model;
 import java.util.Objects;
 import ai.hanzo.cloud.model.AiModelAccessInfo;
 import ai.hanzo.cloud.model.AiModelPricingInfo;
+import ai.hanzo.cloud.model.AiVideoSpec;
+import ai.hanzo.cloud.model.AiVoiceSpec;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -84,10 +86,20 @@ public class AiModelInfo {
   @javax.annotation.Nullable
   private String description;
 
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
+  @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nullable
+  private String expires;
+
   public static final String SERIALIZED_NAME_FAMILY = "family";
   @SerializedName(SERIALIZED_NAME_FAMILY)
   @javax.annotation.Nullable
   private String family;
+
+  public static final String SERIALIZED_NAME_FREE = "free";
+  @SerializedName(SERIALIZED_NAME_FREE)
+  @javax.annotation.Nullable
+  private Boolean free;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -153,6 +165,16 @@ public class AiModelInfo {
   @SerializedName(SERIALIZED_NAME_SUPPORTS_VISION)
   @javax.annotation.Nullable
   private Boolean supportsVision;
+
+  public static final String SERIALIZED_NAME_VIDEO = "video";
+  @SerializedName(SERIALIZED_NAME_VIDEO)
+  @javax.annotation.Nullable
+  private AiVideoSpec video;
+
+  public static final String SERIALIZED_NAME_VOICE = "voice";
+  @SerializedName(SERIALIZED_NAME_VOICE)
+  @javax.annotation.Nullable
+  private AiVoiceSpec voice;
 
   public AiModelInfo() {
   }
@@ -271,6 +293,25 @@ public class AiModelInfo {
   }
 
 
+  public AiModelInfo expires(@javax.annotation.Nullable String expires) {
+    this.expires = expires;
+    return this;
+  }
+
+  /**
+   * Get expires
+   * @return expires
+   */
+  @javax.annotation.Nullable
+  public String getExpires() {
+    return expires;
+  }
+
+  public void setExpires(@javax.annotation.Nullable String expires) {
+    this.expires = expires;
+  }
+
+
   public AiModelInfo family(@javax.annotation.Nullable String family) {
     this.family = family;
     return this;
@@ -287,6 +328,25 @@ public class AiModelInfo {
 
   public void setFamily(@javax.annotation.Nullable String family) {
     this.family = family;
+  }
+
+
+  public AiModelInfo free(@javax.annotation.Nullable Boolean free) {
+    this.free = free;
+    return this;
+  }
+
+  /**
+   * Get free
+   * @return free
+   */
+  @javax.annotation.Nullable
+  public Boolean getFree() {
+    return free;
+  }
+
+  public void setFree(@javax.annotation.Nullable Boolean free) {
+    this.free = free;
   }
 
 
@@ -552,6 +612,44 @@ public class AiModelInfo {
     this.supportsVision = supportsVision;
   }
 
+
+  public AiModelInfo video(@javax.annotation.Nullable AiVideoSpec video) {
+    this.video = video;
+    return this;
+  }
+
+  /**
+   * Get video
+   * @return video
+   */
+  @javax.annotation.Nullable
+  public AiVideoSpec getVideo() {
+    return video;
+  }
+
+  public void setVideo(@javax.annotation.Nullable AiVideoSpec video) {
+    this.video = video;
+  }
+
+
+  public AiModelInfo voice(@javax.annotation.Nullable AiVoiceSpec voice) {
+    this.voice = voice;
+    return this;
+  }
+
+  /**
+   * Get voice
+   * @return voice
+   */
+  @javax.annotation.Nullable
+  public AiVoiceSpec getVoice() {
+    return voice;
+  }
+
+  public void setVoice(@javax.annotation.Nullable AiVoiceSpec voice) {
+    this.voice = voice;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -613,7 +711,9 @@ public class AiModelInfo {
         Objects.equals(this.contextWindow, aiModelInfo.contextWindow) &&
         Objects.equals(this.created, aiModelInfo.created) &&
         Objects.equals(this.description, aiModelInfo.description) &&
+        Objects.equals(this.expires, aiModelInfo.expires) &&
         Objects.equals(this.family, aiModelInfo.family) &&
+        Objects.equals(this.free, aiModelInfo.free) &&
         Objects.equals(this.id, aiModelInfo.id) &&
         Objects.equals(this.inputs, aiModelInfo.inputs) &&
         Objects.equals(this.maxOutputTokens, aiModelInfo.maxOutputTokens) &&
@@ -626,13 +726,15 @@ public class AiModelInfo {
         Objects.equals(this.provider, aiModelInfo.provider) &&
         Objects.equals(this.supportsReasoning, aiModelInfo.supportsReasoning) &&
         Objects.equals(this.supportsTools, aiModelInfo.supportsTools) &&
-        Objects.equals(this.supportsVision, aiModelInfo.supportsVision)&&
+        Objects.equals(this.supportsVision, aiModelInfo.supportsVision) &&
+        Objects.equals(this.video, aiModelInfo.video) &&
+        Objects.equals(this.voice, aiModelInfo.voice)&&
         Objects.equals(this.additionalProperties, aiModelInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(access, canonicalSlug, propertyClass, contextWindow, created, description, family, id, inputs, maxOutputTokens, name, _object, outputs, ownedBy, premium, pricing, provider, supportsReasoning, supportsTools, supportsVision, additionalProperties);
+    return Objects.hash(access, canonicalSlug, propertyClass, contextWindow, created, description, expires, family, free, id, inputs, maxOutputTokens, name, _object, outputs, ownedBy, premium, pricing, provider, supportsReasoning, supportsTools, supportsVision, video, voice, additionalProperties);
   }
 
   @Override
@@ -645,7 +747,9 @@ public class AiModelInfo {
     sb.append("    contextWindow: ").append(toIndentedString(contextWindow)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("    family: ").append(toIndentedString(family)).append("\n");
+    sb.append("    free: ").append(toIndentedString(free)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
     sb.append("    maxOutputTokens: ").append(toIndentedString(maxOutputTokens)).append("\n");
@@ -659,6 +763,8 @@ public class AiModelInfo {
     sb.append("    supportsReasoning: ").append(toIndentedString(supportsReasoning)).append("\n");
     sb.append("    supportsTools: ").append(toIndentedString(supportsTools)).append("\n");
     sb.append("    supportsVision: ").append(toIndentedString(supportsVision)).append("\n");
+    sb.append("    video: ").append(toIndentedString(video)).append("\n");
+    sb.append("    voice: ").append(toIndentedString(voice)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -681,7 +787,7 @@ public class AiModelInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("access", "canonical_slug", "class", "context_window", "created", "description", "family", "id", "inputs", "max_output_tokens", "name", "object", "outputs", "owned_by", "premium", "pricing", "provider", "supports_reasoning", "supports_tools", "supports_vision"));
+    openapiFields = new HashSet<String>(Arrays.asList("access", "canonical_slug", "class", "context_window", "created", "description", "expires", "family", "free", "id", "inputs", "max_output_tokens", "name", "object", "outputs", "owned_by", "premium", "pricing", "provider", "supports_reasoning", "supports_tools", "supports_vision", "video", "voice"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -713,6 +819,9 @@ public class AiModelInfo {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
+      if ((jsonObj.get("expires") != null && !jsonObj.get("expires").isJsonNull()) && !jsonObj.get("expires").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `expires` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expires").toString()));
+      }
       if ((jsonObj.get("family") != null && !jsonObj.get("family").isJsonNull()) && !jsonObj.get("family").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("family").toString()));
       }
@@ -742,6 +851,14 @@ public class AiModelInfo {
       }
       if ((jsonObj.get("provider") != null && !jsonObj.get("provider").isJsonNull()) && !jsonObj.get("provider").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provider").toString()));
+      }
+      // validate the optional field `video`
+      if (jsonObj.get("video") != null && !jsonObj.get("video").isJsonNull()) {
+        AiVideoSpec.validateJsonElement(jsonObj.get("video"));
+      }
+      // validate the optional field `voice`
+      if (jsonObj.get("voice") != null && !jsonObj.get("voice").isJsonNull()) {
+        AiVoiceSpec.validateJsonElement(jsonObj.get("voice"));
       }
   }
 

@@ -97,7 +97,7 @@ public class CampaignCampaignUpdate {
   }
 
   /**
-   * Get audience
+   * Audience is the segment or audience selector this campaign targets.
    * @return audience
    */
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class CampaignCampaignUpdate {
   }
 
   /**
-   * Get budget
+   * Budget is the campaign&#39;s total budget in CENTS. Negative reads as 0.
    * @return budget
    */
   @javax.annotation.Nullable
@@ -143,7 +143,7 @@ public class CampaignCampaignUpdate {
   }
 
   /**
-   * Get channels
+   * Channels are the fan-out targets, at most one per kind (paid, organic, email) and at most 12. A channel&#39;s status and provider id are server-owned: whatever the caller sends for them is replaced with \&quot;pending\&quot;.
    * @return channels
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class CampaignCampaignUpdate {
   }
 
   /**
-   * Get content
+   * Content is the ordered creative set. Content[0] is the active creative and the rest are A/B variants; at most 32, empty entries dropped.
    * @return content
    */
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class CampaignCampaignUpdate {
   }
 
   /**
-   * Get name
+   * Name is the campaign&#39;s display name. Required; trimmed and capped at 2048 characters.
    * @return name
    */
   @javax.annotation.Nullable
@@ -227,7 +227,7 @@ public class CampaignCampaignUpdate {
   }
 
   /**
-   * Get scheduleAt
+   * ScheduleAt is when the campaign should run, in unix seconds. Negative reads as 0 (immediately).
    * @return scheduleAt
    */
   @javax.annotation.Nullable

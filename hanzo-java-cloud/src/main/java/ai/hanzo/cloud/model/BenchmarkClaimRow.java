@@ -21,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,6 +68,16 @@ public class BenchmarkClaimRow {
   @javax.annotation.Nullable
   private String by;
 
+  public static final String SERIALIZED_NAME_EVIDENCE = "evidence";
+  @SerializedName(SERIALIZED_NAME_EVIDENCE)
+  @javax.annotation.Nullable
+  private List<String> evidence = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_FROM = "from";
+  @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
+  private String from;
+
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
   @javax.annotation.Nullable
@@ -90,6 +102,11 @@ public class BenchmarkClaimRow {
   @SerializedName(SERIALIZED_NAME_PROVIDER)
   @javax.annotation.Nullable
   private String provider;
+
+  public static final String SERIALIZED_NAME_RUNS = "runs";
+  @SerializedName(SERIALIZED_NAME_RUNS)
+  @javax.annotation.Nullable
+  private List<String> runs = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
@@ -163,6 +180,52 @@ public class BenchmarkClaimRow {
 
   public void setBy(@javax.annotation.Nullable String by) {
     this.by = by;
+  }
+
+
+  public BenchmarkClaimRow evidence(@javax.annotation.Nullable List<String> evidence) {
+    this.evidence = evidence;
+    return this;
+  }
+
+  public BenchmarkClaimRow addEvidenceItem(String evidenceItem) {
+    if (this.evidence == null) {
+      this.evidence = new ArrayList<>();
+    }
+    this.evidence.add(evidenceItem);
+    return this;
+  }
+
+  /**
+   * Evidence are the evidence uris the claim rests on (GET /v1/research/evidence?uri&#x3D;).
+   * @return evidence
+   */
+  @javax.annotation.Nullable
+  public List<String> getEvidence() {
+    return evidence;
+  }
+
+  public void setEvidence(@javax.annotation.Nullable List<String> evidence) {
+    this.evidence = evidence;
+  }
+
+
+  public BenchmarkClaimRow from(@javax.annotation.Nullable String from) {
+    this.from = from;
+    return this;
+  }
+
+  /**
+   * From is the org a curator row was promoted from: the org that filed the claim before a SuperAdmin published it. Empty on every other row.
+   * @return from
+   */
+  @javax.annotation.Nullable
+  public String getFrom() {
+    return from;
+  }
+
+  public void setFrom(@javax.annotation.Nullable String from) {
+    this.from = from;
   }
 
 
@@ -258,6 +321,33 @@ public class BenchmarkClaimRow {
 
   public void setProvider(@javax.annotation.Nullable String provider) {
     this.provider = provider;
+  }
+
+
+  public BenchmarkClaimRow runs(@javax.annotation.Nullable List<String> runs) {
+    this.runs = runs;
+    return this;
+  }
+
+  public BenchmarkClaimRow addRunsItem(String runsItem) {
+    if (this.runs == null) {
+      this.runs = new ArrayList<>();
+    }
+    this.runs.add(runsItem);
+    return this;
+  }
+
+  /**
+   * Runs are the research run ids the claim rests on (GET /v1/research/runs?id&#x3D;).
+   * @return runs
+   */
+  @javax.annotation.Nullable
+  public List<String> getRuns() {
+    return runs;
+  }
+
+  public void setRuns(@javax.annotation.Nullable List<String> runs) {
+    this.runs = runs;
   }
 
 
@@ -375,11 +465,14 @@ public class BenchmarkClaimRow {
     return Objects.equals(this.at, benchmarkClaimRow.at) &&
         Objects.equals(this.benchmark, benchmarkClaimRow.benchmark) &&
         Objects.equals(this.by, benchmarkClaimRow.by) &&
+        Objects.equals(this.evidence, benchmarkClaimRow.evidence) &&
+        Objects.equals(this.from, benchmarkClaimRow.from) &&
         Objects.equals(this.model, benchmarkClaimRow.model) &&
         Objects.equals(this.org, benchmarkClaimRow.org) &&
         Objects.equals(this.origin, benchmarkClaimRow.origin) &&
         Objects.equals(this.protocol, benchmarkClaimRow.protocol) &&
         Objects.equals(this.provider, benchmarkClaimRow.provider) &&
+        Objects.equals(this.runs, benchmarkClaimRow.runs) &&
         Objects.equals(this.score, benchmarkClaimRow.score) &&
         Objects.equals(this.source, benchmarkClaimRow.source) &&
         Objects.equals(this.visibility, benchmarkClaimRow.visibility)&&
@@ -388,7 +481,7 @@ public class BenchmarkClaimRow {
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, benchmark, by, model, org, origin, protocol, provider, score, source, visibility, additionalProperties);
+    return Objects.hash(at, benchmark, by, evidence, from, model, org, origin, protocol, provider, runs, score, source, visibility, additionalProperties);
   }
 
   @Override
@@ -398,11 +491,14 @@ public class BenchmarkClaimRow {
     sb.append("    at: ").append(toIndentedString(at)).append("\n");
     sb.append("    benchmark: ").append(toIndentedString(benchmark)).append("\n");
     sb.append("    by: ").append(toIndentedString(by)).append("\n");
+    sb.append("    evidence: ").append(toIndentedString(evidence)).append("\n");
+    sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+    sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
@@ -428,7 +524,7 @@ public class BenchmarkClaimRow {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "benchmark", "by", "model", "org", "origin", "protocol", "provider", "score", "source", "visibility"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "benchmark", "by", "evidence", "from", "model", "org", "origin", "protocol", "provider", "runs", "score", "source", "visibility"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -453,6 +549,13 @@ public class BenchmarkClaimRow {
       if ((jsonObj.get("by") != null && !jsonObj.get("by").isJsonNull()) && !jsonObj.get("by").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("by").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("evidence") != null && !jsonObj.get("evidence").isJsonNull() && !jsonObj.get("evidence").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `evidence` to be an array in the JSON string but got `%s`", jsonObj.get("evidence").toString()));
+      }
+      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      }
       if ((jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull()) && !jsonObj.get("model").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("model").toString()));
       }
@@ -467,6 +570,10 @@ public class BenchmarkClaimRow {
       }
       if ((jsonObj.get("provider") != null && !jsonObj.get("provider").isJsonNull()) && !jsonObj.get("provider").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provider").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("runs") != null && !jsonObj.get("runs").isJsonNull() && !jsonObj.get("runs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `runs` to be an array in the JSON string but got `%s`", jsonObj.get("runs").toString()));
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));

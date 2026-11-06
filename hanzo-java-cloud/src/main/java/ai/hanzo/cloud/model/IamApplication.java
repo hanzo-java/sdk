@@ -1475,7 +1475,7 @@ public class IamApplication {
   }
 
   /**
-   * Get id
+   * Persisted fields
    * @return id
    */
   @javax.annotation.Nullable

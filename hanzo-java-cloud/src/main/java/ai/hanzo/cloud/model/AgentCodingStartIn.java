@@ -66,6 +66,11 @@ public class AgentCodingStartIn {
   @javax.annotation.Nullable
   private String base;
 
+  public static final String SERIALIZED_NAME_BRANCH = "branch";
+  @SerializedName(SERIALIZED_NAME_BRANCH)
+  @javax.annotation.Nullable
+  private String branch;
+
   public static final String SERIALIZED_NAME_DESKTOP = "desktop";
   @SerializedName(SERIALIZED_NAME_DESKTOP)
   @javax.annotation.Nullable
@@ -100,6 +105,11 @@ public class AgentCodingStartIn {
   @SerializedName(SERIALIZED_NAME_PROMPT)
   @javax.annotation.Nullable
   private String prompt;
+
+  public static final String SERIALIZED_NAME_PULL = "pull";
+  @SerializedName(SERIALIZED_NAME_PULL)
+  @javax.annotation.Nullable
+  private Boolean pull;
 
   public static final String SERIALIZED_NAME_REPLY = "reply";
   @SerializedName(SERIALIZED_NAME_REPLY)
@@ -140,7 +150,7 @@ public class AgentCodingStartIn {
   }
 
   /**
-   * After names a previous run&#39;s session, and starts this one from where that one stopped instead of from the repository&#39;s default. It is how a follow-up instruction — \&quot;now add tests for it\&quot; — builds on work already done rather than beginning again on a fresh clone: the follow-up resumes the earlier run&#39;s sandbox and works in its tree, files, installs and all, while that sandbox is kept; one reaped by then is cloned again from the earlier branch.  It sets the base and nothing else, so this run still writes its OWN branch. One run, one branch: a run that wrote back onto an earlier run&#39;s branch would break the rule the forge&#39;s ref policy is built on, and would leave two turns of work with one name to review.  A caller who already knows the branch may pass Base directly; this exists because the branch is derived from a session id and nobody should have to know how. Base wins if both are given.
+   * After names a previous run&#39;s session, and starts this one from where that one stopped instead of from the repository&#39;s default. It is how a follow-up instruction — \&quot;now add tests for it\&quot; — builds on work already done rather than beginning again on a fresh clone: the follow-up resumes the earlier run&#39;s sandbox and works in its tree, files, installs and all, while that sandbox is kept; one reaped by then is cloned again from the earlier branch.  The follow-up writes the SAME branch the earlier run did, on top of its commits, so one piece of work is one branch and one pull request however many instructions it takes. It pushes without force, so it only ever adds to that branch. When the earlier run was on another repository, or kept its work local, there is no branch to carry on and the follow-up writes a new one. Branch names the branch instead.  A caller who already knows the branch may pass Base directly. Base wins if both are given.
    * @return after
    */
   @javax.annotation.Nullable
@@ -188,6 +198,25 @@ public class AgentCodingStartIn {
 
   public void setBase(@javax.annotation.Nullable String base) {
     this.base = base;
+  }
+
+
+  public AgentCodingStartIn branch(@javax.annotation.Nullable String branch) {
+    this.branch = branch;
+    return this;
+  }
+
+  /**
+   * Branch names the branch the run writes, as &#x60;agent/&lt;name&gt;&#x60;: pass the name alone, or with the prefix. Runs write only under &#x60;agent/&#x60;, never to Base or to the default branch, so the name is letters, digits, &#x60;.&#x60;, &#x60;_&#x60; and &#x60;-&#x60;. Empty takes &#x60;agent/&#x60; and the first part of the run&#39;s session id, or the earlier run&#39;s branch when After names one.  A branch that already exists on the repository is carried on, not replaced: the run starts from it and adds commits, and its pull request is the one it already has.
+   * @return branch
+   */
+  @javax.annotation.Nullable
+  public String getBranch() {
+    return branch;
+  }
+
+  public void setBranch(@javax.annotation.Nullable String branch) {
+    this.branch = branch;
   }
 
 
@@ -324,13 +353,32 @@ public class AgentCodingStartIn {
   }
 
 
+  public AgentCodingStartIn pull(@javax.annotation.Nullable Boolean pull) {
+    this.pull = pull;
+    return this;
+  }
+
+  /**
+   * Pull is whether the run opens a pull request for what it pushed. Unset, it pushes the branch and opens none: a pull request is the step after the work, taken when it is ready, and a run resumed with &#x60;after&#x60; adds to the same branch. True opens one when the run changed something.
+   * @return pull
+   */
+  @javax.annotation.Nullable
+  public Boolean getPull() {
+    return pull;
+  }
+
+  public void setPull(@javax.annotation.Nullable Boolean pull) {
+    this.pull = pull;
+  }
+
+
   public AgentCodingStartIn reply(@javax.annotation.Nullable AgentReply reply) {
     this.reply = reply;
     return this;
   }
 
   /**
-   * Reply is WHERE THE RUN NARRATES ITSELF, when the surface that started it has somewhere for it to talk. Empty means nobody is listening and the run simply does not narrate — which is the app surface&#39;s case, because /v1/agent/coding hands back a session id and the session stream is a better progress feed than any message could be.  IT IS NOT A FIELD A MODEL FILLS IN. A run asked for in a conversation is dispatched with the address that conversation is happening at, written over whatever arrived here (apps/agents/replyto.go). A model naming a channel is a model naming a room it was not spoken to in, so the value it chose is discarded rather than argued with — which is the same rule that left the org and the subject off this type entirely.
+   * Reply is WHERE THE RUN NARRATES ITSELF, when the surface that started it has somewhere for it to talk. Empty means nobody is listening and the run simply does not narrate — which is the app surface&#39;s case, because /v1/agent/coding hands back a session id and the session stream is a better progress feed than any message could be.  IT IS NOT A FIELD A MODEL FILLS IN. A run asked for in a conversation is dispatched with the address that conversation is happening at, written over whatever arrived here (apps/agents/replyto.go). A model naming a channel is a model naming a channel it was not spoken to in, so the value it chose is discarded rather than argued with — which is the same rule that left the org and the subject off this type entirely.
    * @return reply
    */
   @javax.annotation.Nullable
@@ -495,6 +543,7 @@ public class AgentCodingStartIn {
     return Objects.equals(this.after, agentCodingStartIn.after) &&
         Objects.equals(this.agentRef, agentCodingStartIn.agentRef) &&
         Objects.equals(this.base, agentCodingStartIn.base) &&
+        Objects.equals(this.branch, agentCodingStartIn.branch) &&
         Objects.equals(this.desktop, agentCodingStartIn.desktop) &&
         Objects.equals(this.effort, agentCodingStartIn.effort) &&
         Objects.equals(this.issue, agentCodingStartIn.issue) &&
@@ -502,6 +551,7 @@ public class AgentCodingStartIn {
         Objects.equals(this.model, agentCodingStartIn.model) &&
         Objects.equals(this.project, agentCodingStartIn.project) &&
         Objects.equals(this.prompt, agentCodingStartIn.prompt) &&
+        Objects.equals(this.pull, agentCodingStartIn.pull) &&
         Objects.equals(this.reply, agentCodingStartIn.reply) &&
         Objects.equals(this.repo, agentCodingStartIn.repo) &&
         Objects.equals(this.targetId, agentCodingStartIn.targetId) &&
@@ -513,7 +563,7 @@ public class AgentCodingStartIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(after, agentRef, base, desktop, effort, issue, mode, model, project, prompt, reply, repo, targetId, task, timeoutSeconds, tool, additionalProperties);
+    return Objects.hash(after, agentRef, base, branch, desktop, effort, issue, mode, model, project, prompt, pull, reply, repo, targetId, task, timeoutSeconds, tool, additionalProperties);
   }
 
   @Override
@@ -523,6 +573,7 @@ public class AgentCodingStartIn {
     sb.append("    after: ").append(toIndentedString(after)).append("\n");
     sb.append("    agentRef: ").append(toIndentedString(agentRef)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
+    sb.append("    branch: ").append(toIndentedString(branch)).append("\n");
     sb.append("    desktop: ").append(toIndentedString(desktop)).append("\n");
     sb.append("    effort: ").append(toIndentedString(effort)).append("\n");
     sb.append("    issue: ").append(toIndentedString(issue)).append("\n");
@@ -530,6 +581,7 @@ public class AgentCodingStartIn {
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    prompt: ").append(toIndentedString(prompt)).append("\n");
+    sb.append("    pull: ").append(toIndentedString(pull)).append("\n");
     sb.append("    reply: ").append(toIndentedString(reply)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("    targetId: ").append(toIndentedString(targetId)).append("\n");
@@ -558,7 +610,7 @@ public class AgentCodingStartIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("after", "agentRef", "base", "desktop", "effort", "issue", "mode", "model", "project", "prompt", "reply", "repo", "targetId", "task", "timeoutSeconds", "tool"));
+    openapiFields = new HashSet<String>(Arrays.asList("after", "agentRef", "base", "branch", "desktop", "effort", "issue", "mode", "model", "project", "prompt", "pull", "reply", "repo", "targetId", "task", "timeoutSeconds", "tool"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -585,6 +637,9 @@ public class AgentCodingStartIn {
       }
       if ((jsonObj.get("base") != null && !jsonObj.get("base").isJsonNull()) && !jsonObj.get("base").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `base` to be a primitive type in the JSON string but got `%s`", jsonObj.get("base").toString()));
+      }
+      if ((jsonObj.get("branch") != null && !jsonObj.get("branch").isJsonNull()) && !jsonObj.get("branch").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `branch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("branch").toString()));
       }
       if ((jsonObj.get("effort") != null && !jsonObj.get("effort").isJsonNull()) && !jsonObj.get("effort").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effort` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effort").toString()));

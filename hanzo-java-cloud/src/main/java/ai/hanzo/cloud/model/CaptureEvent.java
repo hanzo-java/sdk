@@ -114,6 +114,11 @@ public class CaptureEvent {
   @javax.annotation.Nullable
   private String kind;
 
+  public static final String SERIALIZED_NAME_LAST_UTM = "lastUtm";
+  @SerializedName(SERIALIZED_NAME_LAST_UTM)
+  @javax.annotation.Nullable
+  private UTM lastUtm;
+
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
   @javax.annotation.Nullable
@@ -463,6 +468,25 @@ public class CaptureEvent {
 
   public void setKind(@javax.annotation.Nullable String kind) {
     this.kind = kind;
+  }
+
+
+  public CaptureEvent lastUtm(@javax.annotation.Nullable UTM lastUtm) {
+    this.lastUtm = lastUtm;
+    return this;
+  }
+
+  /**
+   * Get lastUtm
+   * @return lastUtm
+   */
+  @javax.annotation.Nullable
+  public UTM getLastUtm() {
+    return lastUtm;
+  }
+
+  public void setLastUtm(@javax.annotation.Nullable UTM lastUtm) {
+    this.lastUtm = lastUtm;
   }
 
 
@@ -1071,6 +1095,7 @@ public class CaptureEvent {
         Objects.equals(this.groupId, captureEvent.groupId) &&
         Objects.equals(this.groupType, captureEvent.groupType) &&
         Objects.equals(this.kind, captureEvent.kind) &&
+        Objects.equals(this.lastUtm, captureEvent.lastUtm) &&
         Objects.equals(this.level, captureEvent.level) &&
         Objects.equals(this.library, captureEvent.library) &&
         Objects.equals(this.libraryVersion, captureEvent.libraryVersion) &&
@@ -1104,7 +1129,7 @@ public class CaptureEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(anonymousId, channel, clip, currency, distinctId, environment, error, event, groupId, groupType, kind, level, library, libraryVersion, log, messageId, metric, path, personId, product, productId, properties, quantity, refCode, referrer, release, resource, revenue, service, sessionId, signupWeek, site, span, spanId, timestamp, traceId, type, url, utm, additionalProperties);
+    return Objects.hash(anonymousId, channel, clip, currency, distinctId, environment, error, event, groupId, groupType, kind, lastUtm, level, library, libraryVersion, log, messageId, metric, path, personId, product, productId, properties, quantity, refCode, referrer, release, resource, revenue, service, sessionId, signupWeek, site, span, spanId, timestamp, traceId, type, url, utm, additionalProperties);
   }
 
   @Override
@@ -1122,6 +1147,7 @@ public class CaptureEvent {
     sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    groupType: ").append(toIndentedString(groupType)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    lastUtm: ").append(toIndentedString(lastUtm)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    library: ").append(toIndentedString(library)).append("\n");
     sb.append("    libraryVersion: ").append(toIndentedString(libraryVersion)).append("\n");
@@ -1172,7 +1198,7 @@ public class CaptureEvent {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("anonymousId", "channel", "clip", "currency", "distinctId", "environment", "error", "event", "groupId", "groupType", "kind", "level", "library", "libraryVersion", "log", "messageId", "metric", "path", "personId", "product", "productId", "properties", "quantity", "refCode", "referrer", "release", "resource", "revenue", "service", "sessionId", "signupWeek", "site", "span", "spanId", "timestamp", "traceId", "type", "url", "utm"));
+    openapiFields = new HashSet<String>(Arrays.asList("anonymousId", "channel", "clip", "currency", "distinctId", "environment", "error", "event", "groupId", "groupType", "kind", "lastUtm", "level", "library", "libraryVersion", "log", "messageId", "metric", "path", "personId", "product", "productId", "properties", "quantity", "refCode", "referrer", "release", "resource", "revenue", "service", "sessionId", "signupWeek", "site", "span", "spanId", "timestamp", "traceId", "type", "url", "utm"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -1225,6 +1251,10 @@ public class CaptureEvent {
       }
       if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
+      }
+      // validate the optional field `lastUtm`
+      if (jsonObj.get("lastUtm") != null && !jsonObj.get("lastUtm").isJsonNull()) {
+        UTM.validateJsonElement(jsonObj.get("lastUtm"));
       }
       if ((jsonObj.get("level") != null && !jsonObj.get("level").isJsonNull()) && !jsonObj.get("level").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `level` to be a primitive type in the JSON string but got `%s`", jsonObj.get("level").toString()));

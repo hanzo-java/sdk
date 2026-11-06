@@ -257,7 +257,7 @@ public class O11yIntegration {
   }
 
   /**
-   * Get description
+   * A short description
    * @return description
    */
   @javax.annotation.Nullable
@@ -333,7 +333,7 @@ public class O11yIntegration {
   }
 
   /**
-   * Get overview
+   * markdown
    * @return overview
    */
   @javax.annotation.Nullable

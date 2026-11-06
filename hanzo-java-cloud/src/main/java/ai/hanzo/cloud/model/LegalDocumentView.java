@@ -138,7 +138,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get category
+   * Category is the template&#39;s category: formation, equity, ops or sales.
    * @return category
    */
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the document was generated, in unix seconds.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -195,7 +195,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get esignProvider
+   * EsignProvider names the e-signature provider handling it, absent until a signature has been requested.
    * @return esignProvider
    */
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get id
+   * ID is the document&#39;s server-minted handle, \&quot;doc_\&quot;-prefixed.
    * @return id
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get signedAt
+   * SignedAt is when the provider reported completion, in unix seconds. Absent until then.
    * @return signedAt
    */
   @javax.annotation.Nullable
@@ -252,7 +252,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get status
+   * Status is the lifecycle state: draft, out_for_signature, signed or voided. There is deliberately no \&quot;legally valid\&quot; state — that is counsel&#39;s determination, not the platform&#39;s.
    * @return status
    */
   @javax.annotation.Nullable
@@ -271,7 +271,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get templateId
+   * TemplateID is the template it was rendered from.
    * @return templateId
    */
   @javax.annotation.Nullable
@@ -290,7 +290,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get templateVersion
+   * TemplateVersion is WHICH version of that template rendered it, so the document is reproducible and auditable.
    * @return templateVersion
    */
   @javax.annotation.Nullable
@@ -309,7 +309,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get title
+   * Title is the document&#39;s title, inherited from the template.
    * @return title
    */
   @javax.annotation.Nullable
@@ -328,7 +328,7 @@ public class LegalDocumentView {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is when it last changed, in unix seconds.
    * @return updatedAt
    */
   @javax.annotation.Nullable

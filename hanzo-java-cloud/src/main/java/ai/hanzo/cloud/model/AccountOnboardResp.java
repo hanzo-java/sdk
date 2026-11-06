@@ -60,11 +60,6 @@ public class AccountOnboardResp {
   @javax.annotation.Nullable
   private String accessSecret;
 
-  public static final String SERIALIZED_NAME_ADDITIONAL = "additional";
-  @SerializedName(SERIALIZED_NAME_ADDITIONAL)
-  @javax.annotation.Nullable
-  private Boolean additional;
-
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   @javax.annotation.Nullable
@@ -84,7 +79,7 @@ public class AccountOnboardResp {
   }
 
   /**
-   * AccessKey is the identifier of the org-scoped credential provisioning minted with the organization. Present on a first run that actually minted one.
+   * AccessKey is the publishable half of the organization&#39;s default API key, held by its creator. Absent when the key could not be minted; the creator then mints one from the keys page.
    * @return accessKey
    */
   @javax.annotation.Nullable
@@ -103,7 +98,7 @@ public class AccountOnboardResp {
   }
 
   /**
-   * AccessSecret is that credential&#39;s confidential half, returned ONCE — on the response that mints it and never again. IAM keeps only its argon2id digest and blanks the plaintext, so this is the single moment it exists in a form its owner can read; a replay of the same provision re-reveals nothing.
+   * AccessSecret is that credential&#39;s confidential half, returned ONCE — on the response that mints it and never again. IAM keeps only its argon2id digest and blanks the plaintext, so this is the single moment it exists in a form its owner can read.
    * @return accessSecret
    */
   @javax.annotation.Nullable
@@ -113,25 +108,6 @@ public class AccountOnboardResp {
 
   public void setAccessSecret(@javax.annotation.Nullable String accessSecret) {
     this.accessSecret = accessSecret;
-  }
-
-
-  public AccountOnboardResp additional(@javax.annotation.Nullable Boolean additional) {
-    this.additional = additional;
-    return this;
-  }
-
-  /**
-   * Additional is true when the caller already had an organization and this one was created WITHOUT moving them into it — they reach it via the org switcher.
-   * @return additional
-   */
-  @javax.annotation.Nullable
-  public Boolean getAdditional() {
-    return additional;
-  }
-
-  public void setAdditional(@javax.annotation.Nullable Boolean additional) {
-    this.additional = additional;
   }
 
 
@@ -229,7 +205,6 @@ public class AccountOnboardResp {
     AccountOnboardResp accountOnboardResp = (AccountOnboardResp) o;
     return Objects.equals(this.accessKey, accountOnboardResp.accessKey) &&
         Objects.equals(this.accessSecret, accountOnboardResp.accessSecret) &&
-        Objects.equals(this.additional, accountOnboardResp.additional) &&
         Objects.equals(this.displayName, accountOnboardResp.displayName) &&
         Objects.equals(this.org, accountOnboardResp.org)&&
         Objects.equals(this.additionalProperties, accountOnboardResp.additionalProperties);
@@ -237,7 +212,7 @@ public class AccountOnboardResp {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, additional, displayName, org, additionalProperties);
+    return Objects.hash(accessKey, accessSecret, displayName, org, additionalProperties);
   }
 
   @Override
@@ -246,7 +221,6 @@ public class AccountOnboardResp {
     sb.append("class AccountOnboardResp {\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessSecret: ").append(toIndentedString(accessSecret)).append("\n");
-    sb.append("    additional: ").append(toIndentedString(additional)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -271,7 +245,7 @@ public class AccountOnboardResp {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "additional", "displayName", "org"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "displayName", "org"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

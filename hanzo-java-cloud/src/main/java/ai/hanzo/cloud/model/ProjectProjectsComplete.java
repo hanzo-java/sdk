@@ -162,7 +162,7 @@ public class ProjectProjectsComplete {
   }
 
   /**
-   * Copy lists the keys to take from CopyFrom&#39;s prefix, relative to it. They are also named in Keys, which stays the whole release.
+   * Copy lists the keys to take from CopyFrom&#39;s prefix, relative to it, copied before the release is checked. Each must also be named in Keys, which stays the whole release, and be a clean relative path; anything else is a 400.
    * @return copy
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class ProjectProjectsComplete {
   }
 
   /**
-   * CopyFrom names another site of the same org whose prefix already holds the bytes of Copy. A host that shares a build with another differs from it by a page or two, so CI uploads those and asks for the rest to be copied inside the object store instead of sent again over the runner&#39;s link.
+   * CopyFrom names another site of the same org whose prefix already holds the bytes of Copy. A host that shares a build with another differs from it by a page or two, so CI uploads those and asks for the rest to be copied inside the object store instead of sent again over the runner&#39;s link. A site the org does not hold is a 404. Read only on a live completion that names keys.
    * @return copyFrom
    */
   @javax.annotation.Nullable
@@ -246,7 +246,7 @@ public class ProjectProjectsComplete {
   }
 
   /**
-   * Keys is the manifest CI just uploaded, RELATIVE to the deployment prefix. It is what replaces &#x60;aws s3 sync --delete&#x60;: an upload grant authorizes writes only, so CI cannot remove a file, and cloud reconciles the prefix against this list instead (grant.go). Omit it and nothing is deleted — the prefix only grows, which is the old pre-grant behaviour and a safe default.
+   * Keys is the whole release, RELATIVE to the deployment prefix. A live completion that names it is refused with 409 while any of these keys is absent from the store, and the prefix is then reconciled against it: an upload grant authorizes writes only, so CI cannot remove a file, and cloud deletes what this list does not name instead (grant.go). Omit it and nothing is checked or deleted — the prefix only grows, the pre-grant behaviour.
    * @return keys
    */
   @javax.annotation.Nullable

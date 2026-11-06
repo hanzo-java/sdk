@@ -160,15 +160,15 @@ public class ComputeSampleView {
   @javax.annotation.Nullable
   private Double load1;
 
-  public static final String SERIALIZED_NAME_LOAD15 = "load15";
-  @SerializedName(SERIALIZED_NAME_LOAD15)
-  @javax.annotation.Nullable
-  private Double load15;
-
   public static final String SERIALIZED_NAME_LOAD5 = "load5";
   @SerializedName(SERIALIZED_NAME_LOAD5)
   @javax.annotation.Nullable
   private Double load5;
+
+  public static final String SERIALIZED_NAME_LOAD15 = "load15";
+  @SerializedName(SERIALIZED_NAME_LOAD15)
+  @javax.annotation.Nullable
+  private Double load15;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
@@ -651,25 +651,6 @@ public class ComputeSampleView {
   }
 
 
-  public ComputeSampleView load15(@javax.annotation.Nullable Double load15) {
-    this.load15 = load15;
-    return this;
-  }
-
-  /**
-   * Load15 is the 15-minute load average, the same units as Load1.
-   * @return load15
-   */
-  @javax.annotation.Nullable
-  public Double getLoad15() {
-    return load15;
-  }
-
-  public void setLoad15(@javax.annotation.Nullable Double load15) {
-    this.load15 = load15;
-  }
-
-
   public ComputeSampleView load5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
     return this;
@@ -686,6 +667,25 @@ public class ComputeSampleView {
 
   public void setLoad5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
+  }
+
+
+  public ComputeSampleView load15(@javax.annotation.Nullable Double load15) {
+    this.load15 = load15;
+    return this;
+  }
+
+  /**
+   * Load15 is the 15-minute load average, the same units as Load1.
+   * @return load15
+   */
+  @javax.annotation.Nullable
+  public Double getLoad15() {
+    return load15;
+  }
+
+  public void setLoad15(@javax.annotation.Nullable Double load15) {
+    this.load15 = load15;
   }
 
 
@@ -993,8 +993,8 @@ public class ComputeSampleView {
         Objects.equals(this.kind, computeSampleView.kind) &&
         Objects.equals(this.kvCache, computeSampleView.kvCache) &&
         Objects.equals(this.load1, computeSampleView.load1) &&
-        Objects.equals(this.load15, computeSampleView.load15) &&
         Objects.equals(this.load5, computeSampleView.load5) &&
+        Objects.equals(this.load15, computeSampleView.load15) &&
         Objects.equals(this.memFree, computeSampleView.memFree) &&
         Objects.equals(this.memUsed, computeSampleView.memUsed) &&
         Objects.equals(this.memory, computeSampleView.memory) &&
@@ -1012,7 +1012,7 @@ public class ComputeSampleView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, costCents, cpuTemp, cpuUtil, cpus, decode, diskRead, diskTotal, diskUsed, diskWrite, gpuMemTotal, gpuMemUsed, gpuModel, gpuPower, gpuPowerLimit, gpuTemp, gpuUtil, gpus, host, kind, kvCache, load1, load15, load5, memFree, memUsed, memory, model, netRx, netTx, prefill, running, source, ttft, unit, waiting, additionalProperties);
+    return Objects.hash(at, costCents, cpuTemp, cpuUtil, cpus, decode, diskRead, diskTotal, diskUsed, diskWrite, gpuMemTotal, gpuMemUsed, gpuModel, gpuPower, gpuPowerLimit, gpuTemp, gpuUtil, gpus, host, kind, kvCache, load1, load5, load15, memFree, memUsed, memory, model, netRx, netTx, prefill, running, source, ttft, unit, waiting, additionalProperties);
   }
 
   @Override
@@ -1041,8 +1041,8 @@ public class ComputeSampleView {
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    kvCache: ").append(toIndentedString(kvCache)).append("\n");
     sb.append("    load1: ").append(toIndentedString(load1)).append("\n");
-    sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
     sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
+    sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
     sb.append("    memFree: ").append(toIndentedString(memFree)).append("\n");
     sb.append("    memUsed: ").append(toIndentedString(memUsed)).append("\n");
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
@@ -1077,7 +1077,7 @@ public class ComputeSampleView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "costCents", "cpuTemp", "cpuUtil", "cpus", "decode", "diskRead", "diskTotal", "diskUsed", "diskWrite", "gpuMemTotal", "gpuMemUsed", "gpuModel", "gpuPower", "gpuPowerLimit", "gpuTemp", "gpuUtil", "gpus", "host", "kind", "kvCache", "load1", "load15", "load5", "memFree", "memUsed", "memory", "model", "netRx", "netTx", "prefill", "running", "source", "ttft", "unit", "waiting"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "costCents", "cpuTemp", "cpuUtil", "cpus", "decode", "diskRead", "diskTotal", "diskUsed", "diskWrite", "gpuMemTotal", "gpuMemUsed", "gpuModel", "gpuPower", "gpuPowerLimit", "gpuTemp", "gpuUtil", "gpus", "host", "kind", "kvCache", "load1", "load5", "load15", "memFree", "memUsed", "memory", "model", "netRx", "netTx", "prefill", "running", "source", "ttft", "unit", "waiting"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

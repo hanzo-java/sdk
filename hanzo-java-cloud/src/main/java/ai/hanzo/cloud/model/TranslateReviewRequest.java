@@ -52,10 +52,25 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class TranslateReviewRequest {
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  @javax.annotation.Nullable
+  private String format;
+
   public static final String SERIALIZED_NAME_GLOSSARY = "glossary";
   @SerializedName(SERIALIZED_NAME_GLOSSARY)
   @javax.annotation.Nullable
   private Map<String, String> glossary = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_LANG = "lang";
+  @SerializedName(SERIALIZED_NAME_LANG)
+  @javax.annotation.Nullable
+  private String lang;
+
+  public static final String SERIALIZED_NAME_MODEL = "model";
+  @SerializedName(SERIALIZED_NAME_MODEL)
+  @javax.annotation.Nullable
+  private String model;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -85,6 +100,25 @@ public class TranslateReviewRequest {
   public TranslateReviewRequest() {
   }
 
+  public TranslateReviewRequest format(@javax.annotation.Nullable String format) {
+    this.format = format;
+    return this;
+  }
+
+  /**
+   * Format is the markup the source carries: text (the default), html or markdown. Part of the entry&#39;s identity.
+   * @return format
+   */
+  @javax.annotation.Nullable
+  public String getFormat() {
+    return format;
+  }
+
+  public void setFormat(@javax.annotation.Nullable String format) {
+    this.format = format;
+  }
+
+
   public TranslateReviewRequest glossary(@javax.annotation.Nullable Map<String, String> glossary) {
     this.glossary = glossary;
     return this;
@@ -109,6 +143,44 @@ public class TranslateReviewRequest {
 
   public void setGlossary(@javax.annotation.Nullable Map<String, String> glossary) {
     this.glossary = glossary;
+  }
+
+
+  public TranslateReviewRequest lang(@javax.annotation.Nullable String lang) {
+    this.lang = lang;
+    return this;
+  }
+
+  /**
+   * Lang is the source language the translate calls this entry serves declare (their &#x60;source&#x60;), empty for calls that let the engine detect it. Part of the entry&#39;s identity; an entry with none also serves calls that declare one.
+   * @return lang
+   */
+  @javax.annotation.Nullable
+  public String getLang() {
+    return lang;
+  }
+
+  public void setLang(@javax.annotation.Nullable String lang) {
+    this.lang = lang;
+  }
+
+
+  public TranslateReviewRequest model(@javax.annotation.Nullable String model) {
+    this.model = model;
+    return this;
+  }
+
+  /**
+   * Model is the quality-tier model the translate calls this entry serves name; empty for the default. Part of the entry&#39;s identity, and refused with bulk.
+   * @return model
+   */
+  @javax.annotation.Nullable
+  public String getModel() {
+    return model;
+  }
+
+  public void setModel(@javax.annotation.Nullable String model) {
+    this.model = model;
   }
 
 
@@ -261,7 +333,10 @@ public class TranslateReviewRequest {
       return false;
     }
     TranslateReviewRequest translateReviewRequest = (TranslateReviewRequest) o;
-    return Objects.equals(this.glossary, translateReviewRequest.glossary) &&
+    return Objects.equals(this.format, translateReviewRequest.format) &&
+        Objects.equals(this.glossary, translateReviewRequest.glossary) &&
+        Objects.equals(this.lang, translateReviewRequest.lang) &&
+        Objects.equals(this.model, translateReviewRequest.model) &&
         Objects.equals(this.source, translateReviewRequest.source) &&
         Objects.equals(this.state, translateReviewRequest.state) &&
         Objects.equals(this.target, translateReviewRequest.target) &&
@@ -272,14 +347,17 @@ public class TranslateReviewRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(glossary, source, state, target, text, tier, additionalProperties);
+    return Objects.hash(format, glossary, lang, model, source, state, target, text, tier, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TranslateReviewRequest {\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    glossary: ").append(toIndentedString(glossary)).append("\n");
+    sb.append("    lang: ").append(toIndentedString(lang)).append("\n");
+    sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
@@ -307,7 +385,7 @@ public class TranslateReviewRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("glossary", "source", "state", "target", "text", "tier"));
+    openapiFields = new HashSet<String>(Arrays.asList("format", "glossary", "lang", "model", "source", "state", "target", "text", "tier"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -326,6 +404,15 @@ public class TranslateReviewRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if ((jsonObj.get("lang") != null && !jsonObj.get("lang").isJsonNull()) && !jsonObj.get("lang").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lang` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lang").toString()));
+      }
+      if ((jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull()) && !jsonObj.get("model").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("model").toString()));
+      }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
       }

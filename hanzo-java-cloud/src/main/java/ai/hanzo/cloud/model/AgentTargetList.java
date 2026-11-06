@@ -75,7 +75,7 @@ public class AgentTargetList {
   }
 
   /**
-   * Targets is every target registered to the caller&#39;s org.
+   * Targets is every target registered to the caller&#39;s org; in a held org, the caller&#39;s own.
    * @return targets
    */
   @javax.annotation.Nullable

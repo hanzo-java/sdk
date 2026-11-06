@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import java.io.File;
 import ai.hanzo.cloud.model.GraphGraphAnswerIn;
 import ai.hanzo.cloud.model.GraphGraphAnswerOut;
 import ai.hanzo.cloud.model.GraphGraphAssertIn;
@@ -96,6 +97,123 @@ public class GraphApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for getGraphGraphql
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGraphGraphqlCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/graphql";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain; charset=utf-8"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGraphGraphqlValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGraphGraphqlCall(_callback);
+
+    }
+
+    /**
+     * Read the graph&#39;s GraphQL schema.
+     * Returns the schema POST at this address runs queries against, as GraphQL SDL: the five types the store models and the fields askable of each. It is what a code generator or an editor reads, and it is the same for every organization; what a query answers is scoped to the caller&#39;s.
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getGraphGraphql() throws ApiException {
+        ApiResponse<File> localVarResp = getGraphGraphqlWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Read the graph&#39;s GraphQL schema.
+     * Returns the schema POST at this address runs queries against, as GraphQL SDL: the five types the store models and the fields askable of each. It is what a code generator or an editor reads, and it is the same for every organization; what a query answers is scoped to the caller&#39;s.
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getGraphGraphqlWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGraphGraphqlValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Read the graph&#39;s GraphQL schema. (asynchronously)
+     * Returns the schema POST at this address runs queries against, as GraphQL SDL: the five types the store models and the fields askable of each. It is what a code generator or an editor reads, and it is the same for every organization; what a query answers is scoped to the caller&#39;s.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGraphGraphqlAsync(final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGraphGraphqlValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for graphAnswer
      * @param graphGraphAnswerIn  (required)
@@ -2073,7 +2191,7 @@ public class GraphApi {
 
     /**
      * Ask the graph in one request, traversing.
-     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
+     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by GET at this same address, and introspection is not.  A query that ran answers 200 with each failure in an &#x60;errors&#x60; list beside the data, which is the wire every GraphQL client parses; one that could not begin — it does not parse, or names a fragment it does not define — answers 400 with the reason and no data. &#x60;edges&#x60; nest at most three deep, refused before any operation runs, and one root field&#39;s edges answer at most 1000 entities.
      * @param graphQLIn  (optional)
      * @return GraphQLOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2091,7 +2209,7 @@ public class GraphApi {
 
     /**
      * Ask the graph in one request, traversing.
-     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
+     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by GET at this same address, and introspection is not.  A query that ran answers 200 with each failure in an &#x60;errors&#x60; list beside the data, which is the wire every GraphQL client parses; one that could not begin — it does not parse, or names a fragment it does not define — answers 400 with the reason and no data. &#x60;edges&#x60; nest at most three deep, refused before any operation runs, and one root field&#39;s edges answer at most 1000 entities.
      * @param graphQLIn  (optional)
      * @return ApiResponse&lt;GraphQLOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2110,7 +2228,7 @@ public class GraphApi {
 
     /**
      * Ask the graph in one request, traversing. (asynchronously)
-     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
+     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by GET at this same address, and introspection is not.  A query that ran answers 200 with each failure in an &#x60;errors&#x60; list beside the data, which is the wire every GraphQL client parses; one that could not begin — it does not parse, or names a fragment it does not define — answers 400 with the reason and no data. &#x60;edges&#x60; nest at most three deep, refused before any operation runs, and one root field&#39;s edges answer at most 1000 entities.
      * @param graphQLIn  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
