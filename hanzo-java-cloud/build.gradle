@@ -40,6 +40,16 @@ dependencies {
     // publishes the javax namespace — jakarta.annotation.* only arrives in 2.0,
     // where this stops compiling.
     implementation 'jakarta.annotation:jakarta.annotation-api:1.3.5'
+
+    // The wire tests: a local server stands in for the gateway.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging { events 'failed'; exceptionFormat 'full' }
 }
 
 // Maven Central requires -sources and -javadoc beside the jar.

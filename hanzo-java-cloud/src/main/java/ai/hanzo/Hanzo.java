@@ -14,7 +14,7 @@ import ai.hanzo.cloud.ApiClient;
  *
  * <p>The credential itself is the GENERATED client's, not this file's. The
  * document declares a {@code bearer} security scheme and applies it to every
- * operation except the five that say {@code security: []}, so {@link ApiClient}
+ * operation except those that say {@code security: []}, so {@link ApiClient}
  * registers an {@code HttpBearerAuth} and each generated call names it; all this
  * does is hand it the token. The header goes out from
  * {@code HttpBearerAuth.applyToParams}, on the calls the document says need it

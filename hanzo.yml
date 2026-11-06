@@ -10,6 +10,12 @@ test:
     # must not reach a tag.
     run: ./gradlew --no-daemon :hanzo-java-cloud:compileJava
 
+  - name: sdk-test
+    # What the client puts on the wire, against a local server: the bearer and
+    # X-Org-Id, no credential on a route the document marks public, a response
+    # that grows a field, a chat completion with its routing bounds, a refusal.
+    run: ./gradlew --no-daemon :hanzo-java-cloud:test
+
   - name: examples-build
     # The six canonical flows, compiled against the client they demonstrate. An
     # example that does not compile is worse than no example, so they are gated
