@@ -63,6 +63,11 @@ public class BillingCryptoOptions {
   @javax.annotation.Nullable
   private List<String> chains = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_GATEWAY = "gateway";
+  @SerializedName(SERIALIZED_NAME_GATEWAY)
+  @javax.annotation.Nullable
+  private List<String> gateway = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
@@ -122,6 +127,33 @@ public class BillingCryptoOptions {
 
   public void setChains(@javax.annotation.Nullable List<String> chains) {
     this.chains = chains;
+  }
+
+
+  public BillingCryptoOptions gateway(@javax.annotation.Nullable List<String> gateway) {
+    this.gateway = gateway;
+    return this;
+  }
+
+  public BillingCryptoOptions addGatewayItem(String gatewayItem) {
+    if (this.gateway == null) {
+      this.gateway = new ArrayList<>();
+    }
+    this.gateway.add(gatewayItem);
+    return this;
+  }
+
+  /**
+   * Get gateway
+   * @return gateway
+   */
+  @javax.annotation.Nullable
+  public List<String> getGateway() {
+    return gateway;
+  }
+
+  public void setGateway(@javax.annotation.Nullable List<String> gateway) {
+    this.gateway = gateway;
   }
 
 
@@ -208,13 +240,14 @@ public class BillingCryptoOptions {
     BillingCryptoOptions billingCryptoOptions = (BillingCryptoOptions) o;
     return Objects.equals(this.assets, billingCryptoOptions.assets) &&
         Objects.equals(this.chains, billingCryptoOptions.chains) &&
+        Objects.equals(this.gateway, billingCryptoOptions.gateway) &&
         Objects.equals(this.tokens, billingCryptoOptions.tokens)&&
         Objects.equals(this.additionalProperties, billingCryptoOptions.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assets, chains, tokens, additionalProperties);
+    return Objects.hash(assets, chains, gateway, tokens, additionalProperties);
   }
 
   @Override
@@ -223,6 +256,7 @@ public class BillingCryptoOptions {
     sb.append("class BillingCryptoOptions {\n");
     sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
     sb.append("    chains: ").append(toIndentedString(chains)).append("\n");
+    sb.append("    gateway: ").append(toIndentedString(gateway)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -246,7 +280,7 @@ public class BillingCryptoOptions {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("assets", "chains", "tokens"));
+    openapiFields = new HashSet<String>(Arrays.asList("assets", "chains", "gateway", "tokens"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -282,6 +316,10 @@ public class BillingCryptoOptions {
       // ensure the optional json data is an array if present
       if (jsonObj.get("chains") != null && !jsonObj.get("chains").isJsonNull() && !jsonObj.get("chains").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `chains` to be an array in the JSON string but got `%s`", jsonObj.get("chains").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("gateway") != null && !jsonObj.get("gateway").isJsonNull() && !jsonObj.get("gateway").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gateway` to be an array in the JSON string but got `%s`", jsonObj.get("gateway").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("tokens") != null && !jsonObj.get("tokens").isJsonNull() && !jsonObj.get("tokens").isJsonArray()) {

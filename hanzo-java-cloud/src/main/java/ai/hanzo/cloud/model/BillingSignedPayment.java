@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.BillingGatewayAuthorization;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,82 +47,106 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * SandboxQuotaView
+ * BillingSignedPayment
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class SandboxQuotaView {
-  public static final String SERIALIZED_NAME_ACCOUNT = "account";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT)
+public class BillingSignedPayment {
+  public static final String SERIALIZED_NAME_AUTHORIZATION = "authorization";
+  @SerializedName(SERIALIZED_NAME_AUTHORIZATION)
   @javax.annotation.Nullable
-  private String account;
+  private BillingGatewayAuthorization authorization;
 
-  public static final String SERIALIZED_NAME_QUOTA = "quota";
-  @SerializedName(SERIALIZED_NAME_QUOTA)
+  public static final String SERIALIZED_NAME_NETWORK = "network";
+  @SerializedName(SERIALIZED_NAME_NETWORK)
   @javax.annotation.Nullable
-  private Long quota;
+  private String network;
 
-  public static final String SERIALIZED_NAME_RUNNING = "running";
-  @SerializedName(SERIALIZED_NAME_RUNNING)
+  public static final String SERIALIZED_NAME_SALT = "salt";
+  @SerializedName(SERIALIZED_NAME_SALT)
   @javax.annotation.Nullable
-  private Long running;
+  private String salt;
 
-  public SandboxQuotaView() {
+  public static final String SERIALIZED_NAME_SIGNATURE = "signature";
+  @SerializedName(SERIALIZED_NAME_SIGNATURE)
+  @javax.annotation.Nullable
+  private String signature;
+
+  public BillingSignedPayment() {
   }
 
-  public SandboxQuotaView account(@javax.annotation.Nullable String account) {
-    this.account = account;
+  public BillingSignedPayment authorization(@javax.annotation.Nullable BillingGatewayAuthorization authorization) {
+    this.authorization = authorization;
     return this;
   }
 
   /**
-   * Account is the wallet the caller&#39;s sandboxes are paid from, which the quota belongs to.
-   * @return account
+   * Authorization is the EIP-3009 TransferWithAuthorization as signed: every field a string, addresses and nonce 0x hex, value in USDC base units.
+   * @return authorization
    */
   @javax.annotation.Nullable
-  public String getAccount() {
-    return account;
+  public BillingGatewayAuthorization getAuthorization() {
+    return authorization;
   }
 
-  public void setAccount(@javax.annotation.Nullable String account) {
-    this.account = account;
+  public void setAuthorization(@javax.annotation.Nullable BillingGatewayAuthorization authorization) {
+    this.authorization = authorization;
   }
 
 
-  public SandboxQuotaView quota(@javax.annotation.Nullable Long quota) {
-    this.quota = quota;
+  public BillingSignedPayment network(@javax.annotation.Nullable String network) {
+    this.network = network;
     return this;
   }
 
   /**
-   * Quota is how many it may hold at once.
-   * @return quota
+   * Network is the CAIP-2 network the payment was signed for, one of the terms&#39; accepts, e.g. \&quot;eip155:8453\&quot;.
+   * @return network
    */
   @javax.annotation.Nullable
-  public Long getQuota() {
-    return quota;
+  public String getNetwork() {
+    return network;
   }
 
-  public void setQuota(@javax.annotation.Nullable Long quota) {
-    this.quota = quota;
+  public void setNetwork(@javax.annotation.Nullable String network) {
+    this.network = network;
   }
 
 
-  public SandboxQuotaView running(@javax.annotation.Nullable Long running) {
-    this.running = running;
+  public BillingSignedPayment salt(@javax.annotation.Nullable String salt) {
+    this.salt = salt;
     return this;
   }
 
   /**
-   * Running is how many of the account&#39;s paid sandboxes hold a pod now.
-   * @return running
+   * Salt is the salt the terms issued with the nonce.
+   * @return salt
    */
   @javax.annotation.Nullable
-  public Long getRunning() {
-    return running;
+  public String getSalt() {
+    return salt;
   }
 
-  public void setRunning(@javax.annotation.Nullable Long running) {
-    this.running = running;
+  public void setSalt(@javax.annotation.Nullable String salt) {
+    this.salt = salt;
+  }
+
+
+  public BillingSignedPayment signature(@javax.annotation.Nullable String signature) {
+    this.signature = signature;
+    return this;
+  }
+
+  /**
+   * Signature is the 65-byte EIP-712 signature, 0x hex.
+   * @return signature
+   */
+  @javax.annotation.Nullable
+  public String getSignature() {
+    return signature;
+  }
+
+  public void setSignature(@javax.annotation.Nullable String signature) {
+    this.signature = signature;
   }
 
   /**
@@ -137,9 +162,9 @@ public class SandboxQuotaView {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SandboxQuotaView instance itself
+   * @return the BillingSignedPayment instance itself
    */
-  public SandboxQuotaView putAdditionalProperty(String key, Object value) {
+  public BillingSignedPayment putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -178,25 +203,27 @@ public class SandboxQuotaView {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SandboxQuotaView sandboxQuotaView = (SandboxQuotaView) o;
-    return Objects.equals(this.account, sandboxQuotaView.account) &&
-        Objects.equals(this.quota, sandboxQuotaView.quota) &&
-        Objects.equals(this.running, sandboxQuotaView.running)&&
-        Objects.equals(this.additionalProperties, sandboxQuotaView.additionalProperties);
+    BillingSignedPayment billingSignedPayment = (BillingSignedPayment) o;
+    return Objects.equals(this.authorization, billingSignedPayment.authorization) &&
+        Objects.equals(this.network, billingSignedPayment.network) &&
+        Objects.equals(this.salt, billingSignedPayment.salt) &&
+        Objects.equals(this.signature, billingSignedPayment.signature)&&
+        Objects.equals(this.additionalProperties, billingSignedPayment.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, quota, running, additionalProperties);
+    return Objects.hash(authorization, network, salt, signature, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SandboxQuotaView {\n");
-    sb.append("    account: ").append(toIndentedString(account)).append("\n");
-    sb.append("    quota: ").append(toIndentedString(quota)).append("\n");
-    sb.append("    running: ").append(toIndentedString(running)).append("\n");
+    sb.append("class BillingSignedPayment {\n");
+    sb.append("    authorization: ").append(toIndentedString(authorization)).append("\n");
+    sb.append("    network: ").append(toIndentedString(network)).append("\n");
+    sb.append("    salt: ").append(toIndentedString(salt)).append("\n");
+    sb.append("    signature: ").append(toIndentedString(signature)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -219,7 +246,7 @@ public class SandboxQuotaView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "quota", "running"));
+    openapiFields = new HashSet<String>(Arrays.asList("authorization", "network", "salt", "signature"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -229,17 +256,27 @@ public class SandboxQuotaView {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SandboxQuotaView
+   * @throws IOException if the JSON Element is invalid with respect to BillingSignedPayment
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!SandboxQuotaView.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SandboxQuotaView is not found in the empty JSON string", SandboxQuotaView.openapiRequiredFields.toString()));
+        if (!BillingSignedPayment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BillingSignedPayment is not found in the empty JSON string", BillingSignedPayment.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("account") != null && !jsonObj.get("account").isJsonNull()) && !jsonObj.get("account").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account").toString()));
+      // validate the optional field `authorization`
+      if (jsonObj.get("authorization") != null && !jsonObj.get("authorization").isJsonNull()) {
+        BillingGatewayAuthorization.validateJsonElement(jsonObj.get("authorization"));
+      }
+      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
+      }
+      if ((jsonObj.get("salt") != null && !jsonObj.get("salt").isJsonNull()) && !jsonObj.get("salt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `salt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salt").toString()));
+      }
+      if ((jsonObj.get("signature") != null && !jsonObj.get("signature").isJsonNull()) && !jsonObj.get("signature").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signature").toString()));
       }
   }
 
@@ -247,16 +284,16 @@ public class SandboxQuotaView {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SandboxQuotaView.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SandboxQuotaView' and its subtypes
+       if (!BillingSignedPayment.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BillingSignedPayment' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SandboxQuotaView> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SandboxQuotaView.class));
+       final TypeAdapter<BillingSignedPayment> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BillingSignedPayment.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SandboxQuotaView>() {
+       return (TypeAdapter<T>) new TypeAdapter<BillingSignedPayment>() {
            @Override
-           public void write(JsonWriter out, SandboxQuotaView value) throws IOException {
+           public void write(JsonWriter out, BillingSignedPayment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -284,12 +321,12 @@ public class SandboxQuotaView {
            }
 
            @Override
-           public SandboxQuotaView read(JsonReader in) throws IOException {
+           public BillingSignedPayment read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             SandboxQuotaView instance = thisAdapter.fromJsonTree(jsonObj);
+             BillingSignedPayment instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -316,18 +353,18 @@ public class SandboxQuotaView {
   }
 
   /**
-   * Create an instance of SandboxQuotaView given an JSON string
+   * Create an instance of BillingSignedPayment given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of SandboxQuotaView
-   * @throws IOException if the JSON string is invalid with respect to SandboxQuotaView
+   * @return An instance of BillingSignedPayment
+   * @throws IOException if the JSON string is invalid with respect to BillingSignedPayment
    */
-  public static SandboxQuotaView fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SandboxQuotaView.class);
+  public static BillingSignedPayment fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BillingSignedPayment.class);
   }
 
   /**
-   * Convert an instance of SandboxQuotaView to an JSON string
+   * Convert an instance of BillingSignedPayment to an JSON string
    *
    * @return JSON string
    */

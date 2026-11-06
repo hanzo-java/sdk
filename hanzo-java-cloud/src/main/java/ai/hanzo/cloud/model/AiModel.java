@@ -113,6 +113,11 @@ public class AiModel {
   @javax.annotation.Nullable
   private AiPrice pricing;
 
+  public static final String SERIALIZED_NAME_ZDR = "zdr";
+  @SerializedName(SERIALIZED_NAME_ZDR)
+  @javax.annotation.Nullable
+  private Boolean zdr;
+
   public AiModel() {
   }
 
@@ -367,6 +372,25 @@ public class AiModel {
     this.pricing = pricing;
   }
 
+
+  public AiModel zdr(@javax.annotation.Nullable Boolean zdr) {
+    this.zdr = zdr;
+    return this;
+  }
+
+  /**
+   * ZDR is whether the model is eligible for Zero Data Retention (non-free, non-data-shared commercial route).
+   * @return zdr
+   */
+  @javax.annotation.Nullable
+  public Boolean getZdr() {
+    return zdr;
+  }
+
+  public void setZdr(@javax.annotation.Nullable Boolean zdr) {
+    this.zdr = zdr;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -433,13 +457,14 @@ public class AiModel {
         Objects.equals(this.maxOutputTokens, aiModel.maxOutputTokens) &&
         Objects.equals(this.name, aiModel.name) &&
         Objects.equals(this.outputs, aiModel.outputs) &&
-        Objects.equals(this.pricing, aiModel.pricing)&&
+        Objects.equals(this.pricing, aiModel.pricing) &&
+        Objects.equals(this.zdr, aiModel.zdr)&&
         Objects.equals(this.additionalProperties, aiModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(capabilities, propertyClass, contextWindow, expires, family, free, id, inputs, maxOutputTokens, name, outputs, pricing, additionalProperties);
+    return Objects.hash(capabilities, propertyClass, contextWindow, expires, family, free, id, inputs, maxOutputTokens, name, outputs, pricing, zdr, additionalProperties);
   }
 
   @Override
@@ -458,6 +483,7 @@ public class AiModel {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
     sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
+    sb.append("    zdr: ").append(toIndentedString(zdr)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -480,7 +506,7 @@ public class AiModel {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("capabilities", "class", "context_window", "expires", "family", "free", "id", "inputs", "max_output_tokens", "name", "outputs", "pricing"));
+    openapiFields = new HashSet<String>(Arrays.asList("capabilities", "class", "context_window", "expires", "family", "free", "id", "inputs", "max_output_tokens", "name", "outputs", "pricing", "zdr"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

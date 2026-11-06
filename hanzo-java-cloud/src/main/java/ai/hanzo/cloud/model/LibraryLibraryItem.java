@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.LibraryLibraryUpload;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -154,6 +155,11 @@ public class LibraryLibraryItem {
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
   private String updated;
+
+  public static final String SERIALIZED_NAME_UPLOAD = "upload";
+  @SerializedName(SERIALIZED_NAME_UPLOAD)
+  @javax.annotation.Nullable
+  private LibraryLibraryUpload upload;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -567,6 +573,25 @@ public class LibraryLibraryItem {
   }
 
 
+  public LibraryLibraryItem upload(@javax.annotation.Nullable LibraryLibraryUpload upload) {
+    this.upload = upload;
+    return this;
+  }
+
+  /**
+   * Upload is where a reserved item&#39;s bytes go, on the reservation response before it is committed.
+   * @return upload
+   */
+  @javax.annotation.Nullable
+  public LibraryLibraryUpload getUpload() {
+    return upload;
+  }
+
+  public void setUpload(@javax.annotation.Nullable LibraryLibraryUpload upload) {
+    this.upload = upload;
+  }
+
+
   public LibraryLibraryItem url(@javax.annotation.Nullable String url) {
     this.url = url;
     return this;
@@ -680,6 +705,7 @@ public class LibraryLibraryItem {
         Objects.equals(this.shared, libraryLibraryItem.shared) &&
         Objects.equals(this.source, libraryLibraryItem.source) &&
         Objects.equals(this.updated, libraryLibraryItem.updated) &&
+        Objects.equals(this.upload, libraryLibraryItem.upload) &&
         Objects.equals(this.url, libraryLibraryItem.url) &&
         Objects.equals(this.width, libraryLibraryItem.width)&&
         Objects.equals(this.additionalProperties, libraryLibraryItem.additionalProperties);
@@ -687,7 +713,7 @@ public class LibraryLibraryItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(by, bytes, created, download, expires, height, id, kind, mime, mine, name, origin, owner, pages, preview, project, ref, seconds, shared, source, updated, url, width, additionalProperties);
+    return Objects.hash(by, bytes, created, download, expires, height, id, kind, mime, mine, name, origin, owner, pages, preview, project, ref, seconds, shared, source, updated, upload, url, width, additionalProperties);
   }
 
   @Override
@@ -715,6 +741,7 @@ public class LibraryLibraryItem {
     sb.append("    shared: ").append(toIndentedString(shared)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    upload: ").append(toIndentedString(upload)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -739,7 +766,7 @@ public class LibraryLibraryItem {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("by", "bytes", "created", "download", "expires", "height", "id", "kind", "mime", "mine", "name", "origin", "owner", "pages", "preview", "project", "ref", "seconds", "shared", "source", "updated", "url", "width"));
+    openapiFields = new HashSet<String>(Arrays.asList("by", "bytes", "created", "download", "expires", "height", "id", "kind", "mime", "mine", "name", "origin", "owner", "pages", "preview", "project", "ref", "seconds", "shared", "source", "updated", "upload", "url", "width"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -802,6 +829,10 @@ public class LibraryLibraryItem {
       }
       if ((jsonObj.get("updated") != null && !jsonObj.get("updated").isJsonNull()) && !jsonObj.get("updated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
+      }
+      // validate the optional field `upload`
+      if (jsonObj.get("upload") != null && !jsonObj.get("upload").isJsonNull()) {
+        LibraryLibraryUpload.validateJsonElement(jsonObj.get("upload"));
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));

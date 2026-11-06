@@ -65,6 +65,11 @@ public class BillingTopupIn {
   @javax.annotation.Nullable
   private String paymentMethodId;
 
+  public static final String SERIALIZED_NAME_PROVIDER = "provider";
+  @SerializedName(SERIALIZED_NAME_PROVIDER)
+  @javax.annotation.Nullable
+  private String provider;
+
   public static final String SERIALIZED_NAME_SOURCE_ID = "sourceId";
   @SerializedName(SERIALIZED_NAME_SOURCE_ID)
   @javax.annotation.Nullable
@@ -127,6 +132,25 @@ public class BillingTopupIn {
 
   public void setPaymentMethodId(@javax.annotation.Nullable String paymentMethodId) {
     this.paymentMethodId = paymentMethodId;
+  }
+
+
+  public BillingTopupIn provider(@javax.annotation.Nullable String provider) {
+    this.provider = provider;
+    return this;
+  }
+
+  /**
+   * Provider names the explicit payment processor (\&quot;square\&quot; or \&quot;paypal\&quot;) when SourceID is a provider-specific order/token (e.g. a PayPal v2 Order ID).
+   * @return provider
+   */
+  @javax.annotation.Nullable
+  public String getProvider() {
+    return provider;
+  }
+
+  public void setProvider(@javax.annotation.Nullable String provider) {
+    this.provider = provider;
   }
 
 
@@ -206,13 +230,14 @@ public class BillingTopupIn {
     return Objects.equals(this.amountCents, billingTopupIn.amountCents) &&
         Objects.equals(this.currency, billingTopupIn.currency) &&
         Objects.equals(this.paymentMethodId, billingTopupIn.paymentMethodId) &&
+        Objects.equals(this.provider, billingTopupIn.provider) &&
         Objects.equals(this.sourceId, billingTopupIn.sourceId)&&
         Objects.equals(this.additionalProperties, billingTopupIn.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amountCents, currency, paymentMethodId, sourceId, additionalProperties);
+    return Objects.hash(amountCents, currency, paymentMethodId, provider, sourceId, additionalProperties);
   }
 
   @Override
@@ -222,6 +247,7 @@ public class BillingTopupIn {
     sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    paymentMethodId: ").append(toIndentedString(paymentMethodId)).append("\n");
+    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -245,7 +271,7 @@ public class BillingTopupIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("amountCents", "currency", "paymentMethodId", "sourceId"));
+    openapiFields = new HashSet<String>(Arrays.asList("amountCents", "currency", "paymentMethodId", "provider", "sourceId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -269,6 +295,9 @@ public class BillingTopupIn {
       }
       if ((jsonObj.get("paymentMethodId") != null && !jsonObj.get("paymentMethodId").isJsonNull()) && !jsonObj.get("paymentMethodId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `paymentMethodId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentMethodId").toString()));
+      }
+      if ((jsonObj.get("provider") != null && !jsonObj.get("provider").isJsonNull()) && !jsonObj.get("provider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provider").toString()));
       }
       if ((jsonObj.get("sourceId") != null && !jsonObj.get("sourceId").isJsonNull()) && !jsonObj.get("sourceId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceId").toString()));

@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class LibraryItemPatch {
+  public static final String SERIALIZED_NAME_COMMIT = "commit";
+  @SerializedName(SERIALIZED_NAME_COMMIT)
+  @javax.annotation.Nullable
+  private Boolean commit;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -72,6 +77,25 @@ public class LibraryItemPatch {
 
   public LibraryItemPatch() {
   }
+
+  public LibraryItemPatch commit(@javax.annotation.Nullable Boolean commit) {
+    this.commit = commit;
+    return this;
+  }
+
+  /**
+   * Commit finishes a reserved upload once its bytes have been PUT.
+   * @return commit
+   */
+  @javax.annotation.Nullable
+  public Boolean getCommit() {
+    return commit;
+  }
+
+  public void setCommit(@javax.annotation.Nullable Boolean commit) {
+    this.commit = commit;
+  }
+
 
   public LibraryItemPatch id(@javax.annotation.Nullable String id) {
     this.id = id;
@@ -203,7 +227,8 @@ public class LibraryItemPatch {
       return false;
     }
     LibraryItemPatch libraryItemPatch = (LibraryItemPatch) o;
-    return Objects.equals(this.id, libraryItemPatch.id) &&
+    return Objects.equals(this.commit, libraryItemPatch.commit) &&
+        Objects.equals(this.id, libraryItemPatch.id) &&
         Objects.equals(this.name, libraryItemPatch.name) &&
         Objects.equals(this.project, libraryItemPatch.project) &&
         Objects.equals(this.shared, libraryItemPatch.shared)&&
@@ -212,13 +237,14 @@ public class LibraryItemPatch {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, project, shared, additionalProperties);
+    return Objects.hash(commit, id, name, project, shared, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LibraryItemPatch {\n");
+    sb.append("    commit: ").append(toIndentedString(commit)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
@@ -245,7 +271,7 @@ public class LibraryItemPatch {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "name", "project", "shared"));
+    openapiFields = new HashSet<String>(Arrays.asList("commit", "id", "name", "project", "shared"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

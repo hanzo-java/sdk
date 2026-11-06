@@ -45,18 +45,23 @@ import ai.hanzo.cloud.model.BillingCryptoDeposit;
 import ai.hanzo.cloud.model.BillingCryptoOptions;
 import ai.hanzo.cloud.model.BillingDetachment;
 import ai.hanzo.cloud.model.BillingFinanceLedgerEntry;
+import ai.hanzo.cloud.model.BillingGatewayPayment;
+import ai.hanzo.cloud.model.BillingGatewayTerms;
 import ai.hanzo.cloud.model.BillingHolder;
 import ai.hanzo.cloud.model.BillingInvoice;
 import ai.hanzo.cloud.model.BillingInvoiceRef;
 import ai.hanzo.cloud.model.BillingInvoices;
 import ai.hanzo.cloud.model.BillingMode;
 import ai.hanzo.cloud.model.BillingModeIn;
+import ai.hanzo.cloud.model.BillingPayPalOrderOut;
 import ai.hanzo.cloud.model.BillingPaymentConfig;
 import ai.hanzo.cloud.model.BillingPayout;
+import ai.hanzo.cloud.model.BillingPaypalOrderIn;
 import ai.hanzo.cloud.model.BillingRaiseIn;
 import ai.hanzo.cloud.model.BillingRecharge;
 import ai.hanzo.cloud.model.BillingResize;
 import ai.hanzo.cloud.model.BillingRollup;
+import ai.hanzo.cloud.model.BillingSignedPayment;
 import ai.hanzo.cloud.model.BillingSubscription;
 import ai.hanzo.cloud.model.BillingSubscriptionAct;
 import ai.hanzo.cloud.model.BillingSubscriptions;
@@ -2046,6 +2051,260 @@ public class BillingApi {
         return localVarCall;
     }
     /**
+     * Build call for getBillingCryptoGateway
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingCryptoGatewayCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/crypto/gateway";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBillingCryptoGatewayValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBillingCryptoGatewayCall(_callback);
+
+    }
+
+    /**
+     * Answers the terms to sign a USDC top-up against, for an agent or a person paying from a wallet: the treasury to pay, the networks and USDC contracts, the EIP-712 domain and types, the limits, and a nonce issued to the caller.
+     * Answers the terms to sign a USDC top-up against, for an agent or a person paying from a wallet: the treasury to pay, the networks and USDC contracts, the EIP-712 domain and types, the limits, and a nonce issued to the caller.  Sign TransferWithAuthorization {from, to: payTo, value, validAfter, validBefore, nonce} under one network&#39;s domain, then POST it here with the salt. The nonce is the caller&#39;s own: a payment signed against it credits the caller and cannot be presented by anyone else.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return BillingGatewayTerms
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public BillingGatewayTerms getBillingCryptoGateway() throws ApiException {
+        ApiResponse<BillingGatewayTerms> localVarResp = getBillingCryptoGatewayWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the terms to sign a USDC top-up against, for an agent or a person paying from a wallet: the treasury to pay, the networks and USDC contracts, the EIP-712 domain and types, the limits, and a nonce issued to the caller.
+     * Answers the terms to sign a USDC top-up against, for an agent or a person paying from a wallet: the treasury to pay, the networks and USDC contracts, the EIP-712 domain and types, the limits, and a nonce issued to the caller.  Sign TransferWithAuthorization {from, to: payTo, value, validAfter, validBefore, nonce} under one network&#39;s domain, then POST it here with the salt. The nonce is the caller&#39;s own: a payment signed against it credits the caller and cannot be presented by anyone else.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return ApiResponse&lt;BillingGatewayTerms&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BillingGatewayTerms> getBillingCryptoGatewayWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBillingCryptoGatewayValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<BillingGatewayTerms>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the terms to sign a USDC top-up against, for an agent or a person paying from a wallet: the treasury to pay, the networks and USDC contracts, the EIP-712 domain and types, the limits, and a nonce issued to the caller. (asynchronously)
+     * Answers the terms to sign a USDC top-up against, for an agent or a person paying from a wallet: the treasury to pay, the networks and USDC contracts, the EIP-712 domain and types, the limits, and a nonce issued to the caller.  Sign TransferWithAuthorization {from, to: payTo, value, validAfter, validBefore, nonce} under one network&#39;s domain, then POST it here with the salt. The nonce is the caller&#39;s own: a payment signed against it credits the caller and cannot be presented by anyone else.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingCryptoGatewayAsync(final ApiCallback<BillingGatewayTerms> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBillingCryptoGatewayValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<BillingGatewayTerms>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBillingCryptoGatewayById
+     * @param id ID is the top-up&#39;s id, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingCryptoGatewayByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/crypto/gateway/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBillingCryptoGatewayByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getBillingCryptoGatewayById(Async)");
+        }
+
+        return getBillingCryptoGatewayByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Reads one of the caller&#39;s own USDC top-ups back: pending, accepted (credited or deferred), settled, failed or refused.
+     * Reads one of the caller&#39;s own USDC top-ups back: pending, accepted (credited or deferred), settled, failed or refused.  A payment belonging to another payer answers 404, exactly as an id that names nothing, so a guessed id cannot confirm somebody else&#39;s payment exists.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the top-up&#39;s id, from the path. (required)
+     * @return BillingGatewayPayment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public BillingGatewayPayment getBillingCryptoGatewayById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingGatewayPayment> localVarResp = getBillingCryptoGatewayByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads one of the caller&#39;s own USDC top-ups back: pending, accepted (credited or deferred), settled, failed or refused.
+     * Reads one of the caller&#39;s own USDC top-ups back: pending, accepted (credited or deferred), settled, failed or refused.  A payment belonging to another payer answers 404, exactly as an id that names nothing, so a guessed id cannot confirm somebody else&#39;s payment exists.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the top-up&#39;s id, from the path. (required)
+     * @return ApiResponse&lt;BillingGatewayPayment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BillingGatewayPayment> getBillingCryptoGatewayByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getBillingCryptoGatewayByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<BillingGatewayPayment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads one of the caller&#39;s own USDC top-ups back: pending, accepted (credited or deferred), settled, failed or refused. (asynchronously)
+     * Reads one of the caller&#39;s own USDC top-ups back: pending, accepted (credited or deferred), settled, failed or refused.  A payment belonging to another payer answers 404, exactly as an id that names nothing, so a guessed id cannot confirm somebody else&#39;s payment exists.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the top-up&#39;s id, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingCryptoGatewayByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingGatewayPayment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBillingCryptoGatewayByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<BillingGatewayPayment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getBillingCryptoOptions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2424,6 +2683,202 @@ public class BillingApi {
     public okhttp3.Call getBillingInvoicesByIdPdfAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingInvoicesByIdPdfValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBillingInvoicesHostedByLink
+     * @param link  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getBillingInvoicesHostedByLinkCall(@javax.annotation.Nonnull String link, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/invoices/hosted/{link}"
+            .replace("{" + "link" + "}", localVarApiClient.escapeString(link.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBillingInvoicesHostedByLinkValidateBeforeCall(@javax.annotation.Nonnull String link, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'link' is set
+        if (link == null) {
+            throw new ApiException("Missing the required parameter 'link' when calling getBillingInvoicesHostedByLink(Async)");
+        }
+
+        return getBillingInvoicesHostedByLinkCall(link, _callback);
+
+    }
+
+    /**
+     * Is the order invoice a link shows, read on the brand of the host it is asked on: a link read on another brand&#39;s host is a miss.
+     * Is the order invoice a link shows, read on the brand of the host it is asked on: a link read on another brand&#39;s host is a miss.
+     * @param link  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getBillingInvoicesHostedByLink(@javax.annotation.Nonnull String link) throws ApiException {
+        getBillingInvoicesHostedByLinkWithHttpInfo(link);
+    }
+
+    /**
+     * Is the order invoice a link shows, read on the brand of the host it is asked on: a link read on another brand&#39;s host is a miss.
+     * Is the order invoice a link shows, read on the brand of the host it is asked on: a link read on another brand&#39;s host is a miss.
+     * @param link  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getBillingInvoicesHostedByLinkWithHttpInfo(@javax.annotation.Nonnull String link) throws ApiException {
+        okhttp3.Call localVarCall = getBillingInvoicesHostedByLinkValidateBeforeCall(link, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Is the order invoice a link shows, read on the brand of the host it is asked on: a link read on another brand&#39;s host is a miss. (asynchronously)
+     * Is the order invoice a link shows, read on the brand of the host it is asked on: a link read on another brand&#39;s host is a miss.
+     * @param link  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getBillingInvoicesHostedByLinkAsync(@javax.annotation.Nonnull String link, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBillingInvoicesHostedByLinkValidateBeforeCall(link, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBillingInvoicesHostedByLinkPdf
+     * @param link  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getBillingInvoicesHostedByLinkPdfCall(@javax.annotation.Nonnull String link, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/invoices/hosted/{link}/pdf"
+            .replace("{" + "link" + "}", localVarApiClient.escapeString(link.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBillingInvoicesHostedByLinkPdfValidateBeforeCall(@javax.annotation.Nonnull String link, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'link' is set
+        if (link == null) {
+            throw new ApiException("Missing the required parameter 'link' when calling getBillingInvoicesHostedByLinkPdf(Async)");
+        }
+
+        return getBillingInvoicesHostedByLinkPdfCall(link, _callback);
+
+    }
+
+    /**
+     * Is the order invoice a link shows, as a PDF to print or save.
+     * Is the order invoice a link shows, as a PDF to print or save.
+     * @param link  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getBillingInvoicesHostedByLinkPdf(@javax.annotation.Nonnull String link) throws ApiException {
+        getBillingInvoicesHostedByLinkPdfWithHttpInfo(link);
+    }
+
+    /**
+     * Is the order invoice a link shows, as a PDF to print or save.
+     * Is the order invoice a link shows, as a PDF to print or save.
+     * @param link  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getBillingInvoicesHostedByLinkPdfWithHttpInfo(@javax.annotation.Nonnull String link) throws ApiException {
+        okhttp3.Call localVarCall = getBillingInvoicesHostedByLinkPdfValidateBeforeCall(link, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Is the order invoice a link shows, as a PDF to print or save. (asynchronously)
+     * Is the order invoice a link shows, as a PDF to print or save.
+     * @param link  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getBillingInvoicesHostedByLinkPdfAsync(@javax.annotation.Nonnull String link, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBillingInvoicesHostedByLinkPdfValidateBeforeCall(link, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -4792,7 +5247,7 @@ public class BillingApi {
 
     /**
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.
-     * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address, a status and the terms: the minimum that credits, any fee, the confirmations required, and one line of instructions. Once the transfer is that deep the deposit is credited as cash to the caller&#39;s balance (GET /v1/billing/balance, cash) and its status is succeeded.  The asset is checked against GET /v1/billing/crypto/options before anything is minted. A chain, a token or a pair the rail does not accept is 400, and the answer lists the accepted chains, tokens and assets. A deposit rail with nothing watched is 503 — nothing sent now can be credited, and a card or a wire is the way to pay until it reopens.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address, a status and the terms: the minimum that credits, any fee, the confirmations required, and one line of instructions. Once the transfer is that deep the deposit is credited as cash to the caller&#39;s balance (GET /v1/billing/balance, cash) and its status is succeeded.  The asset is checked against GET /v1/billing/crypto/options before anything is minted. A chain, a token or a pair the rail does not accept is 400, and the answer lists the accepted chains, tokens and assets. A deposit rail with nothing watched is 503 — nothing sent now can be credited, and the Gateway rail or a card is the way to pay until it reopens.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param billingCryptoAsset  (required)
      * @return BillingCryptoDeposit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4811,7 +5266,7 @@ public class BillingApi {
 
     /**
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.
-     * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address, a status and the terms: the minimum that credits, any fee, the confirmations required, and one line of instructions. Once the transfer is that deep the deposit is credited as cash to the caller&#39;s balance (GET /v1/billing/balance, cash) and its status is succeeded.  The asset is checked against GET /v1/billing/crypto/options before anything is minted. A chain, a token or a pair the rail does not accept is 400, and the answer lists the accepted chains, tokens and assets. A deposit rail with nothing watched is 503 — nothing sent now can be credited, and a card or a wire is the way to pay until it reopens.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address, a status and the terms: the minimum that credits, any fee, the confirmations required, and one line of instructions. Once the transfer is that deep the deposit is credited as cash to the caller&#39;s balance (GET /v1/billing/balance, cash) and its status is succeeded.  The asset is checked against GET /v1/billing/crypto/options before anything is minted. A chain, a token or a pair the rail does not accept is 400, and the answer lists the accepted chains, tokens and assets. A deposit rail with nothing watched is 503 — nothing sent now can be credited, and the Gateway rail or a card is the way to pay until it reopens.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param billingCryptoAsset  (required)
      * @return ApiResponse&lt;BillingCryptoDeposit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4831,7 +5286,7 @@ public class BillingApi {
 
     /**
      * Issues a deposit address the caller can send crypto to, on the asset they ask for. (asynchronously)
-     * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address, a status and the terms: the minimum that credits, any fee, the confirmations required, and one line of instructions. Once the transfer is that deep the deposit is credited as cash to the caller&#39;s balance (GET /v1/billing/balance, cash) and its status is succeeded.  The asset is checked against GET /v1/billing/crypto/options before anything is minted. A chain, a token or a pair the rail does not accept is 400, and the answer lists the accepted chains, tokens and assets. A deposit rail with nothing watched is 503 — nothing sent now can be credited, and a card or a wire is the way to pay until it reopens.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address, a status and the terms: the minimum that credits, any fee, the confirmations required, and one line of instructions. Once the transfer is that deep the deposit is credited as cash to the caller&#39;s balance (GET /v1/billing/balance, cash) and its status is succeeded.  The asset is checked against GET /v1/billing/crypto/options before anything is minted. A chain, a token or a pair the rail does not accept is 400, and the answer lists the accepted chains, tokens and assets. A deposit rail with nothing watched is 503 — nothing sent now can be credited, and the Gateway rail or a card is the way to pay until it reopens.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param billingCryptoAsset  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4848,6 +5303,138 @@ public class BillingApi {
 
         okhttp3.Call localVarCall = postBillingCryptoDepositValidateBeforeCall(billingCryptoAsset, _callback);
         Type localVarReturnType = new TypeToken<BillingCryptoDeposit>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postBillingCryptoGateway
+     * @param billingSignedPayment  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBillingCryptoGatewayCall(@javax.annotation.Nonnull BillingSignedPayment billingSignedPayment, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = billingSignedPayment;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/crypto/gateway";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBillingCryptoGatewayValidateBeforeCall(@javax.annotation.Nonnull BillingSignedPayment billingSignedPayment, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingSignedPayment' is set
+        if (billingSignedPayment == null) {
+            throw new ApiException("Missing the required parameter 'billingSignedPayment' when calling postBillingCryptoGateway(Async)");
+        }
+
+        return postBillingCryptoGatewayCall(billingSignedPayment, _callback);
+
+    }
+
+    /**
+     * Takes a signed USDC payment from the caller&#39;s Circle Gateway balance to the treasury, and answers what became of it.
+     * Takes a signed USDC payment from the caller&#39;s Circle Gateway balance to the treasury, and answers what became of it.  accepted: Circle Gateway LOCKED the USDC and the caller is credited — or, once the caller holds $1,000 of credit Gateway has not confirmed, credited when Gateway confirms this payment (deferred). pending: the outcome is not known yet; read it back or present the same payment again — it resolves to one credit either way. A refusal is 4xx with Gateway&#39;s reason (insufficient_balance, invalid_signature, …) or ours (nonce_not_issued, recipient_mismatch, amount_below_minimum, …); 503 means the rail is shut.  Who is credited is the caller, never a body value: the payer is resolved server-side, and the payment&#39;s own nonce must be the one issued to it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param billingSignedPayment  (required)
+     * @return BillingGatewayPayment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public BillingGatewayPayment postBillingCryptoGateway(@javax.annotation.Nonnull BillingSignedPayment billingSignedPayment) throws ApiException {
+        ApiResponse<BillingGatewayPayment> localVarResp = postBillingCryptoGatewayWithHttpInfo(billingSignedPayment);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Takes a signed USDC payment from the caller&#39;s Circle Gateway balance to the treasury, and answers what became of it.
+     * Takes a signed USDC payment from the caller&#39;s Circle Gateway balance to the treasury, and answers what became of it.  accepted: Circle Gateway LOCKED the USDC and the caller is credited — or, once the caller holds $1,000 of credit Gateway has not confirmed, credited when Gateway confirms this payment (deferred). pending: the outcome is not known yet; read it back or present the same payment again — it resolves to one credit either way. A refusal is 4xx with Gateway&#39;s reason (insufficient_balance, invalid_signature, …) or ours (nonce_not_issued, recipient_mismatch, amount_below_minimum, …); 503 means the rail is shut.  Who is credited is the caller, never a body value: the payer is resolved server-side, and the payment&#39;s own nonce must be the one issued to it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param billingSignedPayment  (required)
+     * @return ApiResponse&lt;BillingGatewayPayment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BillingGatewayPayment> postBillingCryptoGatewayWithHttpInfo(@javax.annotation.Nonnull BillingSignedPayment billingSignedPayment) throws ApiException {
+        okhttp3.Call localVarCall = postBillingCryptoGatewayValidateBeforeCall(billingSignedPayment, null);
+        Type localVarReturnType = new TypeToken<BillingGatewayPayment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Takes a signed USDC payment from the caller&#39;s Circle Gateway balance to the treasury, and answers what became of it. (asynchronously)
+     * Takes a signed USDC payment from the caller&#39;s Circle Gateway balance to the treasury, and answers what became of it.  accepted: Circle Gateway LOCKED the USDC and the caller is credited — or, once the caller holds $1,000 of credit Gateway has not confirmed, credited when Gateway confirms this payment (deferred). pending: the outcome is not known yet; read it back or present the same payment again — it resolves to one credit either way. A refusal is 4xx with Gateway&#39;s reason (insufficient_balance, invalid_signature, …) or ours (nonce_not_issued, recipient_mismatch, amount_below_minimum, …); 503 means the rail is shut.  Who is credited is the caller, never a body value: the payer is resolved server-side, and the payment&#39;s own nonce must be the one issued to it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param billingSignedPayment  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBillingCryptoGatewayAsync(@javax.annotation.Nonnull BillingSignedPayment billingSignedPayment, final ApiCallback<BillingGatewayPayment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBillingCryptoGatewayValidateBeforeCall(billingSignedPayment, _callback);
+        Type localVarReturnType = new TypeToken<BillingGatewayPayment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5068,6 +5655,147 @@ public class BillingApi {
 
         okhttp3.Call localVarCall = postBillingModeValidateBeforeCall(billingModeIn, _callback);
         Type localVarReturnType = new TypeToken<BillingMode>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postBillingPaypalOrder
+     * @param billingPaypalOrderIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBillingPaypalOrderCall(@javax.annotation.Nonnull BillingPaypalOrderIn billingPaypalOrderIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = billingPaypalOrderIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/paypal/order";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (xIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Idempotency-Key", localVarApiClient.parameterToString(xIdempotencyKey));
+        }
+
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBillingPaypalOrderValidateBeforeCall(@javax.annotation.Nonnull BillingPaypalOrderIn billingPaypalOrderIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingPaypalOrderIn' is set
+        if (billingPaypalOrderIn == null) {
+            throw new ApiException("Missing the required parameter 'billingPaypalOrderIn' when calling postBillingPaypalOrder(Async)");
+        }
+
+        return postBillingPaypalOrderCall(billingPaypalOrderIn, xIdempotencyKey, _callback);
+
+    }
+
+    /**
+     * Opens a server-priced PayPal REST v2 order for either a bounded credit top-up (intent CAPTURE) or a plan purchase&#39;s first period (intent AUTHORIZE).
+     * Opens a server-priced PayPal REST v2 order for either a bounded credit top-up (intent CAPTURE) or a plan purchase&#39;s first period (intent AUTHORIZE).  No balance or subscription row is minted here: the browser hands the returned &#x60;orderId&#x60; to the PayPal Smart Buttons SDK for buyer approval, then settles the payment through POST /v1/billing/topup/token or POST /v1/billing/subscribe/card with &#x60;provider: \&quot;paypal\&quot;&#x60;.
+     * @param billingPaypalOrderIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @return BillingPayPalOrderOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public BillingPayPalOrderOut postBillingPaypalOrder(@javax.annotation.Nonnull BillingPaypalOrderIn billingPaypalOrderIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        ApiResponse<BillingPayPalOrderOut> localVarResp = postBillingPaypalOrderWithHttpInfo(billingPaypalOrderIn, xIdempotencyKey);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens a server-priced PayPal REST v2 order for either a bounded credit top-up (intent CAPTURE) or a plan purchase&#39;s first period (intent AUTHORIZE).
+     * Opens a server-priced PayPal REST v2 order for either a bounded credit top-up (intent CAPTURE) or a plan purchase&#39;s first period (intent AUTHORIZE).  No balance or subscription row is minted here: the browser hands the returned &#x60;orderId&#x60; to the PayPal Smart Buttons SDK for buyer approval, then settles the payment through POST /v1/billing/topup/token or POST /v1/billing/subscribe/card with &#x60;provider: \&quot;paypal\&quot;&#x60;.
+     * @param billingPaypalOrderIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @return ApiResponse&lt;BillingPayPalOrderOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BillingPayPalOrderOut> postBillingPaypalOrderWithHttpInfo(@javax.annotation.Nonnull BillingPaypalOrderIn billingPaypalOrderIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = postBillingPaypalOrderValidateBeforeCall(billingPaypalOrderIn, xIdempotencyKey, null);
+        Type localVarReturnType = new TypeToken<BillingPayPalOrderOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens a server-priced PayPal REST v2 order for either a bounded credit top-up (intent CAPTURE) or a plan purchase&#39;s first period (intent AUTHORIZE). (asynchronously)
+     * Opens a server-priced PayPal REST v2 order for either a bounded credit top-up (intent CAPTURE) or a plan purchase&#39;s first period (intent AUTHORIZE).  No balance or subscription row is minted here: the browser hands the returned &#x60;orderId&#x60; to the PayPal Smart Buttons SDK for buyer approval, then settles the payment through POST /v1/billing/topup/token or POST /v1/billing/subscribe/card with &#x60;provider: \&quot;paypal\&quot;&#x60;.
+     * @param billingPaypalOrderIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBillingPaypalOrderAsync(@javax.annotation.Nonnull BillingPaypalOrderIn billingPaypalOrderIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<BillingPayPalOrderOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBillingPaypalOrderValidateBeforeCall(billingPaypalOrderIn, xIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<BillingPayPalOrderOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5366,6 +6094,94 @@ public class BillingApi {
     public okhttp3.Call postBillingSubscribeCardAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBillingSubscribeCardValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postBillingSubscribeInvoice
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postBillingSubscribeInvoiceCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/subscribe/invoice";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBillingSubscribeInvoiceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBillingSubscribeInvoiceCall(_callback);
+
+    }
+
+    /**
+     * Order a plan by invoice, paid by wire
+     * Raises an OPEN invoice for an organization&#39;s order — the seats at the plan&#39;s price and the starting balance — and sends it to the buyer. NOTHING STARTS until it is paid: \&quot;Your plan starts when we confirm your payment.\&quot;  The body is a card sale&#39;s less the card and the coupon: &#x60;planId&#x60;, &#x60;quantity&#x60;, &#x60;lines&#x60;, &#x60;interval&#x60;, &#x60;balanceCents&#x60;. The organization is the one chosen with X-Org-Id (none chosen is 400), and only its admin, as IAM says now, orders (403). The answer carries the invoice, the amount due, the due date (the plan&#39;s &#x60;limits.invoiceDays&#x60;), when it is voided if unpaid (&#x60;limits.graceDays&#x60; later), the receiving bank with the reference to send exactly, the same as &#x60;howToPay&#x60; steps one field to a line, and &#x60;hostedUrl&#x60; and &#x60;pdfUrl&#x60;. A plan already paid for, or one with an invoice still open, is 409; a site that takes no order by invoice is 503. A retry under the same X-Idempotency-Key answers the same order as it stands at 200, with a new link and the bank read again; nothing is mailed again.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postBillingSubscribeInvoice() throws ApiException {
+        postBillingSubscribeInvoiceWithHttpInfo();
+    }
+
+    /**
+     * Order a plan by invoice, paid by wire
+     * Raises an OPEN invoice for an organization&#39;s order — the seats at the plan&#39;s price and the starting balance — and sends it to the buyer. NOTHING STARTS until it is paid: \&quot;Your plan starts when we confirm your payment.\&quot;  The body is a card sale&#39;s less the card and the coupon: &#x60;planId&#x60;, &#x60;quantity&#x60;, &#x60;lines&#x60;, &#x60;interval&#x60;, &#x60;balanceCents&#x60;. The organization is the one chosen with X-Org-Id (none chosen is 400), and only its admin, as IAM says now, orders (403). The answer carries the invoice, the amount due, the due date (the plan&#39;s &#x60;limits.invoiceDays&#x60;), when it is voided if unpaid (&#x60;limits.graceDays&#x60; later), the receiving bank with the reference to send exactly, the same as &#x60;howToPay&#x60; steps one field to a line, and &#x60;hostedUrl&#x60; and &#x60;pdfUrl&#x60;. A plan already paid for, or one with an invoice still open, is 409; a site that takes no order by invoice is 503. A retry under the same X-Idempotency-Key answers the same order as it stands at 200, with a new link and the bank read again; nothing is mailed again.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postBillingSubscribeInvoiceWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBillingSubscribeInvoiceValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Order a plan by invoice, paid by wire (asynchronously)
+     * Raises an OPEN invoice for an organization&#39;s order — the seats at the plan&#39;s price and the starting balance — and sends it to the buyer. NOTHING STARTS until it is paid: \&quot;Your plan starts when we confirm your payment.\&quot;  The body is a card sale&#39;s less the card and the coupon: &#x60;planId&#x60;, &#x60;quantity&#x60;, &#x60;lines&#x60;, &#x60;interval&#x60;, &#x60;balanceCents&#x60;. The organization is the one chosen with X-Org-Id (none chosen is 400), and only its admin, as IAM says now, orders (403). The answer carries the invoice, the amount due, the due date (the plan&#39;s &#x60;limits.invoiceDays&#x60;), when it is voided if unpaid (&#x60;limits.graceDays&#x60; later), the receiving bank with the reference to send exactly, the same as &#x60;howToPay&#x60; steps one field to a line, and &#x60;hostedUrl&#x60; and &#x60;pdfUrl&#x60;. A plan already paid for, or one with an invoice still open, is 409; a site that takes no order by invoice is 503. A retry under the same X-Idempotency-Key answers the same order as it stands at 200, with a new link and the bank read again; nothing is mailed again.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postBillingSubscribeInvoiceAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBillingSubscribeInvoiceValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -38,8 +38,7 @@ import ai.hanzo.cloud.model.SandboxPathIn;
 import ai.hanzo.cloud.model.SandboxPorts;
 import ai.hanzo.cloud.model.SandboxPreviewGrant;
 import ai.hanzo.cloud.model.SandboxPreviewIn;
-import ai.hanzo.cloud.model.SandboxQuotaIn;
-import ai.hanzo.cloud.model.SandboxQuotaView;
+import ai.hanzo.cloud.model.SandboxQuota;
 import ai.hanzo.cloud.model.SandboxRan;
 import ai.hanzo.cloud.model.SandboxRunIn;
 import ai.hanzo.cloud.model.SandboxSandbox;
@@ -1313,9 +1312,9 @@ public class SandboxApi {
     }
 
     /**
-     * Answers the caller&#39;s sandbox quota: the wallet it belongs to, how many of that wallet&#39;s sandboxes are running, and how many may run at once.
-     * Answers the caller&#39;s sandbox quota: the wallet it belongs to, how many of that wallet&#39;s sandboxes are running, and how many may run at once. A prepaid account holds 100 until it asks for more with PUT /v1/sandbox/quota.
-     * @return SandboxQuotaView
+     * Answers the caller&#39;s sandbox quota: the account it belongs to — the org, or a person in the signup org — how many of that account&#39;s paid sandboxes are running, and how many may run at once (-1 for no bound).
+     * Answers the caller&#39;s sandbox quota: the account it belongs to — the org, or a person in the signup org — how many of that account&#39;s paid sandboxes are running, and how many may run at once (-1 for no bound). Staff set the quota per org or per plan; where they set none it is 100.
+     * @return SandboxQuota
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1325,15 +1324,15 @@ public class SandboxApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SandboxQuotaView getSandboxQuota() throws ApiException {
-        ApiResponse<SandboxQuotaView> localVarResp = getSandboxQuotaWithHttpInfo();
+    public SandboxQuota getSandboxQuota() throws ApiException {
+        ApiResponse<SandboxQuota> localVarResp = getSandboxQuotaWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Answers the caller&#39;s sandbox quota: the wallet it belongs to, how many of that wallet&#39;s sandboxes are running, and how many may run at once.
-     * Answers the caller&#39;s sandbox quota: the wallet it belongs to, how many of that wallet&#39;s sandboxes are running, and how many may run at once. A prepaid account holds 100 until it asks for more with PUT /v1/sandbox/quota.
-     * @return ApiResponse&lt;SandboxQuotaView&gt;
+     * Answers the caller&#39;s sandbox quota: the account it belongs to — the org, or a person in the signup org — how many of that account&#39;s paid sandboxes are running, and how many may run at once (-1 for no bound).
+     * Answers the caller&#39;s sandbox quota: the account it belongs to — the org, or a person in the signup org — how many of that account&#39;s paid sandboxes are running, and how many may run at once (-1 for no bound). Staff set the quota per org or per plan; where they set none it is 100.
+     * @return ApiResponse&lt;SandboxQuota&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1343,15 +1342,15 @@ public class SandboxApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SandboxQuotaView> getSandboxQuotaWithHttpInfo() throws ApiException {
+    public ApiResponse<SandboxQuota> getSandboxQuotaWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSandboxQuotaValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SandboxQuotaView>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxQuota>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Answers the caller&#39;s sandbox quota: the wallet it belongs to, how many of that wallet&#39;s sandboxes are running, and how many may run at once. (asynchronously)
-     * Answers the caller&#39;s sandbox quota: the wallet it belongs to, how many of that wallet&#39;s sandboxes are running, and how many may run at once. A prepaid account holds 100 until it asks for more with PUT /v1/sandbox/quota.
+     * Answers the caller&#39;s sandbox quota: the account it belongs to — the org, or a person in the signup org — how many of that account&#39;s paid sandboxes are running, and how many may run at once (-1 for no bound). (asynchronously)
+     * Answers the caller&#39;s sandbox quota: the account it belongs to — the org, or a person in the signup org — how many of that account&#39;s paid sandboxes are running, and how many may run at once (-1 for no bound). Staff set the quota per org or per plan; where they set none it is 100.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1363,10 +1362,10 @@ public class SandboxApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSandboxQuotaAsync(final ApiCallback<SandboxQuotaView> _callback) throws ApiException {
+    public okhttp3.Call getSandboxQuotaAsync(final ApiCallback<SandboxQuota> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSandboxQuotaValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SandboxQuotaView>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxQuota>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2639,138 +2638,6 @@ public class SandboxApi {
 
         okhttp3.Call localVarCall = postSandboxByIdTerminalTicketValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SandboxTicketGrant>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putSandboxQuota
-     * @param sandboxQuotaIn  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putSandboxQuotaCall(@javax.annotation.Nonnull SandboxQuotaIn sandboxQuotaIn, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = sandboxQuotaIn;
-
-        // create path and map variables
-        String localVarPath = "/v1/sandbox/quota";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putSandboxQuotaValidateBeforeCall(@javax.annotation.Nonnull SandboxQuotaIn sandboxQuotaIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'sandboxQuotaIn' is set
-        if (sandboxQuotaIn == null) {
-            throw new ApiException("Missing the required parameter 'sandboxQuotaIn' when calling putSandboxQuota(Async)");
-        }
-
-        return putSandboxQuotaCall(sandboxQuotaIn, _callback);
-
-    }
-
-    /**
-     * Sets how many sandboxes the caller&#39;s wallet may hold running at once, to any number of one or more.
-     * Sets how many sandboxes the caller&#39;s wallet may hold running at once, to any number of one or more. It is granted while the wallet holds a balance: every sandbox is still paid for by the hour from it, so the balance, not this number, is what limits the work. A wallet with nothing in it is told to top up.
-     * @param sandboxQuotaIn  (required)
-     * @return SandboxQuotaView
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public SandboxQuotaView putSandboxQuota(@javax.annotation.Nonnull SandboxQuotaIn sandboxQuotaIn) throws ApiException {
-        ApiResponse<SandboxQuotaView> localVarResp = putSandboxQuotaWithHttpInfo(sandboxQuotaIn);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Sets how many sandboxes the caller&#39;s wallet may hold running at once, to any number of one or more.
-     * Sets how many sandboxes the caller&#39;s wallet may hold running at once, to any number of one or more. It is granted while the wallet holds a balance: every sandbox is still paid for by the hour from it, so the balance, not this number, is what limits the work. A wallet with nothing in it is told to top up.
-     * @param sandboxQuotaIn  (required)
-     * @return ApiResponse&lt;SandboxQuotaView&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SandboxQuotaView> putSandboxQuotaWithHttpInfo(@javax.annotation.Nonnull SandboxQuotaIn sandboxQuotaIn) throws ApiException {
-        okhttp3.Call localVarCall = putSandboxQuotaValidateBeforeCall(sandboxQuotaIn, null);
-        Type localVarReturnType = new TypeToken<SandboxQuotaView>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Sets how many sandboxes the caller&#39;s wallet may hold running at once, to any number of one or more. (asynchronously)
-     * Sets how many sandboxes the caller&#39;s wallet may hold running at once, to any number of one or more. It is granted while the wallet holds a balance: every sandbox is still paid for by the hour from it, so the balance, not this number, is what limits the work. A wallet with nothing in it is told to top up.
-     * @param sandboxQuotaIn  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putSandboxQuotaAsync(@javax.annotation.Nonnull SandboxQuotaIn sandboxQuotaIn, final ApiCallback<SandboxQuotaView> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putSandboxQuotaValidateBeforeCall(sandboxQuotaIn, _callback);
-        Type localVarReturnType = new TypeToken<SandboxQuotaView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

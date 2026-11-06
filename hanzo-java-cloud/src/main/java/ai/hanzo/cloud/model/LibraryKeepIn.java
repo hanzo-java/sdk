@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class LibraryKeepIn {
+  public static final String SERIALIZED_NAME_BYTES = "bytes";
+  @SerializedName(SERIALIZED_NAME_BYTES)
+  @javax.annotation.Nullable
+  private Long bytes;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
@@ -123,13 +128,32 @@ public class LibraryKeepIn {
   public LibraryKeepIn() {
   }
 
+  public LibraryKeepIn bytes(@javax.annotation.Nullable Long bytes) {
+    this.bytes = bytes;
+    return this;
+  }
+
+  /**
+   * Bytes reserves an upload of this size, at most 2 GiB, when data is empty, and returns a signed PUT in upload.
+   * @return bytes
+   */
+  @javax.annotation.Nullable
+  public Long getBytes() {
+    return bytes;
+  }
+
+  public void setBytes(@javax.annotation.Nullable Long bytes) {
+    this.bytes = bytes;
+  }
+
+
   public LibraryKeepIn data(@javax.annotation.Nullable String data) {
     this.data = data;
     return this;
   }
 
   /**
-   * Data is the bytes, base64, at most 10 MiB. Required.
+   * Data is the bytes, base64, at most 10 MiB; omit when reserving with bytes.
    * @return data
    */
   @javax.annotation.Nullable
@@ -443,7 +467,8 @@ public class LibraryKeepIn {
       return false;
     }
     LibraryKeepIn libraryKeepIn = (LibraryKeepIn) o;
-    return Objects.equals(this.data, libraryKeepIn.data) &&
+    return Objects.equals(this.bytes, libraryKeepIn.bytes) &&
+        Objects.equals(this.data, libraryKeepIn.data) &&
         Objects.equals(this.height, libraryKeepIn.height) &&
         Objects.equals(this.key, libraryKeepIn.key) &&
         Objects.equals(this.kind, libraryKeepIn.kind) &&
@@ -462,13 +487,14 @@ public class LibraryKeepIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, height, key, kind, mime, name, origin, pages, preview, project, ref, seconds, source, width, additionalProperties);
+    return Objects.hash(bytes, data, height, key, kind, mime, name, origin, pages, preview, project, ref, seconds, source, width, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LibraryKeepIn {\n");
+    sb.append("    bytes: ").append(toIndentedString(bytes)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
@@ -505,7 +531,7 @@ public class LibraryKeepIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("data", "height", "key", "kind", "mime", "name", "origin", "pages", "preview", "project", "ref", "seconds", "source", "width"));
+    openapiFields = new HashSet<String>(Arrays.asList("bytes", "data", "height", "key", "kind", "mime", "name", "origin", "pages", "preview", "project", "ref", "seconds", "source", "width"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

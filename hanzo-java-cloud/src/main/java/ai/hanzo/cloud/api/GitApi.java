@@ -191,7 +191,7 @@ public class GitApi {
 
     /**
      * Removes a repo&#39;s metadata and purges its storage.
-     * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
+     * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete. A repository this app does not hold is looked for where getRepo looks next, the org&#39;s made workspace on the forge, so a customer&#39;s own repository (or the copy a GitHub link made there) is one a delete can reach, as their list already shows it.
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -208,7 +208,7 @@ public class GitApi {
 
     /**
      * Removes a repo&#39;s metadata and purges its storage.
-     * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
+     * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete. A repository this app does not hold is looked for where getRepo looks next, the org&#39;s made workspace on the forge, so a customer&#39;s own repository (or the copy a GitHub link made there) is one a delete can reach, as their list already shows it.
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -227,7 +227,7 @@ public class GitApi {
 
     /**
      * Removes a repo&#39;s metadata and purges its storage. (asynchronously)
-     * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete.
+     * Removes a repo&#39;s metadata and purges its storage. Answers 204 with no body. The metadata row is the source of truth for existence, so a storage purge that fails is logged and the delete still succeeds — and a second call is a 404, not a second delete. A repository this app does not hold is looked for where getRepo looks next, the org&#39;s made workspace on the forge, so a customer&#39;s own repository (or the copy a GitHub link made there) is one a delete can reach, as their list already shows it.
      * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -703,6 +703,7 @@ public class AiApi {
      * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
      * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
      * @param free Free keeps the models a call to which bills nothing (bounded by the free allowances instead of a balance). (optional)
+     * @param zdr ZDR keeps only models eligible for Zero Data Retention (excludes free and data-shared routes). (optional)
      * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -715,7 +716,7 @@ public class AiApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call aiModelsCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call aiModelsCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Boolean zdr, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -760,6 +761,10 @@ public class AiApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("free", free));
         }
 
+        if (zdr != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("zdr", zdr));
+        }
+
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -785,8 +790,8 @@ public class AiApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call aiModelsValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
-        return aiModelsCall(q, propertyClass, family, capability, free, limit, _callback);
+    private okhttp3.Call aiModelsValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Boolean zdr, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return aiModelsCall(q, propertyClass, family, capability, free, zdr, limit, _callback);
 
     }
 
@@ -798,6 +803,7 @@ public class AiApi {
      * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
      * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
      * @param free Free keeps the models a call to which bills nothing (bounded by the free allowances instead of a balance). (optional)
+     * @param zdr ZDR keeps only models eligible for Zero Data Retention (excludes free and data-shared routes). (optional)
      * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
      * @return AiModels
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -809,8 +815,8 @@ public class AiApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AiModels aiModels(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<AiModels> localVarResp = aiModelsWithHttpInfo(q, propertyClass, family, capability, free, limit);
+    public AiModels aiModels(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Boolean zdr, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AiModels> localVarResp = aiModelsWithHttpInfo(q, propertyClass, family, capability, free, zdr, limit);
         return localVarResp.getData();
     }
 
@@ -822,6 +828,7 @@ public class AiApi {
      * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
      * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
      * @param free Free keeps the models a call to which bills nothing (bounded by the free allowances instead of a balance). (optional)
+     * @param zdr ZDR keeps only models eligible for Zero Data Retention (excludes free and data-shared routes). (optional)
      * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
      * @return ApiResponse&lt;AiModels&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -833,8 +840,8 @@ public class AiApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AiModels> aiModelsWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = aiModelsValidateBeforeCall(q, propertyClass, family, capability, free, limit, null);
+    public ApiResponse<AiModels> aiModelsWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Boolean zdr, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = aiModelsValidateBeforeCall(q, propertyClass, family, capability, free, zdr, limit, null);
         Type localVarReturnType = new TypeToken<AiModels>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -847,6 +854,7 @@ public class AiApi {
      * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
      * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
      * @param free Free keeps the models a call to which bills nothing (bounded by the free allowances instead of a balance). (optional)
+     * @param zdr ZDR keeps only models eligible for Zero Data Retention (excludes free and data-shared routes). (optional)
      * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -859,9 +867,9 @@ public class AiApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call aiModelsAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Long limit, final ApiCallback<AiModels> _callback) throws ApiException {
+    public okhttp3.Call aiModelsAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Boolean free, @javax.annotation.Nullable Boolean zdr, @javax.annotation.Nullable Long limit, final ApiCallback<AiModels> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = aiModelsValidateBeforeCall(q, propertyClass, family, capability, free, limit, _callback);
+        okhttp3.Call localVarCall = aiModelsValidateBeforeCall(q, propertyClass, family, capability, free, zdr, limit, _callback);
         Type localVarReturnType = new TypeToken<AiModels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -746,8 +746,8 @@ public class LibraryApi {
     }
 
     /**
-     * Renames one of your items, shares it with your organization or stops sharing it, or moves it to a project.
-     * Renames one of your items, shares it with your organization or stops sharing it, or moves it to a project. Only its owner changes an item; a member&#39;s shared item answers 404 here as one that does not exist.
+     * Renames one of your items, shares it with your organization or stops sharing it, moves it to a project, or commits a reserved upload.
+     * Renames one of your items, shares it with your organization or stops sharing it, moves it to a project, or commits a reserved upload. Only its owner changes an item; a member&#39;s shared item answers 404 here as one that does not exist.
      * @param id ID is the item, from the path. (required)
      * @param libraryItemPatch  (required)
      * @return LibraryLibraryItem
@@ -766,8 +766,8 @@ public class LibraryApi {
     }
 
     /**
-     * Renames one of your items, shares it with your organization or stops sharing it, or moves it to a project.
-     * Renames one of your items, shares it with your organization or stops sharing it, or moves it to a project. Only its owner changes an item; a member&#39;s shared item answers 404 here as one that does not exist.
+     * Renames one of your items, shares it with your organization or stops sharing it, moves it to a project, or commits a reserved upload.
+     * Renames one of your items, shares it with your organization or stops sharing it, moves it to a project, or commits a reserved upload. Only its owner changes an item; a member&#39;s shared item answers 404 here as one that does not exist.
      * @param id ID is the item, from the path. (required)
      * @param libraryItemPatch  (required)
      * @return ApiResponse&lt;LibraryLibraryItem&gt;
@@ -787,8 +787,8 @@ public class LibraryApi {
     }
 
     /**
-     * Renames one of your items, shares it with your organization or stops sharing it, or moves it to a project. (asynchronously)
-     * Renames one of your items, shares it with your organization or stops sharing it, or moves it to a project. Only its owner changes an item; a member&#39;s shared item answers 404 here as one that does not exist.
+     * Renames one of your items, shares it with your organization or stops sharing it, moves it to a project, or commits a reserved upload. (asynchronously)
+     * Renames one of your items, shares it with your organization or stops sharing it, moves it to a project, or commits a reserved upload. Only its owner changes an item; a member&#39;s shared item answers 404 here as one that does not exist.
      * @param id ID is the item, from the path. (required)
      * @param libraryItemPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -882,7 +882,7 @@ public class LibraryApi {
 
     /**
      * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it.
-     * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. A save with the &#x60;key&#x60; of one already kept answers that item.
+     * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. Send &#x60;data&#x60; up to 10 MiB inline, or send &#x60;bytes&#x60; up to 2 GiB to reserve a signed &#x60;upload&#x60; PUT and finish it with &#x60;PATCH /v1/library/:id&#x60; &#x60;{\&quot;commit\&quot;: true}&#x60;. A save with the &#x60;key&#x60; of one already kept answers that item.
      * @param libraryKeepIn  (required)
      * @return LibraryLibraryItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -901,7 +901,7 @@ public class LibraryApi {
 
     /**
      * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it.
-     * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. A save with the &#x60;key&#x60; of one already kept answers that item.
+     * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. Send &#x60;data&#x60; up to 10 MiB inline, or send &#x60;bytes&#x60; up to 2 GiB to reserve a signed &#x60;upload&#x60; PUT and finish it with &#x60;PATCH /v1/library/:id&#x60; &#x60;{\&quot;commit\&quot;: true}&#x60;. A save with the &#x60;key&#x60; of one already kept answers that item.
      * @param libraryKeepIn  (required)
      * @return ApiResponse&lt;LibraryLibraryItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -921,7 +921,7 @@ public class LibraryApi {
 
     /**
      * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. (asynchronously)
-     * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. A save with the &#x60;key&#x60; of one already kept answers that item.
+     * Keeps one thing you made in your Library: its bytes go to your own prefix of the Library&#39;s store, and it is listed to you alone until you share it. Send &#x60;data&#x60; up to 10 MiB inline, or send &#x60;bytes&#x60; up to 2 GiB to reserve a signed &#x60;upload&#x60; PUT and finish it with &#x60;PATCH /v1/library/:id&#x60; &#x60;{\&quot;commit\&quot;: true}&#x60;. A save with the &#x60;key&#x60; of one already kept answers that item.
      * @param libraryKeepIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

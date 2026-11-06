@@ -69,7 +69,7 @@ public class ProviderDisconnectIn {
   }
 
   /**
-   * Account names ONE account to disconnect — the label the connection carries (a GitHub login, for the App). Empty disconnects every account the org holds for the provider. An account the org does not hold disconnects nothing.
+   * Account names ONE account to disconnect — the label the connection carries (a GitHub login, for the App) or its platform id (a Page, a channel, a board). Empty disconnects every account the org holds for the provider. An account the org does not hold disconnects nothing.
    * @return account
    */
   @javax.annotation.Nullable

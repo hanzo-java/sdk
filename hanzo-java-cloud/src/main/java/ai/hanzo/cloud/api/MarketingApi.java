@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.MarketingAdded;
 import ai.hanzo.cloud.model.MarketingAudience;
 import ai.hanzo.cloud.model.MarketingAudienceList;
 import ai.hanzo.cloud.model.MarketingAudiencePreview;
@@ -39,16 +40,31 @@ import ai.hanzo.cloud.model.MarketingBetaInviteRows;
 import ai.hanzo.cloud.model.MarketingBetaInviteSentIn;
 import ai.hanzo.cloud.model.MarketingBetaInvites;
 import ai.hanzo.cloud.model.MarketingBetaRequest;
+import ai.hanzo.cloud.model.MarketingBroadcast;
+import ai.hanzo.cloud.model.MarketingBroadcastIn;
+import ai.hanzo.cloud.model.MarketingBroadcastPage;
+import ai.hanzo.cloud.model.MarketingBroadcastStats;
+import ai.hanzo.cloud.model.MarketingBulkIn;
+import ai.hanzo.cloud.model.MarketingBulkOut;
 import ai.hanzo.cloud.model.MarketingCalendarPost;
 import ai.hanzo.cloud.model.MarketingCampaign;
 import ai.hanzo.cloud.model.MarketingCampaignList;
 import ai.hanzo.cloud.model.MarketingConfirmIn;
+import ai.hanzo.cloud.model.MarketingCreated;
 import ai.hanzo.cloud.model.MarketingEnrollInput;
 import ai.hanzo.cloud.model.MarketingEnrollResult;
 import ai.hanzo.cloud.model.MarketingEnrollmentList;
 import ai.hanzo.cloud.model.MarketingEsignEvent;
+import ai.hanzo.cloud.model.MarketingFieldSet;
+import ai.hanzo.cloud.model.MarketingImport;
+import ai.hanzo.cloud.model.MarketingImportIn;
+import ai.hanzo.cloud.model.MarketingImportPage;
 import ai.hanzo.cloud.model.MarketingLead;
 import ai.hanzo.cloud.model.MarketingLeadIn;
+import ai.hanzo.cloud.model.MarketingList;
+import ai.hanzo.cloud.model.MarketingListIn;
+import ai.hanzo.cloud.model.MarketingListPage;
+import ai.hanzo.cloud.model.MarketingListStats;
 import ai.hanzo.cloud.model.MarketingMailIn;
 import ai.hanzo.cloud.model.MarketingMailOut;
 import ai.hanzo.cloud.model.MarketingPostList;
@@ -60,6 +76,11 @@ import ai.hanzo.cloud.model.MarketingRedemption;
 import ai.hanzo.cloud.model.MarketingResumeForm;
 import ai.hanzo.cloud.model.MarketingResumeIn;
 import ai.hanzo.cloud.model.MarketingScheduleInput;
+import ai.hanzo.cloud.model.MarketingSegment;
+import ai.hanzo.cloud.model.MarketingSegmentIn;
+import ai.hanzo.cloud.model.MarketingSegmentPage;
+import ai.hanzo.cloud.model.MarketingSendIn;
+import ai.hanzo.cloud.model.MarketingSender;
 import ai.hanzo.cloud.model.MarketingSequence;
 import ai.hanzo.cloud.model.MarketingSequenceList;
 import ai.hanzo.cloud.model.MarketingSequenceStatus;
@@ -69,11 +90,16 @@ import ai.hanzo.cloud.model.MarketingStep;
 import ai.hanzo.cloud.model.MarketingStepInput;
 import ai.hanzo.cloud.model.MarketingStepList;
 import ai.hanzo.cloud.model.MarketingSubscribeIn;
+import ai.hanzo.cloud.model.MarketingSubscriber;
+import ai.hanzo.cloud.model.MarketingSubscriberIn;
+import ai.hanzo.cloud.model.MarketingSubscriberPage;
 import ai.hanzo.cloud.model.MarketingSubscription;
 import ai.hanzo.cloud.model.MarketingSummary;
 import ai.hanzo.cloud.model.MarketingSuppression;
 import ai.hanzo.cloud.model.MarketingSuppressionCheck;
 import ai.hanzo.cloud.model.MarketingSuppressionList;
+import ai.hanzo.cloud.model.MarketingTestIn;
+import ai.hanzo.cloud.model.MarketingTestOut;
 import ai.hanzo.cloud.model.MarketingUnsubscribed;
 import ai.hanzo.cloud.model.ProblemDetails;
 
@@ -245,6 +271,138 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = deleteMarketingAudiencesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteMarketingBroadcastsById
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingBroadcastsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteMarketingBroadcastsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingBroadcastsById(Async)");
+        }
+
+        return deleteMarketingBroadcastsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Deletes a broadcast that is not sending, with its record of who it went to, and answers 204.
+     * Deletes a broadcast that is not sending, with its record of who it went to, and answers 204. One that is sending is 409; cancel it first.  Org admin only.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public Object deleteMarketingBroadcastsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteMarketingBroadcastsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Deletes a broadcast that is not sending, with its record of who it went to, and answers 204.
+     * Deletes a broadcast that is not sending, with its record of who it went to, and answers 204. One that is sending is 409; cancel it first.  Org admin only.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Object> deleteMarketingBroadcastsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingBroadcastsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Deletes a broadcast that is not sending, with its record of who it went to, and answers 204. (asynchronously)
+     * Deletes a broadcast that is not sending, with its record of who it went to, and answers 204. One that is sending is 409; cancel it first.  Org admin only.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingBroadcastsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteMarketingBroadcastsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -502,6 +660,422 @@ public class MarketingApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteMarketingListsById
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingListsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteMarketingListsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingListsById(Async)");
+        }
+
+        return deleteMarketingListsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Deletes one of the org&#39;s lists with every subscriber, segment, import and broadcast it has, and answers 204.
+     * Deletes one of the org&#39;s lists with every subscriber, segment, import and broadcast it has, and answers 204. A list with a broadcast sending is 409; cancel it first.  Org admin only.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public Object deleteMarketingListsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteMarketingListsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Deletes one of the org&#39;s lists with every subscriber, segment, import and broadcast it has, and answers 204.
+     * Deletes one of the org&#39;s lists with every subscriber, segment, import and broadcast it has, and answers 204. A list with a broadcast sending is 409; cancel it first.  Org admin only.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Object> deleteMarketingListsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingListsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Deletes one of the org&#39;s lists with every subscriber, segment, import and broadcast it has, and answers 204. (asynchronously)
+     * Deletes one of the org&#39;s lists with every subscriber, segment, import and broadcast it has, and answers 204. A list with a broadcast sending is 409; cancel it first.  Org admin only.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingListsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteMarketingListsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteMarketingListsByIdSegmentsBySid
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the segment&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingListsByIdSegmentsBySidCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/segments/{sid}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "sid" + "}", localVarApiClient.escapeString(sid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteMarketingListsByIdSegmentsBySidValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingListsByIdSegmentsBySid(Async)");
+        }
+
+        // verify the required parameter 'sid' is set
+        if (sid == null) {
+            throw new ApiException("Missing the required parameter 'sid' when calling deleteMarketingListsByIdSegmentsBySid(Async)");
+        }
+
+        return deleteMarketingListsByIdSegmentsBySidCall(id, sid, _callback);
+
+    }
+
+    /**
+     * Deletes a saved segment and answers 204.
+     * Deletes a saved segment and answers 204. A scheduled broadcast to it is 409; change or cancel the broadcast first.  Org admin only.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the segment&#39;s id. (required)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public Object deleteMarketingListsByIdSegmentsBySid(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteMarketingListsByIdSegmentsBySidWithHttpInfo(id, sid);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Deletes a saved segment and answers 204.
+     * Deletes a saved segment and answers 204. A scheduled broadcast to it is 409; change or cancel the broadcast first.  Org admin only.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the segment&#39;s id. (required)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Object> deleteMarketingListsByIdSegmentsBySidWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingListsByIdSegmentsBySidValidateBeforeCall(id, sid, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Deletes a saved segment and answers 204. (asynchronously)
+     * Deletes a saved segment and answers 204. A scheduled broadcast to it is 409; change or cancel the broadcast first.  Org admin only.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the segment&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingListsByIdSegmentsBySidAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteMarketingListsByIdSegmentsBySidValidateBeforeCall(id, sid, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteMarketingListsByIdSubscribersBySid
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingListsByIdSubscribersBySidCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/subscribers/{sid}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "sid" + "}", localVarApiClient.escapeString(sid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteMarketingListsByIdSubscribersBySidValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        // verify the required parameter 'sid' is set
+        if (sid == null) {
+            throw new ApiException("Missing the required parameter 'sid' when calling deleteMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        return deleteMarketingListsByIdSubscribersBySidCall(id, sid, _callback);
+
+    }
+
+    /**
+     * Removes one subscriber from one of the org&#39;s lists and answers 204.
+     * Removes one subscriber from one of the org&#39;s lists and answers 204. The row and its evidence are gone; to keep the record of someone leaving, set their status to unsubscribed instead.  Org admin only.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public Object deleteMarketingListsByIdSubscribersBySid(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteMarketingListsByIdSubscribersBySidWithHttpInfo(id, sid);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes one subscriber from one of the org&#39;s lists and answers 204.
+     * Removes one subscriber from one of the org&#39;s lists and answers 204. The row and its evidence are gone; to keep the record of someone leaving, set their status to unsubscribed instead.  Org admin only.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Object> deleteMarketingListsByIdSubscribersBySidWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingListsByIdSubscribersBySidValidateBeforeCall(id, sid, null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes one subscriber from one of the org&#39;s lists and answers 204. (asynchronously)
+     * Removes one subscriber from one of the org&#39;s lists and answers 204. The row and its evidence are gone; to keep the record of someone leaving, set their status to unsubscribed instead.  Org admin only.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteMarketingListsByIdSubscribersBySidAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteMarketingListsByIdSubscribersBySidValidateBeforeCall(id, sid, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteMarketingSuppressions
      * @param channel Channel is the surface the entry opts out of; empty is email. (optional)
      * @param address Address is the entry: an address, or \&quot;@example.com\&quot; for a company. (optional)
@@ -704,8 +1278,8 @@ public class MarketingApi {
     }
 
     /**
-     * Returns the org&#39;s saved audiences, most recently updated first.
-     * Returns the org&#39;s saved audiences, most recently updated first.
+     * Returns every audience the org can send to: its saved cohorts, most recently updated first, then its mailing lists and their saved segments, newest first, each list with its subscribed count.
+     * Returns every audience the org can send to: its saved cohorts, most recently updated first, then its mailing lists and their saved segments, newest first, each list with its subscribed count. A list or a segment is an audience as a cohort is: a sequence enrolls any of them by id.
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @return MarketingAudienceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -723,8 +1297,8 @@ public class MarketingApi {
     }
 
     /**
-     * Returns the org&#39;s saved audiences, most recently updated first.
-     * Returns the org&#39;s saved audiences, most recently updated first.
+     * Returns every audience the org can send to: its saved cohorts, most recently updated first, then its mailing lists and their saved segments, newest first, each list with its subscribed count.
+     * Returns every audience the org can send to: its saved cohorts, most recently updated first, then its mailing lists and their saved segments, newest first, each list with its subscribed count. A list or a segment is an audience as a cohort is: a sequence enrolls any of them by id.
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @return ApiResponse&lt;MarketingAudienceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -743,8 +1317,8 @@ public class MarketingApi {
     }
 
     /**
-     * Returns the org&#39;s saved audiences, most recently updated first. (asynchronously)
-     * Returns the org&#39;s saved audiences, most recently updated first.
+     * Returns every audience the org can send to: its saved cohorts, most recently updated first, then its mailing lists and their saved segments, newest first, each list with its subscribed count. (asynchronously)
+     * Returns every audience the org can send to: its saved cohorts, most recently updated first, then its mailing lists and their saved segments, newest first, each list with its subscribed count. A list or a segment is an audience as a cohort is: a sequence enrolls any of them by id.
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1269,6 +1843,416 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = getMarketingBetaInvitesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MarketingBetaInviteList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingBroadcasts
+     * @param _list List keeps one list&#39;s broadcasts, by id or slug. (optional)
+     * @param status Status keeps broadcasts in one status. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBroadcastsCall(@javax.annotation.Nullable String _list, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (_list != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("list", _list));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingBroadcastsValidateBeforeCall(@javax.annotation.Nullable String _list, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingBroadcastsCall(_list, status, limit, _callback);
+
+    }
+
+    /**
+     * Returns the org&#39;s broadcasts, newest first.
+     * Returns the org&#39;s broadcasts, newest first.
+     * @param _list List keeps one list&#39;s broadcasts, by id or slug. (optional)
+     * @param status Status keeps broadcasts in one status. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @return MarketingBroadcastPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcastPage getMarketingBroadcasts(@javax.annotation.Nullable String _list, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<MarketingBroadcastPage> localVarResp = getMarketingBroadcastsWithHttpInfo(_list, status, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the org&#39;s broadcasts, newest first.
+     * Returns the org&#39;s broadcasts, newest first.
+     * @param _list List keeps one list&#39;s broadcasts, by id or slug. (optional)
+     * @param status Status keeps broadcasts in one status. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @return ApiResponse&lt;MarketingBroadcastPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcastPage> getMarketingBroadcastsWithHttpInfo(@javax.annotation.Nullable String _list, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingBroadcastsValidateBeforeCall(_list, status, limit, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcastPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the org&#39;s broadcasts, newest first. (asynchronously)
+     * Returns the org&#39;s broadcasts, newest first.
+     * @param _list List keeps one list&#39;s broadcasts, by id or slug. (optional)
+     * @param status Status keeps broadcasts in one status. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBroadcastsAsync(@javax.annotation.Nullable String _list, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback<MarketingBroadcastPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingBroadcastsValidateBeforeCall(_list, status, limit, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcastPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingBroadcastsById
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBroadcastsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingBroadcastsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingBroadcastsById(Async)");
+        }
+
+        return getMarketingBroadcastsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one of the org&#39;s broadcasts.
+     * Returns one of the org&#39;s broadcasts.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return MarketingBroadcast
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcast getMarketingBroadcastsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingBroadcast> localVarResp = getMarketingBroadcastsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one of the org&#39;s broadcasts.
+     * Returns one of the org&#39;s broadcasts.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingBroadcast&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcast> getMarketingBroadcastsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingBroadcastsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one of the org&#39;s broadcasts. (asynchronously)
+     * Returns one of the org&#39;s broadcasts.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBroadcastsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingBroadcast> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingBroadcastsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingBroadcastsByIdStats
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBroadcastsByIdStatsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}/stats"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingBroadcastsByIdStatsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingBroadcastsByIdStats(Async)");
+        }
+
+        return getMarketingBroadcastsByIdStatsCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one broadcast&#39;s numbers: audience, sent, refused, failed, and what the email plane reported (delivered, opened, clicked, bounced, complained, unsubscribed), each counted once per message, with open and click rates.
+     * Returns one broadcast&#39;s numbers: audience, sent, refused, failed, and what the email plane reported (delivered, opened, clicked, bounced, complained, unsubscribed), each counted once per message, with open and click rates.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return MarketingBroadcastStats
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcastStats getMarketingBroadcastsByIdStats(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingBroadcastStats> localVarResp = getMarketingBroadcastsByIdStatsWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one broadcast&#39;s numbers: audience, sent, refused, failed, and what the email plane reported (delivered, opened, clicked, bounced, complained, unsubscribed), each counted once per message, with open and click rates.
+     * Returns one broadcast&#39;s numbers: audience, sent, refused, failed, and what the email plane reported (delivered, opened, clicked, bounced, complained, unsubscribed), each counted once per message, with open and click rates.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingBroadcastStats&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcastStats> getMarketingBroadcastsByIdStatsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingBroadcastsByIdStatsValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcastStats>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one broadcast&#39;s numbers: audience, sent, refused, failed, and what the email plane reported (delivered, opened, clicked, bounced, complained, unsubscribed), each counted once per message, with open and click rates. (asynchronously)
+     * Returns one broadcast&#39;s numbers: audience, sent, refused, failed, and what the email plane reported (delivered, opened, clicked, bounced, complained, unsubscribed), each counted once per message, with open and click rates.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingBroadcastsByIdStatsAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingBroadcastStats> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingBroadcastsByIdStatsValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcastStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1951,6 +2935,1464 @@ public class MarketingApi {
         return localVarCall;
     }
     /**
+     * Build call for getMarketingFields
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingFieldsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/fields";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingFieldsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingFieldsCall(_callback);
+
+    }
+
+    /**
+     * Returns the custom fields the org defined for its subscribers.
+     * Returns the custom fields the org defined for its subscribers.
+     * @return MarketingFieldSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingFieldSet getMarketingFields() throws ApiException {
+        ApiResponse<MarketingFieldSet> localVarResp = getMarketingFieldsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the custom fields the org defined for its subscribers.
+     * Returns the custom fields the org defined for its subscribers.
+     * @return ApiResponse&lt;MarketingFieldSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingFieldSet> getMarketingFieldsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingFieldsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<MarketingFieldSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the custom fields the org defined for its subscribers. (asynchronously)
+     * Returns the custom fields the org defined for its subscribers.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingFieldsAsync(final ApiCallback<MarketingFieldSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingFieldsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<MarketingFieldSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingImports
+     * @param _list List keeps one list&#39;s imports, by id or slug. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingImportsCall(@javax.annotation.Nullable String _list, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/imports";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (_list != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("list", _list));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingImportsValidateBeforeCall(@javax.annotation.Nullable String _list, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingImportsCall(_list, limit, _callback);
+
+    }
+
+    /**
+     * Returns the org&#39;s imports, newest first, each with its report.
+     * Returns the org&#39;s imports, newest first, each with its report.
+     * @param _list List keeps one list&#39;s imports, by id or slug. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @return MarketingImportPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingImportPage getMarketingImports(@javax.annotation.Nullable String _list, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<MarketingImportPage> localVarResp = getMarketingImportsWithHttpInfo(_list, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the org&#39;s imports, newest first, each with its report.
+     * Returns the org&#39;s imports, newest first, each with its report.
+     * @param _list List keeps one list&#39;s imports, by id or slug. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @return ApiResponse&lt;MarketingImportPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingImportPage> getMarketingImportsWithHttpInfo(@javax.annotation.Nullable String _list, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingImportsValidateBeforeCall(_list, limit, null);
+        Type localVarReturnType = new TypeToken<MarketingImportPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the org&#39;s imports, newest first, each with its report. (asynchronously)
+     * Returns the org&#39;s imports, newest first, each with its report.
+     * @param _list List keeps one list&#39;s imports, by id or slug. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 200. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingImportsAsync(@javax.annotation.Nullable String _list, @javax.annotation.Nullable Long limit, final ApiCallback<MarketingImportPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingImportsValidateBeforeCall(_list, limit, _callback);
+        Type localVarReturnType = new TypeToken<MarketingImportPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingImportsById
+     * @param id ID is the import&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingImportsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/imports/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingImportsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingImportsById(Async)");
+        }
+
+        return getMarketingImportsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one of the org&#39;s imports: its state, how far its bytes and its reading have come, and its report so far.
+     * Returns one of the org&#39;s imports: its state, how far its bytes and its reading have come, and its report so far.
+     * @param id ID is the import&#39;s id. (required)
+     * @return MarketingImport
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingImport getMarketingImportsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingImport> localVarResp = getMarketingImportsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one of the org&#39;s imports: its state, how far its bytes and its reading have come, and its report so far.
+     * Returns one of the org&#39;s imports: its state, how far its bytes and its reading have come, and its report so far.
+     * @param id ID is the import&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingImport&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingImport> getMarketingImportsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingImportsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingImport>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one of the org&#39;s imports: its state, how far its bytes and its reading have come, and its report so far. (asynchronously)
+     * Returns one of the org&#39;s imports: its state, how far its bytes and its reading have come, and its report so far.
+     * @param id ID is the import&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingImportsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingImport> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingImportsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingImport>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingLists
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingListsCall(_callback);
+
+    }
+
+    /**
+     * Returns the org&#39;s lists, newest first, each with its subscribers counted by status.
+     * Returns the org&#39;s lists, newest first, each with its subscribers counted by status.
+     * @return MarketingListPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingListPage getMarketingLists() throws ApiException {
+        ApiResponse<MarketingListPage> localVarResp = getMarketingListsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the org&#39;s lists, newest first, each with its subscribers counted by status.
+     * Returns the org&#39;s lists, newest first, each with its subscribers counted by status.
+     * @return ApiResponse&lt;MarketingListPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingListPage> getMarketingListsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<MarketingListPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the org&#39;s lists, newest first, each with its subscribers counted by status. (asynchronously)
+     * Returns the org&#39;s lists, newest first, each with its subscribers counted by status.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsAsync(final ApiCallback<MarketingListPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<MarketingListPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingListsById
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingListsById(Async)");
+        }
+
+        return getMarketingListsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one of the org&#39;s lists, by id or slug, with its subscribers counted by status.
+     * Returns one of the org&#39;s lists, by id or slug, with its subscribers counted by status.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @return MarketingList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingList getMarketingListsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingList> localVarResp = getMarketingListsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one of the org&#39;s lists, by id or slug, with its subscribers counted by status.
+     * Returns one of the org&#39;s lists, by id or slug, with its subscribers counted by status.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @return ApiResponse&lt;MarketingList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingList> getMarketingListsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one of the org&#39;s lists, by id or slug, with its subscribers counted by status. (asynchronously)
+     * Returns one of the org&#39;s lists, by id or slug, with its subscribers counted by status.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingListsByIdExport
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getMarketingListsByIdExportCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/export"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsByIdExportValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingListsByIdExport(Async)");
+        }
+
+        return getMarketingListsByIdExportCall(id, _callback);
+
+    }
+
+    /**
+     * Streams a selection of one list as CSV (format&#x3D;csv, the default) or as a JSON array (format&#x3D;json), every subscriber with their consent evidence, engagement and custom fields.
+     * Streams a selection of one list as CSV (format&#x3D;csv, the default) or as a JSON array (format&#x3D;json), every subscriber with their consent evidence, engagement and custom fields. The selection takes the same query fields as the subscriber list (status, tag, source, ref, basis, q, field, value, the date ranges and segment). The answer streams as it is read, so a list of millions exports in bounded memory.  Org admin only.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getMarketingListsByIdExport(@javax.annotation.Nonnull String id) throws ApiException {
+        getMarketingListsByIdExportWithHttpInfo(id);
+    }
+
+    /**
+     * Streams a selection of one list as CSV (format&#x3D;csv, the default) or as a JSON array (format&#x3D;json), every subscriber with their consent evidence, engagement and custom fields.
+     * Streams a selection of one list as CSV (format&#x3D;csv, the default) or as a JSON array (format&#x3D;json), every subscriber with their consent evidence, engagement and custom fields. The selection takes the same query fields as the subscriber list (status, tag, source, ref, basis, q, field, value, the date ranges and segment). The answer streams as it is read, so a list of millions exports in bounded memory.  Org admin only.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getMarketingListsByIdExportWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsByIdExportValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Streams a selection of one list as CSV (format&#x3D;csv, the default) or as a JSON array (format&#x3D;json), every subscriber with their consent evidence, engagement and custom fields. (asynchronously)
+     * Streams a selection of one list as CSV (format&#x3D;csv, the default) or as a JSON array (format&#x3D;json), every subscriber with their consent evidence, engagement and custom fields. The selection takes the same query fields as the subscriber list (status, tag, source, ref, basis, q, field, value, the date ranges and segment). The answer streams as it is read, so a list of millions exports in bounded memory.  Org admin only.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getMarketingListsByIdExportAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsByIdExportValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingListsByIdSegments
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdSegmentsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/segments"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsByIdSegmentsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingListsByIdSegments(Async)");
+        }
+
+        return getMarketingListsByIdSegmentsCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one list&#39;s saved segments, newest first.
+     * Returns one list&#39;s saved segments, newest first.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @return MarketingSegmentPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSegmentPage getMarketingListsByIdSegments(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingSegmentPage> localVarResp = getMarketingListsByIdSegmentsWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one list&#39;s saved segments, newest first.
+     * Returns one list&#39;s saved segments, newest first.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @return ApiResponse&lt;MarketingSegmentPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSegmentPage> getMarketingListsByIdSegmentsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsByIdSegmentsValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingSegmentPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one list&#39;s saved segments, newest first. (asynchronously)
+     * Returns one list&#39;s saved segments, newest first.
+     * @param id ID is the list&#39;s id or its slug. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdSegmentsAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingSegmentPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsByIdSegmentsValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSegmentPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingListsByIdStats
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param from From is the first day, YYYY-MM-DD (UTC); 30 days before To by default. (optional)
+     * @param to To is the last day, YYYY-MM-DD (UTC); today by default. At most 366 days after From. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdStatsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/stats"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsByIdStatsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingListsByIdStats(Async)");
+        }
+
+        return getMarketingListsByIdStatsCall(id, from, to, _callback);
+
+    }
+
+    /**
+     * Returns one list&#39;s numbers for charting: subscribers by status, source and consent basis, and over a range of days, what happened each day, the net growth, the confirmation rate and the unsubscribe rate.
+     * Returns one list&#39;s numbers for charting: subscribers by status, source and consent basis, and over a range of days, what happened each day, the net growth, the confirmation rate and the unsubscribe rate. Every number is read from kept counts, never by reading the list.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param from From is the first day, YYYY-MM-DD (UTC); 30 days before To by default. (optional)
+     * @param to To is the last day, YYYY-MM-DD (UTC); today by default. At most 366 days after From. (optional)
+     * @return MarketingListStats
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingListStats getMarketingListsByIdStats(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<MarketingListStats> localVarResp = getMarketingListsByIdStatsWithHttpInfo(id, from, to);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one list&#39;s numbers for charting: subscribers by status, source and consent basis, and over a range of days, what happened each day, the net growth, the confirmation rate and the unsubscribe rate.
+     * Returns one list&#39;s numbers for charting: subscribers by status, source and consent basis, and over a range of days, what happened each day, the net growth, the confirmation rate and the unsubscribe rate. Every number is read from kept counts, never by reading the list.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param from From is the first day, YYYY-MM-DD (UTC); 30 days before To by default. (optional)
+     * @param to To is the last day, YYYY-MM-DD (UTC); today by default. At most 366 days after From. (optional)
+     * @return ApiResponse&lt;MarketingListStats&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingListStats> getMarketingListsByIdStatsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsByIdStatsValidateBeforeCall(id, from, to, null);
+        Type localVarReturnType = new TypeToken<MarketingListStats>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one list&#39;s numbers for charting: subscribers by status, source and consent basis, and over a range of days, what happened each day, the net growth, the confirmation rate and the unsubscribe rate. (asynchronously)
+     * Returns one list&#39;s numbers for charting: subscribers by status, source and consent basis, and over a range of days, what happened each day, the net growth, the confirmation rate and the unsubscribe rate. Every number is read from kept counts, never by reading the list.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param from From is the first day, YYYY-MM-DD (UTC); 30 days before To by default. (optional)
+     * @param to To is the last day, YYYY-MM-DD (UTC); today by default. At most 366 days after From. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdStatsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<MarketingListStats> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsByIdStatsValidateBeforeCall(id, from, to, _callback);
+        Type localVarReturnType = new TypeToken<MarketingListStats>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingListsByIdSubscribers
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param status Status is one status or several, comma-separated: pending, subscribed, unsubscribed, bounced, complained, cleaned. (optional)
+     * @param tag Tag keeps subscribers carrying this tag. (optional)
+     * @param source Source keeps subscribers that came from this kind of source: form, page, api, import or commerce. (optional)
+     * @param ref Ref keeps subscribers from one source instance: a form id, a page, an import batch id. (optional)
+     * @param basis Basis keeps subscribers by the consent basis recorded for them: explicit, legitimate_interest or unverified. (optional)
+     * @param q Q keeps subscribers whose address or name begins with it, case-insensitively. A search is ordered by address. (optional)
+     * @param field Field names a custom field, and Value keeps subscribers whose value for it is exactly this. (optional)
+     * @param value Value is the custom field&#39;s value Field keeps. (optional)
+     * @param createdAfter CreatedAfter and CreatedBefore bound when the subscriber joined the list, unix seconds, inclusive. Zero is unbounded. (optional)
+     * @param createdBefore CreatedBefore is the upper bound of CreatedAfter&#39;s range. (optional)
+     * @param confirmedAfter ConfirmedAfter and ConfirmedBefore bound when the subscription was confirmed, unix seconds, inclusive. (optional)
+     * @param confirmedBefore ConfirmedBefore is the upper bound of ConfirmedAfter&#39;s range. (optional)
+     * @param openedAfter OpenedAfter keeps subscribers who opened a broadcast at or after this time. (optional)
+     * @param notOpenedSince NotOpenedSince keeps subscribers who have opened nothing since this time, including those who never opened anything. (optional)
+     * @param clickedAfter ClickedAfter keeps subscribers who clicked a link at or after this time. (optional)
+     * @param segment Segment applies a saved segment of the list; the filter fields narrow it further. (optional)
+     * @param sort Sort is created (the default), email, name, confirmed or opened. A search (q) is always by address. (optional)
+     * @param order Order is desc (the default) or asc. (optional)
+     * @param cursor Cursor continues from where the previous page ended. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 500. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdSubscribersCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable String tag, @javax.annotation.Nullable String source, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String basis, @javax.annotation.Nullable String q, @javax.annotation.Nullable String field, @javax.annotation.Nullable String value, @javax.annotation.Nullable Long createdAfter, @javax.annotation.Nullable Long createdBefore, @javax.annotation.Nullable Long confirmedAfter, @javax.annotation.Nullable Long confirmedBefore, @javax.annotation.Nullable Long openedAfter, @javax.annotation.Nullable Long notOpenedSince, @javax.annotation.Nullable Long clickedAfter, @javax.annotation.Nullable String segment, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/subscribers"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (tag != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tag", tag));
+        }
+
+        if (source != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
+        }
+
+        if (ref != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ref", ref));
+        }
+
+        if (basis != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("basis", basis));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (field != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("field", field));
+        }
+
+        if (value != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("value", value));
+        }
+
+        if (createdAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
+        }
+
+        if (createdBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
+        }
+
+        if (confirmedAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("confirmedAfter", confirmedAfter));
+        }
+
+        if (confirmedBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("confirmedBefore", confirmedBefore));
+        }
+
+        if (openedAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("openedAfter", openedAfter));
+        }
+
+        if (notOpenedSince != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("notOpenedSince", notOpenedSince));
+        }
+
+        if (clickedAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clickedAfter", clickedAfter));
+        }
+
+        if (segment != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("segment", segment));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (order != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order", order));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsByIdSubscribersValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable String tag, @javax.annotation.Nullable String source, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String basis, @javax.annotation.Nullable String q, @javax.annotation.Nullable String field, @javax.annotation.Nullable String value, @javax.annotation.Nullable Long createdAfter, @javax.annotation.Nullable Long createdBefore, @javax.annotation.Nullable Long confirmedAfter, @javax.annotation.Nullable Long confirmedBefore, @javax.annotation.Nullable Long openedAfter, @javax.annotation.Nullable Long notOpenedSince, @javax.annotation.Nullable Long clickedAfter, @javax.annotation.Nullable String segment, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingListsByIdSubscribers(Async)");
+        }
+
+        return getMarketingListsByIdSubscribersCall(id, status, tag, source, ref, basis, q, field, value, createdAfter, createdBefore, confirmedAfter, confirmedBefore, openedAfter, notOpenedSince, clickedAfter, segment, sort, order, cursor, limit, _callback);
+
+    }
+
+    /**
+     * Returns a page of one list&#39;s subscribers, newest first unless asked otherwise.
+     * Returns a page of one list&#39;s subscribers, newest first unless asked otherwise. Every filter (status, tag, source, ref, consent basis, a prefix of the address or name, a custom field&#39;s value, ranges of when they joined and confirmed, and whether they opened or clicked since a time) walks an index of its own, so a page costs the same on a list of ten rows or ten million. Continue with next.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param status Status is one status or several, comma-separated: pending, subscribed, unsubscribed, bounced, complained, cleaned. (optional)
+     * @param tag Tag keeps subscribers carrying this tag. (optional)
+     * @param source Source keeps subscribers that came from this kind of source: form, page, api, import or commerce. (optional)
+     * @param ref Ref keeps subscribers from one source instance: a form id, a page, an import batch id. (optional)
+     * @param basis Basis keeps subscribers by the consent basis recorded for them: explicit, legitimate_interest or unverified. (optional)
+     * @param q Q keeps subscribers whose address or name begins with it, case-insensitively. A search is ordered by address. (optional)
+     * @param field Field names a custom field, and Value keeps subscribers whose value for it is exactly this. (optional)
+     * @param value Value is the custom field&#39;s value Field keeps. (optional)
+     * @param createdAfter CreatedAfter and CreatedBefore bound when the subscriber joined the list, unix seconds, inclusive. Zero is unbounded. (optional)
+     * @param createdBefore CreatedBefore is the upper bound of CreatedAfter&#39;s range. (optional)
+     * @param confirmedAfter ConfirmedAfter and ConfirmedBefore bound when the subscription was confirmed, unix seconds, inclusive. (optional)
+     * @param confirmedBefore ConfirmedBefore is the upper bound of ConfirmedAfter&#39;s range. (optional)
+     * @param openedAfter OpenedAfter keeps subscribers who opened a broadcast at or after this time. (optional)
+     * @param notOpenedSince NotOpenedSince keeps subscribers who have opened nothing since this time, including those who never opened anything. (optional)
+     * @param clickedAfter ClickedAfter keeps subscribers who clicked a link at or after this time. (optional)
+     * @param segment Segment applies a saved segment of the list; the filter fields narrow it further. (optional)
+     * @param sort Sort is created (the default), email, name, confirmed or opened. A search (q) is always by address. (optional)
+     * @param order Order is desc (the default) or asc. (optional)
+     * @param cursor Cursor continues from where the previous page ended. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 500. (optional)
+     * @return MarketingSubscriberPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSubscriberPage getMarketingListsByIdSubscribers(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable String tag, @javax.annotation.Nullable String source, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String basis, @javax.annotation.Nullable String q, @javax.annotation.Nullable String field, @javax.annotation.Nullable String value, @javax.annotation.Nullable Long createdAfter, @javax.annotation.Nullable Long createdBefore, @javax.annotation.Nullable Long confirmedAfter, @javax.annotation.Nullable Long confirmedBefore, @javax.annotation.Nullable Long openedAfter, @javax.annotation.Nullable Long notOpenedSince, @javax.annotation.Nullable Long clickedAfter, @javax.annotation.Nullable String segment, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<MarketingSubscriberPage> localVarResp = getMarketingListsByIdSubscribersWithHttpInfo(id, status, tag, source, ref, basis, q, field, value, createdAfter, createdBefore, confirmedAfter, confirmedBefore, openedAfter, notOpenedSince, clickedAfter, segment, sort, order, cursor, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns a page of one list&#39;s subscribers, newest first unless asked otherwise.
+     * Returns a page of one list&#39;s subscribers, newest first unless asked otherwise. Every filter (status, tag, source, ref, consent basis, a prefix of the address or name, a custom field&#39;s value, ranges of when they joined and confirmed, and whether they opened or clicked since a time) walks an index of its own, so a page costs the same on a list of ten rows or ten million. Continue with next.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param status Status is one status or several, comma-separated: pending, subscribed, unsubscribed, bounced, complained, cleaned. (optional)
+     * @param tag Tag keeps subscribers carrying this tag. (optional)
+     * @param source Source keeps subscribers that came from this kind of source: form, page, api, import or commerce. (optional)
+     * @param ref Ref keeps subscribers from one source instance: a form id, a page, an import batch id. (optional)
+     * @param basis Basis keeps subscribers by the consent basis recorded for them: explicit, legitimate_interest or unverified. (optional)
+     * @param q Q keeps subscribers whose address or name begins with it, case-insensitively. A search is ordered by address. (optional)
+     * @param field Field names a custom field, and Value keeps subscribers whose value for it is exactly this. (optional)
+     * @param value Value is the custom field&#39;s value Field keeps. (optional)
+     * @param createdAfter CreatedAfter and CreatedBefore bound when the subscriber joined the list, unix seconds, inclusive. Zero is unbounded. (optional)
+     * @param createdBefore CreatedBefore is the upper bound of CreatedAfter&#39;s range. (optional)
+     * @param confirmedAfter ConfirmedAfter and ConfirmedBefore bound when the subscription was confirmed, unix seconds, inclusive. (optional)
+     * @param confirmedBefore ConfirmedBefore is the upper bound of ConfirmedAfter&#39;s range. (optional)
+     * @param openedAfter OpenedAfter keeps subscribers who opened a broadcast at or after this time. (optional)
+     * @param notOpenedSince NotOpenedSince keeps subscribers who have opened nothing since this time, including those who never opened anything. (optional)
+     * @param clickedAfter ClickedAfter keeps subscribers who clicked a link at or after this time. (optional)
+     * @param segment Segment applies a saved segment of the list; the filter fields narrow it further. (optional)
+     * @param sort Sort is created (the default), email, name, confirmed or opened. A search (q) is always by address. (optional)
+     * @param order Order is desc (the default) or asc. (optional)
+     * @param cursor Cursor continues from where the previous page ended. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 500. (optional)
+     * @return ApiResponse&lt;MarketingSubscriberPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSubscriberPage> getMarketingListsByIdSubscribersWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable String tag, @javax.annotation.Nullable String source, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String basis, @javax.annotation.Nullable String q, @javax.annotation.Nullable String field, @javax.annotation.Nullable String value, @javax.annotation.Nullable Long createdAfter, @javax.annotation.Nullable Long createdBefore, @javax.annotation.Nullable Long confirmedAfter, @javax.annotation.Nullable Long confirmedBefore, @javax.annotation.Nullable Long openedAfter, @javax.annotation.Nullable Long notOpenedSince, @javax.annotation.Nullable Long clickedAfter, @javax.annotation.Nullable String segment, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsByIdSubscribersValidateBeforeCall(id, status, tag, source, ref, basis, q, field, value, createdAfter, createdBefore, confirmedAfter, confirmedBefore, openedAfter, notOpenedSince, clickedAfter, segment, sort, order, cursor, limit, null);
+        Type localVarReturnType = new TypeToken<MarketingSubscriberPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns a page of one list&#39;s subscribers, newest first unless asked otherwise. (asynchronously)
+     * Returns a page of one list&#39;s subscribers, newest first unless asked otherwise. Every filter (status, tag, source, ref, consent basis, a prefix of the address or name, a custom field&#39;s value, ranges of when they joined and confirmed, and whether they opened or clicked since a time) walks an index of its own, so a page costs the same on a list of ten rows or ten million. Continue with next.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param status Status is one status or several, comma-separated: pending, subscribed, unsubscribed, bounced, complained, cleaned. (optional)
+     * @param tag Tag keeps subscribers carrying this tag. (optional)
+     * @param source Source keeps subscribers that came from this kind of source: form, page, api, import or commerce. (optional)
+     * @param ref Ref keeps subscribers from one source instance: a form id, a page, an import batch id. (optional)
+     * @param basis Basis keeps subscribers by the consent basis recorded for them: explicit, legitimate_interest or unverified. (optional)
+     * @param q Q keeps subscribers whose address or name begins with it, case-insensitively. A search is ordered by address. (optional)
+     * @param field Field names a custom field, and Value keeps subscribers whose value for it is exactly this. (optional)
+     * @param value Value is the custom field&#39;s value Field keeps. (optional)
+     * @param createdAfter CreatedAfter and CreatedBefore bound when the subscriber joined the list, unix seconds, inclusive. Zero is unbounded. (optional)
+     * @param createdBefore CreatedBefore is the upper bound of CreatedAfter&#39;s range. (optional)
+     * @param confirmedAfter ConfirmedAfter and ConfirmedBefore bound when the subscription was confirmed, unix seconds, inclusive. (optional)
+     * @param confirmedBefore ConfirmedBefore is the upper bound of ConfirmedAfter&#39;s range. (optional)
+     * @param openedAfter OpenedAfter keeps subscribers who opened a broadcast at or after this time. (optional)
+     * @param notOpenedSince NotOpenedSince keeps subscribers who have opened nothing since this time, including those who never opened anything. (optional)
+     * @param clickedAfter ClickedAfter keeps subscribers who clicked a link at or after this time. (optional)
+     * @param segment Segment applies a saved segment of the list; the filter fields narrow it further. (optional)
+     * @param sort Sort is created (the default), email, name, confirmed or opened. A search (q) is always by address. (optional)
+     * @param order Order is desc (the default) or asc. (optional)
+     * @param cursor Cursor continues from where the previous page ended. (optional)
+     * @param limit Limit is the page size, 50 by default and at most 500. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdSubscribersAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable String tag, @javax.annotation.Nullable String source, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String basis, @javax.annotation.Nullable String q, @javax.annotation.Nullable String field, @javax.annotation.Nullable String value, @javax.annotation.Nullable Long createdAfter, @javax.annotation.Nullable Long createdBefore, @javax.annotation.Nullable Long confirmedAfter, @javax.annotation.Nullable Long confirmedBefore, @javax.annotation.Nullable Long openedAfter, @javax.annotation.Nullable Long notOpenedSince, @javax.annotation.Nullable Long clickedAfter, @javax.annotation.Nullable String segment, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit, final ApiCallback<MarketingSubscriberPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsByIdSubscribersValidateBeforeCall(id, status, tag, source, ref, basis, q, field, value, createdAfter, createdBefore, confirmedAfter, confirmedBefore, openedAfter, notOpenedSince, clickedAfter, segment, sort, order, cursor, limit, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSubscriberPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingListsByIdSubscribersBySid
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdSubscribersBySidCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/subscribers/{sid}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "sid" + "}", localVarApiClient.escapeString(sid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingListsByIdSubscribersBySidValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        // verify the required parameter 'sid' is set
+        if (sid == null) {
+            throw new ApiException("Missing the required parameter 'sid' when calling getMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        return getMarketingListsByIdSubscribersBySidCall(id, sid, _callback);
+
+    }
+
+    /**
+     * Returns one subscriber of one of the org&#39;s lists, with their consent evidence and engagement.
+     * Returns one subscriber of one of the org&#39;s lists, with their consent evidence and engagement.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @return MarketingSubscriber
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSubscriber getMarketingListsByIdSubscribersBySid(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid) throws ApiException {
+        ApiResponse<MarketingSubscriber> localVarResp = getMarketingListsByIdSubscribersBySidWithHttpInfo(id, sid);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one subscriber of one of the org&#39;s lists, with their consent evidence and engagement.
+     * Returns one subscriber of one of the org&#39;s lists, with their consent evidence and engagement.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingSubscriber&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSubscriber> getMarketingListsByIdSubscribersBySidWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingListsByIdSubscribersBySidValidateBeforeCall(id, sid, null);
+        Type localVarReturnType = new TypeToken<MarketingSubscriber>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one subscriber of one of the org&#39;s lists, with their consent evidence and engagement. (asynchronously)
+     * Returns one subscriber of one of the org&#39;s lists, with their consent evidence and engagement.
+     * @param id ID is the list, by id or slug. (required)
+     * @param sid SID is the subscriber&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingListsByIdSubscribersBySidAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, final ApiCallback<MarketingSubscriber> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingListsByIdSubscribersBySidValidateBeforeCall(id, sid, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSubscriber>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getMarketingPromos
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2349,6 +4791,128 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = getMarketingPromosByCodeRedemptionValidateBeforeCall(code, _callback);
         Type localVarReturnType = new TypeToken<MarketingRedemption>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMarketingSender
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingSenderCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/sender";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarketingSenderValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingSenderCall(_callback);
+
+    }
+
+    /**
+     * Returns the org&#39;s sender: the provider and the from, reply and footer fields every list takes when it leaves its own empty.
+     * Returns the org&#39;s sender: the provider and the from, reply and footer fields every list takes when it leaves its own empty.
+     * @return MarketingSender
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSender getMarketingSender() throws ApiException {
+        ApiResponse<MarketingSender> localVarResp = getMarketingSenderWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the org&#39;s sender: the provider and the from, reply and footer fields every list takes when it leaves its own empty.
+     * Returns the org&#39;s sender: the provider and the from, reply and footer fields every list takes when it leaves its own empty.
+     * @return ApiResponse&lt;MarketingSender&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSender> getMarketingSenderWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSenderValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<MarketingSender>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the org&#39;s sender: the provider and the from, reply and footer fields every list takes when it leaves its own empty. (asynchronously)
+     * Returns the org&#39;s sender: the provider and the from, reply and footer fields every list takes when it leaves its own empty.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMarketingSenderAsync(final ApiCallback<MarketingSender> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarketingSenderValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<MarketingSender>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3283,6 +5847,7 @@ public class MarketingApi {
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
      * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
+     * @param _list List is the marketing list a broadcast&#39;s link leaves; with it the token is the list&#39;s, the address leaves that list alone, and the org&#39;s other mail still reaches it. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3294,7 +5859,7 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, @javax.annotation.Nullable String _list, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3339,6 +5904,10 @@ public class MarketingApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("company", company));
         }
 
+        if (_list != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("list", _list));
+        }
+
         final String[] localVarAccepts = {
             "application/json",
             "application/problem+json"
@@ -3360,8 +5929,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, final ApiCallback _callback) throws ApiException {
-        return getMarketingUnsubscribeCall(org, channel, address, token, company, _callback);
+    private okhttp3.Call getMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, @javax.annotation.Nullable String _list, final ApiCallback _callback) throws ApiException {
+        return getMarketingUnsubscribeCall(org, channel, address, token, company, _list, _callback);
 
     }
 
@@ -3373,6 +5942,7 @@ public class MarketingApi {
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
      * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
+     * @param _list List is the marketing list a broadcast&#39;s link leaves; with it the token is the list&#39;s, the address leaves that list alone, and the org&#39;s other mail still reaches it. (optional)
      * @return MarketingUnsubscribed
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3383,8 +5953,8 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MarketingUnsubscribed getMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company) throws ApiException {
-        ApiResponse<MarketingUnsubscribed> localVarResp = getMarketingUnsubscribeWithHttpInfo(org, channel, address, token, company);
+    public MarketingUnsubscribed getMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, @javax.annotation.Nullable String _list) throws ApiException {
+        ApiResponse<MarketingUnsubscribed> localVarResp = getMarketingUnsubscribeWithHttpInfo(org, channel, address, token, company, _list);
         return localVarResp.getData();
     }
 
@@ -3396,6 +5966,7 @@ public class MarketingApi {
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
      * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
+     * @param _list List is the marketing list a broadcast&#39;s link leaves; with it the token is the list&#39;s, the address leaves that list alone, and the org&#39;s other mail still reaches it. (optional)
      * @return ApiResponse&lt;MarketingUnsubscribed&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3406,8 +5977,8 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MarketingUnsubscribed> getMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company) throws ApiException {
-        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, company, null);
+    public ApiResponse<MarketingUnsubscribed> getMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, @javax.annotation.Nullable String _list) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, company, _list, null);
         Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3420,6 +5991,7 @@ public class MarketingApi {
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address). It is the ONLY authority here — there is no principal — so it binds the request to one tuple and nothing else. (optional)
      * @param company Company opts out everyone at the address&#39;s domain as well, in this org alone: a company&#39;s unsubscribe. An address at a free mail provider is a person&#39;s and is refused 422. (optional)
+     * @param _list List is the marketing list a broadcast&#39;s link leaves; with it the token is the list&#39;s, the address leaves that list alone, and the org&#39;s other mail still reaches it. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3431,10 +6003,446 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
+    public okhttp3.Call getMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable Boolean company, @javax.annotation.Nullable String _list, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, company, _callback);
+        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, company, _list, _callback);
         Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchMarketingBroadcastsById
+     * @param id ID is the broadcast to change, from the path; ignored on create. (required)
+     * @param marketingBroadcastIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchMarketingBroadcastsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBroadcastIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchMarketingBroadcastsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchMarketingBroadcastsById(Async)");
+        }
+
+        // verify the required parameter 'marketingBroadcastIn' is set
+        if (marketingBroadcastIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBroadcastIn' when calling patchMarketingBroadcastsById(Async)");
+        }
+
+        return patchMarketingBroadcastsByIdCall(id, marketingBroadcastIn, _callback);
+
+    }
+
+    /**
+     * Changes the fields the body names on a draft or scheduled broadcast and answers it.
+     * Changes the fields the body names on a draft or scheduled broadcast and answers it. One that is sending or done is 409.  Org admin only.
+     * @param id ID is the broadcast to change, from the path; ignored on create. (required)
+     * @param marketingBroadcastIn  (required)
+     * @return MarketingBroadcast
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcast patchMarketingBroadcastsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn) throws ApiException {
+        ApiResponse<MarketingBroadcast> localVarResp = patchMarketingBroadcastsByIdWithHttpInfo(id, marketingBroadcastIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes the fields the body names on a draft or scheduled broadcast and answers it.
+     * Changes the fields the body names on a draft or scheduled broadcast and answers it. One that is sending or done is 409.  Org admin only.
+     * @param id ID is the broadcast to change, from the path; ignored on create. (required)
+     * @param marketingBroadcastIn  (required)
+     * @return ApiResponse&lt;MarketingBroadcast&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcast> patchMarketingBroadcastsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn) throws ApiException {
+        okhttp3.Call localVarCall = patchMarketingBroadcastsByIdValidateBeforeCall(id, marketingBroadcastIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes the fields the body names on a draft or scheduled broadcast and answers it. (asynchronously)
+     * Changes the fields the body names on a draft or scheduled broadcast and answers it. One that is sending or done is 409.  Org admin only.
+     * @param id ID is the broadcast to change, from the path; ignored on create. (required)
+     * @param marketingBroadcastIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchMarketingBroadcastsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn, final ApiCallback<MarketingBroadcast> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchMarketingBroadcastsByIdValidateBeforeCall(id, marketingBroadcastIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchMarketingListsById
+     * @param id ID is the list to change, from the path; ignored on create. (required)
+     * @param marketingListIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchMarketingListsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingListIn marketingListIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingListIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchMarketingListsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingListIn marketingListIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchMarketingListsById(Async)");
+        }
+
+        // verify the required parameter 'marketingListIn' is set
+        if (marketingListIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingListIn' when calling patchMarketingListsById(Async)");
+        }
+
+        return patchMarketingListsByIdCall(id, marketingListIn, _callback);
+
+    }
+
+    /**
+     * Changes the fields the body names on one of the org&#39;s lists and answers the list.
+     * Changes the fields the body names on one of the org&#39;s lists and answers the list. A field left out keeps its value; an empty string clears a sender field back to the org&#39;s.  Org admin only.
+     * @param id ID is the list to change, from the path; ignored on create. (required)
+     * @param marketingListIn  (required)
+     * @return MarketingList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingList patchMarketingListsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingListIn marketingListIn) throws ApiException {
+        ApiResponse<MarketingList> localVarResp = patchMarketingListsByIdWithHttpInfo(id, marketingListIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes the fields the body names on one of the org&#39;s lists and answers the list.
+     * Changes the fields the body names on one of the org&#39;s lists and answers the list. A field left out keeps its value; an empty string clears a sender field back to the org&#39;s.  Org admin only.
+     * @param id ID is the list to change, from the path; ignored on create. (required)
+     * @param marketingListIn  (required)
+     * @return ApiResponse&lt;MarketingList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingList> patchMarketingListsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingListIn marketingListIn) throws ApiException {
+        okhttp3.Call localVarCall = patchMarketingListsByIdValidateBeforeCall(id, marketingListIn, null);
+        Type localVarReturnType = new TypeToken<MarketingList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes the fields the body names on one of the org&#39;s lists and answers the list. (asynchronously)
+     * Changes the fields the body names on one of the org&#39;s lists and answers the list. A field left out keeps its value; an empty string clears a sender field back to the org&#39;s.  Org admin only.
+     * @param id ID is the list to change, from the path; ignored on create. (required)
+     * @param marketingListIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchMarketingListsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingListIn marketingListIn, final ApiCallback<MarketingList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchMarketingListsByIdValidateBeforeCall(id, marketingListIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchMarketingListsByIdSubscribersBySid
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the subscriber to change, from the path; ignored on add. (required)
+     * @param marketingSubscriberIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchMarketingListsByIdSubscribersBySidCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSubscriberIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/subscribers/{sid}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "sid" + "}", localVarApiClient.escapeString(sid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchMarketingListsByIdSubscribersBySidValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        // verify the required parameter 'sid' is set
+        if (sid == null) {
+            throw new ApiException("Missing the required parameter 'sid' when calling patchMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        // verify the required parameter 'marketingSubscriberIn' is set
+        if (marketingSubscriberIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingSubscriberIn' when calling patchMarketingListsByIdSubscribersBySid(Async)");
+        }
+
+        return patchMarketingListsByIdSubscribersBySidCall(id, sid, marketingSubscriberIn, _callback);
+
+    }
+
+    /**
+     * Changes the fields the body names on one subscriber and answers the row.
+     * Changes the fields the body names on one subscriber and answers the row. A status change follows the same rule as add: an address that unsubscribed or complained is not put back by the org.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the subscriber to change, from the path; ignored on add. (required)
+     * @param marketingSubscriberIn  (required)
+     * @return MarketingSubscriber
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSubscriber patchMarketingListsByIdSubscribersBySid(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn) throws ApiException {
+        ApiResponse<MarketingSubscriber> localVarResp = patchMarketingListsByIdSubscribersBySidWithHttpInfo(id, sid, marketingSubscriberIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes the fields the body names on one subscriber and answers the row.
+     * Changes the fields the body names on one subscriber and answers the row. A status change follows the same rule as add: an address that unsubscribed or complained is not put back by the org.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the subscriber to change, from the path; ignored on add. (required)
+     * @param marketingSubscriberIn  (required)
+     * @return ApiResponse&lt;MarketingSubscriber&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSubscriber> patchMarketingListsByIdSubscribersBySidWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn) throws ApiException {
+        okhttp3.Call localVarCall = patchMarketingListsByIdSubscribersBySidValidateBeforeCall(id, sid, marketingSubscriberIn, null);
+        Type localVarReturnType = new TypeToken<MarketingSubscriber>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes the fields the body names on one subscriber and answers the row. (asynchronously)
+     * Changes the fields the body names on one subscriber and answers the row. A status change follows the same rule as add: an address that unsubscribed or complained is not put back by the org.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the subscriber to change, from the path; ignored on add. (required)
+     * @param marketingSubscriberIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchMarketingListsByIdSubscribersBySidAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Long sid, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn, final ApiCallback<MarketingSubscriber> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchMarketingListsByIdSubscribersBySidValidateBeforeCall(id, sid, marketingSubscriberIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSubscriber>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4099,6 +7107,554 @@ public class MarketingApi {
         return localVarCall;
     }
     /**
+     * Build call for postMarketingBroadcasts
+     * @param marketingBroadcastIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsCall(@javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBroadcastIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBroadcastsValidateBeforeCall(@javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingBroadcastIn' is set
+        if (marketingBroadcastIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBroadcastIn' when calling postMarketingBroadcasts(Async)");
+        }
+
+        return postMarketingBroadcastsCall(marketingBroadcastIn, _callback);
+
+    }
+
+    /**
+     * Composes a broadcast to one of the org&#39;s lists, or a segment of it, and answers 201 with it.
+     * Composes a broadcast to one of the org&#39;s lists, or a segment of it, and answers 201 with it. With scheduledAt it is scheduled; without, a draft until sent.  Org admin only.
+     * @param marketingBroadcastIn  (required)
+     * @return MarketingBroadcast
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcast postMarketingBroadcasts(@javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn) throws ApiException {
+        ApiResponse<MarketingBroadcast> localVarResp = postMarketingBroadcastsWithHttpInfo(marketingBroadcastIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Composes a broadcast to one of the org&#39;s lists, or a segment of it, and answers 201 with it.
+     * Composes a broadcast to one of the org&#39;s lists, or a segment of it, and answers 201 with it. With scheduledAt it is scheduled; without, a draft until sent.  Org admin only.
+     * @param marketingBroadcastIn  (required)
+     * @return ApiResponse&lt;MarketingBroadcast&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcast> postMarketingBroadcastsWithHttpInfo(@javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBroadcastsValidateBeforeCall(marketingBroadcastIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Composes a broadcast to one of the org&#39;s lists, or a segment of it, and answers 201 with it. (asynchronously)
+     * Composes a broadcast to one of the org&#39;s lists, or a segment of it, and answers 201 with it. With scheduledAt it is scheduled; without, a draft until sent.  Org admin only.
+     * @param marketingBroadcastIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsAsync(@javax.annotation.Nonnull MarketingBroadcastIn marketingBroadcastIn, final ApiCallback<MarketingBroadcast> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBroadcastsValidateBeforeCall(marketingBroadcastIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBroadcastsByIdCancel
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsByIdCancelCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}/cancel"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBroadcastsByIdCancelValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingBroadcastsByIdCancel(Async)");
+        }
+
+        return postMarketingBroadcastsByIdCancelCall(id, _callback);
+
+    }
+
+    /**
+     * Stops a scheduled or sending broadcast and answers it.
+     * Stops a scheduled or sending broadcast and answers it. Who it already reached stays recorded.  Org admin only.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return MarketingBroadcast
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcast postMarketingBroadcastsByIdCancel(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingBroadcast> localVarResp = postMarketingBroadcastsByIdCancelWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stops a scheduled or sending broadcast and answers it.
+     * Stops a scheduled or sending broadcast and answers it. Who it already reached stays recorded.  Org admin only.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingBroadcast&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcast> postMarketingBroadcastsByIdCancelWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBroadcastsByIdCancelValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stops a scheduled or sending broadcast and answers it. (asynchronously)
+     * Stops a scheduled or sending broadcast and answers it. Who it already reached stays recorded.  Org admin only.
+     * @param id ID is the broadcast&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsByIdCancelAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingBroadcast> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBroadcastsByIdCancelValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBroadcastsByIdSend
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingSendIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsByIdSendCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSendIn marketingSendIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSendIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}/send"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBroadcastsByIdSendValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSendIn marketingSendIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingBroadcastsByIdSend(Async)");
+        }
+
+        // verify the required parameter 'marketingSendIn' is set
+        if (marketingSendIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingSendIn' when calling postMarketingBroadcastsByIdSend(Async)");
+        }
+
+        return postMarketingBroadcastsByIdSendCall(id, marketingSendIn, _callback);
+
+    }
+
+    /**
+     * Sends a draft or scheduled broadcast now, or schedules it for at, and answers 202 with it.
+     * Sends a draft or scheduled broadcast now, or schedules it for at, and answers 202 with it. The list&#39;s sender must carry a postal address, which every commercial mail states (CAN-SPAM); without one it is 422.  Org admin only.
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingSendIn  (required)
+     * @return MarketingBroadcast
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBroadcast postMarketingBroadcastsByIdSend(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSendIn marketingSendIn) throws ApiException {
+        ApiResponse<MarketingBroadcast> localVarResp = postMarketingBroadcastsByIdSendWithHttpInfo(id, marketingSendIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sends a draft or scheduled broadcast now, or schedules it for at, and answers 202 with it.
+     * Sends a draft or scheduled broadcast now, or schedules it for at, and answers 202 with it. The list&#39;s sender must carry a postal address, which every commercial mail states (CAN-SPAM); without one it is 422.  Org admin only.
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingSendIn  (required)
+     * @return ApiResponse&lt;MarketingBroadcast&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBroadcast> postMarketingBroadcastsByIdSendWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSendIn marketingSendIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBroadcastsByIdSendValidateBeforeCall(id, marketingSendIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sends a draft or scheduled broadcast now, or schedules it for at, and answers 202 with it. (asynchronously)
+     * Sends a draft or scheduled broadcast now, or schedules it for at, and answers 202 with it. The list&#39;s sender must carry a postal address, which every commercial mail states (CAN-SPAM); without one it is 422.  Org admin only.
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingSendIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsByIdSendAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSendIn marketingSendIn, final ApiCallback<MarketingBroadcast> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBroadcastsByIdSendValidateBeforeCall(id, marketingSendIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBroadcast>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingBroadcastsByIdTest
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingTestIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsByIdTestCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingTestIn marketingTestIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingTestIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/broadcasts/{id}/test"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingBroadcastsByIdTestValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingTestIn marketingTestIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingBroadcastsByIdTest(Async)");
+        }
+
+        // verify the required parameter 'marketingTestIn' is set
+        if (marketingTestIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingTestIn' when calling postMarketingBroadcastsByIdTest(Async)");
+        }
+
+        return postMarketingBroadcastsByIdTestCall(id, marketingTestIn, _callback);
+
+    }
+
+    /**
+     * Sends the broadcast as it stands to up to five addresses, its subject marked [Test], through the same rail and footer the real send takes.
+     * Sends the broadcast as it stands to up to five addresses, its subject marked [Test], through the same rail and footer the real send takes.  Org admin only.
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingTestIn  (required)
+     * @return MarketingTestOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingTestOut postMarketingBroadcastsByIdTest(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingTestIn marketingTestIn) throws ApiException {
+        ApiResponse<MarketingTestOut> localVarResp = postMarketingBroadcastsByIdTestWithHttpInfo(id, marketingTestIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sends the broadcast as it stands to up to five addresses, its subject marked [Test], through the same rail and footer the real send takes.
+     * Sends the broadcast as it stands to up to five addresses, its subject marked [Test], through the same rail and footer the real send takes.  Org admin only.
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingTestIn  (required)
+     * @return ApiResponse&lt;MarketingTestOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingTestOut> postMarketingBroadcastsByIdTestWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingTestIn marketingTestIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingBroadcastsByIdTestValidateBeforeCall(id, marketingTestIn, null);
+        Type localVarReturnType = new TypeToken<MarketingTestOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sends the broadcast as it stands to up to five addresses, its subject marked [Test], through the same rail and footer the real send takes. (asynchronously)
+     * Sends the broadcast as it stands to up to five addresses, its subject marked [Test], through the same rail and footer the real send takes.  Org admin only.
+     * @param id ID is the broadcast, from the path. (required)
+     * @param marketingTestIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingBroadcastsByIdTestAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingTestIn marketingTestIn, final ApiCallback<MarketingTestOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingBroadcastsByIdTestValidateBeforeCall(id, marketingTestIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingTestOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postMarketingCalendar
      * @param marketingCalendarPost  (required)
      * @param _callback Callback for upload/download progress
@@ -4505,6 +8061,406 @@ public class MarketingApi {
         return localVarCall;
     }
     /**
+     * Build call for postMarketingImports
+     * @param marketingImportIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingImportsCall(@javax.annotation.Nonnull MarketingImportIn marketingImportIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingImportIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/imports";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingImportsValidateBeforeCall(@javax.annotation.Nonnull MarketingImportIn marketingImportIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingImportIn' is set
+        if (marketingImportIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingImportIn' when calling postMarketingImports(Async)");
+        }
+
+        return postMarketingImportsCall(marketingImportIn, _callback);
+
+    }
+
+    /**
+     * Creates an import into one of the org&#39;s lists and answers it.
+     * Creates an import into one of the org&#39;s lists and answers it. For a file the import waits in state receiving for its bytes (PUT /v1/marketing/imports/{id}/data); for a source (from: commerce) it is queued at once. A key makes the call idempotent: a second create with it answers the first import. The rows are stamped with the import&#39;s id as their source ref, so a filter on ref selects the batch.  Org admin only.
+     * @param marketingImportIn  (required)
+     * @return MarketingCreated
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingCreated postMarketingImports(@javax.annotation.Nonnull MarketingImportIn marketingImportIn) throws ApiException {
+        ApiResponse<MarketingCreated> localVarResp = postMarketingImportsWithHttpInfo(marketingImportIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates an import into one of the org&#39;s lists and answers it.
+     * Creates an import into one of the org&#39;s lists and answers it. For a file the import waits in state receiving for its bytes (PUT /v1/marketing/imports/{id}/data); for a source (from: commerce) it is queued at once. A key makes the call idempotent: a second create with it answers the first import. The rows are stamped with the import&#39;s id as their source ref, so a filter on ref selects the batch.  Org admin only.
+     * @param marketingImportIn  (required)
+     * @return ApiResponse&lt;MarketingCreated&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingCreated> postMarketingImportsWithHttpInfo(@javax.annotation.Nonnull MarketingImportIn marketingImportIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingImportsValidateBeforeCall(marketingImportIn, null);
+        Type localVarReturnType = new TypeToken<MarketingCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates an import into one of the org&#39;s lists and answers it. (asynchronously)
+     * Creates an import into one of the org&#39;s lists and answers it. For a file the import waits in state receiving for its bytes (PUT /v1/marketing/imports/{id}/data); for a source (from: commerce) it is queued at once. A key makes the call idempotent: a second create with it answers the first import. The rows are stamped with the import&#39;s id as their source ref, so a filter on ref selects the batch.  Org admin only.
+     * @param marketingImportIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingImportsAsync(@javax.annotation.Nonnull MarketingImportIn marketingImportIn, final ApiCallback<MarketingCreated> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingImportsValidateBeforeCall(marketingImportIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingImportsByIdCancel
+     * @param id ID is the import&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingImportsByIdCancelCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/imports/{id}/cancel"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingImportsByIdCancelValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingImportsByIdCancel(Async)");
+        }
+
+        return postMarketingImportsByIdCancelCall(id, _callback);
+
+    }
+
+    /**
+     * Stops an import that has not finished and answers it.
+     * Stops an import that has not finished and answers it. The rows it already wrote stay; a filter on its id as ref selects them.  Org admin only.
+     * @param id ID is the import&#39;s id. (required)
+     * @return MarketingImport
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingImport postMarketingImportsByIdCancel(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingImport> localVarResp = postMarketingImportsByIdCancelWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stops an import that has not finished and answers it.
+     * Stops an import that has not finished and answers it. The rows it already wrote stay; a filter on its id as ref selects them.  Org admin only.
+     * @param id ID is the import&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingImport&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingImport> postMarketingImportsByIdCancelWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingImportsByIdCancelValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingImport>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stops an import that has not finished and answers it. (asynchronously)
+     * Stops an import that has not finished and answers it. The rows it already wrote stay; a filter on its id as ref selects them.  Org admin only.
+     * @param id ID is the import&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingImportsByIdCancelAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingImport> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingImportsByIdCancelValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingImport>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingImportsByIdStart
+     * @param id ID is the import&#39;s id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingImportsByIdStartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/imports/{id}/start"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingImportsByIdStartValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingImportsByIdStart(Async)");
+        }
+
+        return postMarketingImportsByIdStartCall(id, _callback);
+
+    }
+
+    /**
+     * Queues an import whose bytes have all arrived and answers 202 with it; a worker reads it from there.
+     * Queues an import whose bytes have all arrived and answers 202 with it; a worker reads it from there. An import with no bytes is 409.  Org admin only.
+     * @param id ID is the import&#39;s id. (required)
+     * @return MarketingImport
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingImport postMarketingImportsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MarketingImport> localVarResp = postMarketingImportsByIdStartWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Queues an import whose bytes have all arrived and answers 202 with it; a worker reads it from there.
+     * Queues an import whose bytes have all arrived and answers 202 with it; a worker reads it from there. An import with no bytes is 409.  Org admin only.
+     * @param id ID is the import&#39;s id. (required)
+     * @return ApiResponse&lt;MarketingImport&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingImport> postMarketingImportsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingImportsByIdStartValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<MarketingImport>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Queues an import whose bytes have all arrived and answers 202 with it; a worker reads it from there. (asynchronously)
+     * Queues an import whose bytes have all arrived and answers 202 with it; a worker reads it from there. An import with no bytes is 409.  Org admin only.
+     * @param id ID is the import&#39;s id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingImportsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<MarketingImport> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingImportsByIdStartValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<MarketingImport>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postMarketingLeads
      * @param marketingLeadIn  (required)
      * @param _callback Callback for upload/download progress
@@ -4897,6 +8853,568 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = postMarketingLeadsResumeValidateBeforeCall(marketingResumeIn, _callback);
         Type localVarReturnType = new TypeToken<MarketingResumeForm>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingLists
+     * @param marketingListIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsCall(@javax.annotation.Nonnull MarketingListIn marketingListIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingListIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingListsValidateBeforeCall(@javax.annotation.Nonnull MarketingListIn marketingListIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingListIn' is set
+        if (marketingListIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingListIn' when calling postMarketingLists(Async)");
+        }
+
+        return postMarketingListsCall(marketingListIn, _callback);
+
+    }
+
+    /**
+     * Creates a list in the org and answers 201 with it.
+     * Creates a list in the org and answers 201 with it. Name is required; a new list is private, asks public subscribers to confirm, and takes the org&#39;s sender for every sender field it leaves empty. A slug the org already uses is 409.  Org admin only.
+     * @param marketingListIn  (required)
+     * @return MarketingList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingList postMarketingLists(@javax.annotation.Nonnull MarketingListIn marketingListIn) throws ApiException {
+        ApiResponse<MarketingList> localVarResp = postMarketingListsWithHttpInfo(marketingListIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates a list in the org and answers 201 with it.
+     * Creates a list in the org and answers 201 with it. Name is required; a new list is private, asks public subscribers to confirm, and takes the org&#39;s sender for every sender field it leaves empty. A slug the org already uses is 409.  Org admin only.
+     * @param marketingListIn  (required)
+     * @return ApiResponse&lt;MarketingList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingList> postMarketingListsWithHttpInfo(@javax.annotation.Nonnull MarketingListIn marketingListIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingListsValidateBeforeCall(marketingListIn, null);
+        Type localVarReturnType = new TypeToken<MarketingList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates a list in the org and answers 201 with it. (asynchronously)
+     * Creates a list in the org and answers 201 with it. Name is required; a new list is private, asks public subscribers to confirm, and takes the org&#39;s sender for every sender field it leaves empty. A slug the org already uses is 409.  Org admin only.
+     * @param marketingListIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsAsync(@javax.annotation.Nonnull MarketingListIn marketingListIn, final ApiCallback<MarketingList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingListsValidateBeforeCall(marketingListIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingListsByIdSegments
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSegmentIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsByIdSegmentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSegmentIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/segments"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingListsByIdSegmentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingListsByIdSegments(Async)");
+        }
+
+        // verify the required parameter 'marketingSegmentIn' is set
+        if (marketingSegmentIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingSegmentIn' when calling postMarketingListsByIdSegments(Async)");
+        }
+
+        return postMarketingListsByIdSegmentsCall(id, marketingSegmentIn, _callback);
+
+    }
+
+    /**
+     * Saves a filter over one list as a segment and answers 201 with it and how many subscribers it selects now.
+     * Saves a filter over one list as a segment and answers 201 with it and how many subscribers it selects now.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSegmentIn  (required)
+     * @return MarketingSegment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSegment postMarketingListsByIdSegments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn) throws ApiException {
+        ApiResponse<MarketingSegment> localVarResp = postMarketingListsByIdSegmentsWithHttpInfo(id, marketingSegmentIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Saves a filter over one list as a segment and answers 201 with it and how many subscribers it selects now.
+     * Saves a filter over one list as a segment and answers 201 with it and how many subscribers it selects now.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSegmentIn  (required)
+     * @return ApiResponse&lt;MarketingSegment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSegment> postMarketingListsByIdSegmentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingListsByIdSegmentsValidateBeforeCall(id, marketingSegmentIn, null);
+        Type localVarReturnType = new TypeToken<MarketingSegment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Saves a filter over one list as a segment and answers 201 with it and how many subscribers it selects now. (asynchronously)
+     * Saves a filter over one list as a segment and answers 201 with it and how many subscribers it selects now.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSegmentIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsByIdSegmentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn, final ApiCallback<MarketingSegment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingListsByIdSegmentsValidateBeforeCall(id, marketingSegmentIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSegment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingListsByIdSubscribers
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSubscriberIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsByIdSubscribersCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSubscriberIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/subscribers"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingListsByIdSubscribersValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingListsByIdSubscribers(Async)");
+        }
+
+        // verify the required parameter 'marketingSubscriberIn' is set
+        if (marketingSubscriberIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingSubscriberIn' when calling postMarketingListsByIdSubscribers(Async)");
+        }
+
+        return postMarketingListsByIdSubscribersCall(id, marketingSubscriberIn, _callback);
+
+    }
+
+    /**
+     * Adds an address to one of the org&#39;s lists, or updates it when it is already there, and answers 201 or 200 with the row.
+     * Adds an address to one of the org&#39;s lists, or updates it when it is already there, and answers 201 or 200 with the row. Pending mails the address a link to confirm. An address that unsubscribed or complained cannot be put back by the org: it is 409, and the person rejoins by subscribing and confirming again.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSubscriberIn  (required)
+     * @return MarketingAdded
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingAdded postMarketingListsByIdSubscribers(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn) throws ApiException {
+        ApiResponse<MarketingAdded> localVarResp = postMarketingListsByIdSubscribersWithHttpInfo(id, marketingSubscriberIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Adds an address to one of the org&#39;s lists, or updates it when it is already there, and answers 201 or 200 with the row.
+     * Adds an address to one of the org&#39;s lists, or updates it when it is already there, and answers 201 or 200 with the row. Pending mails the address a link to confirm. An address that unsubscribed or complained cannot be put back by the org: it is 409, and the person rejoins by subscribing and confirming again.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSubscriberIn  (required)
+     * @return ApiResponse&lt;MarketingAdded&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingAdded> postMarketingListsByIdSubscribersWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingListsByIdSubscribersValidateBeforeCall(id, marketingSubscriberIn, null);
+        Type localVarReturnType = new TypeToken<MarketingAdded>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Adds an address to one of the org&#39;s lists, or updates it when it is already there, and answers 201 or 200 with the row. (asynchronously)
+     * Adds an address to one of the org&#39;s lists, or updates it when it is already there, and answers 201 or 200 with the row. Pending mails the address a link to confirm. An address that unsubscribed or complained cannot be put back by the org: it is 409, and the person rejoins by subscribing and confirming again.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingSubscriberIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsByIdSubscribersAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingSubscriberIn marketingSubscriberIn, final ApiCallback<MarketingAdded> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingListsByIdSubscribersValidateBeforeCall(id, marketingSubscriberIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingAdded>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postMarketingListsByIdSubscribersBulk
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingBulkIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsByIdSubscribersBulkCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBulkIn marketingBulkIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingBulkIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/subscribers/bulk"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMarketingListsByIdSubscribersBulkValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBulkIn marketingBulkIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingListsByIdSubscribersBulk(Async)");
+        }
+
+        // verify the required parameter 'marketingBulkIn' is set
+        if (marketingBulkIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingBulkIn' when calling postMarketingListsByIdSubscribersBulk(Async)");
+        }
+
+        return postMarketingListsByIdSubscribersBulkCall(id, marketingBulkIn, _callback);
+
+    }
+
+    /**
+     * Applies one action to a selection of a list and answers how many rows it matched and changed.
+     * Applies one action to a selection of a list and answers how many rows it matched and changed. The selection is ids, a saved segment, a filter, or the whole list. It walks the selection in batches of a thousand, one transaction each, so millions of rows move in bounded memory: tag and untag add or remove a tag; move moves the rows to another list of the org; unsubscribe and clean set those statuses on every row that is pending or subscribed, each telling the CRM and the event stream; delete removes the rows and their evidence.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingBulkIn  (required)
+     * @return MarketingBulkOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingBulkOut postMarketingListsByIdSubscribersBulk(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBulkIn marketingBulkIn) throws ApiException {
+        ApiResponse<MarketingBulkOut> localVarResp = postMarketingListsByIdSubscribersBulkWithHttpInfo(id, marketingBulkIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Applies one action to a selection of a list and answers how many rows it matched and changed.
+     * Applies one action to a selection of a list and answers how many rows it matched and changed. The selection is ids, a saved segment, a filter, or the whole list. It walks the selection in batches of a thousand, one transaction each, so millions of rows move in bounded memory: tag and untag add or remove a tag; move moves the rows to another list of the org; unsubscribe and clean set those statuses on every row that is pending or subscribed, each telling the CRM and the event stream; delete removes the rows and their evidence.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingBulkIn  (required)
+     * @return ApiResponse&lt;MarketingBulkOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingBulkOut> postMarketingListsByIdSubscribersBulkWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBulkIn marketingBulkIn) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingListsByIdSubscribersBulkValidateBeforeCall(id, marketingBulkIn, null);
+        Type localVarReturnType = new TypeToken<MarketingBulkOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Applies one action to a selection of a list and answers how many rows it matched and changed. (asynchronously)
+     * Applies one action to a selection of a list and answers how many rows it matched and changed. The selection is ids, a saved segment, a filter, or the whole list. It walks the selection in batches of a thousand, one transaction each, so millions of rows move in bounded memory: tag and untag add or remove a tag; move moves the rows to another list of the org; unsubscribe and clean set those statuses on every row that is pending or subscribed, each telling the CRM and the event stream; delete removes the rows and their evidence.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param marketingBulkIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postMarketingListsByIdSubscribersBulkAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull MarketingBulkIn marketingBulkIn, final ApiCallback<MarketingBulkOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMarketingListsByIdSubscribersBulkValidateBeforeCall(id, marketingBulkIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingBulkOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -6271,6 +10789,7 @@ public class MarketingApi {
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param _list List is the marketing list the link leaves, as on the signed link. (optional)
      * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -6283,7 +10802,7 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String _list, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6328,6 +10847,10 @@ public class MarketingApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
+        if (_list != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("list", _list));
+        }
+
         final String[] localVarAccepts = {
             "application/json",
             "application/problem+json"
@@ -6351,8 +10874,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback _callback) throws ApiException {
-        return postMarketingUnsubscribeCall(org, channel, address, token, listUnsubscribe, _callback);
+    private okhttp3.Call postMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String _list, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback _callback) throws ApiException {
+        return postMarketingUnsubscribeCall(org, channel, address, token, _list, listUnsubscribe, _callback);
 
     }
 
@@ -6363,6 +10886,7 @@ public class MarketingApi {
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param _list List is the marketing list the link leaves, as on the signed link. (optional)
      * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
      * @return MarketingUnsubscribed
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6374,8 +10898,8 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MarketingUnsubscribed postMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe) throws ApiException {
-        ApiResponse<MarketingUnsubscribed> localVarResp = postMarketingUnsubscribeWithHttpInfo(org, channel, address, token, listUnsubscribe);
+    public MarketingUnsubscribed postMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String _list, @javax.annotation.Nullable String listUnsubscribe) throws ApiException {
+        ApiResponse<MarketingUnsubscribed> localVarResp = postMarketingUnsubscribeWithHttpInfo(org, channel, address, token, _list, listUnsubscribe);
         return localVarResp.getData();
     }
 
@@ -6386,6 +10910,7 @@ public class MarketingApi {
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param _list List is the marketing list the link leaves, as on the signed link. (optional)
      * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
      * @return ApiResponse&lt;MarketingUnsubscribed&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6397,8 +10922,8 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MarketingUnsubscribed> postMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe) throws ApiException {
-        okhttp3.Call localVarCall = postMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, listUnsubscribe, null);
+    public ApiResponse<MarketingUnsubscribed> postMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String _list, @javax.annotation.Nullable String listUnsubscribe) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, _list, listUnsubscribe, null);
         Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6410,6 +10935,7 @@ public class MarketingApi {
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
      * @param token Token is the HMAC over (org, channel, address), the only authority here. (optional)
+     * @param _list List is the marketing list the link leaves, as on the signed link. (optional)
      * @param listUnsubscribe OneClick is the form&#39;s List-Unsubscribe field, \\\&quot;One-Click\\\&quot; from a mail client. The token decides; this field only names the form. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6422,9 +10948,9 @@ public class MarketingApi {
         <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
+    public okhttp3.Call postMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, @javax.annotation.Nullable String _list, @javax.annotation.Nullable String listUnsubscribe, final ApiCallback<MarketingUnsubscribed> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, listUnsubscribe, _callback);
+        okhttp3.Call localVarCall = postMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, _list, listUnsubscribe, _callback);
         Type localVarReturnType = new TypeToken<MarketingUnsubscribed>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6842,6 +11368,520 @@ public class MarketingApi {
 
         okhttp3.Call localVarCall = putMarketingCampaignsByIdValidateBeforeCall(id, marketingCampaign, _callback);
         Type localVarReturnType = new TypeToken<MarketingCampaign>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putMarketingFields
+     * @param marketingFieldSet  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingFieldsCall(@javax.annotation.Nonnull MarketingFieldSet marketingFieldSet, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingFieldSet;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/fields";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putMarketingFieldsValidateBeforeCall(@javax.annotation.Nonnull MarketingFieldSet marketingFieldSet, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingFieldSet' is set
+        if (marketingFieldSet == null) {
+            throw new ApiException("Missing the required parameter 'marketingFieldSet' when calling putMarketingFields(Async)");
+        }
+
+        return putMarketingFieldsCall(marketingFieldSet, _callback);
+
+    }
+
+    /**
+     * Replaces the org&#39;s custom fields with the set the body carries and answers it.
+     * Replaces the org&#39;s custom fields with the set the body carries and answers it. A field dropped from the set is removed from every subscriber; a field kept keeps its values when its type does not change, and a changed type is 409 while any subscriber has a value for it.  Org admin only.
+     * @param marketingFieldSet  (required)
+     * @return MarketingFieldSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingFieldSet putMarketingFields(@javax.annotation.Nonnull MarketingFieldSet marketingFieldSet) throws ApiException {
+        ApiResponse<MarketingFieldSet> localVarResp = putMarketingFieldsWithHttpInfo(marketingFieldSet);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Replaces the org&#39;s custom fields with the set the body carries and answers it.
+     * Replaces the org&#39;s custom fields with the set the body carries and answers it. A field dropped from the set is removed from every subscriber; a field kept keeps its values when its type does not change, and a changed type is 409 while any subscriber has a value for it.  Org admin only.
+     * @param marketingFieldSet  (required)
+     * @return ApiResponse&lt;MarketingFieldSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingFieldSet> putMarketingFieldsWithHttpInfo(@javax.annotation.Nonnull MarketingFieldSet marketingFieldSet) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingFieldsValidateBeforeCall(marketingFieldSet, null);
+        Type localVarReturnType = new TypeToken<MarketingFieldSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Replaces the org&#39;s custom fields with the set the body carries and answers it. (asynchronously)
+     * Replaces the org&#39;s custom fields with the set the body carries and answers it. A field dropped from the set is removed from every subscriber; a field kept keeps its values when its type does not change, and a changed type is 409 while any subscriber has a value for it.  Org admin only.
+     * @param marketingFieldSet  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingFieldsAsync(@javax.annotation.Nonnull MarketingFieldSet marketingFieldSet, final ApiCallback<MarketingFieldSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putMarketingFieldsValidateBeforeCall(marketingFieldSet, _callback);
+        Type localVarReturnType = new TypeToken<MarketingFieldSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putMarketingImportsByIdData
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call putMarketingImportsByIdDataCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/imports/{id}/data"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putMarketingImportsByIdDataValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling putMarketingImportsByIdData(Async)");
+        }
+
+        return putMarketingImportsByIdDataCall(id, _callback);
+
+    }
+
+    /**
+     * Takes a piece of an import&#39;s file at the offset the query names and answers how many bytes the import now holds.
+     * Takes a piece of an import&#39;s file at the offset the query names and answers how many bytes the import now holds. A piece at an offset the import has passed is taken only past what it holds, so a retried piece writes nothing twice; a piece past the end is 409 naming the offset to resume from. Send the file in order, in pieces of any size up to the request limit, then start it.  Org admin only.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void putMarketingImportsByIdData(@javax.annotation.Nonnull String id) throws ApiException {
+        putMarketingImportsByIdDataWithHttpInfo(id);
+    }
+
+    /**
+     * Takes a piece of an import&#39;s file at the offset the query names and answers how many bytes the import now holds.
+     * Takes a piece of an import&#39;s file at the offset the query names and answers how many bytes the import now holds. A piece at an offset the import has passed is taken only past what it holds, so a retried piece writes nothing twice; a piece past the end is 409 naming the offset to resume from. Send the file in order, in pieces of any size up to the request limit, then start it.  Org admin only.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> putMarketingImportsByIdDataWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingImportsByIdDataValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Takes a piece of an import&#39;s file at the offset the query names and answers how many bytes the import now holds. (asynchronously)
+     * Takes a piece of an import&#39;s file at the offset the query names and answers how many bytes the import now holds. A piece at an offset the import has passed is taken only past what it holds, so a retried piece writes nothing twice; a piece past the end is 409 naming the offset to resume from. Send the file in order, in pieces of any size up to the request limit, then start it.  Org admin only.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call putMarketingImportsByIdDataAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putMarketingImportsByIdDataValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putMarketingListsByIdSegmentsBySid
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the segment to change, from the path; ignored on create. (required)
+     * @param marketingSegmentIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingListsByIdSegmentsBySidCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSegmentIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/lists/{id}/segments/{sid}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "sid" + "}", localVarApiClient.escapeString(sid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putMarketingListsByIdSegmentsBySidValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling putMarketingListsByIdSegmentsBySid(Async)");
+        }
+
+        // verify the required parameter 'sid' is set
+        if (sid == null) {
+            throw new ApiException("Missing the required parameter 'sid' when calling putMarketingListsByIdSegmentsBySid(Async)");
+        }
+
+        // verify the required parameter 'marketingSegmentIn' is set
+        if (marketingSegmentIn == null) {
+            throw new ApiException("Missing the required parameter 'marketingSegmentIn' when calling putMarketingListsByIdSegmentsBySid(Async)");
+        }
+
+        return putMarketingListsByIdSegmentsBySidCall(id, sid, marketingSegmentIn, _callback);
+
+    }
+
+    /**
+     * Replaces a segment&#39;s name and filter and answers it with how many subscribers it selects now.
+     * Replaces a segment&#39;s name and filter and answers it with how many subscribers it selects now.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the segment to change, from the path; ignored on create. (required)
+     * @param marketingSegmentIn  (required)
+     * @return MarketingSegment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSegment putMarketingListsByIdSegmentsBySid(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn) throws ApiException {
+        ApiResponse<MarketingSegment> localVarResp = putMarketingListsByIdSegmentsBySidWithHttpInfo(id, sid, marketingSegmentIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Replaces a segment&#39;s name and filter and answers it with how many subscribers it selects now.
+     * Replaces a segment&#39;s name and filter and answers it with how many subscribers it selects now.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the segment to change, from the path; ignored on create. (required)
+     * @param marketingSegmentIn  (required)
+     * @return ApiResponse&lt;MarketingSegment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSegment> putMarketingListsByIdSegmentsBySidWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingListsByIdSegmentsBySidValidateBeforeCall(id, sid, marketingSegmentIn, null);
+        Type localVarReturnType = new TypeToken<MarketingSegment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Replaces a segment&#39;s name and filter and answers it with how many subscribers it selects now. (asynchronously)
+     * Replaces a segment&#39;s name and filter and answers it with how many subscribers it selects now.  Org admin only.
+     * @param id ID is the list, by id or slug, from the path. (required)
+     * @param sid SID is the segment to change, from the path; ignored on create. (required)
+     * @param marketingSegmentIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingListsByIdSegmentsBySidAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String sid, @javax.annotation.Nonnull MarketingSegmentIn marketingSegmentIn, final ApiCallback<MarketingSegment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putMarketingListsByIdSegmentsBySidValidateBeforeCall(id, sid, marketingSegmentIn, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSegment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putMarketingSender
+     * @param marketingSender  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingSenderCall(@javax.annotation.Nonnull MarketingSender marketingSender, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = marketingSender;
+
+        // create path and map variables
+        String localVarPath = "/v1/marketing/sender";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putMarketingSenderValidateBeforeCall(@javax.annotation.Nonnull MarketingSender marketingSender, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'marketingSender' is set
+        if (marketingSender == null) {
+            throw new ApiException("Missing the required parameter 'marketingSender' when calling putMarketingSender(Async)");
+        }
+
+        return putMarketingSenderCall(marketingSender, _callback);
+
+    }
+
+    /**
+     * Replaces the org&#39;s sender and answers it.
+     * Replaces the org&#39;s sender and answers it. Every field is written; one left out is cleared.  Org admin only.
+     * @param marketingSender  (required)
+     * @return MarketingSender
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public MarketingSender putMarketingSender(@javax.annotation.Nonnull MarketingSender marketingSender) throws ApiException {
+        ApiResponse<MarketingSender> localVarResp = putMarketingSenderWithHttpInfo(marketingSender);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Replaces the org&#39;s sender and answers it.
+     * Replaces the org&#39;s sender and answers it. Every field is written; one left out is cleared.  Org admin only.
+     * @param marketingSender  (required)
+     * @return ApiResponse&lt;MarketingSender&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MarketingSender> putMarketingSenderWithHttpInfo(@javax.annotation.Nonnull MarketingSender marketingSender) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingSenderValidateBeforeCall(marketingSender, null);
+        Type localVarReturnType = new TypeToken<MarketingSender>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Replaces the org&#39;s sender and answers it. (asynchronously)
+     * Replaces the org&#39;s sender and answers it. Every field is written; one left out is cleared.  Org admin only.
+     * @param marketingSender  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putMarketingSenderAsync(@javax.annotation.Nonnull MarketingSender marketingSender, final ApiCallback<MarketingSender> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putMarketingSenderValidateBeforeCall(marketingSender, _callback);
+        Type localVarReturnType = new TypeToken<MarketingSender>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

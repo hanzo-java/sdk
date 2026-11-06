@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.LeaderboardActivityView;
 import ai.hanzo.cloud.model.LeaderboardBetaBoard;
+import ai.hanzo.cloud.model.LeaderboardBountyBoard;
 import ai.hanzo.cloud.model.LeaderboardLeaderboardView;
 import ai.hanzo.cloud.model.LeaderboardOptinView;
 import ai.hanzo.cloud.model.LeaderboardOrgOptinReq;
@@ -515,6 +516,136 @@ public class LeaderboardApi {
 
         okhttp3.Call localVarCall = getLeaderboardBetaValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<LeaderboardBetaBoard>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getLeaderboardBounty
+     * @param limit Limit caps the hunter and award rows returned, clamped to 1..100. Defaults to 25. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLeaderboardBountyCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/leaderboard/bounty";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLeaderboardBountyValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getLeaderboardBountyCall(limit, _callback);
+
+    }
+
+    /**
+     * Returns the gamified bounty &amp; rewards rules, ranked hunters, and recent bug/bounty awards.
+     * Returns the gamified bounty &amp; rewards rules, ranked hunters, and recent bug/bounty awards.
+     * @param limit Limit caps the hunter and award rows returned, clamped to 1..100. Defaults to 25. (optional)
+     * @return LeaderboardBountyBoard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public LeaderboardBountyBoard getLeaderboardBounty(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<LeaderboardBountyBoard> localVarResp = getLeaderboardBountyWithHttpInfo(limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the gamified bounty &amp; rewards rules, ranked hunters, and recent bug/bounty awards.
+     * Returns the gamified bounty &amp; rewards rules, ranked hunters, and recent bug/bounty awards.
+     * @param limit Limit caps the hunter and award rows returned, clamped to 1..100. Defaults to 25. (optional)
+     * @return ApiResponse&lt;LeaderboardBountyBoard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LeaderboardBountyBoard> getLeaderboardBountyWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getLeaderboardBountyValidateBeforeCall(limit, null);
+        Type localVarReturnType = new TypeToken<LeaderboardBountyBoard>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the gamified bounty &amp; rewards rules, ranked hunters, and recent bug/bounty awards. (asynchronously)
+     * Returns the gamified bounty &amp; rewards rules, ranked hunters, and recent bug/bounty awards.
+     * @param limit Limit caps the hunter and award rows returned, clamped to 1..100. Defaults to 25. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLeaderboardBountyAsync(@javax.annotation.Nullable Long limit, final ApiCallback<LeaderboardBountyBoard> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLeaderboardBountyValidateBeforeCall(limit, _callback);
+        Type localVarReturnType = new TypeToken<LeaderboardBountyBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

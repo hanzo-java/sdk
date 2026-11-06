@@ -65,6 +65,11 @@ public class MarketingUnsubscribed {
   @javax.annotation.Nullable
   private String company;
 
+  public static final String SERIALIZED_NAME_LIST = "list";
+  @SerializedName(SERIALIZED_NAME_LIST)
+  @javax.annotation.Nullable
+  private String _list;
+
   public static final String SERIALIZED_NAME_OFFER = "offer";
   @SerializedName(SERIALIZED_NAME_OFFER)
   @javax.annotation.Nullable
@@ -132,6 +137,25 @@ public class MarketingUnsubscribed {
 
   public void setCompany(@javax.annotation.Nullable String company) {
     this.company = company;
+  }
+
+
+  public MarketingUnsubscribed _list(@javax.annotation.Nullable String _list) {
+    this._list = _list;
+    return this;
+  }
+
+  /**
+   * List is the marketing list the address left, when the link was a list&#39;s.
+   * @return _list
+   */
+  @javax.annotation.Nullable
+  public String getList() {
+    return _list;
+  }
+
+  public void setList(@javax.annotation.Nullable String _list) {
+    this._list = _list;
   }
 
 
@@ -230,6 +254,7 @@ public class MarketingUnsubscribed {
     return Objects.equals(this.address, marketingUnsubscribed.address) &&
         Objects.equals(this.channel, marketingUnsubscribed.channel) &&
         Objects.equals(this.company, marketingUnsubscribed.company) &&
+        Objects.equals(this._list, marketingUnsubscribed._list) &&
         Objects.equals(this.offer, marketingUnsubscribed.offer) &&
         Objects.equals(this.unsubscribed, marketingUnsubscribed.unsubscribed)&&
         Objects.equals(this.additionalProperties, marketingUnsubscribed.additionalProperties);
@@ -237,7 +262,7 @@ public class MarketingUnsubscribed {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, channel, company, offer, unsubscribed, additionalProperties);
+    return Objects.hash(address, channel, company, _list, offer, unsubscribed, additionalProperties);
   }
 
   @Override
@@ -247,6 +272,7 @@ public class MarketingUnsubscribed {
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
+    sb.append("    _list: ").append(toIndentedString(_list)).append("\n");
     sb.append("    offer: ").append(toIndentedString(offer)).append("\n");
     sb.append("    unsubscribed: ").append(toIndentedString(unsubscribed)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -271,7 +297,7 @@ public class MarketingUnsubscribed {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("address", "channel", "company", "offer", "unsubscribed"));
+    openapiFields = new HashSet<String>(Arrays.asList("address", "channel", "company", "list", "offer", "unsubscribed"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -298,6 +324,9 @@ public class MarketingUnsubscribed {
       }
       if ((jsonObj.get("company") != null && !jsonObj.get("company").isJsonNull()) && !jsonObj.get("company").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
+      }
+      if ((jsonObj.get("list") != null && !jsonObj.get("list").isJsonNull()) && !jsonObj.get("list").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `list` to be a primitive type in the JSON string but got `%s`", jsonObj.get("list").toString()));
       }
       if ((jsonObj.get("offer") != null && !jsonObj.get("offer").isJsonNull()) && !jsonObj.get("offer").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `offer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offer").toString()));

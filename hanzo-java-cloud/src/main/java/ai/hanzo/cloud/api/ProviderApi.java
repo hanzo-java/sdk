@@ -95,6 +95,8 @@ import ai.hanzo.cloud.model.ProviderSlackUpdateMessageOut;
 import ai.hanzo.cloud.model.ProviderTokenOut;
 import ai.hanzo.cloud.model.ProviderUserCatalogOut;
 import ai.hanzo.cloud.model.ProviderVerifyOut;
+import ai.hanzo.cloud.model.ProviderWhatsappGroupIn;
+import ai.hanzo.cloud.model.ProviderWhatsappGroupOut;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1235,7 +1237,7 @@ public class ProviderApi {
 
     /**
      * OAuth return for any connector
-     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.
+     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.  A GitHub connect that returns from GitHub&#39;s authorization page, rather than its install page, answers a short page instead of a redirect when the person already controls installations no organization holds: they choose which one to connect, or go on to install the app on another account. Nothing is bound until they choose.
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1245,7 +1247,7 @@ public class ProviderApi {
 
     /**
      * OAuth return for any connector
-     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.
+     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.  A GitHub connect that returns from GitHub&#39;s authorization page, rather than its install page, answers a short page instead of a redirect when the person already controls installations no organization holds: they choose which one to connect, or go on to install the app on another account. Nothing is bound until they choose.
      * @param provider  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1257,7 +1259,7 @@ public class ProviderApi {
 
     /**
      * OAuth return for any connector (asynchronously)
-     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.
+     * The single address every connector&#39;s OAuth flow returns to. It exchanges the authorization the provider granted, records the connection, and ALWAYS redirects the browser back to the console — on success and on every labeled failure alike, so a user never lands on a raw JSON dead end.  It is public and carries no principal, so the org is taken ONLY from the signed state minted when the flow began; no header is trusted here. That state is single-use and is burned BEFORE the exchange, so one authorization is one attempt and a replayed return fails instead of exchanging twice.  Tokens are sealed into the org&#39;s KMS namespace BEFORE the connection row is written, so a failure of the secret store leaves no half-connected integration advertising a credential that was never stored. Token values never appear in the redirect, in a log line or in an error.  One generalization is worth knowing: a GitHub App installation returns an installation identifier instead of an OAuth code, and it is accepted in the code&#39;s place so the App model needs no second address.  A GitHub connect that returns from GitHub&#39;s authorization page, rather than its install page, answers a short page instead of a redirect when the person already controls installations no organization holds: they choose which one to connect, or go on to install the app on another account. Nothing is bound until they choose.
      * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4112,6 +4114,136 @@ public class ProviderApi {
         return localVarCall;
     }
     /**
+     * Build call for getProviderWhatsappGroups
+     * @param group Group is the group id returned when the group was created. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProviderWhatsappGroupsCall(@javax.annotation.Nullable String group, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/whatsapp/groups";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (group != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("group", group));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getProviderWhatsappGroupsValidateBeforeCall(@javax.annotation.Nullable String group, final ApiCallback _callback) throws ApiException {
+        return getProviderWhatsappGroupsCall(group, _callback);
+
+    }
+
+    /**
+     * Reads the invite link of a group this org&#39;s number owns.
+     * Reads the invite link of a group this org&#39;s number owns.  Org admin, for the same reason creating one is: the link admits anyone who holds it.
+     * @param group Group is the group id returned when the group was created. (optional)
+     * @return ProviderWhatsappGroupOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProviderWhatsappGroupOut getProviderWhatsappGroups(@javax.annotation.Nullable String group) throws ApiException {
+        ApiResponse<ProviderWhatsappGroupOut> localVarResp = getProviderWhatsappGroupsWithHttpInfo(group);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads the invite link of a group this org&#39;s number owns.
+     * Reads the invite link of a group this org&#39;s number owns.  Org admin, for the same reason creating one is: the link admits anyone who holds it.
+     * @param group Group is the group id returned when the group was created. (optional)
+     * @return ApiResponse&lt;ProviderWhatsappGroupOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProviderWhatsappGroupOut> getProviderWhatsappGroupsWithHttpInfo(@javax.annotation.Nullable String group) throws ApiException {
+        okhttp3.Call localVarCall = getProviderWhatsappGroupsValidateBeforeCall(group, null);
+        Type localVarReturnType = new TypeToken<ProviderWhatsappGroupOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads the invite link of a group this org&#39;s number owns. (asynchronously)
+     * Reads the invite link of a group this org&#39;s number owns.  Org admin, for the same reason creating one is: the link admits anyone who holds it.
+     * @param group Group is the group id returned when the group was created. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getProviderWhatsappGroupsAsync(@javax.annotation.Nullable String group, final ApiCallback<ProviderWhatsappGroupOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getProviderWhatsappGroupsValidateBeforeCall(group, _callback);
+        Type localVarReturnType = new TypeToken<ProviderWhatsappGroupOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getProviderWhatsappWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4755,6 +4887,104 @@ public class ProviderApi {
         okhttp3.Call localVarCall = postConnectionByProviderDeviceByFlowPollValidateBeforeCall(provider, flow, _callback);
         Type localVarReturnType = new TypeToken<ProviderDevicePollOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postProviderByProviderChoose
+     * @param provider  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postProviderByProviderChooseCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/{provider}/choose"
+            .replace("{" + "provider" + "}", localVarApiClient.escapeString(provider.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postProviderByProviderChooseValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provider' is set
+        if (provider == null) {
+            throw new ApiException("Missing the required parameter 'provider' when calling postProviderByProviderChoose(Async)");
+        }
+
+        return postProviderByProviderChooseCall(provider, _callback);
+
+    }
+
+    /**
+     * Answer the connect&#39;s account chooser
+     * The form the chooser page posts: &#x60;state&#x60; (the token the page was given), and either &#x60;account&#x60; (one of the accounts it offered) or &#x60;install&#x60; (go on to the provider&#39;s install page). It binds the chosen account to the organization that started the connect and redirects back to the page that asked, as the callback does.  It is public and carries no principal. Its authority is the token alone: signed like the callback&#39;s state, carrying the offered accounts under its signature, and single-use, so a page answers once and only with an account it offered.
+     * @param provider  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postProviderByProviderChoose(@javax.annotation.Nonnull String provider) throws ApiException {
+        postProviderByProviderChooseWithHttpInfo(provider);
+    }
+
+    /**
+     * Answer the connect&#39;s account chooser
+     * The form the chooser page posts: &#x60;state&#x60; (the token the page was given), and either &#x60;account&#x60; (one of the accounts it offered) or &#x60;install&#x60; (go on to the provider&#39;s install page). It binds the chosen account to the organization that started the connect and redirects back to the page that asked, as the callback does.  It is public and carries no principal. Its authority is the token alone: signed like the callback&#39;s state, carrying the offered accounts under its signature, and single-use, so a page answers once and only with an account it offered.
+     * @param provider  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postProviderByProviderChooseWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = postProviderByProviderChooseValidateBeforeCall(provider, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Answer the connect&#39;s account chooser (asynchronously)
+     * The form the chooser page posts: &#x60;state&#x60; (the token the page was given), and either &#x60;account&#x60; (one of the accounts it offered) or &#x60;install&#x60; (go on to the provider&#39;s install page). It binds the chosen account to the organization that started the connect and redirects back to the page that asked, as the callback does.  It is public and carries no principal. Its authority is the token alone: signed like the callback&#39;s state, carrying the offered accounts under its signature, and single-use, so a page answers once and only with an account it offered.
+     * @param provider  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postProviderByProviderChooseAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postProviderByProviderChooseValidateBeforeCall(provider, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -6532,7 +6762,7 @@ public class ProviderApi {
 
     /**
      * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person.
-     * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold on GitHub.
+     * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold on GitHub. The page shows GitHub&#39;s account picker (githubPick), so a connect after a Disconnect can choose another account: GitHub otherwise skips the page for anyone who authorized the App before.
      * @param providerGithubUserConnectIn  (required)
      * @return ProviderGithubUserConnectOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6551,7 +6781,7 @@ public class ProviderApi {
 
     /**
      * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person.
-     * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold on GitHub.
+     * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold on GitHub. The page shows GitHub&#39;s account picker (githubPick), so a connect after a Disconnect can choose another account: GitHub otherwise skips the page for anyone who authorized the App before.
      * @param providerGithubUserConnectIn  (required)
      * @return ApiResponse&lt;ProviderGithubUserConnectOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6571,7 +6801,7 @@ public class ProviderApi {
 
     /**
      * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. (asynchronously)
-     * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold on GitHub.
+     * Begins connecting the caller&#39;s own GitHub account: it answers the App&#39;s authorization page, carrying a state signed for this org and this person. Every member may connect their own; it grants nothing the person does not already hold on GitHub. The page shows GitHub&#39;s account picker (githubPick), so a connect after a Disconnect can choose another account: GitHub otherwise skips the page for anyone who authorized the App before.
      * @param providerGithubUserConnectIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -8783,6 +9013,138 @@ public class ProviderApi {
 
         okhttp3.Call localVarCall = postProviderTelegramWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postProviderWhatsappGroups
+     * @param providerWhatsappGroupIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderWhatsappGroupsCall(@javax.annotation.Nonnull ProviderWhatsappGroupIn providerWhatsappGroupIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = providerWhatsappGroupIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/provider/whatsapp/groups";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postProviderWhatsappGroupsValidateBeforeCall(@javax.annotation.Nonnull ProviderWhatsappGroupIn providerWhatsappGroupIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'providerWhatsappGroupIn' is set
+        if (providerWhatsappGroupIn == null) {
+            throw new ApiException("Missing the required parameter 'providerWhatsappGroupIn' when calling postProviderWhatsappGroups(Async)");
+        }
+
+        return postProviderWhatsappGroupsCall(providerWhatsappGroupIn, _callback);
+
+    }
+
+    /**
+     * Creates a group on the org&#39;s WhatsApp number and returns its invite link.
+     * Creates a group on the org&#39;s WhatsApp number and returns its invite link.  Org admin, because the group speaks as the org&#39;s number and the invite link admits anyone who holds it.
+     * @param providerWhatsappGroupIn  (required)
+     * @return ProviderWhatsappGroupOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProviderWhatsappGroupOut postProviderWhatsappGroups(@javax.annotation.Nonnull ProviderWhatsappGroupIn providerWhatsappGroupIn) throws ApiException {
+        ApiResponse<ProviderWhatsappGroupOut> localVarResp = postProviderWhatsappGroupsWithHttpInfo(providerWhatsappGroupIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates a group on the org&#39;s WhatsApp number and returns its invite link.
+     * Creates a group on the org&#39;s WhatsApp number and returns its invite link.  Org admin, because the group speaks as the org&#39;s number and the invite link admits anyone who holds it.
+     * @param providerWhatsappGroupIn  (required)
+     * @return ApiResponse&lt;ProviderWhatsappGroupOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProviderWhatsappGroupOut> postProviderWhatsappGroupsWithHttpInfo(@javax.annotation.Nonnull ProviderWhatsappGroupIn providerWhatsappGroupIn) throws ApiException {
+        okhttp3.Call localVarCall = postProviderWhatsappGroupsValidateBeforeCall(providerWhatsappGroupIn, null);
+        Type localVarReturnType = new TypeToken<ProviderWhatsappGroupOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates a group on the org&#39;s WhatsApp number and returns its invite link. (asynchronously)
+     * Creates a group on the org&#39;s WhatsApp number and returns its invite link.  Org admin, because the group speaks as the org&#39;s number and the invite link admits anyone who holds it.
+     * @param providerWhatsappGroupIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postProviderWhatsappGroupsAsync(@javax.annotation.Nonnull ProviderWhatsappGroupIn providerWhatsappGroupIn, final ApiCallback<ProviderWhatsappGroupOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postProviderWhatsappGroupsValidateBeforeCall(providerWhatsappGroupIn, _callback);
+        Type localVarReturnType = new TypeToken<ProviderWhatsappGroupOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

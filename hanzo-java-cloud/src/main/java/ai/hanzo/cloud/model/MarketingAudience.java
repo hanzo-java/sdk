@@ -65,10 +65,25 @@ public class MarketingAudience {
   @javax.annotation.Nullable
   private String id;
 
+  public static final String SERIALIZED_NAME_KIND = "kind";
+  @SerializedName(SERIALIZED_NAME_KIND)
+  @javax.annotation.Nullable
+  private String kind;
+
+  public static final String SERIALIZED_NAME_LIST = "list";
+  @SerializedName(SERIALIZED_NAME_LIST)
+  @javax.annotation.Nullable
+  private String _list;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
+
+  public static final String SERIALIZED_NAME_SUBSCRIBED = "subscribed";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIBED)
+  @javax.annotation.Nullable
+  private Long subscribed;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -140,6 +155,44 @@ public class MarketingAudience {
   }
 
 
+  public MarketingAudience kind(@javax.annotation.Nullable String kind) {
+    this.kind = kind;
+    return this;
+  }
+
+  /**
+   * Kind is what the audience is: cohort, a saved filter over the org&#39;s customers and their events; list, a mailing list&#39;s subscribed members; or segment, a saved filter over one list. Server-assigned; a create is a cohort.
+   * @return kind
+   */
+  @javax.annotation.Nullable
+  public String getKind() {
+    return kind;
+  }
+
+  public void setKind(@javax.annotation.Nullable String kind) {
+    this.kind = kind;
+  }
+
+
+  public MarketingAudience _list(@javax.annotation.Nullable String _list) {
+    this._list = _list;
+    return this;
+  }
+
+  /**
+   * List is the list a list or a segment audience belongs to.
+   * @return _list
+   */
+  @javax.annotation.Nullable
+  public String getList() {
+    return _list;
+  }
+
+  public void setList(@javax.annotation.Nullable String _list) {
+    this._list = _list;
+  }
+
+
   public MarketingAudience name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
@@ -156,6 +209,25 @@ public class MarketingAudience {
 
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
+  }
+
+
+  public MarketingAudience subscribed(@javax.annotation.Nullable Long subscribed) {
+    this.subscribed = subscribed;
+    return this;
+  }
+
+  /**
+   * Subscribed is how many subscribed members a list audience has, from the list&#39;s kept counts.
+   * @return subscribed
+   */
+  @javax.annotation.Nullable
+  public Long getSubscribed() {
+    return subscribed;
+  }
+
+  public void setSubscribed(@javax.annotation.Nullable Long subscribed) {
+    this.subscribed = subscribed;
   }
 
 
@@ -254,7 +326,10 @@ public class MarketingAudience {
     return Objects.equals(this.createdAt, marketingAudience.createdAt) &&
         Objects.equals(this.event, marketingAudience.event) &&
         Objects.equals(this.id, marketingAudience.id) &&
+        Objects.equals(this.kind, marketingAudience.kind) &&
+        Objects.equals(this._list, marketingAudience._list) &&
         Objects.equals(this.name, marketingAudience.name) &&
+        Objects.equals(this.subscribed, marketingAudience.subscribed) &&
         Objects.equals(this.updatedAt, marketingAudience.updatedAt) &&
         Objects.equals(this.windowDays, marketingAudience.windowDays)&&
         Objects.equals(this.additionalProperties, marketingAudience.additionalProperties);
@@ -262,7 +337,7 @@ public class MarketingAudience {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, event, id, name, updatedAt, windowDays, additionalProperties);
+    return Objects.hash(createdAt, event, id, kind, _list, name, subscribed, updatedAt, windowDays, additionalProperties);
   }
 
   @Override
@@ -272,7 +347,10 @@ public class MarketingAudience {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
+    sb.append("    _list: ").append(toIndentedString(_list)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    subscribed: ").append(toIndentedString(subscribed)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    windowDays: ").append(toIndentedString(windowDays)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -297,7 +375,7 @@ public class MarketingAudience {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "event", "id", "name", "updatedAt", "windowDays"));
+    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "event", "id", "kind", "list", "name", "subscribed", "updatedAt", "windowDays"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -321,6 +399,12 @@ public class MarketingAudience {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
+      }
+      if ((jsonObj.get("list") != null && !jsonObj.get("list").isJsonNull()) && !jsonObj.get("list").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `list` to be a primitive type in the JSON string but got `%s`", jsonObj.get("list").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

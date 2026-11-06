@@ -14,13 +14,16 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.MarketingField;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,34 +49,42 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * SandboxQuotaIn
+ * MarketingFieldSet
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class SandboxQuotaIn {
-  public static final String SERIALIZED_NAME_SANDBOXES = "sandboxes";
-  @SerializedName(SERIALIZED_NAME_SANDBOXES)
+public class MarketingFieldSet {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private Long sandboxes;
+  private List<MarketingField> data = new ArrayList<>();
 
-  public SandboxQuotaIn() {
+  public MarketingFieldSet() {
   }
 
-  public SandboxQuotaIn sandboxes(@javax.annotation.Nullable Long sandboxes) {
-    this.sandboxes = sandboxes;
+  public MarketingFieldSet data(@javax.annotation.Nullable List<MarketingField> data) {
+    this.data = data;
+    return this;
+  }
+
+  public MarketingFieldSet addDataItem(MarketingField dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
   /**
-   * Sandboxes is how many running sandboxes the account may hold at once, one or more.
-   * @return sandboxes
+   * Data is every field, in the order they were defined.
+   * @return data
    */
   @javax.annotation.Nullable
-  public Long getSandboxes() {
-    return sandboxes;
+  public List<MarketingField> getData() {
+    return data;
   }
 
-  public void setSandboxes(@javax.annotation.Nullable Long sandboxes) {
-    this.sandboxes = sandboxes;
+  public void setData(@javax.annotation.Nullable List<MarketingField> data) {
+    this.data = data;
   }
 
   /**
@@ -89,9 +100,9 @@ public class SandboxQuotaIn {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SandboxQuotaIn instance itself
+   * @return the MarketingFieldSet instance itself
    */
-  public SandboxQuotaIn putAdditionalProperty(String key, Object value) {
+  public MarketingFieldSet putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -130,21 +141,21 @@ public class SandboxQuotaIn {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SandboxQuotaIn sandboxQuotaIn = (SandboxQuotaIn) o;
-    return Objects.equals(this.sandboxes, sandboxQuotaIn.sandboxes)&&
-        Objects.equals(this.additionalProperties, sandboxQuotaIn.additionalProperties);
+    MarketingFieldSet marketingFieldSet = (MarketingFieldSet) o;
+    return Objects.equals(this.data, marketingFieldSet.data)&&
+        Objects.equals(this.additionalProperties, marketingFieldSet.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sandboxes, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SandboxQuotaIn {\n");
-    sb.append("    sandboxes: ").append(toIndentedString(sandboxes)).append("\n");
+    sb.append("class MarketingFieldSet {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -167,7 +178,7 @@ public class SandboxQuotaIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("sandboxes"));
+    openapiFields = new HashSet<String>(Arrays.asList("data"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -177,31 +188,45 @@ public class SandboxQuotaIn {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SandboxQuotaIn
+   * @throws IOException if the JSON Element is invalid with respect to MarketingFieldSet
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!SandboxQuotaIn.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SandboxQuotaIn is not found in the empty JSON string", SandboxQuotaIn.openapiRequiredFields.toString()));
+        if (!MarketingFieldSet.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MarketingFieldSet is not found in the empty JSON string", MarketingFieldSet.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
+
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            MarketingField.validateJsonElement(jsonArraydata.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SandboxQuotaIn.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SandboxQuotaIn' and its subtypes
+       if (!MarketingFieldSet.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MarketingFieldSet' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SandboxQuotaIn> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SandboxQuotaIn.class));
+       final TypeAdapter<MarketingFieldSet> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MarketingFieldSet.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SandboxQuotaIn>() {
+       return (TypeAdapter<T>) new TypeAdapter<MarketingFieldSet>() {
            @Override
-           public void write(JsonWriter out, SandboxQuotaIn value) throws IOException {
+           public void write(JsonWriter out, MarketingFieldSet value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -229,12 +254,12 @@ public class SandboxQuotaIn {
            }
 
            @Override
-           public SandboxQuotaIn read(JsonReader in) throws IOException {
+           public MarketingFieldSet read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             SandboxQuotaIn instance = thisAdapter.fromJsonTree(jsonObj);
+             MarketingFieldSet instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -261,18 +286,18 @@ public class SandboxQuotaIn {
   }
 
   /**
-   * Create an instance of SandboxQuotaIn given an JSON string
+   * Create an instance of MarketingFieldSet given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of SandboxQuotaIn
-   * @throws IOException if the JSON string is invalid with respect to SandboxQuotaIn
+   * @return An instance of MarketingFieldSet
+   * @throws IOException if the JSON string is invalid with respect to MarketingFieldSet
    */
-  public static SandboxQuotaIn fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SandboxQuotaIn.class);
+  public static MarketingFieldSet fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MarketingFieldSet.class);
   }
 
   /**
-   * Convert an instance of SandboxQuotaIn to an JSON string
+   * Convert an instance of MarketingFieldSet to an JSON string
    *
    * @return JSON string
    */

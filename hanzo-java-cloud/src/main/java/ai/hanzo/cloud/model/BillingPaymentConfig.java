@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.BillingPayPalPublicConfig;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,6 +70,11 @@ public class BillingPaymentConfig {
   @SerializedName(SERIALIZED_NAME_LOCATION_ID)
   @javax.annotation.Nullable
   private String locationId;
+
+  public static final String SERIALIZED_NAME_PAYPAL = "paypal";
+  @SerializedName(SERIALIZED_NAME_PAYPAL)
+  @javax.annotation.Nullable
+  private BillingPayPalPublicConfig paypal;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -154,6 +160,25 @@ public class BillingPaymentConfig {
   }
 
 
+  public BillingPaymentConfig paypal(@javax.annotation.Nullable BillingPayPalPublicConfig paypal) {
+    this.paypal = paypal;
+    return this;
+  }
+
+  /**
+   * PayPal is the public PayPal REST v2 posture alongside Square (or in place of Square in countries Square does not serve). Appended last for ZAP wire.
+   * @return paypal
+   */
+  @javax.annotation.Nullable
+  public BillingPayPalPublicConfig getPaypal() {
+    return paypal;
+  }
+
+  public void setPaypal(@javax.annotation.Nullable BillingPayPalPublicConfig paypal) {
+    this.paypal = paypal;
+  }
+
+
   public BillingPaymentConfig provider(@javax.annotation.Nullable String provider) {
     this.provider = provider;
     return this;
@@ -231,13 +256,14 @@ public class BillingPaymentConfig {
         Objects.equals(this.environment, billingPaymentConfig.environment) &&
         Objects.equals(this.live, billingPaymentConfig.live) &&
         Objects.equals(this.locationId, billingPaymentConfig.locationId) &&
+        Objects.equals(this.paypal, billingPaymentConfig.paypal) &&
         Objects.equals(this.provider, billingPaymentConfig.provider)&&
         Objects.equals(this.additionalProperties, billingPaymentConfig.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, environment, live, locationId, provider, additionalProperties);
+    return Objects.hash(applicationId, environment, live, locationId, paypal, provider, additionalProperties);
   }
 
   @Override
@@ -248,6 +274,7 @@ public class BillingPaymentConfig {
     sb.append("    environment: ").append(toIndentedString(environment)).append("\n");
     sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+    sb.append("    paypal: ").append(toIndentedString(paypal)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -271,7 +298,7 @@ public class BillingPaymentConfig {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("applicationId", "environment", "live", "locationId", "provider"));
+    openapiFields = new HashSet<String>(Arrays.asList("applicationId", "environment", "live", "locationId", "paypal", "provider"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -298,6 +325,10 @@ public class BillingPaymentConfig {
       }
       if ((jsonObj.get("locationId") != null && !jsonObj.get("locationId").isJsonNull()) && !jsonObj.get("locationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `locationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locationId").toString()));
+      }
+      // validate the optional field `paypal`
+      if (jsonObj.get("paypal") != null && !jsonObj.get("paypal").isJsonNull()) {
+        BillingPayPalPublicConfig.validateJsonElement(jsonObj.get("paypal"));
       }
       if ((jsonObj.get("provider") != null && !jsonObj.get("provider").isJsonNull()) && !jsonObj.get("provider").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provider").toString()));

@@ -192,7 +192,7 @@ public class SocialSocialPost {
   }
 
   /**
-   * Error is why the last publish attempt failed, verbatim and bounded. Absent when no attempt has failed; cleared by a later success.
+   * Error is why the last publish attempt failed, verbatim and bounded. Absent when no attempt has failed; cleared by a later success. A post published to several accounts that only some took is published, and this names the rest.
    * @return error
    */
   @javax.annotation.Nullable

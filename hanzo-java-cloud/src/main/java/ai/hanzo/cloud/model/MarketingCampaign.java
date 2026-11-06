@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class MarketingCampaign {
+  public static final String SERIALIZED_NAME_AUDIENCE = "audience";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE)
+  @javax.annotation.Nullable
+  private String audience;
+
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
@@ -102,6 +107,25 @@ public class MarketingCampaign {
 
   public MarketingCampaign() {
   }
+
+  public MarketingCampaign audience(@javax.annotation.Nullable String audience) {
+    this.audience = audience;
+    return this;
+  }
+
+  /**
+   * Audience is who the campaign reaches: a saved cohort (aud_…), a mailing list (lst_…) or a saved segment of one (seg_…), as GET /v1/marketing/audiences lists them. Empty is none named; one the org does not have is refused.
+   * @return audience
+   */
+  @javax.annotation.Nullable
+  public String getAudience() {
+    return audience;
+  }
+
+  public void setAudience(@javax.annotation.Nullable String audience) {
+    this.audience = audience;
+  }
+
 
   public MarketingCampaign budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
@@ -347,7 +371,8 @@ public class MarketingCampaign {
       return false;
     }
     MarketingCampaign marketingCampaign = (MarketingCampaign) o;
-    return Objects.equals(this.budget, marketingCampaign.budget) &&
+    return Objects.equals(this.audience, marketingCampaign.audience) &&
+        Objects.equals(this.budget, marketingCampaign.budget) &&
         Objects.equals(this.channel, marketingCampaign.channel) &&
         Objects.equals(this.createdAt, marketingCampaign.createdAt) &&
         Objects.equals(this.id, marketingCampaign.id) &&
@@ -362,13 +387,14 @@ public class MarketingCampaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budget, channel, createdAt, id, name, objective, scheduledAt, spend, status, updatedAt, additionalProperties);
+    return Objects.hash(audience, budget, channel, createdAt, id, name, objective, scheduledAt, spend, status, updatedAt, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MarketingCampaign {\n");
+    sb.append("    audience: ").append(toIndentedString(audience)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -401,7 +427,7 @@ public class MarketingCampaign {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("budget", "channel", "createdAt", "id", "name", "objective", "scheduledAt", "spend", "status", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("audience", "budget", "channel", "createdAt", "id", "name", "objective", "scheduledAt", "spend", "status", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -420,6 +446,9 @@ public class MarketingCampaign {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("audience") != null && !jsonObj.get("audience").isJsonNull()) && !jsonObj.get("audience").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audience` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audience").toString()));
+      }
       if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }

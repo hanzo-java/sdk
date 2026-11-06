@@ -98,7 +98,7 @@ public class MarketingEnrollInput {
   }
 
   /**
-   * AudienceID fans the sequence out over a saved audience, resolved live to the org&#39;s mailable customers. Email only.
+   * AudienceID fans the sequence out over an audience: a saved cohort (aud_…), resolved live to the org&#39;s mailable customers, or a list (lst_…) or a saved segment of one (seg_…), resolved to its subscribed members. Email only.
    * @return audienceId
    */
   @javax.annotation.Nullable
