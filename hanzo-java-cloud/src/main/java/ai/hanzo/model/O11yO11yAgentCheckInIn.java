@@ -58,15 +58,15 @@ public class O11yO11yAgentCheckInIn {
   @javax.annotation.Nullable
   private String accountId;
 
-  public static final String SERIALIZED_NAME_CLOUD_ACCOUNT_ID = "cloud_account_id";
-  @SerializedName(SERIALIZED_NAME_CLOUD_ACCOUNT_ID)
-  @javax.annotation.Nullable
-  private String cloudAccountId;
-
   public static final String SERIALIZED_NAME_CLOUD_INTEGRATION_ID = "cloudIntegrationId";
   @SerializedName(SERIALIZED_NAME_CLOUD_INTEGRATION_ID)
   @javax.annotation.Nullable
   private Object cloudIntegrationId = null;
+
+  public static final String SERIALIZED_NAME_CLOUD_ACCOUNT_ID = "cloud_account_id";
+  @SerializedName(SERIALIZED_NAME_CLOUD_ACCOUNT_ID)
+  @javax.annotation.Nullable
+  private String cloudAccountId;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -100,25 +100,6 @@ public class O11yO11yAgentCheckInIn {
   }
 
 
-  public O11yO11yAgentCheckInIn cloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
-    this.cloudAccountId = cloudAccountId;
-    return this;
-  }
-
-  /**
-   * &#x3D;&gt; ProviderAccountID
-   * @return cloudAccountId
-   */
-  @javax.annotation.Nullable
-  public String getCloudAccountId() {
-    return cloudAccountId;
-  }
-
-  public void setCloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
-    this.cloudAccountId = cloudAccountId;
-  }
-
-
   public O11yO11yAgentCheckInIn cloudIntegrationId(@javax.annotation.Nullable Object cloudIntegrationId) {
     this.cloudIntegrationId = cloudIntegrationId;
     return this;
@@ -135,6 +116,25 @@ public class O11yO11yAgentCheckInIn {
 
   public void setCloudIntegrationId(@javax.annotation.Nullable Object cloudIntegrationId) {
     this.cloudIntegrationId = cloudIntegrationId;
+  }
+
+
+  public O11yO11yAgentCheckInIn cloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
+    this.cloudAccountId = cloudAccountId;
+    return this;
+  }
+
+  /**
+   * &#x3D;&gt; ProviderAccountID
+   * @return cloudAccountId
+   */
+  @javax.annotation.Nullable
+  public String getCloudAccountId() {
+    return cloudAccountId;
+  }
+
+  public void setCloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
+    this.cloudAccountId = cloudAccountId;
   }
 
 
@@ -239,8 +239,8 @@ public class O11yO11yAgentCheckInIn {
     }
     O11yO11yAgentCheckInIn o11yO11yAgentCheckInIn = (O11yO11yAgentCheckInIn) o;
     return Objects.equals(this.accountId, o11yO11yAgentCheckInIn.accountId) &&
-        Objects.equals(this.cloudAccountId, o11yO11yAgentCheckInIn.cloudAccountId) &&
         Objects.equals(this.cloudIntegrationId, o11yO11yAgentCheckInIn.cloudIntegrationId) &&
+        Objects.equals(this.cloudAccountId, o11yO11yAgentCheckInIn.cloudAccountId) &&
         Objects.equals(this.data, o11yO11yAgentCheckInIn.data) &&
         Objects.equals(this.providerAccountId, o11yO11yAgentCheckInIn.providerAccountId)&&
         Objects.equals(this.additionalProperties, o11yO11yAgentCheckInIn.additionalProperties);
@@ -252,7 +252,7 @@ public class O11yO11yAgentCheckInIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, cloudAccountId, cloudIntegrationId, data, providerAccountId, additionalProperties);
+    return Objects.hash(accountId, cloudIntegrationId, cloudAccountId, data, providerAccountId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -267,8 +267,8 @@ public class O11yO11yAgentCheckInIn {
     StringBuilder sb = new StringBuilder();
     sb.append("class O11yO11yAgentCheckInIn {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    cloudAccountId: ").append(toIndentedString(cloudAccountId)).append("\n");
     sb.append("    cloudIntegrationId: ").append(toIndentedString(cloudIntegrationId)).append("\n");
+    sb.append("    cloudAccountId: ").append(toIndentedString(cloudAccountId)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    providerAccountId: ").append(toIndentedString(providerAccountId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -293,7 +293,7 @@ public class O11yO11yAgentCheckInIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account_id", "cloud_account_id", "cloudIntegrationId", "data", "providerAccountId"));
+    openapiFields = new HashSet<String>(Arrays.asList("account_id", "cloudIntegrationId", "cloud_account_id", "data", "providerAccountId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
