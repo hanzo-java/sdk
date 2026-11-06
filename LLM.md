@@ -19,20 +19,20 @@ Everything else is the repo's, including `ai/hanzo/Hanzo.java`, which sits
 ## The shape, and how to measure it
 
 ```
-find hanzo-java-cloud/src/main/java/ai/hanzo/cloud -name '*.java' | wc -l   # 3385
+find hanzo-java-cloud/src/main/java/ai/hanzo/cloud -name '*.java' | wc -l   # 3435
 ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | wc -l         # 130
-ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/*.java | wc -l       # 3238
+ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/*.java | wc -l       # 3288
 ```
 
-Measured at hanzo-inc/cloud v8.5.988 (`a779b8b2`): the document (`openapi.yaml`,
-pinned in `.spec-lock`) declares **1,877 paths, 2,603 operations, 130 tags,
-3,146 schemas**. The numbers move with every release; the commands do not.
+Measured at hanzo-inc/cloud v8.5.1026 (`834987f2`): the document (`openapi.yaml`,
+pinned in `.spec-lock`) declares **1,908 paths, 2,649 operations, 3,197
+schemas**. The numbers move with every release; the commands do not.
 A method name is its operation id camel-cased: `get_kv_by_name` → `getKvByName`.
 
 ## The credential is generated now
 
 The document declares a `bearer` scheme (HTTP bearer) and applies it to every
-operation except those carrying `security: []` (22 at v8.5.988 — `/v1/openapi.json`,
+operation except those carrying `security: []` (22 at v8.5.1026 — `/v1/openapi.json`,
 `/v1/form/public/*`, `/v1/market/*`, …). So `ApiClient` registers an
 `HttpBearerAuth`, and the client sends no credential where the document says
 none is wanted. `HanzoTest.sendsNoCredentialWhereTheDocumentSaysNone` pins it.

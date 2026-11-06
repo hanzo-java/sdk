@@ -50,6 +50,13 @@ dependencies {
 test {
     useJUnitPlatform()
     testLogging { events 'failed'; exceptionFormat 'full' }
+    // Gradle prints nothing for a passing suite. One line in the shape
+    // hanzoai/ci's test verdict counts, so CI reports the tests that ran.
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "Tests: ${result.testCount} total, ${result.successfulTestCount} passed, ${result.failedTestCount} failed"
+        }
+    }
 }
 
 // Maven Central requires -sources and -javadoc beside the jar.
