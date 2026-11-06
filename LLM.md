@@ -1,4 +1,7 @@
-# java-sdk — notes for the next person in here
+# hanzo-java/sdk — notes for the next person in here
+
+Home: `github.com/hanzo-java/sdk` (was `hanzoai/java-sdk`, which now redirects).
+Checkout: `~/work/hanzo-java/sdk`.
 
 One Gradle module, `hanzo-java-cloud`, published as `ai.hanzo:hanzo-java-cloud`.
 `examples/` is a second module that exists only to be compiled against it.
@@ -16,37 +19,24 @@ Everything else is the repo's, including `ai/hanzo/Hanzo.java`, which sits
 ## The shape, and how to measure it
 
 ```
-find hanzo-java-cloud/src/main/java/ai/hanzo/cloud -name '*.java' | wc -l   # 2670
-ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | wc -l         # 192
-ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/*.java | wc -l       # 2461
-grep -rhoE 'public okhttp3\.Call [a-zA-Z0-9_]+Call\(' \
-  hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | wc -l          # 2502
+find hanzo-java-cloud/src/main/java/ai/hanzo/cloud -name '*.java' | wc -l   # 3385
+ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | wc -l         # 130
+ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/*.java | wc -l       # 3238
 ```
 
-The document (`hanzoai/cloud` `openapi.yaml`, pinned in `.spec-lock`) declares
-**1,814 paths, 2,479 operations, 190 tags, 2,436 schemas**, and its operation
-ids are identical to what `api.hanzo.ai/v1/openapi.json` serves.
-
-2,479 operations become 2,502 methods over 192 classes because **23 operations
-carry two tags** and are emitted into both, and **50 carry none** and land in
-`DefaultApi` (the `/`, `/.well-known/*`, `/_/*` and git-transport routes).
+Measured at hanzo-inc/cloud v8.5.988 (`a779b8b2`): the document (`openapi.yaml`,
+pinned in `.spec-lock`) declares **1,877 paths, 2,603 operations, 130 tags,
+3,146 schemas**. The numbers move with every release; the commands do not.
 A method name is its operation id camel-cased: `get_kv_by_name` → `getKvByName`.
 
 ## The credential is generated now
 
 The document declares a `bearer` scheme (HTTP bearer) and applies it to every
-operation except four. So `ApiClient` registers an `HttpBearerAuth`, and:
-
-```
-grep -rc 'localVarAuthNames = new String\[\] { "bearer" }' \
-  hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | paste -sd+ | bc  # 2498
-grep -rc 'localVarAuthNames = new String\[\] {  }' \
-  hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | paste -sd+ | bc  # 4
-```
-
-The four are `/v1/commands`, `/v1/models`, `/v1/models/providers` and
-`/v1/openapi.json` — exactly the operations carrying `security: []`, so the
-client refuses to send a credential where the document says none is wanted.
+operation except those carrying `security: []` (22 at v8.5.988 — `/v1/openapi.json`,
+`/v1/form/public/*`, `/v1/market/*`, …). So `ApiClient` registers an
+`HttpBearerAuth`, and the client sends no credential where the document says
+none is wanted. `HanzoTest.sendsNoCredentialWhereTheDocumentSaysNone` pins it.
+`/v1/models` used to be public and no longer is; trust the document, not a list.
 
 `ai.hanzo.Hanzo` did that job by hand until the scheme existed, setting
 `Authorization` as a default header. It no longer does: it calls
@@ -63,36 +53,19 @@ only exists in 1.x — 2.0 renames it to `jakarta.annotation` and 2,470 files st
 compiling. `jsr305` supplies `@Nullable`/`@Nonnull` and does not supply
 `Generated`. Dropping either is a 2,600-error build.
 
-## Nothing is published, and what it waits on
+## Publishing, and what it waits on
 
-`repo1.maven.org/maven2/ai/hanzo/` is a 404, Central's index has no `ai.hanzo`
-group, and a full-text search of Central for `hanzo` returns **0** of its 21.3M
-components. Until an upload succeeds the README's install path is
-`publishToMavenLocal` — do not print coordinates that resolve nowhere.
+Central serves `ai.hanzo:hanzo-java-cloud:8.5.156` and nothing newer
+(`repo1.maven.org/maven2/ai/hanzo/hanzo-java-cloud/maven-metadata.xml`). The
+`ai.hanzo` namespace is verified — that upload proves it. Tags `v8.5.623` and
+`v8.5.640` were cut by the client lane and never reached Central: `release.yml`
+stopped at `MAVEN_CENTRAL_USERNAME is not in KMS (org hanzo, env prod)`.
 
-Nor is any number claimed: `git ls-remote --tags origin` returns **0**. The
-`v0.1.0-alpha.{3,4,5}` tags exist only in a local checkout and were never
-pushed, so they claim nothing. A version is claimed by a tag on the remote —
-read that, not the manifest, before choosing the next one.
-
-**The lane is ready and the artifact is consumable; the credential does not
-exist.** Tagging today gets a run that stops at the first step and names what is
-missing. Two things are wanted, and neither is this repo's to create:
-
-1. **A Central Portal user token**, as `MAVEN_CENTRAL_USERNAME` and
-   `MAVEN_CENTRAL_PASSWORD` in KMS (org `hanzo`, env `prod`), plus an
-   ASCII-armoured PGP key as `MAVEN_GPG_PRIVATE_KEY`/`MAVEN_GPG_PASSPHRASE`.
-   All four read 404 there. KMS holds `NPM_TOKEN` and `PYPI_TOKEN` and no Maven
-   equivalent, in any of its environments; the forge's `hanzoai`, `hanzo-inc`
-   and `hanzo-apps` org secrets hold none either, and this repo has no secrets
-   of its own on either host. Nothing in the estate names them except this repo.
-2. **The `ai.hanzo` namespace, verified.** Sonatype checks a TXT record on the
-   exact reversed domain — `hanzo.ai` for `ai.hanzo` — and `hanzo.ai` publishes
-   only a Google site-verification and an SPF record. Verification is per
-   account, so it cannot be confirmed from outside without the token from (1).
-
-Both are one-time acts by whoever holds the hanzo.ai DNS zone and can open the
-Central account. After that, a tag publishes with no further change here.
+**One credential is owed, and it is not this repo's to create:** a Central
+Portal user token as `MAVEN_CENTRAL_USERNAME`/`MAVEN_CENTRAL_PASSWORD` and an
+ASCII-armoured PGP key as `MAVEN_GPG_PRIVATE_KEY`/`MAVEN_GPG_PASSPHRASE`, in
+KMS org `hanzo`, env `prod`. After that, the next push to main whose
+`build.gradle` version Central does not serve publishes with no change here.
 
 ### Three traps this lane used to contain
 
@@ -134,7 +107,7 @@ came down from Central against the generated POM. The README quickstart, compile
 against that resolved jar, printed `GET /v1/keys answered; 0 key(s) owned` with
 an IAM access token and `403 {"code":"forbidden"}` without one. The POM carries
 every coordinate Central validates: name, description, url, licence, developer,
-scm — and `github.com/hanzoai/java-sdk` is public, so its urls resolve for a
+scm — and `github.com/hanzo-java/sdk` is public, so its urls resolve for a
 reader. Signing was exercised with a throwaway key: five `.asc` files, and
 `gpg --verify` returns `Good signature`.
 

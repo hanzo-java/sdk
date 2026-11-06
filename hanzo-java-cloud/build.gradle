@@ -72,7 +72,7 @@ publishing {
             pom {
                 name = 'Hanzo Cloud Java SDK'
                 description = 'Java client for the Hanzo Cloud unified API, generated from hanzoai/openapi.'
-                url = 'https://github.com/hanzoai/java-sdk'
+                url = 'https://github.com/hanzo-java/sdk'
                 licenses {
                     license {
                         name = 'Apache License 2.0'
@@ -87,9 +87,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:https://github.com/hanzoai/java-sdk.git'
-                    developerConnection = 'scm:git:ssh://git@github.com/hanzoai/java-sdk.git'
-                    url = 'https://github.com/hanzoai/java-sdk'
+                    connection = 'scm:git:https://github.com/hanzo-java/sdk.git'
+                    developerConnection = 'scm:git:ssh://git@github.com/hanzo-java/sdk.git'
+                    url = 'https://github.com/hanzo-java/sdk'
                 }
             }
         }
@@ -118,7 +118,7 @@ signing {
     // refuses the deployment out of band, hours later, nowhere near the cause.
     //
     // The key is an ASCII-armoured private key in KMS (kms.hanzo.ai), read by
-    // .hanzo/workflows/release.yml. Never on disk, never in this repo.
+    // .github/workflows/release.yml. Never on disk, never in this repo.
     required = { gradle.taskGraph.hasTask(':hanzo-java-cloud:publishMavenPublicationToCentralRepository') }
     def key = System.getenv('MAVEN_GPG_PRIVATE_KEY')
     if (key) {
