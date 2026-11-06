@@ -1,11 +1,11 @@
-package ai.hanzo.cloud.examples;
+package ai.hanzo.examples;
 
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.ProvisioningApi;
-import ai.hanzo.cloud.model.ProvisioningProvisionRequest;
-import ai.hanzo.cloud.model.ProvisioningProvisionResult;
-import ai.hanzo.cloud.model.ProvisioningProvisionedResource;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.ProvisioningApi;
+import ai.hanzo.model.ProvisioningProvisionRequest;
+import ai.hanzo.model.ProvisioningProvisionResult;
+import ai.hanzo.model.ProvisioningProvisionedResource;
 
 import java.util.UUID;
 

@@ -26,7 +26,7 @@ echo "README.md names $gradle and $maven, the line of $want"
 # Every API class a README snippet names is one this build generates. The
 # quickstart called KeysApi and ModelsApi, which neither this tree nor any
 # published jar has had, so the first thing a reader pasted did not compile.
-api=hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api
+api=hanzo-java-cloud/src/main/java/ai/hanzo/api
 missing=$(grep -oE '\b[A-Z][A-Za-z0-9]*Api\b' README.md | sort -u | while read -r class; do
   [ -f "$api/$class.java" ] || printf ' %s' "$class"
 done)

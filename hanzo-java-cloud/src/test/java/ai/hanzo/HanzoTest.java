@@ -4,20 +4,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import ai.hanzo.cloud.ApiClient;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AccountApi;
-import ai.hanzo.cloud.api.AiApi;
-import ai.hanzo.cloud.api.OpenapiApi;
-import ai.hanzo.cloud.model.AccountApiKey;
-import ai.hanzo.cloud.model.AccountApiKeyList;
-import ai.hanzo.cloud.model.OpenaiChatCompletionMessage;
-import ai.hanzo.cloud.model.OpenaiChatCompletionRequest;
-import ai.hanzo.cloud.model.PostChat200Response;
+import ai.hanzo.ApiClient;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.AccountApi;
+import ai.hanzo.api.AiApi;
+import ai.hanzo.api.OpenapiApi;
+import ai.hanzo.model.AccountApiKey;
+import ai.hanzo.model.AccountApiKeyList;
+import ai.hanzo.model.AiDecisionsChoice;
+import ai.hanzo.model.AiDecisionsQuestion;
+import ai.hanzo.model.AiDecisionsRequest;
+import ai.hanzo.model.AiDecisionsResponse;
+import ai.hanzo.model.OpenaiChatCompletionMessage;
+import ai.hanzo.model.OpenaiChatCompletionRequest;
+import ai.hanzo.model.PostChat200Response;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -133,6 +138,30 @@ class HanzoTest {
         assertEquals("hi", body.getAsJsonArray("messages").get(0).getAsJsonObject().get("content").getAsString());
         assertEquals("zen5", reply.getModel());
         assertEquals("hello", reply.getChoices().get(0).getMessage().getContent());
+    }
+
+    @Test
+    void sendsADecisionWithItsQuestion() throws Exception {
+        // A reply in the shape /v1/decisions answers with, captured live.
+        server.enqueue(json("{\"id\":\"dec_1\",\"model\":\"kai\",\"provider\":\"Hanzo\",\"answers\":{\"move\":{\"type\":\"choice\",\"choice\":\"b\",\"confidence\":0.5,\"probabilities\":{\"a\":0.25,\"b\":0.75}}},\"usage\":{\"input_tokens\":10,\"output_tokens\":0},\"routing\":{\"backend\":\"kai\",\"checkpoint\":\"kai-1.10\",\"sha256\":\"8069bf5cc5e897ce28399d3a5d2a17097e3859d85e5a4cda50c7f19f1e60e9f4\",\"representation\":\"6e386752d1525bf8ea0d90f6a82ec89091b32514ccbc7cb5acf5ac332a95f613\",\"calibration\":\"cal_c6ffe2e7b0c8819a\",\"device\":\"cpu\",\"reach\":32768,\"trained\":1024,\"positions\":8192,\"extrapolated\":false,\"reason\":\"explicit model='kai'\"},\"state_hash\":\"sha256:8770c944ed8823932f7b488043302076da0aec08b9bc4ea8506cf3ea7d0bdbc5\",\"latency_ms\":67.436068}"));
+
+        AiDecisionsResponse reply = new AiApi(client("hk-test", null)).postDecisions(new AiDecisionsRequest()
+                .model("kai")
+                .state(Map.of("board", "x"))
+                .putQuestionsItem("move", new AiDecisionsQuestion(new AiDecisionsChoice()
+                        .type(AiDecisionsChoice.TypeEnum.CHOICE)
+                        .criteria(Map.of("a", "first", "b", "second")))));
+
+        RecordedRequest req = server.takeRequest();
+        assertEquals("/v1/decisions", req.getPath());
+        JsonObject body = JsonParser.parseString(req.getBody().readUtf8()).getAsJsonObject();
+        assertEquals("kai", body.get("model").getAsString());
+        assertEquals("x", body.getAsJsonObject("state").get("board").getAsString());
+        JsonObject move = body.getAsJsonObject("questions").getAsJsonObject("move");
+        assertEquals("choice", move.get("type").getAsString());
+        assertEquals("second", move.getAsJsonObject("criteria").get("b").getAsString());
+        assertEquals("b", reply.getAnswers().get("move").getChoice());
+        assertEquals(0, new java.math.BigDecimal("0.75").compareTo(reply.getAnswers().get("move").getProbabilities().get("b")));
     }
 
     @Test

@@ -1,5 +1,5 @@
 // The repo root owns the build. The generator owns
-// hanzo-java-cloud/src/main/java/ai/hanzo/cloud and nothing else — see
+// the files it writes under hanzo-java-cloud/src/main/java/ai/hanzo and nothing else — see
 // scripts/generate.sh.
 
 subprojects {

@@ -1,12 +1,12 @@
-package ai.hanzo.cloud.examples;
+package ai.hanzo.examples;
 
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AgentApi;
-import ai.hanzo.cloud.model.AgentAgentRunView;
-import ai.hanzo.cloud.model.AgentAgentView;
-import ai.hanzo.cloud.model.AgentCreateAgentIn;
-import ai.hanzo.cloud.model.AgentRunList;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.AgentApi;
+import ai.hanzo.model.AgentAgentRunView;
+import ai.hanzo.model.AgentAgentView;
+import ai.hanzo.model.AgentCreateAgentIn;
+import ai.hanzo.model.AgentRunList;
 
 import java.util.HashSet;
 import java.util.List;

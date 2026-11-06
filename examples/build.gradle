@@ -23,7 +23,7 @@ dependencies {
     tasks.register(flow, JavaExec) {
         group = 'hanzo'
         description = "Run the $flow example."
-        mainClass = "ai.hanzo.cloud.examples.${flow.capitalize()}"
+        mainClass = "ai.hanzo.examples.${flow.capitalize()}"
         classpath = sourceSets.main.runtimeClasspath
     }
 }

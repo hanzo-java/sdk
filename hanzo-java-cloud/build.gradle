@@ -1,6 +1,6 @@
 // The published artifact: ai.hanzo:hanzo-java-cloud.
 //
-// src/main/java/ai/hanzo/cloud is generated in full from the API document and
+// src/main/java/ai/hanzo is generated in full, all but Hanzo.java, from the API document and
 // is replaced wholesale on every regeneration — never edit it, and never add a
 // file to it. Everything else in the module is the repo's: this build file, and
 // ai/hanzo/Hanzo.java beside the generated package.

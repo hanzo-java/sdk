@@ -1,10 +1,10 @@
-package ai.hanzo.cloud.examples;
+package ai.hanzo.examples;
 
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AccountApi;
-import ai.hanzo.cloud.model.AccountApiKey;
-import ai.hanzo.cloud.model.AccountApiKeyList;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.AccountApi;
+import ai.hanzo.model.AccountApiKey;
+import ai.hanzo.model.AccountApiKeyList;
 
 import java.util.List;
 

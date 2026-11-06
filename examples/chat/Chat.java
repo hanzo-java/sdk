@@ -1,12 +1,12 @@
-package ai.hanzo.cloud.examples;
+package ai.hanzo.examples;
 
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AiApi;
-import ai.hanzo.cloud.model.OpenaiChatCompletionChoice;
-import ai.hanzo.cloud.model.OpenaiChatCompletionMessage;
-import ai.hanzo.cloud.model.OpenaiChatCompletionRequest;
-import ai.hanzo.cloud.model.PostChat200Response;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.AiApi;
+import ai.hanzo.model.OpenaiChatCompletionChoice;
+import ai.hanzo.model.OpenaiChatCompletionMessage;
+import ai.hanzo.model.OpenaiChatCompletionRequest;
+import ai.hanzo.model.PostChat200Response;
 
 import java.util.List;
 

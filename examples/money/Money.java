@@ -1,8 +1,8 @@
-package ai.hanzo.cloud.examples;
+package ai.hanzo.examples;
 
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.BillingApi;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.BillingApi;
 
 /**
  * money — the balance, then the usage that moved it.

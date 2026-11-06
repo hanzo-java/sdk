@@ -1,10 +1,10 @@
-package ai.hanzo.cloud.examples;
+package ai.hanzo.examples;
 
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.ToolApi;
-import ai.hanzo.cloud.model.ToolTool;
-import ai.hanzo.cloud.model.ToolToolList;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.ToolApi;
+import ai.hanzo.model.ToolTool;
+import ai.hanzo.model.ToolToolList;
 
 import java.util.List;
 

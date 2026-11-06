@@ -8,20 +8,21 @@ One Gradle module, `hanzo-java-cloud`, published as `ai.hanzo:hanzo-java-cloud`.
 
 ## What is generated and what is not
 
-`hanzo-java-cloud/src/main/java/ai/hanzo/cloud/**` is generated and is **deleted
-and rewritten wholesale** on every regeneration — `sdks.yaml`'s `take:` hands
-the generator that directory outright. Never edit a file in it; a hand edit is
-caught by `generate.py --check` and fails CI.
+`hanzo-java-cloud/src/main/java/ai/hanzo/**` is generated, all but `Hanzo.java`:
+`ai.hanzo` (ApiClient, JSON, …), `ai.hanzo.api`, `ai.hanzo.model`, `ai.hanzo.auth`.
+The driver owns exactly the files `.generated` lists and rewrites them on every
+regeneration. Never edit one; a hand edit is caught by `generate.py --check` and
+fails CI.
 
-Everything else is the repo's, including `ai/hanzo/Hanzo.java`, which sits
-*beside* the generated package for exactly that reason.
+Everything else is the repo's, including `ai/hanzo/Hanzo.java`: it sits in the
+generated package but not in `.generated`, so no regeneration touches it.
 
 ## The shape, and how to measure it
 
 ```
-find hanzo-java-cloud/src/main/java/ai/hanzo/cloud -name '*.java' | wc -l   # 3435
-ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/*.java | wc -l         # 130
-ls hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/*.java | wc -l       # 3288
+find hanzo-java-cloud/src/main/java/ai/hanzo -name '*.java' | wc -l   # 3436, Hanzo.java included
+ls hanzo-java-cloud/src/main/java/ai/hanzo/api/*.java | wc -l         # 130
+ls hanzo-java-cloud/src/main/java/ai/hanzo/model/*.java | wc -l       # 3288
 ```
 
 Measured at hanzo-inc/cloud v8.5.1026 (`834987f2`): the document (`openapi.yaml`,

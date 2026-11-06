@@ -74,10 +74,10 @@ tenant, and no scheme declares it.
 
 ```java
 import ai.hanzo.Hanzo;
-import ai.hanzo.cloud.ApiClient;
-import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AccountApi;
-import ai.hanzo.cloud.model.AccountApiKey;
+import ai.hanzo.ApiClient;
+import ai.hanzo.ApiException;
+import ai.hanzo.api.AccountApi;
+import ai.hanzo.model.AccountApiKey;
 
 import java.util.List;
 import java.util.Objects;
@@ -155,7 +155,7 @@ sends an `OpenaiChatCompletionRequest` and prints `choices[0].message.content`.
 
 ## Regenerate
 
-Nothing under `hanzo-java-cloud/src/main/java/ai/hanzo/cloud` is written by
+Nothing under `hanzo-java-cloud/src/main/java/ai/hanzo` but `Hanzo.java` is written by
 hand; to change it, change the code that emits the document.
 
 ```bash

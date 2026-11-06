@@ -1,15 +1,13 @@
 package ai.hanzo;
 
-import ai.hanzo.cloud.ApiClient;
-
 /**
  * Endpoint, credential and tenant, resolved once.
  *
- * <p>Everything under {@code ai.hanzo.cloud} is generated from the API document
+ * <p>Everything else in {@code ai.hanzo} is generated from the API document
  * hanzoai/cloud emits, by {@code scripts/generate.sh}. This file is not: it is
  * the hand-written entry point, and the only place in the module that reads the
  * environment. It sits beside the generated package rather than inside it
- * because {@code sdks.yaml} hands the generator {@code ai/hanzo/cloud} outright
+ * because {@code sdks.yaml} hands the generator {@code ai/hanzo} outright
  * — a file in there is deleted by the next regeneration.
  *
  * <p>The credential itself is the GENERATED client's, not this file's. The
