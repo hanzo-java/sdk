@@ -1,41 +1,37 @@
 # Canonical caller — every knob lives in /hanzo.yml, none here.
-# Runs on the git-runner fleet at git.hanzo.ai, the only pool serving these
-# labels. github.com resolves only .github/workflows and has no runner for
-# them, so a caller placed there is a gate that cannot be scheduled.
+#
+# hanzo-inc/cloud's release dispatches this with the commit it deployed and that
+# release's version; hanzoai/ci's client lane regenerates from openapi.yaml at
+# that ref, gates it, and cuts that version. Dispatched with no inputs, it checks
+# the committed client and writes nothing.
+#
+# The permissions are what the reusable declares. The ID token is the run's own
+# credential: hanzoai/ci exchanges it at IAM for the CI identity cloud's
+# IAM_REPOSITORIES maps this org to, so the repository stores no KMS secret.
 name: CI/CD
 on:
   push:
     branches: [main]
     tags: ['v*']
   pull_request:
-  # A DISPATCH THAT NAMES NO DOCUMENT MOVES NOTHING. hanzoai/ci's client lane
-  # moves this projection's pin only when handed a ref, and it read that from
-  # `client_payload` -- which `repository_dispatch` populates and Hanzo Git does
-  # not serve. So a bare poke re-read the LOCKED ref, asserted its digest and
-  # exited before any write: every release could poke this forever and the pin
-  # would never move.
-  #
-  # ci v1.0.75 takes the ref as an input. Omit it and this is a check that writes
-  # nothing, exactly as before.
   workflow_dispatch:
     inputs:
       spec-ref:
-        description: "cloud commit to move .spec-lock to. Empty = check the locked ref, write nothing."
+        description: "cloud commit to move .spec-lock to. Empty = check, write nothing."
         required: false
         default: ''
       spec-version:
         description: "Version to cut this projection at. Empty = derive the next patch."
         required: false
         default: ''
-      spec-sha256:
-        description: "Expected sha256 of openapi.yaml at that ref. Empty = do not verify."
-        required: false
-        default: ''
 jobs:
   cicd:
-    uses: hanzoai/ci/.github/workflows/build.yml@v1
+    uses: hanzoai/ci/.github/workflows/build.yml@v2
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
     with:
       spec-ref: ${{ github.event.inputs.spec-ref || '' }}
       spec-version: ${{ github.event.inputs.spec-version || '' }}
-      spec-sha256: ${{ github.event.inputs.spec-sha256 || '' }}
     secrets: inherit
