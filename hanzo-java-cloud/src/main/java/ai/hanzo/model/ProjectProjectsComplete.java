@@ -65,7 +65,7 @@ public class ProjectProjectsComplete {
   public static final String SERIALIZED_NAME_COPY = "copy";
   @SerializedName(SERIALIZED_NAME_COPY)
   @javax.annotation.Nullable
-  private List<String> copy = new ArrayList<>();
+  private List<String> copy;
 
   public static final String SERIALIZED_NAME_COPY_FROM = "copyFrom";
   @SerializedName(SERIALIZED_NAME_COPY_FROM)
@@ -85,7 +85,7 @@ public class ProjectProjectsComplete {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<String> keys = new ArrayList<>();
+  private List<String> keys;
 
   public static final String SERIALIZED_NAME_LIVE_URL = "liveUrl";
   @SerializedName(SERIALIZED_NAME_LIVE_URL)

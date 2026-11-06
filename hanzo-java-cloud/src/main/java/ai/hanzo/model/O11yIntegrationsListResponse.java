@@ -56,7 +56,7 @@ public class O11yIntegrationsListResponse {
   public static final String SERIALIZED_NAME_INTEGRATIONS = "integrations";
   @SerializedName(SERIALIZED_NAME_INTEGRATIONS)
   @javax.annotation.Nullable
-  private List<O11yIntegrationsListItem> integrations = new ArrayList<>();
+  private List<O11yIntegrationsListItem> integrations;
 
   public O11yIntegrationsListResponse() {
   }

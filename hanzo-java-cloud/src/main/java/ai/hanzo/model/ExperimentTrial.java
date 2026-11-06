@@ -116,7 +116,7 @@ public class ExperimentTrial {
   public static final String SERIALIZED_NAME_VARIANTS = "variants";
   @SerializedName(SERIALIZED_NAME_VARIANTS)
   @javax.annotation.Nullable
-  private List<ExperimentArm> variants = new ArrayList<>();
+  private List<ExperimentArm> variants;
 
   public static final String SERIALIZED_NAME_WINNER = "winner";
   @SerializedName(SERIALIZED_NAME_WINNER)

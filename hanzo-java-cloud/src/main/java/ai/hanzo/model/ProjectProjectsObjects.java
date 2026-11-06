@@ -56,7 +56,7 @@ public class ProjectProjectsObjects {
   public static final String SERIALIZED_NAME_OBJECTS = "objects";
   @SerializedName(SERIALIZED_NAME_OBJECTS)
   @javax.annotation.Nullable
-  private List<ProjectProjectsObject> objects = new ArrayList<>();
+  private List<ProjectProjectsObject> objects;
 
   public ProjectProjectsObjects() {
   }

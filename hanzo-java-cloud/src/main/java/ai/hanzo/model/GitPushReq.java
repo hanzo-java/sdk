@@ -61,7 +61,7 @@ public class GitPushReq {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<GitPushFile> files = new ArrayList<>();
+  private List<GitPushFile> files;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)

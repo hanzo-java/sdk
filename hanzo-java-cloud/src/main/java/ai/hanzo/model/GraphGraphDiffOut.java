@@ -57,7 +57,7 @@ public class GraphGraphDiffOut {
   public static final String SERIALIZED_NAME_ASSERTED = "asserted";
   @SerializedName(SERIALIZED_NAME_ASSERTED)
   @javax.annotation.Nullable
-  private List<GraphWireFact> asserted = new ArrayList<>();
+  private List<GraphWireFact> asserted;
 
   public static final String SERIALIZED_NAME_BOUND = "bound";
   @SerializedName(SERIALIZED_NAME_BOUND)
@@ -77,12 +77,12 @@ public class GraphGraphDiffOut {
   public static final String SERIALIZED_NAME_RETRACTED = "retracted";
   @SerializedName(SERIALIZED_NAME_RETRACTED)
   @javax.annotation.Nullable
-  private List<GraphGraphChange> retracted = new ArrayList<>();
+  private List<GraphGraphChange> retracted;
 
   public static final String SERIALIZED_NAME_SUPERSEDED = "superseded";
   @SerializedName(SERIALIZED_NAME_SUPERSEDED)
   @javax.annotation.Nullable
-  private List<GraphGraphChange> superseded = new ArrayList<>();
+  private List<GraphGraphChange> superseded;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)

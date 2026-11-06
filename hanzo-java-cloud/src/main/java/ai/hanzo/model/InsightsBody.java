@@ -58,7 +58,7 @@ public class InsightsBody {
   public static final String SERIALIZED_NAME_BATCH = "batch";
   @SerializedName(SERIALIZED_NAME_BATCH)
   @javax.annotation.Nullable
-  private List<InsightsEvent> batch = new ArrayList<>();
+  private List<InsightsEvent> batch;
 
   public static final String SERIALIZED_NAME_DISTINCT_ID = "distinct_id";
   @SerializedName(SERIALIZED_NAME_DISTINCT_ID)
@@ -73,7 +73,7 @@ public class InsightsBody {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   @javax.annotation.Nullable
-  private Map<String, Object> properties = new HashMap<>();
+  private Map<String, Object> properties;
 
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)

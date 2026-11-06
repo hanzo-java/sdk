@@ -56,7 +56,7 @@ public class CodeRepoTree {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<CodeTreeEntry> files = new ArrayList<>();
+  private List<CodeTreeEntry> files;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)

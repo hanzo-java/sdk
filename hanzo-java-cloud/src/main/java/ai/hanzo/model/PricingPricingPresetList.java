@@ -56,7 +56,7 @@ public class PricingPricingPresetList {
   public static final String SERIALIZED_NAME_PRESETS = "presets";
   @SerializedName(SERIALIZED_NAME_PRESETS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> presets = new ArrayList<>();
+  private List<Map<String, Object>> presets;
 
   public PricingPricingPresetList() {
   }

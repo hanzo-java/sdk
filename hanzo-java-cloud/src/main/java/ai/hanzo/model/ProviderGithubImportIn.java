@@ -60,7 +60,7 @@ public class ProviderGithubImportIn {
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
   @javax.annotation.Nullable
-  private List<String> repos = new ArrayList<>();
+  private List<String> repos;
 
   public ProviderGithubImportIn() {
   }

@@ -57,12 +57,12 @@ public class O11yDataCollectedForIntegration {
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
   @javax.annotation.Nullable
-  private List<O11yCollectedLogAttribute> logs = new ArrayList<>();
+  private List<O11yCollectedLogAttribute> logs;
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
   @javax.annotation.Nullable
-  private List<O11yCollectedMetric> metrics = new ArrayList<>();
+  private List<O11yCollectedMetric> metrics;
 
   public O11yDataCollectedForIntegration() {
   }

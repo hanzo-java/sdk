@@ -71,7 +71,7 @@ public class EmailSESStatusResult {
   public static final String SERIALIZED_NAME_DNS_RECORDS = "dns_records";
   @SerializedName(SERIALIZED_NAME_DNS_RECORDS)
   @javax.annotation.Nullable
-  private List<EmailSESDNSRecord> dnsRecords = new ArrayList<>();
+  private List<EmailSESDNSRecord> dnsRecords;
 
   public static final String SERIALIZED_NAME_DOMAIN = "domain";
   @SerializedName(SERIALIZED_NAME_DOMAIN)

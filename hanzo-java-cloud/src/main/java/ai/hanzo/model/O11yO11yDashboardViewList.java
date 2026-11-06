@@ -56,7 +56,7 @@ public class O11yO11yDashboardViewList {
   public static final String SERIALIZED_NAME_VIEWS = "views";
   @SerializedName(SERIALIZED_NAME_VIEWS)
   @javax.annotation.Nullable
-  private List<O11yO11yDashboardView> views = new ArrayList<>();
+  private List<O11yO11yDashboardView> views;
 
   public O11yO11yDashboardViewList() {
   }

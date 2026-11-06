@@ -66,7 +66,7 @@ public class O11yMetricsResponseUsage {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<O11yUsageBucket> series = new ArrayList<>();
+  private List<O11yUsageBucket> series;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)

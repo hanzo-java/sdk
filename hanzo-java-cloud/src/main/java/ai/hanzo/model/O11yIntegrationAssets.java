@@ -57,12 +57,12 @@ public class O11yIntegrationAssets {
   public static final String SERIALIZED_NAME_ALERTS = "alerts";
   @SerializedName(SERIALIZED_NAME_ALERTS)
   @javax.annotation.Nullable
-  private List<Object> alerts = new ArrayList<>();
+  private List<Object> alerts;
 
   public static final String SERIALIZED_NAME_DASHBOARDS = "dashboards";
   @SerializedName(SERIALIZED_NAME_DASHBOARDS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> dashboards = new ArrayList<>();
+  private List<Map<String, Object>> dashboards;
 
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)

@@ -57,12 +57,12 @@ public class EmailDispatch {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private List<EmailMessageRecord> messages = new ArrayList<>();
+  private List<EmailMessageRecord> messages;
 
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private List<EmailRefused> refused = new ArrayList<>();
+  private List<EmailRefused> refused;
 
   public EmailDispatch() {
   }

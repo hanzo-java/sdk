@@ -57,17 +57,17 @@ public class PlanPlanVocab {
   public static final String SERIALIZED_NAME_ENGINE_FEATURES = "engine_features";
   @SerializedName(SERIALIZED_NAME_ENGINE_FEATURES)
   @javax.annotation.Nullable
-  private List<String> engineFeatures = new ArrayList<>();
+  private List<String> engineFeatures;
 
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private Map<String, Object> keys = new HashMap<>();
+  private Map<String, Object> keys;
 
   public static final String SERIALIZED_NAME_NAMESPACES = "namespaces";
   @SerializedName(SERIALIZED_NAME_NAMESPACES)
   @javax.annotation.Nullable
-  private List<String> namespaces = new ArrayList<>();
+  private List<String> namespaces;
 
   public PlanPlanVocab() {
   }

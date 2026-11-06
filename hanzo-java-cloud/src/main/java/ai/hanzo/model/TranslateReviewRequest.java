@@ -60,7 +60,7 @@ public class TranslateReviewRequest {
   public static final String SERIALIZED_NAME_GLOSSARY = "glossary";
   @SerializedName(SERIALIZED_NAME_GLOSSARY)
   @javax.annotation.Nullable
-  private Map<String, String> glossary = new HashMap<>();
+  private Map<String, String> glossary;
 
   public static final String SERIALIZED_NAME_LANG = "lang";
   @SerializedName(SERIALIZED_NAME_LANG)

@@ -56,7 +56,7 @@ public class O11yO11yLLMTracesPage {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yO11yLLMTrace> items = new ArrayList<>();
+  private List<O11yO11yLLMTrace> items;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

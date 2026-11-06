@@ -105,7 +105,7 @@ public class PatentPatentImplementation {
   public static final String SERIALIZED_NAME_IDEA_IDS = "idea_ids";
   @SerializedName(SERIALIZED_NAME_IDEA_IDS)
   @javax.annotation.Nullable
-  private List<String> ideaIds = new ArrayList<>();
+  private List<String> ideaIds;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

@@ -76,7 +76,7 @@ public class LabelRiskResolved {
   public static final String SERIALIZED_NAME_CONFLICTS = "conflicts";
   @SerializedName(SERIALIZED_NAME_CONFLICTS)
   @javax.annotation.Nullable
-  private List<LabelRiskLabelRecord> conflicts = new ArrayList<>();
+  private List<LabelRiskLabelRecord> conflicts;
 
   public static final String SERIALIZED_NAME_CONTESTED = "contested";
   @SerializedName(SERIALIZED_NAME_CONTESTED)

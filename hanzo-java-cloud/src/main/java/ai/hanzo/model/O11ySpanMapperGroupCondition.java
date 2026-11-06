@@ -55,12 +55,12 @@ public class O11ySpanMapperGroupCondition {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<String> attributes = new ArrayList<>();
+  private List<String> attributes;
 
   public static final String SERIALIZED_NAME_RESOURCE = "resource";
   @SerializedName(SERIALIZED_NAME_RESOURCE)
   @javax.annotation.Nullable
-  private List<String> resource = new ArrayList<>();
+  private List<String> resource;
 
   public O11ySpanMapperGroupCondition() {
   }

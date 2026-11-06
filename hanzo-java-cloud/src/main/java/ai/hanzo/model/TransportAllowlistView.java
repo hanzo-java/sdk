@@ -57,12 +57,12 @@ public class TransportAllowlistView {
   public static final String SERIALIZED_NAME_ACCESS_GROUPS = "accessGroups";
   @SerializedName(SERIALIZED_NAME_ACCESS_GROUPS)
   @javax.annotation.Nullable
-  private Map<String, Map<String, List<String>>> accessGroups = new HashMap<>();
+  private Map<String, Map<String, List<String>>> accessGroups;
 
   public static final String SERIALIZED_NAME_DM = "dm";
   @SerializedName(SERIALIZED_NAME_DM)
   @javax.annotation.Nullable
-  private List<String> dm = new ArrayList<>();
+  private List<String> dm;
 
   public static final String SERIALIZED_NAME_DM_POLICY = "dmPolicy";
   @SerializedName(SERIALIZED_NAME_DM_POLICY)
@@ -72,7 +72,7 @@ public class TransportAllowlistView {
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
   @javax.annotation.Nullable
-  private List<String> group = new ArrayList<>();
+  private List<String> group;
 
   public static final String SERIALIZED_NAME_GROUP_POLICY = "groupPolicy";
   @SerializedName(SERIALIZED_NAME_GROUP_POLICY)
@@ -82,7 +82,7 @@ public class TransportAllowlistView {
   public static final String SERIALIZED_NAME_PAIRED = "paired";
   @SerializedName(SERIALIZED_NAME_PAIRED)
   @javax.annotation.Nullable
-  private List<String> paired = new ArrayList<>();
+  private List<String> paired;
 
   public TransportAllowlistView() {
   }

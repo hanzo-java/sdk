@@ -56,7 +56,7 @@ public class PatentApprovalsOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<PatentPatentApproval> data = new ArrayList<>();
+  private List<PatentPatentApproval> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

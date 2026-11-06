@@ -56,7 +56,7 @@ public class DatasetRiskDatasetList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<DatasetRiskDataset> items = new ArrayList<>();
+  private List<DatasetRiskDataset> items;
 
   public DatasetRiskDatasetList() {
   }

@@ -61,7 +61,7 @@ public class TreasuryTreasuryReport {
   public static final String SERIALIZED_NAME_BY_PROGRAM_CENTS = "byProgramCents";
   @SerializedName(SERIALIZED_NAME_BY_PROGRAM_CENTS)
   @javax.annotation.Nullable
-  private Map<String, Long> byProgramCents = new HashMap<>();
+  private Map<String, Long> byProgramCents;
 
   public static final String SERIALIZED_NAME_PAID_CENTS = "paidCents";
   @SerializedName(SERIALIZED_NAME_PAID_CENTS)

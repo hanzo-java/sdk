@@ -92,7 +92,7 @@ public class O11yPagerdutyConfig {
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
   @javax.annotation.Nullable
-  private Map<String, Object> details = new HashMap<>();
+  private Map<String, Object> details;
 
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
@@ -107,12 +107,12 @@ public class O11yPagerdutyConfig {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
   @javax.annotation.Nullable
-  private List<O11yPagerdutyImage> images = new ArrayList<>();
+  private List<O11yPagerdutyImage> images;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<O11yPagerdutyLink> links = new ArrayList<>();
+  private List<O11yPagerdutyLink> links;
 
   public static final String SERIALIZED_NAME_ROUTING_KEY = "routing_key";
   @SerializedName(SERIALIZED_NAME_ROUTING_KEY)

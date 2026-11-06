@@ -75,7 +75,7 @@ public class MarketingAudiencePreview {
   public static final String SERIALIZED_NAME_SAMPLE = "sample";
   @SerializedName(SERIALIZED_NAME_SAMPLE)
   @javax.annotation.Nullable
-  private List<String> sample = new ArrayList<>();
+  private List<String> sample;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

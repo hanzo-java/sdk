@@ -56,17 +56,17 @@ public class DeployArgoTree {
   public static final String SERIALIZED_NAME_HOSTS = "hosts";
   @SerializedName(SERIALIZED_NAME_HOSTS)
   @javax.annotation.Nullable
-  private List<Object> hosts = new ArrayList<>();
+  private List<Object> hosts;
 
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
   @javax.annotation.Nullable
-  private List<DeployArgoNode> nodes = new ArrayList<>();
+  private List<DeployArgoNode> nodes;
 
   public static final String SERIALIZED_NAME_ORPHANED_NODES = "orphanedNodes";
   @SerializedName(SERIALIZED_NAME_ORPHANED_NODES)
   @javax.annotation.Nullable
-  private List<DeployArgoNode> orphanedNodes = new ArrayList<>();
+  private List<DeployArgoNode> orphanedNodes;
 
   public DeployArgoTree() {
   }

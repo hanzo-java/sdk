@@ -64,7 +64,7 @@ public class AiAnthropicRequest {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private List<AiAnthropicMessage> messages = new ArrayList<>();
+  private List<AiAnthropicMessage> messages;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -99,7 +99,7 @@ public class AiAnthropicRequest {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<AiAnthropicTool> tools = new ArrayList<>();
+  private List<AiAnthropicTool> tools;
 
   public AiAnthropicRequest() {
   }

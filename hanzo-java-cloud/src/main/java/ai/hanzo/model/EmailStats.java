@@ -64,7 +64,7 @@ public class EmailStats {
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
   @javax.annotation.Nullable
-  private List<EmailPart> campaigns = new ArrayList<>();
+  private List<EmailPart> campaigns;
 
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)
@@ -79,12 +79,12 @@ public class EmailStats {
   public static final String SERIALIZED_NAME_PROVIDERS = "providers";
   @SerializedName(SERIALIZED_NAME_PROVIDERS)
   @javax.annotation.Nullable
-  private List<EmailPart> providers = new ArrayList<>();
+  private List<EmailPart> providers;
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<EmailPoint> series = new ArrayList<>();
+  private List<EmailPoint> series;
 
   public static final String SERIALIZED_NAME_SINCE = "since";
   @SerializedName(SERIALIZED_NAME_SINCE)

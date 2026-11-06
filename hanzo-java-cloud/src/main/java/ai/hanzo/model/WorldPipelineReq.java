@@ -56,7 +56,7 @@ public class WorldPipelineReq {
   public static final String SERIALIZED_NAME_FEEDS = "feeds";
   @SerializedName(SERIALIZED_NAME_FEEDS)
   @javax.annotation.Nullable
-  private List<String> feeds = new ArrayList<>();
+  private List<String> feeds;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)

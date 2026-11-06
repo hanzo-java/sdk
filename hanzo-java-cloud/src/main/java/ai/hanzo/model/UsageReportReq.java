@@ -131,7 +131,7 @@ public class UsageReportReq {
   public static final String SERIALIZED_NAME_SAMPLES = "samples";
   @SerializedName(SERIALIZED_NAME_SAMPLES)
   @javax.annotation.Nullable
-  private List<UsageSampleReq> samples = new ArrayList<>();
+  private List<UsageSampleReq> samples;
 
   public static final String SERIALIZED_NAME_SYNTHETIC = "synthetic";
   @SerializedName(SERIALIZED_NAME_SYNTHETIC)

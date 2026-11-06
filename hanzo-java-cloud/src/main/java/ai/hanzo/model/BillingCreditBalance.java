@@ -56,7 +56,7 @@ public class BillingCreditBalance {
   public static final String SERIALIZED_NAME_BALANCES = "balances";
   @SerializedName(SERIALIZED_NAME_BALANCES)
   @javax.annotation.Nullable
-  private List<BillingCreditEntry> balances = new ArrayList<>();
+  private List<BillingCreditEntry> balances;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)

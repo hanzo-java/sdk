@@ -56,7 +56,7 @@ public class ComputeJobList {
   public static final String SERIALIZED_NAME_JOBS = "jobs";
   @SerializedName(SERIALIZED_NAME_JOBS)
   @javax.annotation.Nullable
-  private List<ComputeGpuJob> jobs = new ArrayList<>();
+  private List<ComputeGpuJob> jobs;
 
   public ComputeJobList() {
   }

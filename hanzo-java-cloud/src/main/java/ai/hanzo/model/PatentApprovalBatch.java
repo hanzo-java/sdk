@@ -56,7 +56,7 @@ public class PatentApprovalBatch {
   public static final String SERIALIZED_NAME_APPROVALS = "approvals";
   @SerializedName(SERIALIZED_NAME_APPROVALS)
   @javax.annotation.Nullable
-  private List<PatentPatentApproval> approvals = new ArrayList<>();
+  private List<PatentPatentApproval> approvals;
 
   public PatentApprovalBatch() {
   }

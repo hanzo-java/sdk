@@ -56,7 +56,7 @@ public class IamCertsListOutput {
   public static final String SERIALIZED_NAME_CERTS = "certs";
   @SerializedName(SERIALIZED_NAME_CERTS)
   @javax.annotation.Nullable
-  private List<IamCert> certs = new ArrayList<>();
+  private List<IamCert> certs;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

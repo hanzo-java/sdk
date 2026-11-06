@@ -61,12 +61,12 @@ public class ProviderSlackJoinOut {
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   @javax.annotation.Nullable
-  private List<ProviderJoinFailure> failed = new ArrayList<>();
+  private List<ProviderJoinFailure> failed;
 
   public static final String SERIALIZED_NAME_JOINED = "joined";
   @SerializedName(SERIALIZED_NAME_JOINED)
   @javax.annotation.Nullable
-  private List<String> joined = new ArrayList<>();
+  private List<String> joined;
 
   public static final String SERIALIZED_NAME_LISTED = "listed";
   @SerializedName(SERIALIZED_NAME_LISTED)

@@ -61,7 +61,7 @@ public class FormFieldSummary {
   public static final String SERIALIZED_NAME_DISTRIBUTION = "distribution";
   @SerializedName(SERIALIZED_NAME_DISTRIBUTION)
   @javax.annotation.Nullable
-  private List<FormTally> distribution = new ArrayList<>();
+  private List<FormTally> distribution;
 
   public static final String SERIALIZED_NAME_DROP_OFF = "drop_off";
   @SerializedName(SERIALIZED_NAME_DROP_OFF)

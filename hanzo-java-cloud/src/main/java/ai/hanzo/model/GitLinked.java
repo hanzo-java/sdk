@@ -57,17 +57,17 @@ public class GitLinked {
   public static final String SERIALIZED_NAME_HELD = "held";
   @SerializedName(SERIALIZED_NAME_HELD)
   @javax.annotation.Nullable
-  private List<String> held = new ArrayList<>();
+  private List<String> held;
 
   public static final String SERIALIZED_NAME_LINKED = "linked";
   @SerializedName(SERIALIZED_NAME_LINKED)
   @javax.annotation.Nullable
-  private List<GitRepoView> linked = new ArrayList<>();
+  private List<GitRepoView> linked;
 
   public static final String SERIALIZED_NAME_UNMATCHED = "unmatched";
   @SerializedName(SERIALIZED_NAME_UNMATCHED)
   @javax.annotation.Nullable
-  private List<GitUnmatched> unmatched = new ArrayList<>();
+  private List<GitUnmatched> unmatched;
 
   public GitLinked() {
   }

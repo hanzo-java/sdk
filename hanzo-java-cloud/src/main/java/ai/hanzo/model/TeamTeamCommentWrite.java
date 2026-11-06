@@ -56,7 +56,7 @@ public class TeamTeamCommentWrite {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<TeamTeamFileIn> files = new ArrayList<>();
+  private List<TeamTeamFileIn> files;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

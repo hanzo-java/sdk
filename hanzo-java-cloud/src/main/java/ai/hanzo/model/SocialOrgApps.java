@@ -56,12 +56,12 @@ public class SocialOrgApps {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private List<SocialOrgApp> apps = new ArrayList<>();
+  private List<SocialOrgApp> apps;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<SocialOrgApp> data = new ArrayList<>();
+  private List<SocialOrgApp> data;
 
   public SocialOrgApps() {
   }

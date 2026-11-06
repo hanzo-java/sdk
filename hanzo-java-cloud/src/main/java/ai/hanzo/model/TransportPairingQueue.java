@@ -56,7 +56,7 @@ public class TransportPairingQueue {
   public static final String SERIALIZED_NAME_PENDING = "pending";
   @SerializedName(SERIALIZED_NAME_PENDING)
   @javax.annotation.Nullable
-  private List<TransportPairingView> pending = new ArrayList<>();
+  private List<TransportPairingView> pending;
 
   public TransportPairingQueue() {
   }

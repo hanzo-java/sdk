@@ -61,7 +61,7 @@ public class BenchmarkHistoryOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BenchmarkModelHistory> data = new ArrayList<>();
+  private List<BenchmarkModelHistory> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

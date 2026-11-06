@@ -56,7 +56,7 @@ public class IamProviderItem {
   public static final String SERIALIZED_NAME_BINDING_RULE = "bindingRule";
   @SerializedName(SERIALIZED_NAME_BINDING_RULE)
   @javax.annotation.Nullable
-  private List<String> bindingRule = new ArrayList<>();
+  private List<String> bindingRule;
 
   public static final String SERIALIZED_NAME_CAN_SIGN_IN = "canSignIn";
   @SerializedName(SERIALIZED_NAME_CAN_SIGN_IN)
@@ -76,7 +76,7 @@ public class IamProviderItem {
   public static final String SERIALIZED_NAME_COUNTRY_CODES = "countryCodes";
   @SerializedName(SERIALIZED_NAME_COUNTRY_CODES)
   @javax.annotation.Nullable
-  private List<String> countryCodes = new ArrayList<>();
+  private List<String> countryCodes;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

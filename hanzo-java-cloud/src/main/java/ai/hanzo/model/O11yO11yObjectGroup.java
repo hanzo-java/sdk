@@ -61,7 +61,7 @@ public class O11yO11yObjectGroup {
   public static final String SERIALIZED_NAME_SELECTORS = "selectors";
   @SerializedName(SERIALIZED_NAME_SELECTORS)
   @javax.annotation.Nullable
-  private List<String> selectors = new ArrayList<>();
+  private List<String> selectors;
 
   public O11yO11yObjectGroup() {
   }

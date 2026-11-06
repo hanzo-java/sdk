@@ -71,7 +71,7 @@ public class AiDecideIn {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private Map<String, Object> questions = new HashMap<>();
+  private Map<String, Object> questions;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)

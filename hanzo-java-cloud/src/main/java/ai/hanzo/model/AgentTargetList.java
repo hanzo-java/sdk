@@ -56,7 +56,7 @@ public class AgentTargetList {
   public static final String SERIALIZED_NAME_TARGETS = "targets";
   @SerializedName(SERIALIZED_NAME_TARGETS)
   @javax.annotation.Nullable
-  private List<AgentTargetView> targets = new ArrayList<>();
+  private List<AgentTargetView> targets;
 
   public AgentTargetList() {
   }

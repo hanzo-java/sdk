@@ -56,7 +56,7 @@ public class ComputeWorkerList {
   public static final String SERIALIZED_NAME_WORKERS = "workers";
   @SerializedName(SERIALIZED_NAME_WORKERS)
   @javax.annotation.Nullable
-  private List<ComputeByoWorker> workers = new ArrayList<>();
+  private List<ComputeByoWorker> workers;
 
   public ComputeWorkerList() {
   }

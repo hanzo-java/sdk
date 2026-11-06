@@ -56,7 +56,7 @@ public class LibraryItemPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<LibraryLibraryItem> data = new ArrayList<>();
+  private List<LibraryLibraryItem> data;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

@@ -56,7 +56,7 @@ public class NodeNodesView {
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
   @javax.annotation.Nullable
-  private List<NodeNodeView> nodes = new ArrayList<>();
+  private List<NodeNodeView> nodes;
 
   public NodeNodesView() {
   }

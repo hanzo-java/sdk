@@ -61,7 +61,7 @@ public class EsignEsignLinks {
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
   @javax.annotation.Nullable
-  private List<EsignEsignLink> recipients = new ArrayList<>();
+  private List<EsignEsignLink> recipients;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

@@ -55,7 +55,7 @@ public class AiLimited {
   public static final String SERIALIZED_NAME_CLASSES = "classes";
   @SerializedName(SERIALIZED_NAME_CLASSES)
   @javax.annotation.Nullable
-  private List<String> classes = new ArrayList<>();
+  private List<String> classes;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)

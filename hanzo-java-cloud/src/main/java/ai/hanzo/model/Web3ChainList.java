@@ -56,7 +56,7 @@ public class Web3ChainList {
   public static final String SERIALIZED_NAME_CHAINS = "chains";
   @SerializedName(SERIALIZED_NAME_CHAINS)
   @javax.annotation.Nullable
-  private List<Web3Chain> chains = new ArrayList<>();
+  private List<Web3Chain> chains;
 
   public Web3ChainList() {
   }

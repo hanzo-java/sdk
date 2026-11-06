@@ -56,7 +56,7 @@ public class GraphGraphAssertIn {
   public static final String SERIALIZED_NAME_ASSERTIONS = "assertions";
   @SerializedName(SERIALIZED_NAME_ASSERTIONS)
   @javax.annotation.Nonnull
-  private List<GraphGraphFact> assertions = new ArrayList<>();
+  private List<GraphGraphFact> assertions;
 
   public GraphGraphAssertIn() {
   }

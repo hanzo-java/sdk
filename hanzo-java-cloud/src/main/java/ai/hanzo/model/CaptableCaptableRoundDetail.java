@@ -57,7 +57,7 @@ public class CaptableCaptableRoundDetail {
   public static final String SERIALIZED_NAME_INVESTMENTS = "investments";
   @SerializedName(SERIALIZED_NAME_INVESTMENTS)
   @javax.annotation.Nullable
-  private List<CaptableCaptableRoundInvestment> investments = new ArrayList<>();
+  private List<CaptableCaptableRoundInvestment> investments;
 
   public static final String SERIALIZED_NAME_ROUND = "round";
   @SerializedName(SERIALIZED_NAME_ROUND)

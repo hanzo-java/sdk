@@ -71,7 +71,7 @@ public class RunnerState {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<RunnerStep> steps = new ArrayList<>();
+  private List<RunnerStep> steps;
 
   public static final String SERIALIZED_NAME_STOPPED = "stopped";
   @SerializedName(SERIALIZED_NAME_STOPPED)

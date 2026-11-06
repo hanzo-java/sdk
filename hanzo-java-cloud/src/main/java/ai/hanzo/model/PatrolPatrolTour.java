@@ -71,7 +71,7 @@ public class PatrolPatrolTour {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolCheckpoint> points = new ArrayList<>();
+  private List<PatrolPatrolCheckpoint> points;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)

@@ -56,7 +56,7 @@ public class BillingAssignment {
   public static final String SERIALIZED_NAME_ASSIGNED = "assigned";
   @SerializedName(SERIALIZED_NAME_ASSIGNED)
   @javax.annotation.Nullable
-  private List<BillingSubscriptionSeat> assigned = new ArrayList<>();
+  private List<BillingSubscriptionSeat> assigned;
 
   public BillingAssignment() {
   }

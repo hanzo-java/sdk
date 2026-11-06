@@ -56,7 +56,7 @@ public class O11yAWSIntegrationConfig {
   public static final String SERIALIZED_NAME_ENABLED_REGIONS = "enabledRegions";
   @SerializedName(SERIALIZED_NAME_ENABLED_REGIONS)
   @javax.annotation.Nullable
-  private List<String> enabledRegions = new ArrayList<>();
+  private List<String> enabledRegions;
 
   public static final String SERIALIZED_NAME_TELEMETRY_COLLECTION_STRATEGY = "telemetryCollectionStrategy";
   @SerializedName(SERIALIZED_NAME_TELEMETRY_COLLECTION_STRATEGY)

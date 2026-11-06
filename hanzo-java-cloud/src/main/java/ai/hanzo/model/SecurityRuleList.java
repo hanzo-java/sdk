@@ -56,7 +56,7 @@ public class SecurityRuleList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<SecurityRuleView> data = new ArrayList<>();
+  private List<SecurityRuleView> data;
 
   public SecurityRuleList() {
   }

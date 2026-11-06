@@ -61,17 +61,17 @@ public class AiRouterStats {
   public static final String SERIALIZED_NAME_BY_MODEL = "by_model";
   @SerializedName(SERIALIZED_NAME_BY_MODEL)
   @javax.annotation.Nullable
-  private Map<String, Integer> byModel = new HashMap<>();
+  private Map<String, Integer> byModel;
 
   public static final String SERIALIZED_NAME_BY_SOURCE = "by_source";
   @SerializedName(SERIALIZED_NAME_BY_SOURCE)
   @javax.annotation.Nullable
-  private Map<String, Integer> bySource = new HashMap<>();
+  private Map<String, Integer> bySource;
 
   public static final String SERIALIZED_NAME_BY_TASK = "by_task";
   @SerializedName(SERIALIZED_NAME_BY_TASK)
   @javax.annotation.Nullable
-  private Map<String, AiTaskStats> byTask = new HashMap<>();
+  private Map<String, AiTaskStats> byTask;
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)

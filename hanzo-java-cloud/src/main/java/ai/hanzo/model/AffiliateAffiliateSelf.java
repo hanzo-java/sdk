@@ -92,7 +92,7 @@ public class AffiliateAffiliateSelf {
   public static final String SERIALIZED_NAME_LEVELS = "levels";
   @SerializedName(SERIALIZED_NAME_LEVELS)
   @javax.annotation.Nullable
-  private List<AffiliateLevelView> levels = new ArrayList<>();
+  private List<AffiliateLevelView> levels;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
@@ -112,7 +112,7 @@ public class AffiliateAffiliateSelf {
   public static final String SERIALIZED_NAME_PAYOUTS = "payouts";
   @SerializedName(SERIALIZED_NAME_PAYOUTS)
   @javax.annotation.Nullable
-  private List<AffiliateRemittance> payouts = new ArrayList<>();
+  private List<AffiliateRemittance> payouts;
 
   public static final String SERIALIZED_NAME_PENDING_CENTS = "pendingCents";
   @SerializedName(SERIALIZED_NAME_PENDING_CENTS)
@@ -127,7 +127,7 @@ public class AffiliateAffiliateSelf {
   public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   @javax.annotation.Nullable
-  private List<AffiliateLevelView> schedule = new ArrayList<>();
+  private List<AffiliateLevelView> schedule;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

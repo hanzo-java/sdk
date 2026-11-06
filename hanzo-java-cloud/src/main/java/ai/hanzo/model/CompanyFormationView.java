@@ -61,7 +61,7 @@ public class CompanyFormationView {
   public static final String SERIALIZED_NAME_NEXT_STAGES = "nextStages";
   @SerializedName(SERIALIZED_NAME_NEXT_STAGES)
   @javax.annotation.Nullable
-  private List<String> nextStages = new ArrayList<>();
+  private List<String> nextStages;
 
   public CompanyFormationView() {
   }

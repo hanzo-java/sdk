@@ -56,7 +56,7 @@ public class ErrorBody {
   public static final String SERIALIZED_NAME_FRAMES = "frames";
   @SerializedName(SERIALIZED_NAME_FRAMES)
   @javax.annotation.Nullable
-  private List<Frame> frames = new ArrayList<>();
+  private List<Frame> frames;
 
   public static final String SERIALIZED_NAME_HANDLED = "handled";
   @SerializedName(SERIALIZED_NAME_HANDLED)

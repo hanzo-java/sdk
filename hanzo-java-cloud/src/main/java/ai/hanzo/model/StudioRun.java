@@ -111,7 +111,7 @@ public class StudioRun {
   public static final String SERIALIZED_NAME_INPUT = "input";
   @SerializedName(SERIALIZED_NAME_INPUT)
   @javax.annotation.Nullable
-  private Map<String, Object> input = new HashMap<>();
+  private Map<String, Object> input;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -126,7 +126,7 @@ public class StudioRun {
   public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
   @SerializedName(SERIALIZED_NAME_OUTPUTS)
   @javax.annotation.Nullable
-  private List<StudioItem> outputs = new ArrayList<>();
+  private List<StudioItem> outputs;
 
   public static final String SERIALIZED_NAME_PARENT = "parent";
   @SerializedName(SERIALIZED_NAME_PARENT)
@@ -156,7 +156,7 @@ public class StudioRun {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<StudioStep> steps = new ArrayList<>();
+  private List<StudioStep> steps;
 
   public static final String SERIALIZED_NAME_TEMPLATE = "template";
   @SerializedName(SERIALIZED_NAME_TEMPLATE)

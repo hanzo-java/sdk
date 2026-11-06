@@ -61,7 +61,7 @@ public class GitWorkflowView {
   public static final String SERIALIZED_NAME_JOBS = "jobs";
   @SerializedName(SERIALIZED_NAME_JOBS)
   @javax.annotation.Nullable
-  private List<GitJobView> jobs = new ArrayList<>();
+  private List<GitJobView> jobs;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

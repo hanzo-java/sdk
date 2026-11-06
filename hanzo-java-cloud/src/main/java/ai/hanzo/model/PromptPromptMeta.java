@@ -55,7 +55,7 @@ public class PromptPromptMeta {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<String> labels = new ArrayList<>();
+  private List<String> labels;
 
   public static final String SERIALIZED_NAME_LAST_UPDATED_AT = "lastUpdatedAt";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED_AT)
@@ -70,7 +70,7 @@ public class PromptPromptMeta {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -80,7 +80,7 @@ public class PromptPromptMeta {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   @javax.annotation.Nullable
-  private List<Long> versions = new ArrayList<>();
+  private List<Long> versions;
 
   public PromptPromptMeta() {
   }

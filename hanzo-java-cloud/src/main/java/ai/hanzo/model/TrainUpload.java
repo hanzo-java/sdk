@@ -63,7 +63,7 @@ public class TrainUpload {
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   @javax.annotation.Nullable
-  private Map<String, String> headers = new HashMap<>();
+  private Map<String, String> headers;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
@@ -73,7 +73,7 @@ public class TrainUpload {
   public static final String SERIALIZED_NAME_PARTS = "parts";
   @SerializedName(SERIALIZED_NAME_PARTS)
   @javax.annotation.Nullable
-  private List<TrainPart> parts = new ArrayList<>();
+  private List<TrainPart> parts;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)

@@ -57,7 +57,7 @@ public class LinkAccountsUsage {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<LinkRoutedUsage> accounts = new ArrayList<>();
+  private List<LinkRoutedUsage> accounts;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)

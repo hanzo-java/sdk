@@ -56,7 +56,7 @@ public class AccountApiKeyList {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<AccountApiKey> keys = new ArrayList<>();
+  private List<AccountApiKey> keys;
 
   public AccountApiKeyList() {
   }

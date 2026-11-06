@@ -56,7 +56,7 @@ public class GitActivityPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<GitActivityRepo> data = new ArrayList<>();
+  private List<GitActivityRepo> data;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

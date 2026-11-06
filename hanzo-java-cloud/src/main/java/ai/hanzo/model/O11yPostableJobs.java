@@ -68,7 +68,7 @@ public class O11yPostableJobs {
   public static final String SERIALIZED_NAME_GROUP_BY = "groupBy";
   @SerializedName(SERIALIZED_NAME_GROUP_BY)
   @javax.annotation.Nullable
-  private List<O11yGroupByKey> groupBy = new ArrayList<>();
+  private List<O11yGroupByKey> groupBy;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

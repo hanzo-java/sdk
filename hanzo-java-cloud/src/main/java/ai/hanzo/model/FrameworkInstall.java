@@ -55,17 +55,17 @@ public class FrameworkInstall {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private List<String> created = new ArrayList<>();
+  private List<String> created;
 
   public static final String SERIALIZED_NAME_EXISTING = "existing";
   @SerializedName(SERIALIZED_NAME_EXISTING)
   @javax.annotation.Nullable
-  private List<String> existing = new ArrayList<>();
+  private List<String> existing;
 
   public static final String SERIALIZED_NAME_GROWN = "grown";
   @SerializedName(SERIALIZED_NAME_GROWN)
   @javax.annotation.Nullable
-  private List<String> grown = new ArrayList<>();
+  private List<String> grown;
 
   public static final String SERIALIZED_NAME_MODULE = "module";
   @SerializedName(SERIALIZED_NAME_MODULE)

@@ -89,7 +89,7 @@ public class AgentSessionDetail {
   public static final String SERIALIZED_NAME_CHILD_SESSIONS = "childSessions";
   @SerializedName(SERIALIZED_NAME_CHILD_SESSIONS)
   @javax.annotation.Nullable
-  private List<AgentSessionView> childSessions = new ArrayList<>();
+  private List<AgentSessionView> childSessions;
 
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
@@ -189,7 +189,7 @@ public class AgentSessionDetail {
   public static final String SERIALIZED_NAME_RECENT_EVENTS = "recentEvents";
   @SerializedName(SERIALIZED_NAME_RECENT_EVENTS)
   @javax.annotation.Nullable
-  private List<AgentEventView> recentEvents = new ArrayList<>();
+  private List<AgentEventView> recentEvents;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)

@@ -70,7 +70,7 @@ public class WebhookEndpoint {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<String> events = new ArrayList<>();
+  private List<String> events;
 
   public static final String SERIALIZED_NAME_FAILURES7D = "failures7d";
   @SerializedName(SERIALIZED_NAME_FAILURES7D)

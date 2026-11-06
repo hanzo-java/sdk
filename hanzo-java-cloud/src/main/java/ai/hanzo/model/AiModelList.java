@@ -56,12 +56,12 @@ public class AiModelList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<AiModelInfo> data = new ArrayList<>();
+  private List<AiModelInfo> data;
 
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private List<AiModelInfo> models = new ArrayList<>();
+  private List<AiModelInfo> models;
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)

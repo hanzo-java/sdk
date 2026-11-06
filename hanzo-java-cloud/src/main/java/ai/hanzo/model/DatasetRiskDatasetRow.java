@@ -70,7 +70,7 @@ public class DatasetRiskDatasetRow {
   public static final String SERIALIZED_NAME_POINT = "point";
   @SerializedName(SERIALIZED_NAME_POINT)
   @javax.annotation.Nullable
-  private List<Double> point = new ArrayList<>();
+  private List<Double> point;
 
   public static final String SERIALIZED_NAME_SPLIT = "split";
   @SerializedName(SERIALIZED_NAME_SPLIT)

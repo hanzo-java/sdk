@@ -76,7 +76,7 @@ public class O11yO11yK8sOnboarding {
   public static final String SERIALIZED_NAME_IS_SENDING_REQUIRED_METADATA = "isSendingRequiredMetadata";
   @SerializedName(SERIALIZED_NAME_IS_SENDING_REQUIRED_METADATA)
   @javax.annotation.Nullable
-  private List<O11yO11yPodOnboarding> isSendingRequiredMetadata = new ArrayList<>();
+  private List<O11yO11yPodOnboarding> isSendingRequiredMetadata;
 
   public O11yO11yK8sOnboarding() {
   }

@@ -56,7 +56,7 @@ public class ContentChannelList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<ContentChannel> data = new ArrayList<>();
+  private List<ContentChannel> data;
 
   public ContentChannelList() {
   }

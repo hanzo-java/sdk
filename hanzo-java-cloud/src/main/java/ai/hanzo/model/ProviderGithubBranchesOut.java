@@ -56,7 +56,7 @@ public class ProviderGithubBranchesOut {
   public static final String SERIALIZED_NAME_BRANCHES = "branches";
   @SerializedName(SERIALIZED_NAME_BRANCHES)
   @javax.annotation.Nullable
-  private List<ProviderGithubBranch> branches = new ArrayList<>();
+  private List<ProviderGithubBranch> branches;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

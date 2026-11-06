@@ -57,7 +57,7 @@ public class PatentPatentIdea {
   public static final String SERIALIZED_NAME_ALTERNATIVES = "alternatives";
   @SerializedName(SERIALIZED_NAME_ALTERNATIVES)
   @javax.annotation.Nullable
-  private List<PatentPatentRejectedAlternative> alternatives = new ArrayList<>();
+  private List<PatentPatentRejectedAlternative> alternatives;
 
   public static final String SERIALIZED_NAME_AUTHORED_BY = "authored_by";
   @SerializedName(SERIALIZED_NAME_AUTHORED_BY)

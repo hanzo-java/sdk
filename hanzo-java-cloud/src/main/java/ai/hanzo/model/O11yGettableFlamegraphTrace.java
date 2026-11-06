@@ -66,7 +66,7 @@ public class O11yGettableFlamegraphTrace {
   public static final String SERIALIZED_NAME_SPANS = "spans";
   @SerializedName(SERIALIZED_NAME_SPANS)
   @javax.annotation.Nullable
-  private List<List<O11yFlamegraphSpan>> spans = new ArrayList<>();
+  private List<List<O11yFlamegraphSpan>> spans;
 
   public static final String SERIALIZED_NAME_START_TIMESTAMP_MILLIS = "startTimestampMillis";
   @SerializedName(SERIALIZED_NAME_START_TIMESTAMP_MILLIS)

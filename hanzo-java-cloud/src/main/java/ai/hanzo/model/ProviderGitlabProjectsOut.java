@@ -61,7 +61,7 @@ public class ProviderGitlabProjectsOut {
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
   @javax.annotation.Nullable
-  private List<ProviderGitlabProjectView> projects = new ArrayList<>();
+  private List<ProviderGitlabProjectView> projects;
 
   public ProviderGitlabProjectsOut() {
   }

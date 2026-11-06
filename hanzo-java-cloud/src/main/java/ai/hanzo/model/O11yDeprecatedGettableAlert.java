@@ -67,7 +67,7 @@ public class O11yDeprecatedGettableAlert {
   public static final String SERIALIZED_NAME_RECEIVERS = "receivers";
   @SerializedName(SERIALIZED_NAME_RECEIVERS)
   @javax.annotation.Nullable
-  private List<String> receivers = new ArrayList<>();
+  private List<String> receivers;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

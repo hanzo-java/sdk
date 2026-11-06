@@ -56,7 +56,7 @@ public class IamListWebauthnCredentialsOut {
   public static final String SERIALIZED_NAME_WEBAUTHN_CREDENTIALS = "webauthnCredentials";
   @SerializedName(SERIALIZED_NAME_WEBAUTHN_CREDENTIALS)
   @javax.annotation.Nullable
-  private List<IamWebauthnCredential> webauthnCredentials = new ArrayList<>();
+  private List<IamWebauthnCredential> webauthnCredentials;
 
   public IamListWebauthnCredentialsOut() {
   }

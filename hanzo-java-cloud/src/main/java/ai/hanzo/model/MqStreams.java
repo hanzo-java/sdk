@@ -56,7 +56,7 @@ public class MqStreams {
   public static final String SERIALIZED_NAME_STREAMS = "streams";
   @SerializedName(SERIALIZED_NAME_STREAMS)
   @javax.annotation.Nullable
-  private List<MqStream> streams = new ArrayList<>();
+  private List<MqStream> streams;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

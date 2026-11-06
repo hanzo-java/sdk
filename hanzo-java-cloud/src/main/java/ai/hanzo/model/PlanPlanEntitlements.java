@@ -66,7 +66,7 @@ public class PlanPlanEntitlements {
   public static final String SERIALIZED_NAME_LICENSE_FEATURES = "license_features";
   @SerializedName(SERIALIZED_NAME_LICENSE_FEATURES)
   @javax.annotation.Nullable
-  private List<String> licenseFeatures = new ArrayList<>();
+  private List<String> licenseFeatures;
 
   public PlanPlanEntitlements() {
   }

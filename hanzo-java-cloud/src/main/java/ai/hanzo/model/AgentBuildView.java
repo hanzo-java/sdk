@@ -106,7 +106,7 @@ public class AgentBuildView {
   public static final String SERIALIZED_NAME_TURNS = "turns";
   @SerializedName(SERIALIZED_NAME_TURNS)
   @javax.annotation.Nullable
-  private List<AgentBuildTurn> turns = new ArrayList<>();
+  private List<AgentBuildTurn> turns;
 
   public static final String SERIALIZED_NAME_VERIFY = "verify";
   @SerializedName(SERIALIZED_NAME_VERIFY)

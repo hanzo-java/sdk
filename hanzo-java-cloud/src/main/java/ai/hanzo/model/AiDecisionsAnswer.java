@@ -77,7 +77,7 @@ public class AiDecisionsAnswer {
   public static final String SERIALIZED_NAME_LEGEND = "legend";
   @SerializedName(SERIALIZED_NAME_LEGEND)
   @javax.annotation.Nullable
-  private Map<String, Object> legend = new HashMap<>();
+  private Map<String, Object> legend;
 
   public static final String SERIALIZED_NAME_NOUL = "noul";
   @SerializedName(SERIALIZED_NAME_NOUL)
@@ -87,7 +87,7 @@ public class AiDecisionsAnswer {
   public static final String SERIALIZED_NAME_PROBABILITIES = "probabilities";
   @SerializedName(SERIALIZED_NAME_PROBABILITIES)
   @javax.annotation.Nullable
-  private Map<String, BigDecimal> probabilities = new HashMap<>();
+  private Map<String, BigDecimal> probabilities;
 
   public static final String SERIALIZED_NAME_PROBABILITY = "probability";
   @SerializedName(SERIALIZED_NAME_PROBABILITY)

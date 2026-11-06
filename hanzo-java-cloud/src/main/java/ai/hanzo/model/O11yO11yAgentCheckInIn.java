@@ -71,7 +71,7 @@ public class O11yO11yAgentCheckInIn {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private Map<String, Object> data = new HashMap<>();
+  private Map<String, Object> data;
 
   public static final String SERIALIZED_NAME_PROVIDER_ACCOUNT_ID = "providerAccountId";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ACCOUNT_ID)

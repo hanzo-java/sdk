@@ -56,7 +56,7 @@ public class FunctionFnList {
   public static final String SERIALIZED_NAME_FUNCTIONS = "functions";
   @SerializedName(SERIALIZED_NAME_FUNCTIONS)
   @javax.annotation.Nullable
-  private List<FunctionFunctionView> functions = new ArrayList<>();
+  private List<FunctionFunctionView> functions;
 
   public FunctionFnList() {
   }

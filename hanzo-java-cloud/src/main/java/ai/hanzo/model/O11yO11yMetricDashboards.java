@@ -56,7 +56,7 @@ public class O11yO11yMetricDashboards {
   public static final String SERIALIZED_NAME_DASHBOARDS = "dashboards";
   @SerializedName(SERIALIZED_NAME_DASHBOARDS)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricPanel> dashboards = new ArrayList<>();
+  private List<O11yO11yMetricPanel> dashboards;
 
   public O11yO11yMetricDashboards() {
   }

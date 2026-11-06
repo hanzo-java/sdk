@@ -61,7 +61,7 @@ public class LicensingPubkeyView {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<LicensingJWK> keys = new ArrayList<>();
+  private List<LicensingJWK> keys;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)

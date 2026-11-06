@@ -56,12 +56,12 @@ public class ProjectProjectsBoundDomains {
   public static final String SERIALIZED_NAME_BOUND = "bound";
   @SerializedName(SERIALIZED_NAME_BOUND)
   @javax.annotation.Nullable
-  private List<ProjectProjectsDomain> bound = new ArrayList<>();
+  private List<ProjectProjectsDomain> bound;
 
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private List<String> domains = new ArrayList<>();
+  private List<String> domains;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)

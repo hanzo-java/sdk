@@ -56,7 +56,7 @@ public class EvalEvaluatorList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<EvalEvaluatorView> data = new ArrayList<>();
+  private List<EvalEvaluatorView> data;
 
   public EvalEvaluatorList() {
   }

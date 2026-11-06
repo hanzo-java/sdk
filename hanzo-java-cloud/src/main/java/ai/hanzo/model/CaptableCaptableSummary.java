@@ -61,12 +61,12 @@ public class CaptableCaptableSummary {
   public static final String SERIALIZED_NAME_BY_SHARE_CLASS = "byShareClass";
   @SerializedName(SERIALIZED_NAME_BY_SHARE_CLASS)
   @javax.annotation.Nullable
-  private List<CaptableCaptableClassHolding> byShareClass = new ArrayList<>();
+  private List<CaptableCaptableClassHolding> byShareClass;
 
   public static final String SERIALIZED_NAME_BY_STAKEHOLDER = "byStakeholder";
   @SerializedName(SERIALIZED_NAME_BY_STAKEHOLDER)
   @javax.annotation.Nullable
-  private List<CaptableCaptableHolding> byStakeholder = new ArrayList<>();
+  private List<CaptableCaptableHolding> byStakeholder;
 
   public static final String SERIALIZED_NAME_COMPANY = "company";
   @SerializedName(SERIALIZED_NAME_COMPANY)

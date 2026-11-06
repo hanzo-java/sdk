@@ -56,7 +56,7 @@ public class ComputeFleetBoard {
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
   @javax.annotation.Nullable
-  private List<ComputeFleetUnit> units = new ArrayList<>();
+  private List<ComputeFleetUnit> units;
 
   public ComputeFleetBoard() {
   }

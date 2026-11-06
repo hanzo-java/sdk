@@ -56,7 +56,7 @@ public class TaxFilingList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TaxFiling> data = new ArrayList<>();
+  private List<TaxFiling> data;
 
   public TaxFilingList() {
   }

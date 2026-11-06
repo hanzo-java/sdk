@@ -70,7 +70,7 @@ public class GuideStrategyView {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_WORKLOAD = "workload";
   @SerializedName(SERIALIZED_NAME_WORKLOAD)

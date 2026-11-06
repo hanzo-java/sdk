@@ -65,7 +65,7 @@ public class O11yRocketchatConfig {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<O11yRocketchatAttachmentAction> actions = new ArrayList<>();
+  private List<O11yRocketchatAttachmentAction> actions;
 
   public static final String SERIALIZED_NAME_API_URL = "api_url";
   @SerializedName(SERIALIZED_NAME_API_URL)
@@ -90,7 +90,7 @@ public class O11yRocketchatConfig {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<O11yRocketchatAttachmentField> fields = new ArrayList<>();
+  private List<O11yRocketchatAttachmentField> fields;
 
   public static final String SERIALIZED_NAME_HTTP_CONFIG = "http_config";
   @SerializedName(SERIALIZED_NAME_HTTP_CONFIG)

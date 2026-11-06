@@ -55,7 +55,7 @@ public class TrustClauseRow {
   public static final String SERIALIZED_NAME_CONTROLS = "controls";
   @SerializedName(SERIALIZED_NAME_CONTROLS)
   @javax.annotation.Nullable
-  private List<String> controls = new ArrayList<>();
+  private List<String> controls;
 
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)

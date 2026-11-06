@@ -57,7 +57,7 @@ public class Brief {
   public static final String SERIALIZED_NAME_BATCH = "batch";
   @SerializedName(SERIALIZED_NAME_BATCH)
   @javax.annotation.Nullable
-  private List<String> batch = new ArrayList<>();
+  private List<String> batch;
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
@@ -67,7 +67,7 @@ public class Brief {
   public static final String SERIALIZED_NAME_GLOSSARY = "glossary";
   @SerializedName(SERIALIZED_NAME_GLOSSARY)
   @javax.annotation.Nullable
-  private Map<String, String> glossary = new HashMap<>();
+  private Map<String, String> glossary;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

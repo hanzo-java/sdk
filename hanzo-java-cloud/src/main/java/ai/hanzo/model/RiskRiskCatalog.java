@@ -63,17 +63,17 @@ public class RiskRiskCatalog {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
   @javax.annotation.Nullable
-  private List<RiskRiskModelFeature> model = new ArrayList<>();
+  private List<RiskRiskModelFeature> model;
 
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
   @javax.annotation.Nullable
-  private List<RiskRiskBand> network = new ArrayList<>();
+  private List<RiskRiskBand> network;
 
   public static final String SERIALIZED_NAME_SURFACE = "surface";
   @SerializedName(SERIALIZED_NAME_SURFACE)
   @javax.annotation.Nullable
-  private List<RiskRiskOrgFeature> surface = new ArrayList<>();
+  private List<RiskRiskOrgFeature> surface;
 
   public static final String SERIALIZED_NAME_TENANT = "tenant";
   @SerializedName(SERIALIZED_NAME_TENANT)

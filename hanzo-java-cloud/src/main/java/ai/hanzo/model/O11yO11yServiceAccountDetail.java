@@ -82,7 +82,7 @@ public class O11yO11yServiceAccountDetail {
   public static final String SERIALIZED_NAME_SERVICE_ACCOUNT_ROLES = "serviceAccountRoles";
   @SerializedName(SERIALIZED_NAME_SERVICE_ACCOUNT_ROLES)
   @javax.annotation.Nullable
-  private List<O11yO11yServiceAccountRole> serviceAccountRoles = new ArrayList<>();
+  private List<O11yO11yServiceAccountRole> serviceAccountRoles;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

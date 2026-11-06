@@ -55,7 +55,7 @@ public class TaxonomyCategoryIn {
   public static final String SERIALIZED_NAME_BRANDS = "brands";
   @SerializedName(SERIALIZED_NAME_BRANDS)
   @javax.annotation.Nullable
-  private List<String> brands = new ArrayList<>();
+  private List<String> brands;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

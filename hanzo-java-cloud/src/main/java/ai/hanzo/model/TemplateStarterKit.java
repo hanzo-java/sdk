@@ -71,7 +71,7 @@ public class TemplateStarterKit {
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
   @javax.annotation.Nullable
-  private List<String> features = new ArrayList<>();
+  private List<String> features;
 
   public static final String SERIALIZED_NAME_FRAMEWORK = "framework";
   @SerializedName(SERIALIZED_NAME_FRAMEWORK)
@@ -121,7 +121,7 @@ public class TemplateStarterKit {
   public static final String SERIALIZED_NAME_VARIANTS = "variants";
   @SerializedName(SERIALIZED_NAME_VARIANTS)
   @javax.annotation.Nullable
-  private List<TemplateVariant> variants = new ArrayList<>();
+  private List<TemplateVariant> variants;
 
   public TemplateStarterKit() {
   }

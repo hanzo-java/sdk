@@ -56,7 +56,7 @@ public class IamListProvidersOut {
   public static final String SERIALIZED_NAME_PROVIDERS = "providers";
   @SerializedName(SERIALIZED_NAME_PROVIDERS)
   @javax.annotation.Nullable
-  private List<IamProvider> providers = new ArrayList<>();
+  private List<IamProvider> providers;
 
   public IamListProvidersOut() {
   }

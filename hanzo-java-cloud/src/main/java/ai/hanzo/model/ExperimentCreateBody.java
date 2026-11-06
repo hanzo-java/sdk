@@ -86,7 +86,7 @@ public class ExperimentCreateBody {
   public static final String SERIALIZED_NAME_VARIANTS = "variants";
   @SerializedName(SERIALIZED_NAME_VARIANTS)
   @javax.annotation.Nonnull
-  private List<ExperimentArm> variants = new ArrayList<>();
+  private List<ExperimentArm> variants;
 
   public ExperimentCreateBody() {
   }

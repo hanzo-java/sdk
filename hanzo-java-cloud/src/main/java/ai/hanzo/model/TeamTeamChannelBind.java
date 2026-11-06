@@ -55,7 +55,7 @@ public class TeamTeamChannelBind {
   public static final String SERIALIZED_NAME_BINDINGS = "bindings";
   @SerializedName(SERIALIZED_NAME_BINDINGS)
   @javax.annotation.Nullable
-  private List<String> bindings = new ArrayList<>();
+  private List<String> bindings;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

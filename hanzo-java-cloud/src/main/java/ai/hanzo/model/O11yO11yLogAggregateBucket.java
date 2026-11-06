@@ -56,7 +56,7 @@ public class O11yO11yLogAggregateBucket {
   public static final String SERIALIZED_NAME_GROUP_BY = "groupBy";
   @SerializedName(SERIALIZED_NAME_GROUP_BY)
   @javax.annotation.Nullable
-  private Map<String, Object> groupBy = new HashMap<>();
+  private Map<String, Object> groupBy;
 
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)

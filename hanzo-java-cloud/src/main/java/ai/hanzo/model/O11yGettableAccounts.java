@@ -56,7 +56,7 @@ public class O11yGettableAccounts {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<O11yAccount> accounts = new ArrayList<>();
+  private List<O11yAccount> accounts;
 
   public O11yGettableAccounts() {
   }

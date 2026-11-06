@@ -61,7 +61,7 @@ public class O11yAttributesComponentEntry {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<String> attributes = new ArrayList<>();
+  private List<String> attributes;
 
   public O11yAttributesComponentEntry() {
   }

@@ -56,7 +56,7 @@ public class O11yOldAWSLogsStrategy {
   public static final String SERIALIZED_NAME_CLOUDWATCH_LOGS_SUBSCRIPTIONS = "cloudwatch_logs_subscriptions";
   @SerializedName(SERIALIZED_NAME_CLOUDWATCH_LOGS_SUBSCRIPTIONS)
   @javax.annotation.Nullable
-  private List<O11yOldAWSLogsStrategyCloudwatchLogsSubscriptionsInner> cloudwatchLogsSubscriptions = new ArrayList<>();
+  private List<O11yOldAWSLogsStrategyCloudwatchLogsSubscriptionsInner> cloudwatchLogsSubscriptions;
 
   public O11yOldAWSLogsStrategy() {
   }

@@ -66,7 +66,7 @@ public class WorldWorldIndex {
   public static final String SERIALIZED_NAME_WIRES = "wires";
   @SerializedName(SERIALIZED_NAME_WIRES)
   @javax.annotation.Nullable
-  private List<WorldWorldWire> wires = new ArrayList<>();
+  private List<WorldWorldWire> wires;
 
   public WorldWorldIndex() {
   }

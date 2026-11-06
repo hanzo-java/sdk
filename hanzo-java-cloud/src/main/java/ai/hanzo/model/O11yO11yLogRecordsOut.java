@@ -56,7 +56,7 @@ public class O11yO11yLogRecordsOut {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> results = new ArrayList<>();
+  private List<Map<String, Object>> results;
 
   public O11yO11yLogRecordsOut() {
   }

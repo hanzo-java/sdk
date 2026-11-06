@@ -71,7 +71,7 @@ public class AutoConnectorAction {
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   @javax.annotation.Nullable
-  private List<AutoPropSpec> props = new ArrayList<>();
+  private List<AutoPropSpec> props;
 
   public AutoConnectorAction() {
   }

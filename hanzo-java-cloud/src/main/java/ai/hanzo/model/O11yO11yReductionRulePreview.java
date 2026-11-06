@@ -57,7 +57,7 @@ public class O11yO11yReductionRulePreview {
   public static final String SERIALIZED_NAME_AFFECTED_ASSETS = "affectedAssets";
   @SerializedName(SERIALIZED_NAME_AFFECTED_ASSETS)
   @javax.annotation.Nullable
-  private List<O11yO11yAffectedAsset> affectedAssets = new ArrayList<>();
+  private List<O11yO11yAffectedAsset> affectedAssets;
 
   public static final String SERIALIZED_NAME_CURRENT_RETAINED_SERIES = "currentRetainedSeries";
   @SerializedName(SERIALIZED_NAME_CURRENT_RETAINED_SERIES)
@@ -67,7 +67,7 @@ public class O11yO11yReductionRulePreview {
   public static final String SERIALIZED_NAME_DROPPED_LABELS = "droppedLabels";
   @SerializedName(SERIALIZED_NAME_DROPPED_LABELS)
   @javax.annotation.Nullable
-  private List<String> droppedLabels = new ArrayList<>();
+  private List<String> droppedLabels;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)

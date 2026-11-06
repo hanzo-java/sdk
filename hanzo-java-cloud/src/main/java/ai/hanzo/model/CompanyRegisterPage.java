@@ -61,7 +61,7 @@ public class CompanyRegisterPage {
   public static final String SERIALIZED_NAME_FORMATIONS = "formations";
   @SerializedName(SERIALIZED_NAME_FORMATIONS)
   @javax.annotation.Nullable
-  private List<CompanyRegistration> formations = new ArrayList<>();
+  private List<CompanyRegistration> formations;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

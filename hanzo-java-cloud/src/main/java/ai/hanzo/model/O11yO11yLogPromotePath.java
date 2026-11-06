@@ -56,7 +56,7 @@ public class O11yO11yLogPromotePath {
   public static final String SERIALIZED_NAME_INDEXES = "indexes";
   @SerializedName(SERIALIZED_NAME_INDEXES)
   @javax.annotation.Nullable
-  private List<O11yO11yLogPromoteIndex> indexes = new ArrayList<>();
+  private List<O11yO11yLogPromoteIndex> indexes;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)

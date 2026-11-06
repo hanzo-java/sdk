@@ -56,17 +56,17 @@ public class O11yO11yDiscoverIn {
   public static final String SERIALIZED_NAME_AGGREGATIONS = "aggregations";
   @SerializedName(SERIALIZED_NAME_AGGREGATIONS)
   @javax.annotation.Nullable
-  private List<String> aggregations = new ArrayList<>();
+  private List<String> aggregations;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
   @javax.annotation.Nullable
-  private List<O11yO11yFilter> filters = new ArrayList<>();
+  private List<O11yO11yFilter> filters;
 
   public static final String SERIALIZED_NAME_GROUP_BY = "groupBy";
   @SerializedName(SERIALIZED_NAME_GROUP_BY)
   @javax.annotation.Nullable
-  private List<String> groupBy = new ArrayList<>();
+  private List<String> groupBy;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

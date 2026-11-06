@@ -55,7 +55,7 @@ public class EvalScoreConfigView {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
   @javax.annotation.Nullable
-  private List<String> categories = new ArrayList<>();
+  private List<String> categories;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)

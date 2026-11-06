@@ -56,7 +56,7 @@ public class AgentTreeNode {
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
   @javax.annotation.Nullable
-  private List<AgentTreeNode> children = new ArrayList<>();
+  private List<AgentTreeNode> children;
 
   public static final String SERIALIZED_NAME_SESSION = "session";
   @SerializedName(SERIALIZED_NAME_SESSION)

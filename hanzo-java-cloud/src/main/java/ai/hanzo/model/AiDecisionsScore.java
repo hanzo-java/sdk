@@ -56,7 +56,7 @@ public class AiDecisionsScore {
   public static final String SERIALIZED_NAME_CRITERIA = "criteria";
   @SerializedName(SERIALIZED_NAME_CRITERIA)
   @javax.annotation.Nonnull
-  private List<Object> criteria = new ArrayList<>();
+  private List<Object> criteria;
 
   public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
   @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)

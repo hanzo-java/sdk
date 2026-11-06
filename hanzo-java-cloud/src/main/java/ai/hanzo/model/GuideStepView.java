@@ -57,7 +57,7 @@ public class GuideStepView {
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
   @javax.annotation.Nullable
-  private Map<String, Object> args = new HashMap<>();
+  private Map<String, Object> args;
 
   public static final String SERIALIZED_NAME_AUTOMATABLE = "automatable";
   @SerializedName(SERIALIZED_NAME_AUTOMATABLE)
@@ -72,12 +72,12 @@ public class GuideStepView {
   public static final String SERIALIZED_NAME_BLOCKED_BY = "blockedBy";
   @SerializedName(SERIALIZED_NAME_BLOCKED_BY)
   @javax.annotation.Nullable
-  private List<String> blockedBy = new ArrayList<>();
+  private List<String> blockedBy;
 
   public static final String SERIALIZED_NAME_DEPS = "deps";
   @SerializedName(SERIALIZED_NAME_DEPS)
   @javax.annotation.Nullable
-  private List<String> deps = new ArrayList<>();
+  private List<String> deps;
 
   public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)

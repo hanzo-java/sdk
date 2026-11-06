@@ -55,7 +55,7 @@ public class SandboxExecRequest {
   public static final String SERIALIZED_NAME_ARGV = "argv";
   @SerializedName(SERIALIZED_NAME_ARGV)
   @javax.annotation.Nullable
-  private List<String> argv = new ArrayList<>();
+  private List<String> argv;
 
   public static final String SERIALIZED_NAME_COMMAND = "command";
   @SerializedName(SERIALIZED_NAME_COMMAND)

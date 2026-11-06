@@ -71,7 +71,7 @@ public class MarketingBulkIn {
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
   @javax.annotation.Nullable
-  private List<Long> ids = new ArrayList<>();
+  private List<Long> ids;
 
   public static final String SERIALIZED_NAME_SEGMENT = "segment";
   @SerializedName(SERIALIZED_NAME_SEGMENT)

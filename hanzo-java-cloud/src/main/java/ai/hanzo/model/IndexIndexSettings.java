@@ -55,7 +55,7 @@ public class IndexIndexSettings {
   public static final String SERIALIZED_NAME_FILTERABLE_ATTRIBUTES = "filterableAttributes";
   @SerializedName(SERIALIZED_NAME_FILTERABLE_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<String> filterableAttributes = new ArrayList<>();
+  private List<String> filterableAttributes;
 
   public IndexIndexSettings() {
   }

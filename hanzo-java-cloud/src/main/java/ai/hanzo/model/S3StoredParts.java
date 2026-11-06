@@ -61,7 +61,7 @@ public class S3StoredParts {
   public static final String SERIALIZED_NAME_PARTS = "parts";
   @SerializedName(SERIALIZED_NAME_PARTS)
   @javax.annotation.Nullable
-  private List<S3StoredPart> parts = new ArrayList<>();
+  private List<S3StoredPart> parts;
 
   public static final String SERIALIZED_NAME_UPLOAD = "upload";
   @SerializedName(SERIALIZED_NAME_UPLOAD)

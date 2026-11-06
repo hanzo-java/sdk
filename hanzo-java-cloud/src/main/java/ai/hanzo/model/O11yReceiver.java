@@ -73,37 +73,37 @@ public class O11yReceiver {
   public static final String SERIALIZED_NAME_DISCORD_CONFIGS = "discord_configs";
   @SerializedName(SERIALIZED_NAME_DISCORD_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yDiscordConfig> discordConfigs = new ArrayList<>();
+  private List<O11yDiscordConfig> discordConfigs;
 
   public static final String SERIALIZED_NAME_EMAIL_CONFIGS = "email_configs";
   @SerializedName(SERIALIZED_NAME_EMAIL_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yEmailConfig> emailConfigs = new ArrayList<>();
+  private List<O11yEmailConfig> emailConfigs;
 
   public static final String SERIALIZED_NAME_INCIDENTIO_CONFIGS = "incidentio_configs";
   @SerializedName(SERIALIZED_NAME_INCIDENTIO_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yIncidentioConfig> incidentioConfigs = new ArrayList<>();
+  private List<O11yIncidentioConfig> incidentioConfigs;
 
   public static final String SERIALIZED_NAME_JIRA_CONFIGS = "jira_configs";
   @SerializedName(SERIALIZED_NAME_JIRA_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yJiraConfig> jiraConfigs = new ArrayList<>();
+  private List<O11yJiraConfig> jiraConfigs;
 
   public static final String SERIALIZED_NAME_MATTERMOST_CONFIGS = "mattermost_configs";
   @SerializedName(SERIALIZED_NAME_MATTERMOST_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yMattermostConfig> mattermostConfigs = new ArrayList<>();
+  private List<O11yMattermostConfig> mattermostConfigs;
 
   public static final String SERIALIZED_NAME_MSTEAMS_CONFIGS = "msteams_configs";
   @SerializedName(SERIALIZED_NAME_MSTEAMS_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yMSTeamsConfig> msteamsConfigs = new ArrayList<>();
+  private List<O11yMSTeamsConfig> msteamsConfigs;
 
   public static final String SERIALIZED_NAME_MSTEAMSV2_CONFIGS = "msteamsv2_configs";
   @SerializedName(SERIALIZED_NAME_MSTEAMSV2_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yMSTeamsV2Config> msteamsv2Configs = new ArrayList<>();
+  private List<O11yMSTeamsV2Config> msteamsv2Configs;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -113,57 +113,57 @@ public class O11yReceiver {
   public static final String SERIALIZED_NAME_OPSGENIE_CONFIGS = "opsgenie_configs";
   @SerializedName(SERIALIZED_NAME_OPSGENIE_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yOpsGenieConfig> opsgenieConfigs = new ArrayList<>();
+  private List<O11yOpsGenieConfig> opsgenieConfigs;
 
   public static final String SERIALIZED_NAME_PAGERDUTY_CONFIGS = "pagerduty_configs";
   @SerializedName(SERIALIZED_NAME_PAGERDUTY_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yPagerdutyConfig> pagerdutyConfigs = new ArrayList<>();
+  private List<O11yPagerdutyConfig> pagerdutyConfigs;
 
   public static final String SERIALIZED_NAME_PUSHOVER_CONFIGS = "pushover_configs";
   @SerializedName(SERIALIZED_NAME_PUSHOVER_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yPushoverConfig> pushoverConfigs = new ArrayList<>();
+  private List<O11yPushoverConfig> pushoverConfigs;
 
   public static final String SERIALIZED_NAME_ROCKETCHAT_CONFIGS = "rocketchat_configs";
   @SerializedName(SERIALIZED_NAME_ROCKETCHAT_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yRocketchatConfig> rocketchatConfigs = new ArrayList<>();
+  private List<O11yRocketchatConfig> rocketchatConfigs;
 
   public static final String SERIALIZED_NAME_SLACK_CONFIGS = "slack_configs";
   @SerializedName(SERIALIZED_NAME_SLACK_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11ySlackConfig> slackConfigs = new ArrayList<>();
+  private List<O11ySlackConfig> slackConfigs;
 
   public static final String SERIALIZED_NAME_SNS_CONFIGS = "sns_configs";
   @SerializedName(SERIALIZED_NAME_SNS_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11ySNSConfig> snsConfigs = new ArrayList<>();
+  private List<O11ySNSConfig> snsConfigs;
 
   public static final String SERIALIZED_NAME_TELEGRAM_CONFIGS = "telegram_configs";
   @SerializedName(SERIALIZED_NAME_TELEGRAM_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yTelegramConfig> telegramConfigs = new ArrayList<>();
+  private List<O11yTelegramConfig> telegramConfigs;
 
   public static final String SERIALIZED_NAME_VICTOROPS_CONFIGS = "victorops_configs";
   @SerializedName(SERIALIZED_NAME_VICTOROPS_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yVictorOpsConfig> victoropsConfigs = new ArrayList<>();
+  private List<O11yVictorOpsConfig> victoropsConfigs;
 
   public static final String SERIALIZED_NAME_WEBEX_CONFIGS = "webex_configs";
   @SerializedName(SERIALIZED_NAME_WEBEX_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yWebexConfig> webexConfigs = new ArrayList<>();
+  private List<O11yWebexConfig> webexConfigs;
 
   public static final String SERIALIZED_NAME_WEBHOOK_CONFIGS = "webhook_configs";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yWebhookConfig> webhookConfigs = new ArrayList<>();
+  private List<O11yWebhookConfig> webhookConfigs;
 
   public static final String SERIALIZED_NAME_WECHAT_CONFIGS = "wechat_configs";
   @SerializedName(SERIALIZED_NAME_WECHAT_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yWechatConfig> wechatConfigs = new ArrayList<>();
+  private List<O11yWechatConfig> wechatConfigs;
 
   public O11yReceiver() {
   }

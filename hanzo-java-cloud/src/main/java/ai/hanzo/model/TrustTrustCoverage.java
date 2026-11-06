@@ -62,7 +62,7 @@ public class TrustTrustCoverage {
   public static final String SERIALIZED_NAME_FRAMEWORKS = "frameworks";
   @SerializedName(SERIALIZED_NAME_FRAMEWORKS)
   @javax.annotation.Nullable
-  private List<TrustCoverRow> frameworks = new ArrayList<>();
+  private List<TrustCoverRow> frameworks;
 
   public static final String SERIALIZED_NAME_GENERATED = "generated";
   @SerializedName(SERIALIZED_NAME_GENERATED)

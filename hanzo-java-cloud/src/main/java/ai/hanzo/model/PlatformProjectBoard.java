@@ -69,17 +69,17 @@ public class PlatformProjectBoard {
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
   @javax.annotation.Nullable
-  private List<PlatformProject> projects = new ArrayList<>();
+  private List<PlatformProject> projects;
 
   public static final String SERIALIZED_NAME_UNASSIGNED = "unassigned";
   @SerializedName(SERIALIZED_NAME_UNASSIGNED)
   @javax.annotation.Nullable
-  private List<PlatformDeclRef> unassigned = new ArrayList<>();
+  private List<PlatformDeclRef> unassigned;
 
   public static final String SERIALIZED_NAME_UNREADABLE = "unreadable";
   @SerializedName(SERIALIZED_NAME_UNREADABLE)
   @javax.annotation.Nullable
-  private List<PlatformUnreadableFile> unreadable = new ArrayList<>();
+  private List<PlatformUnreadableFile> unreadable;
 
   public PlatformProjectBoard() {
   }

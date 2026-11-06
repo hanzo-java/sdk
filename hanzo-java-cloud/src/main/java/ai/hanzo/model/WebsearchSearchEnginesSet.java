@@ -58,12 +58,12 @@ public class WebsearchSearchEnginesSet {
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
   @javax.annotation.Nullable
-  private List<String> enabled = new ArrayList<>();
+  private List<String> enabled;
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
   @javax.annotation.Nullable
-  private Map<String, WebsearchSearchEngineOptions> options = new HashMap<>();
+  private Map<String, WebsearchSearchEngineOptions> options;
 
   public WebsearchSearchEnginesSet() {
   }

@@ -65,7 +65,7 @@ public class InsightsEvent {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   @javax.annotation.Nullable
-  private Map<String, Object> properties = new HashMap<>();
+  private Map<String, Object> properties;
 
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)

@@ -62,7 +62,7 @@ public class StudioBrandPatch {
   public static final String SERIALIZED_NAME_LOGOS = "logos";
   @SerializedName(SERIALIZED_NAME_LOGOS)
   @javax.annotation.Nullable
-  private List<String> logos = new ArrayList<>();
+  private List<String> logos;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -77,7 +77,7 @@ public class StudioBrandPatch {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Map<String, Object> tokens = new HashMap<>();
+  private Map<String, Object> tokens;
 
   public StudioBrandPatch() {
   }

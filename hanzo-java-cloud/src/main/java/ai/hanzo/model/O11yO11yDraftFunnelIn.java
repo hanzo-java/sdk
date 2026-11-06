@@ -76,7 +76,7 @@ public class O11yO11yDraftFunnelIn {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<O11yFunnelStep> steps = new ArrayList<>();
+  private List<O11yFunnelStep> steps;
 
   public O11yO11yDraftFunnelIn() {
   }

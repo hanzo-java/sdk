@@ -66,7 +66,7 @@ public class DatasetRiskDatasetRows {
   public static final String SERIALIZED_NAME_DIMS = "dims";
   @SerializedName(SERIALIZED_NAME_DIMS)
   @javax.annotation.Nullable
-  private List<String> dims = new ArrayList<>();
+  private List<String> dims;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
@@ -81,7 +81,7 @@ public class DatasetRiskDatasetRows {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<DatasetRiskDatasetRow> rows = new ArrayList<>();
+  private List<DatasetRiskDatasetRow> rows;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)

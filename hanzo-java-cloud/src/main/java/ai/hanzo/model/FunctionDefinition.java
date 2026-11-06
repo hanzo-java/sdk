@@ -60,7 +60,7 @@ public class FunctionDefinition {
   public static final String SERIALIZED_NAME_ENV_NAMES = "envNames";
   @SerializedName(SERIALIZED_NAME_ENV_NAMES)
   @javax.annotation.Nullable
-  private List<String> envNames = new ArrayList<>();
+  private List<String> envNames;
 
   public static final String SERIALIZED_NAME_ENVIRONMENT = "environment";
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)

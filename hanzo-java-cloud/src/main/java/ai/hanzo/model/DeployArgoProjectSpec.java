@@ -57,7 +57,7 @@ public class DeployArgoProjectSpec {
   public static final String SERIALIZED_NAME_CLUSTER_RESOURCE_WHITELIST = "clusterResourceWhitelist";
   @SerializedName(SERIALIZED_NAME_CLUSTER_RESOURCE_WHITELIST)
   @javax.annotation.Nullable
-  private List<DeployArgoGroupKind> clusterResourceWhitelist = new ArrayList<>();
+  private List<DeployArgoGroupKind> clusterResourceWhitelist;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -67,12 +67,12 @@ public class DeployArgoProjectSpec {
   public static final String SERIALIZED_NAME_DESTINATIONS = "destinations";
   @SerializedName(SERIALIZED_NAME_DESTINATIONS)
   @javax.annotation.Nullable
-  private List<DeployArgoDestination> destinations = new ArrayList<>();
+  private List<DeployArgoDestination> destinations;
 
   public static final String SERIALIZED_NAME_SOURCE_REPOS = "sourceRepos";
   @SerializedName(SERIALIZED_NAME_SOURCE_REPOS)
   @javax.annotation.Nullable
-  private List<String> sourceRepos = new ArrayList<>();
+  private List<String> sourceRepos;
 
   public DeployArgoProjectSpec() {
   }

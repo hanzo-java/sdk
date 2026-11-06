@@ -56,7 +56,7 @@ public class O11yO11yQueryRangeData {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<O11yO11yReductionSeriesResult> results = new ArrayList<>();
+  private List<O11yO11yReductionSeriesResult> results;
 
   public O11yO11yQueryRangeData() {
   }

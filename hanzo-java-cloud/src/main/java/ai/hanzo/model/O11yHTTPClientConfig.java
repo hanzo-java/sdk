@@ -106,7 +106,7 @@ public class O11yHTTPClientConfig {
   public static final String SERIALIZED_NAME_PROXY_CONNECT_HEADER = "proxy_connect_header";
   @SerializedName(SERIALIZED_NAME_PROXY_CONNECT_HEADER)
   @javax.annotation.Nullable
-  private Map<String, List<Object>> proxyConnectHeader = new HashMap<>();
+  private Map<String, List<Object>> proxyConnectHeader;
 
   public static final String SERIALIZED_NAME_PROXY_FROM_ENVIRONMENT = "proxy_from_environment";
   @SerializedName(SERIALIZED_NAME_PROXY_FROM_ENVIRONMENT)

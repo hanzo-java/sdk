@@ -60,7 +60,7 @@ public class MarketingResumeForm {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private Map<String, String> fields = new HashMap<>();
+  private Map<String, String> fields;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)

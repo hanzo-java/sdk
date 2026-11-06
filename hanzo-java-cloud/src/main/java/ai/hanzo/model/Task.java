@@ -91,7 +91,7 @@ public class Task {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<String> labels = new ArrayList<>();
+  private List<String> labels;
 
   public static final String SERIALIZED_NAME_LOG = "log";
   @SerializedName(SERIALIZED_NAME_LOG)

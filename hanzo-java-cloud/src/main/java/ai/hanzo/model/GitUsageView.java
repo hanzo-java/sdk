@@ -61,7 +61,7 @@ public class GitUsageView {
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
   @javax.annotation.Nullable
-  private List<GitUsageRepo> repos = new ArrayList<>();
+  private List<GitUsageRepo> repos;
 
   public static final String SERIALIZED_NAME_TOTAL_BYTES = "totalBytes";
   @SerializedName(SERIALIZED_NAME_TOTAL_BYTES)

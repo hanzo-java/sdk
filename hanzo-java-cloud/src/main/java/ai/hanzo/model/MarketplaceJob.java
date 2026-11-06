@@ -125,7 +125,7 @@ public class MarketplaceJob {
   public static final String SERIALIZED_NAME_HISTORY = "history";
   @SerializedName(SERIALIZED_NAME_HISTORY)
   @javax.annotation.Nullable
-  private List<MarketplaceStep> history = new ArrayList<>();
+  private List<MarketplaceStep> history;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

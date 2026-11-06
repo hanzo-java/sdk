@@ -66,7 +66,7 @@ public class StudioFlowWrite {
   public static final String SERIALIZED_NAME_INPUTS = "inputs";
   @SerializedName(SERIALIZED_NAME_INPUTS)
   @javax.annotation.Nullable
-  private Map<String, Object> inputs = new HashMap<>();
+  private Map<String, Object> inputs;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)

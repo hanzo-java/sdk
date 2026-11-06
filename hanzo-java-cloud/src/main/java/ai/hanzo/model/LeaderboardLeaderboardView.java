@@ -77,7 +77,7 @@ public class LeaderboardLeaderboardView {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<LeaderboardLeaderboardRow> rows = new ArrayList<>();
+  private List<LeaderboardLeaderboardRow> rows;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)

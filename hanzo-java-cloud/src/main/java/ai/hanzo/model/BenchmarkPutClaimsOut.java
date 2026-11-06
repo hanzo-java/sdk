@@ -65,7 +65,7 @@ public class BenchmarkPutClaimsOut {
   public static final String SERIALIZED_NAME_REJECTED = "rejected";
   @SerializedName(SERIALIZED_NAME_REJECTED)
   @javax.annotation.Nullable
-  private List<String> rejected = new ArrayList<>();
+  private List<String> rejected;
 
   public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
   @SerializedName(SERIALIZED_NAME_VISIBILITY)

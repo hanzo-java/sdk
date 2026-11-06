@@ -56,7 +56,7 @@ public class StudioRunPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<StudioRun> data = new ArrayList<>();
+  private List<StudioRun> data;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

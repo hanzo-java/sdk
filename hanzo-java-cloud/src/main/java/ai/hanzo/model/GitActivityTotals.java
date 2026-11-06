@@ -90,7 +90,7 @@ public class GitActivityTotals {
   public static final String SERIALIZED_NAME_MERGE_MONTHS = "mergeMonths";
   @SerializedName(SERIALIZED_NAME_MERGE_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> mergeMonths = new ArrayList<>();
+  private List<Long> mergeMonths;
 
   public static final String SERIALIZED_NAME_MERGES = "merges";
   @SerializedName(SERIALIZED_NAME_MERGES)
@@ -105,7 +105,7 @@ public class GitActivityTotals {
   public static final String SERIALIZED_NAME_MONTHS = "months";
   @SerializedName(SERIALIZED_NAME_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> months = new ArrayList<>();
+  private List<Long> months;
 
   public static final String SERIALIZED_NAME_ORGS = "orgs";
   @SerializedName(SERIALIZED_NAME_ORGS)
@@ -120,7 +120,7 @@ public class GitActivityTotals {
   public static final String SERIALIZED_NAME_OURS_MONTHS = "oursMonths";
   @SerializedName(SERIALIZED_NAME_OURS_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> oursMonths = new ArrayList<>();
+  private List<Long> oursMonths;
 
   public static final String SERIALIZED_NAME_OWN = "own";
   @SerializedName(SERIALIZED_NAME_OWN)

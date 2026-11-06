@@ -56,7 +56,7 @@ public class SocialSocialPosts {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<SocialSocialPost> data = new ArrayList<>();
+  private List<SocialSocialPost> data;
 
   public SocialSocialPosts() {
   }

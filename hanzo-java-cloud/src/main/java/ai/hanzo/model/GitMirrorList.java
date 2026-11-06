@@ -56,7 +56,7 @@ public class GitMirrorList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<GitMirrorTargetView> data = new ArrayList<>();
+  private List<GitMirrorTargetView> data;
 
   public GitMirrorList() {
   }

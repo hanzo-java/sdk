@@ -67,7 +67,7 @@ public class CompanyKycStartOut {
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private List<CompanyKycSession> sessions = new ArrayList<>();
+  private List<CompanyKycSession> sessions;
 
   public CompanyKycStartOut() {
   }

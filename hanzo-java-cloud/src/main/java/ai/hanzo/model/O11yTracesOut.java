@@ -71,7 +71,7 @@ public class O11yTracesOut {
   public static final String SERIALIZED_NAME_TRACES = "traces";
   @SerializedName(SERIALIZED_NAME_TRACES)
   @javax.annotation.Nullable
-  private List<O11yTraceRow> traces = new ArrayList<>();
+  private List<O11yTraceRow> traces;
 
   public O11yTracesOut() {
   }

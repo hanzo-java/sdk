@@ -55,12 +55,12 @@ public class DatasetRiskDatasetSpec {
   public static final String SERIALIZED_NAME_CUTS = "cuts";
   @SerializedName(SERIALIZED_NAME_CUTS)
   @javax.annotation.Nullable
-  private List<String> cuts = new ArrayList<>();
+  private List<String> cuts;
 
   public static final String SERIALIZED_NAME_DIMS = "dims";
   @SerializedName(SERIALIZED_NAME_DIMS)
   @javax.annotation.Nullable
-  private List<String> dims = new ArrayList<>();
+  private List<String> dims;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)

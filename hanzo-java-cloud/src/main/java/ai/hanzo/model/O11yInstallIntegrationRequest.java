@@ -55,7 +55,7 @@ public class O11yInstallIntegrationRequest {
   public static final String SERIALIZED_NAME_CONFIG = "config";
   @SerializedName(SERIALIZED_NAME_CONFIG)
   @javax.annotation.Nullable
-  private Map<String, Object> config = new HashMap<>();
+  private Map<String, Object> config;
 
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integration_id";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)

@@ -56,7 +56,7 @@ public class DomainHoldings {
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private List<DomainHolding> domains = new ArrayList<>();
+  private List<DomainHolding> domains;
 
   public DomainHoldings() {
   }

@@ -58,7 +58,7 @@ public class AutoConnectorMetadata {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<AutoConnectorAction> actions = new ArrayList<>();
+  private List<AutoConnectorAction> actions;
 
   public static final String SERIALIZED_NAME_AUTH = "auth";
   @SerializedName(SERIALIZED_NAME_AUTH)
@@ -68,7 +68,7 @@ public class AutoConnectorMetadata {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
   @javax.annotation.Nullable
-  private List<String> categories = new ArrayList<>();
+  private List<String> categories;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -98,7 +98,7 @@ public class AutoConnectorMetadata {
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   @javax.annotation.Nullable
-  private List<AutoConnectorTrigger> triggers = new ArrayList<>();
+  private List<AutoConnectorTrigger> triggers;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)

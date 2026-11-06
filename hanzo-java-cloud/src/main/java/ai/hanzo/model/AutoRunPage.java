@@ -56,7 +56,7 @@ public class AutoRunPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<AutoFlowRun> data = new ArrayList<>();
+  private List<AutoFlowRun> data;
 
   public AutoRunPage() {
   }

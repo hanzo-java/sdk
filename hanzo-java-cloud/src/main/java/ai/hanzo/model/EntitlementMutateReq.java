@@ -55,12 +55,12 @@ public class EntitlementMutateReq {
   public static final String SERIALIZED_NAME_ADD = "add";
   @SerializedName(SERIALIZED_NAME_ADD)
   @javax.annotation.Nullable
-  private List<String> add = new ArrayList<>();
+  private List<String> add;
 
   public static final String SERIALIZED_NAME_REMOVE = "remove";
   @SerializedName(SERIALIZED_NAME_REMOVE)
   @javax.annotation.Nullable
-  private List<String> remove = new ArrayList<>();
+  private List<String> remove;
 
   public EntitlementMutateReq() {
   }

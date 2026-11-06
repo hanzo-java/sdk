@@ -61,7 +61,7 @@ public class DataroomDataroomStats {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<DataroomDataroomLinkStats> links = new ArrayList<>();
+  private List<DataroomDataroomLinkStats> links;
 
   public static final String SERIALIZED_NAME_TOTAL_PAGE_VIEWS = "totalPageViews";
   @SerializedName(SERIALIZED_NAME_TOTAL_PAGE_VIEWS)

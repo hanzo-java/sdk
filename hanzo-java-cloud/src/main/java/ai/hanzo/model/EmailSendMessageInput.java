@@ -73,7 +73,7 @@ public class EmailSendMessageInput {
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   @javax.annotation.Nullable
-  private Map<String, String> headers = new HashMap<>();
+  private Map<String, String> headers;
 
   public static final String SERIALIZED_NAME_HTML = "html";
   @SerializedName(SERIALIZED_NAME_HTML)
@@ -118,7 +118,7 @@ public class EmailSendMessageInput {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
   @javax.annotation.Nullable
-  private List<String> to = new ArrayList<>();
+  private List<String> to;
 
   public EmailSendMessageInput() {
   }

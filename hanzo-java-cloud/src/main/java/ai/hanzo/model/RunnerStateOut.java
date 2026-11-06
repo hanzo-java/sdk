@@ -61,7 +61,7 @@ public class RunnerStateOut {
   public static final String SERIALIZED_NAME_STORED = "stored";
   @SerializedName(SERIALIZED_NAME_STORED)
   @javax.annotation.Nullable
-  private List<String> stored = new ArrayList<>();
+  private List<String> stored;
 
   public RunnerStateOut() {
   }

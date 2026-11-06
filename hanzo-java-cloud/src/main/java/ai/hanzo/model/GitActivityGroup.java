@@ -58,7 +58,7 @@ public class GitActivityGroup {
   public static final String SERIALIZED_NAME_ACTIVE = "active";
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   @javax.annotation.Nullable
-  private Map<String, Long> active = new HashMap<>();
+  private Map<String, Long> active;
 
   public static final String SERIALIZED_NAME_ACTIVE30 = "active30";
   @SerializedName(SERIALIZED_NAME_ACTIVE30)
@@ -78,7 +78,7 @@ public class GitActivityGroup {
   public static final String SERIALIZED_NAME_DAILY = "daily";
   @SerializedName(SERIALIZED_NAME_DAILY)
   @javax.annotation.Nullable
-  private Map<String, Long> daily = new HashMap<>();
+  private Map<String, Long> daily;
 
   public static final String SERIALIZED_NAME_EMPTY = "empty";
   @SerializedName(SERIALIZED_NAME_EMPTY)
@@ -93,12 +93,12 @@ public class GitActivityGroup {
   public static final String SERIALIZED_NAME_LATEST = "latest";
   @SerializedName(SERIALIZED_NAME_LATEST)
   @javax.annotation.Nullable
-  private List<GitActivityCommit> latest = new ArrayList<>();
+  private List<GitActivityCommit> latest;
 
   public static final String SERIALIZED_NAME_MERGE_MONTHS = "mergeMonths";
   @SerializedName(SERIALIZED_NAME_MERGE_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> mergeMonths = new ArrayList<>();
+  private List<Long> mergeMonths;
 
   public static final String SERIALIZED_NAME_MERGES = "merges";
   @SerializedName(SERIALIZED_NAME_MERGES)
@@ -113,7 +113,7 @@ public class GitActivityGroup {
   public static final String SERIALIZED_NAME_MONTHS = "months";
   @SerializedName(SERIALIZED_NAME_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> months = new ArrayList<>();
+  private List<Long> months;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -133,12 +133,12 @@ public class GitActivityGroup {
   public static final String SERIALIZED_NAME_OURS_DAILY = "oursDaily";
   @SerializedName(SERIALIZED_NAME_OURS_DAILY)
   @javax.annotation.Nullable
-  private Map<String, Long> oursDaily = new HashMap<>();
+  private Map<String, Long> oursDaily;
 
   public static final String SERIALIZED_NAME_OURS_MONTHS = "oursMonths";
   @SerializedName(SERIALIZED_NAME_OURS_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> oursMonths = new ArrayList<>();
+  private List<Long> oursMonths;
 
   public static final String SERIALIZED_NAME_PEOPLE = "people";
   @SerializedName(SERIALIZED_NAME_PEOPLE)

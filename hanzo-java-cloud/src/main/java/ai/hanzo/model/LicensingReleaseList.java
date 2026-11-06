@@ -56,7 +56,7 @@ public class LicensingReleaseList {
   public static final String SERIALIZED_NAME_RELEASES = "releases";
   @SerializedName(SERIALIZED_NAME_RELEASES)
   @javax.annotation.Nullable
-  private List<LicensingRelease> releases = new ArrayList<>();
+  private List<LicensingRelease> releases;
 
   public LicensingReleaseList() {
   }

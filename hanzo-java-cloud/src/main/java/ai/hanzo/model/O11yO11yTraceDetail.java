@@ -56,7 +56,7 @@ public class O11yO11yTraceDetail {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<O11yO11yEvent> events = new ArrayList<>();
+  private List<O11yO11yEvent> events;
 
   public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)

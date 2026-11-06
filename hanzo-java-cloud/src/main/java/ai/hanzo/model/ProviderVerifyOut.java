@@ -80,7 +80,7 @@ public class ProviderVerifyOut {
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
   @javax.annotation.Nullable
-  private List<String> scopes = new ArrayList<>();
+  private List<String> scopes;
 
   public ProviderVerifyOut() {
   }

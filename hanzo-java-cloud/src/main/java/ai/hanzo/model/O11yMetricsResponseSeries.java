@@ -56,22 +56,22 @@ public class O11yMetricsResponseSeries {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private List<O11yPoint> errors = new ArrayList<>();
+  private List<O11yPoint> errors;
 
   public static final String SERIALIZED_NAME_LATENCY_P50_MS = "latencyP50Ms";
   @SerializedName(SERIALIZED_NAME_LATENCY_P50_MS)
   @javax.annotation.Nullable
-  private List<O11yPoint> latencyP50Ms = new ArrayList<>();
+  private List<O11yPoint> latencyP50Ms;
 
   public static final String SERIALIZED_NAME_LATENCY_P95_MS = "latencyP95Ms";
   @SerializedName(SERIALIZED_NAME_LATENCY_P95_MS)
   @javax.annotation.Nullable
-  private List<O11yPoint> latencyP95Ms = new ArrayList<>();
+  private List<O11yPoint> latencyP95Ms;
 
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private List<O11yPoint> requests = new ArrayList<>();
+  private List<O11yPoint> requests;
 
   public O11yMetricsResponseSeries() {
   }

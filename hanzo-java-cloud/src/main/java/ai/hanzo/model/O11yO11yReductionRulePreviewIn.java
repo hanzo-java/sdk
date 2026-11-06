@@ -55,7 +55,7 @@ public class O11yO11yReductionRulePreviewIn {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nonnull
-  private List<String> labels = new ArrayList<>();
+  private List<String> labels;
 
   public static final String SERIALIZED_NAME_LOOKBACK_MS = "lookbackMs";
   @SerializedName(SERIALIZED_NAME_LOOKBACK_MS)

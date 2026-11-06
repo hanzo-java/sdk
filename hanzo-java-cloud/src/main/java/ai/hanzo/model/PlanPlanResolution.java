@@ -66,7 +66,7 @@ public class PlanPlanResolution {
   public static final String SERIALIZED_NAME_LICENSE_FEATURES = "license_features";
   @SerializedName(SERIALIZED_NAME_LICENSE_FEATURES)
   @javax.annotation.Nullable
-  private List<String> licenseFeatures = new ArrayList<>();
+  private List<String> licenseFeatures;
 
   public static final String SERIALIZED_NAME_PRICE_REF = "price_ref";
   @SerializedName(SERIALIZED_NAME_PRICE_REF)

@@ -56,7 +56,7 @@ public class ToolMcpServerList {
   public static final String SERIALIZED_NAME_SERVERS = "servers";
   @SerializedName(SERIALIZED_NAME_SERVERS)
   @javax.annotation.Nullable
-  private List<ToolMCPServer> servers = new ArrayList<>();
+  private List<ToolMCPServer> servers;
 
   public ToolMcpServerList() {
   }

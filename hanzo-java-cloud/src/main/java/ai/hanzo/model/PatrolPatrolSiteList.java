@@ -56,7 +56,7 @@ public class PatrolPatrolSiteList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<PatrolPatrolSite> data = new ArrayList<>();
+  private List<PatrolPatrolSite> data;
 
   public PatrolPatrolSiteList() {
   }

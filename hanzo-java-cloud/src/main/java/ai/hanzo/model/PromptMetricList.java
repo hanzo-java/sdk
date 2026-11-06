@@ -56,7 +56,7 @@ public class PromptMetricList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<PromptMetricRow> data = new ArrayList<>();
+  private List<PromptMetricRow> data;
 
   public PromptMetricList() {
   }

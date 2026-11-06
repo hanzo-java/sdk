@@ -56,7 +56,7 @@ public class FormWebhookList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<FormWebhook> items = new ArrayList<>();
+  private List<FormWebhook> items;
 
   public FormWebhookList() {
   }

@@ -56,7 +56,7 @@ public class PlatformEnvironmentBoard {
   public static final String SERIALIZED_NAME_ENVIRONMENTS = "environments";
   @SerializedName(SERIALIZED_NAME_ENVIRONMENTS)
   @javax.annotation.Nullable
-  private List<PlatformEnvironmentRow> environments = new ArrayList<>();
+  private List<PlatformEnvironmentRow> environments;
 
   public PlatformEnvironmentBoard() {
   }

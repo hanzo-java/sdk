@@ -61,7 +61,7 @@ public class LabelRiskResolveOut {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<LabelRiskResolved> labels = new ArrayList<>();
+  private List<LabelRiskResolved> labels;
 
   public static final String SERIALIZED_NAME_NOW = "now";
   @SerializedName(SERIALIZED_NAME_NOW)

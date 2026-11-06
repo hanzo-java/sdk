@@ -60,7 +60,7 @@ public class MarketingTestIn {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
   @javax.annotation.Nullable
-  private List<String> to = new ArrayList<>();
+  private List<String> to;
 
   public MarketingTestIn() {
   }

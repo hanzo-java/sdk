@@ -56,7 +56,7 @@ public class PlatformProjectCreate {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private List<PlatformDeclRef> apps = new ArrayList<>();
+  private List<PlatformDeclRef> apps;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)

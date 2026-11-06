@@ -61,7 +61,7 @@ public class RunnerNeed {
   public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
   @SerializedName(SERIALIZED_NAME_OUTPUTS)
   @javax.annotation.Nullable
-  private List<RunnerPair> outputs = new ArrayList<>();
+  private List<RunnerPair> outputs;
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)

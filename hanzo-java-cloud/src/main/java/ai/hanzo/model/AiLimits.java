@@ -62,12 +62,12 @@ public class AiLimits {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<AiAction> actions = new ArrayList<>();
+  private List<AiAction> actions;
 
   public static final String SERIALIZED_NAME_CLASSES = "classes";
   @SerializedName(SERIALIZED_NAME_CLASSES)
   @javax.annotation.Nullable
-  private Map<String, AiClass> classes = new HashMap<>();
+  private Map<String, AiClass> classes;
 
   public static final String SERIALIZED_NAME_CREDITS_AFTER_ALLOWANCE = "credits_after_allowance";
   @SerializedName(SERIALIZED_NAME_CREDITS_AFTER_ALLOWANCE)
@@ -87,7 +87,7 @@ public class AiLimits {
   public static final String SERIALIZED_NAME_PAUSED = "paused";
   @SerializedName(SERIALIZED_NAME_PAUSED)
   @javax.annotation.Nullable
-  private List<AiPaused> paused = new ArrayList<>();
+  private List<AiPaused> paused;
 
   public static final String SERIALIZED_NAME_PERIOD_END = "period_end";
   @SerializedName(SERIALIZED_NAME_PERIOD_END)

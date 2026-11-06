@@ -96,7 +96,7 @@ public class IamSession {
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
   @javax.annotation.Nullable
-  private List<String> sessionId = new ArrayList<>();
+  private List<String> sessionId;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

@@ -56,7 +56,7 @@ public class GitRefsJSON {
   public static final String SERIALIZED_NAME_BRANCHES = "branches";
   @SerializedName(SERIALIZED_NAME_BRANCHES)
   @javax.annotation.Nullable
-  private List<GitRefJSON> branches = new ArrayList<>();
+  private List<GitRefJSON> branches;
 
   public static final String SERIALIZED_NAME_DEFAULT = "default";
   @SerializedName(SERIALIZED_NAME_DEFAULT)
@@ -66,7 +66,7 @@ public class GitRefsJSON {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<GitRefJSON> tags = new ArrayList<>();
+  private List<GitRefJSON> tags;
 
   public GitRefsJSON() {
   }

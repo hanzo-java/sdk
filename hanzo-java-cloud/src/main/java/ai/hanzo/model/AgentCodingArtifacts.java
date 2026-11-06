@@ -56,7 +56,7 @@ public class AgentCodingArtifacts {
   public static final String SERIALIZED_NAME_ARTIFACTS = "artifacts";
   @SerializedName(SERIALIZED_NAME_ARTIFACTS)
   @javax.annotation.Nullable
-  private List<AgentArtifact> artifacts = new ArrayList<>();
+  private List<AgentArtifact> artifacts;
 
   public static final String SERIALIZED_NAME_SAVED = "saved";
   @SerializedName(SERIALIZED_NAME_SAVED)

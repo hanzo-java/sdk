@@ -56,7 +56,7 @@ public class O11yO11yReductionRules {
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private List<O11yO11yReductionRule> rules = new ArrayList<>();
+  private List<O11yO11yReductionRule> rules;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

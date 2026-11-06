@@ -57,7 +57,7 @@ public class GetAiRecords200Response {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<Audit> data = new ArrayList<>();
+  private List<Audit> data;
 
   public static final String SERIALIZED_NAME_DATA2 = "data2";
   @SerializedName(SERIALIZED_NAME_DATA2)

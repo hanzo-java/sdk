@@ -66,7 +66,7 @@ public class BenchmarkLeaderboard {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<BenchmarkLeaderRow> rows = new ArrayList<>();
+  private List<BenchmarkLeaderRow> rows;
 
   public BenchmarkLeaderboard() {
   }

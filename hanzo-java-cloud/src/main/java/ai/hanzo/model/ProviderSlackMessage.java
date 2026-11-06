@@ -61,7 +61,7 @@ public class ProviderSlackMessage {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<ProviderSlackFile> files = new ArrayList<>();
+  private List<ProviderSlackFile> files;
 
   public static final String SERIALIZED_NAME_REPLY_COUNT = "reply_count";
   @SerializedName(SERIALIZED_NAME_REPLY_COUNT)

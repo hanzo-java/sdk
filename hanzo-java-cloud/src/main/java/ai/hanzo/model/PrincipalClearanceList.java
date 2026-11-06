@@ -56,7 +56,7 @@ public class PrincipalClearanceList {
   public static final String SERIALIZED_NAME_CLEARANCES = "clearances";
   @SerializedName(SERIALIZED_NAME_CLEARANCES)
   @javax.annotation.Nullable
-  private List<PrincipalClearance> clearances = new ArrayList<>();
+  private List<PrincipalClearance> clearances;
 
   public PrincipalClearanceList() {
   }

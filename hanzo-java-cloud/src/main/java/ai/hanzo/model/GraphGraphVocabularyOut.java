@@ -61,17 +61,17 @@ public class GraphGraphVocabularyOut {
   public static final String SERIALIZED_NAME_RELATIONS = "relations";
   @SerializedName(SERIALIZED_NAME_RELATIONS)
   @javax.annotation.Nullable
-  private List<String> relations = new ArrayList<>();
+  private List<String> relations;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
   @javax.annotation.Nullable
-  private List<String> rule = new ArrayList<>();
+  private List<String> rule;
 
   public static final String SERIALIZED_NAME_SCHEMA = "schema";
   @SerializedName(SERIALIZED_NAME_SCHEMA)
   @javax.annotation.Nullable
-  private List<GraphGraphDeclared> schema = new ArrayList<>();
+  private List<GraphGraphDeclared> schema;
 
   public GraphGraphVocabularyOut() {
   }

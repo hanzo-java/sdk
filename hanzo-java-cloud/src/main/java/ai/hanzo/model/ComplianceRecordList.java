@@ -57,7 +57,7 @@ public class ComplianceRecordList {
   public static final String SERIALIZED_NAME_ACCREDITATION = "accreditation";
   @SerializedName(SERIALIZED_NAME_ACCREDITATION)
   @javax.annotation.Nullable
-  private List<ComplianceAccView> accreditation = new ArrayList<>();
+  private List<ComplianceAccView> accreditation;
 
   public static final String SERIALIZED_NAME_DISCLAIMER = "disclaimer";
   @SerializedName(SERIALIZED_NAME_DISCLAIMER)
@@ -67,7 +67,7 @@ public class ComplianceRecordList {
   public static final String SERIALIZED_NAME_VERIFICATIONS = "verifications";
   @SerializedName(SERIALIZED_NAME_VERIFICATIONS)
   @javax.annotation.Nullable
-  private List<ComplianceCheckView> verifications = new ArrayList<>();
+  private List<ComplianceCheckView> verifications;
 
   public ComplianceRecordList() {
   }

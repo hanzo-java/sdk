@@ -55,22 +55,22 @@ public class O11yTelemetryFieldValues {
   public static final String SERIALIZED_NAME_BOOL_VALUES = "boolValues";
   @SerializedName(SERIALIZED_NAME_BOOL_VALUES)
   @javax.annotation.Nullable
-  private List<Boolean> boolValues = new ArrayList<>();
+  private List<Boolean> boolValues;
 
   public static final String SERIALIZED_NAME_NUMBER_VALUES = "numberValues";
   @SerializedName(SERIALIZED_NAME_NUMBER_VALUES)
   @javax.annotation.Nullable
-  private List<Double> numberValues = new ArrayList<>();
+  private List<Double> numberValues;
 
   public static final String SERIALIZED_NAME_RELATED_VALUES = "relatedValues";
   @SerializedName(SERIALIZED_NAME_RELATED_VALUES)
   @javax.annotation.Nullable
-  private List<String> relatedValues = new ArrayList<>();
+  private List<String> relatedValues;
 
   public static final String SERIALIZED_NAME_STRING_VALUES = "stringValues";
   @SerializedName(SERIALIZED_NAME_STRING_VALUES)
   @javax.annotation.Nullable
-  private List<String> stringValues = new ArrayList<>();
+  private List<String> stringValues;
 
   public O11yTelemetryFieldValues() {
   }

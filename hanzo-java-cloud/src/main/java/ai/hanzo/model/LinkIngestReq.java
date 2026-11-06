@@ -131,7 +131,7 @@ public class LinkIngestReq {
   public static final String SERIALIZED_NAME_SAMPLES = "samples";
   @SerializedName(SERIALIZED_NAME_SAMPLES)
   @javax.annotation.Nullable
-  private List<LinkReadingReq> samples = new ArrayList<>();
+  private List<LinkReadingReq> samples;
 
   public static final String SERIALIZED_NAME_SYNTHETIC = "synthetic";
   @SerializedName(SERIALIZED_NAME_SYNTHETIC)

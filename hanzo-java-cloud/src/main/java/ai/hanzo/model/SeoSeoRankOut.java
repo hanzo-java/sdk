@@ -61,7 +61,7 @@ public class SeoSeoRankOut {
   public static final String SERIALIZED_NAME_RANKINGS = "rankings";
   @SerializedName(SERIALIZED_NAME_RANKINGS)
   @javax.annotation.Nullable
-  private List<SeoSeoRanking> rankings = new ArrayList<>();
+  private List<SeoSeoRanking> rankings;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

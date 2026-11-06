@@ -86,7 +86,7 @@ public class O11yQueryRangeParamsV3 {
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
   @javax.annotation.Nullable
-  private Map<String, Object> variables = new HashMap<>();
+  private Map<String, Object> variables;
 
   public O11yQueryRangeParamsV3() {
   }

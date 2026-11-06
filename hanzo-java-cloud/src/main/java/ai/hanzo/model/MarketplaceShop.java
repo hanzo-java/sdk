@@ -62,7 +62,7 @@ public class MarketplaceShop {
   public static final String SERIALIZED_NAME_LISTINGS = "listings";
   @SerializedName(SERIALIZED_NAME_LISTINGS)
   @javax.annotation.Nullable
-  private List<MarketplaceShopListing> listings = new ArrayList<>();
+  private List<MarketplaceShopListing> listings;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

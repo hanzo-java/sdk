@@ -56,12 +56,12 @@ public class GraphGraphExtractOut {
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private List<GraphGraphTriple> refused = new ArrayList<>();
+  private List<GraphGraphTriple> refused;
 
   public static final String SERIALIZED_NAME_TRIPLES = "triples";
   @SerializedName(SERIALIZED_NAME_TRIPLES)
   @javax.annotation.Nullable
-  private List<GraphGraphTriple> triples = new ArrayList<>();
+  private List<GraphGraphTriple> triples;
 
   public GraphGraphExtractOut() {
   }

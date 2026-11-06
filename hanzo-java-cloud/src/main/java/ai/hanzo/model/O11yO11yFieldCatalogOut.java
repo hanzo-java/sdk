@@ -56,12 +56,12 @@ public class O11yO11yFieldCatalogOut {
   public static final String SERIALIZED_NAME_INTERESTING = "interesting";
   @SerializedName(SERIALIZED_NAME_INTERESTING)
   @javax.annotation.Nullable
-  private List<O11yO11yTelemetryField> interesting = new ArrayList<>();
+  private List<O11yO11yTelemetryField> interesting;
 
   public static final String SERIALIZED_NAME_SELECTED = "selected";
   @SerializedName(SERIALIZED_NAME_SELECTED)
   @javax.annotation.Nullable
-  private List<O11yO11yTelemetryField> selected = new ArrayList<>();
+  private List<O11yO11yTelemetryField> selected;
 
   public O11yO11yFieldCatalogOut() {
   }

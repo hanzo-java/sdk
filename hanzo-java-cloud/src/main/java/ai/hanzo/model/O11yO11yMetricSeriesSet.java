@@ -56,7 +56,7 @@ public class O11yO11yMetricSeriesSet {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricSeries> series = new ArrayList<>();
+  private List<O11yO11yMetricSeries> series;
 
   public O11yO11yMetricSeriesSet() {
   }

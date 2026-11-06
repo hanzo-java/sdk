@@ -60,12 +60,12 @@ public class TrainResources {
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
   @javax.annotation.Nullable
-  private List<String> devices = new ArrayList<>();
+  private List<String> devices;
 
   public static final String SERIALIZED_NAME_MACHINES = "machines";
   @SerializedName(SERIALIZED_NAME_MACHINES)
   @javax.annotation.Nullable
-  private List<String> machines = new ArrayList<>();
+  private List<String> machines;
 
   public static final String SERIALIZED_NAME_MAX_SECONDS = "max_seconds";
   @SerializedName(SERIALIZED_NAME_MAX_SECONDS)

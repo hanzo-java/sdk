@@ -55,7 +55,7 @@ public class BenchmarkSuite {
   public static final String SERIALIZED_NAME_BENCHMARKS = "benchmarks";
   @SerializedName(SERIALIZED_NAME_BENCHMARKS)
   @javax.annotation.Nonnull
-  private List<String> benchmarks = new ArrayList<>();
+  private List<String> benchmarks;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

@@ -55,7 +55,7 @@ public class TrainCreateIn {
   public static final String SERIALIZED_NAME_CORRECTIONS = "corrections";
   @SerializedName(SERIALIZED_NAME_CORRECTIONS)
   @javax.annotation.Nullable
-  private List<String> corrections = new ArrayList<>();
+  private List<String> corrections;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

@@ -57,7 +57,7 @@ public class EventEconomics {
   public static final String SERIALIZED_NAME_DISPUTES = "disputes";
   @SerializedName(SERIALIZED_NAME_DISPUTES)
   @javax.annotation.Nullable
-  private List<EventEconomicDispute> disputes = new ArrayList<>();
+  private List<EventEconomicDispute> disputes;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)
@@ -67,12 +67,12 @@ public class EventEconomics {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<EventEconomicEvent> rows = new ArrayList<>();
+  private List<EventEconomicEvent> rows;
 
   public static final String SERIALIZED_NAME_SUPERSEDED = "superseded";
   @SerializedName(SERIALIZED_NAME_SUPERSEDED)
   @javax.annotation.Nullable
-  private List<String> superseded = new ArrayList<>();
+  private List<String> superseded;
 
   public EventEconomics() {
   }

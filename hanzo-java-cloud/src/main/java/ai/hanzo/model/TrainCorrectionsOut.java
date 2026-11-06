@@ -57,12 +57,12 @@ public class TrainCorrectionsOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TrainCorrection> data = new ArrayList<>();
+  private List<TrainCorrection> data;
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private List<TrainCorrectionGroup> questions = new ArrayList<>();
+  private List<TrainCorrectionGroup> questions;
 
   public TrainCorrectionsOut() {
   }

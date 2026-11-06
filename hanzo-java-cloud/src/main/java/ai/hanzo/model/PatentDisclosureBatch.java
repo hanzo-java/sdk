@@ -56,7 +56,7 @@ public class PatentDisclosureBatch {
   public static final String SERIALIZED_NAME_DISCLOSURES = "disclosures";
   @SerializedName(SERIALIZED_NAME_DISCLOSURES)
   @javax.annotation.Nullable
-  private List<PatentPatentDisclosure> disclosures = new ArrayList<>();
+  private List<PatentPatentDisclosure> disclosures;
 
   public PatentDisclosureBatch() {
   }

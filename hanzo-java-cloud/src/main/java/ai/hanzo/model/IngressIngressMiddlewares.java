@@ -56,7 +56,7 @@ public class IngressIngressMiddlewares {
   public static final String SERIALIZED_NAME_MIDDLEWARES = "middlewares";
   @SerializedName(SERIALIZED_NAME_MIDDLEWARES)
   @javax.annotation.Nullable
-  private List<IngressMiddleware> middlewares = new ArrayList<>();
+  private List<IngressMiddleware> middlewares;
 
   public IngressIngressMiddlewares() {
   }

@@ -76,7 +76,7 @@ public class IngressIngressTLS {
   public static final String SERIALIZED_NAME_MANAGED_HOSTS = "managedHosts";
   @SerializedName(SERIALIZED_NAME_MANAGED_HOSTS)
   @javax.annotation.Nullable
-  private List<String> managedHosts = new ArrayList<>();
+  private List<String> managedHosts;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)

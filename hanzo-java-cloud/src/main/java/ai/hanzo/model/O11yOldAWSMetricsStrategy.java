@@ -56,7 +56,7 @@ public class O11yOldAWSMetricsStrategy {
   public static final String SERIALIZED_NAME_CLOUDWATCH_METRIC_STREAM_FILTERS = "cloudwatch_metric_stream_filters";
   @SerializedName(SERIALIZED_NAME_CLOUDWATCH_METRIC_STREAM_FILTERS)
   @javax.annotation.Nullable
-  private List<O11yOldAWSMetricsStrategyCloudwatchMetricStreamFiltersInner> cloudwatchMetricStreamFilters = new ArrayList<>();
+  private List<O11yOldAWSMetricsStrategyCloudwatchMetricStreamFiltersInner> cloudwatchMetricStreamFilters;
 
   public O11yOldAWSMetricsStrategy() {
   }

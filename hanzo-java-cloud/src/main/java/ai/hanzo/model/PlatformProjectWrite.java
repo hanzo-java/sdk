@@ -71,7 +71,7 @@ public class PlatformProjectWrite {
   public static final String SERIALIZED_NAME_MOVED = "moved";
   @SerializedName(SERIALIZED_NAME_MOVED)
   @javax.annotation.Nullable
-  private List<PlatformRelabel> moved = new ArrayList<>();
+  private List<PlatformRelabel> moved;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)

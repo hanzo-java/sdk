@@ -62,7 +62,7 @@ public class TrainProtect {
   public static final String SERIALIZED_NAME_CAPABILITIES = "capabilities";
   @SerializedName(SERIALIZED_NAME_CAPABILITIES)
   @javax.annotation.Nullable
-  private List<String> capabilities = new ArrayList<>();
+  private List<String> capabilities;
 
   public static final String SERIALIZED_NAME_DISTILLATION = "distillation";
   @SerializedName(SERIALIZED_NAME_DISTILLATION)
@@ -77,7 +77,7 @@ public class TrainProtect {
   public static final String SERIALIZED_NAME_SUITES = "suites";
   @SerializedName(SERIALIZED_NAME_SUITES)
   @javax.annotation.Nullable
-  private List<String> suites = new ArrayList<>();
+  private List<String> suites;
 
   public TrainProtect() {
   }

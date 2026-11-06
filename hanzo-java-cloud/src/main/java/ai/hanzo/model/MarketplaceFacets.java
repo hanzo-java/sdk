@@ -55,22 +55,22 @@ public class MarketplaceFacets {
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   @javax.annotation.Nullable
-  private Map<String, Long> category = new HashMap<>();
+  private Map<String, Long> category;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   @javax.annotation.Nullable
-  private Map<String, Long> kind = new HashMap<>();
+  private Map<String, Long> kind;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   @javax.annotation.Nullable
-  private Map<String, Long> price = new HashMap<>();
+  private Map<String, Long> price;
 
   public static final String SERIALIZED_NAME_RATING = "rating";
   @SerializedName(SERIALIZED_NAME_RATING)
   @javax.annotation.Nullable
-  private Map<String, Long> rating = new HashMap<>();
+  private Map<String, Long> rating;
 
   public MarketplaceFacets() {
   }

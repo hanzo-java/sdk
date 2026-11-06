@@ -61,7 +61,7 @@ public class ProviderGithubSearchOut {
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
   @javax.annotation.Nullable
-  private List<ProviderGithubSearchHit> repos = new ArrayList<>();
+  private List<ProviderGithubSearchHit> repos;
 
   public ProviderGithubSearchOut() {
   }

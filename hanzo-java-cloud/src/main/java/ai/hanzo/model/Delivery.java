@@ -72,7 +72,7 @@ public class Delivery {
   public static final String SERIALIZED_NAME_TRANSLATIONS = "translations";
   @SerializedName(SERIALIZED_NAME_TRANSLATIONS)
   @javax.annotation.Nullable
-  private List<Translation> translations = new ArrayList<>();
+  private List<Translation> translations;
 
   public static final String SERIALIZED_NAME_USAGE = "usage";
   @SerializedName(SERIALIZED_NAME_USAGE)

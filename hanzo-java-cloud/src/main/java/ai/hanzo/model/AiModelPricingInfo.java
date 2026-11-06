@@ -73,7 +73,7 @@ public class AiModelPricingInfo {
   public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
   @SerializedName(SERIALIZED_NAME_OVERRIDES)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> overrides = new ArrayList<>();
+  private List<Map<String, Object>> overrides;
 
   public static final String SERIALIZED_NAME_PROMPT = "prompt";
   @SerializedName(SERIALIZED_NAME_PROMPT)
@@ -83,7 +83,7 @@ public class AiModelPricingInfo {
   public static final String SERIALIZED_NAME_RATES = "rates";
   @SerializedName(SERIALIZED_NAME_RATES)
   @javax.annotation.Nullable
-  private Map<String, String> rates = new HashMap<>();
+  private Map<String, String> rates;
 
   public static final String SERIALIZED_NAME_VARIABLE = "variable";
   @SerializedName(SERIALIZED_NAME_VARIABLE)

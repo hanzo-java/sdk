@@ -56,7 +56,7 @@ public class O11yO11yMetricAttributes {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricAttribute> attributes = new ArrayList<>();
+  private List<O11yO11yMetricAttribute> attributes;
 
   public static final String SERIALIZED_NAME_TOTAL_KEYS = "totalKeys";
   @SerializedName(SERIALIZED_NAME_TOTAL_KEYS)

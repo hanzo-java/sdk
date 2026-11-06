@@ -65,7 +65,7 @@ public class TaskChannelWork {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
-  private Map<String, Long> status = new HashMap<>();
+  private Map<String, Long> status;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

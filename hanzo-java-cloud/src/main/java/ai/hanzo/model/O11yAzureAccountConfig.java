@@ -60,7 +60,7 @@ public class O11yAzureAccountConfig {
   public static final String SERIALIZED_NAME_RESOURCE_GROUPS = "resourceGroups";
   @SerializedName(SERIALIZED_NAME_RESOURCE_GROUPS)
   @javax.annotation.Nullable
-  private List<String> resourceGroups = new ArrayList<>();
+  private List<String> resourceGroups;
 
   public O11yAzureAccountConfig() {
   }

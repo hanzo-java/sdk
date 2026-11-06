@@ -55,7 +55,7 @@ public class IamFaceId {
   public static final String SERIALIZED_NAME_FACE_ID_DATA = "faceIdData";
   @SerializedName(SERIALIZED_NAME_FACE_ID_DATA)
   @javax.annotation.Nullable
-  private List<Double> faceIdData = new ArrayList<>();
+  private List<Double> faceIdData;
 
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)

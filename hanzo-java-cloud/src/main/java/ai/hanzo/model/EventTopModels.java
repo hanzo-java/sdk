@@ -61,7 +61,7 @@ public class EventTopModels {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<EventModelRow> items = new ArrayList<>();
+  private List<EventModelRow> items;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

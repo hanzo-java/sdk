@@ -65,12 +65,12 @@ public class MlMlResource {
   public static final String SERIALIZED_NAME_SPEC = "spec";
   @SerializedName(SERIALIZED_NAME_SPEC)
   @javax.annotation.Nullable
-  private Map<String, Object> spec = new HashMap<>();
+  private Map<String, Object> spec;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
-  private Map<String, Object> status = new HashMap<>();
+  private Map<String, Object> status;
 
   public MlMlResource() {
   }

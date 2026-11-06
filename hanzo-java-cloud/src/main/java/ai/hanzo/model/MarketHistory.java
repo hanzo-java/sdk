@@ -67,7 +67,7 @@ public class MarketHistory {
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
   @javax.annotation.Nullable
-  private List<MarketDay> days = new ArrayList<>();
+  private List<MarketDay> days;
 
   public static final String SERIALIZED_NAME_REACH = "reach";
   @SerializedName(SERIALIZED_NAME_REACH)

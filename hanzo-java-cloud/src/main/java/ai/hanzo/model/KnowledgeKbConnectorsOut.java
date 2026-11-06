@@ -56,7 +56,7 @@ public class KnowledgeKbConnectorsOut {
   public static final String SERIALIZED_NAME_CONNECTORS = "connectors";
   @SerializedName(SERIALIZED_NAME_CONNECTORS)
   @javax.annotation.Nullable
-  private List<KnowledgeConnectorView> connectors = new ArrayList<>();
+  private List<KnowledgeConnectorView> connectors;
 
   public KnowledgeKbConnectorsOut() {
   }

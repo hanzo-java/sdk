@@ -56,7 +56,7 @@ public class O11yO11yStats {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yO11yStat> items = new ArrayList<>();
+  private List<O11yO11yStat> items;
 
   public O11yO11yStats() {
   }

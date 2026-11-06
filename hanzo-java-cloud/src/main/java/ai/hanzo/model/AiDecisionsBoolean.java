@@ -67,7 +67,7 @@ public class AiDecisionsBoolean {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private Map<String, String> labels;
 
   /**
    * Gets or Sets type

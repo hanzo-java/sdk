@@ -72,7 +72,7 @@ public class UsageSpend {
   public static final String SERIALIZED_NAME_BY_CATEGORY = "byCategory";
   @SerializedName(SERIALIZED_NAME_BY_CATEGORY)
   @javax.annotation.Nullable
-  private List<UsageCategorySpend> byCategory = new ArrayList<>();
+  private List<UsageCategorySpend> byCategory;
 
   public static final String SERIALIZED_NAME_MTD_CENTS = "mtdCents";
   @SerializedName(SERIALIZED_NAME_MTD_CENTS)
@@ -87,7 +87,7 @@ public class UsageSpend {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<UsageSpendPoint> series = new ArrayList<>();
+  private List<UsageSpendPoint> series;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

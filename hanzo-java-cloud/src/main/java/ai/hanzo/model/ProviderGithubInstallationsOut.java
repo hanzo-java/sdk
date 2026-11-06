@@ -61,7 +61,7 @@ public class ProviderGithubInstallationsOut {
   public static final String SERIALIZED_NAME_INSTALLATIONS = "installations";
   @SerializedName(SERIALIZED_NAME_INSTALLATIONS)
   @javax.annotation.Nullable
-  private List<ProviderGithubInstallationView> installations = new ArrayList<>();
+  private List<ProviderGithubInstallationView> installations;
 
   public ProviderGithubInstallationsOut() {
   }

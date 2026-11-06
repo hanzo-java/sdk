@@ -56,7 +56,7 @@ public class O11yO11yTraceFlamegraphIn {
   public static final String SERIALIZED_NAME_SELECT_FIELDS = "selectFields";
   @SerializedName(SERIALIZED_NAME_SELECT_FIELDS)
   @javax.annotation.Nullable
-  private List<O11yTelemetryFieldKey> selectFields = new ArrayList<>();
+  private List<O11yTelemetryFieldKey> selectFields;
 
   public static final String SERIALIZED_NAME_SELECTED_SPAN_ID = "selectedSpanId";
   @SerializedName(SERIALIZED_NAME_SELECTED_SPAN_ID)

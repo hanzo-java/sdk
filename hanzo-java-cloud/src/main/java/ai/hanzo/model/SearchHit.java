@@ -71,7 +71,7 @@ public class SearchHit {
   public static final String SERIALIZED_NAME_MATCHED = "matched";
   @SerializedName(SERIALIZED_NAME_MATCHED)
   @javax.annotation.Nullable
-  private List<SearchProvenance> matched = new ArrayList<>();
+  private List<SearchProvenance> matched;
 
   public static final String SERIALIZED_NAME_PASSAGE = "passage";
   @SerializedName(SERIALIZED_NAME_PASSAGE)

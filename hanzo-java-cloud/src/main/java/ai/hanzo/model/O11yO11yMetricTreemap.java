@@ -56,12 +56,12 @@ public class O11yO11yMetricTreemap {
   public static final String SERIALIZED_NAME_SAMPLES = "samples";
   @SerializedName(SERIALIZED_NAME_SAMPLES)
   @javax.annotation.Nullable
-  private List<O11yO11yTreemapEntry> samples = new ArrayList<>();
+  private List<O11yO11yTreemapEntry> samples;
 
   public static final String SERIALIZED_NAME_TIMESERIES = "timeseries";
   @SerializedName(SERIALIZED_NAME_TIMESERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yTreemapEntry> timeseries = new ArrayList<>();
+  private List<O11yO11yTreemapEntry> timeseries;
 
   public O11yO11yMetricTreemap() {
   }

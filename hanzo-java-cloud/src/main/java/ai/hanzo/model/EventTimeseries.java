@@ -77,7 +77,7 @@ public class EventTimeseries {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<EventUsagePoint> series = new ArrayList<>();
+  private List<EventUsagePoint> series;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

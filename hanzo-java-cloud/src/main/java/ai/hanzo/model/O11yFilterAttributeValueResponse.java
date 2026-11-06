@@ -55,12 +55,12 @@ public class O11yFilterAttributeValueResponse {
   public static final String SERIALIZED_NAME_BOOL_ATTRIBUTE_VALUES = "boolAttributeValues";
   @SerializedName(SERIALIZED_NAME_BOOL_ATTRIBUTE_VALUES)
   @javax.annotation.Nullable
-  private List<Boolean> boolAttributeValues = new ArrayList<>();
+  private List<Boolean> boolAttributeValues;
 
   public static final String SERIALIZED_NAME_NUMBER_ATTRIBUTE_VALUES = "numberAttributeValues";
   @SerializedName(SERIALIZED_NAME_NUMBER_ATTRIBUTE_VALUES)
   @javax.annotation.Nullable
-  private List<Object> numberAttributeValues = new ArrayList<>();
+  private List<Object> numberAttributeValues;
 
   public static final String SERIALIZED_NAME_RELATED_VALUES = "relatedValues";
   @SerializedName(SERIALIZED_NAME_RELATED_VALUES)
@@ -70,7 +70,7 @@ public class O11yFilterAttributeValueResponse {
   public static final String SERIALIZED_NAME_STRING_ATTRIBUTE_VALUES = "stringAttributeValues";
   @SerializedName(SERIALIZED_NAME_STRING_ATTRIBUTE_VALUES)
   @javax.annotation.Nullable
-  private List<String> stringAttributeValues = new ArrayList<>();
+  private List<String> stringAttributeValues;
 
   public O11yFilterAttributeValueResponse() {
   }

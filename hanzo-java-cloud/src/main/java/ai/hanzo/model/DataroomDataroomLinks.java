@@ -56,7 +56,7 @@ public class DataroomDataroomLinks {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<DataroomDataroomLink> links = new ArrayList<>();
+  private List<DataroomDataroomLink> links;
 
   public DataroomDataroomLinks() {
   }

@@ -56,7 +56,7 @@ public class O11yGettableSpanMappers {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11ySpanMapper> items = new ArrayList<>();
+  private List<O11ySpanMapper> items;
 
   public O11yGettableSpanMappers() {
   }

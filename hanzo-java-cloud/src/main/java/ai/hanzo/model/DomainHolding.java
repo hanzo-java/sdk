@@ -70,7 +70,7 @@ public class DomainHolding {
   public static final String SERIALIZED_NAME_NAMESERVERS = "nameservers";
   @SerializedName(SERIALIZED_NAME_NAMESERVERS)
   @javax.annotation.Nullable
-  private List<String> nameservers = new ArrayList<>();
+  private List<String> nameservers;
 
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)

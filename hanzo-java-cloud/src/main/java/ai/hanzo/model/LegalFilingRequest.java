@@ -55,7 +55,7 @@ public class LegalFilingRequest {
   public static final String SERIALIZED_NAME_DOCUMENT_IDS = "documentIds";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_IDS)
   @javax.annotation.Nullable
-  private List<String> documentIds = new ArrayList<>();
+  private List<String> documentIds;
 
   public static final String SERIALIZED_NAME_JURISDICTION = "jurisdiction";
   @SerializedName(SERIALIZED_NAME_JURISDICTION)

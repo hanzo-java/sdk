@@ -55,12 +55,12 @@ public class NodeNodeView {
   public static final String SERIALIZED_NAME_CAPS = "caps";
   @SerializedName(SERIALIZED_NAME_CAPS)
   @javax.annotation.Nullable
-  private List<String> caps = new ArrayList<>();
+  private List<String> caps;
 
   public static final String SERIALIZED_NAME_COMMANDS = "commands";
   @SerializedName(SERIALIZED_NAME_COMMANDS)
   @javax.annotation.Nullable
-  private List<String> commands = new ArrayList<>();
+  private List<String> commands;
 
   public static final String SERIALIZED_NAME_CONNECTED_AT = "connectedAt";
   @SerializedName(SERIALIZED_NAME_CONNECTED_AT)

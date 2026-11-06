@@ -56,7 +56,7 @@ public class PlatformPipelineBoard {
   public static final String SERIALIZED_NAME_PIPELINES = "pipelines";
   @SerializedName(SERIALIZED_NAME_PIPELINES)
   @javax.annotation.Nullable
-  private List<PlatformPipelineRow> pipelines = new ArrayList<>();
+  private List<PlatformPipelineRow> pipelines;
 
   public PlatformPipelineBoard() {
   }

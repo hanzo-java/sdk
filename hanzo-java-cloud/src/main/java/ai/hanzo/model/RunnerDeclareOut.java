@@ -56,7 +56,7 @@ public class RunnerDeclareOut {
   public static final String SERIALIZED_NAME_CAPABILITIES = "capabilities";
   @SerializedName(SERIALIZED_NAME_CAPABILITIES)
   @javax.annotation.Nullable
-  private List<String> capabilities = new ArrayList<>();
+  private List<String> capabilities;
 
   public static final String SERIALIZED_NAME_RUNNER = "runner";
   @SerializedName(SERIALIZED_NAME_RUNNER)

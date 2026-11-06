@@ -65,7 +65,7 @@ public class O11yUpdatableGCPAccountConfig {
   public static final String SERIALIZED_NAME_PROJECT_IDS = "projectIds";
   @SerializedName(SERIALIZED_NAME_PROJECT_IDS)
   @javax.annotation.Nullable
-  private List<String> projectIds = new ArrayList<>();
+  private List<String> projectIds;
 
   public O11yUpdatableGCPAccountConfig() {
   }

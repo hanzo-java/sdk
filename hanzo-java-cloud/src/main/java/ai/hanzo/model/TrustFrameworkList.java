@@ -56,7 +56,7 @@ public class TrustFrameworkList {
   public static final String SERIALIZED_NAME_FRAMEWORKS = "frameworks";
   @SerializedName(SERIALIZED_NAME_FRAMEWORKS)
   @javax.annotation.Nullable
-  private List<TrustFrameworkRow> frameworks = new ArrayList<>();
+  private List<TrustFrameworkRow> frameworks;
 
   public TrustFrameworkList() {
   }

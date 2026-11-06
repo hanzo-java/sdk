@@ -58,12 +58,12 @@ public class TrainRoute {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<String> keys = new ArrayList<>();
+  private List<String> keys;
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
   @javax.annotation.Nullable
-  private Map<String, TrainOptions> options = new HashMap<>();
+  private Map<String, TrainOptions> options;
 
   public TrainRoute() {
   }

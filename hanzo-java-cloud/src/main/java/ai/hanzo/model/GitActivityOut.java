@@ -63,7 +63,7 @@ public class GitActivityOut {
   public static final String SERIALIZED_NAME_ACTIVE = "active";
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   @javax.annotation.Nullable
-  private Map<String, Long> active = new HashMap<>();
+  private Map<String, Long> active;
 
   public static final String SERIALIZED_NAME_COMPLETE = "complete";
   @SerializedName(SERIALIZED_NAME_COMPLETE)
@@ -73,7 +73,7 @@ public class GitActivityOut {
   public static final String SERIALIZED_NAME_DAILY = "daily";
   @SerializedName(SERIALIZED_NAME_DAILY)
   @javax.annotation.Nullable
-  private Map<String, Long> daily = new HashMap<>();
+  private Map<String, Long> daily;
 
   public static final String SERIALIZED_NAME_GITHUB = "github";
   @SerializedName(SERIALIZED_NAME_GITHUB)
@@ -83,27 +83,27 @@ public class GitActivityOut {
   public static final String SERIALIZED_NAME_GROUPS = "groups";
   @SerializedName(SERIALIZED_NAME_GROUPS)
   @javax.annotation.Nullable
-  private List<GitActivityGroup> groups = new ArrayList<>();
+  private List<GitActivityGroup> groups;
 
   public static final String SERIALIZED_NAME_LATEST = "latest";
   @SerializedName(SERIALIZED_NAME_LATEST)
   @javax.annotation.Nullable
-  private List<GitActivityCommit> latest = new ArrayList<>();
+  private List<GitActivityCommit> latest;
 
   public static final String SERIALIZED_NAME_MONTHS = "months";
   @SerializedName(SERIALIZED_NAME_MONTHS)
   @javax.annotation.Nullable
-  private List<String> months = new ArrayList<>();
+  private List<String> months;
 
   public static final String SERIALIZED_NAME_ORGS = "orgs";
   @SerializedName(SERIALIZED_NAME_ORGS)
   @javax.annotation.Nullable
-  private List<GitActivityOrg> orgs = new ArrayList<>();
+  private List<GitActivityOrg> orgs;
 
   public static final String SERIALIZED_NAME_OURS_DAILY = "oursDaily";
   @SerializedName(SERIALIZED_NAME_OURS_DAILY)
   @javax.annotation.Nullable
-  private Map<String, Long> oursDaily = new HashMap<>();
+  private Map<String, Long> oursDaily;
 
   public static final String SERIALIZED_NAME_READ = "read";
   @SerializedName(SERIALIZED_NAME_READ)

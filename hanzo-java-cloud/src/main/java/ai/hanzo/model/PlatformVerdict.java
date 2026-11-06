@@ -56,7 +56,7 @@ public class PlatformVerdict {
   public static final String SERIALIZED_NAME_FLAGS = "flags";
   @SerializedName(SERIALIZED_NAME_FLAGS)
   @javax.annotation.Nullable
-  private List<PlatformDriftFlag> flags = new ArrayList<>();
+  private List<PlatformDriftFlag> flags;
 
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)

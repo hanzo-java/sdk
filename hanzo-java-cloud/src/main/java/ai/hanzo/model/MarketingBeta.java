@@ -59,12 +59,12 @@ public class MarketingBeta {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<MarketingBetaAction> actions = new ArrayList<>();
+  private List<MarketingBetaAction> actions;
 
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
   @javax.annotation.Nullable
-  private List<MarketingBetaAnswer> answers = new ArrayList<>();
+  private List<MarketingBetaAnswer> answers;
 
   public static final String SERIALIZED_NAME_APPLIED = "applied";
   @SerializedName(SERIALIZED_NAME_APPLIED)
@@ -74,7 +74,7 @@ public class MarketingBeta {
   public static final String SERIALIZED_NAME_BETAS = "betas";
   @SerializedName(SERIALIZED_NAME_BETAS)
   @javax.annotation.Nullable
-  private List<String> betas = new ArrayList<>();
+  private List<String> betas;
 
   public static final String SERIALIZED_NAME_GITHUB = "github";
   @SerializedName(SERIALIZED_NAME_GITHUB)
@@ -109,7 +109,7 @@ public class MarketingBeta {
   public static final String SERIALIZED_NAME_REQUESTED = "requested";
   @SerializedName(SERIALIZED_NAME_REQUESTED)
   @javax.annotation.Nullable
-  private Map<String, String> requested = new HashMap<>();
+  private Map<String, String> requested;
 
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)

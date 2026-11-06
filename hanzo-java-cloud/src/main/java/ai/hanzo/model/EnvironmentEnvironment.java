@@ -71,7 +71,7 @@ public class EnvironmentEnvironment {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<String> secrets = new ArrayList<>();
+  private List<String> secrets;
 
   public static final String SERIALIZED_NAME_SESSION = "session";
   @SerializedName(SERIALIZED_NAME_SESSION)

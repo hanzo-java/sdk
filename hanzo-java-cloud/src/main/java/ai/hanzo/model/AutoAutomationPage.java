@@ -56,7 +56,7 @@ public class AutoAutomationPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<AutoAutomation> data = new ArrayList<>();
+  private List<AutoAutomation> data;
 
   public AutoAutomationPage() {
   }

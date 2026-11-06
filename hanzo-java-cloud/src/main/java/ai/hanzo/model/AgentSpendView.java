@@ -55,7 +55,7 @@ public class AgentSpendView {
   public static final String SERIALIZED_NAME_BY_COMPONENT = "by_component";
   @SerializedName(SERIALIZED_NAME_BY_COMPONENT)
   @javax.annotation.Nullable
-  private Map<String, Long> byComponent = new HashMap<>();
+  private Map<String, Long> byComponent;
 
   public static final String SERIALIZED_NAME_CAP_MICRO_USD = "cap_micro_usd";
   @SerializedName(SERIALIZED_NAME_CAP_MICRO_USD)

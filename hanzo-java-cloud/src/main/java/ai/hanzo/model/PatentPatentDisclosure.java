@@ -56,7 +56,7 @@ public class PatentPatentDisclosure {
   public static final String SERIALIZED_NAME_APPROVALS = "approvals";
   @SerializedName(SERIALIZED_NAME_APPROVALS)
   @javax.annotation.Nullable
-  private List<PatentPatentApproval> approvals = new ArrayList<>();
+  private List<PatentPatentApproval> approvals;
 
   public static final String SERIALIZED_NAME_AUTHORED_BY = "authored_by";
   @SerializedName(SERIALIZED_NAME_AUTHORED_BY)
@@ -101,12 +101,12 @@ public class PatentPatentDisclosure {
   public static final String SERIALIZED_NAME_IDEA_IDS = "idea_ids";
   @SerializedName(SERIALIZED_NAME_IDEA_IDS)
   @javax.annotation.Nullable
-  private List<String> ideaIds = new ArrayList<>();
+  private List<String> ideaIds;
 
   public static final String SERIALIZED_NAME_IMPLEMENTATION_IDS = "implementation_ids";
   @SerializedName(SERIALIZED_NAME_IMPLEMENTATION_IDS)
   @javax.annotation.Nullable
-  private List<String> implementationIds = new ArrayList<>();
+  private List<String> implementationIds;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)

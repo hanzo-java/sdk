@@ -57,7 +57,7 @@ public class DeployArgoProjectList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<DeployArgoProject> items = new ArrayList<>();
+  private List<DeployArgoProject> items;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)

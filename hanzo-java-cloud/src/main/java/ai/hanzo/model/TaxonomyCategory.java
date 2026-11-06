@@ -56,7 +56,7 @@ public class TaxonomyCategory {
   public static final String SERIALIZED_NAME_BRANDS = "brands";
   @SerializedName(SERIALIZED_NAME_BRANDS)
   @javax.annotation.Nullable
-  private List<String> brands = new ArrayList<>();
+  private List<String> brands;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -86,7 +86,7 @@ public class TaxonomyCategory {
   public static final String SERIALIZED_NAME_TAXA = "taxa";
   @SerializedName(SERIALIZED_NAME_TAXA)
   @javax.annotation.Nullable
-  private List<TaxonomyTaxon> taxa = new ArrayList<>();
+  private List<TaxonomyTaxon> taxa;
 
   public TaxonomyCategory() {
   }

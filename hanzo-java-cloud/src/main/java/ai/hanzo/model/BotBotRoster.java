@@ -56,7 +56,7 @@ public class BotBotRoster {
   public static final String SERIALIZED_NAME_BOTS = "bots";
   @SerializedName(SERIALIZED_NAME_BOTS)
   @javax.annotation.Nullable
-  private List<BotBotMember> bots = new ArrayList<>();
+  private List<BotBotMember> bots;
 
   public BotBotRoster() {
   }

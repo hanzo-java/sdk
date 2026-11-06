@@ -63,7 +63,7 @@ public class O11yNodeRecord {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   @javax.annotation.Nullable
-  private Map<String, String> meta = new HashMap<>();
+  private Map<String, String> meta;
 
   public static final String SERIALIZED_NAME_NODE_C_P_U = "nodeCPU";
   @SerializedName(SERIALIZED_NAME_NODE_C_P_U)

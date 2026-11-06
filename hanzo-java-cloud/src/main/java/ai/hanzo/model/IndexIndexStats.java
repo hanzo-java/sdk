@@ -61,7 +61,7 @@ public class IndexIndexStats {
   public static final String SERIALIZED_NAME_INDEXES = "indexes";
   @SerializedName(SERIALIZED_NAME_INDEXES)
   @javax.annotation.Nullable
-  private Map<String, IndexIndexCount> indexes = new HashMap<>();
+  private Map<String, IndexIndexCount> indexes;
 
   public IndexIndexStats() {
   }

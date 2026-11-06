@@ -65,7 +65,7 @@ public class IngressRoute {
   public static final String SERIALIZED_NAME_MIDDLEWARES = "middlewares";
   @SerializedName(SERIALIZED_NAME_MIDDLEWARES)
   @javax.annotation.Nullable
-  private List<String> middlewares = new ArrayList<>();
+  private List<String> middlewares;
 
   public static final String SERIALIZED_NAME_PATH_PREFIX = "pathPrefix";
   @SerializedName(SERIALIZED_NAME_PATH_PREFIX)

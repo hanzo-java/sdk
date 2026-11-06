@@ -66,7 +66,7 @@ public class MarketingEsignDocument {
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
   @javax.annotation.Nullable
-  private List<MarketingEsignRecipient> recipients = new ArrayList<>();
+  private List<MarketingEsignRecipient> recipients;
 
   public MarketingEsignDocument() {
   }

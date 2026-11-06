@@ -57,12 +57,12 @@ public class SearchFusion {
   public static final String SERIALIZED_NAME_BACKENDS = "backends";
   @SerializedName(SERIALIZED_NAME_BACKENDS)
   @javax.annotation.Nullable
-  private List<SearchBackendStatus> backends = new ArrayList<>();
+  private List<SearchBackendStatus> backends;
 
   public static final String SERIALIZED_NAME_HITS = "hits";
   @SerializedName(SERIALIZED_NAME_HITS)
   @javax.annotation.Nullable
-  private List<SearchHit> hits = new ArrayList<>();
+  private List<SearchHit> hits;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)

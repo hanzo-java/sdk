@@ -56,7 +56,7 @@ public class O11yO11yReductionSeriesResult {
   public static final String SERIALIZED_NAME_AGGREGATIONS = "aggregations";
   @SerializedName(SERIALIZED_NAME_AGGREGATIONS)
   @javax.annotation.Nullable
-  private List<O11yO11yAggregation> aggregations = new ArrayList<>();
+  private List<O11yO11yAggregation> aggregations;
 
   public static final String SERIALIZED_NAME_QUERY_NAME = "queryName";
   @SerializedName(SERIALIZED_NAME_QUERY_NAME)

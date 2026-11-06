@@ -56,12 +56,12 @@ public class O11yO11yPreference {
   public static final String SERIALIZED_NAME_ALLOWED_SCOPES = "allowedScopes";
   @SerializedName(SERIALIZED_NAME_ALLOWED_SCOPES)
   @javax.annotation.Nullable
-  private List<String> allowedScopes = new ArrayList<>();
+  private List<String> allowedScopes;
 
   public static final String SERIALIZED_NAME_ALLOWED_VALUES = "allowedValues";
   @SerializedName(SERIALIZED_NAME_ALLOWED_VALUES)
   @javax.annotation.Nullable
-  private List<String> allowedValues = new ArrayList<>();
+  private List<String> allowedValues;
 
   public static final String SERIALIZED_NAME_DEFAULT_VALUE = "defaultValue";
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALUE)

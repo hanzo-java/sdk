@@ -76,7 +76,7 @@ public class O11yFilterAttributeValueRequest {
   public static final String SERIALIZED_NAME_EXISTING_FILTER_ITEMS = "existingFilterItems";
   @SerializedName(SERIALIZED_NAME_EXISTING_FILTER_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yFilterItem> existingFilterItems = new ArrayList<>();
+  private List<O11yFilterItem> existingFilterItems;
 
   public static final String SERIALIZED_NAME_FILTER_ATTRIBUTE_KEY = "filterAttributeKey";
   @SerializedName(SERIALIZED_NAME_FILTER_ATTRIBUTE_KEY)
@@ -101,7 +101,7 @@ public class O11yFilterAttributeValueRequest {
   public static final String SERIALIZED_NAME_METRIC_NAMES = "metricNames";
   @SerializedName(SERIALIZED_NAME_METRIC_NAMES)
   @javax.annotation.Nullable
-  private List<String> metricNames = new ArrayList<>();
+  private List<String> metricNames;
 
   public static final String SERIALIZED_NAME_SEARCH_TEXT = "searchText";
   @SerializedName(SERIALIZED_NAME_SEARCH_TEXT)

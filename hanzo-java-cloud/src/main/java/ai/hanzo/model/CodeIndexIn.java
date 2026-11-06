@@ -56,7 +56,7 @@ public class CodeIndexIn {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<CodeFileInput> files = new ArrayList<>();
+  private List<CodeFileInput> files;
 
   public static final String SERIALIZED_NAME_PRUNE = "prune";
   @SerializedName(SERIALIZED_NAME_PRUNE)

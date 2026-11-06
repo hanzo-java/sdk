@@ -61,7 +61,7 @@ public class BillingTransactions {
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   @javax.annotation.Nullable
-  private List<BillingTransaction> transactions = new ArrayList<>();
+  private List<BillingTransaction> transactions;
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)

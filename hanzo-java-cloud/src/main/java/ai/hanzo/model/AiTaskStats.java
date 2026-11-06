@@ -60,7 +60,7 @@ public class AiTaskStats {
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private Map<String, Integer> models = new HashMap<>();
+  private Map<String, Integer> models;
 
   public AiTaskStats() {
   }

@@ -56,7 +56,7 @@ public class SandboxPorts {
   public static final String SERIALIZED_NAME_PORTS = "ports";
   @SerializedName(SERIALIZED_NAME_PORTS)
   @javax.annotation.Nullable
-  private List<SandboxPort> ports = new ArrayList<>();
+  private List<SandboxPort> ports;
 
   public SandboxPorts() {
   }

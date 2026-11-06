@@ -65,7 +65,7 @@ public class EnvironmentProposal {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<String> secrets = new ArrayList<>();
+  private List<String> secrets;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)

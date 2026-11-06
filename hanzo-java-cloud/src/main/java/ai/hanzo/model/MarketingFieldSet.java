@@ -56,7 +56,7 @@ public class MarketingFieldSet {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<MarketingField> data = new ArrayList<>();
+  private List<MarketingField> data;
 
   public MarketingFieldSet() {
   }

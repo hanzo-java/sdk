@@ -61,7 +61,7 @@ public class DataroomDataroomLinkCreate {
   public static final String SERIALIZED_NAME_ALLOW_LIST = "allowList";
   @SerializedName(SERIALIZED_NAME_ALLOW_LIST)
   @javax.annotation.Nullable
-  private List<Object> allowList = new ArrayList<>();
+  private List<Object> allowList;
 
   public static final String SERIALIZED_NAME_DATAROOM_ID = "dataroomId";
   @SerializedName(SERIALIZED_NAME_DATAROOM_ID)
@@ -71,7 +71,7 @@ public class DataroomDataroomLinkCreate {
   public static final String SERIALIZED_NAME_DENY_LIST = "denyList";
   @SerializedName(SERIALIZED_NAME_DENY_LIST)
   @javax.annotation.Nullable
-  private List<Object> denyList = new ArrayList<>();
+  private List<Object> denyList;
 
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)

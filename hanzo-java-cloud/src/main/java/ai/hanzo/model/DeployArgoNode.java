@@ -73,12 +73,12 @@ public class DeployArgoNode {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
   @javax.annotation.Nullable
-  private List<String> images = new ArrayList<>();
+  private List<String> images;
 
   public static final String SERIALIZED_NAME_INFO = "info";
   @SerializedName(SERIALIZED_NAME_INFO)
   @javax.annotation.Nullable
-  private List<DeployArgoInfoItem> info = new ArrayList<>();
+  private List<DeployArgoInfoItem> info;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -98,7 +98,7 @@ public class DeployArgoNode {
   public static final String SERIALIZED_NAME_PARENT_REFS = "parentRefs";
   @SerializedName(SERIALIZED_NAME_PARENT_REFS)
   @javax.annotation.Nullable
-  private List<DeployArgoResourceRef> parentRefs = new ArrayList<>();
+  private List<DeployArgoResourceRef> parentRefs;
 
   public static final String SERIALIZED_NAME_RESOURCE_VERSION = "resourceVersion";
   @SerializedName(SERIALIZED_NAME_RESOURCE_VERSION)

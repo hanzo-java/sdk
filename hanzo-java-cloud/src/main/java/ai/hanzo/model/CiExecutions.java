@@ -62,7 +62,7 @@ public class CiExecutions {
   public static final String SERIALIZED_NAME_ORGS = "orgs";
   @SerializedName(SERIALIZED_NAME_ORGS)
   @javax.annotation.Nullable
-  private List<String> orgs = new ArrayList<>();
+  private List<String> orgs;
 
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
@@ -72,7 +72,7 @@ public class CiExecutions {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
   @javax.annotation.Nullable
-  private List<CiExecution> runs = new ArrayList<>();
+  private List<CiExecution> runs;
 
   public static final String SERIALIZED_NAME_SOURCE_ERR = "sourceErr";
   @SerializedName(SERIALIZED_NAME_SOURCE_ERR)

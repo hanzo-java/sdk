@@ -59,7 +59,7 @@ public class FormResponse {
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
   @javax.annotation.Nullable
-  private List<FormAnswer> answers = new ArrayList<>();
+  private List<FormAnswer> answers;
 
   public static final String SERIALIZED_NAME_COMPLETED = "completed";
   @SerializedName(SERIALIZED_NAME_COMPLETED)
@@ -99,7 +99,7 @@ public class FormResponse {
   public static final String SERIALIZED_NAME_HIDDEN = "hidden";
   @SerializedName(SERIALIZED_NAME_HIDDEN)
   @javax.annotation.Nullable
-  private Map<String, String> hidden = new HashMap<>();
+  private Map<String, String> hidden;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

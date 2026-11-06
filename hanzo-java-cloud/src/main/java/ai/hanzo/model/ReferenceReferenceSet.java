@@ -101,7 +101,7 @@ public class ReferenceReferenceSet {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<ReferenceReferenceSource> sources = new ArrayList<>();
+  private List<ReferenceReferenceSource> sources;
 
   public static final String SERIALIZED_NAME_STALE = "stale";
   @SerializedName(SERIALIZED_NAME_STALE)

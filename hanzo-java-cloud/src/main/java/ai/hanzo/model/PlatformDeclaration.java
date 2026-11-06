@@ -77,12 +77,12 @@ public class PlatformDeclaration {
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
   @javax.annotation.Nullable
-  private List<PlatformDeclareEnv> env = new ArrayList<>();
+  private List<PlatformDeclareEnv> env;
 
   public static final String SERIALIZED_NAME_HOSTS = "hosts";
   @SerializedName(SERIALIZED_NAME_HOSTS)
   @javax.annotation.Nullable
-  private List<String> hosts = new ArrayList<>();
+  private List<String> hosts;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -122,7 +122,7 @@ public class PlatformDeclaration {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<PlatformSecretRef> secrets = new ArrayList<>();
+  private List<PlatformSecretRef> secrets;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)

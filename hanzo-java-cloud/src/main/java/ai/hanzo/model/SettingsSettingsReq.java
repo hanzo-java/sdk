@@ -55,7 +55,7 @@ public class SettingsSettingsReq {
   public static final String SERIALIZED_NAME_CONFIG = "config";
   @SerializedName(SERIALIZED_NAME_CONFIG)
   @javax.annotation.Nullable
-  private Map<String, Object> config = new HashMap<>();
+  private Map<String, Object> config;
 
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
@@ -65,7 +65,7 @@ public class SettingsSettingsReq {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private Map<String, String> secrets = new HashMap<>();
+  private Map<String, String> secrets;
 
   public SettingsSettingsReq() {
   }

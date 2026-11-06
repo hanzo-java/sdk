@@ -66,7 +66,7 @@ public class GraphGraphResolveOut {
   public static final String SERIALIZED_NAME_CONFLICTS = "conflicts";
   @SerializedName(SERIALIZED_NAME_CONFLICTS)
   @javax.annotation.Nullable
-  private List<GraphWireFact> conflicts = new ArrayList<>();
+  private List<GraphWireFact> conflicts;
 
   public static final String SERIALIZED_NAME_CONTESTED = "contested";
   @SerializedName(SERIALIZED_NAME_CONTESTED)
@@ -81,7 +81,7 @@ public class GraphGraphResolveOut {
   public static final String SERIALIZED_NAME_HELD = "held";
   @SerializedName(SERIALIZED_NAME_HELD)
   @javax.annotation.Nullable
-  private List<GraphWireFact> held = new ArrayList<>();
+  private List<GraphWireFact> held;
 
   public static final String SERIALIZED_NAME_KNOWN = "known";
   @SerializedName(SERIALIZED_NAME_KNOWN)

@@ -66,7 +66,7 @@ public class FormImports {
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   @javax.annotation.Nullable
-  private List<FormImportFailure> failed = new ArrayList<>();
+  private List<FormImportFailure> failed;
 
   public FormImports() {
   }

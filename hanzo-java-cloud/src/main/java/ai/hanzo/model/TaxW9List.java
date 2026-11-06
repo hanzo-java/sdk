@@ -56,12 +56,12 @@ public class TaxW9List {
   public static final String SERIALIZED_NAME_AS_PAYEE = "asPayee";
   @SerializedName(SERIALIZED_NAME_AS_PAYEE)
   @javax.annotation.Nullable
-  private List<TaxW9> asPayee = new ArrayList<>();
+  private List<TaxW9> asPayee;
 
   public static final String SERIALIZED_NAME_AS_PAYER = "asPayer";
   @SerializedName(SERIALIZED_NAME_AS_PAYER)
   @javax.annotation.Nullable
-  private List<TaxW9> asPayer = new ArrayList<>();
+  private List<TaxW9> asPayer;
 
   public TaxW9List() {
   }

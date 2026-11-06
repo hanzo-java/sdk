@@ -60,7 +60,7 @@ public class PlatformSecretRef {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<String> keys = new ArrayList<>();
+  private List<String> keys;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)

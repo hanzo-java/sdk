@@ -92,12 +92,12 @@ public class HfRepoInfo {
   public static final String SERIALIZED_NAME_SIBLINGS = "siblings";
   @SerializedName(SERIALIZED_NAME_SIBLINGS)
   @javax.annotation.Nullable
-  private List<HfSibling> siblings = new ArrayList<>();
+  private List<HfSibling> siblings;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public HfRepoInfo() {
   }

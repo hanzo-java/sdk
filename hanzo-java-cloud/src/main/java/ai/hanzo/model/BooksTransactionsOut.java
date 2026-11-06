@@ -56,7 +56,7 @@ public class BooksTransactionsOut {
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   @javax.annotation.Nullable
-  private List<BooksTxn> transactions = new ArrayList<>();
+  private List<BooksTxn> transactions;
 
   public BooksTransactionsOut() {
   }

@@ -67,7 +67,7 @@ public class TaxTotal {
   public static final String SERIALIZED_NAME_PAYMENTS = "payments";
   @SerializedName(SERIALIZED_NAME_PAYMENTS)
   @javax.annotation.Nullable
-  private List<String> payments = new ArrayList<>();
+  private List<String> payments;
 
   public static final String SERIALIZED_NAME_REPORTABLE = "reportable";
   @SerializedName(SERIALIZED_NAME_REPORTABLE)

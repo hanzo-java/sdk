@@ -56,7 +56,7 @@ public class O11yO11ySentryProjects {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yO11ySentryProject> items = new ArrayList<>();
+  private List<O11yO11ySentryProject> items;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

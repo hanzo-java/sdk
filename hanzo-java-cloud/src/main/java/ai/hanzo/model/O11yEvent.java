@@ -55,7 +55,7 @@ public class O11yEvent {
   public static final String SERIALIZED_NAME_ATTRIBUTE_MAP = "attributeMap";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_MAP)
   @javax.annotation.Nullable
-  private Map<String, Object> attributeMap = new HashMap<>();
+  private Map<String, Object> attributeMap;
 
   public static final String SERIALIZED_NAME_IS_ERROR = "isError";
   @SerializedName(SERIALIZED_NAME_IS_ERROR)

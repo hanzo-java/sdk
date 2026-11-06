@@ -63,7 +63,7 @@ public class O11yClusters {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private List<O11yClusterRecord> records = new ArrayList<>();
+  private List<O11yClusterRecord> records;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

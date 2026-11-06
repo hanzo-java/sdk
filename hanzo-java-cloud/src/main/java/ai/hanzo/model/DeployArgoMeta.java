@@ -60,7 +60,7 @@ public class DeployArgoMeta {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private Map<String, String> labels;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

@@ -56,7 +56,7 @@ public class EventEventList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<EventProductEvent> data = new ArrayList<>();
+  private List<EventProductEvent> data;
 
   public EventEventList() {
   }

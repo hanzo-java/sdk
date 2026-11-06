@@ -67,7 +67,7 @@ public class FrameworkDocType {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<FrameworkDocField> fields = new ArrayList<>();
+  private List<FrameworkDocField> fields;
 
   public static final String SERIALIZED_NAME_IMMUTABLE = "immutable";
   @SerializedName(SERIALIZED_NAME_IMMUTABLE)
@@ -97,7 +97,7 @@ public class FrameworkDocType {
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
   @javax.annotation.Nullable
-  private List<FrameworkDocPerm> permissions = new ArrayList<>();
+  private List<FrameworkDocPerm> permissions;
 
   public static final String SERIALIZED_NAME_TITLE_FIELD = "titleField";
   @SerializedName(SERIALIZED_NAME_TITLE_FIELD)

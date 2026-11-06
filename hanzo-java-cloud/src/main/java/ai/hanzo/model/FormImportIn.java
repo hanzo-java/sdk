@@ -66,7 +66,7 @@ public class FormImportIn {
   public static final String SERIALIZED_NAME_RESPONSES = "responses";
   @SerializedName(SERIALIZED_NAME_RESPONSES)
   @javax.annotation.Nullable
-  private List<FormImported> responses = new ArrayList<>();
+  private List<FormImported> responses;
 
   public FormImportIn() {
   }

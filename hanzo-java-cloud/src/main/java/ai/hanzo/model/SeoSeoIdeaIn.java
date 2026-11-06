@@ -55,7 +55,7 @@ public class SeoSeoIdeaIn {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
   @javax.annotation.Nullable
-  private List<String> keywords = new ArrayList<>();
+  private List<String> keywords;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)

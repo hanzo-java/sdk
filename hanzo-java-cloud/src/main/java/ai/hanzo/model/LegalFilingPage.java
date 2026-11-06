@@ -56,7 +56,7 @@ public class LegalFilingPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<LegalLegalFiling> data = new ArrayList<>();
+  private List<LegalLegalFiling> data;
 
   public static final String SERIALIZED_NAME_DISCLAIMER = "disclaimer";
   @SerializedName(SERIALIZED_NAME_DISCLAIMER)

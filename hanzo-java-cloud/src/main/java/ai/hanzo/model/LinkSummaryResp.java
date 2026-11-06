@@ -77,7 +77,7 @@ public class LinkSummaryResp {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<LinkTotalView> rows = new ArrayList<>();
+  private List<LinkTotalView> rows;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)

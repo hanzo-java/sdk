@@ -62,7 +62,7 @@ public class O11yGettableFieldKeys {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private Map<String, List<O11yTelemetryFieldKey>> keys = new HashMap<>();
+  private Map<String, List<O11yTelemetryFieldKey>> keys;
 
   public O11yGettableFieldKeys() {
   }

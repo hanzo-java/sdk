@@ -56,7 +56,7 @@ public class O11ySpanMapperConfig {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<O11ySpanMapperSource> sources = new ArrayList<>();
+  private List<O11ySpanMapperSource> sources;
 
   public O11ySpanMapperConfig() {
   }

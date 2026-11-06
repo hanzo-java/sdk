@@ -55,12 +55,12 @@ public class ReferenceResolveReferenceIn {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<String> keys = new ArrayList<>();
+  private List<String> keys;
 
   public static final String SERIALIZED_NAME_SETS = "sets";
   @SerializedName(SERIALIZED_NAME_SETS)
   @javax.annotation.Nullable
-  private List<String> sets = new ArrayList<>();
+  private List<String> sets;
 
   public ReferenceResolveReferenceIn() {
   }

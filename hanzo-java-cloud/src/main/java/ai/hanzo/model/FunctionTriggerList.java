@@ -56,7 +56,7 @@ public class FunctionTriggerList {
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   @javax.annotation.Nullable
-  private List<FunctionTriggerView> triggers = new ArrayList<>();
+  private List<FunctionTriggerView> triggers;
 
   public FunctionTriggerList() {
   }

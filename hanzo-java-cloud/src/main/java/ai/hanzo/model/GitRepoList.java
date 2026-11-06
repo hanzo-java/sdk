@@ -56,7 +56,7 @@ public class GitRepoList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<GitRepoView> data = new ArrayList<>();
+  private List<GitRepoView> data;
 
   public GitRepoList() {
   }

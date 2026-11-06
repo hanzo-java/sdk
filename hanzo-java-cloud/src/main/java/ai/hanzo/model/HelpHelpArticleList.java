@@ -56,7 +56,7 @@ public class HelpHelpArticleList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<HelpHelpArticleCard> data = new ArrayList<>();
+  private List<HelpHelpArticleCard> data;
 
   public HelpHelpArticleList() {
   }

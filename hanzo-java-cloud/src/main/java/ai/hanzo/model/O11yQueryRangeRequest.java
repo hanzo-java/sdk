@@ -94,7 +94,7 @@ public class O11yQueryRangeRequest {
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
   @javax.annotation.Nullable
-  private Map<String, O11yVariableItem> variables = new HashMap<>();
+  private Map<String, O11yVariableItem> variables;
 
   public O11yQueryRangeRequest() {
   }

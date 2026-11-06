@@ -55,7 +55,7 @@ public class ComputeGpuAlertList {
   public static final String SERIALIZED_NAME_ALERTS = "alerts";
   @SerializedName(SERIALIZED_NAME_ALERTS)
   @javax.annotation.Nullable
-  private List<Object> alerts = new ArrayList<>();
+  private List<Object> alerts;
 
   public ComputeGpuAlertList() {
   }

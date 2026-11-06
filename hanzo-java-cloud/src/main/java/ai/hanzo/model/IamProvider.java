@@ -181,7 +181,7 @@ public class IamProvider {
   public static final String SERIALIZED_NAME_HTTP_HEADERS = "httpHeaders";
   @SerializedName(SERIALIZED_NAME_HTTP_HEADERS)
   @javax.annotation.Nullable
-  private Map<String, String> httpHeaders = new HashMap<>();
+  private Map<String, String> httpHeaders;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -291,7 +291,7 @@ public class IamProvider {
   public static final String SERIALIZED_NAME_USER_MAPPING = "userMapping";
   @SerializedName(SERIALIZED_NAME_USER_MAPPING)
   @javax.annotation.Nullable
-  private Map<String, String> userMapping = new HashMap<>();
+  private Map<String, String> userMapping;
 
   public IamProvider() {
   }

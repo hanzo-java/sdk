@@ -55,7 +55,7 @@ public class TrustSubprocessorList {
   public static final String SERIALIZED_NAME_SUBPROCESSORS = "subprocessors";
   @SerializedName(SERIALIZED_NAME_SUBPROCESSORS)
   @javax.annotation.Nullable
-  private List<Object> subprocessors = new ArrayList<>();
+  private List<Object> subprocessors;
 
   public TrustSubprocessorList() {
   }

@@ -59,7 +59,7 @@ public class AiDecisionsResponse {
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
   @javax.annotation.Nonnull
-  private Map<String, AiDecisionsAnswer> answers = new HashMap<>();
+  private Map<String, AiDecisionsAnswer> answers;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

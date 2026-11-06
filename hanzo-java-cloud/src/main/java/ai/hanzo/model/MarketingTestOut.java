@@ -57,12 +57,12 @@ public class MarketingTestOut {
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private Map<String, String> refused = new HashMap<>();
+  private Map<String, String> refused;
 
   public static final String SERIALIZED_NAME_SENT = "sent";
   @SerializedName(SERIALIZED_NAME_SENT)
   @javax.annotation.Nullable
-  private List<String> sent = new ArrayList<>();
+  private List<String> sent;
 
   public MarketingTestOut() {
   }

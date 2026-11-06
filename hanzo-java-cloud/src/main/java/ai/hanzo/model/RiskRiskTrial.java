@@ -61,7 +61,7 @@ public class RiskRiskTrial {
   public static final String SERIALIZED_NAME_CURVE = "curve";
   @SerializedName(SERIALIZED_NAME_CURVE)
   @javax.annotation.Nullable
-  private List<Double> curve = new ArrayList<>();
+  private List<Double> curve;
 
   public static final String SERIALIZED_NAME_FIT = "fit";
   @SerializedName(SERIALIZED_NAME_FIT)

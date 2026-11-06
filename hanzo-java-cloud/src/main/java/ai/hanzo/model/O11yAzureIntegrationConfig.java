@@ -61,12 +61,12 @@ public class O11yAzureIntegrationConfig {
   public static final String SERIALIZED_NAME_RESOURCE_GROUPS = "resourceGroups";
   @SerializedName(SERIALIZED_NAME_RESOURCE_GROUPS)
   @javax.annotation.Nullable
-  private List<String> resourceGroups = new ArrayList<>();
+  private List<String> resourceGroups;
 
   public static final String SERIALIZED_NAME_TELEMETRY_COLLECTION_STRATEGY = "telemetryCollectionStrategy";
   @SerializedName(SERIALIZED_NAME_TELEMETRY_COLLECTION_STRATEGY)
   @javax.annotation.Nullable
-  private List<O11yAzureTelemetryCollectionStrategy> telemetryCollectionStrategy = new ArrayList<>();
+  private List<O11yAzureTelemetryCollectionStrategy> telemetryCollectionStrategy;
 
   public O11yAzureIntegrationConfig() {
   }

@@ -56,7 +56,7 @@ public class RegistryRegistryImageList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<RegistryRegistryImage> data = new ArrayList<>();
+  private List<RegistryRegistryImage> data;
 
   public static final String SERIALIZED_NAME_TRUNCATED = "truncated";
   @SerializedName(SERIALIZED_NAME_TRUNCATED)

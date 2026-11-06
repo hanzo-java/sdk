@@ -55,7 +55,7 @@ public class TeamCollabResult {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
-  private Map<String, String> content = new HashMap<>();
+  private Map<String, String> content;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)

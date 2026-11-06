@@ -56,7 +56,7 @@ public class MlMlResourceList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<MlMlResource> items = new ArrayList<>();
+  private List<MlMlResource> items;
 
   public MlMlResourceList() {
   }

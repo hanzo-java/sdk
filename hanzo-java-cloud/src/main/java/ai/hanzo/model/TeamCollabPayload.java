@@ -55,7 +55,7 @@ public class TeamCollabPayload {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
-  private Map<String, String> content = new HashMap<>();
+  private Map<String, String> content;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -65,7 +65,7 @@ public class TeamCollabPayload {
   public static final String SERIALIZED_NAME_UPDATES = "updates";
   @SerializedName(SERIALIZED_NAME_UPDATES)
   @javax.annotation.Nullable
-  private Map<String, String> updates = new HashMap<>();
+  private Map<String, String> updates;
 
   public TeamCollabPayload() {
   }

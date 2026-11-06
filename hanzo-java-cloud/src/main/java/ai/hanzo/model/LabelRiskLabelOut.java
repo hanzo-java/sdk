@@ -81,7 +81,7 @@ public class LabelRiskLabelOut {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<LabelRiskLabelResult> results = new ArrayList<>();
+  private List<LabelRiskLabelResult> results;
 
   public LabelRiskLabelOut() {
   }

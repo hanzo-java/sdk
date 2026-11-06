@@ -66,7 +66,7 @@ public class LinkBoardResp {
   public static final String SERIALIZED_NAME_CURRENT = "current";
   @SerializedName(SERIALIZED_NAME_CURRENT)
   @javax.annotation.Nullable
-  private List<LinkReadingView> current = new ArrayList<>();
+  private List<LinkReadingView> current;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -101,7 +101,7 @@ public class LinkBoardResp {
   public static final String SERIALIZED_NAME_WINDOWS = "windows";
   @SerializedName(SERIALIZED_NAME_WINDOWS)
   @javax.annotation.Nullable
-  private List<LinkReadingView> windows = new ArrayList<>();
+  private List<LinkReadingView> windows;
 
   public LinkBoardResp() {
   }

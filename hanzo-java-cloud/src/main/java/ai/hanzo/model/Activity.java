@@ -55,7 +55,7 @@ public class Activity {
   public static final String SERIALIZED_NAME_FIELD_COUNT = "FieldCount";
   @SerializedName(SERIALIZED_NAME_FIELD_COUNT)
   @javax.annotation.Nullable
-  private Map<String, Integer> fieldCount = new HashMap<>();
+  private Map<String, Integer> fieldCount;
 
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)

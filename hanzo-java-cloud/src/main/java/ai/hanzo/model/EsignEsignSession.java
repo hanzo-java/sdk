@@ -63,7 +63,7 @@ public class EsignEsignSession {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<EsignEsignField> fields = new ArrayList<>();
+  private List<EsignEsignField> fields;
 
   public static final String SERIALIZED_NAME_PDF_BASE64 = "pdfBase64";
   @SerializedName(SERIALIZED_NAME_PDF_BASE64)

@@ -70,7 +70,7 @@ public class Store {
   public static final String SERIALIZED_NAME_BUILTIN_TOOLS = "builtinTools";
   @SerializedName(SERIALIZED_NAME_BUILTIN_TOOLS)
   @javax.annotation.Nullable
-  private List<String> builtinTools = new ArrayList<>();
+  private List<String> builtinTools;
 
   public static final String SERIALIZED_NAME_CHAT_COUNT = "chatCount";
   @SerializedName(SERIALIZED_NAME_CHAT_COUNT)
@@ -80,12 +80,12 @@ public class Store {
   public static final String SERIALIZED_NAME_CHILD_MODEL_PROVIDERS = "childModelProviders";
   @SerializedName(SERIALIZED_NAME_CHILD_MODEL_PROVIDERS)
   @javax.annotation.Nullable
-  private List<String> childModelProviders = new ArrayList<>();
+  private List<String> childModelProviders;
 
   public static final String SERIALIZED_NAME_CHILD_STORES = "childStores";
   @SerializedName(SERIALIZED_NAME_CHILD_STORES)
   @javax.annotation.Nullable
-  private List<String> childStores = new ArrayList<>();
+  private List<String> childStores;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
@@ -115,7 +115,7 @@ public class Store {
   public static final String SERIALIZED_NAME_EXAMPLE_QUESTIONS = "exampleQuestions";
   @SerializedName(SERIALIZED_NAME_EXAMPLE_QUESTIONS)
   @javax.annotation.Nullable
-  private List<ExampleQuestion> exampleQuestions = new ArrayList<>();
+  private List<ExampleQuestion> exampleQuestions;
 
   public static final String SERIALIZED_NAME_FAVICON_URL = "faviconUrl";
   @SerializedName(SERIALIZED_NAME_FAVICON_URL)
@@ -135,7 +135,7 @@ public class Store {
   public static final String SERIALIZED_NAME_FORBIDDEN_WORDS = "forbiddenWords";
   @SerializedName(SERIALIZED_NAME_FORBIDDEN_WORDS)
   @javax.annotation.Nullable
-  private List<String> forbiddenWords = new ArrayList<>();
+  private List<String> forbiddenWords;
 
   public static final String SERIALIZED_NAME_FREQUENCY = "frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)
@@ -200,7 +200,7 @@ public class Store {
   public static final String SERIALIZED_NAME_NAV_ITEMS = "navItems";
   @SerializedName(SERIALIZED_NAME_NAV_ITEMS)
   @javax.annotation.Nullable
-  private List<String> navItems = new ArrayList<>();
+  private List<String> navItems;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
@@ -215,7 +215,7 @@ public class Store {
   public static final String SERIALIZED_NAME_PROPERTIES_MAP = "propertiesMap";
   @SerializedName(SERIALIZED_NAME_PROPERTIES_MAP)
   @javax.annotation.Nullable
-  private Map<String, Properties> propertiesMap = new HashMap<>();
+  private Map<String, Properties> propertiesMap;
 
   public static final String SERIALIZED_NAME_SEARCH_PROVIDER = "searchProvider";
   @SerializedName(SERIALIZED_NAME_SEARCH_PROVIDER)
@@ -280,7 +280,7 @@ public class Store {
   public static final String SERIALIZED_NAME_VECTOR_STORES = "vectorStores";
   @SerializedName(SERIALIZED_NAME_VECTOR_STORES)
   @javax.annotation.Nullable
-  private List<String> vectorStores = new ArrayList<>();
+  private List<String> vectorStores;
 
   public static final String SERIALIZED_NAME_WELCOME = "welcome";
   @SerializedName(SERIALIZED_NAME_WELCOME)

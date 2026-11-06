@@ -56,7 +56,7 @@ public class IamInvitationsListOutput {
   public static final String SERIALIZED_NAME_INVITATIONS = "invitations";
   @SerializedName(SERIALIZED_NAME_INVITATIONS)
   @javax.annotation.Nullable
-  private List<IamInvitation> invitations = new ArrayList<>();
+  private List<IamInvitation> invitations;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

@@ -62,7 +62,7 @@ public class ReferenceReferenceOut {
   public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
   @SerializedName(SERIALIZED_NAME_OVERRIDES)
   @javax.annotation.Nullable
-  private List<ReferenceReferenceOverride> overrides = new ArrayList<>();
+  private List<ReferenceReferenceOverride> overrides;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)

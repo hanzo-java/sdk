@@ -57,7 +57,7 @@ public class WebsearchWebSearchResults {
   public static final String SERIALIZED_NAME_ENGINES = "engines";
   @SerializedName(SERIALIZED_NAME_ENGINES)
   @javax.annotation.Nullable
-  private List<WebsearchWebEngine> engines = new ArrayList<>();
+  private List<WebsearchWebEngine> engines;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_RESULTS = "number_of_results";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_RESULTS)
@@ -72,7 +72,7 @@ public class WebsearchWebSearchResults {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<WebsearchWebResult> results = new ArrayList<>();
+  private List<WebsearchWebResult> results;
 
   public WebsearchWebSearchResults() {
   }

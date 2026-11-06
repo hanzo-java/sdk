@@ -61,7 +61,7 @@ public class AskReport {
   public static final String SERIALIZED_NAME_FOLLOW_UPS = "follow_ups";
   @SerializedName(SERIALIZED_NAME_FOLLOW_UPS)
   @javax.annotation.Nullable
-  private List<String> followUps = new ArrayList<>();
+  private List<String> followUps;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -76,7 +76,7 @@ public class AskReport {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<AskSource> sources = new ArrayList<>();
+  private List<AskSource> sources;
 
   public AskReport() {
   }

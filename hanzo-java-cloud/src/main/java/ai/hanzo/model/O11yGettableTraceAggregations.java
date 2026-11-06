@@ -56,7 +56,7 @@ public class O11yGettableTraceAggregations {
   public static final String SERIALIZED_NAME_AGGREGATIONS = "aggregations";
   @SerializedName(SERIALIZED_NAME_AGGREGATIONS)
   @javax.annotation.Nullable
-  private List<O11ySpanAggregationResult> aggregations = new ArrayList<>();
+  private List<O11ySpanAggregationResult> aggregations;
 
   public O11yGettableTraceAggregations() {
   }

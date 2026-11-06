@@ -60,7 +60,7 @@ public class O11yO11yTraceWaterfallIn {
   public static final String SERIALIZED_NAME_UNCOLLAPSED_SPANS = "uncollapsedSpans";
   @SerializedName(SERIALIZED_NAME_UNCOLLAPSED_SPANS)
   @javax.annotation.Nullable
-  private List<String> uncollapsedSpans = new ArrayList<>();
+  private List<String> uncollapsedSpans;
 
   public O11yO11yTraceWaterfallIn() {
   }

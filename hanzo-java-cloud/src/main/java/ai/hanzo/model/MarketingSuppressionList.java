@@ -56,7 +56,7 @@ public class MarketingSuppressionList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<MarketingSuppression> data = new ArrayList<>();
+  private List<MarketingSuppression> data;
 
   public MarketingSuppressionList() {
   }

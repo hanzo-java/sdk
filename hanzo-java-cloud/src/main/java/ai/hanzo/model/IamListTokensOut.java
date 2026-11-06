@@ -56,7 +56,7 @@ public class IamListTokensOut {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private List<IamToken> tokens = new ArrayList<>();
+  private List<IamToken> tokens;
 
   public IamListTokensOut() {
   }

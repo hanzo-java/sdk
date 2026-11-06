@@ -56,12 +56,12 @@ public class StudioIR {
   public static final String SERIALIZED_NAME_BLOCKS = "blocks";
   @SerializedName(SERIALIZED_NAME_BLOCKS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> blocks = new ArrayList<>();
+  private List<Map<String, Object>> blocks;
 
   public static final String SERIALIZED_NAME_SLIDES = "slides";
   @SerializedName(SERIALIZED_NAME_SLIDES)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> slides = new ArrayList<>();
+  private List<Map<String, Object>> slides;
 
   public StudioIR() {
   }

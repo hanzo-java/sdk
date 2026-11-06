@@ -77,7 +77,7 @@ public class CampaignCampaignResults {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private List<CampaignChannelMetric> channels = new ArrayList<>();
+  private List<CampaignChannelMetric> channels;
 
   public static final String SERIALIZED_NAME_CLICKS = "clicks";
   @SerializedName(SERIALIZED_NAME_CLICKS)

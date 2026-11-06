@@ -56,7 +56,7 @@ public class PrincipalSummary {
   public static final String SERIALIZED_NAME_MISSING = "missing";
   @SerializedName(SERIALIZED_NAME_MISSING)
   @javax.annotation.Nullable
-  private List<PrincipalStep> missing = new ArrayList<>();
+  private List<PrincipalStep> missing;
 
   public static final String SERIALIZED_NAME_READY = "ready";
   @SerializedName(SERIALIZED_NAME_READY)

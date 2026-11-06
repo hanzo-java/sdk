@@ -57,12 +57,12 @@ public class O11yO11yFilterSuggestions {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<O11yO11yAttributeKey> attributes = new ArrayList<>();
+  private List<O11yO11yAttributeKey> attributes;
 
   public static final String SERIALIZED_NAME_EXAMPLE_QUERIES = "example_queries";
   @SerializedName(SERIALIZED_NAME_EXAMPLE_QUERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yFilterSet> exampleQueries = new ArrayList<>();
+  private List<O11yO11yFilterSet> exampleQueries;
 
   public O11yO11yFilterSuggestions() {
   }

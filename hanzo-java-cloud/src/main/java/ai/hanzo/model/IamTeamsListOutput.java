@@ -56,7 +56,7 @@ public class IamTeamsListOutput {
   public static final String SERIALIZED_NAME_TEAMS = "teams";
   @SerializedName(SERIALIZED_NAME_TEAMS)
   @javax.annotation.Nullable
-  private List<IamTeam> teams = new ArrayList<>();
+  private List<IamTeam> teams;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

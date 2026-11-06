@@ -57,7 +57,7 @@ public class O11yFunction {
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
   @javax.annotation.Nullable
-  private List<Object> args = new ArrayList<>();
+  private List<Object> args;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -67,7 +67,7 @@ public class O11yFunction {
   public static final String SERIALIZED_NAME_NAMED_ARGS = "namedArgs";
   @SerializedName(SERIALIZED_NAME_NAMED_ARGS)
   @javax.annotation.Nullable
-  private Map<String, Object> namedArgs = new HashMap<>();
+  private Map<String, Object> namedArgs;
 
   public O11yFunction() {
   }

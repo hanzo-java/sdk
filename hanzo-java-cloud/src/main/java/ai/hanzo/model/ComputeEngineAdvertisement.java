@@ -55,12 +55,12 @@ public class ComputeEngineAdvertisement {
   public static final String SERIALIZED_NAME_APIS = "apis";
   @SerializedName(SERIALIZED_NAME_APIS)
   @javax.annotation.Nullable
-  private List<String> apis = new ArrayList<>();
+  private List<String> apis;
 
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private List<String> models = new ArrayList<>();
+  private List<String> models;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

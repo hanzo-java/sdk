@@ -61,7 +61,7 @@ public class SpaceFileList {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<SpaceFileItem> files = new ArrayList<>();
+  private List<SpaceFileItem> files;
 
   public static final String SERIALIZED_NAME_FOLDER = "folder";
   @SerializedName(SERIALIZED_NAME_FOLDER)

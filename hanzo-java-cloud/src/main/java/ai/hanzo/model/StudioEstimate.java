@@ -61,7 +61,7 @@ public class StudioEstimate {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<StudioStepPrice> steps = new ArrayList<>();
+  private List<StudioStepPrice> steps;
 
   public StudioEstimate() {
   }

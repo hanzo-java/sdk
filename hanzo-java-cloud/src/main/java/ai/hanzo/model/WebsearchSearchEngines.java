@@ -56,7 +56,7 @@ public class WebsearchSearchEngines {
   public static final String SERIALIZED_NAME_ENGINES = "engines";
   @SerializedName(SERIALIZED_NAME_ENGINES)
   @javax.annotation.Nullable
-  private List<WebsearchSearchEngine> engines = new ArrayList<>();
+  private List<WebsearchSearchEngine> engines;
 
   public static final String SERIALIZED_NAME_SAVED = "saved";
   @SerializedName(SERIALIZED_NAME_SAVED)

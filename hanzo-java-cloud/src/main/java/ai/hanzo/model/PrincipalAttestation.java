@@ -76,7 +76,7 @@ public class PrincipalAttestation {
   public static final String SERIALIZED_NAME_PARENTS = "parents";
   @SerializedName(SERIALIZED_NAME_PARENTS)
   @javax.annotation.Nullable
-  private List<PrincipalAgentBrief> parents = new ArrayList<>();
+  private List<PrincipalAgentBrief> parents;
 
   public static final String SERIALIZED_NAME_STATEMENT = "statement";
   @SerializedName(SERIALIZED_NAME_STATEMENT)

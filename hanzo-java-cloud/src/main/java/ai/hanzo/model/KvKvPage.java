@@ -56,7 +56,7 @@ public class KvKvPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<KvKvEntry> data = new ArrayList<>();
+  private List<KvKvEntry> data;
 
   public KvKvPage() {
   }

@@ -56,7 +56,7 @@ public class ProviderSlackSearchOut {
   public static final String SERIALIZED_NAME_MATCHES = "matches";
   @SerializedName(SERIALIZED_NAME_MATCHES)
   @javax.annotation.Nullable
-  private List<ProviderSlackSearchHit> matches = new ArrayList<>();
+  private List<ProviderSlackSearchHit> matches;
 
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)

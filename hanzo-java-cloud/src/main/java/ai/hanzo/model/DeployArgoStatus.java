@@ -69,7 +69,7 @@ public class DeployArgoStatus {
   public static final String SERIALIZED_NAME_RESOURCES = "resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
   @javax.annotation.Nullable
-  private List<DeployArgoResourceStatus> resources = new ArrayList<>();
+  private List<DeployArgoResourceStatus> resources;
 
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)

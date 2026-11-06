@@ -56,7 +56,7 @@ public class PatrolPatrolNoteList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<PatrolPatrolNote> data = new ArrayList<>();
+  private List<PatrolPatrolNote> data;
 
   public PatrolPatrolNoteList() {
   }

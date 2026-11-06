@@ -73,7 +73,7 @@ public class CompanyFormation {
   public static final String SERIALIZED_NAME_DOCUMENT_IDS = "documentIds";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_IDS)
   @javax.annotation.Nullable
-  private List<String> documentIds = new ArrayList<>();
+  private List<String> documentIds;
 
   public static final String SERIALIZED_NAME_ESIGN_REF = "esignRef";
   @SerializedName(SERIALIZED_NAME_ESIGN_REF)
@@ -88,7 +88,7 @@ public class CompanyFormation {
   public static final String SERIALIZED_NAME_FOUNDERS = "founders";
   @SerializedName(SERIALIZED_NAME_FOUNDERS)
   @javax.annotation.Nullable
-  private List<CompanyFounder> founders = new ArrayList<>();
+  private List<CompanyFounder> founders;
 
   public static final String SERIALIZED_NAME_GENESIS = "genesis";
   @SerializedName(SERIALIZED_NAME_GENESIS)
@@ -103,7 +103,7 @@ public class CompanyFormation {
   public static final String SERIALIZED_NAME_IMPORTED_DOCS = "importedDocs";
   @SerializedName(SERIALIZED_NAME_IMPORTED_DOCS)
   @javax.annotation.Nullable
-  private List<String> importedDocs = new ArrayList<>();
+  private List<String> importedDocs;
 
   public static final String SERIALIZED_NAME_JURISDICTION = "jurisdiction";
   @SerializedName(SERIALIZED_NAME_JURISDICTION)

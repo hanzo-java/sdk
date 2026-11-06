@@ -56,7 +56,7 @@ public class GitRunnerList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<GitRunnerView> data = new ArrayList<>();
+  private List<GitRunnerView> data;
 
   public GitRunnerList() {
   }

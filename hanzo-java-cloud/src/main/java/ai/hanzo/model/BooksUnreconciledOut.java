@@ -57,12 +57,12 @@ public class BooksUnreconciledOut {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private List<BooksBankQuestion> questions = new ArrayList<>();
+  private List<BooksBankQuestion> questions;
 
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   @javax.annotation.Nullable
-  private List<BooksBankTxnRow> transactions = new ArrayList<>();
+  private List<BooksBankTxnRow> transactions;
 
   public BooksUnreconciledOut() {
   }

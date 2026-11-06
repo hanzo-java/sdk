@@ -56,12 +56,12 @@ public class KmsKmsSecrets {
   public static final String SERIALIZED_NAME_NAMES = "names";
   @SerializedName(SERIALIZED_NAME_NAMES)
   @javax.annotation.Nullable
-  private List<String> names = new ArrayList<>();
+  private List<String> names;
 
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<KmsSecretMeta> secrets = new ArrayList<>();
+  private List<KmsSecretMeta> secrets;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

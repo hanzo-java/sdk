@@ -61,7 +61,7 @@ public class IamWorkspacesListOutput {
   public static final String SERIALIZED_NAME_WORKSPACES = "workspaces";
   @SerializedName(SERIALIZED_NAME_WORKSPACES)
   @javax.annotation.Nullable
-  private List<IamWorkspace> workspaces = new ArrayList<>();
+  private List<IamWorkspace> workspaces;
 
   public IamWorkspacesListOutput() {
   }

@@ -56,7 +56,7 @@ public class GitFilesJSON {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<GitFileJSON> files = new ArrayList<>();
+  private List<GitFileJSON> files;
 
   public static final String SERIALIZED_NAME_REV = "rev";
   @SerializedName(SERIALIZED_NAME_REV)

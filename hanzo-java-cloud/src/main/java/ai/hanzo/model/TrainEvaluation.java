@@ -55,7 +55,7 @@ public class TrainEvaluation {
   public static final String SERIALIZED_NAME_SUITES = "suites";
   @SerializedName(SERIALIZED_NAME_SUITES)
   @javax.annotation.Nullable
-  private List<String> suites = new ArrayList<>();
+  private List<String> suites;
 
   public TrainEvaluation() {
   }

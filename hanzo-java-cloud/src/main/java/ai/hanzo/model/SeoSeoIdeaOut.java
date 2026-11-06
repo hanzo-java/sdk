@@ -61,7 +61,7 @@ public class SeoSeoIdeaOut {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
   @javax.annotation.Nullable
-  private List<SeoSeoMetric> keywords = new ArrayList<>();
+  private List<SeoSeoMetric> keywords;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

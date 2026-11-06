@@ -55,12 +55,12 @@ public class FrameworkModuleState {
   public static final String SERIALIZED_NAME_DOCTYPES = "doctypes";
   @SerializedName(SERIALIZED_NAME_DOCTYPES)
   @javax.annotation.Nullable
-  private List<String> doctypes = new ArrayList<>();
+  private List<String> doctypes;
 
   public static final String SERIALIZED_NAME_INSTALLED = "installed";
   @SerializedName(SERIALIZED_NAME_INSTALLED)
   @javax.annotation.Nullable
-  private List<String> installed = new ArrayList<>();
+  private List<String> installed;
 
   public static final String SERIALIZED_NAME_MODULE = "module";
   @SerializedName(SERIALIZED_NAME_MODULE)

@@ -118,7 +118,7 @@ public class AutoAutomation {
   public static final String SERIALIZED_NAME_POST_TO = "postTo";
   @SerializedName(SERIALIZED_NAME_POST_TO)
   @javax.annotation.Nullable
-  private List<String> postTo = new ArrayList<>();
+  private List<String> postTo;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)

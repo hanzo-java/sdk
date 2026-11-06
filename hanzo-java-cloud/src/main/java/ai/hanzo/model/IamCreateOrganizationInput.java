@@ -59,7 +59,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_ACCOUNT_ITEMS = "accountItems";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ITEMS)
   @javax.annotation.Nullable
-  private List<IamAccountItem> accountItems = new ArrayList<>();
+  private List<IamAccountItem> accountItems;
 
   public static final String SERIALIZED_NAME_ACCOUNT_MENU = "accountMenu";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_MENU)
@@ -84,7 +84,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_COUNTRY_CODES = "countryCodes";
   @SerializedName(SERIALIZED_NAME_COUNTRY_CODES)
   @javax.annotation.Nullable
-  private List<String> countryCodes = new ArrayList<>();
+  private List<String> countryCodes;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -224,12 +224,12 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_LANGUAGES = "languages";
   @SerializedName(SERIALIZED_NAME_LANGUAGES)
   @javax.annotation.Nullable
-  private List<String> languages = new ArrayList<>();
+  private List<String> languages;
 
   public static final String SERIALIZED_NAME_LDAP_ATTRIBUTES = "ldapAttributes";
   @SerializedName(SERIALIZED_NAME_LDAP_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<String> ldapAttributes = new ArrayList<>();
+  private List<String> ldapAttributes;
 
   public static final String SERIALIZED_NAME_LOGO = "logo";
   @SerializedName(SERIALIZED_NAME_LOGO)
@@ -254,7 +254,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_MFA_ITEMS = "mfaItems";
   @SerializedName(SERIALIZED_NAME_MFA_ITEMS)
   @javax.annotation.Nullable
-  private List<IamMfaItem> mfaItems = new ArrayList<>();
+  private List<IamMfaItem> mfaItems;
 
   public static final String SERIALIZED_NAME_MFA_REMEMBER_IN_HOURS = "mfaRememberInHours";
   @SerializedName(SERIALIZED_NAME_MFA_REMEMBER_IN_HOURS)
@@ -269,7 +269,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_NAV_ITEMS = "navItems";
   @SerializedName(SERIALIZED_NAME_NAV_ITEMS)
   @javax.annotation.Nullable
-  private List<String> navItems = new ArrayList<>();
+  private List<String> navItems;
 
   public static final String SERIALIZED_NAME_ORG_BALANCE = "orgBalance";
   @SerializedName(SERIALIZED_NAME_ORG_BALANCE)
@@ -299,7 +299,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_PASSWORD_OPTIONS = "passwordOptions";
   @SerializedName(SERIALIZED_NAME_PASSWORD_OPTIONS)
   @javax.annotation.Nullable
-  private List<String> passwordOptions = new ArrayList<>();
+  private List<String> passwordOptions;
 
   public static final String SERIALIZED_NAME_PASSWORD_SALT = "passwordSalt";
   @SerializedName(SERIALIZED_NAME_PASSWORD_SALT)
@@ -319,7 +319,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_THEME_DATA = "themeData";
   @SerializedName(SERIALIZED_NAME_THEME_DATA)
@@ -349,12 +349,12 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_USER_NAV_ITEMS = "userNavItems";
   @SerializedName(SERIALIZED_NAME_USER_NAV_ITEMS)
   @javax.annotation.Nullable
-  private List<String> userNavItems = new ArrayList<>();
+  private List<String> userNavItems;
 
   public static final String SERIALIZED_NAME_USER_TYPES = "userTypes";
   @SerializedName(SERIALIZED_NAME_USER_TYPES)
   @javax.annotation.Nullable
-  private List<String> userTypes = new ArrayList<>();
+  private List<String> userTypes;
 
   public static final String SERIALIZED_NAME_WEBSITE_URL = "websiteUrl";
   @SerializedName(SERIALIZED_NAME_WEBSITE_URL)
@@ -364,7 +364,7 @@ public class IamCreateOrganizationInput {
   public static final String SERIALIZED_NAME_WIDGET_ITEMS = "widgetItems";
   @SerializedName(SERIALIZED_NAME_WIDGET_ITEMS)
   @javax.annotation.Nullable
-  private List<String> widgetItems = new ArrayList<>();
+  private List<String> widgetItems;
 
   public IamCreateOrganizationInput() {
   }

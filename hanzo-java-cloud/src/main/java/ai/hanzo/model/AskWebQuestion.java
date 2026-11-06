@@ -75,7 +75,7 @@ public class AskWebQuestion {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<String> sources = new ArrayList<>();
+  private List<String> sources;
 
   public AskWebQuestion() {
   }

@@ -56,7 +56,7 @@ public class LinkRevokeResp {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<LinkLinkView> links = new ArrayList<>();
+  private List<LinkLinkView> links;
 
   public static final String SERIALIZED_NAME_REVOKED = "revoked";
   @SerializedName(SERIALIZED_NAME_REVOKED)

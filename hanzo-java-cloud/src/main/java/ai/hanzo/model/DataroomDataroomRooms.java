@@ -56,7 +56,7 @@ public class DataroomDataroomRooms {
   public static final String SERIALIZED_NAME_DATAROOMS = "datarooms";
   @SerializedName(SERIALIZED_NAME_DATAROOMS)
   @javax.annotation.Nullable
-  private List<DataroomDataroomRoom> datarooms = new ArrayList<>();
+  private List<DataroomDataroomRoom> datarooms;
 
   public DataroomDataroomRooms() {
   }

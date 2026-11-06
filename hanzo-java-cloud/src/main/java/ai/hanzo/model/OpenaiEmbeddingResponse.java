@@ -57,7 +57,7 @@ public class OpenaiEmbeddingResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<OpenaiEmbedding> data = new ArrayList<>();
+  private List<OpenaiEmbedding> data;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

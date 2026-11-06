@@ -56,7 +56,7 @@ public class O11yGettableHost {
   public static final String SERIALIZED_NAME_HOSTS = "hosts";
   @SerializedName(SERIALIZED_NAME_HOSTS)
   @javax.annotation.Nullable
-  private List<O11yHost> hosts = new ArrayList<>();
+  private List<O11yHost> hosts;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

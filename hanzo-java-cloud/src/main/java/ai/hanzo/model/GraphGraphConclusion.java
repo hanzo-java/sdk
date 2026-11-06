@@ -91,7 +91,7 @@ public class GraphGraphConclusion {
   public static final String SERIALIZED_NAME_SUPPORTS = "supports";
   @SerializedName(SERIALIZED_NAME_SUPPORTS)
   @javax.annotation.Nullable
-  private List<GraphGraphSupport> supports = new ArrayList<>();
+  private List<GraphGraphSupport> supports;
 
   public static final String SERIALIZED_NAME_UNTIL = "until";
   @SerializedName(SERIALIZED_NAME_UNTIL)

@@ -81,7 +81,7 @@ public class Cart {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<CartItem> items = new ArrayList<>();
+  private List<CartItem> items;
 
   public static final String SERIALIZED_NAME_LINE_TOTAL_CENTS = "lineTotalCents";
   @SerializedName(SERIALIZED_NAME_LINE_TOTAL_CENTS)

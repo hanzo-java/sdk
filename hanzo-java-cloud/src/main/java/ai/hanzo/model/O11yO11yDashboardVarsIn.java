@@ -60,7 +60,7 @@ public class O11yO11yDashboardVarsIn {
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
   @javax.annotation.Nullable
-  private Map<String, Object> variables = new HashMap<>();
+  private Map<String, Object> variables;
 
   public O11yO11yDashboardVarsIn() {
   }

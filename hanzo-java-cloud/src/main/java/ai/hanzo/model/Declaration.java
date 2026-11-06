@@ -77,12 +77,12 @@ public class Declaration {
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
   @javax.annotation.Nullable
-  private List<DeclareEnv> env = new ArrayList<>();
+  private List<DeclareEnv> env;
 
   public static final String SERIALIZED_NAME_HOSTS = "hosts";
   @SerializedName(SERIALIZED_NAME_HOSTS)
   @javax.annotation.Nullable
-  private List<String> hosts = new ArrayList<>();
+  private List<String> hosts;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -122,7 +122,7 @@ public class Declaration {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<SecretRef> secrets = new ArrayList<>();
+  private List<SecretRef> secrets;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)

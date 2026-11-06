@@ -62,7 +62,7 @@ public class O11yGettableRuleStateHistory {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<O11yLabel> labels = new ArrayList<>();
+  private List<O11yLabel> labels;
 
   public static final String SERIALIZED_NAME_OVERALL_STATE = "overallState";
   @SerializedName(SERIALIZED_NAME_OVERALL_STATE)

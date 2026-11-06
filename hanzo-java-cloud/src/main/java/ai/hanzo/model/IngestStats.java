@@ -65,7 +65,7 @@ public class IngestStats {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private List<String> errors = new ArrayList<>();
+  private List<String> errors;
 
   public static final String SERIALIZED_NAME_FILES_INGESTED = "filesIngested";
   @SerializedName(SERIALIZED_NAME_FILES_INGESTED)
@@ -85,7 +85,7 @@ public class IngestStats {
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
   @javax.annotation.Nullable
-  private List<String> skipped = new ArrayList<>();
+  private List<String> skipped;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

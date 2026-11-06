@@ -56,7 +56,7 @@ public class O11yHostListResponse {
   public static final String SERIALIZED_NAME_CLUSTER_NAMES = "clusterNames";
   @SerializedName(SERIALIZED_NAME_CLUSTER_NAMES)
   @javax.annotation.Nullable
-  private List<String> clusterNames = new ArrayList<>();
+  private List<String> clusterNames;
 
   public static final String SERIALIZED_NAME_END_TIME_BEFORE_RETENTION = "endTimeBeforeRetention";
   @SerializedName(SERIALIZED_NAME_END_TIME_BEFORE_RETENTION)
@@ -71,12 +71,12 @@ public class O11yHostListResponse {
   public static final String SERIALIZED_NAME_NODE_NAMES = "nodeNames";
   @SerializedName(SERIALIZED_NAME_NODE_NAMES)
   @javax.annotation.Nullable
-  private List<String> nodeNames = new ArrayList<>();
+  private List<String> nodeNames;
 
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private List<O11yHostListRecord> records = new ArrayList<>();
+  private List<O11yHostListRecord> records;
 
   public static final String SERIALIZED_NAME_SENT_ANY_HOST_METRICS_DATA = "sentAnyHostMetricsData";
   @SerializedName(SERIALIZED_NAME_SENT_ANY_HOST_METRICS_DATA)

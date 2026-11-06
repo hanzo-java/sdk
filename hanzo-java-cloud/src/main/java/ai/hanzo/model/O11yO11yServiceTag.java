@@ -55,7 +55,7 @@ public class O11yO11yServiceTag {
   public static final String SERIALIZED_NAME_BOOL_VALUES = "BoolValues";
   @SerializedName(SERIALIZED_NAME_BOOL_VALUES)
   @javax.annotation.Nullable
-  private List<Boolean> boolValues = new ArrayList<>();
+  private List<Boolean> boolValues;
 
   public static final String SERIALIZED_NAME_KEY = "Key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -65,7 +65,7 @@ public class O11yO11yServiceTag {
   public static final String SERIALIZED_NAME_NUMBER_VALUES = "NumberValues";
   @SerializedName(SERIALIZED_NAME_NUMBER_VALUES)
   @javax.annotation.Nullable
-  private List<Double> numberValues = new ArrayList<>();
+  private List<Double> numberValues;
 
   public static final String SERIALIZED_NAME_OPERATOR = "Operator";
   @SerializedName(SERIALIZED_NAME_OPERATOR)
@@ -75,7 +75,7 @@ public class O11yO11yServiceTag {
   public static final String SERIALIZED_NAME_STRING_VALUES = "StringValues";
   @SerializedName(SERIALIZED_NAME_STRING_VALUES)
   @javax.annotation.Nullable
-  private List<String> stringValues = new ArrayList<>();
+  private List<String> stringValues;
 
   public static final String SERIALIZED_NAME_TAG_TYPE = "TagType";
   @SerializedName(SERIALIZED_NAME_TAG_TYPE)

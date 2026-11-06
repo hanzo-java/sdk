@@ -58,7 +58,7 @@ public class PlatformDeclaredResp {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private List<PlatformDeclared> apps = new ArrayList<>();
+  private List<PlatformDeclared> apps;
 
   public static final String SERIALIZED_NAME_CD_UNAVAILABLE = "cdUnavailable";
   @SerializedName(SERIALIZED_NAME_CD_UNAVAILABLE)
@@ -73,7 +73,7 @@ public class PlatformDeclaredResp {
   public static final String SERIALIZED_NAME_UNREADABLE = "unreadable";
   @SerializedName(SERIALIZED_NAME_UNREADABLE)
   @javax.annotation.Nullable
-  private List<PlatformUnreadableFile> unreadable = new ArrayList<>();
+  private List<PlatformUnreadableFile> unreadable;
 
   public PlatformDeclaredResp() {
   }

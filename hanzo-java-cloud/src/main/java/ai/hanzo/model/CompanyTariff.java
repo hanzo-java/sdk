@@ -71,7 +71,7 @@ public class CompanyTariff {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<CompanyCharge> lines = new ArrayList<>();
+  private List<CompanyCharge> lines;
 
   public static final String SERIALIZED_NAME_RECURRING = "recurring";
   @SerializedName(SERIALIZED_NAME_RECURRING)

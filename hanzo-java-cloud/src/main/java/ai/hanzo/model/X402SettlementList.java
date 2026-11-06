@@ -56,7 +56,7 @@ public class X402SettlementList {
   public static final String SERIALIZED_NAME_SETTLEMENTS = "settlements";
   @SerializedName(SERIALIZED_NAME_SETTLEMENTS)
   @javax.annotation.Nullable
-  private List<X402Receipt> settlements = new ArrayList<>();
+  private List<X402Receipt> settlements;
 
   public X402SettlementList() {
   }

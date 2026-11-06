@@ -82,7 +82,7 @@ public class O11yClusterRecord {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   @javax.annotation.Nullable
-  private Map<String, String> meta = new HashMap<>();
+  private Map<String, String> meta;
 
   public static final String SERIALIZED_NAME_NODE_COUNTS_BY_READINESS = "nodeCountsByReadiness";
   @SerializedName(SERIALIZED_NAME_NODE_COUNTS_BY_READINESS)

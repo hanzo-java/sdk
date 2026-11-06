@@ -56,7 +56,7 @@ public class EsignEsignDocuments {
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
   @javax.annotation.Nullable
-  private List<EsignEsignDocument> documents = new ArrayList<>();
+  private List<EsignEsignDocument> documents;
 
   public EsignEsignDocuments() {
   }

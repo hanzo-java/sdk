@@ -56,7 +56,7 @@ public class DeploymentDetail {
   public static final String SERIALIZED_NAME_CONTAINERS = "containers";
   @SerializedName(SERIALIZED_NAME_CONTAINERS)
   @javax.annotation.Nullable
-  private List<ContainerDetail> containers = new ArrayList<>();
+  private List<ContainerDetail> containers;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)

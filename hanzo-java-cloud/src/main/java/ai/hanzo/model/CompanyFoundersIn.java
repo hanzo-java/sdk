@@ -56,7 +56,7 @@ public class CompanyFoundersIn {
   public static final String SERIALIZED_NAME_FOUNDERS = "founders";
   @SerializedName(SERIALIZED_NAME_FOUNDERS)
   @javax.annotation.Nullable
-  private List<CompanyFounder> founders = new ArrayList<>();
+  private List<CompanyFounder> founders;
 
   public CompanyFoundersIn() {
   }

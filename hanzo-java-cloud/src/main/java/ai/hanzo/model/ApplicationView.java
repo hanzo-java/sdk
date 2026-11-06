@@ -65,17 +65,17 @@ public class ApplicationView {
   public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
   @SerializedName(SERIALIZED_NAME_CREDENTIALS)
   @javax.annotation.Nullable
-  private List<EnvVariable> credentials = new ArrayList<>();
+  private List<EnvVariable> credentials;
 
   public static final String SERIALIZED_NAME_DEPLOYMENTS = "deployments";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENTS)
   @javax.annotation.Nullable
-  private List<DeploymentDetail> deployments = new ArrayList<>();
+  private List<DeploymentDetail> deployments;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<ApplicationEvent> events = new ArrayList<>();
+  private List<ApplicationEvent> events;
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
@@ -90,7 +90,7 @@ public class ApplicationView {
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<ServiceDetail> services = new ArrayList<>();
+  private List<ServiceDetail> services;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

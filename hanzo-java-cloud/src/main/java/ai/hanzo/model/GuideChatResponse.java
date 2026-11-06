@@ -67,7 +67,7 @@ public class GuideChatResponse {
   public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   @javax.annotation.Nullable
-  private List<GuideSuggestion> suggestions = new ArrayList<>();
+  private List<GuideSuggestion> suggestions;
 
   public GuideChatResponse() {
   }

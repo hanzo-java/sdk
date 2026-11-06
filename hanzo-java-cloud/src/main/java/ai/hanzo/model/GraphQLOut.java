@@ -62,7 +62,7 @@ public class GraphQLOut {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private List<GraphQLError> errors = new ArrayList<>();
+  private List<GraphQLError> errors;
 
   public GraphQLOut() {
   }

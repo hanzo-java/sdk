@@ -66,7 +66,7 @@ public class Vector {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BigDecimal> data = new ArrayList<>();
+  private List<BigDecimal> data;
 
   public static final String SERIALIZED_NAME_DIMENSION = "dimension";
   @SerializedName(SERIALIZED_NAME_DIMENSION)

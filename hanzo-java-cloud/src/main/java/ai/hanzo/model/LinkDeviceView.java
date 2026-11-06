@@ -56,7 +56,7 @@ public class LinkDeviceView {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<LinkLinkView> accounts = new ArrayList<>();
+  private List<LinkLinkView> accounts;
 
   public static final String SERIALIZED_NAME_ACTIVE_SESSIONS = "activeSessions";
   @SerializedName(SERIALIZED_NAME_ACTIVE_SESSIONS)

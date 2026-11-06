@@ -60,7 +60,7 @@ public class TrainSeries {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   @javax.annotation.Nullable
-  private List<List<Double>> points = new ArrayList<>();
+  private List<List<Double>> points;
 
   public TrainSeries() {
   }

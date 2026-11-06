@@ -56,7 +56,7 @@ public class SecurityFindingList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<SecurityFindingView> data = new ArrayList<>();
+  private List<SecurityFindingView> data;
 
   public SecurityFindingList() {
   }

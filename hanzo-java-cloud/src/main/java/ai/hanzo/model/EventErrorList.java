@@ -56,7 +56,7 @@ public class EventErrorList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<EventCapturedError> data = new ArrayList<>();
+  private List<EventCapturedError> data;
 
   public EventErrorList() {
   }

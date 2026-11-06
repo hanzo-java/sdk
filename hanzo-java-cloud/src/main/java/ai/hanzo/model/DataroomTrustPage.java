@@ -56,7 +56,7 @@ public class DataroomTrustPage {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<DataroomTrustItem> items = new ArrayList<>();
+  private List<DataroomTrustItem> items;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

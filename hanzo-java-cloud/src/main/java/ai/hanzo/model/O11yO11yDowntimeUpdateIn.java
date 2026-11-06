@@ -56,7 +56,7 @@ public class O11yO11yDowntimeUpdateIn {
   public static final String SERIALIZED_NAME_ALERT_IDS = "alertIds";
   @SerializedName(SERIALIZED_NAME_ALERT_IDS)
   @javax.annotation.Nullable
-  private List<String> alertIds = new ArrayList<>();
+  private List<String> alertIds;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)

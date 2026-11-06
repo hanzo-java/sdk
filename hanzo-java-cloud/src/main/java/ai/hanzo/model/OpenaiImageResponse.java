@@ -61,7 +61,7 @@ public class OpenaiImageResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<OpenaiImageResponseDataInner> data = new ArrayList<>();
+  private List<OpenaiImageResponseDataInner> data;
 
   public OpenaiImageResponse() {
   }

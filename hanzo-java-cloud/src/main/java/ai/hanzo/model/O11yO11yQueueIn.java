@@ -70,7 +70,7 @@ public class O11yO11yQueueIn {
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
   @javax.annotation.Nullable
-  private Map<String, String> variables = new HashMap<>();
+  private Map<String, String> variables;
 
   public O11yO11yQueueIn() {
   }

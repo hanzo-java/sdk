@@ -56,7 +56,7 @@ public class O11yNamespaceListResponse {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private List<O11yNamespaceListRecord> records = new ArrayList<>();
+  private List<O11yNamespaceListRecord> records;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

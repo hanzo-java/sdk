@@ -67,7 +67,7 @@ public class TrafficTotals {
   public static final String SERIALIZED_NAME_TOP_COUNTRIES = "top_countries";
   @SerializedName(SERIALIZED_NAME_TOP_COUNTRIES)
   @javax.annotation.Nullable
-  private List<TrafficCountryCount> topCountries = new ArrayList<>();
+  private List<TrafficCountryCount> topCountries;
 
   public TrafficTotals() {
   }

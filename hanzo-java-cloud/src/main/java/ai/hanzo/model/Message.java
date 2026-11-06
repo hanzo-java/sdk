@@ -95,7 +95,7 @@ public class Message {
   public static final String SERIALIZED_NAME_DISLIKE_USERS = "dislikeUsers";
   @SerializedName(SERIALIZED_NAME_DISLIKE_USERS)
   @javax.annotation.Nullable
-  private List<String> dislikeUsers = new ArrayList<>();
+  private List<String> dislikeUsers;
 
   public static final String SERIALIZED_NAME_EMBEDDING_PROVIDER = "embeddingProvider";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_PROVIDER)
@@ -135,7 +135,7 @@ public class Message {
   public static final String SERIALIZED_NAME_LIKE_USERS = "likeUsers";
   @SerializedName(SERIALIZED_NAME_LIKE_USERS)
   @javax.annotation.Nullable
-  private List<String> likeUsers = new ArrayList<>();
+  private List<String> likeUsers;
 
   public static final String SERIALIZED_NAME_MODEL_PROVIDER = "modelProvider";
   @SerializedName(SERIALIZED_NAME_MODEL_PROVIDER)
@@ -180,7 +180,7 @@ public class Message {
   public static final String SERIALIZED_NAME_SEARCH_RESULTS = "searchResults";
   @SerializedName(SERIALIZED_NAME_SEARCH_RESULTS)
   @javax.annotation.Nullable
-  private List<ModelSearchResult> searchResults = new ArrayList<>();
+  private List<ModelSearchResult> searchResults;
 
   public static final String SERIALIZED_NAME_STORE = "store";
   @SerializedName(SERIALIZED_NAME_STORE)
@@ -190,7 +190,7 @@ public class Message {
   public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   @javax.annotation.Nullable
-  private List<Candidate> suggestions = new ArrayList<>();
+  private List<Candidate> suggestions;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -210,7 +210,7 @@ public class Message {
   public static final String SERIALIZED_NAME_TOOL_CALLS = "toolCalls";
   @SerializedName(SERIALIZED_NAME_TOOL_CALLS)
   @javax.annotation.Nullable
-  private List<ModelToolCall> toolCalls = new ArrayList<>();
+  private List<ModelToolCall> toolCalls;
 
   public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
@@ -225,7 +225,7 @@ public class Message {
   public static final String SERIALIZED_NAME_VECTOR_SCORES = "vectorScores";
   @SerializedName(SERIALIZED_NAME_VECTOR_SCORES)
   @javax.annotation.Nullable
-  private List<VectorScore> vectorScores = new ArrayList<>();
+  private List<VectorScore> vectorScores;
 
   public static final String SERIALIZED_NAME_WEB_SEARCH_ENABLED = "webSearchEnabled";
   @SerializedName(SERIALIZED_NAME_WEB_SEARCH_ENABLED)

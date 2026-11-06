@@ -86,12 +86,12 @@ public class IamUser {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   @javax.annotation.Nullable
-  private List<String> address = new ArrayList<>();
+  private List<String> address;
 
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
   @javax.annotation.Nullable
-  private List<IamAddress> addresses = new ArrayList<>();
+  private List<IamAddress> addresses;
 
   public static final String SERIALIZED_NAME_ADFS = "adfs";
   @SerializedName(SERIALIZED_NAME_ADFS)
@@ -121,7 +121,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_APPLICATION_SCOPES = "applicationScopes";
   @SerializedName(SERIALIZED_NAME_APPLICATION_SCOPES)
   @javax.annotation.Nullable
-  private List<IamConsentRecord> applicationScopes = new ArrayList<>();
+  private List<IamConsentRecord> applicationScopes;
 
   public static final String SERIALIZED_NAME_AUTH0 = "auth0";
   @SerializedName(SERIALIZED_NAME_AUTH0)
@@ -201,7 +201,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_CART = "cart";
   @SerializedName(SERIALIZED_NAME_CART)
   @javax.annotation.Nullable
-  private List<IamCartItem> cart = new ArrayList<>();
+  private List<IamCartItem> cart;
 
   public static final String SERIALIZED_NAME_CLOUDFOUNDRY = "cloudfoundry";
   @SerializedName(SERIALIZED_NAME_CLOUDFOUNDRY)
@@ -361,7 +361,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_FACE_IDS = "faceIds";
   @SerializedName(SERIALIZED_NAME_FACE_IDS)
   @javax.annotation.Nullable
-  private List<IamFaceId> faceIds = new ArrayList<>();
+  private List<IamFaceId> faceIds;
 
   public static final String SERIALIZED_NAME_FACEBOOK = "facebook";
   @SerializedName(SERIALIZED_NAME_FACEBOOK)
@@ -591,7 +591,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_MANAGED_ACCOUNTS = "managedAccounts";
   @SerializedName(SERIALIZED_NAME_MANAGED_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<IamManagedAccount> managedAccounts = new ArrayList<>();
+  private List<IamManagedAccount> managedAccounts;
 
   public static final String SERIALIZED_NAME_MEETUP = "meetup";
   @SerializedName(SERIALIZED_NAME_MEETUP)
@@ -601,7 +601,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_MFA_ACCOUNTS = "mfaAccounts";
   @SerializedName(SERIALIZED_NAME_MFA_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<IamMfaAccount> mfaAccounts = new ArrayList<>();
+  private List<IamMfaAccount> mfaAccounts;
 
   public static final String SERIALIZED_NAME_MFA_EMAIL_ENABLED = "mfaEmailEnabled";
   @SerializedName(SERIALIZED_NAME_MFA_EMAIL_ENABLED)
@@ -611,7 +611,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_MFA_ITEMS = "mfaItems";
   @SerializedName(SERIALIZED_NAME_MFA_ITEMS)
   @javax.annotation.Nullable
-  private List<IamMfaItem> mfaItems = new ArrayList<>();
+  private List<IamMfaItem> mfaItems;
 
   public static final String SERIALIZED_NAME_MFA_PHONE_ENABLED = "mfaPhoneEnabled";
   @SerializedName(SERIALIZED_NAME_MFA_PHONE_ENABLED)
@@ -666,7 +666,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_MULTI_FACTOR_AUTHS = "multiFactorAuths";
   @SerializedName(SERIALIZED_NAME_MULTI_FACTOR_AUTHS)
   @javax.annotation.Nullable
-  private List<IamMfaProps> multiFactorAuths = new ArrayList<>();
+  private List<IamMfaProps> multiFactorAuths;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -771,7 +771,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   @javax.annotation.Nullable
-  private Map<String, String> properties = new HashMap<>();
+  private Map<String, String> properties;
 
   public static final String SERIALIZED_NAME_QQ = "qq";
   @SerializedName(SERIALIZED_NAME_QQ)
@@ -791,7 +791,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_RECOVERY_CODES = "recoveryCodes";
   @SerializedName(SERIALIZED_NAME_RECOVERY_CODES)
   @javax.annotation.Nullable
-  private List<String> recoveryCodes = new ArrayList<>();
+  private List<String> recoveryCodes;
 
   public static final String SERIALIZED_NAME_REGION = "region";
   @SerializedName(SERIALIZED_NAME_REGION)
@@ -941,7 +941,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_WEBAUTHN_CREDENTIALS = "webauthnCredentials";
   @SerializedName(SERIALIZED_NAME_WEBAUTHN_CREDENTIALS)
   @javax.annotation.Nullable
-  private List<Object> webauthnCredentials = new ArrayList<>();
+  private List<Object> webauthnCredentials;
 
   public static final String SERIALIZED_NAME_WECHAT = "wechat";
   @SerializedName(SERIALIZED_NAME_WECHAT)

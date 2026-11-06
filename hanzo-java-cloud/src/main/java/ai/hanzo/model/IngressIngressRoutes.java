@@ -56,7 +56,7 @@ public class IngressIngressRoutes {
   public static final String SERIALIZED_NAME_ROUTES = "routes";
   @SerializedName(SERIALIZED_NAME_ROUTES)
   @javax.annotation.Nullable
-  private List<IngressRoute> routes = new ArrayList<>();
+  private List<IngressRoute> routes;
 
   public IngressIngressRoutes() {
   }

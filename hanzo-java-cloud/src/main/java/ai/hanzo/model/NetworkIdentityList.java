@@ -56,7 +56,7 @@ public class NetworkIdentityList {
   public static final String SERIALIZED_NAME_IDENTITIES = "identities";
   @SerializedName(SERIALIZED_NAME_IDENTITIES)
   @javax.annotation.Nullable
-  private List<NetworkIdentityView> identities = new ArrayList<>();
+  private List<NetworkIdentityView> identities;
 
   public NetworkIdentityList() {
   }

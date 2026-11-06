@@ -72,7 +72,7 @@ public class EsignEsignDocument {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<EsignEsignField> fields = new ArrayList<>();
+  private List<EsignEsignField> fields;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -87,7 +87,7 @@ public class EsignEsignDocument {
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
   @javax.annotation.Nullable
-  private List<EsignEsignRecipient> recipients = new ArrayList<>();
+  private List<EsignEsignRecipient> recipients;
 
   public static final String SERIALIZED_NAME_SIGNING_ORDER = "signingOrder";
   @SerializedName(SERIALIZED_NAME_SIGNING_ORDER)

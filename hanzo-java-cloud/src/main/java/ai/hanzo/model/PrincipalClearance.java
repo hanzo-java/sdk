@@ -81,7 +81,7 @@ public class PrincipalClearance {
   public static final String SERIALIZED_NAME_FACTS_REQUIRED = "facts_required";
   @SerializedName(SERIALIZED_NAME_FACTS_REQUIRED)
   @javax.annotation.Nullable
-  private List<PrincipalFact> factsRequired = new ArrayList<>();
+  private List<PrincipalFact> factsRequired;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -121,22 +121,22 @@ public class PrincipalClearance {
   public static final String SERIALIZED_NAME_REPORTING_OBLIGATIONS = "reporting_obligations";
   @SerializedName(SERIALIZED_NAME_REPORTING_OBLIGATIONS)
   @javax.annotation.Nullable
-  private List<PrincipalObligation> reportingObligations = new ArrayList<>();
+  private List<PrincipalObligation> reportingObligations;
 
   public static final String SERIALIZED_NAME_REQUIRED_BEFORE_PAYMENT = "required_before_payment";
   @SerializedName(SERIALIZED_NAME_REQUIRED_BEFORE_PAYMENT)
   @javax.annotation.Nullable
-  private List<PrincipalStep> requiredBeforePayment = new ArrayList<>();
+  private List<PrincipalStep> requiredBeforePayment;
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private List<PrincipalDecided> rules = new ArrayList<>();
+  private List<PrincipalDecided> rules;
 
   public static final String SERIALIZED_NAME_SETTLEMENT_METHODS = "settlement_methods";
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_METHODS)
   @javax.annotation.Nullable
-  private List<PrincipalMethod> settlementMethods = new ArrayList<>();
+  private List<PrincipalMethod> settlementMethods;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

@@ -56,7 +56,7 @@ public class ExecCodeRun {
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
   @javax.annotation.Nullable
-  private List<String> args = new ArrayList<>();
+  private List<String> args;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -66,7 +66,7 @@ public class ExecCodeRun {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<ExecCodeFile> files = new ArrayList<>();
+  private List<ExecCodeFile> files;
 
   public static final String SERIALIZED_NAME_LANG = "lang";
   @SerializedName(SERIALIZED_NAME_LANG)

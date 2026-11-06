@@ -68,7 +68,7 @@ public class O11ySNSConfig {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private Map<String, String> attributes = new HashMap<>();
+  private Map<String, String> attributes;
 
   public static final String SERIALIZED_NAME_HTTP_CONFIG = "http_config";
   @SerializedName(SERIALIZED_NAME_HTTP_CONFIG)

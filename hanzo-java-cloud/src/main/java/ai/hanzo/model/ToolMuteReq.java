@@ -55,12 +55,12 @@ public class ToolMuteReq {
   public static final String SERIALIZED_NAME_MUTE = "mute";
   @SerializedName(SERIALIZED_NAME_MUTE)
   @javax.annotation.Nullable
-  private List<String> mute = new ArrayList<>();
+  private List<String> mute;
 
   public static final String SERIALIZED_NAME_UNMUTE = "unmute";
   @SerializedName(SERIALIZED_NAME_UNMUTE)
   @javax.annotation.Nullable
-  private List<String> unmute = new ArrayList<>();
+  private List<String> unmute;
 
   public ToolMuteReq() {
   }

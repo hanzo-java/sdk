@@ -55,7 +55,7 @@ public class TrustUpdateList {
   public static final String SERIALIZED_NAME_UPDATES = "updates";
   @SerializedName(SERIALIZED_NAME_UPDATES)
   @javax.annotation.Nullable
-  private List<Object> updates = new ArrayList<>();
+  private List<Object> updates;
 
   public TrustUpdateList() {
   }

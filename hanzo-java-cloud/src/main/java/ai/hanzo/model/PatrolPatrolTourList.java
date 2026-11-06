@@ -56,7 +56,7 @@ public class PatrolPatrolTourList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<PatrolPatrolTour> data = new ArrayList<>();
+  private List<PatrolPatrolTour> data;
 
   public PatrolPatrolTourList() {
   }

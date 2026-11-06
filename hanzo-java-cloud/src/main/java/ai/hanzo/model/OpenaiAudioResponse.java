@@ -68,7 +68,7 @@ public class OpenaiAudioResponse {
   public static final String SERIALIZED_NAME_SEGMENTS = "segments";
   @SerializedName(SERIALIZED_NAME_SEGMENTS)
   @javax.annotation.Nullable
-  private List<OpenaiAudioResponseSegmentsInner> segments = new ArrayList<>();
+  private List<OpenaiAudioResponseSegmentsInner> segments;
 
   public static final String SERIALIZED_NAME_TASK = "task";
   @SerializedName(SERIALIZED_NAME_TASK)
@@ -83,7 +83,7 @@ public class OpenaiAudioResponse {
   public static final String SERIALIZED_NAME_WORDS = "words";
   @SerializedName(SERIALIZED_NAME_WORDS)
   @javax.annotation.Nullable
-  private List<OpenaiAudioResponseWordsInner> words = new ArrayList<>();
+  private List<OpenaiAudioResponseWordsInner> words;
 
   public OpenaiAudioResponse() {
   }

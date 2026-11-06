@@ -56,7 +56,7 @@ public class BillingResize {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<BillingSaleLine> lines = new ArrayList<>();
+  private List<BillingSaleLine> lines;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)

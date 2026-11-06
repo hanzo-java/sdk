@@ -61,7 +61,7 @@ public class ToolSourceToolList {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<ToolTool> tools = new ArrayList<>();
+  private List<ToolTool> tools;
 
   public ToolSourceToolList() {
   }

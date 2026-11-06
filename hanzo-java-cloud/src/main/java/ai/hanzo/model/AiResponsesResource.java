@@ -91,7 +91,7 @@ public class AiResponsesResource {
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
   @javax.annotation.Nullable
-  private Map<String, String> metadata = new HashMap<>();
+  private Map<String, String> metadata;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -106,7 +106,7 @@ public class AiResponsesResource {
   public static final String SERIALIZED_NAME_OUTPUT = "output";
   @SerializedName(SERIALIZED_NAME_OUTPUT)
   @javax.annotation.Nullable
-  private List<Object> output = new ArrayList<>();
+  private List<Object> output;
 
   public static final String SERIALIZED_NAME_PARALLEL_TOOL_CALLS = "parallel_tool_calls";
   @SerializedName(SERIALIZED_NAME_PARALLEL_TOOL_CALLS)
@@ -151,7 +151,7 @@ public class AiResponsesResource {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<AiResponsesTool> tools = new ArrayList<>();
+  private List<AiResponsesTool> tools;
 
   public static final String SERIALIZED_NAME_TOP_P = "top_p";
   @SerializedName(SERIALIZED_NAME_TOP_P)

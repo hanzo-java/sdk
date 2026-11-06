@@ -66,27 +66,27 @@ public class CloudflarePagesDeploymentConfig {
   public static final String SERIALIZED_NAME_COMPATIBILITY_FLAGS = "compatibility_flags";
   @SerializedName(SERIALIZED_NAME_COMPATIBILITY_FLAGS)
   @javax.annotation.Nullable
-  private List<String> compatibilityFlags = new ArrayList<>();
+  private List<String> compatibilityFlags;
 
   public static final String SERIALIZED_NAME_D1_DATABASES = "d1_databases";
   @SerializedName(SERIALIZED_NAME_D1_DATABASES)
   @javax.annotation.Nullable
-  private Map<String, CloudflarePagesD1Binding> d1Databases = new HashMap<>();
+  private Map<String, CloudflarePagesD1Binding> d1Databases;
 
   public static final String SERIALIZED_NAME_ENV_VARS = "env_vars";
   @SerializedName(SERIALIZED_NAME_ENV_VARS)
   @javax.annotation.Nullable
-  private Map<String, CloudflarePagesEnvVar> envVars = new HashMap<>();
+  private Map<String, CloudflarePagesEnvVar> envVars;
 
   public static final String SERIALIZED_NAME_KV_NAMESPACES = "kv_namespaces";
   @SerializedName(SERIALIZED_NAME_KV_NAMESPACES)
   @javax.annotation.Nullable
-  private Map<String, CloudflarePagesKVBinding> kvNamespaces = new HashMap<>();
+  private Map<String, CloudflarePagesKVBinding> kvNamespaces;
 
   public static final String SERIALIZED_NAME_R2_BUCKETS = "r2_buckets";
   @SerializedName(SERIALIZED_NAME_R2_BUCKETS)
   @javax.annotation.Nullable
-  private Map<String, CloudflarePagesR2Binding> r2Buckets = new HashMap<>();
+  private Map<String, CloudflarePagesR2Binding> r2Buckets;
 
   public CloudflarePagesDeploymentConfig() {
   }

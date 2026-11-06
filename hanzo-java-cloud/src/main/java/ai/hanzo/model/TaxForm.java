@@ -69,7 +69,7 @@ public class TaxForm {
   public static final String SERIALIZED_NAME_BOXES = "boxes";
   @SerializedName(SERIALIZED_NAME_BOXES)
   @javax.annotation.Nullable
-  private List<TaxAmount> boxes = new ArrayList<>();
+  private List<TaxAmount> boxes;
 
   public static final String SERIALIZED_NAME_CERTIFIED = "certified";
   @SerializedName(SERIALIZED_NAME_CERTIFIED)
@@ -119,7 +119,7 @@ public class TaxForm {
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
   @javax.annotation.Nullable
-  private List<String> notes = new ArrayList<>();
+  private List<String> notes;
 
   public static final String SERIALIZED_NAME_PAYER = "payer";
   @SerializedName(SERIALIZED_NAME_PAYER)
@@ -129,7 +129,7 @@ public class TaxForm {
   public static final String SERIALIZED_NAME_PAYMENTS = "payments";
   @SerializedName(SERIALIZED_NAME_PAYMENTS)
   @javax.annotation.Nullable
-  private List<String> payments = new ArrayList<>();
+  private List<String> payments;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)

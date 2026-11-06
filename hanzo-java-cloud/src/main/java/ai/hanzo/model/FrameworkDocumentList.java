@@ -56,7 +56,7 @@ public class FrameworkDocumentList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> data = new ArrayList<>();
+  private List<Map<String, Object>> data;
 
   public FrameworkDocumentList() {
   }

@@ -80,7 +80,7 @@ public class O11yPostableProfile {
   public static final String SERIALIZED_NAME_REASONS_FOR_INTEREST_IN_O11Y = "reasons_for_interest_in_o11y";
   @SerializedName(SERIALIZED_NAME_REASONS_FOR_INTEREST_IN_O11Y)
   @javax.annotation.Nullable
-  private List<String> reasonsForInterestInO11y = new ArrayList<>();
+  private List<String> reasonsForInterestInO11y;
 
   public static final String SERIALIZED_NAME_TIMELINE_FOR_MIGRATING_TO_O11Y = "timeline_for_migrating_to_o11y";
   @SerializedName(SERIALIZED_NAME_TIMELINE_FOR_MIGRATING_TO_O11Y)

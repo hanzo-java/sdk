@@ -70,7 +70,7 @@ public class IamInput {
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private List<String> domains = new ArrayList<>();
+  private List<String> domains;
 
   public static final String SERIALIZED_NAME_IS_ENABLED = "isEnabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)
@@ -90,17 +90,17 @@ public class IamInput {
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   @javax.annotation.Nullable
-  private List<String> roles = new ArrayList<>();
+  private List<String> roles;
 
   public static final String SERIALIZED_NAME_TEAMS = "teams";
   @SerializedName(SERIALIZED_NAME_TEAMS)
   @javax.annotation.Nullable
-  private List<String> teams = new ArrayList<>();
+  private List<String> teams;
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
   @javax.annotation.Nullable
-  private List<String> users = new ArrayList<>();
+  private List<String> users;
 
   public IamInput() {
   }

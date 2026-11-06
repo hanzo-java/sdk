@@ -55,7 +55,7 @@ public class ToolToolCall {
   public static final String SERIALIZED_NAME_ARGUMENTS = "arguments";
   @SerializedName(SERIALIZED_NAME_ARGUMENTS)
   @javax.annotation.Nullable
-  private Map<String, Object> arguments = new HashMap<>();
+  private Map<String, Object> arguments;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

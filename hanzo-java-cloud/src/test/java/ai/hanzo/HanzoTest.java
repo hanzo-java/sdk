@@ -134,6 +134,11 @@ class HanzoTest {
         assertEquals("0.5", req.getHeader("X-Max-Cost"));
         assertEquals("2000", req.getHeader("X-Max-Latency-Ms"));
         JsonObject body = JsonParser.parseString(req.getBody().readUtf8()).getAsJsonObject();
+        // Exactly what was set: an unset list or map is absent, not `[]` or `{}`,
+        // which the gateway refuses.
+        assertEquals(java.util.Set.of("model", "messages"), body.keySet());
+        assertEquals(java.util.Set.of("role", "content"),
+                body.getAsJsonArray("messages").get(0).getAsJsonObject().keySet());
         assertEquals("zen5", body.get("model").getAsString());
         assertEquals("hi", body.getAsJsonArray("messages").get(0).getAsJsonObject().get("content").getAsString());
         assertEquals("zen5", reply.getModel());

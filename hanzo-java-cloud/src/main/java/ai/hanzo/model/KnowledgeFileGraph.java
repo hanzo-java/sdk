@@ -58,7 +58,7 @@ public class KnowledgeFileGraph {
   public static final String SERIALIZED_NAME_ENTITIES = "entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
   @javax.annotation.Nullable
-  private List<KnowledgeFileEntity> entities = new ArrayList<>();
+  private List<KnowledgeFileEntity> entities;
 
   public static final String SERIALIZED_NAME_FILE = "file";
   @SerializedName(SERIALIZED_NAME_FILE)
@@ -68,7 +68,7 @@ public class KnowledgeFileGraph {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<KnowledgeFileLink> links = new ArrayList<>();
+  private List<KnowledgeFileLink> links;
 
   public KnowledgeFileGraph() {
   }

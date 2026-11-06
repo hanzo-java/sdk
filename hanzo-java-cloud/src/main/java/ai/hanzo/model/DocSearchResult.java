@@ -55,7 +55,7 @@ public class DocSearchResult {
   public static final String SERIALIZED_NAME_BREADCRUMBS = "breadcrumbs";
   @SerializedName(SERIALIZED_NAME_BREADCRUMBS)
   @javax.annotation.Nullable
-  private List<String> breadcrumbs = new ArrayList<>();
+  private List<String> breadcrumbs;
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)

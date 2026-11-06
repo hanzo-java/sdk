@@ -55,7 +55,7 @@ public class AiVideoSpec {
   public static final String SERIALIZED_NAME_ASPECT_RATIOS = "aspect_ratios";
   @SerializedName(SERIALIZED_NAME_ASPECT_RATIOS)
   @javax.annotation.Nullable
-  private List<String> aspectRatios = new ArrayList<>();
+  private List<String> aspectRatios;
 
   public static final String SERIALIZED_NAME_AUDIO = "audio";
   @SerializedName(SERIALIZED_NAME_AUDIO)
@@ -65,22 +65,22 @@ public class AiVideoSpec {
   public static final String SERIALIZED_NAME_DURATIONS = "durations";
   @SerializedName(SERIALIZED_NAME_DURATIONS)
   @javax.annotation.Nullable
-  private List<Integer> durations = new ArrayList<>();
+  private List<Integer> durations;
 
   public static final String SERIALIZED_NAME_FRAME_IMAGES = "frame_images";
   @SerializedName(SERIALIZED_NAME_FRAME_IMAGES)
   @javax.annotation.Nullable
-  private List<String> frameImages = new ArrayList<>();
+  private List<String> frameImages;
 
   public static final String SERIALIZED_NAME_RESOLUTIONS = "resolutions";
   @SerializedName(SERIALIZED_NAME_RESOLUTIONS)
   @javax.annotation.Nullable
-  private List<String> resolutions = new ArrayList<>();
+  private List<String> resolutions;
 
   public static final String SERIALIZED_NAME_SIZES = "sizes";
   @SerializedName(SERIALIZED_NAME_SIZES)
   @javax.annotation.Nullable
-  private List<String> sizes = new ArrayList<>();
+  private List<String> sizes;
 
   public AiVideoSpec() {
   }

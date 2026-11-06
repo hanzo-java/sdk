@@ -61,7 +61,7 @@ public class BillingCreditGrants {
   public static final String SERIALIZED_NAME_GRANTS = "grants";
   @SerializedName(SERIALIZED_NAME_GRANTS)
   @javax.annotation.Nullable
-  private List<BillingCreditGrant> grants = new ArrayList<>();
+  private List<BillingCreditGrant> grants;
 
   public BillingCreditGrants() {
   }

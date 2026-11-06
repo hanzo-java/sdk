@@ -81,7 +81,7 @@ public class O11yMattermostAttachment {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<O11yMattermostField> fields = new ArrayList<>();
+  private List<O11yMattermostField> fields;
 
   public static final String SERIALIZED_NAME_FOOTER = "footer";
   @SerializedName(SERIALIZED_NAME_FOOTER)

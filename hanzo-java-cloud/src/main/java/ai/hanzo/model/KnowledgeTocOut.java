@@ -62,7 +62,7 @@ public class KnowledgeTocOut {
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   @javax.annotation.Nullable
-  private List<KnowledgeTocEntry> sections = new ArrayList<>();
+  private List<KnowledgeTocEntry> sections;
 
   public KnowledgeTocOut() {
   }

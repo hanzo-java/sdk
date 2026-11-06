@@ -62,7 +62,7 @@ public class O11yPostableChannel {
   public static final String SERIALIZED_NAME_GOOGLECHAT_CONFIGS = "googlechat_configs";
   @SerializedName(SERIALIZED_NAME_GOOGLECHAT_CONFIGS)
   @javax.annotation.Nullable
-  private List<O11yGoogleChatReceiverConfig> googlechatConfigs = new ArrayList<>();
+  private List<O11yGoogleChatReceiverConfig> googlechatConfigs;
 
   public O11yPostableChannel() {
   }

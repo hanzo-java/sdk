@@ -55,7 +55,7 @@ public class SeoSeoAuditOut {
   public static final String SERIALIZED_NAME_CHECKS = "checks";
   @SerializedName(SERIALIZED_NAME_CHECKS)
   @javax.annotation.Nullable
-  private Map<String, Boolean> checks = new HashMap<>();
+  private Map<String, Boolean> checks;
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)

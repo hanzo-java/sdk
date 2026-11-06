@@ -66,7 +66,7 @@ public class LabelRiskResolveIn {
   public static final String SERIALIZED_NAME_SUBJECTS = "subjects";
   @SerializedName(SERIALIZED_NAME_SUBJECTS)
   @javax.annotation.Nullable
-  private List<LabelRiskLabelEvent> subjects = new ArrayList<>();
+  private List<LabelRiskLabelEvent> subjects;
 
   public LabelRiskResolveIn() {
   }

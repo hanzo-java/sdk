@@ -80,7 +80,7 @@ public class PlatformBinarySpec {
   public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
   @SerializedName(SERIALIZED_NAME_PLATFORMS)
   @javax.annotation.Nullable
-  private List<String> platforms = new ArrayList<>();
+  private List<String> platforms;
 
   public static final String SERIALIZED_NAME_RUN = "run";
   @SerializedName(SERIALIZED_NAME_RUN)

@@ -63,7 +63,7 @@ public class TrainCapability {
   public static final String SERIALIZED_NAME_CORRECTIONS = "corrections";
   @SerializedName(SERIALIZED_NAME_CORRECTIONS)
   @javax.annotation.Nullable
-  private List<String> corrections = new ArrayList<>();
+  private List<String> corrections;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -108,7 +108,7 @@ public class TrainCapability {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   @javax.annotation.Nullable
-  private List<TrainVersion> versions = new ArrayList<>();
+  private List<TrainVersion> versions;
 
   public TrainCapability() {
   }

@@ -55,7 +55,7 @@ public class MarketingField {
   public static final String SERIALIZED_NAME_CHOICES = "choices";
   @SerializedName(SERIALIZED_NAME_CHOICES)
   @javax.annotation.Nullable
-  private List<String> choices = new ArrayList<>();
+  private List<String> choices;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)

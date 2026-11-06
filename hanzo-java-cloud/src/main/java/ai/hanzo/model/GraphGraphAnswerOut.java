@@ -76,7 +76,7 @@ public class GraphGraphAnswerOut {
   public static final String SERIALIZED_NAME_ASSERTIONS = "assertions";
   @SerializedName(SERIALIZED_NAME_ASSERTIONS)
   @javax.annotation.Nullable
-  private List<String> assertions = new ArrayList<>();
+  private List<String> assertions;
 
   public static final String SERIALIZED_NAME_CALLS = "calls";
   @SerializedName(SERIALIZED_NAME_CALLS)
@@ -91,12 +91,12 @@ public class GraphGraphAnswerOut {
   public static final String SERIALIZED_NAME_COMMUNITIES = "communities";
   @SerializedName(SERIALIZED_NAME_COMMUNITIES)
   @javax.annotation.Nullable
-  private List<Long> communities = new ArrayList<>();
+  private List<Long> communities;
 
   public static final String SERIALIZED_NAME_FINDINGS = "findings";
   @SerializedName(SERIALIZED_NAME_FINDINGS)
   @javax.annotation.Nullable
-  private List<GraphGraphFinding> findings = new ArrayList<>();
+  private List<GraphGraphFinding> findings;
 
   public static final String SERIALIZED_NAME_GROUNDED = "grounded";
   @SerializedName(SERIALIZED_NAME_GROUNDED)

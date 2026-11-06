@@ -76,7 +76,7 @@ public class CodeContextBundle {
   public static final String SERIALIZED_NAME_SPANS = "spans";
   @SerializedName(SERIALIZED_NAME_SPANS)
   @javax.annotation.Nullable
-  private List<CodeSpan> spans = new ArrayList<>();
+  private List<CodeSpan> spans;
 
   public static final String SERIALIZED_NAME_USED_TOKENS = "usedTokens";
   @SerializedName(SERIALIZED_NAME_USED_TOKENS)

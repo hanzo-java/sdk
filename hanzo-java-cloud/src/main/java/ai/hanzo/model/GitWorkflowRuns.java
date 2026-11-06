@@ -56,7 +56,7 @@ public class GitWorkflowRuns {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<GitWorkflowRun> data = new ArrayList<>();
+  private List<GitWorkflowRun> data;
 
   public GitWorkflowRuns() {
   }

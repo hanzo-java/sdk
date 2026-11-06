@@ -71,7 +71,7 @@ public class AgentCodingPull {
   public static final String SERIALIZED_NAME_REVIEWS = "reviews";
   @SerializedName(SERIALIZED_NAME_REVIEWS)
   @javax.annotation.Nullable
-  private List<AgentCodingReview> reviews = new ArrayList<>();
+  private List<AgentCodingReview> reviews;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)

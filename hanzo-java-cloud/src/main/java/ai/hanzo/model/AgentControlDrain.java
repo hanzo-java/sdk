@@ -56,7 +56,7 @@ public class AgentControlDrain {
   public static final String SERIALIZED_NAME_COMMANDS = "commands";
   @SerializedName(SERIALIZED_NAME_COMMANDS)
   @javax.annotation.Nullable
-  private List<AgentControlCommandView> commands = new ArrayList<>();
+  private List<AgentControlCommandView> commands;
 
   public static final String SERIALIZED_NAME_CURSOR = "cursor";
   @SerializedName(SERIALIZED_NAME_CURSOR)

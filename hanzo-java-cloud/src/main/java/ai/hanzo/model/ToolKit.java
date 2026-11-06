@@ -57,27 +57,27 @@ public class ToolKit {
   public static final String SERIALIZED_NAME_EXCESS = "excess";
   @SerializedName(SERIALIZED_NAME_EXCESS)
   @javax.annotation.Nullable
-  private List<String> excess = new ArrayList<>();
+  private List<String> excess;
 
   public static final String SERIALIZED_NAME_MUTED = "muted";
   @SerializedName(SERIALIZED_NAME_MUTED)
   @javax.annotation.Nullable
-  private List<String> muted = new ArrayList<>();
+  private List<String> muted;
 
   public static final String SERIALIZED_NAME_OMITTED = "omitted";
   @SerializedName(SERIALIZED_NAME_OMITTED)
   @javax.annotation.Nullable
-  private List<String> omitted = new ArrayList<>();
+  private List<String> omitted;
 
   public static final String SERIALIZED_NAME_SERVERS = "servers";
   @SerializedName(SERIALIZED_NAME_SERVERS)
   @javax.annotation.Nullable
-  private List<ToolRemote> servers = new ArrayList<>();
+  private List<ToolRemote> servers;
 
   public static final String SERIALIZED_NAME_SKILLS = "skills";
   @SerializedName(SERIALIZED_NAME_SKILLS)
   @javax.annotation.Nullable
-  private List<ToolSkillDoc> skills = new ArrayList<>();
+  private List<ToolSkillDoc> skills;
 
   public ToolKit() {
   }

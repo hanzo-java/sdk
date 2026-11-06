@@ -56,7 +56,7 @@ public class IngressIngressServices {
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<IngressUpstream> services = new ArrayList<>();
+  private List<IngressUpstream> services;
 
   public IngressIngressServices() {
   }

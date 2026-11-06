@@ -81,7 +81,7 @@ public class BooksMetricsResponse {
   public static final String SERIALIZED_NAME_FIGURES = "figures";
   @SerializedName(SERIALIZED_NAME_FIGURES)
   @javax.annotation.Nullable
-  private List<BooksFigure> figures = new ArrayList<>();
+  private List<BooksFigure> figures;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)

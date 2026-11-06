@@ -75,7 +75,7 @@ public class GraphGraphPathIn {
   public static final String SERIALIZED_NAME_RELATIONS = "relations";
   @SerializedName(SERIALIZED_NAME_RELATIONS)
   @javax.annotation.Nullable
-  private List<String> relations = new ArrayList<>();
+  private List<String> relations;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)

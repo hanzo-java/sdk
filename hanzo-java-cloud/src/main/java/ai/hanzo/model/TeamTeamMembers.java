@@ -56,12 +56,12 @@ public class TeamTeamMembers {
   public static final String SERIALIZED_NAME_DEGRADED = "degraded";
   @SerializedName(SERIALIZED_NAME_DEGRADED)
   @javax.annotation.Nullable
-  private List<String> degraded = new ArrayList<>();
+  private List<String> degraded;
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
   @javax.annotation.Nullable
-  private List<TeamTeamMember> members = new ArrayList<>();
+  private List<TeamTeamMember> members;
 
   public TeamTeamMembers() {
   }

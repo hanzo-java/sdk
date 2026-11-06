@@ -61,7 +61,7 @@ public class KnowledgeFileSearchOut {
   public static final String SERIALIZED_NAME_PASSAGES = "passages";
   @SerializedName(SERIALIZED_NAME_PASSAGES)
   @javax.annotation.Nullable
-  private List<KnowledgeCitedPassage> passages = new ArrayList<>();
+  private List<KnowledgeCitedPassage> passages;
 
   public KnowledgeFileSearchOut() {
   }

@@ -61,7 +61,7 @@ public class TaskIssueHits {
   public static final String SERIALIZED_NAME_ISSUES = "issues";
   @SerializedName(SERIALIZED_NAME_ISSUES)
   @javax.annotation.Nullable
-  private List<TaskIssueHit> issues = new ArrayList<>();
+  private List<TaskIssueHit> issues;
 
   public TaskIssueHits() {
   }

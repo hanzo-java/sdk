@@ -66,7 +66,7 @@ public class O11yO11yDependencyGraphIn {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<O11yO11yTagFilter> tags = new ArrayList<>();
+  private List<O11yO11yTagFilter> tags;
 
   public O11yO11yDependencyGraphIn() {
   }

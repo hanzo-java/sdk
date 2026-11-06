@@ -56,7 +56,7 @@ public class TreasuryAccountsOut {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<TreasuryAccountView> accounts = new ArrayList<>();
+  private List<TreasuryAccountView> accounts;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)

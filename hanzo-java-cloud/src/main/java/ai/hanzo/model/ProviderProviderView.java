@@ -58,12 +58,12 @@ public class ProviderProviderView {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<ProviderConnectionView> accounts = new ArrayList<>();
+  private List<ProviderConnectionView> accounts;
 
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<ProviderOpView> actions = new ArrayList<>();
+  private List<ProviderOpView> actions;
 
   public static final String SERIALIZED_NAME_APP = "app";
   @SerializedName(SERIALIZED_NAME_APP)
@@ -103,7 +103,7 @@ public class ProviderProviderView {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<ProviderField> fields = new ArrayList<>();
+  private List<ProviderField> fields;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -123,7 +123,7 @@ public class ProviderProviderView {
   public static final String SERIALIZED_NAME_MODES = "modes";
   @SerializedName(SERIALIZED_NAME_MODES)
   @javax.annotation.Nullable
-  private List<String> modes = new ArrayList<>();
+  private List<String> modes;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -143,12 +143,12 @@ public class ProviderProviderView {
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
   @javax.annotation.Nullable
-  private List<String> scopes = new ArrayList<>();
+  private List<String> scopes;
 
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   @javax.annotation.Nullable
-  private List<ProviderOpView> triggers = new ArrayList<>();
+  private List<ProviderOpView> triggers;
 
   public ProviderProviderView() {
   }

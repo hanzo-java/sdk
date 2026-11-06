@@ -55,7 +55,7 @@ public class O11yO11yEventIn {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private Map<String, Object> attributes = new HashMap<>();
+  private Map<String, Object> attributes;
 
   public static final String SERIALIZED_NAME_EVENT_NAME = "eventName";
   @SerializedName(SERIALIZED_NAME_EVENT_NAME)

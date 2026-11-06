@@ -60,7 +60,7 @@ public class TrainObject {
   public static final String SERIALIZED_NAME_JOBS = "jobs";
   @SerializedName(SERIALIZED_NAME_JOBS)
   @javax.annotation.Nullable
-  private List<String> jobs = new ArrayList<>();
+  private List<String> jobs;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)

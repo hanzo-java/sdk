@@ -58,7 +58,7 @@ public class O11yFlamegraphSpan {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private Map<String, Object> attributes = new HashMap<>();
+  private Map<String, Object> attributes;
 
   public static final String SERIALIZED_NAME_DURATION_NANO = "durationNano";
   @SerializedName(SERIALIZED_NAME_DURATION_NANO)
@@ -68,7 +68,7 @@ public class O11yFlamegraphSpan {
   public static final String SERIALIZED_NAME_EVENT = "event";
   @SerializedName(SERIALIZED_NAME_EVENT)
   @javax.annotation.Nullable
-  private List<O11yEvent> event = new ArrayList<>();
+  private List<O11yEvent> event;
 
   public static final String SERIALIZED_NAME_HAS_ERROR = "hasError";
   @SerializedName(SERIALIZED_NAME_HAS_ERROR)
@@ -93,7 +93,7 @@ public class O11yFlamegraphSpan {
   public static final String SERIALIZED_NAME_RESOURCE = "resource";
   @SerializedName(SERIALIZED_NAME_RESOURCE)
   @javax.annotation.Nullable
-  private Map<String, String> resource = new HashMap<>();
+  private Map<String, String> resource;
 
   public static final String SERIALIZED_NAME_SPAN_ID = "spanId";
   @SerializedName(SERIALIZED_NAME_SPAN_ID)

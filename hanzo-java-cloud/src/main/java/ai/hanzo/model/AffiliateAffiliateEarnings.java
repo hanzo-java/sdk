@@ -62,12 +62,12 @@ public class AffiliateAffiliateEarnings {
   public static final String SERIALIZED_NAME_BY_PERIOD = "byPeriod";
   @SerializedName(SERIALIZED_NAME_BY_PERIOD)
   @javax.annotation.Nullable
-  private List<AffiliatePeriodEarningView> byPeriod = new ArrayList<>();
+  private List<AffiliatePeriodEarningView> byPeriod;
 
   public static final String SERIALIZED_NAME_BY_REFERRED_ORG = "byReferredOrg";
   @SerializedName(SERIALIZED_NAME_BY_REFERRED_ORG)
   @javax.annotation.Nullable
-  private List<AffiliateOrgEarningView> byReferredOrg = new ArrayList<>();
+  private List<AffiliateOrgEarningView> byReferredOrg;
 
   public static final String SERIALIZED_NAME_IS_AFFILIATE = "isAffiliate";
   @SerializedName(SERIALIZED_NAME_IS_AFFILIATE)

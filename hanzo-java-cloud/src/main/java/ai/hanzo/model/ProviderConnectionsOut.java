@@ -56,7 +56,7 @@ public class ProviderConnectionsOut {
   public static final String SERIALIZED_NAME_CONNECTIONS = "connections";
   @SerializedName(SERIALIZED_NAME_CONNECTIONS)
   @javax.annotation.Nullable
-  private List<ProviderConnectionView> connections = new ArrayList<>();
+  private List<ProviderConnectionView> connections;
 
   public ProviderConnectionsOut() {
   }

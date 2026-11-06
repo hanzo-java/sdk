@@ -73,7 +73,7 @@ public class MarketMarket {
   public static final String SERIALIZED_NAME_FACTORY = "factory";
   @SerializedName(SERIALIZED_NAME_FACTORY)
   @javax.annotation.Nullable
-  private Map<String, String> factory = new HashMap<>();
+  private Map<String, String> factory;
 
   public static final String SERIALIZED_NAME_FIGURES = "figures";
   @SerializedName(SERIALIZED_NAME_FIGURES)

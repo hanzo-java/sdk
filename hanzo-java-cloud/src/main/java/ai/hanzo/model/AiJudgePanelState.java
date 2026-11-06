@@ -73,12 +73,12 @@ public class AiJudgePanelState {
   public static final String SERIALIZED_NAME_JUDGES = "judges";
   @SerializedName(SERIALIZED_NAME_JUDGES)
   @javax.annotation.Nullable
-  private List<AiPanelJudge> judges = new ArrayList<>();
+  private List<AiPanelJudge> judges;
 
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private List<String> models = new ArrayList<>();
+  private List<String> models;
 
   public static final String SERIALIZED_NAME_SAMPLE_RATE = "sampleRate";
   @SerializedName(SERIALIZED_NAME_SAMPLE_RATE)

@@ -56,7 +56,7 @@ public class FrameworkModuleList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<FrameworkModule> data = new ArrayList<>();
+  private List<FrameworkModule> data;
 
   public FrameworkModuleList() {
   }

@@ -63,7 +63,7 @@ public class ComputeByoWorker {
   public static final String SERIALIZED_NAME_CAPABILITIES = "capabilities";
   @SerializedName(SERIALIZED_NAME_CAPABILITIES)
   @javax.annotation.Nullable
-  private List<String> capabilities = new ArrayList<>();
+  private List<String> capabilities;
 
   public static final String SERIALIZED_NAME_CPU_MODEL = "cpuModel";
   @SerializedName(SERIALIZED_NAME_CPU_MODEL)
@@ -98,7 +98,7 @@ public class ComputeByoWorker {
   public static final String SERIALIZED_NAME_GPUS = "gpus";
   @SerializedName(SERIALIZED_NAME_GPUS)
   @javax.annotation.Nullable
-  private List<ComputeByoGPU> gpus = new ArrayList<>();
+  private List<ComputeByoGPU> gpus;
 
   public static final String SERIALIZED_NAME_HIP = "hip";
   @SerializedName(SERIALIZED_NAME_HIP)
@@ -123,7 +123,7 @@ public class ComputeByoWorker {
   public static final String SERIALIZED_NAME_LANES = "lanes";
   @SerializedName(SERIALIZED_NAME_LANES)
   @javax.annotation.Nullable
-  private List<String> lanes = new ArrayList<>();
+  private List<String> lanes;
 
   public static final String SERIALIZED_NAME_LAST_HEARTBEAT = "lastHeartbeat";
   @SerializedName(SERIALIZED_NAME_LAST_HEARTBEAT)
@@ -143,7 +143,7 @@ public class ComputeByoWorker {
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private List<ComputeLaneModel> models = new ArrayList<>();
+  private List<ComputeLaneModel> models;
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)

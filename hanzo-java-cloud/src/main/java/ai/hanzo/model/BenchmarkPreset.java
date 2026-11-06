@@ -56,7 +56,7 @@ public class BenchmarkPreset {
   public static final String SERIALIZED_NAME_ARMS = "arms";
   @SerializedName(SERIALIZED_NAME_ARMS)
   @javax.annotation.Nullable
-  private List<String> arms = new ArrayList<>();
+  private List<String> arms;
 
   public static final String SERIALIZED_NAME_AT = "at";
   @SerializedName(SERIALIZED_NAME_AT)
@@ -91,7 +91,7 @@ public class BenchmarkPreset {
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   @javax.annotation.Nullable
-  private List<String> rank = new ArrayList<>();
+  private List<String> rank;
 
   public BenchmarkPreset() {
   }

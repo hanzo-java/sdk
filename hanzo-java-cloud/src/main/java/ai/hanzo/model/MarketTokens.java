@@ -67,7 +67,7 @@ public class MarketTokens {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private List<MarketToken> tokens = new ArrayList<>();
+  private List<MarketToken> tokens;
 
   public MarketTokens() {
   }

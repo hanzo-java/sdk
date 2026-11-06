@@ -55,7 +55,7 @@ public class EntitlementProjectionView {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private Map<String, Boolean> apps = new HashMap<>();
+  private Map<String, Boolean> apps;
 
   public static final String SERIALIZED_NAME_TIER = "tier";
   @SerializedName(SERIALIZED_NAME_TIER)

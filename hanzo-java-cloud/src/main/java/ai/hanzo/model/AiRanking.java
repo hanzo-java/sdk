@@ -67,7 +67,7 @@ public class AiRanking {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<AiRankedDoc> results = new ArrayList<>();
+  private List<AiRankedDoc> results;
 
   public static final String SERIALIZED_NAME_USAGE = "usage";
   @SerializedName(SERIALIZED_NAME_USAGE)

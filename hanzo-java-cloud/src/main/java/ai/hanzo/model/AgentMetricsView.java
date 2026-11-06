@@ -67,7 +67,7 @@ public class AgentMetricsView {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<AgentSeriesLine> series = new ArrayList<>();
+  private List<AgentSeriesLine> series;
 
   public AgentMetricsView() {
   }

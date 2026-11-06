@@ -70,12 +70,12 @@ public class GraphGraphDeriveIn {
   public static final String SERIALIZED_NAME_PREDICATES = "predicates";
   @SerializedName(SERIALIZED_NAME_PREDICATES)
   @javax.annotation.Nullable
-  private List<String> predicates = new ArrayList<>();
+  private List<String> predicates;
 
   public static final String SERIALIZED_NAME_WITHOUT = "without";
   @SerializedName(SERIALIZED_NAME_WITHOUT)
   @javax.annotation.Nullable
-  private List<String> without = new ArrayList<>();
+  private List<String> without;
 
   public GraphGraphDeriveIn() {
   }

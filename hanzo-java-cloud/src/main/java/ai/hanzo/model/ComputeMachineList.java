@@ -56,7 +56,7 @@ public class ComputeMachineList {
   public static final String SERIALIZED_NAME_MACHINES = "machines";
   @SerializedName(SERIALIZED_NAME_MACHINES)
   @javax.annotation.Nullable
-  private List<ComputeMachineView> machines = new ArrayList<>();
+  private List<ComputeMachineView> machines;
 
   public ComputeMachineList() {
   }

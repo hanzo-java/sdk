@@ -67,12 +67,12 @@ public class ContentStateGraph {
   public static final String SERIALIZED_NAME_STATES = "states";
   @SerializedName(SERIALIZED_NAME_STATES)
   @javax.annotation.Nullable
-  private List<String> states = new ArrayList<>();
+  private List<String> states;
 
   public static final String SERIALIZED_NAME_TRANSITIONS = "transitions";
   @SerializedName(SERIALIZED_NAME_TRANSITIONS)
   @javax.annotation.Nullable
-  private Map<String, List<String>> transitions = new HashMap<>();
+  private Map<String, List<String>> transitions;
 
   public ContentStateGraph() {
   }

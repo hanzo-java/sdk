@@ -56,7 +56,7 @@ public class TransportChatTransports {
   public static final String SERIALIZED_NAME_TRANSPORTS = "transports";
   @SerializedName(SERIALIZED_NAME_TRANSPORTS)
   @javax.annotation.Nullable
-  private List<TransportTransportView> transports = new ArrayList<>();
+  private List<TransportTransportView> transports;
 
   public TransportChatTransports() {
   }

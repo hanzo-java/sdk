@@ -56,7 +56,7 @@ public class FlagActivityOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<FlagActivityRow> data = new ArrayList<>();
+  private List<FlagActivityRow> data;
 
   public FlagActivityOut() {
   }

@@ -61,7 +61,7 @@ public class O11yAddItemsIn {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yItemInput> items = new ArrayList<>();
+  private List<O11yItemInput> items;
 
   public O11yAddItemsIn() {
   }

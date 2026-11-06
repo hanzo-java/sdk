@@ -71,7 +71,7 @@ public class StudioRunCreate {
   public static final String SERIALIZED_NAME_INPUT = "input";
   @SerializedName(SERIALIZED_NAME_INPUT)
   @javax.annotation.Nullable
-  private Map<String, Object> input = new HashMap<>();
+  private Map<String, Object> input;
 
   public static final String SERIALIZED_NAME_PARENT = "parent";
   @SerializedName(SERIALIZED_NAME_PARENT)

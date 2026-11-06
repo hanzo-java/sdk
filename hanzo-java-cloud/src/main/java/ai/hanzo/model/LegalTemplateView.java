@@ -66,7 +66,7 @@ public class LegalTemplateView {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<LegalField> fields = new ArrayList<>();
+  private List<LegalField> fields;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

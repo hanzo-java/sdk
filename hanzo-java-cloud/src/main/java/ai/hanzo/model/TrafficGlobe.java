@@ -58,7 +58,7 @@ public class TrafficGlobe {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   @javax.annotation.Nullable
-  private List<TrafficPoint> points = new ArrayList<>();
+  private List<TrafficPoint> points;
 
   public static final String SERIALIZED_NAME_TOTALS = "totals";
   @SerializedName(SERIALIZED_NAME_TOTALS)

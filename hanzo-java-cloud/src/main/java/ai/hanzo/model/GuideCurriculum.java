@@ -56,7 +56,7 @@ public class GuideCurriculum {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<GuideJourneyStep> steps = new ArrayList<>();
+  private List<GuideJourneyStep> steps;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)

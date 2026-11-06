@@ -57,7 +57,7 @@ public class AiAnthropicResponse {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
-  private List<AiAnthropicContentBlock> content = new ArrayList<>();
+  private List<AiAnthropicContentBlock> content;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

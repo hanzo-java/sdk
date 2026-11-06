@@ -66,7 +66,7 @@ public class LeaderboardBetaBoard {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<LeaderboardBetaRow> rows = new ArrayList<>();
+  private List<LeaderboardBetaRow> rows;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)

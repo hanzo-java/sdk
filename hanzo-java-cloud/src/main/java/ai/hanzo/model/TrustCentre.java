@@ -60,27 +60,27 @@ public class TrustCentre {
   public static final String SERIALIZED_NAME_CONTROLS = "controls";
   @SerializedName(SERIALIZED_NAME_CONTROLS)
   @javax.annotation.Nullable
-  private List<Object> controls = new ArrayList<>();
+  private List<Object> controls;
 
   public static final String SERIALIZED_NAME_COVERAGE = "coverage";
   @SerializedName(SERIALIZED_NAME_COVERAGE)
   @javax.annotation.Nullable
-  private List<TrustCoverRow> coverage = new ArrayList<>();
+  private List<TrustCoverRow> coverage;
 
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
   @javax.annotation.Nullable
-  private List<TrustDocRow> documents = new ArrayList<>();
+  private List<TrustDocRow> documents;
 
   public static final String SERIALIZED_NAME_FAQ = "faq";
   @SerializedName(SERIALIZED_NAME_FAQ)
   @javax.annotation.Nullable
-  private List<Object> faq = new ArrayList<>();
+  private List<Object> faq;
 
   public static final String SERIALIZED_NAME_FRAMEWORKS = "frameworks";
   @SerializedName(SERIALIZED_NAME_FRAMEWORKS)
   @javax.annotation.Nullable
-  private List<TrustFrameworkRow> frameworks = new ArrayList<>();
+  private List<TrustFrameworkRow> frameworks;
 
   public static final String SERIALIZED_NAME_GENERATED = "generated";
   @SerializedName(SERIALIZED_NAME_GENERATED)
@@ -100,7 +100,7 @@ public class TrustCentre {
   public static final String SERIALIZED_NAME_POLICIES = "policies";
   @SerializedName(SERIALIZED_NAME_POLICIES)
   @javax.annotation.Nullable
-  private List<Object> policies = new ArrayList<>();
+  private List<Object> policies;
 
   public static final String SERIALIZED_NAME_PROFILE = "profile";
   @SerializedName(SERIALIZED_NAME_PROFILE)
@@ -115,12 +115,12 @@ public class TrustCentre {
   public static final String SERIALIZED_NAME_SUBPROCESSORS = "subprocessors";
   @SerializedName(SERIALIZED_NAME_SUBPROCESSORS)
   @javax.annotation.Nullable
-  private List<Object> subprocessors = new ArrayList<>();
+  private List<Object> subprocessors;
 
   public static final String SERIALIZED_NAME_UPDATES = "updates";
   @SerializedName(SERIALIZED_NAME_UPDATES)
   @javax.annotation.Nullable
-  private List<Object> updates = new ArrayList<>();
+  private List<Object> updates;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)

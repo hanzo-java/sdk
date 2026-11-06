@@ -56,7 +56,7 @@ public class MarketingImportPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<MarketingImport> data = new ArrayList<>();
+  private List<MarketingImport> data;
 
   public MarketingImportPage() {
   }

@@ -66,7 +66,7 @@ public class O11yMattermostConfig {
   public static final String SERIALIZED_NAME_ATTACHMENTS = "attachments";
   @SerializedName(SERIALIZED_NAME_ATTACHMENTS)
   @javax.annotation.Nullable
-  private List<O11yMattermostAttachment> attachments = new ArrayList<>();
+  private List<O11yMattermostAttachment> attachments;
 
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)

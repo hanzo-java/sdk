@@ -56,7 +56,7 @@ public class O11yIntegrationConfig {
   public static final String SERIALIZED_NAME_ENABLED_REGIONS = "enabled_regions";
   @SerializedName(SERIALIZED_NAME_ENABLED_REGIONS)
   @javax.annotation.Nullable
-  private List<String> enabledRegions = new ArrayList<>();
+  private List<String> enabledRegions;
 
   public static final String SERIALIZED_NAME_TELEMETRY = "telemetry";
   @SerializedName(SERIALIZED_NAME_TELEMETRY)

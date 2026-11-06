@@ -120,7 +120,7 @@ public class Connection {
   public static final String SERIALIZED_NAME_OPERATIONS = "operations";
   @SerializedName(SERIALIZED_NAME_OPERATIONS)
   @javax.annotation.Nullable
-  private List<String> operations = new ArrayList<>();
+  private List<String> operations;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)

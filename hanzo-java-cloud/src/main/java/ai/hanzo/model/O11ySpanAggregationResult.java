@@ -67,7 +67,7 @@ public class O11ySpanAggregationResult {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private Map<String, Integer> value = new HashMap<>();
+  private Map<String, Integer> value;
 
   public O11ySpanAggregationResult() {
   }

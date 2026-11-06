@@ -56,7 +56,7 @@ public class CaptableCaptableOptions {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<CaptableCaptableOption> data = new ArrayList<>();
+  private List<CaptableCaptableOption> data;
 
   public CaptableCaptableOptions() {
   }

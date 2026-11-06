@@ -56,7 +56,7 @@ public class O11yO11yUpdatableQuickFilters {
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
   @javax.annotation.Nullable
-  private List<O11yO11yFilterKey> filters = new ArrayList<>();
+  private List<O11yO11yFilterKey> filters;
 
   public static final String SERIALIZED_NAME_SIGNAL = "signal";
   @SerializedName(SERIALIZED_NAME_SIGNAL)

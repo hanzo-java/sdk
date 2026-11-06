@@ -55,7 +55,7 @@ public class BooksVendorRow {
   public static final String SERIALIZED_NAME_ALIASES = "aliases";
   @SerializedName(SERIALIZED_NAME_ALIASES)
   @javax.annotation.Nullable
-  private List<String> aliases = new ArrayList<>();
+  private List<String> aliases;
 
   public static final String SERIALIZED_NAME_CANONICAL = "canonical";
   @SerializedName(SERIALIZED_NAME_CANONICAL)

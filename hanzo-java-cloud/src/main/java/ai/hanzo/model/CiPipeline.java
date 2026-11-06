@@ -73,7 +73,7 @@ public class CiPipeline {
   public static final String SERIALIZED_NAME_DRIFT = "drift";
   @SerializedName(SERIALIZED_NAME_DRIFT)
   @javax.annotation.Nullable
-  private List<String> drift = new ArrayList<>();
+  private List<String> drift;
 
   public static final String SERIALIZED_NAME_HEAD = "head";
   @SerializedName(SERIALIZED_NAME_HEAD)

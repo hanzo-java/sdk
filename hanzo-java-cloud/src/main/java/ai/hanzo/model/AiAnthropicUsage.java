@@ -76,7 +76,7 @@ public class AiAnthropicUsage {
   public static final String SERIALIZED_NAME_ITERATIONS = "iterations";
   @SerializedName(SERIALIZED_NAME_ITERATIONS)
   @javax.annotation.Nullable
-  private List<AiAnthropicUsage> iterations = new ArrayList<>();
+  private List<AiAnthropicUsage> iterations;
 
   public static final String SERIALIZED_NAME_OUTPUT_TOKENS = "output_tokens";
   @SerializedName(SERIALIZED_NAME_OUTPUT_TOKENS)

@@ -60,7 +60,7 @@ public class IndexIndexHits {
   public static final String SERIALIZED_NAME_HITS = "hits";
   @SerializedName(SERIALIZED_NAME_HITS)
   @javax.annotation.Nullable
-  private List<Object> hits = new ArrayList<>();
+  private List<Object> hits;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

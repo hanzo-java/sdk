@@ -56,7 +56,7 @@ public class GuideActionsView {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<GuideActionRecord> data = new ArrayList<>();
+  private List<GuideActionRecord> data;
 
   public GuideActionsView() {
   }

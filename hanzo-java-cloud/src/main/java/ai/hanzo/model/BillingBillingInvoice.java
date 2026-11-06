@@ -106,7 +106,7 @@ public class BillingBillingInvoice {
   public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
   @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
   @javax.annotation.Nullable
-  private List<BillingInvoiceLineItem> lineItems = new ArrayList<>();
+  private List<BillingInvoiceLineItem> lineItems;
 
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)

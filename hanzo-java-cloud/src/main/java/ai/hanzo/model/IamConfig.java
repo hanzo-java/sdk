@@ -59,7 +59,7 @@ public class IamConfig {
   public static final String SERIALIZED_NAME_AUTHENTICATION_SCHEMES = "authenticationSchemes";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATION_SCHEMES)
   @javax.annotation.Nullable
-  private List<IamScheme> authenticationSchemes = new ArrayList<>();
+  private List<IamScheme> authenticationSchemes;
 
   public static final String SERIALIZED_NAME_BULK = "bulk";
   @SerializedName(SERIALIZED_NAME_BULK)
@@ -94,7 +94,7 @@ public class IamConfig {
   public static final String SERIALIZED_NAME_SCHEMAS = "schemas";
   @SerializedName(SERIALIZED_NAME_SCHEMAS)
   @javax.annotation.Nullable
-  private List<String> schemas = new ArrayList<>();
+  private List<String> schemas;
 
   public static final String SERIALIZED_NAME_SORT = "sort";
   @SerializedName(SERIALIZED_NAME_SORT)

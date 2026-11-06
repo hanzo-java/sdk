@@ -108,7 +108,7 @@ public class O11yO11yDashboard {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<O11yO11yDashboardTag> tags = new ArrayList<>();
+  private List<O11yO11yDashboardTag> tags;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

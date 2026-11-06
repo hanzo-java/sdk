@@ -68,17 +68,17 @@ public class RunnerTask {
   public static final String SERIALIZED_NAME_NEEDS = "needs";
   @SerializedName(SERIALIZED_NAME_NEEDS)
   @javax.annotation.Nullable
-  private List<RunnerNeed> needs = new ArrayList<>();
+  private List<RunnerNeed> needs;
 
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<RunnerPair> secrets = new ArrayList<>();
+  private List<RunnerPair> secrets;
 
   public static final String SERIALIZED_NAME_VARS = "vars";
   @SerializedName(SERIALIZED_NAME_VARS)
   @javax.annotation.Nullable
-  private List<RunnerPair> vars = new ArrayList<>();
+  private List<RunnerPair> vars;
 
   public static final String SERIALIZED_NAME_WORKFLOW = "workflow";
   @SerializedName(SERIALIZED_NAME_WORKFLOW)

@@ -56,7 +56,7 @@ public class IngressUpstream {
   public static final String SERIALIZED_NAME_BACKENDS = "backends";
   @SerializedName(SERIALIZED_NAME_BACKENDS)
   @javax.annotation.Nullable
-  private List<IngressBackend> backends = new ArrayList<>();
+  private List<IngressBackend> backends;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

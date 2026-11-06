@@ -61,12 +61,12 @@ public class O11yV3CompositeQuery {
   public static final String SERIALIZED_NAME_BUILDER_QUERIES = "builderQueries";
   @SerializedName(SERIALIZED_NAME_BUILDER_QUERIES)
   @javax.annotation.Nullable
-  private Map<String, O11yBuilderQuery> builderQueries = new HashMap<>();
+  private Map<String, O11yBuilderQuery> builderQueries;
 
   public static final String SERIALIZED_NAME_CH_QUERIES = "chQueries";
   @SerializedName(SERIALIZED_NAME_CH_QUERIES)
   @javax.annotation.Nullable
-  private Map<String, O11yDatastoreQuery> chQueries = new HashMap<>();
+  private Map<String, O11yDatastoreQuery> chQueries;
 
   public static final String SERIALIZED_NAME_FILL_GAPS = "fillGaps";
   @SerializedName(SERIALIZED_NAME_FILL_GAPS)
@@ -81,12 +81,12 @@ public class O11yV3CompositeQuery {
   public static final String SERIALIZED_NAME_PROM_QUERIES = "promQueries";
   @SerializedName(SERIALIZED_NAME_PROM_QUERIES)
   @javax.annotation.Nullable
-  private Map<String, O11yPromQuery> promQueries = new HashMap<>();
+  private Map<String, O11yPromQuery> promQueries;
 
   public static final String SERIALIZED_NAME_QUERIES = "queries";
   @SerializedName(SERIALIZED_NAME_QUERIES)
   @javax.annotation.Nullable
-  private List<O11yQueryEnvelope> queries = new ArrayList<>();
+  private List<O11yQueryEnvelope> queries;
 
   public static final String SERIALIZED_NAME_QUERY_TYPE = "queryType";
   @SerializedName(SERIALIZED_NAME_QUERY_TYPE)

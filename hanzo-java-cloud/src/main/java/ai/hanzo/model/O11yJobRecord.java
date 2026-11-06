@@ -106,7 +106,7 @@ public class O11yJobRecord {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   @javax.annotation.Nullable
-  private Map<String, String> meta = new HashMap<>();
+  private Map<String, String> meta;
 
   public static final String SERIALIZED_NAME_POD_COUNTS_BY_PHASE = "podCountsByPhase";
   @SerializedName(SERIALIZED_NAME_POD_COUNTS_BY_PHASE)

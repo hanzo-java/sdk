@@ -70,7 +70,7 @@ public class MarketingLeadIn {
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
   @javax.annotation.Nullable
-  private List<MarketingAnswer> answers = new ArrayList<>();
+  private List<MarketingAnswer> answers;
 
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
@@ -120,7 +120,7 @@ public class MarketingLeadIn {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<String> links = new ArrayList<>();
+  private List<String> links;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

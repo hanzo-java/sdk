@@ -56,7 +56,7 @@ public class O11yStatusIncident {
   public static final String SERIALIZED_NAME_AFFECTED_COMPONENTS = "affected_components";
   @SerializedName(SERIALIZED_NAME_AFFECTED_COMPONENTS)
   @javax.annotation.Nullable
-  private List<O11yStatusComponent> affectedComponents = new ArrayList<>();
+  private List<O11yStatusComponent> affectedComponents;
 
   public static final String SERIALIZED_NAME_CURRENT_WORST_IMPACT = "current_worst_impact";
   @SerializedName(SERIALIZED_NAME_CURRENT_WORST_IMPACT)

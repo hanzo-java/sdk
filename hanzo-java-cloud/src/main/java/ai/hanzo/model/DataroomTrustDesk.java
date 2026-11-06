@@ -58,12 +58,12 @@ public class DataroomTrustDesk {
   public static final String SERIALIZED_NAME_GRANTS = "grants";
   @SerializedName(SERIALIZED_NAME_GRANTS)
   @javax.annotation.Nullable
-  private List<DataroomTrustGrantView> grants = new ArrayList<>();
+  private List<DataroomTrustGrantView> grants;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<DataroomTrustItemView> items = new ArrayList<>();
+  private List<DataroomTrustItemView> items;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -83,7 +83,7 @@ public class DataroomTrustDesk {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private List<DataroomTrustAskView> requests = new ArrayList<>();
+  private List<DataroomTrustAskView> requests;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)

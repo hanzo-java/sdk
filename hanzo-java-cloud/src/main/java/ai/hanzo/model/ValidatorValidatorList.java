@@ -56,7 +56,7 @@ public class ValidatorValidatorList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<ValidatorSlotView> data = new ArrayList<>();
+  private List<ValidatorSlotView> data;
 
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)

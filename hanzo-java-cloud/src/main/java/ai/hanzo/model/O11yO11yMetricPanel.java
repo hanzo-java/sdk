@@ -65,12 +65,12 @@ public class O11yO11yMetricPanel {
   public static final String SERIALIZED_NAME_FILTER_BY = "filterBy";
   @SerializedName(SERIALIZED_NAME_FILTER_BY)
   @javax.annotation.Nullable
-  private List<String> filterBy = new ArrayList<>();
+  private List<String> filterBy;
 
   public static final String SERIALIZED_NAME_GROUP_BY = "groupBy";
   @SerializedName(SERIALIZED_NAME_GROUP_BY)
   @javax.annotation.Nullable
-  private List<String> groupBy = new ArrayList<>();
+  private List<String> groupBy;
 
   public static final String SERIALIZED_NAME_PANEL_ID = "panelId";
   @SerializedName(SERIALIZED_NAME_PANEL_ID)

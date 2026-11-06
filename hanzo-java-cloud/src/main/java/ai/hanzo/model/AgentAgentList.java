@@ -56,7 +56,7 @@ public class AgentAgentList {
   public static final String SERIALIZED_NAME_AGENTS = "agents";
   @SerializedName(SERIALIZED_NAME_AGENTS)
   @javax.annotation.Nullable
-  private List<AgentAgentView> agents = new ArrayList<>();
+  private List<AgentAgentView> agents;
 
   public AgentAgentList() {
   }

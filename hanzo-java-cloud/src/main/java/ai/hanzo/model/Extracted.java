@@ -71,7 +71,7 @@ public class Extracted {
   public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
   @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
   @javax.annotation.Nullable
-  private List<LineItem> lineItems = new ArrayList<>();
+  private List<LineItem> lineItems;
 
   public static final String SERIALIZED_NAME_MERCHANT = "merchant";
   @SerializedName(SERIALIZED_NAME_MERCHANT)

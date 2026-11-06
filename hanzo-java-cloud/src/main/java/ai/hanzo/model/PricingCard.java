@@ -58,12 +58,12 @@ public class PricingCard {
   public static final String SERIALIZED_NAME_COMPONENTS = "components";
   @SerializedName(SERIALIZED_NAME_COMPONENTS)
   @javax.annotation.Nullable
-  private List<PricingComponent> components = new ArrayList<>();
+  private List<PricingComponent> components;
 
   public static final String SERIALIZED_NAME_RATES = "rates";
   @SerializedName(SERIALIZED_NAME_RATES)
   @javax.annotation.Nullable
-  private List<PricingRate> rates = new ArrayList<>();
+  private List<PricingRate> rates;
 
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
@@ -73,7 +73,7 @@ public class PricingCard {
   public static final String SERIALIZED_NAME_WINDOWS = "windows";
   @SerializedName(SERIALIZED_NAME_WINDOWS)
   @javax.annotation.Nullable
-  private List<PricingSpeed> windows = new ArrayList<>();
+  private List<PricingSpeed> windows;
 
   public PricingCard() {
   }

@@ -61,7 +61,7 @@ public class BenchmarkModelHistory {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   @javax.annotation.Nullable
-  private List<BenchmarkRunPoint> points = new ArrayList<>();
+  private List<BenchmarkRunPoint> points;
 
   public static final String SERIALIZED_NAME_TREND = "trend";
   @SerializedName(SERIALIZED_NAME_TREND)

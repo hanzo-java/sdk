@@ -55,7 +55,7 @@ public class PlanPlanToolList {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<Object> tools = new ArrayList<>();
+  private List<Object> tools;
 
   public PlanPlanToolList() {
   }

@@ -57,12 +57,12 @@ public class TeamTeamDocs {
   public static final String SERIALIZED_NAME_DOCS = "docs";
   @SerializedName(SERIALIZED_NAME_DOCS)
   @javax.annotation.Nullable
-  private List<TeamTeamDoc> docs = new ArrayList<>();
+  private List<TeamTeamDoc> docs;
 
   public static final String SERIALIZED_NAME_TEAMSPACES = "teamspaces";
   @SerializedName(SERIALIZED_NAME_TEAMSPACES)
   @javax.annotation.Nullable
-  private List<TeamTeamTeamspace> teamspaces = new ArrayList<>();
+  private List<TeamTeamTeamspace> teamspaces;
 
   public TeamTeamDocs() {
   }

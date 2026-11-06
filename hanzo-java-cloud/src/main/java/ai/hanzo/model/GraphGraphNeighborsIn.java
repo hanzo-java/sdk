@@ -80,7 +80,7 @@ public class GraphGraphNeighborsIn {
   public static final String SERIALIZED_NAME_SEEDS = "seeds";
   @SerializedName(SERIALIZED_NAME_SEEDS)
   @javax.annotation.Nonnull
-  private List<String> seeds = new ArrayList<>();
+  private List<String> seeds;
 
   public GraphGraphNeighborsIn() {
   }

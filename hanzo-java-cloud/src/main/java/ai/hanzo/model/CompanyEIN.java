@@ -62,7 +62,7 @@ public class CompanyEIN {
   public static final String SERIALIZED_NAME_FORMS = "forms";
   @SerializedName(SERIALIZED_NAME_FORMS)
   @javax.annotation.Nullable
-  private List<CompanyForm> forms = new ArrayList<>();
+  private List<CompanyForm> forms;
 
   public static final String SERIALIZED_NAME_NAICS = "naics";
   @SerializedName(SERIALIZED_NAME_NAICS)

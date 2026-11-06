@@ -61,7 +61,7 @@ public class IamListOrganizationsOutput {
   public static final String SERIALIZED_NAME_ORGANIZATIONS = "organizations";
   @SerializedName(SERIALIZED_NAME_ORGANIZATIONS)
   @javax.annotation.Nullable
-  private List<IamOrganization> organizations = new ArrayList<>();
+  private List<IamOrganization> organizations;
 
   public IamListOrganizationsOutput() {
   }

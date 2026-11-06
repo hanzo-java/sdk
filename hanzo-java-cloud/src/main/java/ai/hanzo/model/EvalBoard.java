@@ -61,7 +61,7 @@ public class EvalBoard {
   public static final String SERIALIZED_NAME_BY_MODEL = "byModel";
   @SerializedName(SERIALIZED_NAME_BY_MODEL)
   @javax.annotation.Nullable
-  private List<EvalModelStat> byModel = new ArrayList<>();
+  private List<EvalModelStat> byModel;
 
   public static final String SERIALIZED_NAME_LATENCY = "latency";
   @SerializedName(SERIALIZED_NAME_LATENCY)
@@ -86,7 +86,7 @@ public class EvalBoard {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<EvalBoardPoint> series = new ArrayList<>();
+  private List<EvalBoardPoint> series;
 
   public static final String SERIALIZED_NAME_TOTALS = "totals";
   @SerializedName(SERIALIZED_NAME_TOTALS)

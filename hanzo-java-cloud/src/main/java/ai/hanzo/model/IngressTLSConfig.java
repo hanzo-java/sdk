@@ -60,7 +60,7 @@ public class IngressTLSConfig {
   public static final String SERIALIZED_NAME_EXTRA_HOSTS = "extraHosts";
   @SerializedName(SERIALIZED_NAME_EXTRA_HOSTS)
   @javax.annotation.Nullable
-  private List<String> extraHosts = new ArrayList<>();
+  private List<String> extraHosts;
 
   public static final String SERIALIZED_NAME_STAGING = "staging";
   @SerializedName(SERIALIZED_NAME_STAGING)

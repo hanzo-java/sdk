@@ -85,7 +85,7 @@ public class IamRegistration {
   public static final String SERIALIZED_NAME_GRANT_TYPES = "grantTypes";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPES)
   @javax.annotation.Nullable
-  private List<String> grantTypes = new ArrayList<>();
+  private List<String> grantTypes;
 
   public static final String SERIALIZED_NAME_IS_SHARED = "isShared";
   @SerializedName(SERIALIZED_NAME_IS_SHARED)
@@ -110,7 +110,7 @@ public class IamRegistration {
   public static final String SERIALIZED_NAME_REDIRECT_URIS = "redirectUris";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URIS)
   @javax.annotation.Nullable
-  private List<String> redirectUris = new ArrayList<>();
+  private List<String> redirectUris;
 
   public static final String SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS = "refreshExpireInHours";
   @SerializedName(SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS)

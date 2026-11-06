@@ -56,7 +56,7 @@ public class TeamTeamInbox {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<TeamTeamInboxItem> items = new ArrayList<>();
+  private List<TeamTeamInboxItem> items;
 
   public static final String SERIALIZED_NAME_UNREAD = "unread";
   @SerializedName(SERIALIZED_NAME_UNREAD)

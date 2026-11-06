@@ -56,17 +56,17 @@ public class ReferenceReferenceSetsOut {
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private List<String> refused = new ArrayList<>();
+  private List<String> refused;
 
   public static final String SERIALIZED_NAME_SETS = "sets";
   @SerializedName(SERIALIZED_NAME_SETS)
   @javax.annotation.Nullable
-  private List<ReferenceReferenceSet> sets = new ArrayList<>();
+  private List<ReferenceReferenceSet> sets;
 
   public static final String SERIALIZED_NAME_STALE = "stale";
   @SerializedName(SERIALIZED_NAME_STALE)
   @javax.annotation.Nullable
-  private List<String> stale = new ArrayList<>();
+  private List<String> stale;
 
   public ReferenceReferenceSetsOut() {
   }

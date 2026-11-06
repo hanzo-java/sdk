@@ -71,7 +71,7 @@ public class O11yNamespaceListRecord {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   @javax.annotation.Nullable
-  private Map<String, String> meta = new HashMap<>();
+  private Map<String, String> meta;
 
   public static final String SERIALIZED_NAME_NAMESPACE_NAME = "namespaceName";
   @SerializedName(SERIALIZED_NAME_NAMESPACE_NAME)

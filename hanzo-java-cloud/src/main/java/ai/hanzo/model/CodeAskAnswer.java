@@ -61,7 +61,7 @@ public class CodeAskAnswer {
   public static final String SERIALIZED_NAME_CITATIONS = "citations";
   @SerializedName(SERIALIZED_NAME_CITATIONS)
   @javax.annotation.Nullable
-  private List<CodeCitation> citations = new ArrayList<>();
+  private List<CodeCitation> citations;
 
   public static final String SERIALIZED_NAME_DEGRADED = "degraded";
   @SerializedName(SERIALIZED_NAME_DEGRADED)

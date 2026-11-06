@@ -56,7 +56,7 @@ public class O11yStatusMaintenance {
   public static final String SERIALIZED_NAME_AFFECTED_COMPONENTS = "affected_components";
   @SerializedName(SERIALIZED_NAME_AFFECTED_COMPONENTS)
   @javax.annotation.Nullable
-  private List<O11yStatusComponent> affectedComponents = new ArrayList<>();
+  private List<O11yStatusComponent> affectedComponents;
 
   public static final String SERIALIZED_NAME_ENDS_AT = "ends_at";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)

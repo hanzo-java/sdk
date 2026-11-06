@@ -56,22 +56,22 @@ public class BillingCryptoOptions {
   public static final String SERIALIZED_NAME_ASSETS = "assets";
   @SerializedName(SERIALIZED_NAME_ASSETS)
   @javax.annotation.Nullable
-  private List<BillingCryptoPair> assets = new ArrayList<>();
+  private List<BillingCryptoPair> assets;
 
   public static final String SERIALIZED_NAME_CHAINS = "chains";
   @SerializedName(SERIALIZED_NAME_CHAINS)
   @javax.annotation.Nullable
-  private List<String> chains = new ArrayList<>();
+  private List<String> chains;
 
   public static final String SERIALIZED_NAME_GATEWAY = "gateway";
   @SerializedName(SERIALIZED_NAME_GATEWAY)
   @javax.annotation.Nullable
-  private List<String> gateway = new ArrayList<>();
+  private List<String> gateway;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private List<String> tokens = new ArrayList<>();
+  private List<String> tokens;
 
   public BillingCryptoOptions() {
   }

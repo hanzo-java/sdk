@@ -57,7 +57,7 @@ public class BillingAccounts {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<BillingRoutedUsage> accounts = new ArrayList<>();
+  private List<BillingRoutedUsage> accounts;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)

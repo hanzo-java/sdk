@@ -56,7 +56,7 @@ public class SeoSeoRateOut {
   public static final String SERIALIZED_NAME_RATES = "rates";
   @SerializedName(SERIALIZED_NAME_RATES)
   @javax.annotation.Nullable
-  private List<SeoSeoCharge> rates = new ArrayList<>();
+  private List<SeoSeoCharge> rates;
 
   public SeoSeoRateOut() {
   }

@@ -57,7 +57,7 @@ public class O11yAnnItemList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<O11yAnnItemView> data = new ArrayList<>();
+  private List<O11yAnnItemView> data;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)

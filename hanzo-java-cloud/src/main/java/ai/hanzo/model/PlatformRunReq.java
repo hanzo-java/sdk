@@ -56,7 +56,7 @@ public class PlatformRunReq {
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
   @javax.annotation.Nullable
-  private List<PlatformEnvVarJSON> env = new ArrayList<>();
+  private List<PlatformEnvVarJSON> env;
 
   public static final String SERIALIZED_NAME_GPU = "gpu";
   @SerializedName(SERIALIZED_NAME_GPU)

@@ -57,12 +57,12 @@ public class GuideJourneyStep {
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
   @javax.annotation.Nullable
-  private Map<String, Object> args = new HashMap<>();
+  private Map<String, Object> args;
 
   public static final String SERIALIZED_NAME_DEPS = "deps";
   @SerializedName(SERIALIZED_NAME_DEPS)
   @javax.annotation.Nullable
-  private List<String> deps = new ArrayList<>();
+  private List<String> deps;
 
   public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)

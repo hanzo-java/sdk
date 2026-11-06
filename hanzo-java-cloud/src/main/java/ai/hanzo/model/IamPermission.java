@@ -56,7 +56,7 @@ public class IamPermission {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<String> actions = new ArrayList<>();
+  private List<String> actions;
 
   public static final String SERIALIZED_NAME_ADAPTER = "adapter";
   @SerializedName(SERIALIZED_NAME_ADAPTER)
@@ -101,7 +101,7 @@ public class IamPermission {
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private List<String> domains = new ArrayList<>();
+  private List<String> domains;
 
   public static final String SERIALIZED_NAME_EFFECT = "effect";
   @SerializedName(SERIALIZED_NAME_EFFECT)
@@ -141,12 +141,12 @@ public class IamPermission {
   public static final String SERIALIZED_NAME_RESOURCES = "resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
   @javax.annotation.Nullable
-  private List<String> resources = new ArrayList<>();
+  private List<String> resources;
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   @javax.annotation.Nullable
-  private List<String> roles = new ArrayList<>();
+  private List<String> roles;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -161,7 +161,7 @@ public class IamPermission {
   public static final String SERIALIZED_NAME_TEAMS = "teams";
   @SerializedName(SERIALIZED_NAME_TEAMS)
   @javax.annotation.Nullable
-  private List<String> teams = new ArrayList<>();
+  private List<String> teams;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -171,7 +171,7 @@ public class IamPermission {
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
   @javax.annotation.Nullable
-  private List<String> users = new ArrayList<>();
+  private List<String> users;
 
   public IamPermission() {
   }

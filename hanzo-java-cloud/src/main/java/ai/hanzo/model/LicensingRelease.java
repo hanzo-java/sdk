@@ -85,7 +85,7 @@ public class LicensingRelease {
   public static final String SERIALIZED_NAME_MIN_FEATURES = "min_features";
   @SerializedName(SERIALIZED_NAME_MIN_FEATURES)
   @javax.annotation.Nullable
-  private List<String> minFeatures = new ArrayList<>();
+  private List<String> minFeatures;
 
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)

@@ -57,7 +57,7 @@ public class GatewayPolicy {
   public static final String SERIALIZED_NAME_CACHE_PATHS = "cache_paths";
   @SerializedName(SERIALIZED_NAME_CACHE_PATHS)
   @javax.annotation.Nullable
-  private Map<String, Long> cachePaths = new HashMap<>();
+  private Map<String, Long> cachePaths;
 
   public static final String SERIALIZED_NAME_CACHE_TTL_SEC = "cache_ttl_sec";
   @SerializedName(SERIALIZED_NAME_CACHE_TTL_SEC)
@@ -67,12 +67,12 @@ public class GatewayPolicy {
   public static final String SERIALIZED_NAME_CORS_ORIGINS = "cors_origins";
   @SerializedName(SERIALIZED_NAME_CORS_ORIGINS)
   @javax.annotation.Nullable
-  private List<String> corsOrigins = new ArrayList<>();
+  private List<String> corsOrigins;
 
   public static final String SERIALIZED_NAME_METHODS = "methods";
   @SerializedName(SERIALIZED_NAME_METHODS)
   @javax.annotation.Nullable
-  private List<String> methods = new ArrayList<>();
+  private List<String> methods;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)

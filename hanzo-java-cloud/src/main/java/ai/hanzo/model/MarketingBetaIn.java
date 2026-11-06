@@ -56,12 +56,12 @@ public class MarketingBetaIn {
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
   @javax.annotation.Nullable
-  private List<MarketingBetaAnswer> answers = new ArrayList<>();
+  private List<MarketingBetaAnswer> answers;
 
   public static final String SERIALIZED_NAME_BETAS = "betas";
   @SerializedName(SERIALIZED_NAME_BETAS)
   @javax.annotation.Nullable
-  private List<String> betas = new ArrayList<>();
+  private List<String> betas;
 
   public static final String SERIALIZED_NAME_LEAD = "lead";
   @SerializedName(SERIALIZED_NAME_LEAD)

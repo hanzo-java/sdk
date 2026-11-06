@@ -101,7 +101,7 @@ public class AffiliateAffiliateStanding {
   public static final String SERIALIZED_NAME_PAYOUTS = "payouts";
   @SerializedName(SERIALIZED_NAME_PAYOUTS)
   @javax.annotation.Nullable
-  private List<AffiliateRemittance> payouts = new ArrayList<>();
+  private List<AffiliateRemittance> payouts;
 
   public static final String SERIALIZED_NAME_PENDING_CENTS = "pendingCents";
   @SerializedName(SERIALIZED_NAME_PENDING_CENTS)

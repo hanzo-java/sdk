@@ -71,7 +71,7 @@ public class MCPRequest {
   public static final String SERIALIZED_NAME_PARAMS = "params";
   @SerializedName(SERIALIZED_NAME_PARAMS)
   @javax.annotation.Nullable
-  private Map<String, Object> params = new HashMap<>();
+  private Map<String, Object> params;
 
   public MCPRequest() {
   }

@@ -89,7 +89,7 @@ public class O11yO11yLogPipelineOperator {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<String> fields = new ArrayList<>();
+  private List<String> fields;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -119,7 +119,7 @@ public class O11yO11yLogPipelineOperator {
   public static final String SERIALIZED_NAME_MAPPING = "mapping";
   @SerializedName(SERIALIZED_NAME_MAPPING)
   @javax.annotation.Nullable
-  private Map<String, List<String>> mapping = new HashMap<>();
+  private Map<String, List<String>> mapping;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -174,7 +174,7 @@ public class O11yO11yLogPipelineOperator {
   public static final String SERIALIZED_NAME_ROUTES = "routes";
   @SerializedName(SERIALIZED_NAME_ROUTES)
   @javax.annotation.Nullable
-  private List<O11yO11yLogPipelineRoute> routes = new ArrayList<>();
+  private List<O11yO11yLogPipelineRoute> routes;
 
   public static final String SERIALIZED_NAME_SPAN_ID = "span_id";
   @SerializedName(SERIALIZED_NAME_SPAN_ID)

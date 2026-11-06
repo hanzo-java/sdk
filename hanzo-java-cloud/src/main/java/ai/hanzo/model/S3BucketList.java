@@ -56,7 +56,7 @@ public class S3BucketList {
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
   @javax.annotation.Nullable
-  private List<S3BucketItem> buckets = new ArrayList<>();
+  private List<S3BucketItem> buckets;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

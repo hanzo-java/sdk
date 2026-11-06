@@ -56,7 +56,7 @@ public class O11yAWSMetricsCollectionStrategy {
   public static final String SERIALIZED_NAME_STREAM_FILTERS = "streamFilters";
   @SerializedName(SERIALIZED_NAME_STREAM_FILTERS)
   @javax.annotation.Nullable
-  private List<O11yAWSCloudWatchMetricStreamFilter> streamFilters = new ArrayList<>();
+  private List<O11yAWSCloudWatchMetricStreamFilter> streamFilters;
 
   public O11yAWSMetricsCollectionStrategy() {
   }

@@ -162,7 +162,7 @@ public class Provider {
   public static final String SERIALIZED_NAME_MCP_TOOLS = "mcpTools";
   @SerializedName(SERIALIZED_NAME_MCP_TOOLS)
   @javax.annotation.Nullable
-  private List<AgentMcpTools> mcpTools = new ArrayList<>();
+  private List<AgentMcpTools> mcpTools;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

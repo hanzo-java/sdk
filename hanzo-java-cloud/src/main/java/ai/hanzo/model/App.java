@@ -57,7 +57,7 @@ public class App {
   public static final String SERIALIZED_NAME_BASIC_CONFIG_OPTIONS = "basicConfigOptions";
   @SerializedName(SERIALIZED_NAME_BASIC_CONFIG_OPTIONS)
   @javax.annotation.Nullable
-  private List<ApplicationConfigOption> basicConfigOptions = new ArrayList<>();
+  private List<ApplicationConfigOption> basicConfigOptions;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)

@@ -60,32 +60,32 @@ public class O11yChecks {
   public static final String SERIALIZED_NAME_MISSING_DEFAULT_ENABLED_METRICS = "missingDefaultEnabledMetrics";
   @SerializedName(SERIALIZED_NAME_MISSING_DEFAULT_ENABLED_METRICS)
   @javax.annotation.Nullable
-  private List<O11yMissingMetricsComponentEntry> missingDefaultEnabledMetrics = new ArrayList<>();
+  private List<O11yMissingMetricsComponentEntry> missingDefaultEnabledMetrics;
 
   public static final String SERIALIZED_NAME_MISSING_OPTIONAL_METRICS = "missingOptionalMetrics";
   @SerializedName(SERIALIZED_NAME_MISSING_OPTIONAL_METRICS)
   @javax.annotation.Nullable
-  private List<O11yMissingMetricsComponentEntry> missingOptionalMetrics = new ArrayList<>();
+  private List<O11yMissingMetricsComponentEntry> missingOptionalMetrics;
 
   public static final String SERIALIZED_NAME_MISSING_REQUIRED_ATTRIBUTES = "missingRequiredAttributes";
   @SerializedName(SERIALIZED_NAME_MISSING_REQUIRED_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<O11yMissingAttributesComponentEntry> missingRequiredAttributes = new ArrayList<>();
+  private List<O11yMissingAttributesComponentEntry> missingRequiredAttributes;
 
   public static final String SERIALIZED_NAME_PRESENT_DEFAULT_ENABLED_METRICS = "presentDefaultEnabledMetrics";
   @SerializedName(SERIALIZED_NAME_PRESENT_DEFAULT_ENABLED_METRICS)
   @javax.annotation.Nullable
-  private List<O11yMetricsComponentEntry> presentDefaultEnabledMetrics = new ArrayList<>();
+  private List<O11yMetricsComponentEntry> presentDefaultEnabledMetrics;
 
   public static final String SERIALIZED_NAME_PRESENT_OPTIONAL_METRICS = "presentOptionalMetrics";
   @SerializedName(SERIALIZED_NAME_PRESENT_OPTIONAL_METRICS)
   @javax.annotation.Nullable
-  private List<O11yMetricsComponentEntry> presentOptionalMetrics = new ArrayList<>();
+  private List<O11yMetricsComponentEntry> presentOptionalMetrics;
 
   public static final String SERIALIZED_NAME_PRESENT_REQUIRED_ATTRIBUTES = "presentRequiredAttributes";
   @SerializedName(SERIALIZED_NAME_PRESENT_REQUIRED_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<O11yAttributesComponentEntry> presentRequiredAttributes = new ArrayList<>();
+  private List<O11yAttributesComponentEntry> presentRequiredAttributes;
 
   public static final String SERIALIZED_NAME_READY = "ready";
   @SerializedName(SERIALIZED_NAME_READY)

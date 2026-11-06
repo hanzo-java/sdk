@@ -62,12 +62,12 @@ public class O11yStatusSummary {
   public static final String SERIALIZED_NAME_IN_PROGRESS_MAINTENANCES = "in_progress_maintenances";
   @SerializedName(SERIALIZED_NAME_IN_PROGRESS_MAINTENANCES)
   @javax.annotation.Nullable
-  private List<O11yStatusMaintenance> inProgressMaintenances = new ArrayList<>();
+  private List<O11yStatusMaintenance> inProgressMaintenances;
 
   public static final String SERIALIZED_NAME_ONGOING_INCIDENTS = "ongoing_incidents";
   @SerializedName(SERIALIZED_NAME_ONGOING_INCIDENTS)
   @javax.annotation.Nullable
-  private List<O11yStatusIncident> ongoingIncidents = new ArrayList<>();
+  private List<O11yStatusIncident> ongoingIncidents;
 
   public static final String SERIALIZED_NAME_PAGE_TITLE = "page_title";
   @SerializedName(SERIALIZED_NAME_PAGE_TITLE)
@@ -82,7 +82,7 @@ public class O11yStatusSummary {
   public static final String SERIALIZED_NAME_SCHEDULED_MAINTENANCES = "scheduled_maintenances";
   @SerializedName(SERIALIZED_NAME_SCHEDULED_MAINTENANCES)
   @javax.annotation.Nullable
-  private List<O11yStatusMaintenance> scheduledMaintenances = new ArrayList<>();
+  private List<O11yStatusMaintenance> scheduledMaintenances;
 
   public O11yStatusSummary() {
   }

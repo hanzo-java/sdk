@@ -56,7 +56,7 @@ public class StudioFlowPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<StudioFlow> data = new ArrayList<>();
+  private List<StudioFlow> data;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

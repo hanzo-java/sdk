@@ -55,7 +55,7 @@ public class O11yAWSCloudWatchMetricStreamFilter {
   public static final String SERIALIZED_NAME_METRIC_NAMES = "metricNames";
   @SerializedName(SERIALIZED_NAME_METRIC_NAMES)
   @javax.annotation.Nullable
-  private List<String> metricNames = new ArrayList<>();
+  private List<String> metricNames;
 
   public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
   @SerializedName(SERIALIZED_NAME_NAMESPACE)

@@ -59,12 +59,12 @@ public class MarketingReport {
   public static final String SERIALIZED_NAME_BASES = "bases";
   @SerializedName(SERIALIZED_NAME_BASES)
   @javax.annotation.Nullable
-  private Map<String, Long> bases = new HashMap<>();
+  private Map<String, Long> bases;
 
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
   @javax.annotation.Nullable
-  private List<String> columns = new ArrayList<>();
+  private List<String> columns;
 
   public static final String SERIALIZED_NAME_IMPORTED = "imported";
   @SerializedName(SERIALIZED_NAME_IMPORTED)
@@ -84,7 +84,7 @@ public class MarketingReport {
   public static final String SERIALIZED_NAME_REASONS = "reasons";
   @SerializedName(SERIALIZED_NAME_REASONS)
   @javax.annotation.Nullable
-  private Map<String, Long> reasons = new HashMap<>();
+  private Map<String, Long> reasons;
 
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
@@ -94,7 +94,7 @@ public class MarketingReport {
   public static final String SERIALIZED_NAME_SAMPLES = "samples";
   @SerializedName(SERIALIZED_NAME_SAMPLES)
   @javax.annotation.Nullable
-  private List<MarketingSample> samples = new ArrayList<>();
+  private List<MarketingSample> samples;
 
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
@@ -104,7 +104,7 @@ public class MarketingReport {
   public static final String SERIALIZED_NAME_STATUSES = "statuses";
   @SerializedName(SERIALIZED_NAME_STATUSES)
   @javax.annotation.Nullable
-  private Map<String, Long> statuses = new HashMap<>();
+  private Map<String, Long> statuses;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)

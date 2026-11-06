@@ -117,12 +117,12 @@ public class FunctionFunctionDetail {
   public static final String SERIALIZED_NAME_RECENT_INVOCATIONS = "recentInvocations";
   @SerializedName(SERIALIZED_NAME_RECENT_INVOCATIONS)
   @javax.annotation.Nullable
-  private List<FunctionInvocationView> recentInvocations = new ArrayList<>();
+  private List<FunctionInvocationView> recentInvocations;
 
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<String> secrets = new ArrayList<>();
+  private List<String> secrets;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -147,7 +147,7 @@ public class FunctionFunctionDetail {
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   @javax.annotation.Nullable
-  private List<FunctionTriggerView> triggers = new ArrayList<>();
+  private List<FunctionTriggerView> triggers;
 
   public FunctionFunctionDetail() {
   }

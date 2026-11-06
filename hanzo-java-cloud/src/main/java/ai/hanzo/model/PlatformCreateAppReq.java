@@ -73,12 +73,12 @@ public class PlatformCreateAppReq {
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private List<String> domains = new ArrayList<>();
+  private List<String> domains;
 
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
   @javax.annotation.Nullable
-  private List<PlatformEnvVarJSON> env = new ArrayList<>();
+  private List<PlatformEnvVarJSON> env;
 
   public static final String SERIALIZED_NAME_ENVIRONMENT = "environment";
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)

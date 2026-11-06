@@ -61,7 +61,7 @@ public class LibraryLibraryUpload {
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   @javax.annotation.Nullable
-  private List<LibraryField> headers = new ArrayList<>();
+  private List<LibraryField> headers;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)

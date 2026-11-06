@@ -57,7 +57,7 @@ public class GetAiConnections200Response {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<AiAiConnResponse> data = new ArrayList<>();
+  private List<AiAiConnResponse> data;
 
   public static final String SERIALIZED_NAME_DATA2 = "data2";
   @SerializedName(SERIALIZED_NAME_DATA2)

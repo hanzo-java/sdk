@@ -67,7 +67,7 @@ public class UsageAccounts {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<UsageTotalView> rows = new ArrayList<>();
+  private List<UsageTotalView> rows;
 
   public UsageAccounts() {
   }

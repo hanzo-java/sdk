@@ -56,7 +56,7 @@ public class ReferenceSetReferenceIn {
   public static final String SERIALIZED_NAME_ENTRIES = "entries";
   @SerializedName(SERIALIZED_NAME_ENTRIES)
   @javax.annotation.Nullable
-  private List<ReferenceReferenceOverrideIn> entries = new ArrayList<>();
+  private List<ReferenceReferenceOverrideIn> entries;
 
   public ReferenceSetReferenceIn() {
   }

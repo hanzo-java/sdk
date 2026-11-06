@@ -56,7 +56,7 @@ public class AgentActivityFeed {
   public static final String SERIALIZED_NAME_ACTIVITY = "activity";
   @SerializedName(SERIALIZED_NAME_ACTIVITY)
   @javax.annotation.Nullable
-  private List<AgentActivityView> activity = new ArrayList<>();
+  private List<AgentActivityView> activity;
 
   public AgentActivityFeed() {
   }

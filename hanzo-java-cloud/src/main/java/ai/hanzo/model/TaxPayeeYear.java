@@ -62,7 +62,7 @@ public class TaxPayeeYear {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<TaxLine> lines = new ArrayList<>();
+  private List<TaxLine> lines;
 
   public static final String SERIALIZED_NAME_PAYEE = "payee";
   @SerializedName(SERIALIZED_NAME_PAYEE)
@@ -72,7 +72,7 @@ public class TaxPayeeYear {
   public static final String SERIALIZED_NAME_TOTALS = "totals";
   @SerializedName(SERIALIZED_NAME_TOTALS)
   @javax.annotation.Nullable
-  private List<TaxTotal> totals = new ArrayList<>();
+  private List<TaxTotal> totals;
 
   public static final String SERIALIZED_NAME_W9 = "w9";
   @SerializedName(SERIALIZED_NAME_W9)

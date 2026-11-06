@@ -60,7 +60,7 @@ public class GraphQLError {
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
   @javax.annotation.Nullable
-  private List<Object> path = new ArrayList<>();
+  private List<Object> path;
 
   public GraphQLError() {
   }

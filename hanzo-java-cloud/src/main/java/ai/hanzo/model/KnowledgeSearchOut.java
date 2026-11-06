@@ -61,7 +61,7 @@ public class KnowledgeSearchOut {
   public static final String SERIALIZED_NAME_HITS = "hits";
   @SerializedName(SERIALIZED_NAME_HITS)
   @javax.annotation.Nullable
-  private List<KnowledgeHit> hits = new ArrayList<>();
+  private List<KnowledgeHit> hits;
 
   public KnowledgeSearchOut() {
   }

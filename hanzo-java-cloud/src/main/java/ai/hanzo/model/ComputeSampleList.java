@@ -56,7 +56,7 @@ public class ComputeSampleList {
   public static final String SERIALIZED_NAME_SAMPLES = "samples";
   @SerializedName(SERIALIZED_NAME_SAMPLES)
   @javax.annotation.Nullable
-  private List<ComputeSampleView> samples = new ArrayList<>();
+  private List<ComputeSampleView> samples;
 
   public ComputeSampleList() {
   }

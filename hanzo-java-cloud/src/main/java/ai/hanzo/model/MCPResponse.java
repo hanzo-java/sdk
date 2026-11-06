@@ -72,7 +72,7 @@ public class MCPResponse {
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
   @javax.annotation.Nullable
-  private Map<String, Object> result = new HashMap<>();
+  private Map<String, Object> result;
 
   public MCPResponse() {
   }

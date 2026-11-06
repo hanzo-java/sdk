@@ -57,7 +57,7 @@ public class BillingGatewayTerms {
   public static final String SERIALIZED_NAME_ACCEPTS = "accepts";
   @SerializedName(SERIALIZED_NAME_ACCEPTS)
   @javax.annotation.Nullable
-  private List<BillingGatewayAccept> accepts = new ArrayList<>();
+  private List<BillingGatewayAccept> accepts;
 
   public static final String SERIALIZED_NAME_MAX_CENTS = "maxCents";
   @SerializedName(SERIALIZED_NAME_MAX_CENTS)

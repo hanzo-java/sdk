@@ -56,7 +56,7 @@ public class O11yCompositeQuery {
   public static final String SERIALIZED_NAME_QUERIES = "queries";
   @SerializedName(SERIALIZED_NAME_QUERIES)
   @javax.annotation.Nullable
-  private List<O11yQueryEnvelope> queries = new ArrayList<>();
+  private List<O11yQueryEnvelope> queries;
 
   public O11yCompositeQuery() {
   }

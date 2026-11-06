@@ -81,7 +81,7 @@ public class GraphGraphEraseOut {
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
   @javax.annotation.Nullable
-  private List<String> ids = new ArrayList<>();
+  private List<String> ids;
 
   public static final String SERIALIZED_NAME_REMAINING = "remaining";
   @SerializedName(SERIALIZED_NAME_REMAINING)
@@ -91,12 +91,12 @@ public class GraphGraphEraseOut {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<String> sources = new ArrayList<>();
+  private List<String> sources;
 
   public static final String SERIALIZED_NAME_STORES = "stores";
   @SerializedName(SERIALIZED_NAME_STORES)
   @javax.annotation.Nullable
-  private List<GraphGraphStore> stores = new ArrayList<>();
+  private List<GraphGraphStore> stores;
 
   public GraphGraphEraseOut() {
   }

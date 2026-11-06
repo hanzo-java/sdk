@@ -78,7 +78,7 @@ public class ScanDraft {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private List<Question> questions = new ArrayList<>();
+  private List<Question> questions;
 
   public static final String SERIALIZED_NAME_SCAN_ID = "scanId";
   @SerializedName(SERIALIZED_NAME_SCAN_ID)

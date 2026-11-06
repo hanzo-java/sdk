@@ -66,7 +66,7 @@ public class O11yO11yQueryWarning {
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   @javax.annotation.Nullable
-  private List<O11yO11yQueryWarningNote> warnings = new ArrayList<>();
+  private List<O11yO11yQueryWarningNote> warnings;
 
   public O11yO11yQueryWarning() {
   }

@@ -55,7 +55,7 @@ public class KnowledgeSearchIn {
   public static final String SERIALIZED_NAME_DOCTYPES = "doctypes";
   @SerializedName(SERIALIZED_NAME_DOCTYPES)
   @javax.annotation.Nullable
-  private List<String> doctypes = new ArrayList<>();
+  private List<String> doctypes;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

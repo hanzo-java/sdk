@@ -61,17 +61,17 @@ public class BooksAskResponse {
   public static final String SERIALIZED_NAME_FIGURES = "figures";
   @SerializedName(SERIALIZED_NAME_FIGURES)
   @javax.annotation.Nullable
-  private List<BooksFigure> figures = new ArrayList<>();
+  private List<BooksFigure> figures;
 
   public static final String SERIALIZED_NAME_FOLLOWUPS = "followups";
   @SerializedName(SERIALIZED_NAME_FOLLOWUPS)
   @javax.annotation.Nullable
-  private List<String> followups = new ArrayList<>();
+  private List<String> followups;
 
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<String> sources = new ArrayList<>();
+  private List<String> sources;
 
   public BooksAskResponse() {
   }

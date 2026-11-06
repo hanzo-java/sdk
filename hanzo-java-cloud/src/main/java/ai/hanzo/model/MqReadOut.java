@@ -56,7 +56,7 @@ public class MqReadOut {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private List<MqDelivery> messages = new ArrayList<>();
+  private List<MqDelivery> messages;
 
   public MqReadOut() {
   }

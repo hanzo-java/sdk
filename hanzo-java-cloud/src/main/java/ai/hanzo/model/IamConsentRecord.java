@@ -60,7 +60,7 @@ public class IamConsentRecord {
   public static final String SERIALIZED_NAME_GRANTED_SCOPES = "grantedScopes";
   @SerializedName(SERIALIZED_NAME_GRANTED_SCOPES)
   @javax.annotation.Nullable
-  private List<String> grantedScopes = new ArrayList<>();
+  private List<String> grantedScopes;
 
   public IamConsentRecord() {
   }

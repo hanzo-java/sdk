@@ -61,7 +61,7 @@ public class O11yAWSServiceLogsConfig {
   public static final String SERIALIZED_NAME_S3_BUCKETS = "s3Buckets";
   @SerializedName(SERIALIZED_NAME_S3_BUCKETS)
   @javax.annotation.Nullable
-  private Map<String, List<String>> s3Buckets = new HashMap<>();
+  private Map<String, List<String>> s3Buckets;
 
   public O11yAWSServiceLogsConfig() {
   }

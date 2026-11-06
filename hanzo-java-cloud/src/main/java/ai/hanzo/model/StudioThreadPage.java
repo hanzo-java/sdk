@@ -56,7 +56,7 @@ public class StudioThreadPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<StudioThreadCard> data = new ArrayList<>();
+  private List<StudioThreadCard> data;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

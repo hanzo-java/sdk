@@ -56,7 +56,7 @@ public class OpenaiEmbedding {
   public static final String SERIALIZED_NAME_EMBEDDING = "embedding";
   @SerializedName(SERIALIZED_NAME_EMBEDDING)
   @javax.annotation.Nullable
-  private List<BigDecimal> embedding = new ArrayList<>();
+  private List<BigDecimal> embedding;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)

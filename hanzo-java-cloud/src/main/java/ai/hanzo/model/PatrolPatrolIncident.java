@@ -62,7 +62,7 @@ public class PatrolPatrolIncident {
   public static final String SERIALIZED_NAME_CLOCKS = "clocks";
   @SerializedName(SERIALIZED_NAME_CLOCKS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolClock> clocks = new ArrayList<>();
+  private List<PatrolPatrolClock> clocks;
 
   public static final String SERIALIZED_NAME_CLOSED = "closed";
   @SerializedName(SERIALIZED_NAME_CLOSED)
@@ -142,7 +142,7 @@ public class PatrolPatrolIncident {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolAct> steps = new ArrayList<>();
+  private List<PatrolPatrolAct> steps;
 
   public static final String SERIALIZED_NAME_TIER = "tier";
   @SerializedName(SERIALIZED_NAME_TIER)

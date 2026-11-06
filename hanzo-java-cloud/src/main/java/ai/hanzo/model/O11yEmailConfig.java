@@ -104,7 +104,7 @@ public class O11yEmailConfig {
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   @javax.annotation.Nullable
-  private Map<String, String> headers = new HashMap<>();
+  private Map<String, String> headers;
 
   public static final String SERIALIZED_NAME_HELLO = "hello";
   @SerializedName(SERIALIZED_NAME_HELLO)

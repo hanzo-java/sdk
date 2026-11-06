@@ -55,7 +55,7 @@ public class ProviderDisconnectOut {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<String> accounts = new ArrayList<>();
+  private List<String> accounts;
 
   public static final String SERIALIZED_NAME_DISCONNECTED = "disconnected";
   @SerializedName(SERIALIZED_NAME_DISCONNECTED)
@@ -65,7 +65,7 @@ public class ProviderDisconnectOut {
   public static final String SERIALIZED_NAME_UNINSTALLED = "uninstalled";
   @SerializedName(SERIALIZED_NAME_UNINSTALLED)
   @javax.annotation.Nullable
-  private List<String> uninstalled = new ArrayList<>();
+  private List<String> uninstalled;
 
   public ProviderDisconnectOut() {
   }

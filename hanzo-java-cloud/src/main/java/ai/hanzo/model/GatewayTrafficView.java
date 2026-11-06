@@ -63,7 +63,7 @@ public class GatewayTrafficView {
   public static final String SERIALIZED_NAME_CALLERS = "callers";
   @SerializedName(SERIALIZED_NAME_CALLERS)
   @javax.annotation.Nullable
-  private List<GatewayTrafficCaller> callers = new ArrayList<>();
+  private List<GatewayTrafficCaller> callers;
 
   public static final String SERIALIZED_NAME_CEILING = "ceiling";
   @SerializedName(SERIALIZED_NAME_CEILING)
@@ -78,7 +78,7 @@ public class GatewayTrafficView {
   public static final String SERIALIZED_NAME_LANES = "lanes";
   @SerializedName(SERIALIZED_NAME_LANES)
   @javax.annotation.Nullable
-  private Map<String, Long> lanes = new HashMap<>();
+  private Map<String, Long> lanes;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)

@@ -56,7 +56,7 @@ public class AgentBuildList {
   public static final String SERIALIZED_NAME_BUILDS = "builds";
   @SerializedName(SERIALIZED_NAME_BUILDS)
   @javax.annotation.Nullable
-  private List<AgentBuildSummary> builds = new ArrayList<>();
+  private List<AgentBuildSummary> builds;
 
   public AgentBuildList() {
   }

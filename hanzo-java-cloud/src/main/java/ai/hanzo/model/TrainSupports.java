@@ -55,22 +55,22 @@ public class TrainSupports {
   public static final String SERIALIZED_NAME_ADAPTATIONS = "adaptations";
   @SerializedName(SERIALIZED_NAME_ADAPTATIONS)
   @javax.annotation.Nullable
-  private List<String> adaptations = new ArrayList<>();
+  private List<String> adaptations;
 
   public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
   @SerializedName(SERIALIZED_NAME_OUTPUTS)
   @javax.annotation.Nullable
-  private List<String> outputs = new ArrayList<>();
+  private List<String> outputs;
 
   public static final String SERIALIZED_NAME_PROTECT = "protect";
   @SerializedName(SERIALIZED_NAME_PROTECT)
   @javax.annotation.Nullable
-  private List<String> protect = new ArrayList<>();
+  private List<String> protect;
 
   public static final String SERIALIZED_NAME_TERMS = "terms";
   @SerializedName(SERIALIZED_NAME_TERMS)
   @javax.annotation.Nullable
-  private List<String> terms = new ArrayList<>();
+  private List<String> terms;
 
   public TrainSupports() {
   }

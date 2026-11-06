@@ -56,7 +56,7 @@ public class O11yO11yLogAggregateOut {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private Map<String, O11yO11yLogAggregateBucket> items = new HashMap<>();
+  private Map<String, O11yO11yLogAggregateBucket> items;
 
   public O11yO11yLogAggregateOut() {
   }

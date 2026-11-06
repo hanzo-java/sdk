@@ -61,7 +61,7 @@ public class AutoCatalog {
   public static final String SERIALIZED_NAME_CONNECTORS = "connectors";
   @SerializedName(SERIALIZED_NAME_CONNECTORS)
   @javax.annotation.Nullable
-  private List<AutoConnectorMetadata> connectors = new ArrayList<>();
+  private List<AutoConnectorMetadata> connectors;
 
   public static final String SERIALIZED_NAME_RUNNABLE_COUNT = "runnableCount";
   @SerializedName(SERIALIZED_NAME_RUNNABLE_COUNT)

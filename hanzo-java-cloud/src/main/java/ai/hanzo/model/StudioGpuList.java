@@ -56,7 +56,7 @@ public class StudioGpuList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<StudioGpu> data = new ArrayList<>();
+  private List<StudioGpu> data;
 
   public StudioGpuList() {
   }

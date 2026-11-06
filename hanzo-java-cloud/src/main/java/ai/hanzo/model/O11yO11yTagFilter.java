@@ -55,7 +55,7 @@ public class O11yO11yTagFilter {
   public static final String SERIALIZED_NAME_BOOL_VALUES = "boolValues";
   @SerializedName(SERIALIZED_NAME_BOOL_VALUES)
   @javax.annotation.Nullable
-  private List<Boolean> boolValues = new ArrayList<>();
+  private List<Boolean> boolValues;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -65,7 +65,7 @@ public class O11yO11yTagFilter {
   public static final String SERIALIZED_NAME_NUMBER_VALUES = "numberValues";
   @SerializedName(SERIALIZED_NAME_NUMBER_VALUES)
   @javax.annotation.Nullable
-  private List<Double> numberValues = new ArrayList<>();
+  private List<Double> numberValues;
 
   public static final String SERIALIZED_NAME_OPERATOR = "operator";
   @SerializedName(SERIALIZED_NAME_OPERATOR)
@@ -75,7 +75,7 @@ public class O11yO11yTagFilter {
   public static final String SERIALIZED_NAME_STRING_VALUES = "stringValues";
   @SerializedName(SERIALIZED_NAME_STRING_VALUES)
   @javax.annotation.Nullable
-  private List<String> stringValues = new ArrayList<>();
+  private List<String> stringValues;
 
   public static final String SERIALIZED_NAME_TAG_TYPE = "tagType";
   @SerializedName(SERIALIZED_NAME_TAG_TYPE)

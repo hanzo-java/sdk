@@ -56,7 +56,7 @@ public class BooksPnL {
   public static final String SERIALIZED_NAME_EXPENSE = "expense";
   @SerializedName(SERIALIZED_NAME_EXPENSE)
   @javax.annotation.Nullable
-  private List<BooksPnLLine> expense = new ArrayList<>();
+  private List<BooksPnLLine> expense;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -66,7 +66,7 @@ public class BooksPnL {
   public static final String SERIALIZED_NAME_INCOME = "income";
   @SerializedName(SERIALIZED_NAME_INCOME)
   @javax.annotation.Nullable
-  private List<BooksPnLLine> income = new ArrayList<>();
+  private List<BooksPnLLine> income;
 
   public static final String SERIALIZED_NAME_NET_INCOME = "netIncome";
   @SerializedName(SERIALIZED_NAME_NET_INCOME)

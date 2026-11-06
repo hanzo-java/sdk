@@ -61,7 +61,7 @@ public class O11yO11yAffectedAsset {
   public static final String SERIALIZED_NAME_IMPACTED_LABELS = "impactedLabels";
   @SerializedName(SERIALIZED_NAME_IMPACTED_LABELS)
   @javax.annotation.Nullable
-  private List<String> impactedLabels = new ArrayList<>();
+  private List<String> impactedLabels;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

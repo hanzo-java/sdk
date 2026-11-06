@@ -56,7 +56,7 @@ public class TrainArtifactsOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TrainDownload> data = new ArrayList<>();
+  private List<TrainDownload> data;
 
   public TrainArtifactsOut() {
   }

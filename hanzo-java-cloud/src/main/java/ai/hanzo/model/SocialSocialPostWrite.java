@@ -65,7 +65,7 @@ public class SocialSocialPostWrite {
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
   @javax.annotation.Nullable
-  private List<String> media = new ArrayList<>();
+  private List<String> media;
 
   public static final String SERIALIZED_NAME_SCHEDULE_AT = "scheduleAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_AT)

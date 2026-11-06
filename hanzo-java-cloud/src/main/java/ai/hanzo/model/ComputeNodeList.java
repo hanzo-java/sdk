@@ -56,7 +56,7 @@ public class ComputeNodeList {
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
   @javax.annotation.Nullable
-  private List<ComputeMachineView> nodes = new ArrayList<>();
+  private List<ComputeMachineView> nodes;
 
   public ComputeNodeList() {
   }

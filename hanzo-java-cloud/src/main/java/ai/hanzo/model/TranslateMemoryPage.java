@@ -56,7 +56,7 @@ public class TranslateMemoryPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TranslateMemoryEntry> data = new ArrayList<>();
+  private List<TranslateMemoryEntry> data;
 
   public TranslateMemoryPage() {
   }

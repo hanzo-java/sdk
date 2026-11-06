@@ -78,7 +78,7 @@ public class PlatformProject {
   public static final String SERIALIZED_NAME_NAMESPACES = "namespaces";
   @SerializedName(SERIALIZED_NAME_NAMESPACES)
   @javax.annotation.Nullable
-  private List<String> namespaces = new ArrayList<>();
+  private List<String> namespaces;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)

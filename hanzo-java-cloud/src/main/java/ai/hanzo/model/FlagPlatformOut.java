@@ -55,7 +55,7 @@ public class FlagPlatformOut {
   public static final String SERIALIZED_NAME_FLAGS = "flags";
   @SerializedName(SERIALIZED_NAME_FLAGS)
   @javax.annotation.Nullable
-  private Map<String, Boolean> flags = new HashMap<>();
+  private Map<String, Boolean> flags;
 
   public FlagPlatformOut() {
   }

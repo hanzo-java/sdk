@@ -56,7 +56,7 @@ public class ExecCodeResult {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<ExecCodeFile> files = new ArrayList<>();
+  private List<ExecCodeFile> files;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "session_id";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)

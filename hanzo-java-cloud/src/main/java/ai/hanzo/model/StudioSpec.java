@@ -75,7 +75,7 @@ public class StudioSpec {
   public static final String SERIALIZED_NAME_WITH = "with";
   @SerializedName(SERIALIZED_NAME_WITH)
   @javax.annotation.Nullable
-  private Map<String, Object> with = new HashMap<>();
+  private Map<String, Object> with;
 
   public StudioSpec() {
   }

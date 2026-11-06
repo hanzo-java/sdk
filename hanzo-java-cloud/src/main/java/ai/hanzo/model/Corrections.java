@@ -57,12 +57,12 @@ public class Corrections {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<Correction> data = new ArrayList<>();
+  private List<Correction> data;
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private List<Captured> questions = new ArrayList<>();
+  private List<Captured> questions;
 
   public Corrections() {
   }

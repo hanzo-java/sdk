@@ -58,17 +58,17 @@ public class ContentPublishResult {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private List<String> channels = new ArrayList<>();
+  private List<String> channels;
 
   public static final String SERIALIZED_NAME_EXTERNAL_IDS = "externalIds";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_IDS)
   @javax.annotation.Nullable
-  private Map<String, String> externalIds = new HashMap<>();
+  private Map<String, String> externalIds;
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<ContentChannelResult> results = new ArrayList<>();
+  private List<ContentChannelResult> results;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

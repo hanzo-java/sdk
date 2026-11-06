@@ -61,7 +61,7 @@ public class TrainObjective {
   public static final String SERIALIZED_NAME_TERMS = "terms";
   @SerializedName(SERIALIZED_NAME_TERMS)
   @javax.annotation.Nullable
-  private List<TrainTerm> terms = new ArrayList<>();
+  private List<TrainTerm> terms;
 
   public TrainObjective() {
   }

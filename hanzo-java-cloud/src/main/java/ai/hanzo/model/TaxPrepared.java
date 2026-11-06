@@ -56,12 +56,12 @@ public class TaxPrepared {
   public static final String SERIALIZED_NAME_FORMS = "forms";
   @SerializedName(SERIALIZED_NAME_FORMS)
   @javax.annotation.Nullable
-  private List<TaxForm> forms = new ArrayList<>();
+  private List<TaxForm> forms;
 
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
   @javax.annotation.Nullable
-  private List<String> skipped = new ArrayList<>();
+  private List<String> skipped;
 
   public static final String SERIALIZED_NAME_YEAR = "year";
   @SerializedName(SERIALIZED_NAME_YEAR)

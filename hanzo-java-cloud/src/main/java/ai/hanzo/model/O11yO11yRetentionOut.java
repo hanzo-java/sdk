@@ -86,7 +86,7 @@ public class O11yO11yRetentionOut {
   public static final String SERIALIZED_NAME_TTL_CONDITIONS = "ttl_conditions";
   @SerializedName(SERIALIZED_NAME_TTL_CONDITIONS)
   @javax.annotation.Nullable
-  private List<O11yO11yRetentionRule> ttlConditions = new ArrayList<>();
+  private List<O11yO11yRetentionRule> ttlConditions;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)

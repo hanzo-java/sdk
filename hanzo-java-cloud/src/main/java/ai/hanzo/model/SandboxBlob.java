@@ -65,7 +65,7 @@ public class SandboxBlob {
   public static final String SERIALIZED_NAME_ENTRIES = "entries";
   @SerializedName(SERIALIZED_NAME_ENTRIES)
   @javax.annotation.Nullable
-  private List<String> entries = new ArrayList<>();
+  private List<String> entries;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)

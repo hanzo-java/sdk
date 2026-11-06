@@ -58,7 +58,7 @@ public class BillingSubscription {
   public static final String SERIALIZED_NAME_ASSIGNED = "assigned";
   @SerializedName(SERIALIZED_NAME_ASSIGNED)
   @javax.annotation.Nullable
-  private List<BillingSubscriptionSeat> assigned = new ArrayList<>();
+  private List<BillingSubscriptionSeat> assigned;
 
   public static final String SERIALIZED_NAME_CANCEL_AT_PERIOD_END = "cancelAtPeriodEnd";
   @SerializedName(SERIALIZED_NAME_CANCEL_AT_PERIOD_END)
@@ -123,7 +123,7 @@ public class BillingSubscription {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<BillingSubscriptionLine> lines = new ArrayList<>();
+  private List<BillingSubscriptionLine> lines;
 
   public static final String SERIALIZED_NAME_MRR_CENTS = "mrrCents";
   @SerializedName(SERIALIZED_NAME_MRR_CENTS)

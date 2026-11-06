@@ -56,7 +56,7 @@ public class PricingPricingTierList {
   public static final String SERIALIZED_NAME_TIERS = "tiers";
   @SerializedName(SERIALIZED_NAME_TIERS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> tiers = new ArrayList<>();
+  private List<Map<String, Object>> tiers;
 
   public PricingPricingTierList() {
   }

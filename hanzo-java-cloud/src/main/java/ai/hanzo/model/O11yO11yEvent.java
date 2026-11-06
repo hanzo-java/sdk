@@ -79,7 +79,7 @@ public class O11yO11yEvent {
   public static final String SERIALIZED_NAME_FRAMES = "frames";
   @SerializedName(SERIALIZED_NAME_FRAMES)
   @javax.annotation.Nullable
-  private List<O11yO11yFrame> frames = new ArrayList<>();
+  private List<O11yO11yFrame> frames;
 
   public static final String SERIALIZED_NAME_HANDLED = "handled";
   @SerializedName(SERIALIZED_NAME_HANDLED)
@@ -139,7 +139,7 @@ public class O11yO11yEvent {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private Map<String, String> tags = new HashMap<>();
+  private Map<String, String> tags;
 
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)

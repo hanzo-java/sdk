@@ -56,7 +56,7 @@ public class AgentEventList {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<AgentEventView> events = new ArrayList<>();
+  private List<AgentEventView> events;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

@@ -62,7 +62,7 @@ public class DeployArgoAppList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<DeployArgoApp> items = new ArrayList<>();
+  private List<DeployArgoApp> items;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)

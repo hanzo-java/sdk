@@ -76,7 +76,7 @@ public class O11yAnnQueueDetailView {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yAnnItemView> items = new ArrayList<>();
+  private List<O11yAnnItemView> items;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -91,7 +91,7 @@ public class O11yAnnQueueDetailView {
   public static final String SERIALIZED_NAME_SCORE_CONFIG_IDS = "scoreConfigIds";
   @SerializedName(SERIALIZED_NAME_SCORE_CONFIG_IDS)
   @javax.annotation.Nullable
-  private List<String> scoreConfigIds = new ArrayList<>();
+  private List<String> scoreConfigIds;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

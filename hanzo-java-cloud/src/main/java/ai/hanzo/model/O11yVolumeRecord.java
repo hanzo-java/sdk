@@ -55,7 +55,7 @@ public class O11yVolumeRecord {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   @javax.annotation.Nullable
-  private Map<String, String> meta = new HashMap<>();
+  private Map<String, String> meta;
 
   public static final String SERIALIZED_NAME_PERSISTENT_VOLUME_CLAIM_NAME = "persistentVolumeClaimName";
   @SerializedName(SERIALIZED_NAME_PERSISTENT_VOLUME_CLAIM_NAME)

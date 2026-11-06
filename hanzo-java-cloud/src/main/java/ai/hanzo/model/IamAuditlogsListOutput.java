@@ -56,7 +56,7 @@ public class IamAuditlogsListOutput {
   public static final String SERIALIZED_NAME_AUDIT_LOGS = "auditLogs";
   @SerializedName(SERIALIZED_NAME_AUDIT_LOGS)
   @javax.annotation.Nullable
-  private List<IamAuditLog> auditLogs = new ArrayList<>();
+  private List<IamAuditLog> auditLogs;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

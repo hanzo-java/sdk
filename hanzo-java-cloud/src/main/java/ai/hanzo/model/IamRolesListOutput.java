@@ -56,7 +56,7 @@ public class IamRolesListOutput {
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   @javax.annotation.Nullable
-  private List<IamRole> roles = new ArrayList<>();
+  private List<IamRole> roles;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

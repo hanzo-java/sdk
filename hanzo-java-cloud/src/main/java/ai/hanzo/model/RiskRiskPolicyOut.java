@@ -66,7 +66,7 @@ public class RiskRiskPolicyOut {
   public static final String SERIALIZED_NAME_HISTORY = "history";
   @SerializedName(SERIALIZED_NAME_HISTORY)
   @javax.annotation.Nullable
-  private List<RiskRiskPolicyVersion> history = new ArrayList<>();
+  private List<RiskRiskPolicyVersion> history;
 
   public static final String SERIALIZED_NAME_RETAINED = "retained";
   @SerializedName(SERIALIZED_NAME_RETAINED)

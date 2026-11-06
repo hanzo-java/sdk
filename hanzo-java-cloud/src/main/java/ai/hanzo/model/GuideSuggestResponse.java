@@ -72,12 +72,12 @@ public class GuideSuggestResponse {
   public static final String SERIALIZED_NAME_RECOMMENDATIONS = "recommendations";
   @SerializedName(SERIALIZED_NAME_RECOMMENDATIONS)
   @javax.annotation.Nullable
-  private List<String> recommendations = new ArrayList<>();
+  private List<String> recommendations;
 
   public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   @javax.annotation.Nullable
-  private List<GuideSuggestion> suggestions = new ArrayList<>();
+  private List<GuideSuggestion> suggestions;
 
   public GuideSuggestResponse() {
   }

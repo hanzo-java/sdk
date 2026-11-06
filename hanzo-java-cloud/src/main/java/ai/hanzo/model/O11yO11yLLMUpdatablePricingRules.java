@@ -56,7 +56,7 @@ public class O11yO11yLLMUpdatablePricingRules {
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private List<O11yO11yLLMUpdatablePricingRule> rules = new ArrayList<>();
+  private List<O11yO11yLLMUpdatablePricingRule> rules;
 
   public O11yO11yLLMUpdatablePricingRules() {
   }

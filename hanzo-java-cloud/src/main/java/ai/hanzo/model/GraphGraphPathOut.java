@@ -76,7 +76,7 @@ public class GraphGraphPathOut {
   public static final String SERIALIZED_NAME_EDGES = "edges";
   @SerializedName(SERIALIZED_NAME_EDGES)
   @javax.annotation.Nullable
-  private List<GraphWireFact> edges = new ArrayList<>();
+  private List<GraphWireFact> edges;
 
   public static final String SERIALIZED_NAME_FOUND = "found";
   @SerializedName(SERIALIZED_NAME_FOUND)

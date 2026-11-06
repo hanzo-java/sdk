@@ -56,7 +56,7 @@ public class ProviderSlackChannelsOut {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private List<ProviderSlackConversation> channels = new ArrayList<>();
+  private List<ProviderSlackConversation> channels;
 
   public static final String SERIALIZED_NAME_NEXT_CURSOR = "next_cursor";
   @SerializedName(SERIALIZED_NAME_NEXT_CURSOR)

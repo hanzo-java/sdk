@@ -128,7 +128,7 @@ public class Node {
   public static final String SERIALIZED_NAME_PATCHES = "patches";
   @SerializedName(SERIALIZED_NAME_PATCHES)
   @javax.annotation.Nullable
-  private List<Patch> patches = new ArrayList<>();
+  private List<Patch> patches;
 
   public static final String SERIALIZED_NAME_PRIVATE_IP = "privateIp";
   @SerializedName(SERIALIZED_NAME_PRIVATE_IP)
@@ -143,7 +143,7 @@ public class Node {
   public static final String SERIALIZED_NAME_REMOTE_APPS = "remoteApps";
   @SerializedName(SERIALIZED_NAME_REMOTE_APPS)
   @javax.annotation.Nullable
-  private List<RemoteApp> remoteApps = new ArrayList<>();
+  private List<RemoteApp> remoteApps;
 
   public static final String SERIALIZED_NAME_REMOTE_PASSWORD = "remotePassword";
   @SerializedName(SERIALIZED_NAME_REMOTE_PASSWORD)
@@ -168,7 +168,7 @@ public class Node {
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<Service> services = new ArrayList<>();
+  private List<Service> services;
 
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)

@@ -56,7 +56,7 @@ public class ExplorerIndexersOut {
   public static final String SERIALIZED_NAME_INDEXERS = "indexers";
   @SerializedName(SERIALIZED_NAME_INDEXERS)
   @javax.annotation.Nullable
-  private List<ExplorerIndexerView> indexers = new ArrayList<>();
+  private List<ExplorerIndexerView> indexers;
 
   public ExplorerIndexersOut() {
   }

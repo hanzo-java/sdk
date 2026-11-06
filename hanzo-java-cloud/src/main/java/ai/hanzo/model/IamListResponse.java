@@ -55,7 +55,7 @@ public class IamListResponse {
   public static final String SERIALIZED_NAME_RESOURCES = "Resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
   @javax.annotation.Nullable
-  private List<Object> resources = new ArrayList<>();
+  private List<Object> resources;
 
   public static final String SERIALIZED_NAME_ITEMS_PER_PAGE = "itemsPerPage";
   @SerializedName(SERIALIZED_NAME_ITEMS_PER_PAGE)
@@ -65,7 +65,7 @@ public class IamListResponse {
   public static final String SERIALIZED_NAME_SCHEMAS = "schemas";
   @SerializedName(SERIALIZED_NAME_SCHEMAS)
   @javax.annotation.Nullable
-  private List<String> schemas = new ArrayList<>();
+  private List<String> schemas;
 
   public static final String SERIALIZED_NAME_START_INDEX = "startIndex";
   @SerializedName(SERIALIZED_NAME_START_INDEX)

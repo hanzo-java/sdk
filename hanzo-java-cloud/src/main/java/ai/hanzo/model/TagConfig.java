@@ -67,7 +67,7 @@ public class TagConfig {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<BrowserTagOut> tags = new ArrayList<>();
+  private List<BrowserTagOut> tags;
 
   public TagConfig() {
   }

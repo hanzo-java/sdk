@@ -55,17 +55,17 @@ public class WorldFilters {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
   @javax.annotation.Nullable
-  private List<String> keywords = new ArrayList<>();
+  private List<String> keywords;
 
   public static final String SERIALIZED_NAME_REGIONS = "regions";
   @SerializedName(SERIALIZED_NAME_REGIONS)
   @javax.annotation.Nullable
-  private List<String> regions = new ArrayList<>();
+  private List<String> regions;
 
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<String> sources = new ArrayList<>();
+  private List<String> sources;
 
   public WorldFilters() {
   }

@@ -56,7 +56,7 @@ public class TaxCorrectIn {
   public static final String SERIALIZED_NAME_BOXES = "boxes";
   @SerializedName(SERIALIZED_NAME_BOXES)
   @javax.annotation.Nullable
-  private List<TaxAmount> boxes = new ArrayList<>();
+  private List<TaxAmount> boxes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

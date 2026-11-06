@@ -71,7 +71,7 @@ public class SettingsView {
   public static final String SERIALIZED_NAME_SECRET_KEYS = "secretKeys";
   @SerializedName(SERIALIZED_NAME_SECRET_KEYS)
   @javax.annotation.Nullable
-  private List<String> secretKeys = new ArrayList<>();
+  private List<String> secretKeys;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

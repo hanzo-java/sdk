@@ -57,7 +57,7 @@ public class PricingPricingModelList {
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> models = new ArrayList<>();
+  private List<Map<String, Object>> models;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

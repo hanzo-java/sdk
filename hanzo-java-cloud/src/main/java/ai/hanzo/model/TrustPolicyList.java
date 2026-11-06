@@ -55,7 +55,7 @@ public class TrustPolicyList {
   public static final String SERIALIZED_NAME_POLICIES = "policies";
   @SerializedName(SERIALIZED_NAME_POLICIES)
   @javax.annotation.Nullable
-  private List<Object> policies = new ArrayList<>();
+  private List<Object> policies;
 
   public TrustPolicyList() {
   }

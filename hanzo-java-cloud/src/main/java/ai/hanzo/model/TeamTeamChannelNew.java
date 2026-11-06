@@ -55,7 +55,7 @@ public class TeamTeamChannelNew {
   public static final String SERIALIZED_NAME_BINDINGS = "bindings";
   @SerializedName(SERIALIZED_NAME_BINDINGS)
   @javax.annotation.Nullable
-  private List<String> bindings = new ArrayList<>();
+  private List<String> bindings;
 
   public static final String SERIALIZED_NAME_LIFE = "life";
   @SerializedName(SERIALIZED_NAME_LIFE)
@@ -65,7 +65,7 @@ public class TeamTeamChannelNew {
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
   @javax.annotation.Nullable
-  private List<String> members = new ArrayList<>();
+  private List<String> members;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

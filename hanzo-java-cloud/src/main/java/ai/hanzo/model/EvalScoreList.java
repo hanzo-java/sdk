@@ -56,7 +56,7 @@ public class EvalScoreList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<EvalScoreView> data = new ArrayList<>();
+  private List<EvalScoreView> data;
 
   public EvalScoreList() {
   }

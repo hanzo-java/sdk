@@ -55,7 +55,7 @@ public class ComplianceVerificationTally {
   public static final String SERIALIZED_NAME_BY_STATUS = "byStatus";
   @SerializedName(SERIALIZED_NAME_BY_STATUS)
   @javax.annotation.Nullable
-  private Map<String, Long> byStatus = new HashMap<>();
+  private Map<String, Long> byStatus;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

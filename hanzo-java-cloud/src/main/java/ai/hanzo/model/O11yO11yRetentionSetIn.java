@@ -71,7 +71,7 @@ public class O11yO11yRetentionSetIn {
   public static final String SERIALIZED_NAME_TTL_CONDITIONS = "ttlConditions";
   @SerializedName(SERIALIZED_NAME_TTL_CONDITIONS)
   @javax.annotation.Nullable
-  private List<O11yO11yRetentionRule> ttlConditions = new ArrayList<>();
+  private List<O11yO11yRetentionRule> ttlConditions;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

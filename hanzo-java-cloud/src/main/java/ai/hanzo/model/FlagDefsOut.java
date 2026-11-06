@@ -56,7 +56,7 @@ public class FlagDefsOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<FlagDefRow> data = new ArrayList<>();
+  private List<FlagDefRow> data;
 
   public FlagDefsOut() {
   }

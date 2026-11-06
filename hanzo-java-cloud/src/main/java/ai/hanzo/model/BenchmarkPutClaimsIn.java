@@ -56,7 +56,7 @@ public class BenchmarkPutClaimsIn {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BenchmarkClaim> data = new ArrayList<>();
+  private List<BenchmarkClaim> data;
 
   public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
   @SerializedName(SERIALIZED_NAME_VISIBILITY)

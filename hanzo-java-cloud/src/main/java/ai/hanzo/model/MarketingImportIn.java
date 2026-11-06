@@ -106,7 +106,7 @@ public class MarketingImportIn {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_VERIFY = "verify";
   @SerializedName(SERIALIZED_NAME_VERIFY)

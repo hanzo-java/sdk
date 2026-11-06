@@ -56,7 +56,7 @@ public class BenchmarkBenchmarkCatalog {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BenchmarkBenchmark> data = new ArrayList<>();
+  private List<BenchmarkBenchmark> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

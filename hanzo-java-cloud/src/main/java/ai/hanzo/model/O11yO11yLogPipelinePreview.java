@@ -56,12 +56,12 @@ public class O11yO11yLogPipelinePreview {
   public static final String SERIALIZED_NAME_COLLECTOR_LOGS = "collectorLogs";
   @SerializedName(SERIALIZED_NAME_COLLECTOR_LOGS)
   @javax.annotation.Nullable
-  private List<String> collectorLogs = new ArrayList<>();
+  private List<String> collectorLogs;
 
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
   @javax.annotation.Nullable
-  private List<O11yO11yLogRecord> logs = new ArrayList<>();
+  private List<O11yO11yLogRecord> logs;
 
   public O11yO11yLogPipelinePreview() {
   }

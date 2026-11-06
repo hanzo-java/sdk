@@ -84,7 +84,7 @@ public class Video {
   public static final String SERIALIZED_NAME_DATA_URLS = "dataUrls";
   @SerializedName(SERIALIZED_NAME_DATA_URLS)
   @javax.annotation.Nullable
-  private List<String> dataUrls = new ArrayList<>();
+  private List<String> dataUrls;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -129,7 +129,7 @@ public class Video {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
   @javax.annotation.Nullable
-  private List<String> keywords = new ArrayList<>();
+  private List<String> keywords;
 
   public static final String SERIALIZED_NAME_LABEL_COUNT = "labelCount";
   @SerializedName(SERIALIZED_NAME_LABEL_COUNT)
@@ -139,7 +139,7 @@ public class Video {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<Label> labels = new ArrayList<>();
+  private List<Label> labels;
 
   public static final String SERIALIZED_NAME_LESSON = "lesson";
   @SerializedName(SERIALIZED_NAME_LESSON)
@@ -164,12 +164,12 @@ public class Video {
   public static final String SERIALIZED_NAME_REMARKS = "remarks";
   @SerializedName(SERIALIZED_NAME_REMARKS)
   @javax.annotation.Nullable
-  private List<Remark> remarks = new ArrayList<>();
+  private List<Remark> remarks;
 
   public static final String SERIALIZED_NAME_REMARKS2 = "remarks2";
   @SerializedName(SERIALIZED_NAME_REMARKS2)
   @javax.annotation.Nullable
-  private List<Remark> remarks2 = new ArrayList<>();
+  private List<Remark> remarks2;
 
   public static final String SERIALIZED_NAME_REVIEW_STATE = "reviewState";
   @SerializedName(SERIALIZED_NAME_REVIEW_STATE)
@@ -189,7 +189,7 @@ public class Video {
   public static final String SERIALIZED_NAME_SEGMENTS = "segments";
   @SerializedName(SERIALIZED_NAME_SEGMENTS)
   @javax.annotation.Nullable
-  private List<Label> segments = new ArrayList<>();
+  private List<Label> segments;
 
   public static final String SERIALIZED_NAME_STAGE = "stage";
   @SerializedName(SERIALIZED_NAME_STAGE)
@@ -264,7 +264,7 @@ public class Video {
   public static final String SERIALIZED_NAME_WORD_COUNT_MAP = "wordCountMap";
   @SerializedName(SERIALIZED_NAME_WORD_COUNT_MAP)
   @javax.annotation.Nullable
-  private Map<String, Integer> wordCountMap = new HashMap<>();
+  private Map<String, Integer> wordCountMap;
 
   public Video() {
   }

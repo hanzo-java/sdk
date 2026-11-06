@@ -62,7 +62,7 @@ public class MarketPools {
   public static final String SERIALIZED_NAME_POOLS = "pools";
   @SerializedName(SERIALIZED_NAME_POOLS)
   @javax.annotation.Nullable
-  private List<MarketPool> pools = new ArrayList<>();
+  private List<MarketPool> pools;
 
   public static final String SERIALIZED_NAME_REACH = "reach";
   @SerializedName(SERIALIZED_NAME_REACH)

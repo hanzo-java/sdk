@@ -56,7 +56,7 @@ public class MqPickOut {
   public static final String SERIALIZED_NAME_CONSUMERS = "consumers";
   @SerializedName(SERIALIZED_NAME_CONSUMERS)
   @javax.annotation.Nullable
-  private List<MqConsumer> consumers = new ArrayList<>();
+  private List<MqConsumer> consumers;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

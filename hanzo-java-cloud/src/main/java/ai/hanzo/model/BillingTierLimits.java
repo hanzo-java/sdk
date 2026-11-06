@@ -55,7 +55,7 @@ public class BillingTierLimits {
   public static final String SERIALIZED_NAME_ALLOWED_MODELS = "allowedModels";
   @SerializedName(SERIALIZED_NAME_ALLOWED_MODELS)
   @javax.annotation.Nullable
-  private List<String> allowedModels = new ArrayList<>();
+  private List<String> allowedModels;
 
   public static final String SERIALIZED_NAME_DAILY_CREDITS_CENTS = "dailyCreditsCents";
   @SerializedName(SERIALIZED_NAME_DAILY_CREDITS_CENTS)

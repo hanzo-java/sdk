@@ -56,7 +56,7 @@ public class O11yVolumeListResponse {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private List<O11yVolumeListRecord> records = new ArrayList<>();
+  private List<O11yVolumeListRecord> records;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

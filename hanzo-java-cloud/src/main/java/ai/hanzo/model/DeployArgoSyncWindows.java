@@ -55,12 +55,12 @@ public class DeployArgoSyncWindows {
   public static final String SERIALIZED_NAME_ACTIVE_WINDOWS = "activeWindows";
   @SerializedName(SERIALIZED_NAME_ACTIVE_WINDOWS)
   @javax.annotation.Nullable
-  private List<Object> activeWindows = new ArrayList<>();
+  private List<Object> activeWindows;
 
   public static final String SERIALIZED_NAME_ASSIGNED_WINDOWS = "assignedWindows";
   @SerializedName(SERIALIZED_NAME_ASSIGNED_WINDOWS)
   @javax.annotation.Nullable
-  private List<Object> assignedWindows = new ArrayList<>();
+  private List<Object> assignedWindows;
 
   public static final String SERIALIZED_NAME_CAN_SYNC = "canSync";
   @SerializedName(SERIALIZED_NAME_CAN_SYNC)

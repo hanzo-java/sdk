@@ -62,7 +62,7 @@ public class O11yGettableIngestionKeys {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<O11yIngestionKey> keys = new ArrayList<>();
+  private List<O11yIngestionKey> keys;
 
   public O11yGettableIngestionKeys() {
   }

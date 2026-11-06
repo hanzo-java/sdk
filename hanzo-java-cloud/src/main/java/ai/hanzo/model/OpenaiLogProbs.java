@@ -56,7 +56,7 @@ public class OpenaiLogProbs {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
-  private List<OpenaiLogProb> content = new ArrayList<>();
+  private List<OpenaiLogProb> content;
 
   public OpenaiLogProbs() {
   }

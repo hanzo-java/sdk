@@ -72,7 +72,7 @@ public class ReferralMyReferrals {
   public static final String SERIALIZED_NAME_REFERRALS = "referrals";
   @SerializedName(SERIALIZED_NAME_REFERRALS)
   @javax.annotation.Nullable
-  private List<ReferralMyReferralView> referrals = new ArrayList<>();
+  private List<ReferralMyReferralView> referrals;
 
   public ReferralMyReferrals() {
   }

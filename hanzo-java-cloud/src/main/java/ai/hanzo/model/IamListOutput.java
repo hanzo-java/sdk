@@ -61,7 +61,7 @@ public class IamListOutput {
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
   @javax.annotation.Nullable
-  private List<IamUser> users = new ArrayList<>();
+  private List<IamUser> users;
 
   public IamListOutput() {
   }

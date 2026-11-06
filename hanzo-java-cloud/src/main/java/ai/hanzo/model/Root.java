@@ -59,12 +59,12 @@ public class Root {
   public static final String SERIALIZED_NAME_LINKS = "_links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private Map<String, Link> links = new HashMap<>();
+  private Map<String, Link> links;
 
   public static final String SERIALIZED_NAME_CAPABILITIES = "capabilities";
   @SerializedName(SERIALIZED_NAME_CAPABILITIES)
   @javax.annotation.Nullable
-  private List<Capability> capabilities = new ArrayList<>();
+  private List<Capability> capabilities;
 
   public Root() {
   }

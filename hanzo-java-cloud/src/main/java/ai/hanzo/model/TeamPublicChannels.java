@@ -56,7 +56,7 @@ public class TeamPublicChannels {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private List<TeamListed> channels = new ArrayList<>();
+  private List<TeamListed> channels;
 
   public TeamPublicChannels() {
   }

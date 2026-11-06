@@ -55,12 +55,12 @@ public class ToolActivationReq {
   public static final String SERIALIZED_NAME_ACTIVATE = "activate";
   @SerializedName(SERIALIZED_NAME_ACTIVATE)
   @javax.annotation.Nullable
-  private List<String> activate = new ArrayList<>();
+  private List<String> activate;
 
   public static final String SERIALIZED_NAME_DEACTIVATE = "deactivate";
   @SerializedName(SERIALIZED_NAME_DEACTIVATE)
   @javax.annotation.Nullable
-  private List<String> deactivate = new ArrayList<>();
+  private List<String> deactivate;
 
   public ToolActivationReq() {
   }

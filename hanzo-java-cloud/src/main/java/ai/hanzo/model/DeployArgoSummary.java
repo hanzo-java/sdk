@@ -55,7 +55,7 @@ public class DeployArgoSummary {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
   @javax.annotation.Nullable
-  private List<String> images = new ArrayList<>();
+  private List<String> images;
 
   public DeployArgoSummary() {
   }

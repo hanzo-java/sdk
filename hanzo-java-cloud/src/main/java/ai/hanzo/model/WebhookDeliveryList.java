@@ -56,7 +56,7 @@ public class WebhookDeliveryList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<WebhookDeliveryRow> data = new ArrayList<>();
+  private List<WebhookDeliveryRow> data;
 
   public WebhookDeliveryList() {
   }

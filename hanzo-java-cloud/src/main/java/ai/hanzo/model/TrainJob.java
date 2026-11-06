@@ -71,7 +71,7 @@ public class TrainJob {
   public static final String SERIALIZED_NAME_ARTIFACTS = "artifacts";
   @SerializedName(SERIALIZED_NAME_ARTIFACTS)
   @javax.annotation.Nullable
-  private List<TrainArtifact> artifacts = new ArrayList<>();
+  private List<TrainArtifact> artifacts;
 
   public static final String SERIALIZED_NAME_BASE_MODEL = "base_model";
   @SerializedName(SERIALIZED_NAME_BASE_MODEL)
@@ -171,7 +171,7 @@ public class TrainJob {
   public static final String SERIALIZED_NAME_TASKS = "tasks";
   @SerializedName(SERIALIZED_NAME_TASKS)
   @javax.annotation.Nullable
-  private List<TrainTaskView> tasks = new ArrayList<>();
+  private List<TrainTaskView> tasks;
 
   public static final String SERIALIZED_NAME_USAGE = "usage";
   @SerializedName(SERIALIZED_NAME_USAGE)

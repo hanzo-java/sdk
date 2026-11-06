@@ -56,7 +56,7 @@ public class ComputeBindingList {
   public static final String SERIALIZED_NAME_AGENT_BINDINGS = "agentBindings";
   @SerializedName(SERIALIZED_NAME_AGENT_BINDINGS)
   @javax.annotation.Nullable
-  private List<ComputeAgentBinding> agentBindings = new ArrayList<>();
+  private List<ComputeAgentBinding> agentBindings;
 
   public ComputeBindingList() {
   }

@@ -56,7 +56,7 @@ public class ProjectProjectsDeploySite {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<ProjectProjectsFile> files = new ArrayList<>();
+  private List<ProjectProjectsFile> files;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

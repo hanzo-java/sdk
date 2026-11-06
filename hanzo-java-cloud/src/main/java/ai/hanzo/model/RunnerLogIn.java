@@ -66,7 +66,7 @@ public class RunnerLogIn {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<RunnerLine> lines = new ArrayList<>();
+  private List<RunnerLine> lines;
 
   public static final String SERIALIZED_NAME_TASK = "task";
   @SerializedName(SERIALIZED_NAME_TASK)

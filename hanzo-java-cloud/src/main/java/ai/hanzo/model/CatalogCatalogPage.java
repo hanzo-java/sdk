@@ -58,12 +58,12 @@ public class CatalogCatalogPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<CatalogEntry> data = new ArrayList<>();
+  private List<CatalogEntry> data;
 
   public static final String SERIALIZED_NAME_FACETS = "facets";
   @SerializedName(SERIALIZED_NAME_FACETS)
   @javax.annotation.Nullable
-  private Map<String, Map<String, Long>> facets = new HashMap<>();
+  private Map<String, Map<String, Long>> facets;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

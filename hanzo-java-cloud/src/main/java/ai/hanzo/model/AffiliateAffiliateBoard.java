@@ -56,7 +56,7 @@ public class AffiliateAffiliateBoard {
   public static final String SERIALIZED_NAME_LEADERS = "leaders";
   @SerializedName(SERIALIZED_NAME_LEADERS)
   @javax.annotation.Nullable
-  private List<AffiliateLeaderboardRow> leaders = new ArrayList<>();
+  private List<AffiliateLeaderboardRow> leaders;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

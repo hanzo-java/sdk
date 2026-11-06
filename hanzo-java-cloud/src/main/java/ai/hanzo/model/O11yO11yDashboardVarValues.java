@@ -55,7 +55,7 @@ public class O11yO11yDashboardVarValues {
   public static final String SERIALIZED_NAME_VARIABLE_VALUES = "variableValues";
   @SerializedName(SERIALIZED_NAME_VARIABLE_VALUES)
   @javax.annotation.Nullable
-  private List<Object> variableValues = new ArrayList<>();
+  private List<Object> variableValues;
 
   public O11yO11yDashboardVarValues() {
   }

@@ -55,7 +55,7 @@ public class MarketingBetaRequest {
   public static final String SERIALIZED_NAME_BETAS = "betas";
   @SerializedName(SERIALIZED_NAME_BETAS)
   @javax.annotation.Nullable
-  private List<String> betas = new ArrayList<>();
+  private List<String> betas;
 
   public MarketingBetaRequest() {
   }

@@ -61,7 +61,7 @@ public class PatrolPatrolEstate {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolEvent> events = new ArrayList<>();
+  private List<PatrolPatrolEvent> events;
 
   public static final String SERIALIZED_NAME_INCIDENT = "incident";
   @SerializedName(SERIALIZED_NAME_INCIDENT)
@@ -71,22 +71,22 @@ public class PatrolPatrolEstate {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolKey> keys = new ArrayList<>();
+  private List<PatrolPatrolKey> keys;
 
   public static final String SERIALIZED_NAME_SITES = "sites";
   @SerializedName(SERIALIZED_NAME_SITES)
   @javax.annotation.Nullable
-  private List<PatrolPatrolSite> sites = new ArrayList<>();
+  private List<PatrolPatrolSite> sites;
 
   public static final String SERIALIZED_NAME_TOURS = "tours";
   @SerializedName(SERIALIZED_NAME_TOURS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolTour> tours = new ArrayList<>();
+  private List<PatrolPatrolTour> tours;
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
   @javax.annotation.Nullable
-  private List<PatrolPatrolUnit> units = new ArrayList<>();
+  private List<PatrolPatrolUnit> units;
 
   public PatrolPatrolEstate() {
   }

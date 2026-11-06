@@ -92,7 +92,7 @@ public class O11yGettableFunnel {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<O11yFunnelStep> steps = new ArrayList<>();
+  private List<O11yFunnelStep> steps;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

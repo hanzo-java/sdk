@@ -56,7 +56,7 @@ public class O11yO11yRetentionRule {
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)
   @javax.annotation.Nullable
-  private List<O11yO11yRetentionMatch> conditions = new ArrayList<>();
+  private List<O11yO11yRetentionMatch> conditions;
 
   public static final String SERIALIZED_NAME_TTL_DAYS = "ttlDays";
   @SerializedName(SERIALIZED_NAME_TTL_DAYS)

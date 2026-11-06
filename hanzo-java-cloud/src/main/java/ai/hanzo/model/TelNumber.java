@@ -55,7 +55,7 @@ public class TelNumber {
   public static final String SERIALIZED_NAME_CAPABLE = "capable";
   @SerializedName(SERIALIZED_NAME_CAPABLE)
   @javax.annotation.Nullable
-  private List<String> capable = new ArrayList<>();
+  private List<String> capable;
 
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)

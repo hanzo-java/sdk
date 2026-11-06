@@ -57,12 +57,12 @@ public class ComputeClusterList {
   public static final String SERIALIZED_NAME_CLUSTERS = "clusters";
   @SerializedName(SERIALIZED_NAME_CLUSTERS)
   @javax.annotation.Nullable
-  private List<ComputeClusterView> clusters = new ArrayList<>();
+  private List<ComputeClusterView> clusters;
 
   public static final String SERIALIZED_NAME_DEGRADED = "degraded";
   @SerializedName(SERIALIZED_NAME_DEGRADED)
   @javax.annotation.Nullable
-  private List<ComputeSourceFailure> degraded = new ArrayList<>();
+  private List<ComputeSourceFailure> degraded;
 
   public ComputeClusterList() {
   }

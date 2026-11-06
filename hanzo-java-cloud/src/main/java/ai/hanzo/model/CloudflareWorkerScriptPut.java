@@ -66,7 +66,7 @@ public class CloudflareWorkerScriptPut {
   public static final String SERIALIZED_NAME_COMPATIBILITY_FLAGS = "compatibilityFlags";
   @SerializedName(SERIALIZED_NAME_COMPATIBILITY_FLAGS)
   @javax.annotation.Nullable
-  private List<String> compatibilityFlags = new ArrayList<>();
+  private List<String> compatibilityFlags;
 
   public static final String SERIALIZED_NAME_MAIN_MODULE = "mainModule";
   @SerializedName(SERIALIZED_NAME_MAIN_MODULE)

@@ -55,7 +55,7 @@ public class CloudflareD1Query {
   public static final String SERIALIZED_NAME_PARAMS = "params";
   @SerializedName(SERIALIZED_NAME_PARAMS)
   @javax.annotation.Nullable
-  private List<Object> params = new ArrayList<>();
+  private List<Object> params;
 
   public static final String SERIALIZED_NAME_SQL = "sql";
   @SerializedName(SERIALIZED_NAME_SQL)

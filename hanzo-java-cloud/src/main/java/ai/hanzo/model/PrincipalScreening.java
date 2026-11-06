@@ -62,12 +62,12 @@ public class PrincipalScreening {
   public static final String SERIALIZED_NAME_LISTS = "lists";
   @SerializedName(SERIALIZED_NAME_LISTS)
   @javax.annotation.Nullable
-  private List<PrincipalList> lists = new ArrayList<>();
+  private List<PrincipalList> lists;
 
   public static final String SERIALIZED_NAME_MATCHES = "matches";
   @SerializedName(SERIALIZED_NAME_MATCHES)
   @javax.annotation.Nullable
-  private List<PrincipalMatch> matches = new ArrayList<>();
+  private List<PrincipalMatch> matches;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)

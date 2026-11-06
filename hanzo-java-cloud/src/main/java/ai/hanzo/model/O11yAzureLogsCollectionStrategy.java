@@ -55,7 +55,7 @@ public class O11yAzureLogsCollectionStrategy {
   public static final String SERIALIZED_NAME_CATEGORY_GROUPS = "categoryGroups";
   @SerializedName(SERIALIZED_NAME_CATEGORY_GROUPS)
   @javax.annotation.Nullable
-  private List<String> categoryGroups = new ArrayList<>();
+  private List<String> categoryGroups;
 
   public O11yAzureLogsCollectionStrategy() {
   }

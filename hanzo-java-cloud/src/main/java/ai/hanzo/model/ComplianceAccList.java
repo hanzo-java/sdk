@@ -56,7 +56,7 @@ public class ComplianceAccList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<ComplianceAccView> data = new ArrayList<>();
+  private List<ComplianceAccView> data;
 
   public static final String SERIALIZED_NAME_DISCLAIMER = "disclaimer";
   @SerializedName(SERIALIZED_NAME_DISCLAIMER)

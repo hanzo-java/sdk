@@ -127,7 +127,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_CUSTOM_SCOPES = "customScopes";
   @SerializedName(SERIALIZED_NAME_CUSTOM_SCOPES)
   @javax.annotation.Nullable
-  private List<IamScopeDescription> customScopes = new ArrayList<>();
+  private List<IamScopeDescription> customScopes;
 
   public static final String SERIALIZED_NAME_DEFAULT_GROUP = "defaultGroup";
   @SerializedName(SERIALIZED_NAME_DEFAULT_GROUP)
@@ -297,7 +297,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_GRANT_TYPES = "grantTypes";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPES)
   @javax.annotation.Nullable
-  private List<String> grantTypes = new ArrayList<>();
+  private List<String> grantTypes;
 
   public static final String SERIALIZED_NAME_HEADER_HTML = "headerHtml";
   @SerializedName(SERIALIZED_NAME_HEADER_HTML)
@@ -362,7 +362,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_OTHER_DOMAINS = "otherDomains";
   @SerializedName(SERIALIZED_NAME_OTHER_DOMAINS)
   @javax.annotation.Nullable
-  private List<String> otherDomains = new ArrayList<>();
+  private List<String> otherDomains;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
@@ -382,12 +382,12 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_PROVIDERS = "providers";
   @SerializedName(SERIALIZED_NAME_PROVIDERS)
   @javax.annotation.Nullable
-  private List<IamProviderItem> providers = new ArrayList<>();
+  private List<IamProviderItem> providers;
 
   public static final String SERIALIZED_NAME_REDIRECT_URIS = "redirectUris";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URIS)
   @javax.annotation.Nullable
-  private List<String> redirectUris = new ArrayList<>();
+  private List<String> redirectUris;
 
   public static final String SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS = "refreshExpireInHours";
   @SerializedName(SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS)
@@ -397,7 +397,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_SAML_ATTRIBUTES = "samlAttributes";
   @SerializedName(SERIALIZED_NAME_SAML_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<IamSamlItem> samlAttributes = new ArrayList<>();
+  private List<IamSamlItem> samlAttributes;
 
   public static final String SERIALIZED_NAME_SAML_HASH_ALGORITHM = "samlHashAlgorithm";
   @SerializedName(SERIALIZED_NAME_SAML_HASH_ALGORITHM)
@@ -412,7 +412,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
   @javax.annotation.Nullable
-  private List<IamScopeItem> scopes = new ArrayList<>();
+  private List<IamScopeItem> scopes;
 
   public static final String SERIALIZED_NAME_SIGNIN_HTML = "signinHtml";
   @SerializedName(SERIALIZED_NAME_SIGNIN_HTML)
@@ -422,12 +422,12 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_SIGNIN_ITEMS = "signinItems";
   @SerializedName(SERIALIZED_NAME_SIGNIN_ITEMS)
   @javax.annotation.Nullable
-  private List<IamSigninItem> signinItems = new ArrayList<>();
+  private List<IamSigninItem> signinItems;
 
   public static final String SERIALIZED_NAME_SIGNIN_METHODS = "signinMethods";
   @SerializedName(SERIALIZED_NAME_SIGNIN_METHODS)
   @javax.annotation.Nullable
-  private List<IamSigninMethod> signinMethods = new ArrayList<>();
+  private List<IamSigninMethod> signinMethods;
 
   public static final String SERIALIZED_NAME_SIGNIN_URL = "signinUrl";
   @SerializedName(SERIALIZED_NAME_SIGNIN_URL)
@@ -442,7 +442,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_SIGNUP_ITEMS = "signupItems";
   @SerializedName(SERIALIZED_NAME_SIGNUP_ITEMS)
   @javax.annotation.Nullable
-  private List<IamSignupItem> signupItems = new ArrayList<>();
+  private List<IamSignupItem> signupItems;
 
   public static final String SERIALIZED_NAME_SIGNUP_URL = "signupUrl";
   @SerializedName(SERIALIZED_NAME_SIGNUP_URL)
@@ -462,7 +462,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TERMS_OF_USE = "termsOfUse";
   @SerializedName(SERIALIZED_NAME_TERMS_OF_USE)
@@ -482,12 +482,12 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_TOKEN_ATTRIBUTES = "tokenAttributes";
   @SerializedName(SERIALIZED_NAME_TOKEN_ATTRIBUTES)
   @javax.annotation.Nullable
-  private List<IamJwtItem> tokenAttributes = new ArrayList<>();
+  private List<IamJwtItem> tokenAttributes;
 
   public static final String SERIALIZED_NAME_TOKEN_FIELDS = "tokenFields";
   @SerializedName(SERIALIZED_NAME_TOKEN_FIELDS)
   @javax.annotation.Nullable
-  private List<String> tokenFields = new ArrayList<>();
+  private List<String> tokenFields;
 
   public static final String SERIALIZED_NAME_TOKEN_FORMAT = "tokenFormat";
   @SerializedName(SERIALIZED_NAME_TOKEN_FORMAT)

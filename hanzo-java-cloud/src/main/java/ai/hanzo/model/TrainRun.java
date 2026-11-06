@@ -55,7 +55,7 @@ public class TrainRun {
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
   @javax.annotation.Nullable
-  private List<String> devices = new ArrayList<>();
+  private List<String> devices;
 
   public static final String SERIALIZED_NAME_PRICE_NANO_USD = "price_nano_usd";
   @SerializedName(SERIALIZED_NAME_PRICE_NANO_USD)

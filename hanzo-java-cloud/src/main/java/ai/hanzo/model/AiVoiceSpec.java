@@ -55,7 +55,7 @@ public class AiVoiceSpec {
   public static final String SERIALIZED_NAME_VOICES = "voices";
   @SerializedName(SERIALIZED_NAME_VOICES)
   @javax.annotation.Nullable
-  private List<String> voices = new ArrayList<>();
+  private List<String> voices;
 
   public AiVoiceSpec() {
   }

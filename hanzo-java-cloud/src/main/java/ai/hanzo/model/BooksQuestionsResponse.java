@@ -56,7 +56,7 @@ public class BooksQuestionsResponse {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private List<BooksQuestion> questions = new ArrayList<>();
+  private List<BooksQuestion> questions;
 
   public BooksQuestionsResponse() {
   }

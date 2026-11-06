@@ -71,7 +71,7 @@ public class Layout {
   public static final String SERIALIZED_NAME_FORM_ITEMS = "formItems";
   @SerializedName(SERIALIZED_NAME_FORM_ITEMS)
   @javax.annotation.Nullable
-  private List<FormItem> formItems = new ArrayList<>();
+  private List<FormItem> formItems;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

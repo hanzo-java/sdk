@@ -73,7 +73,7 @@ public class GuideOverviewView {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<GuideStepView> steps = new ArrayList<>();
+  private List<GuideStepView> steps;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)

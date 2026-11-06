@@ -55,7 +55,7 @@ public class AiModelProviders {
   public static final String SERIALIZED_NAME_PROVIDERS = "providers";
   @SerializedName(SERIALIZED_NAME_PROVIDERS)
   @javax.annotation.Nullable
-  private List<String> providers = new ArrayList<>();
+  private List<String> providers;
 
   public AiModelProviders() {
   }

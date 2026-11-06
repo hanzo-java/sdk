@@ -60,7 +60,7 @@ public class LabelRiskHoldIn {
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
   @javax.annotation.Nullable
-  private List<String> ids = new ArrayList<>();
+  private List<String> ids;
 
   public LabelRiskHoldIn() {
   }

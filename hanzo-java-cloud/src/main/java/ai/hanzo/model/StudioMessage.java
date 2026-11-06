@@ -55,7 +55,7 @@ public class StudioMessage {
   public static final String SERIALIZED_NAME_ASSETS = "assets";
   @SerializedName(SERIALIZED_NAME_ASSETS)
   @javax.annotation.Nullable
-  private List<String> assets = new ArrayList<>();
+  private List<String> assets;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -75,7 +75,7 @@ public class StudioMessage {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
   @javax.annotation.Nullable
-  private List<String> runs = new ArrayList<>();
+  private List<String> runs;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)

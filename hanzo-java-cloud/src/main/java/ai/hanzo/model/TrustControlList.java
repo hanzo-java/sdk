@@ -65,7 +65,7 @@ public class TrustControlList {
   public static final String SERIALIZED_NAME_CONTROLS = "controls";
   @SerializedName(SERIALIZED_NAME_CONTROLS)
   @javax.annotation.Nullable
-  private List<Object> controls = new ArrayList<>();
+  private List<Object> controls;
 
   public static final String SERIALIZED_NAME_PARTIAL = "partial";
   @SerializedName(SERIALIZED_NAME_PARTIAL)

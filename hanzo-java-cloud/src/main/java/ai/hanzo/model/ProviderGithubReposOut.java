@@ -66,7 +66,7 @@ public class ProviderGithubReposOut {
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
   @javax.annotation.Nullable
-  private List<ProviderGithubRepoItem> repos = new ArrayList<>();
+  private List<ProviderGithubRepoItem> repos;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -76,7 +76,7 @@ public class ProviderGithubReposOut {
   public static final String SERIALIZED_NAME_UNREAD = "unread";
   @SerializedName(SERIALIZED_NAME_UNREAD)
   @javax.annotation.Nullable
-  private List<String> unread = new ArrayList<>();
+  private List<String> unread;
 
   public ProviderGithubReposOut() {
   }

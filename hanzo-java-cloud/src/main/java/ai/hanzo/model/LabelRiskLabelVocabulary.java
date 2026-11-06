@@ -55,17 +55,17 @@ public class LabelRiskLabelVocabulary {
   public static final String SERIALIZED_NAME_DISPOSITIONS = "dispositions";
   @SerializedName(SERIALIZED_NAME_DISPOSITIONS)
   @javax.annotation.Nullable
-  private List<String> dispositions = new ArrayList<>();
+  private List<String> dispositions;
 
   public static final String SERIALIZED_NAME_KINDS = "kinds";
   @SerializedName(SERIALIZED_NAME_KINDS)
   @javax.annotation.Nullable
-  private List<String> kinds = new ArrayList<>();
+  private List<String> kinds;
 
   public static final String SERIALIZED_NAME_PRECEDENCE = "precedence";
   @SerializedName(SERIALIZED_NAME_PRECEDENCE)
   @javax.annotation.Nullable
-  private List<String> precedence = new ArrayList<>();
+  private List<String> precedence;
 
   public static final String SERIALIZED_NAME_RETENTION = "retention";
   @SerializedName(SERIALIZED_NAME_RETENTION)
@@ -75,7 +75,7 @@ public class LabelRiskLabelVocabulary {
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
   @javax.annotation.Nullable
-  private List<String> rule = new ArrayList<>();
+  private List<String> rule;
 
   public LabelRiskLabelVocabulary() {
   }

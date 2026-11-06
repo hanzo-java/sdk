@@ -61,7 +61,7 @@ public class FunctionCostLine {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   @javax.annotation.Nullable
-  private List<FunctionPointView> points = new ArrayList<>();
+  private List<FunctionPointView> points;
 
   public FunctionCostLine() {
   }

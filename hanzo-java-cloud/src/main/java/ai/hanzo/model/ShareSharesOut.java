@@ -56,7 +56,7 @@ public class ShareSharesOut {
   public static final String SERIALIZED_NAME_SHARES = "shares";
   @SerializedName(SERIALIZED_NAME_SHARES)
   @javax.annotation.Nullable
-  private List<ShareShareView> shares = new ArrayList<>();
+  private List<ShareShareView> shares;
 
   public ShareSharesOut() {
   }

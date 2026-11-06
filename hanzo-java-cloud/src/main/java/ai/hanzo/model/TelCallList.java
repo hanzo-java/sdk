@@ -56,7 +56,7 @@ public class TelCallList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TelCall> data = new ArrayList<>();
+  private List<TelCall> data;
 
   public TelCallList() {
   }

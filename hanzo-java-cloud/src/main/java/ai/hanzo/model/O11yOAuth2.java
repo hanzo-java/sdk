@@ -69,7 +69,7 @@ public class O11yOAuth2 {
   public static final String SERIALIZED_NAME_CLAIMS = "claims";
   @SerializedName(SERIALIZED_NAME_CLAIMS)
   @javax.annotation.Nullable
-  private Map<String, Object> claims = new HashMap<>();
+  private Map<String, Object> claims;
 
   public static final String SERIALIZED_NAME_CLIENT_CERTIFICATE_KEY = "client_certificate_key";
   @SerializedName(SERIALIZED_NAME_CLIENT_CERTIFICATE_KEY)
@@ -114,7 +114,7 @@ public class O11yOAuth2 {
   public static final String SERIALIZED_NAME_ENDPOINT_PARAMS = "endpoint_params";
   @SerializedName(SERIALIZED_NAME_ENDPOINT_PARAMS)
   @javax.annotation.Nullable
-  private Map<String, String> endpointParams = new HashMap<>();
+  private Map<String, String> endpointParams;
 
   public static final String SERIALIZED_NAME_GRANT_TYPE = "grant_type";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPE)
@@ -134,7 +134,7 @@ public class O11yOAuth2 {
   public static final String SERIALIZED_NAME_PROXY_CONNECT_HEADER = "proxy_connect_header";
   @SerializedName(SERIALIZED_NAME_PROXY_CONNECT_HEADER)
   @javax.annotation.Nullable
-  private Map<String, List<Object>> proxyConnectHeader = new HashMap<>();
+  private Map<String, List<Object>> proxyConnectHeader;
 
   public static final String SERIALIZED_NAME_PROXY_FROM_ENVIRONMENT = "proxy_from_environment";
   @SerializedName(SERIALIZED_NAME_PROXY_FROM_ENVIRONMENT)
@@ -149,7 +149,7 @@ public class O11yOAuth2 {
   public static final String SERIALIZED_NAME_SCOPES = "scopes";
   @SerializedName(SERIALIZED_NAME_SCOPES)
   @javax.annotation.Nullable
-  private List<String> scopes = new ArrayList<>();
+  private List<String> scopes;
 
   public static final String SERIALIZED_NAME_SIGNATURE_ALGORITHM = "signature_algorithm";
   @SerializedName(SERIALIZED_NAME_SIGNATURE_ALGORITHM)

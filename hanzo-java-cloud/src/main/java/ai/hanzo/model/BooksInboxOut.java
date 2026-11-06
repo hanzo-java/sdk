@@ -56,7 +56,7 @@ public class BooksInboxOut {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<BooksInboxItem> items = new ArrayList<>();
+  private List<BooksInboxItem> items;
 
   public BooksInboxOut() {
   }

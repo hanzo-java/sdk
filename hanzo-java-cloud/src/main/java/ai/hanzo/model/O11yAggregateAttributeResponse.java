@@ -56,7 +56,7 @@ public class O11yAggregateAttributeResponse {
   public static final String SERIALIZED_NAME_ATTRIBUTE_KEYS = "attributeKeys";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_KEYS)
   @javax.annotation.Nullable
-  private List<O11yAttributeKey> attributeKeys = new ArrayList<>();
+  private List<O11yAttributeKey> attributeKeys;
 
   public O11yAggregateAttributeResponse() {
   }

@@ -65,7 +65,7 @@ public class PlatformEnvironmentRow {
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<String> services = new ArrayList<>();
+  private List<String> services;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

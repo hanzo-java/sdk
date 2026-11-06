@@ -56,7 +56,7 @@ public class SocialOrgAppsWrite {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private List<SocialOrgAppWrite> apps = new ArrayList<>();
+  private List<SocialOrgAppWrite> apps;
 
   public SocialOrgAppsWrite() {
   }

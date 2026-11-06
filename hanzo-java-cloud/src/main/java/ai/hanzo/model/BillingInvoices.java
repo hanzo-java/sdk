@@ -66,7 +66,7 @@ public class BillingInvoices {
   public static final String SERIALIZED_NAME_INVOICES = "invoices";
   @SerializedName(SERIALIZED_NAME_INVOICES)
   @javax.annotation.Nullable
-  private List<BillingBillingInvoice> invoices = new ArrayList<>();
+  private List<BillingBillingInvoice> invoices;
 
   public BillingInvoices() {
   }

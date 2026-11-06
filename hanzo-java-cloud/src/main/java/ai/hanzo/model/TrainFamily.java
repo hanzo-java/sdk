@@ -56,7 +56,7 @@ public class TrainFamily {
   public static final String SERIALIZED_NAME_ADAPTATIONS = "adaptations";
   @SerializedName(SERIALIZED_NAME_ADAPTATIONS)
   @javax.annotation.Nullable
-  private List<String> adaptations = new ArrayList<>();
+  private List<String> adaptations;
 
   public static final String SERIALIZED_NAME_BASE = "base";
   @SerializedName(SERIALIZED_NAME_BASE)
@@ -66,12 +66,12 @@ public class TrainFamily {
   public static final String SERIALIZED_NAME_DATASETS = "datasets";
   @SerializedName(SERIALIZED_NAME_DATASETS)
   @javax.annotation.Nullable
-  private List<String> datasets = new ArrayList<>();
+  private List<String> datasets;
 
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
   @javax.annotation.Nullable
-  private List<String> devices = new ArrayList<>();
+  private List<String> devices;
 
   public static final String SERIALIZED_NAME_EXECUTOR = "executor";
   @SerializedName(SERIALIZED_NAME_EXECUTOR)
@@ -81,27 +81,27 @@ public class TrainFamily {
   public static final String SERIALIZED_NAME_NOUNS = "nouns";
   @SerializedName(SERIALIZED_NAME_NOUNS)
   @javax.annotation.Nullable
-  private List<String> nouns = new ArrayList<>();
+  private List<String> nouns;
 
   public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
   @SerializedName(SERIALIZED_NAME_OUTPUTS)
   @javax.annotation.Nullable
-  private List<String> outputs = new ArrayList<>();
+  private List<String> outputs;
 
   public static final String SERIALIZED_NAME_PROTECT = "protect";
   @SerializedName(SERIALIZED_NAME_PROTECT)
   @javax.annotation.Nullable
-  private List<String> protect = new ArrayList<>();
+  private List<String> protect;
 
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
   @javax.annotation.Nullable
-  private List<TrainRun> runs = new ArrayList<>();
+  private List<TrainRun> runs;
 
   public static final String SERIALIZED_NAME_TERMS = "terms";
   @SerializedName(SERIALIZED_NAME_TERMS)
   @javax.annotation.Nullable
-  private List<String> terms = new ArrayList<>();
+  private List<String> terms;
 
   public TrainFamily() {
   }

@@ -56,7 +56,7 @@ public class BlueprintBlueprintIndex {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BlueprintBlueprintRow> data = new ArrayList<>();
+  private List<BlueprintBlueprintRow> data;
 
   public BlueprintBlueprintIndex() {
   }

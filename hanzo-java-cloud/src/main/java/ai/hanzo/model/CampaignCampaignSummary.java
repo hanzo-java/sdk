@@ -65,7 +65,7 @@ public class CampaignCampaignSummary {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private List<String> channels = new ArrayList<>();
+  private List<String> channels;
 
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)

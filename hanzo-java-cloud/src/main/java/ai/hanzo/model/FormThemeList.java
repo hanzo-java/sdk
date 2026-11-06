@@ -56,7 +56,7 @@ public class FormThemeList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<FormTheme> items = new ArrayList<>();
+  private List<FormTheme> items;
 
   public FormThemeList() {
   }

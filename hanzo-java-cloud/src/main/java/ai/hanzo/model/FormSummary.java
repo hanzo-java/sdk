@@ -66,7 +66,7 @@ public class FormSummary {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<FormFieldSummary> fields = new ArrayList<>();
+  private List<FormFieldSummary> fields;
 
   public static final String SERIALIZED_NAME_FORM = "form";
   @SerializedName(SERIALIZED_NAME_FORM)

@@ -106,7 +106,7 @@ public class LabelRiskLabelCoverage {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<LabelRiskSourceCoverage> sources = new ArrayList<>();
+  private List<LabelRiskSourceCoverage> sources;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)

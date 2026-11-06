@@ -76,7 +76,7 @@ public class ProviderField {
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
   @javax.annotation.Nullable
-  private List<ProviderFieldOption> options = new ArrayList<>();
+  private List<ProviderFieldOption> options;
 
   public static final String SERIALIZED_NAME_REQUIRED = "required";
   @SerializedName(SERIALIZED_NAME_REQUIRED)

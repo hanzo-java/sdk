@@ -56,7 +56,7 @@ public class MarketplaceEarnings {
   public static final String SERIALIZED_NAME_BY_RAIL = "byRail";
   @SerializedName(SERIALIZED_NAME_BY_RAIL)
   @javax.annotation.Nullable
-  private Map<String, Object> byRail = new HashMap<>();
+  private Map<String, Object> byRail;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)

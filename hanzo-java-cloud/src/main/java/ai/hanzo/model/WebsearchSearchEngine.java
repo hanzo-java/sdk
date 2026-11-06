@@ -97,7 +97,7 @@ public class WebsearchSearchEngine {
   public static final String SERIALIZED_NAME_SUPPORTS = "supports";
   @SerializedName(SERIALIZED_NAME_SUPPORTS)
   @javax.annotation.Nullable
-  private List<WebsearchSearchEngineOption> supports = new ArrayList<>();
+  private List<WebsearchSearchEngineOption> supports;
 
   public WebsearchSearchEngine() {
   }

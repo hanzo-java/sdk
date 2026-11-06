@@ -70,7 +70,7 @@ public class O11yO11yQueryStats {
   public static final String SERIALIZED_NAME_STEP_INTERVALS = "stepIntervals";
   @SerializedName(SERIALIZED_NAME_STEP_INTERVALS)
   @javax.annotation.Nullable
-  private Map<String, Integer> stepIntervals = new HashMap<>();
+  private Map<String, Integer> stepIntervals;
 
   public O11yO11yQueryStats() {
   }

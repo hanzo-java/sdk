@@ -56,7 +56,7 @@ public class LinkRoutePlan {
   public static final String SERIALIZED_NAME_CANDIDATES = "candidates";
   @SerializedName(SERIALIZED_NAME_CANDIDATES)
   @javax.annotation.Nullable
-  private List<LinkRouteCandidate> candidates = new ArrayList<>();
+  private List<LinkRouteCandidate> candidates;
 
   public static final String SERIALIZED_NAME_GENERATED_AT = "generatedAt";
   @SerializedName(SERIALIZED_NAME_GENERATED_AT)

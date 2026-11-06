@@ -56,12 +56,12 @@ public class TrafficPoint {
   public static final String SERIALIZED_NAME_BY_SERVICE = "byService";
   @SerializedName(SERIALIZED_NAME_BY_SERVICE)
   @javax.annotation.Nullable
-  private Map<String, Integer> byService = new HashMap<>();
+  private Map<String, Integer> byService;
 
   public static final String SERIALIZED_NAME_BY_TASK = "byTask";
   @SerializedName(SERIALIZED_NAME_BY_TASK)
   @javax.annotation.Nullable
-  private Map<String, Integer> byTask = new HashMap<>();
+  private Map<String, Integer> byTask;
 
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)

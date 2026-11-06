@@ -56,7 +56,7 @@ public class DestinationDestinationList {
   public static final String SERIALIZED_NAME_DESTINATIONS = "destinations";
   @SerializedName(SERIALIZED_NAME_DESTINATIONS)
   @javax.annotation.Nullable
-  private List<DestinationDestinationStatus> destinations = new ArrayList<>();
+  private List<DestinationDestinationStatus> destinations;
 
   public DestinationDestinationList() {
   }

@@ -78,7 +78,7 @@ public class GraphGraphDeriveOut {
   public static final String SERIALIZED_NAME_DERIVED = "derived";
   @SerializedName(SERIALIZED_NAME_DERIVED)
   @javax.annotation.Nullable
-  private List<GraphGraphConclusion> derived = new ArrayList<>();
+  private List<GraphGraphConclusion> derived;
 
   public static final String SERIALIZED_NAME_FILED = "filed";
   @SerializedName(SERIALIZED_NAME_FILED)
@@ -88,17 +88,17 @@ public class GraphGraphDeriveOut {
   public static final String SERIALIZED_NAME_GAINED = "gained";
   @SerializedName(SERIALIZED_NAME_GAINED)
   @javax.annotation.Nullable
-  private List<GraphGraphAtom> gained = new ArrayList<>();
+  private List<GraphGraphAtom> gained;
 
   public static final String SERIALIZED_NAME_LEMMAS = "lemmas";
   @SerializedName(SERIALIZED_NAME_LEMMAS)
   @javax.annotation.Nullable
-  private List<GraphGraphConclusion> lemmas = new ArrayList<>();
+  private List<GraphGraphConclusion> lemmas;
 
   public static final String SERIALIZED_NAME_LOST = "lost";
   @SerializedName(SERIALIZED_NAME_LOST)
   @javax.annotation.Nullable
-  private List<GraphGraphAtom> lost = new ArrayList<>();
+  private List<GraphGraphAtom> lost;
 
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)

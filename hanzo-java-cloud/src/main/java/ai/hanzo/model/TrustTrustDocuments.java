@@ -56,7 +56,7 @@ public class TrustTrustDocuments {
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
   @javax.annotation.Nullable
-  private List<TrustDocRow> documents = new ArrayList<>();
+  private List<TrustDocRow> documents;
 
   public TrustTrustDocuments() {
   }

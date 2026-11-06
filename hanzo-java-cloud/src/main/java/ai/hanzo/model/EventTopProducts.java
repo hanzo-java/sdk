@@ -61,7 +61,7 @@ public class EventTopProducts {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<EventProductRow> items = new ArrayList<>();
+  private List<EventProductRow> items;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)

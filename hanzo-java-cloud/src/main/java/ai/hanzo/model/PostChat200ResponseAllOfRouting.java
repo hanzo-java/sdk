@@ -57,7 +57,7 @@ public class PostChat200ResponseAllOfRouting {
   public static final String SERIALIZED_NAME_CANDIDATES = "candidates";
   @SerializedName(SERIALIZED_NAME_CANDIDATES)
   @javax.annotation.Nonnull
-  private List<PostChat200ResponseAllOfRoutingCandidatesInner> candidates = new ArrayList<>();
+  private List<PostChat200ResponseAllOfRoutingCandidatesInner> candidates;
 
   public static final String SERIALIZED_NAME_CHOSEN = "chosen";
   @SerializedName(SERIALIZED_NAME_CHOSEN)

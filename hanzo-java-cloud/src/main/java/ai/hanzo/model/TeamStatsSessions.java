@@ -57,7 +57,7 @@ public class TeamStatsSessions {
   public static final String SERIALIZED_NAME_ACTIVE_SESSIONS = "activeSessions";
   @SerializedName(SERIALIZED_NAME_ACTIVE_SESSIONS)
   @javax.annotation.Nullable
-  private Map<String, List<TeamStatsUser>> activeSessions = new HashMap<>();
+  private Map<String, List<TeamStatsUser>> activeSessions;
 
   public TeamStatsSessions() {
   }

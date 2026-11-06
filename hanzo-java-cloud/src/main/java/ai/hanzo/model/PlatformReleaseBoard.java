@@ -56,7 +56,7 @@ public class PlatformReleaseBoard {
   public static final String SERIALIZED_NAME_RELEASES = "releases";
   @SerializedName(SERIALIZED_NAME_RELEASES)
   @javax.annotation.Nullable
-  private List<PlatformReleaseRow> releases = new ArrayList<>();
+  private List<PlatformReleaseRow> releases;
 
   public PlatformReleaseBoard() {
   }

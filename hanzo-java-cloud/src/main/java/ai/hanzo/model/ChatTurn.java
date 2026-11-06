@@ -55,7 +55,7 @@ public class ChatTurn {
   public static final String SERIALIZED_NAME_ASSETS = "assets";
   @SerializedName(SERIALIZED_NAME_ASSETS)
   @javax.annotation.Nullable
-  private List<String> assets = new ArrayList<>();
+  private List<String> assets;
 
   public static final String SERIALIZED_NAME_BRAND = "brand";
   @SerializedName(SERIALIZED_NAME_BRAND)

@@ -56,12 +56,12 @@ public class CaptureBatch {
   public static final String SERIALIZED_NAME_BATCH = "batch";
   @SerializedName(SERIALIZED_NAME_BATCH)
   @javax.annotation.Nullable
-  private List<CaptureEvent> batch = new ArrayList<>();
+  private List<CaptureEvent> batch;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<CaptureEvent> events = new ArrayList<>();
+  private List<CaptureEvent> events;
 
   public CaptureBatch() {
   }

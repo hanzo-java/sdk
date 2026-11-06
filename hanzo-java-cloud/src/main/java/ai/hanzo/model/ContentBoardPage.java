@@ -61,7 +61,7 @@ public class ContentBoardPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<ContentBoardItem> data = new ArrayList<>();
+  private List<ContentBoardItem> data;
 
   public ContentBoardPage() {
   }

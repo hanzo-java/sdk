@@ -66,7 +66,7 @@ public class DeclareReq {
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
   @javax.annotation.Nullable
-  private List<DeclareEnv> env = new ArrayList<>();
+  private List<DeclareEnv> env;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)

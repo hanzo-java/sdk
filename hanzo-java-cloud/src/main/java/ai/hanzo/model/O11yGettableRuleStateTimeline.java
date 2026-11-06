@@ -56,7 +56,7 @@ public class O11yGettableRuleStateTimeline {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yGettableRuleStateHistory> items = new ArrayList<>();
+  private List<O11yGettableRuleStateHistory> items;
 
   public static final String SERIALIZED_NAME_NEXT_CURSOR = "nextCursor";
   @SerializedName(SERIALIZED_NAME_NEXT_CURSOR)

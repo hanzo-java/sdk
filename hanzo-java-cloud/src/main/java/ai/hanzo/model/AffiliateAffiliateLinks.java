@@ -61,7 +61,7 @@ public class AffiliateAffiliateLinks {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<AffiliateCodeView> links = new ArrayList<>();
+  private List<AffiliateCodeView> links;
 
   public static final String SERIALIZED_NAME_MAX_LINKS = "maxLinks";
   @SerializedName(SERIALIZED_NAME_MAX_LINKS)

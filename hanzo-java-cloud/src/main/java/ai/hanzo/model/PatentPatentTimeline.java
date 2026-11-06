@@ -81,7 +81,7 @@ public class PatentPatentTimeline {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   @javax.annotation.Nullable
-  private List<PatentPatentTimelineEntry> versions = new ArrayList<>();
+  private List<PatentPatentTimelineEntry> versions;
 
   public PatentPatentTimeline() {
   }

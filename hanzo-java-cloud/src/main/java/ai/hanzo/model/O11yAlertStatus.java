@@ -55,12 +55,12 @@ public class O11yAlertStatus {
   public static final String SERIALIZED_NAME_INHIBITED_BY = "inhibitedBy";
   @SerializedName(SERIALIZED_NAME_INHIBITED_BY)
   @javax.annotation.Nullable
-  private List<String> inhibitedBy = new ArrayList<>();
+  private List<String> inhibitedBy;
 
   public static final String SERIALIZED_NAME_SILENCED_BY = "silencedBy";
   @SerializedName(SERIALIZED_NAME_SILENCED_BY)
   @javax.annotation.Nullable
-  private List<String> silencedBy = new ArrayList<>();
+  private List<String> silencedBy;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)

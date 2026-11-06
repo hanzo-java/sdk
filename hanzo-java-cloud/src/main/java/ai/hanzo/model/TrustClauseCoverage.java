@@ -61,7 +61,7 @@ public class TrustClauseCoverage {
   public static final String SERIALIZED_NAME_CLAUSES = "clauses";
   @SerializedName(SERIALIZED_NAME_CLAUSES)
   @javax.annotation.Nullable
-  private List<TrustClauseRow> clauses = new ArrayList<>();
+  private List<TrustClauseRow> clauses;
 
   public static final String SERIALIZED_NAME_EDITION = "edition";
   @SerializedName(SERIALIZED_NAME_EDITION)

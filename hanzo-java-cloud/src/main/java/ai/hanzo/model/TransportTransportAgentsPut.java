@@ -57,7 +57,7 @@ public class TransportTransportAgentsPut {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private Map<String, String> channels = new HashMap<>();
+  private Map<String, String> channels;
 
   public static final String SERIALIZED_NAME_DEFAULT = "default";
   @SerializedName(SERIALIZED_NAME_DEFAULT)
@@ -72,7 +72,7 @@ public class TransportTransportAgentsPut {
   public static final String SERIALIZED_NAME_UNBIND = "unbind";
   @SerializedName(SERIALIZED_NAME_UNBIND)
   @javax.annotation.Nullable
-  private List<String> unbind = new ArrayList<>();
+  private List<String> unbind;
 
   public TransportTransportAgentsPut() {
   }

@@ -62,7 +62,7 @@ public class FunctionUsage {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<FunctionCostLine> series = new ArrayList<>();
+  private List<FunctionCostLine> series;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

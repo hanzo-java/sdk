@@ -56,7 +56,7 @@ public class EmailListMessagesResult {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private List<EmailMessageRecord> messages = new ArrayList<>();
+  private List<EmailMessageRecord> messages;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

@@ -60,7 +60,7 @@ public class O11yO11yReductionRuleSaveIn {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nonnull
-  private List<String> labels = new ArrayList<>();
+  private List<String> labels;
 
   public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)

@@ -57,7 +57,7 @@ public class GetAiRemoteConnections200Response {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<Connection> data = new ArrayList<>();
+  private List<Connection> data;
 
   public static final String SERIALIZED_NAME_DATA2 = "data2";
   @SerializedName(SERIALIZED_NAME_DATA2)

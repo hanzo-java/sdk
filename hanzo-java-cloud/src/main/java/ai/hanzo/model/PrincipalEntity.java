@@ -61,7 +61,7 @@ public class PrincipalEntity {
   public static final String SERIALIZED_NAME_FOUNDERS = "founders";
   @SerializedName(SERIALIZED_NAME_FOUNDERS)
   @javax.annotation.Nullable
-  private List<PrincipalFounder> founders = new ArrayList<>();
+  private List<PrincipalFounder> founders;
 
   public static final String SERIALIZED_NAME_IMPORTED = "imported";
   @SerializedName(SERIALIZED_NAME_IMPORTED)

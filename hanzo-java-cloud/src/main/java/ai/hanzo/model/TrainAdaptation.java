@@ -86,12 +86,12 @@ public class TrainAdaptation {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<String> sources = new ArrayList<>();
+  private List<String> sources;
 
   public static final String SERIALIZED_NAME_TARGETS = "targets";
   @SerializedName(SERIALIZED_NAME_TARGETS)
   @javax.annotation.Nullable
-  private List<String> targets = new ArrayList<>();
+  private List<String> targets;
 
   public TrainAdaptation() {
   }

@@ -63,12 +63,12 @@ public class PlatformRunnerBuildReq {
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
   @javax.annotation.Nullable
-  private Map<String, String> args = new HashMap<>();
+  private Map<String, String> args;
 
   public static final String SERIALIZED_NAME_BINARIES = "binaries";
   @SerializedName(SERIALIZED_NAME_BINARIES)
   @javax.annotation.Nullable
-  private List<PlatformBinarySpec> binaries = new ArrayList<>();
+  private List<PlatformBinarySpec> binaries;
 
   public static final String SERIALIZED_NAME_BRANCH = "branch";
   @SerializedName(SERIALIZED_NAME_BRANCH)
@@ -108,7 +108,7 @@ public class PlatformRunnerBuildReq {
   public static final String SERIALIZED_NAME_PLATFORMS = "platforms";
   @SerializedName(SERIALIZED_NAME_PLATFORMS)
   @javax.annotation.Nullable
-  private List<String> platforms = new ArrayList<>();
+  private List<String> platforms;
 
   public static final String SERIALIZED_NAME_REF = "ref";
   @SerializedName(SERIALIZED_NAME_REF)
@@ -133,7 +133,7 @@ public class PlatformRunnerBuildReq {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public PlatformRunnerBuildReq() {
   }

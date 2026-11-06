@@ -56,7 +56,7 @@ public class FunctionSecretList {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<FunctionSecretView> secrets = new ArrayList<>();
+  private List<FunctionSecretView> secrets;
 
   public FunctionSecretList() {
   }

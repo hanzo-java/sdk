@@ -56,7 +56,7 @@ public class O11yO11yQueueChecksOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<O11yO11yQueueCheck> data = new ArrayList<>();
+  private List<O11yO11yQueueCheck> data;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

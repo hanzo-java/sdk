@@ -60,7 +60,7 @@ public class SocialSocialProvider {
   public static final String SERIALIZED_NAME_MISSING_CREDENTIALS = "missingCredentials";
   @SerializedName(SERIALIZED_NAME_MISSING_CREDENTIALS)
   @javax.annotation.Nullable
-  private List<String> missingCredentials = new ArrayList<>();
+  private List<String> missingCredentials;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)

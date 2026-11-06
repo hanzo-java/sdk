@@ -55,7 +55,7 @@ public class O11yO11yTraceSpanWindow {
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
   @javax.annotation.Nullable
-  private List<String> columns = new ArrayList<>();
+  private List<String> columns;
 
   public static final String SERIALIZED_NAME_END_TIMESTAMP_MILLIS = "endTimestampMillis";
   @SerializedName(SERIALIZED_NAME_END_TIMESTAMP_MILLIS)
@@ -65,7 +65,7 @@ public class O11yO11yTraceSpanWindow {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<List<Object>> events = new ArrayList<>();
+  private List<List<Object>> events;
 
   public static final String SERIALIZED_NAME_IS_SUB_TREE = "isSubTree";
   @SerializedName(SERIALIZED_NAME_IS_SUB_TREE)

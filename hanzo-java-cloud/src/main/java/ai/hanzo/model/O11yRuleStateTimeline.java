@@ -58,12 +58,12 @@ public class O11yRuleStateTimeline {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<O11yRuleStateHistory> items = new ArrayList<>();
+  private List<O11yRuleStateHistory> items;
 
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private Map<String, List<String>> labels = new HashMap<>();
+  private Map<String, List<String>> labels;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

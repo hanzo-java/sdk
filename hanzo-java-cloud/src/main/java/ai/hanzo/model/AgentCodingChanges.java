@@ -63,12 +63,12 @@ public class AgentCodingChanges {
   public static final String SERIALIZED_NAME_COMMITS = "commits";
   @SerializedName(SERIALIZED_NAME_COMMITS)
   @javax.annotation.Nullable
-  private List<AgentCodingCommit> commits = new ArrayList<>();
+  private List<AgentCodingCommit> commits;
 
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<AgentCodingFile> files = new ArrayList<>();
+  private List<AgentCodingFile> files;
 
   public static final String SERIALIZED_NAME_HEAD = "head";
   @SerializedName(SERIALIZED_NAME_HEAD)

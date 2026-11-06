@@ -55,7 +55,7 @@ public class TrainDataset {
   public static final String SERIALIZED_NAME_SPLITS = "splits";
   @SerializedName(SERIALIZED_NAME_SPLITS)
   @javax.annotation.Nullable
-  private Map<String, String> splits = new HashMap<>();
+  private Map<String, String> splits;
 
   public static final String SERIALIZED_NAME_URI = "uri";
   @SerializedName(SERIALIZED_NAME_URI)

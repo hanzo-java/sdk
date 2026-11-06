@@ -70,7 +70,7 @@ public class IamSignupItem {
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
   @javax.annotation.Nullable
-  private List<String> options = new ArrayList<>();
+  private List<String> options;
 
   public static final String SERIALIZED_NAME_PLACEHOLDER = "placeholder";
   @SerializedName(SERIALIZED_NAME_PLACEHOLDER)

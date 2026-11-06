@@ -66,7 +66,7 @@ public class UsageDashResp {
   public static final String SERIALIZED_NAME_CURRENT = "current";
   @SerializedName(SERIALIZED_NAME_CURRENT)
   @javax.annotation.Nullable
-  private List<UsageUsageWindowView> current = new ArrayList<>();
+  private List<UsageUsageWindowView> current;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -101,7 +101,7 @@ public class UsageDashResp {
   public static final String SERIALIZED_NAME_WINDOWS = "windows";
   @SerializedName(SERIALIZED_NAME_WINDOWS)
   @javax.annotation.Nullable
-  private List<UsageUsageWindowView> windows = new ArrayList<>();
+  private List<UsageUsageWindowView> windows;
 
   public UsageDashResp() {
   }

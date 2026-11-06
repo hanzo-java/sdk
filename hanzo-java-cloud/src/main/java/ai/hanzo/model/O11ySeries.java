@@ -57,17 +57,17 @@ public class O11ySeries {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private Map<String, String> labels;
 
   public static final String SERIALIZED_NAME_LABELS_ARRAY = "labelsArray";
   @SerializedName(SERIALIZED_NAME_LABELS_ARRAY)
   @javax.annotation.Nullable
-  private List<Map<String, String>> labelsArray = new ArrayList<>();
+  private List<Map<String, String>> labelsArray;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<Object> values = new ArrayList<>();
+  private List<Object> values;
 
   public O11ySeries() {
   }

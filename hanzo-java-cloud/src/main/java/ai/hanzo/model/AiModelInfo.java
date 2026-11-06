@@ -109,7 +109,7 @@ public class AiModelInfo {
   public static final String SERIALIZED_NAME_INPUTS = "inputs";
   @SerializedName(SERIALIZED_NAME_INPUTS)
   @javax.annotation.Nullable
-  private List<String> inputs = new ArrayList<>();
+  private List<String> inputs;
 
   public static final String SERIALIZED_NAME_MAX_OUTPUT_TOKENS = "max_output_tokens";
   @SerializedName(SERIALIZED_NAME_MAX_OUTPUT_TOKENS)
@@ -129,7 +129,7 @@ public class AiModelInfo {
   public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
   @SerializedName(SERIALIZED_NAME_OUTPUTS)
   @javax.annotation.Nullable
-  private List<String> outputs = new ArrayList<>();
+  private List<String> outputs;
 
   public static final String SERIALIZED_NAME_OWNED_BY = "owned_by";
   @SerializedName(SERIALIZED_NAME_OWNED_BY)

@@ -66,12 +66,12 @@ public class CampaignCampaignUpdate {
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   @javax.annotation.Nullable
-  private List<CampaignChannelSpec> channels = new ArrayList<>();
+  private List<CampaignChannelSpec> channels;
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
-  private List<String> content = new ArrayList<>();
+  private List<String> content;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

@@ -56,7 +56,7 @@ public class GraphGraphReadOut {
   public static final String SERIALIZED_NAME_ASSERTIONS = "assertions";
   @SerializedName(SERIALIZED_NAME_ASSERTIONS)
   @javax.annotation.Nullable
-  private List<GraphWireFact> assertions = new ArrayList<>();
+  private List<GraphWireFact> assertions;
 
   public static final String SERIALIZED_NAME_TRUNCATED = "truncated";
   @SerializedName(SERIALIZED_NAME_TRUNCATED)

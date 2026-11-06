@@ -57,7 +57,7 @@ public class O11yPodRecord {
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   @javax.annotation.Nullable
-  private Map<String, String> meta = new HashMap<>();
+  private Map<String, String> meta;
 
   public static final String SERIALIZED_NAME_POD_AGE = "podAge";
   @SerializedName(SERIALIZED_NAME_POD_AGE)

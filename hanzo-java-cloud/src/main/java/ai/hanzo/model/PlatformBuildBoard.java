@@ -56,7 +56,7 @@ public class PlatformBuildBoard {
   public static final String SERIALIZED_NAME_BUILDS = "builds";
   @SerializedName(SERIALIZED_NAME_BUILDS)
   @javax.annotation.Nullable
-  private List<PlatformBuildRow> builds = new ArrayList<>();
+  private List<PlatformBuildRow> builds;
 
   public PlatformBuildBoard() {
   }

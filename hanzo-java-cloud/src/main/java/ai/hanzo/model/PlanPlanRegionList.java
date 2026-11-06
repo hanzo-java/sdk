@@ -55,7 +55,7 @@ public class PlanPlanRegionList {
   public static final String SERIALIZED_NAME_REGIONS = "regions";
   @SerializedName(SERIALIZED_NAME_REGIONS)
   @javax.annotation.Nullable
-  private List<Object> regions = new ArrayList<>();
+  private List<Object> regions;
 
   public PlanPlanRegionList() {
   }

@@ -57,22 +57,22 @@ public class ReferenceResolveReferenceOut {
   public static final String SERIALIZED_NAME_ANSWERS = "answers";
   @SerializedName(SERIALIZED_NAME_ANSWERS)
   @javax.annotation.Nullable
-  private List<ReferenceReferenceAnswer> answers = new ArrayList<>();
+  private List<ReferenceReferenceAnswer> answers;
 
   public static final String SERIALIZED_NAME_CONSULTED = "consulted";
   @SerializedName(SERIALIZED_NAME_CONSULTED)
   @javax.annotation.Nullable
-  private List<ReferenceReferenceVersion> consulted = new ArrayList<>();
+  private List<ReferenceReferenceVersion> consulted;
 
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private List<String> refused = new ArrayList<>();
+  private List<String> refused;
 
   public static final String SERIALIZED_NAME_STALE = "stale";
   @SerializedName(SERIALIZED_NAME_STALE)
   @javax.annotation.Nullable
-  private List<String> stale = new ArrayList<>();
+  private List<String> stale;
 
   public ReferenceResolveReferenceOut() {
   }

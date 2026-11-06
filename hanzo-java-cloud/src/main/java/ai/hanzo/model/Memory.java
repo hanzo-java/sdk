@@ -73,7 +73,7 @@ public class Memory {
   public static final String SERIALIZED_NAME_EMBEDDING = "embedding";
   @SerializedName(SERIALIZED_NAME_EMBEDDING)
   @javax.annotation.Nullable
-  private List<BigDecimal> embedding = new ArrayList<>();
+  private List<BigDecimal> embedding;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -83,7 +83,7 @@ public class Memory {
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
   @javax.annotation.Nullable
-  private Map<String, String> metadata = new HashMap<>();
+  private Map<String, String> metadata;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

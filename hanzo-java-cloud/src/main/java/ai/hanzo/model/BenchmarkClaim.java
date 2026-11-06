@@ -60,7 +60,7 @@ public class BenchmarkClaim {
   public static final String SERIALIZED_NAME_EVIDENCE = "evidence";
   @SerializedName(SERIALIZED_NAME_EVIDENCE)
   @javax.annotation.Nullable
-  private List<String> evidence = new ArrayList<>();
+  private List<String> evidence;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -80,7 +80,7 @@ public class BenchmarkClaim {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
   @javax.annotation.Nullable
-  private List<String> runs = new ArrayList<>();
+  private List<String> runs;
 
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)

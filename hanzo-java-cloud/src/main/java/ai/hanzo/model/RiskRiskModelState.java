@@ -65,7 +65,7 @@ public class RiskRiskModelState {
   public static final String SERIALIZED_NAME_BLIND = "blind";
   @SerializedName(SERIALIZED_NAME_BLIND)
   @javax.annotation.Nullable
-  private Map<String, Long> blind = new HashMap<>();
+  private Map<String, Long> blind;
 
   public static final String SERIALIZED_NAME_CUT = "cut";
   @SerializedName(SERIALIZED_NAME_CUT)
@@ -105,7 +105,7 @@ public class RiskRiskModelState {
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private Map<String, Long> refused = new HashMap<>();
+  private Map<String, Long> refused;
 
   public static final String SERIALIZED_NAME_SAMPLE = "sample";
   @SerializedName(SERIALIZED_NAME_SAMPLE)
@@ -140,7 +140,7 @@ public class RiskRiskModelState {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<RiskRiskModelValue> values = new ArrayList<>();
+  private List<RiskRiskModelValue> values;
 
   public static final String SERIALIZED_NAME_WARM = "warm";
   @SerializedName(SERIALIZED_NAME_WARM)

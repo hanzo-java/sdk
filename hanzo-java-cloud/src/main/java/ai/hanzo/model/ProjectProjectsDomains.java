@@ -56,12 +56,12 @@ public class ProjectProjectsDomains {
   public static final String SERIALIZED_NAME_CLAIMS = "claims";
   @SerializedName(SERIALIZED_NAME_CLAIMS)
   @javax.annotation.Nullable
-  private List<ProjectProjectsDomain> claims = new ArrayList<>();
+  private List<ProjectProjectsDomain> claims;
 
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private List<String> domains = new ArrayList<>();
+  private List<String> domains;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)

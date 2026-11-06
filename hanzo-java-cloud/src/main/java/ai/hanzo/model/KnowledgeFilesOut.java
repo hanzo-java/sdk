@@ -56,7 +56,7 @@ public class KnowledgeFilesOut {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<KnowledgeFile> files = new ArrayList<>();
+  private List<KnowledgeFile> files;
 
   public KnowledgeFilesOut() {
   }

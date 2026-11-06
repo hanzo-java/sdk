@@ -56,12 +56,12 @@ public class O11yTimeSeries {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<O11yLabel> labels = new ArrayList<>();
+  private List<O11yLabel> labels;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<Object> values = new ArrayList<>();
+  private List<Object> values;
 
   public O11yTimeSeries() {
   }

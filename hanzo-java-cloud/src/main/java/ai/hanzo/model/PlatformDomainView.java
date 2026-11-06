@@ -81,7 +81,7 @@ public class PlatformDomainView {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private List<PlatformRecord> records = new ArrayList<>();
+  private List<PlatformRecord> records;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

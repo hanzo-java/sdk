@@ -56,7 +56,7 @@ public class RiskRiskLearnIn {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<RiskRiskEvent> events = new ArrayList<>();
+  private List<RiskRiskEvent> events;
 
   public RiskRiskLearnIn() {
   }

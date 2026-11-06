@@ -56,7 +56,7 @@ public class IamKeysListResponse {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<IamKey> keys = new ArrayList<>();
+  private List<IamKey> keys;
 
   public IamKeysListResponse() {
   }

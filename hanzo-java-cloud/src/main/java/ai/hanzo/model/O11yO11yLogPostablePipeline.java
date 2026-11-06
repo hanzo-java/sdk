@@ -62,7 +62,7 @@ public class O11yO11yLogPostablePipeline {
   public static final String SERIALIZED_NAME_CONFIG = "config";
   @SerializedName(SERIALIZED_NAME_CONFIG)
   @javax.annotation.Nullable
-  private List<O11yO11yLogPipelineOperator> config = new ArrayList<>();
+  private List<O11yO11yLogPipelineOperator> config;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)

@@ -61,7 +61,7 @@ public class BooksBalanceSheet {
   public static final String SERIALIZED_NAME_ASSETS = "assets";
   @SerializedName(SERIALIZED_NAME_ASSETS)
   @javax.annotation.Nullable
-  private List<BooksBalanceLine> assets = new ArrayList<>();
+  private List<BooksBalanceLine> assets;
 
   public static final String SERIALIZED_NAME_BALANCED = "balanced";
   @SerializedName(SERIALIZED_NAME_BALANCED)
@@ -71,12 +71,12 @@ public class BooksBalanceSheet {
   public static final String SERIALIZED_NAME_EQUITY = "equity";
   @SerializedName(SERIALIZED_NAME_EQUITY)
   @javax.annotation.Nullable
-  private List<BooksBalanceLine> equity = new ArrayList<>();
+  private List<BooksBalanceLine> equity;
 
   public static final String SERIALIZED_NAME_LIABILITIES = "liabilities";
   @SerializedName(SERIALIZED_NAME_LIABILITIES)
   @javax.annotation.Nullable
-  private List<BooksBalanceLine> liabilities = new ArrayList<>();
+  private List<BooksBalanceLine> liabilities;
 
   public static final String SERIALIZED_NAME_TOTAL_ASSETS = "totalAssets";
   @SerializedName(SERIALIZED_NAME_TOTAL_ASSETS)

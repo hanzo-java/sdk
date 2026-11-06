@@ -56,7 +56,7 @@ public class SandboxSandboxList {
   public static final String SERIALIZED_NAME_SANDBOXES = "sandboxes";
   @SerializedName(SERIALIZED_NAME_SANDBOXES)
   @javax.annotation.Nullable
-  private List<SandboxSandbox> sandboxes = new ArrayList<>();
+  private List<SandboxSandbox> sandboxes;
 
   public SandboxSandboxList() {
   }

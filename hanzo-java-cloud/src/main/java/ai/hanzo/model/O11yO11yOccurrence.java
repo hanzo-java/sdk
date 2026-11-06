@@ -80,7 +80,7 @@ public class O11yO11yOccurrence {
   public static final String SERIALIZED_NAME_FRAMES = "frames";
   @SerializedName(SERIALIZED_NAME_FRAMES)
   @javax.annotation.Nullable
-  private List<O11yO11yOccurrenceFrame> frames = new ArrayList<>();
+  private List<O11yO11yOccurrenceFrame> frames;
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
@@ -115,7 +115,7 @@ public class O11yO11yOccurrence {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private Map<String, String> tags = new HashMap<>();
+  private Map<String, String> tags;
 
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)

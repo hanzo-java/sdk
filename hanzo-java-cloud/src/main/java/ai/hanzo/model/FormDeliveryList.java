@@ -56,7 +56,7 @@ public class FormDeliveryList {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private List<FormDelivery> items = new ArrayList<>();
+  private List<FormDelivery> items;
 
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)

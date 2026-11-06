@@ -65,7 +65,7 @@ public class ToolPluginMount {
   public static final String SERIALIZED_NAME_PREFIXES = "prefixes";
   @SerializedName(SERIALIZED_NAME_PREFIXES)
   @javax.annotation.Nullable
-  private List<String> prefixes = new ArrayList<>();
+  private List<String> prefixes;
 
   public ToolPluginMount() {
   }

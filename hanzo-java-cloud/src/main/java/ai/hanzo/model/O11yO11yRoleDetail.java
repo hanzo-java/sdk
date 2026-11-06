@@ -82,7 +82,7 @@ public class O11yO11yRoleDetail {
   public static final String SERIALIZED_NAME_TRANSACTION_GROUPS = "transactionGroups";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUPS)
   @javax.annotation.Nullable
-  private List<O11yO11yTransactionGroup> transactionGroups = new ArrayList<>();
+  private List<O11yO11yTransactionGroup> transactionGroups;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

@@ -56,7 +56,7 @@ public class FunctionInvocationList {
   public static final String SERIALIZED_NAME_INVOCATIONS = "invocations";
   @SerializedName(SERIALIZED_NAME_INVOCATIONS)
   @javax.annotation.Nullable
-  private List<FunctionInvocationView> invocations = new ArrayList<>();
+  private List<FunctionInvocationView> invocations;
 
   public FunctionInvocationList() {
   }

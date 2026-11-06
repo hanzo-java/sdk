@@ -55,7 +55,7 @@ public class O11yO11yServiceWarning {
   public static final String SERIALIZED_NAME_TOP_LEVEL_OPS = "topLevelOps";
   @SerializedName(SERIALIZED_NAME_TOP_LEVEL_OPS)
   @javax.annotation.Nullable
-  private List<String> topLevelOps = new ArrayList<>();
+  private List<String> topLevelOps;
 
   public O11yO11yServiceWarning() {
   }

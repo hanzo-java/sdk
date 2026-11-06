@@ -76,7 +76,7 @@ public class TrainSampleIn {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private List<Integer> tokens = new ArrayList<>();
+  private List<Integer> tokens;
 
   public TrainSampleIn() {
   }

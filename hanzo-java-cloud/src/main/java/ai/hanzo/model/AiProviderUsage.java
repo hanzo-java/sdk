@@ -63,7 +63,7 @@ public class AiProviderUsage {
   public static final String SERIALIZED_NAME_BY_MODEL = "byModel";
   @SerializedName(SERIALIZED_NAME_BY_MODEL)
   @javax.annotation.Nullable
-  private List<AiProviderUsageModelSpend> byModel = new ArrayList<>();
+  private List<AiProviderUsageModelSpend> byModel;
 
   public static final String SERIALIZED_NAME_CONNECTED = "connected";
   @SerializedName(SERIALIZED_NAME_CONNECTED)
@@ -98,7 +98,7 @@ public class AiProviderUsage {
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<AiProviderUsageSeriesPoint> series = new ArrayList<>();
+  private List<AiProviderUsageSeriesPoint> series;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)

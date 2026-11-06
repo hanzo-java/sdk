@@ -110,7 +110,7 @@ public class EventEconomicEvent {
   public static final String SERIALIZED_NAME_JURISDICTIONS = "jurisdictions";
   @SerializedName(SERIALIZED_NAME_JURISDICTIONS)
   @javax.annotation.Nullable
-  private List<String> jurisdictions = new ArrayList<>();
+  private List<String> jurisdictions;
 
   public static final String SERIALIZED_NAME_PARENT = "parent";
   @SerializedName(SERIALIZED_NAME_PARENT)

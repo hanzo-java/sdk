@@ -77,7 +77,7 @@ public class O11yO11yDomainsIn {
   public static final String SERIALIZED_NAME_GROUP_BY = "groupBy";
   @SerializedName(SERIALIZED_NAME_GROUP_BY)
   @javax.annotation.Nullable
-  private List<O11yO11yDomainGroupBy> groupBy = new ArrayList<>();
+  private List<O11yO11yDomainGroupBy> groupBy;
 
   public static final String SERIALIZED_NAME_SHOW_IP = "show_ip";
   @SerializedName(SERIALIZED_NAME_SHOW_IP)

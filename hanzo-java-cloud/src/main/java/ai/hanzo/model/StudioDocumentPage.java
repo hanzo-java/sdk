@@ -56,7 +56,7 @@ public class StudioDocumentPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<StudioDocument> data = new ArrayList<>();
+  private List<StudioDocument> data;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)

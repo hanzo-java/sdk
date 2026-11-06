@@ -55,7 +55,7 @@ public class TrustFaqList {
   public static final String SERIALIZED_NAME_FAQ = "faq";
   @SerializedName(SERIALIZED_NAME_FAQ)
   @javax.annotation.Nullable
-  private List<Object> faq = new ArrayList<>();
+  private List<Object> faq;
 
   public TrustFaqList() {
   }

@@ -96,7 +96,7 @@ public class PatrolPatrolUnit {
   public static final String SERIALIZED_NAME_TRAIL = "trail";
   @SerializedName(SERIALIZED_NAME_TRAIL)
   @javax.annotation.Nullable
-  private List<PatrolPatrolFix> trail = new ArrayList<>();
+  private List<PatrolPatrolFix> trail;
 
   public PatrolPatrolUnit() {
   }

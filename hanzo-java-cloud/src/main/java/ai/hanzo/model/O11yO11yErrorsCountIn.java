@@ -76,7 +76,7 @@ public class O11yO11yErrorsCountIn {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<O11yO11yTagQuery> tags = new ArrayList<>();
+  private List<O11yO11yTagQuery> tags;
 
   public O11yO11yErrorsCountIn() {
   }

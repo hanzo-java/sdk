@@ -118,7 +118,7 @@ public class ProjectProjectsProject {
   public static final String SERIALIZED_NAME_INTERNAL_NETWORKS = "internalNetworks";
   @SerializedName(SERIALIZED_NAME_INTERNAL_NETWORKS)
   @javax.annotation.Nullable
-  private List<String> internalNetworks = new ArrayList<>();
+  private List<String> internalNetworks;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -183,7 +183,7 @@ public class ProjectProjectsProject {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private Map<String, String> tags = new HashMap<>();
+  private Map<String, String> tags;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

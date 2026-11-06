@@ -56,12 +56,12 @@ public class AiMCPSurface {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private List<AiMCPApp> apps = new ArrayList<>();
+  private List<AiMCPApp> apps;
 
   public static final String SERIALIZED_NAME_NAMES = "names";
   @SerializedName(SERIALIZED_NAME_NAMES)
   @javax.annotation.Nullable
-  private List<String> names = new ArrayList<>();
+  private List<String> names;
 
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)

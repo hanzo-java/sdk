@@ -56,7 +56,7 @@ public class TelMessageList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TelSMS> data = new ArrayList<>();
+  private List<TelSMS> data;
 
   public TelMessageList() {
   }

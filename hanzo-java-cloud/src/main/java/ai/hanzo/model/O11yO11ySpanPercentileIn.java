@@ -65,7 +65,7 @@ public class O11yO11ySpanPercentileIn {
   public static final String SERIALIZED_NAME_RESOURCE_ATTRIBUTES = "resourceAttributes";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ATTRIBUTES)
   @javax.annotation.Nullable
-  private Map<String, String> resourceAttributes = new HashMap<>();
+  private Map<String, String> resourceAttributes;
 
   public static final String SERIALIZED_NAME_SERVICE_NAME = "serviceName";
   @SerializedName(SERIALIZED_NAME_SERVICE_NAME)

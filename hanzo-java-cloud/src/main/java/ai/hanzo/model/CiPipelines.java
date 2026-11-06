@@ -62,12 +62,12 @@ public class CiPipelines {
   public static final String SERIALIZED_NAME_ORGS = "orgs";
   @SerializedName(SERIALIZED_NAME_ORGS)
   @javax.annotation.Nullable
-  private List<String> orgs = new ArrayList<>();
+  private List<String> orgs;
 
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<CiPipeline> services = new ArrayList<>();
+  private List<CiPipeline> services;
 
   public static final String SERIALIZED_NAME_SOURCE_ERR = "sourceErr";
   @SerializedName(SERIALIZED_NAME_SOURCE_ERR)

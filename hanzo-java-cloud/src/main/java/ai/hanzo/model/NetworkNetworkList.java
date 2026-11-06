@@ -56,7 +56,7 @@ public class NetworkNetworkList {
   public static final String SERIALIZED_NAME_NETWORKS = "networks";
   @SerializedName(SERIALIZED_NAME_NETWORKS)
   @javax.annotation.Nullable
-  private List<NetworkNetworkView> networks = new ArrayList<>();
+  private List<NetworkNetworkView> networks;
 
   public NetworkNetworkList() {
   }

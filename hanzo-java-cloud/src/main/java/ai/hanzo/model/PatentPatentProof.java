@@ -70,12 +70,12 @@ public class PatentPatentProof {
   public static final String SERIALIZED_NAME_GAPS = "gaps";
   @SerializedName(SERIALIZED_NAME_GAPS)
   @javax.annotation.Nullable
-  private List<PatentPatentGap> gaps = new ArrayList<>();
+  private List<PatentPatentGap> gaps;
 
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   @javax.annotation.Nullable
-  private List<PatentPatentOrderCheck> order = new ArrayList<>();
+  private List<PatentPatentOrderCheck> order;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -85,7 +85,7 @@ public class PatentPatentProof {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private List<PatentPatentProofEntry> records = new ArrayList<>();
+  private List<PatentPatentProofEntry> records;
 
   public static final String SERIALIZED_NAME_ROOT = "root";
   @SerializedName(SERIALIZED_NAME_ROOT)

@@ -57,7 +57,7 @@ public class MarketRoster {
   public static final String SERIALIZED_NAME_CHAINS = "chains";
   @SerializedName(SERIALIZED_NAME_CHAINS)
   @javax.annotation.Nullable
-  private List<MarketMarket> chains = new ArrayList<>();
+  private List<MarketMarket> chains;
 
   public static final String SERIALIZED_NAME_REACH = "reach";
   @SerializedName(SERIALIZED_NAME_REACH)

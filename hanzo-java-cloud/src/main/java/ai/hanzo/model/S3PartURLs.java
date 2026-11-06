@@ -61,7 +61,7 @@ public class S3PartURLs {
   public static final String SERIALIZED_NAME_URLS = "urls";
   @SerializedName(SERIALIZED_NAME_URLS)
   @javax.annotation.Nullable
-  private List<S3PartURL> urls = new ArrayList<>();
+  private List<S3PartURL> urls;
 
   public S3PartURLs() {
   }

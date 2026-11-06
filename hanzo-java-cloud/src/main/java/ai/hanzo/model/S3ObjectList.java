@@ -61,7 +61,7 @@ public class S3ObjectList {
   public static final String SERIALIZED_NAME_OBJECTS = "objects";
   @SerializedName(SERIALIZED_NAME_OBJECTS)
   @javax.annotation.Nullable
-  private List<S3ObjectItem> objects = new ArrayList<>();
+  private List<S3ObjectItem> objects;
 
   public static final String SERIALIZED_NAME_PREFIX = "prefix";
   @SerializedName(SERIALIZED_NAME_PREFIX)

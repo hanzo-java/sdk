@@ -56,7 +56,7 @@ public class PatrolPatrolNearList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<PatrolPatrolNearest> data = new ArrayList<>();
+  private List<PatrolPatrolNearest> data;
 
   public PatrolPatrolNearList() {
   }

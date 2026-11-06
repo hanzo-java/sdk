@@ -56,12 +56,12 @@ public class O11yO11yQueryFilterAnalysis {
   public static final String SERIALIZED_NAME_GROUPS = "groups";
   @SerializedName(SERIALIZED_NAME_GROUPS)
   @javax.annotation.Nullable
-  private List<O11yO11yColumnInfo> groups = new ArrayList<>();
+  private List<O11yO11yColumnInfo> groups;
 
   public static final String SERIALIZED_NAME_METRIC_NAMES = "metricNames";
   @SerializedName(SERIALIZED_NAME_METRIC_NAMES)
   @javax.annotation.Nullable
-  private List<String> metricNames = new ArrayList<>();
+  private List<String> metricNames;
 
   public O11yO11yQueryFilterAnalysis() {
   }

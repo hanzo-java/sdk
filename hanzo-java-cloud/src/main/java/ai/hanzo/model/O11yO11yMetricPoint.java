@@ -70,7 +70,7 @@ public class O11yO11yMetricPoint {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<Double> values = new ArrayList<>();
+  private List<Double> values;
 
   public O11yO11yMetricPoint() {
   }

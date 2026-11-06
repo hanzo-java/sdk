@@ -55,7 +55,7 @@ public class CompanyRegisterCounts {
   public static final String SERIALIZED_NAME_BY_STAGE = "byStage";
   @SerializedName(SERIALIZED_NAME_BY_STAGE)
   @javax.annotation.Nullable
-  private Map<String, Long> byStage = new HashMap<>();
+  private Map<String, Long> byStage;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

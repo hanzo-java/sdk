@@ -56,7 +56,7 @@ public class EnvironmentEnvList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<EnvironmentEnvironment> data = new ArrayList<>();
+  private List<EnvironmentEnvironment> data;
 
   public EnvironmentEnvList() {
   }

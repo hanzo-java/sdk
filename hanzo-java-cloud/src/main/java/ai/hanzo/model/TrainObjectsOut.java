@@ -56,7 +56,7 @@ public class TrainObjectsOut {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<TrainObject> data = new ArrayList<>();
+  private List<TrainObject> data;
 
   public TrainObjectsOut() {
   }

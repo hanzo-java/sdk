@@ -81,7 +81,7 @@ public class AiResponsesTool {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<AiResponsesTool> tools = new ArrayList<>();
+  private List<AiResponsesTool> tools;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

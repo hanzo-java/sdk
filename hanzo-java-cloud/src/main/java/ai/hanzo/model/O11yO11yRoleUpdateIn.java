@@ -61,7 +61,7 @@ public class O11yO11yRoleUpdateIn {
   public static final String SERIALIZED_NAME_TRANSACTION_GROUPS = "transactionGroups";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUPS)
   @javax.annotation.Nullable
-  private List<O11yO11yTransactionGroup> transactionGroups = new ArrayList<>();
+  private List<O11yO11yTransactionGroup> transactionGroups;
 
   public O11yO11yRoleUpdateIn() {
   }

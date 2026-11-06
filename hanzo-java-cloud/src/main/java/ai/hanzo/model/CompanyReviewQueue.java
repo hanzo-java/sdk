@@ -61,7 +61,7 @@ public class CompanyReviewQueue {
   public static final String SERIALIZED_NAME_QUEUE = "queue";
   @SerializedName(SERIALIZED_NAME_QUEUE)
   @javax.annotation.Nullable
-  private List<CompanyWaiting> queue = new ArrayList<>();
+  private List<CompanyWaiting> queue;
 
   public CompanyReviewQueue() {
   }

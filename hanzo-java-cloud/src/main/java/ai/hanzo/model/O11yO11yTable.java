@@ -55,12 +55,12 @@ public class O11yO11yTable {
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
   @javax.annotation.Nullable
-  private List<String> columns = new ArrayList<>();
+  private List<String> columns;
 
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<List<Object>> rows = new ArrayList<>();
+  private List<List<Object>> rows;
 
   public O11yO11yTable() {
   }

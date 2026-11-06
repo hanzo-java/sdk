@@ -61,7 +61,7 @@ public class AgentSessionList {
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private List<AgentSessionView> sessions = new ArrayList<>();
+  private List<AgentSessionView> sessions;
 
   public AgentSessionList() {
   }

@@ -56,7 +56,7 @@ public class O11yGettableServicesMetadata {
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<O11yServiceMetadata> services = new ArrayList<>();
+  private List<O11yServiceMetadata> services;
 
   public O11yGettableServicesMetadata() {
   }

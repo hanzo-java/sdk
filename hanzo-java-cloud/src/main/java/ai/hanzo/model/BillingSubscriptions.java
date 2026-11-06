@@ -61,7 +61,7 @@ public class BillingSubscriptions {
   public static final String SERIALIZED_NAME_SUBSCRIPTIONS = "subscriptions";
   @SerializedName(SERIALIZED_NAME_SUBSCRIPTIONS)
   @javax.annotation.Nullable
-  private List<BillingSubscription> subscriptions = new ArrayList<>();
+  private List<BillingSubscription> subscriptions;
 
   public BillingSubscriptions() {
   }

@@ -56,7 +56,7 @@ public class TaxLedger {
   public static final String SERIALIZED_NAME_PAYEES = "payees";
   @SerializedName(SERIALIZED_NAME_PAYEES)
   @javax.annotation.Nullable
-  private List<TaxPayeeYear> payees = new ArrayList<>();
+  private List<TaxPayeeYear> payees;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

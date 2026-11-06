@@ -56,7 +56,7 @@ public class TaxonomyTaxonomy {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
   @javax.annotation.Nullable
-  private List<TaxonomyCategory> categories = new ArrayList<>();
+  private List<TaxonomyCategory> categories;
 
   public TaxonomyTaxonomy() {
   }

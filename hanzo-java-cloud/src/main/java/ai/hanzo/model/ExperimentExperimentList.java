@@ -56,7 +56,7 @@ public class ExperimentExperimentList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<ExperimentTrial> data = new ArrayList<>();
+  private List<ExperimentTrial> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

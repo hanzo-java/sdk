@@ -56,7 +56,7 @@ public class SeoSeoCompetitorOut {
   public static final String SERIALIZED_NAME_COMPETITORS = "competitors";
   @SerializedName(SERIALIZED_NAME_COMPETITORS)
   @javax.annotation.Nullable
-  private List<SeoSeoDomain> competitors = new ArrayList<>();
+  private List<SeoSeoDomain> competitors;
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)

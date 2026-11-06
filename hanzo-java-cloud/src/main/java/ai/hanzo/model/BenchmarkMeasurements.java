@@ -61,7 +61,7 @@ public class BenchmarkMeasurements {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<BenchmarkMeasurement> data = new ArrayList<>();
+  private List<BenchmarkMeasurement> data;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

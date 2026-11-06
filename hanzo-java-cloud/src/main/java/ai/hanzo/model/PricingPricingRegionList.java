@@ -56,7 +56,7 @@ public class PricingPricingRegionList {
   public static final String SERIALIZED_NAME_REGIONS = "regions";
   @SerializedName(SERIALIZED_NAME_REGIONS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> regions = new ArrayList<>();
+  private List<Map<String, Object>> regions;
 
   public PricingPricingRegionList() {
   }

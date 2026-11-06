@@ -62,7 +62,7 @@ public class MarketingSequenceView {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<MarketingStep> steps = new ArrayList<>();
+  private List<MarketingStep> steps;
 
   public MarketingSequenceView() {
   }

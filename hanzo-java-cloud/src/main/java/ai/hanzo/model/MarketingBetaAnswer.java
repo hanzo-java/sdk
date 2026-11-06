@@ -55,7 +55,7 @@ public class MarketingBetaAnswer {
   public static final String SERIALIZED_NAME_ANSWER = "answer";
   @SerializedName(SERIALIZED_NAME_ANSWER)
   @javax.annotation.Nullable
-  private List<String> answer = new ArrayList<>();
+  private List<String> answer;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

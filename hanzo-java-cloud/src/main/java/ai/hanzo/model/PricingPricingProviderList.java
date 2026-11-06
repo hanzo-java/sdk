@@ -56,7 +56,7 @@ public class PricingPricingProviderList {
   public static final String SERIALIZED_NAME_PROVIDERS = "providers";
   @SerializedName(SERIALIZED_NAME_PROVIDERS)
   @javax.annotation.Nullable
-  private Map<String, Object> providers = new HashMap<>();
+  private Map<String, Object> providers;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)

@@ -86,7 +86,7 @@ public class PatrolPatrolSite {
   public static final String SERIALIZED_NAME_HAZARDS = "hazards";
   @SerializedName(SERIALIZED_NAME_HAZARDS)
   @javax.annotation.Nullable
-  private List<String> hazards = new ArrayList<>();
+  private List<String> hazards;
 
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
@@ -161,7 +161,7 @@ public class PatrolPatrolSite {
   public static final String SERIALIZED_NAME_ZONES = "zones";
   @SerializedName(SERIALIZED_NAME_ZONES)
   @javax.annotation.Nullable
-  private List<PatrolPatrolZone> zones = new ArrayList<>();
+  private List<PatrolPatrolZone> zones;
 
   public PatrolPatrolSite() {
   }

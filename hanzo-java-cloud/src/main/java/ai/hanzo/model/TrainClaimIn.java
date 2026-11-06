@@ -56,12 +56,12 @@ public class TrainClaimIn {
   public static final String SERIALIZED_NAME_BASES = "bases";
   @SerializedName(SERIALIZED_NAME_BASES)
   @javax.annotation.Nullable
-  private List<String> bases = new ArrayList<>();
+  private List<String> bases;
 
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
   @javax.annotation.Nullable
-  private List<String> devices = new ArrayList<>();
+  private List<String> devices;
 
   public static final String SERIALIZED_NAME_MACHINE = "machine";
   @SerializedName(SERIALIZED_NAME_MACHINE)

@@ -57,12 +57,12 @@ public class O11yO11yMetricSeries {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricLabel> labels = new ArrayList<>();
+  private List<O11yO11yMetricLabel> labels;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricPoint> values = new ArrayList<>();
+  private List<O11yO11yMetricPoint> values;
 
   public O11yO11yMetricSeries() {
   }

@@ -58,7 +58,7 @@ public class OpenaiChatCompletionMessage {
   public static final String SERIALIZED_NAME_MULTI_CONTENT = "MultiContent";
   @SerializedName(SERIALIZED_NAME_MULTI_CONTENT)
   @javax.annotation.Nullable
-  private List<OpenaiChatMessagePart> multiContent = new ArrayList<>();
+  private List<OpenaiChatMessagePart> multiContent;
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
@@ -98,7 +98,7 @@ public class OpenaiChatCompletionMessage {
   public static final String SERIALIZED_NAME_TOOL_CALLS = "tool_calls";
   @SerializedName(SERIALIZED_NAME_TOOL_CALLS)
   @javax.annotation.Nullable
-  private List<OpenaiToolCall> toolCalls = new ArrayList<>();
+  private List<OpenaiToolCall> toolCalls;
 
   public OpenaiChatCompletionMessage() {
   }

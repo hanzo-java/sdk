@@ -86,7 +86,7 @@ public class ServiceDetail {
   public static final String SERIALIZED_NAME_PORTS = "ports";
   @SerializedName(SERIALIZED_NAME_PORTS)
   @javax.annotation.Nullable
-  private List<ServicePort> ports = new ArrayList<>();
+  private List<ServicePort> ports;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

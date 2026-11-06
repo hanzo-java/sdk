@@ -71,7 +71,7 @@ public class O11yMissingMetricsComponentEntry {
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
   @javax.annotation.Nullable
-  private List<String> metrics = new ArrayList<>();
+  private List<String> metrics;
 
   public O11yMissingMetricsComponentEntry() {
   }

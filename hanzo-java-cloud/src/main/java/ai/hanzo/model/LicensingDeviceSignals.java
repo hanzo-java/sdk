@@ -85,7 +85,7 @@ public class LicensingDeviceSignals {
   public static final String SERIALIZED_NAME_MACS = "macs";
   @SerializedName(SERIALIZED_NAME_MACS)
   @javax.annotation.Nullable
-  private List<String> macs = new ArrayList<>();
+  private List<String> macs;
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)

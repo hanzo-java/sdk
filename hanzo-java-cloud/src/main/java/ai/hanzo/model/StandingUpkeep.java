@@ -71,7 +71,7 @@ public class StandingUpkeep {
   public static final String SERIALIZED_NAME_OBLIGATIONS = "obligations";
   @SerializedName(SERIALIZED_NAME_OBLIGATIONS)
   @javax.annotation.Nullable
-  private List<StandingObligation> obligations = new ArrayList<>();
+  private List<StandingObligation> obligations;
 
   public static final String SERIALIZED_NAME_STRUCTURE = "structure";
   @SerializedName(SERIALIZED_NAME_STRUCTURE)

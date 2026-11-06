@@ -78,7 +78,7 @@ public class O11yVictorOpsConfig {
   public static final String SERIALIZED_NAME_CUSTOM_FIELDS = "custom_fields";
   @SerializedName(SERIALIZED_NAME_CUSTOM_FIELDS)
   @javax.annotation.Nullable
-  private Map<String, String> customFields = new HashMap<>();
+  private Map<String, String> customFields;
 
   public static final String SERIALIZED_NAME_ENTITY_DISPLAY_NAME = "entity_display_name";
   @SerializedName(SERIALIZED_NAME_ENTITY_DISPLAY_NAME)

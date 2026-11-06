@@ -65,7 +65,7 @@ public class S3UploadParts {
   public static final String SERIALIZED_NAME_PARTS = "parts";
   @SerializedName(SERIALIZED_NAME_PARTS)
   @javax.annotation.Nullable
-  private List<Long> parts = new ArrayList<>();
+  private List<Long> parts;
 
   public static final String SERIALIZED_NAME_UPLOAD = "upload";
   @SerializedName(SERIALIZED_NAME_UPLOAD)

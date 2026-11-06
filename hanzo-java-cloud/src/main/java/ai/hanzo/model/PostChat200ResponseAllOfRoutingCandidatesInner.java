@@ -55,7 +55,7 @@ public class PostChat200ResponseAllOfRoutingCandidatesInner {
   public static final String SERIALIZED_NAME_DEPTHS = "depths";
   @SerializedName(SERIALIZED_NAME_DEPTHS)
   @javax.annotation.Nonnull
-  private List<String> depths = new ArrayList<>();
+  private List<String> depths;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)

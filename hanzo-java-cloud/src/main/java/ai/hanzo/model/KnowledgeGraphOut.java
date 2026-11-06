@@ -62,12 +62,12 @@ public class KnowledgeGraphOut {
   public static final String SERIALIZED_NAME_EDGES = "edges";
   @SerializedName(SERIALIZED_NAME_EDGES)
   @javax.annotation.Nullable
-  private List<KnowledgeGraphEdge> edges = new ArrayList<>();
+  private List<KnowledgeGraphEdge> edges;
 
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
   @javax.annotation.Nullable
-  private List<KnowledgeGraphNode> nodes = new ArrayList<>();
+  private List<KnowledgeGraphNode> nodes;
 
   public KnowledgeGraphOut() {
   }

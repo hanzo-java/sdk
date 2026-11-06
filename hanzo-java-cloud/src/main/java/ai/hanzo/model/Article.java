@@ -56,7 +56,7 @@ public class Article {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
-  private List<Block> content = new ArrayList<>();
+  private List<Block> content;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
@@ -71,7 +71,7 @@ public class Article {
   public static final String SERIALIZED_NAME_GLOSSARY = "glossary";
   @SerializedName(SERIALIZED_NAME_GLOSSARY)
   @javax.annotation.Nullable
-  private List<String> glossary = new ArrayList<>();
+  private List<String> glossary;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

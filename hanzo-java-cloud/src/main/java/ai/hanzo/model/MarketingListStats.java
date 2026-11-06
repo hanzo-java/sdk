@@ -58,7 +58,7 @@ public class MarketingListStats {
   public static final String SERIALIZED_NAME_BASES = "bases";
   @SerializedName(SERIALIZED_NAME_BASES)
   @javax.annotation.Nullable
-  private Map<String, Long> bases = new HashMap<>();
+  private Map<String, Long> bases;
 
   public static final String SERIALIZED_NAME_CONFIRMATION_RATE = "confirmationRate";
   @SerializedName(SERIALIZED_NAME_CONFIRMATION_RATE)
@@ -68,12 +68,12 @@ public class MarketingListStats {
   public static final String SERIALIZED_NAME_COUNTS = "counts";
   @SerializedName(SERIALIZED_NAME_COUNTS)
   @javax.annotation.Nullable
-  private Map<String, Long> counts = new HashMap<>();
+  private Map<String, Long> counts;
 
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
   @javax.annotation.Nullable
-  private List<MarketingDay> days = new ArrayList<>();
+  private List<MarketingDay> days;
 
   public static final String SERIALIZED_NAME_GROWTH = "growth";
   @SerializedName(SERIALIZED_NAME_GROWTH)
@@ -88,7 +88,7 @@ public class MarketingListStats {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private Map<String, Long> sources = new HashMap<>();
+  private Map<String, Long> sources;
 
   public static final String SERIALIZED_NAME_UNSUBSCRIBE_RATE = "unsubscribeRate";
   @SerializedName(SERIALIZED_NAME_UNSUBSCRIBE_RATE)

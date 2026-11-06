@@ -60,7 +60,7 @@ public class GraphGraphAssertOut {
   public static final String SERIALIZED_NAME_REASONS = "reasons";
   @SerializedName(SERIALIZED_NAME_REASONS)
   @javax.annotation.Nullable
-  private List<String> reasons = new ArrayList<>();
+  private List<String> reasons;
 
   public static final String SERIALIZED_NAME_RECORDED = "recorded";
   @SerializedName(SERIALIZED_NAME_RECORDED)

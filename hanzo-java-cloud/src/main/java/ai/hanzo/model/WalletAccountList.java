@@ -56,7 +56,7 @@ public class WalletAccountList {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private List<WalletWalletAccount> accounts = new ArrayList<>();
+  private List<WalletWalletAccount> accounts;
 
   public WalletAccountList() {
   }

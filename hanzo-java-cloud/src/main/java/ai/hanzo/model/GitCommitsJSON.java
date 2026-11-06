@@ -56,7 +56,7 @@ public class GitCommitsJSON {
   public static final String SERIALIZED_NAME_COMMITS = "commits";
   @SerializedName(SERIALIZED_NAME_COMMITS)
   @javax.annotation.Nullable
-  private List<GitCommitJSON> commits = new ArrayList<>();
+  private List<GitCommitJSON> commits;
 
   public GitCommitsJSON() {
   }

@@ -77,7 +77,7 @@ public class AiDecisionsRequest {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private Map<String, AiDecisionsQuestion> questions = new HashMap<>();
+  private Map<String, AiDecisionsQuestion> questions;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "session_id";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)

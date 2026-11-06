@@ -56,7 +56,7 @@ public class PrincipalJWKS {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private List<PrincipalJWK> keys = new ArrayList<>();
+  private List<PrincipalJWK> keys;
 
   public PrincipalJWKS() {
   }

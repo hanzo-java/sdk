@@ -65,7 +65,7 @@ public class GitJobView {
   public static final String SERIALIZED_NAME_RUNS_ON = "runsOn";
   @SerializedName(SERIALIZED_NAME_RUNS_ON)
   @javax.annotation.Nullable
-  private List<String> runsOn = new ArrayList<>();
+  private List<String> runsOn;
 
   public GitJobView() {
   }

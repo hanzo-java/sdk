@@ -55,7 +55,7 @@ public class CloudflarePurgeIn {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<String> files = new ArrayList<>();
+  private List<String> files;
 
   public static final String SERIALIZED_NAME_PURGE_EVERYTHING = "purge_everything";
   @SerializedName(SERIALIZED_NAME_PURGE_EVERYTHING)

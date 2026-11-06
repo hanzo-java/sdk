@@ -63,7 +63,7 @@ public class PrincipalView {
   public static final String SERIALIZED_NAME_AGENTS = "agents";
   @SerializedName(SERIALIZED_NAME_AGENTS)
   @javax.annotation.Nullable
-  private List<PrincipalAgentBrief> agents = new ArrayList<>();
+  private List<PrincipalAgentBrief> agents;
 
   public static final String SERIALIZED_NAME_COMPLIANCE = "compliance";
   @SerializedName(SERIALIZED_NAME_COMPLIANCE)
@@ -93,7 +93,7 @@ public class PrincipalView {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<PrincipalSource> sources = new ArrayList<>();
+  private List<PrincipalSource> sources;
 
   public static final String SERIALIZED_NAME_TAX = "tax";
   @SerializedName(SERIALIZED_NAME_TAX)
@@ -103,7 +103,7 @@ public class PrincipalView {
   public static final String SERIALIZED_NAME_WALLETS = "wallets";
   @SerializedName(SERIALIZED_NAME_WALLETS)
   @javax.annotation.Nullable
-  private List<PrincipalWalletBrief> wallets = new ArrayList<>();
+  private List<PrincipalWalletBrief> wallets;
 
   public PrincipalView() {
   }

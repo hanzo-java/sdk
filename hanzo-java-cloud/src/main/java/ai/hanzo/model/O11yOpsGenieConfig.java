@@ -91,7 +91,7 @@ public class O11yOpsGenieConfig {
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
   @javax.annotation.Nullable
-  private Map<String, String> details = new HashMap<>();
+  private Map<String, String> details;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -121,7 +121,7 @@ public class O11yOpsGenieConfig {
   public static final String SERIALIZED_NAME_RESPONDERS = "responders";
   @SerializedName(SERIALIZED_NAME_RESPONDERS)
   @javax.annotation.Nullable
-  private List<O11yOpsGenieConfigResponder> responders = new ArrayList<>();
+  private List<O11yOpsGenieConfigResponder> responders;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)

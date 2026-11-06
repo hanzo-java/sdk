@@ -105,7 +105,7 @@ public class ReferenceReferenceAnswer {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private Map<String, String> value = new HashMap<>();
+  private Map<String, String> value;
 
   public static final String SERIALIZED_NAME_VERDICT = "verdict";
   @SerializedName(SERIALIZED_NAME_VERDICT)

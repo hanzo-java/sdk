@@ -56,7 +56,7 @@ public class O11yO11yMetricAlerts {
   public static final String SERIALIZED_NAME_ALERTS = "alerts";
   @SerializedName(SERIALIZED_NAME_ALERTS)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricAlert> alerts = new ArrayList<>();
+  private List<O11yO11yMetricAlert> alerts;
 
   public O11yO11yMetricAlerts() {
   }

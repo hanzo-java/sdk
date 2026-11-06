@@ -65,7 +65,7 @@ public class O11yBuilderQuery {
   public static final String SERIALIZED_NAME_QUERIES_USED_IN_FORMULA = "QueriesUsedInFormula";
   @SerializedName(SERIALIZED_NAME_QUERIES_USED_IN_FORMULA)
   @javax.annotation.Nullable
-  private List<String> queriesUsedInFormula = new ArrayList<>();
+  private List<String> queriesUsedInFormula;
 
   public static final String SERIALIZED_NAME_SHIFT_BY = "ShiftBy";
   @SerializedName(SERIALIZED_NAME_SHIFT_BY)
@@ -105,17 +105,17 @@ public class O11yBuilderQuery {
   public static final String SERIALIZED_NAME_FUNCTIONS = "functions";
   @SerializedName(SERIALIZED_NAME_FUNCTIONS)
   @javax.annotation.Nullable
-  private List<O11yFunction> functions = new ArrayList<>();
+  private List<O11yFunction> functions;
 
   public static final String SERIALIZED_NAME_GROUP_BY = "groupBy";
   @SerializedName(SERIALIZED_NAME_GROUP_BY)
   @javax.annotation.Nullable
-  private List<O11yAttributeKey> groupBy = new ArrayList<>();
+  private List<O11yAttributeKey> groupBy;
 
   public static final String SERIALIZED_NAME_HAVING = "having";
   @SerializedName(SERIALIZED_NAME_HAVING)
   @javax.annotation.Nullable
-  private List<O11yHaving> having = new ArrayList<>();
+  private List<O11yHaving> having;
 
   public static final String SERIALIZED_NAME_LEGEND = "legend";
   @SerializedName(SERIALIZED_NAME_LEGEND)
@@ -135,7 +135,7 @@ public class O11yBuilderQuery {
   public static final String SERIALIZED_NAME_ORDER_BY = "orderBy";
   @SerializedName(SERIALIZED_NAME_ORDER_BY)
   @javax.annotation.Nullable
-  private List<O11yOrderBy> orderBy = new ArrayList<>();
+  private List<O11yOrderBy> orderBy;
 
   public static final String SERIALIZED_NAME_PAGE_SIZE = "pageSize";
   @SerializedName(SERIALIZED_NAME_PAGE_SIZE)
@@ -155,7 +155,7 @@ public class O11yBuilderQuery {
   public static final String SERIALIZED_NAME_SELECT_COLUMNS = "selectColumns";
   @SerializedName(SERIALIZED_NAME_SELECT_COLUMNS)
   @javax.annotation.Nullable
-  private List<O11yAttributeKey> selectColumns = new ArrayList<>();
+  private List<O11yAttributeKey> selectColumns;
 
   public static final String SERIALIZED_NAME_SERIES_AGGREGATION = "seriesAggregation";
   @SerializedName(SERIALIZED_NAME_SERIES_AGGREGATION)

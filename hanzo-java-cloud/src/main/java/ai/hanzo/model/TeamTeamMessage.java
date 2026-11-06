@@ -82,7 +82,7 @@ public class TeamTeamMessage {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private List<TeamTeamFile> files = new ArrayList<>();
+  private List<TeamTeamFile> files;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -97,12 +97,12 @@ public class TeamTeamMessage {
   public static final String SERIALIZED_NAME_MENTIONS = "mentions";
   @SerializedName(SERIALIZED_NAME_MENTIONS)
   @javax.annotation.Nullable
-  private List<String> mentions = new ArrayList<>();
+  private List<String> mentions;
 
   public static final String SERIALIZED_NAME_REACTIONS = "reactions";
   @SerializedName(SERIALIZED_NAME_REACTIONS)
   @javax.annotation.Nullable
-  private List<TeamTeamReaction> reactions = new ArrayList<>();
+  private List<TeamTeamReaction> reactions;
 
   public static final String SERIALIZED_NAME_REPLIES = "replies";
   @SerializedName(SERIALIZED_NAME_REPLIES)

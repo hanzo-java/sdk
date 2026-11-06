@@ -56,7 +56,7 @@ public class EvalTraceList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<EvalTraceView> data = new ArrayList<>();
+  private List<EvalTraceView> data;
 
   public EvalTraceList() {
   }

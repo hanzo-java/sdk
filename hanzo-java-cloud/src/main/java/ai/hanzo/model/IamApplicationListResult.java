@@ -56,7 +56,7 @@ public class IamApplicationListResult {
   public static final String SERIALIZED_NAME_APPLICATIONS = "applications";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS)
   @javax.annotation.Nullable
-  private List<IamApplication> applications = new ArrayList<>();
+  private List<IamApplication> applications;
 
   public IamApplicationListResult() {
   }

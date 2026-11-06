@@ -56,7 +56,7 @@ public class PricingPricingPlanList {
   public static final String SERIALIZED_NAME_PLANS = "plans";
   @SerializedName(SERIALIZED_NAME_PLANS)
   @javax.annotation.Nullable
-  private List<Map<String, Object>> plans = new ArrayList<>();
+  private List<Map<String, Object>> plans;
 
   public PricingPricingPlanList() {
   }

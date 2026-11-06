@@ -68,7 +68,7 @@ public class DestinationStatus {
   public static final String SERIALIZED_NAME_CONFIG = "config";
   @SerializedName(SERIALIZED_NAME_CONFIG)
   @javax.annotation.Nullable
-  private Map<String, String> config = new HashMap<>();
+  private Map<String, String> config;
 
   public static final String SERIALIZED_NAME_CONNECTED = "connected";
   @SerializedName(SERIALIZED_NAME_CONNECTED)
@@ -83,7 +83,7 @@ public class DestinationStatus {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<DestinationField> fields = new ArrayList<>();
+  private List<DestinationField> fields;
 
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
@@ -108,7 +108,7 @@ public class DestinationStatus {
   public static final String SERIALIZED_NAME_SECRETS = "secrets";
   @SerializedName(SERIALIZED_NAME_SECRETS)
   @javax.annotation.Nullable
-  private List<String> secrets = new ArrayList<>();
+  private List<String> secrets;
 
   public DestinationStatus() {
   }

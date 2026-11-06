@@ -86,7 +86,7 @@ public class O11yO11yFeature {
   public static final String SERIALIZED_NAME_VARIANTS = "variants";
   @SerializedName(SERIALIZED_NAME_VARIANTS)
   @javax.annotation.Nullable
-  private Map<String, Object> variants = new HashMap<>();
+  private Map<String, Object> variants;
 
   public O11yO11yFeature() {
   }

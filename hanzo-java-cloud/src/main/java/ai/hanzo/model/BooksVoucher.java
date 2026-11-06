@@ -61,7 +61,7 @@ public class BooksVoucher {
   public static final String SERIALIZED_NAME_LEGS = "legs";
   @SerializedName(SERIALIZED_NAME_LEGS)
   @javax.annotation.Nullable
-  private List<BooksLeg> legs = new ArrayList<>();
+  private List<BooksLeg> legs;
 
   public static final String SERIALIZED_NAME_POSTING_AT = "postingAt";
   @SerializedName(SERIALIZED_NAME_POSTING_AT)

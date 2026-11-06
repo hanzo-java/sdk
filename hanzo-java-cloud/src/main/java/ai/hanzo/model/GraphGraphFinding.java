@@ -55,12 +55,12 @@ public class GraphGraphFinding {
   public static final String SERIALIZED_NAME_ASSERTIONS = "assertions";
   @SerializedName(SERIALIZED_NAME_ASSERTIONS)
   @javax.annotation.Nullable
-  private List<String> assertions = new ArrayList<>();
+  private List<String> assertions;
 
   public static final String SERIALIZED_NAME_COMMUNITIES = "communities";
   @SerializedName(SERIALIZED_NAME_COMMUNITIES)
   @javax.annotation.Nullable
-  private List<Long> communities = new ArrayList<>();
+  private List<Long> communities;
 
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)

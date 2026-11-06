@@ -57,7 +57,7 @@ public class PlatformDriftBoard {
   public static final String SERIALIZED_NAME_APPS = "apps";
   @SerializedName(SERIALIZED_NAME_APPS)
   @javax.annotation.Nullable
-  private List<PlatformAppView> apps = new ArrayList<>();
+  private List<PlatformAppView> apps;
 
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)

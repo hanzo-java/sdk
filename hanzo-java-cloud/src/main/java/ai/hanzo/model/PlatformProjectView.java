@@ -86,7 +86,7 @@ public class PlatformProjectView {
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
   @javax.annotation.Nullable
-  private List<PlatformProjectApp> members = new ArrayList<>();
+  private List<PlatformProjectApp> members;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -96,7 +96,7 @@ public class PlatformProjectView {
   public static final String SERIALIZED_NAME_NAMESPACES = "namespaces";
   @SerializedName(SERIALIZED_NAME_NAMESPACES)
   @javax.annotation.Nullable
-  private List<String> namespaces = new ArrayList<>();
+  private List<String> namespaces;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
@@ -111,7 +111,7 @@ public class PlatformProjectView {
   public static final String SERIALIZED_NAME_UNREADABLE = "unreadable";
   @SerializedName(SERIALIZED_NAME_UNREADABLE)
   @javax.annotation.Nullable
-  private List<PlatformUnreadableFile> unreadable = new ArrayList<>();
+  private List<PlatformUnreadableFile> unreadable;
 
   public PlatformProjectView() {
   }

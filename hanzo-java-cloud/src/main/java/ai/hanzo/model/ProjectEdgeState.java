@@ -72,7 +72,7 @@ public class ProjectEdgeState {
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
   @javax.annotation.Nullable
-  private Map<String, String> policy = new HashMap<>();
+  private Map<String, String> policy;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -82,7 +82,7 @@ public class ProjectEdgeState {
   public static final String SERIALIZED_NAME_REACH = "reach";
   @SerializedName(SERIALIZED_NAME_REACH)
   @javax.annotation.Nullable
-  private List<String> reach = new ArrayList<>();
+  private List<String> reach;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

@@ -56,7 +56,7 @@ public class MarketplaceListingPage {
   public static final String SERIALIZED_NAME_LISTINGS = "listings";
   @SerializedName(SERIALIZED_NAME_LISTINGS)
   @javax.annotation.Nullable
-  private List<MarketplaceListing> listings = new ArrayList<>();
+  private List<MarketplaceListing> listings;
 
   public MarketplaceListingPage() {
   }

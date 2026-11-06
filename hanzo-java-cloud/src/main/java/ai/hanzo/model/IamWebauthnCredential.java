@@ -136,7 +136,7 @@ public class IamWebauthnCredential {
   public static final String SERIALIZED_NAME_TRANSPORT = "transport";
   @SerializedName(SERIALIZED_NAME_TRANSPORT)
   @javax.annotation.Nullable
-  private List<String> transport = new ArrayList<>();
+  private List<String> transport;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

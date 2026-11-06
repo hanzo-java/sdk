@@ -62,7 +62,7 @@ public class KnowledgeRetrieveOut {
   public static final String SERIALIZED_NAME_PASSAGES = "passages";
   @SerializedName(SERIALIZED_NAME_PASSAGES)
   @javax.annotation.Nullable
-  private List<KnowledgeCitedPassage> passages = new ArrayList<>();
+  private List<KnowledgeCitedPassage> passages;
 
   public static final String SERIALIZED_NAME_PICKED = "picked";
   @SerializedName(SERIALIZED_NAME_PICKED)
@@ -72,7 +72,7 @@ public class KnowledgeRetrieveOut {
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   @javax.annotation.Nullable
-  private List<KnowledgePickedSection> sections = new ArrayList<>();
+  private List<KnowledgePickedSection> sections;
 
   public KnowledgeRetrieveOut() {
   }

@@ -57,7 +57,7 @@ public class MarketingBetaInvites {
   public static final String SERIALIZED_NAME_INVITES = "invites";
   @SerializedName(SERIALIZED_NAME_INVITES)
   @javax.annotation.Nullable
-  private List<MarketingBetaInvite> invites = new ArrayList<>();
+  private List<MarketingBetaInvite> invites;
 
   public static final String SERIALIZED_NAME_LEFT = "left";
   @SerializedName(SERIALIZED_NAME_LEFT)
@@ -67,7 +67,7 @@ public class MarketingBetaInvites {
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
   @javax.annotation.Nullable
-  private List<MarketingBetaInviteSkip> skipped = new ArrayList<>();
+  private List<MarketingBetaInviteSkip> skipped;
 
   public MarketingBetaInvites() {
   }

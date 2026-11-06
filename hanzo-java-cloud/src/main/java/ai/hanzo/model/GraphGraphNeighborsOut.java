@@ -65,7 +65,7 @@ public class GraphGraphNeighborsOut {
   public static final String SERIALIZED_NAME_ENTITIES = "entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
   @javax.annotation.Nullable
-  private List<String> entities = new ArrayList<>();
+  private List<String> entities;
 
   public static final String SERIALIZED_NAME_TRUNCATED = "truncated";
   @SerializedName(SERIALIZED_NAME_TRUNCATED)

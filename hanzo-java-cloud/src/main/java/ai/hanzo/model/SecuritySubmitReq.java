@@ -56,7 +56,7 @@ public class SecuritySubmitReq {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nonnull
-  private List<SecurityScan> files = new ArrayList<>();
+  private List<SecurityScan> files;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)

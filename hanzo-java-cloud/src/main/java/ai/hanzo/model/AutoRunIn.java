@@ -71,7 +71,7 @@ public class AutoRunIn {
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   @javax.annotation.Nullable
-  private Map<String, Object> props = new HashMap<>();
+  private Map<String, Object> props;
 
   public AutoRunIn() {
   }

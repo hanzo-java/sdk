@@ -67,7 +67,7 @@ public class TaxVerdict {
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private List<TaxRule> rules = new ArrayList<>();
+  private List<TaxRule> rules;
 
   public TaxVerdict() {
   }

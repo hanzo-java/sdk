@@ -62,7 +62,7 @@ public class MarketingBetaInviteList {
   public static final String SERIALIZED_NAME_INVITES = "invites";
   @SerializedName(SERIALIZED_NAME_INVITES)
   @javax.annotation.Nullable
-  private List<MarketingBetaInviteRow> invites = new ArrayList<>();
+  private List<MarketingBetaInviteRow> invites;
 
   public MarketingBetaInviteList() {
   }

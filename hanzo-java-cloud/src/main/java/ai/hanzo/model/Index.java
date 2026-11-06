@@ -59,7 +59,7 @@ public class Index {
   public static final String SERIALIZED_NAME_LINKS = "_links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private Map<String, Link> links = new HashMap<>();
+  private Map<String, Link> links;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -74,7 +74,7 @@ public class Index {
   public static final String SERIALIZED_NAME_OPERATIONS = "operations";
   @SerializedName(SERIALIZED_NAME_OPERATIONS)
   @javax.annotation.Nullable
-  private List<Op> operations = new ArrayList<>();
+  private List<Op> operations;
 
   public static final String SERIALIZED_NAME_STAGE = "stage";
   @SerializedName(SERIALIZED_NAME_STAGE)

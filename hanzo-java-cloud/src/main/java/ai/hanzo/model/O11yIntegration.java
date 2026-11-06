@@ -71,12 +71,12 @@ public class O11yIntegration {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
   @javax.annotation.Nullable
-  private List<String> categories = new ArrayList<>();
+  private List<String> categories;
 
   public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
   @SerializedName(SERIALIZED_NAME_CONFIGURATION)
   @javax.annotation.Nullable
-  private List<O11yIntegrationConfigStep> _configuration = new ArrayList<>();
+  private List<O11yIntegrationConfigStep> _configuration;
 
   public static final String SERIALIZED_NAME_CONNECTION_TESTS = "connection_tests";
   @SerializedName(SERIALIZED_NAME_CONNECTION_TESTS)

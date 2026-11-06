@@ -64,12 +64,12 @@ public class LspAnswer {
   public static final String SERIALIZED_NAME_COMPLETIONS = "completions";
   @SerializedName(SERIALIZED_NAME_COMPLETIONS)
   @javax.annotation.Nullable
-  private List<LspCompletion> completions = new ArrayList<>();
+  private List<LspCompletion> completions;
 
   public static final String SERIALIZED_NAME_DIAGNOSTICS = "diagnostics";
   @SerializedName(SERIALIZED_NAME_DIAGNOSTICS)
   @javax.annotation.Nullable
-  private List<LspDiagnostic> diagnostics = new ArrayList<>();
+  private List<LspDiagnostic> diagnostics;
 
   public static final String SERIALIZED_NAME_HOVER = "hover";
   @SerializedName(SERIALIZED_NAME_HOVER)
@@ -84,7 +84,7 @@ public class LspAnswer {
   public static final String SERIALIZED_NAME_LOCATIONS = "locations";
   @SerializedName(SERIALIZED_NAME_LOCATIONS)
   @javax.annotation.Nullable
-  private List<LspLocation> locations = new ArrayList<>();
+  private List<LspLocation> locations;
 
   public static final String SERIALIZED_NAME_OP = "op";
   @SerializedName(SERIALIZED_NAME_OP)
@@ -109,7 +109,7 @@ public class LspAnswer {
   public static final String SERIALIZED_NAME_SYMBOLS = "symbols";
   @SerializedName(SERIALIZED_NAME_SYMBOLS)
   @javax.annotation.Nullable
-  private List<LspSymbol> symbols = new ArrayList<>();
+  private List<LspSymbol> symbols;
 
   public LspAnswer() {
   }

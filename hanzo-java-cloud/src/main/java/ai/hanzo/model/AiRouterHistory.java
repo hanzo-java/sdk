@@ -59,12 +59,12 @@ public class AiRouterHistory {
   public static final String SERIALIZED_NAME_DAILY = "daily";
   @SerializedName(SERIALIZED_NAME_DAILY)
   @javax.annotation.Nullable
-  private List<AiHistoryDay> daily = new ArrayList<>();
+  private List<AiHistoryDay> daily;
 
   public static final String SERIALIZED_NAME_RETRAINS = "retrains";
   @SerializedName(SERIALIZED_NAME_RETRAINS)
   @javax.annotation.Nullable
-  private List<AiHistoryRetrain> retrains = new ArrayList<>();
+  private List<AiHistoryRetrain> retrains;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)

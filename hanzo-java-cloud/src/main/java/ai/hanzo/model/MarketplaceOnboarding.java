@@ -61,7 +61,7 @@ public class MarketplaceOnboarding {
   public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
   @SerializedName(SERIALIZED_NAME_CREDENTIALS)
   @javax.annotation.Nullable
-  private List<MarketplaceStatement> credentials = new ArrayList<>();
+  private List<MarketplaceStatement> credentials;
 
   public static final String SERIALIZED_NAME_EARNINGS = "earnings";
   @SerializedName(SERIALIZED_NAME_EARNINGS)
@@ -81,7 +81,7 @@ public class MarketplaceOnboarding {
   public static final String SERIALIZED_NAME_MISSING = "missing";
   @SerializedName(SERIALIZED_NAME_MISSING)
   @javax.annotation.Nullable
-  private List<String> missing = new ArrayList<>();
+  private List<String> missing;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
@@ -101,7 +101,7 @@ public class MarketplaceOnboarding {
   public static final String SERIALIZED_NAME_RECEIVED = "received";
   @SerializedName(SERIALIZED_NAME_RECEIVED)
   @javax.annotation.Nullable
-  private List<MarketplaceReceived> received = new ArrayList<>();
+  private List<MarketplaceReceived> received;
 
   public static final String SERIALIZED_NAME_SANCTIONS = "sanctions";
   @SerializedName(SERIALIZED_NAME_SANCTIONS)
@@ -116,7 +116,7 @@ public class MarketplaceOnboarding {
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
   @javax.annotation.Nullable
-  private List<MarketplaceSource> sources = new ArrayList<>();
+  private List<MarketplaceSource> sources;
 
   public static final String SERIALIZED_NAME_TAX = "tax";
   @SerializedName(SERIALIZED_NAME_TAX)

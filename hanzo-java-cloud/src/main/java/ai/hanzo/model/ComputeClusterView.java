@@ -91,7 +91,7 @@ public class ComputeClusterView {
   public static final String SERIALIZED_NAME_NODE_POOLS = "nodePools";
   @SerializedName(SERIALIZED_NAME_NODE_POOLS)
   @javax.annotation.Nullable
-  private List<ComputeNodePoolView> nodePools = new ArrayList<>();
+  private List<ComputeNodePoolView> nodePools;
 
   public static final String SERIALIZED_NAME_NODE_SIZE = "nodeSize";
   @SerializedName(SERIALIZED_NAME_NODE_SIZE)

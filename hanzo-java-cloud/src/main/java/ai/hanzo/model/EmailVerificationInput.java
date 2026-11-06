@@ -55,7 +55,7 @@ public class EmailVerificationInput {
   public static final String SERIALIZED_NAME_CHECKS = "checks";
   @SerializedName(SERIALIZED_NAME_CHECKS)
   @javax.annotation.Nullable
-  private List<String> checks = new ArrayList<>();
+  private List<String> checks;
 
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)

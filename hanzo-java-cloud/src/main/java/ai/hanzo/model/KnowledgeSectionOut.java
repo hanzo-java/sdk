@@ -60,12 +60,12 @@ public class KnowledgeSectionOut {
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
   @javax.annotation.Nullable
-  private List<KnowledgeTocEntry> children = new ArrayList<>();
+  private List<KnowledgeTocEntry> children;
 
   public static final String SERIALIZED_NAME_ENTITIES = "entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
   @javax.annotation.Nullable
-  private List<KnowledgeFileEntity> entities = new ArrayList<>();
+  private List<KnowledgeFileEntity> entities;
 
   public static final String SERIALIZED_NAME_FILE = "file";
   @SerializedName(SERIALIZED_NAME_FILE)
@@ -75,7 +75,7 @@ public class KnowledgeSectionOut {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private List<KnowledgeSectionLink> links = new ArrayList<>();
+  private List<KnowledgeSectionLink> links;
 
   public static final String SERIALIZED_NAME_SECTION = "section";
   @SerializedName(SERIALIZED_NAME_SECTION)

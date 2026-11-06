@@ -62,7 +62,7 @@ public class RiskRiskScoreOut {
   public static final String SERIALIZED_NAME_CAUSES = "causes";
   @SerializedName(SERIALIZED_NAME_CAUSES)
   @javax.annotation.Nullable
-  private List<RiskRiskCause> causes = new ArrayList<>();
+  private List<RiskRiskCause> causes;
 
   public static final String SERIALIZED_NAME_CUT = "cut";
   @SerializedName(SERIALIZED_NAME_CUT)
@@ -102,7 +102,7 @@ public class RiskRiskScoreOut {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<RiskRiskValue> values = new ArrayList<>();
+  private List<RiskRiskValue> values;
 
   public RiskRiskScoreOut() {
   }

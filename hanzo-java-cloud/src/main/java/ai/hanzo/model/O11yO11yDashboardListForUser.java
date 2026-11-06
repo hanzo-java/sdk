@@ -57,12 +57,12 @@ public class O11yO11yDashboardListForUser {
   public static final String SERIALIZED_NAME_DASHBOARDS = "dashboards";
   @SerializedName(SERIALIZED_NAME_DASHBOARDS)
   @javax.annotation.Nullable
-  private List<O11yO11yDashboardListItemForUser> dashboards = new ArrayList<>();
+  private List<O11yO11yDashboardListItemForUser> dashboards;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<O11yO11yDashboardTag> tags = new ArrayList<>();
+  private List<O11yO11yDashboardTag> tags;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

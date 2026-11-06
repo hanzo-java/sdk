@@ -61,7 +61,7 @@ public class GuideProfileResponse {
   public static final String SERIALIZED_NAME_SIGNALS = "signals";
   @SerializedName(SERIALIZED_NAME_SIGNALS)
   @javax.annotation.Nullable
-  private Map<String, Boolean> signals = new HashMap<>();
+  private Map<String, Boolean> signals;
 
   public static final String SERIALIZED_NAME_STAGE = "stage";
   @SerializedName(SERIALIZED_NAME_STAGE)

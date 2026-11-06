@@ -66,7 +66,7 @@ public class GuideCorpusView {
   public static final String SERIALIZED_NAME_STRATEGIES = "strategies";
   @SerializedName(SERIALIZED_NAME_STRATEGIES)
   @javax.annotation.Nullable
-  private List<GuideStrategyView> strategies = new ArrayList<>();
+  private List<GuideStrategyView> strategies;
 
   public GuideCorpusView() {
   }

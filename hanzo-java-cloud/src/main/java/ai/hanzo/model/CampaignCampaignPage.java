@@ -56,7 +56,7 @@ public class CampaignCampaignPage {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<CampaignCampaignRecord> data = new ArrayList<>();
+  private List<CampaignCampaignRecord> data;
 
   public CampaignCampaignPage() {
   }

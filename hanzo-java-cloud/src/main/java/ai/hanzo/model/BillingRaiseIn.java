@@ -66,7 +66,7 @@ public class BillingRaiseIn {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<BillingInvoiceLine> lines = new ArrayList<>();
+  private List<BillingInvoiceLine> lines;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)

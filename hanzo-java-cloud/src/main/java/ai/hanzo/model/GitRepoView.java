@@ -56,7 +56,7 @@ public class GitRepoView {
   public static final String SERIALIZED_NAME_BRANCHES = "branches";
   @SerializedName(SERIALIZED_NAME_BRANCHES)
   @javax.annotation.Nullable
-  private List<String> branches = new ArrayList<>();
+  private List<String> branches;
 
   public static final String SERIALIZED_NAME_CLONE_URL = "cloneUrl";
   @SerializedName(SERIALIZED_NAME_CLONE_URL)

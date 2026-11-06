@@ -56,7 +56,7 @@ public class NetworkRouterList {
   public static final String SERIALIZED_NAME_ROUTERS = "routers";
   @SerializedName(SERIALIZED_NAME_ROUTERS)
   @javax.annotation.Nullable
-  private List<NetworkRouterView> routers = new ArrayList<>();
+  private List<NetworkRouterView> routers;
 
   public NetworkRouterList() {
   }

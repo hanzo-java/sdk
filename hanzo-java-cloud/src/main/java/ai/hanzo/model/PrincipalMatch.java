@@ -76,7 +76,7 @@ public class PrincipalMatch {
   public static final String SERIALIZED_NAME_HITS = "hits";
   @SerializedName(SERIALIZED_NAME_HITS)
   @javax.annotation.Nullable
-  private List<PrincipalHit> hits = new ArrayList<>();
+  private List<PrincipalHit> hits;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

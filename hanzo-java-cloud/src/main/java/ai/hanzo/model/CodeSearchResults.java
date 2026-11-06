@@ -71,7 +71,7 @@ public class CodeSearchResults {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private List<CodeSpan> results = new ArrayList<>();
+  private List<CodeSpan> results;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

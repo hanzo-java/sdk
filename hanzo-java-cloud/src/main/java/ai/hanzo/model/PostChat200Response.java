@@ -59,7 +59,7 @@ public class PostChat200Response {
   public static final String SERIALIZED_NAME_CHOICES = "choices";
   @SerializedName(SERIALIZED_NAME_CHOICES)
   @javax.annotation.Nullable
-  private List<OpenaiChatCompletionChoice> choices = new ArrayList<>();
+  private List<OpenaiChatCompletionChoice> choices;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -84,7 +84,7 @@ public class PostChat200Response {
   public static final String SERIALIZED_NAME_PROMPT_FILTER_RESULTS = "prompt_filter_results";
   @SerializedName(SERIALIZED_NAME_PROMPT_FILTER_RESULTS)
   @javax.annotation.Nullable
-  private List<OpenaiPromptFilterResult> promptFilterResults = new ArrayList<>();
+  private List<OpenaiPromptFilterResult> promptFilterResults;
 
   public static final String SERIALIZED_NAME_SYSTEM_FINGERPRINT = "system_fingerprint";
   @SerializedName(SERIALIZED_NAME_SYSTEM_FINGERPRINT)

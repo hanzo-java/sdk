@@ -65,7 +65,7 @@ public class O11ySlackConfig {
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
   @javax.annotation.Nullable
-  private List<O11ySlackAction> actions = new ArrayList<>();
+  private List<O11ySlackAction> actions;
 
   public static final String SERIALIZED_NAME_API_URL = "api_url";
   @SerializedName(SERIALIZED_NAME_API_URL)
@@ -115,7 +115,7 @@ public class O11ySlackConfig {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<O11ySlackField> fields = new ArrayList<>();
+  private List<O11ySlackField> fields;
 
   public static final String SERIALIZED_NAME_FOOTER = "footer";
   @SerializedName(SERIALIZED_NAME_FOOTER)
@@ -155,7 +155,7 @@ public class O11ySlackConfig {
   public static final String SERIALIZED_NAME_MRKDWN_IN = "mrkdwn_in";
   @SerializedName(SERIALIZED_NAME_MRKDWN_IN)
   @javax.annotation.Nullable
-  private List<String> mrkdwnIn = new ArrayList<>();
+  private List<String> mrkdwnIn;
 
   public static final String SERIALIZED_NAME_PRETEXT = "pretext";
   @SerializedName(SERIALIZED_NAME_PRETEXT)

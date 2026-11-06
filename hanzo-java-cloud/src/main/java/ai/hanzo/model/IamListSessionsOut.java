@@ -56,7 +56,7 @@ public class IamListSessionsOut {
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private List<IamSession> sessions = new ArrayList<>();
+  private List<IamSession> sessions;
 
   public IamListSessionsOut() {
   }

@@ -56,7 +56,7 @@ public class ToolAuthoredSkillList {
   public static final String SERIALIZED_NAME_SKILLS = "skills";
   @SerializedName(SERIALIZED_NAME_SKILLS)
   @javax.annotation.Nullable
-  private List<ToolSkill> skills = new ArrayList<>();
+  private List<ToolSkill> skills;
 
   public ToolAuthoredSkillList() {
   }

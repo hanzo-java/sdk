@@ -56,7 +56,7 @@ public class DataroomDataroomDocuments {
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
   @javax.annotation.Nullable
-  private List<DataroomDataroomDocument> documents = new ArrayList<>();
+  private List<DataroomDataroomDocument> documents;
 
   public DataroomDataroomDocuments() {
   }

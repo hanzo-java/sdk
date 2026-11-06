@@ -71,7 +71,7 @@ public class ProviderOpView {
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   @javax.annotation.Nullable
-  private List<ProviderPropSpec> props = new ArrayList<>();
+  private List<ProviderPropSpec> props;
 
   public ProviderOpView() {
   }

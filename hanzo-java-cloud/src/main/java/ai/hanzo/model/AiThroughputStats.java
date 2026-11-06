@@ -55,7 +55,7 @@ public class AiThroughputStats {
   public static final String SERIALIZED_NAME_PER_HOUR = "per_hour";
   @SerializedName(SERIALIZED_NAME_PER_HOUR)
   @javax.annotation.Nullable
-  private List<Integer> perHour = new ArrayList<>();
+  private List<Integer> perHour;
 
   public static final String SERIALIZED_NAME_TOTAL_WINDOW = "total_window";
   @SerializedName(SERIALIZED_NAME_TOTAL_WINDOW)

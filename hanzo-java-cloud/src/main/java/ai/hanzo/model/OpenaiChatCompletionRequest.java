@@ -74,12 +74,12 @@ public class OpenaiChatCompletionRequest {
   public static final String SERIALIZED_NAME_FUNCTIONS = "functions";
   @SerializedName(SERIALIZED_NAME_FUNCTIONS)
   @javax.annotation.Nullable
-  private List<OpenaiFunctionDefinition> functions = new ArrayList<>();
+  private List<OpenaiFunctionDefinition> functions;
 
   public static final String SERIALIZED_NAME_LOGIT_BIAS = "logit_bias";
   @SerializedName(SERIALIZED_NAME_LOGIT_BIAS)
   @javax.annotation.Nullable
-  private Map<String, Integer> logitBias = new HashMap<>();
+  private Map<String, Integer> logitBias;
 
   public static final String SERIALIZED_NAME_LOGPROBS = "logprobs";
   @SerializedName(SERIALIZED_NAME_LOGPROBS)
@@ -99,12 +99,12 @@ public class OpenaiChatCompletionRequest {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private List<OpenaiChatCompletionMessage> messages = new ArrayList<>();
+  private List<OpenaiChatCompletionMessage> messages;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
   @javax.annotation.Nullable
-  private Map<String, String> metadata = new HashMap<>();
+  private Map<String, String> metadata;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -144,7 +144,7 @@ public class OpenaiChatCompletionRequest {
   public static final String SERIALIZED_NAME_STOP = "stop";
   @SerializedName(SERIALIZED_NAME_STOP)
   @javax.annotation.Nullable
-  private List<String> stop = new ArrayList<>();
+  private List<String> stop;
 
   public static final String SERIALIZED_NAME_STORE = "store";
   @SerializedName(SERIALIZED_NAME_STORE)
@@ -174,7 +174,7 @@ public class OpenaiChatCompletionRequest {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<OpenaiTool> tools = new ArrayList<>();
+  private List<OpenaiTool> tools;
 
   public static final String SERIALIZED_NAME_TOP_LOGPROBS = "top_logprobs";
   @SerializedName(SERIALIZED_NAME_TOP_LOGPROBS)

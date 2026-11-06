@@ -100,7 +100,7 @@ public class AgentAgentView {
   public static final String SERIALIZED_NAME_LINEAGE = "lineage";
   @SerializedName(SERIALIZED_NAME_LINEAGE)
   @javax.annotation.Nullable
-  private List<String> lineage = new ArrayList<>();
+  private List<String> lineage;
 
   public static final String SERIALIZED_NAME_MAX_TASK_MICRO_USD = "max_task_micro_usd";
   @SerializedName(SERIALIZED_NAME_MAX_TASK_MICRO_USD)
@@ -150,7 +150,7 @@ public class AgentAgentView {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private List<String> tools = new ArrayList<>();
+  private List<String> tools;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)

@@ -55,7 +55,7 @@ public class PlanPlanTierList {
   public static final String SERIALIZED_NAME_TIERS = "tiers";
   @SerializedName(SERIALIZED_NAME_TIERS)
   @javax.annotation.Nullable
-  private List<Object> tiers = new ArrayList<>();
+  private List<Object> tiers;
 
   public PlanPlanTierList() {
   }

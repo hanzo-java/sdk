@@ -62,7 +62,7 @@ public class O11yO11yAggregation {
   public static final String SERIALIZED_NAME_ANOMALY_SCORES = "anomalyScores";
   @SerializedName(SERIALIZED_NAME_ANOMALY_SCORES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricSeries> anomalyScores = new ArrayList<>();
+  private List<O11yO11yMetricSeries> anomalyScores;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
@@ -72,7 +72,7 @@ public class O11yO11yAggregation {
   public static final String SERIALIZED_NAME_LOWER_BOUND_SERIES = "lowerBoundSeries";
   @SerializedName(SERIALIZED_NAME_LOWER_BOUND_SERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricSeries> lowerBoundSeries = new ArrayList<>();
+  private List<O11yO11yMetricSeries> lowerBoundSeries;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -82,17 +82,17 @@ public class O11yO11yAggregation {
   public static final String SERIALIZED_NAME_PREDICTED_SERIES = "predictedSeries";
   @SerializedName(SERIALIZED_NAME_PREDICTED_SERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricSeries> predictedSeries = new ArrayList<>();
+  private List<O11yO11yMetricSeries> predictedSeries;
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricSeries> series = new ArrayList<>();
+  private List<O11yO11yMetricSeries> series;
 
   public static final String SERIALIZED_NAME_UPPER_BOUND_SERIES = "upperBoundSeries";
   @SerializedName(SERIALIZED_NAME_UPPER_BOUND_SERIES)
   @javax.annotation.Nullable
-  private List<O11yO11yMetricSeries> upperBoundSeries = new ArrayList<>();
+  private List<O11yO11yMetricSeries> upperBoundSeries;
 
   public O11yO11yAggregation() {
   }

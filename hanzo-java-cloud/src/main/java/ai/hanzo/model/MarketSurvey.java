@@ -57,7 +57,7 @@ public class MarketSurvey {
   public static final String SERIALIZED_NAME_CARRIES = "carries";
   @SerializedName(SERIALIZED_NAME_CARRIES)
   @javax.annotation.Nullable
-  private List<MarketPrecompile> carries = new ArrayList<>();
+  private List<MarketPrecompile> carries;
 
   public static final String SERIALIZED_NAME_CHAIN = "chain";
   @SerializedName(SERIALIZED_NAME_CHAIN)

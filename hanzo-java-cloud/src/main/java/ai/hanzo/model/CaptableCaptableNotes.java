@@ -56,7 +56,7 @@ public class CaptableCaptableNotes {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<CaptableCaptableNote> data = new ArrayList<>();
+  private List<CaptableCaptableNote> data;
 
   public CaptableCaptableNotes() {
   }

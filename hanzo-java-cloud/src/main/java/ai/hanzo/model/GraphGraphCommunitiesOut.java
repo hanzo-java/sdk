@@ -76,7 +76,7 @@ public class GraphGraphCommunitiesOut {
   public static final String SERIALIZED_NAME_COMMUNITIES = "communities";
   @SerializedName(SERIALIZED_NAME_COMMUNITIES)
   @javax.annotation.Nullable
-  private List<GraphGraphCommunity> communities = new ArrayList<>();
+  private List<GraphGraphCommunity> communities;
 
   public static final String SERIALIZED_NAME_EDGES = "edges";
   @SerializedName(SERIALIZED_NAME_EDGES)

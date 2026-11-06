@@ -65,7 +65,7 @@ public class LicensingVerifyResponse {
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
   @javax.annotation.Nullable
-  private List<String> features = new ArrayList<>();
+  private List<String> features;
 
   public static final String SERIALIZED_NAME_FINGERPRINT_BOUND = "fingerprint_bound";
   @SerializedName(SERIALIZED_NAME_FINGERPRINT_BOUND)

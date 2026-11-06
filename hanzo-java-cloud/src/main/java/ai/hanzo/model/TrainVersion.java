@@ -76,7 +76,7 @@ public class TrainVersion {
   public static final String SERIALIZED_NAME_CORRECTIONS = "corrections";
   @SerializedName(SERIALIZED_NAME_CORRECTIONS)
   @javax.annotation.Nullable
-  private List<String> corrections = new ArrayList<>();
+  private List<String> corrections;
 
   public static final String SERIALIZED_NAME_EVALUATION = "evaluation";
   @SerializedName(SERIALIZED_NAME_EVALUATION)
@@ -96,7 +96,7 @@ public class TrainVersion {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private List<String> questions = new ArrayList<>();
+  private List<String> questions;
 
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)

@@ -72,7 +72,7 @@ public class OpenaiLogProb {
   public static final String SERIALIZED_NAME_TOP_LOGPROBS = "top_logprobs";
   @SerializedName(SERIALIZED_NAME_TOP_LOGPROBS)
   @javax.annotation.Nullable
-  private List<OpenaiTopLogProbs> topLogprobs = new ArrayList<>();
+  private List<OpenaiTopLogProbs> topLogprobs;
 
   public OpenaiLogProb() {
   }

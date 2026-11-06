@@ -105,7 +105,7 @@ public class GitActivityRepo {
   public static final String SERIALIZED_NAME_MONTHS = "months";
   @SerializedName(SERIALIZED_NAME_MONTHS)
   @javax.annotation.Nullable
-  private List<Long> months = new ArrayList<>();
+  private List<Long> months;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)

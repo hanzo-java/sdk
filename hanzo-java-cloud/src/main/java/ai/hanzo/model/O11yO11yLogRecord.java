@@ -55,22 +55,22 @@ public class O11yO11yLogRecord {
   public static final String SERIALIZED_NAME_ATTRIBUTES_BOOL = "attributes_bool";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_BOOL)
   @javax.annotation.Nullable
-  private Map<String, Boolean> attributesBool = new HashMap<>();
+  private Map<String, Boolean> attributesBool;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES_FLOAT = "attributes_float";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_FLOAT)
   @javax.annotation.Nullable
-  private Map<String, Double> attributesFloat = new HashMap<>();
+  private Map<String, Double> attributesFloat;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES_INT = "attributes_int";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_INT)
   @javax.annotation.Nullable
-  private Map<String, Long> attributesInt = new HashMap<>();
+  private Map<String, Long> attributesInt;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES_STRING = "attributes_string";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_STRING)
   @javax.annotation.Nullable
-  private Map<String, String> attributesString = new HashMap<>();
+  private Map<String, String> attributesString;
 
   public static final String SERIALIZED_NAME_BODY = "body";
   @SerializedName(SERIALIZED_NAME_BODY)
@@ -85,7 +85,7 @@ public class O11yO11yLogRecord {
   public static final String SERIALIZED_NAME_RESOURCES_STRING = "resources_string";
   @SerializedName(SERIALIZED_NAME_RESOURCES_STRING)
   @javax.annotation.Nullable
-  private Map<String, String> resourcesString = new HashMap<>();
+  private Map<String, String> resourcesString;
 
   public static final String SERIALIZED_NAME_SEVERITY_NUMBER = "severity_number";
   @SerializedName(SERIALIZED_NAME_SEVERITY_NUMBER)

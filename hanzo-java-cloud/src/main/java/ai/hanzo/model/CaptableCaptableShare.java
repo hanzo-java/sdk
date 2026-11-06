@@ -65,7 +65,7 @@ public class CaptableCaptableShare {
   public static final String SERIALIZED_NAME_COMPANY_LEGENDS = "companyLegends";
   @SerializedName(SERIALIZED_NAME_COMPANY_LEGENDS)
   @javax.annotation.Nullable
-  private List<String> companyLegends = new ArrayList<>();
+  private List<String> companyLegends;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

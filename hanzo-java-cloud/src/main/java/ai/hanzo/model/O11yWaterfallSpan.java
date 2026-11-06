@@ -59,7 +59,7 @@ public class O11yWaterfallSpan {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   @javax.annotation.Nullable
-  private Map<String, Object> attributes = new HashMap<>();
+  private Map<String, Object> attributes;
 
   public static final String SERIALIZED_NAME_DB_NAME = "db_name";
   @SerializedName(SERIALIZED_NAME_DB_NAME)
@@ -79,7 +79,7 @@ public class O11yWaterfallSpan {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private List<O11yEvent> events = new ArrayList<>();
+  private List<O11yEvent> events;
 
   public static final String SERIALIZED_NAME_EXTERNAL_HTTP_METHOD = "external_http_method";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_HTTP_METHOD)
@@ -149,12 +149,12 @@ public class O11yWaterfallSpan {
   public static final String SERIALIZED_NAME_REFERENCES = "references";
   @SerializedName(SERIALIZED_NAME_REFERENCES)
   @javax.annotation.Nullable
-  private List<O11yOtelSpanRef> references = new ArrayList<>();
+  private List<O11yOtelSpanRef> references;
 
   public static final String SERIALIZED_NAME_RESOURCE = "resource";
   @SerializedName(SERIALIZED_NAME_RESOURCE)
   @javax.annotation.Nullable
-  private Map<String, String> resource = new HashMap<>();
+  private Map<String, String> resource;
 
   public static final String SERIALIZED_NAME_RESPONSE_STATUS_CODE = "response_status_code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_STATUS_CODE)

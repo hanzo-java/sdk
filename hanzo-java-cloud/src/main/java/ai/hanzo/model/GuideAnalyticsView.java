@@ -61,7 +61,7 @@ public class GuideAnalyticsView {
   public static final String SERIALIZED_NAME_RECOMMENDATIONS = "recommendations";
   @SerializedName(SERIALIZED_NAME_RECOMMENDATIONS)
   @javax.annotation.Nullable
-  private List<String> recommendations = new ArrayList<>();
+  private List<String> recommendations;
 
   public GuideAnalyticsView() {
   }

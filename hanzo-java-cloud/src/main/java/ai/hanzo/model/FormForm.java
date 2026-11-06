@@ -64,12 +64,12 @@ public class FormForm {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   @javax.annotation.Nullable
-  private List<FormField> fields = new ArrayList<>();
+  private List<FormField> fields;
 
   public static final String SERIALIZED_NAME_HIDDEN = "hidden";
   @SerializedName(SERIALIZED_NAME_HIDDEN)
   @javax.annotation.Nullable
-  private List<String> hidden = new ArrayList<>();
+  private List<String> hidden;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -104,7 +104,7 @@ public class FormForm {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_THANKS = "thanks";
   @SerializedName(SERIALIZED_NAME_THANKS)

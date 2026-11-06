@@ -56,7 +56,7 @@ public class ComputeGpuList {
   public static final String SERIALIZED_NAME_GPUS = "gpus";
   @SerializedName(SERIALIZED_NAME_GPUS)
   @javax.annotation.Nullable
-  private List<ComputeGpuView> gpus = new ArrayList<>();
+  private List<ComputeGpuView> gpus;
 
   public ComputeGpuList() {
   }

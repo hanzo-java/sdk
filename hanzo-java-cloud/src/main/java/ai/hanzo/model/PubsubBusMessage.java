@@ -61,7 +61,7 @@ public class PubsubBusMessage {
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   @javax.annotation.Nullable
-  private Map<String, List<String>> headers = new HashMap<>();
+  private Map<String, List<String>> headers;
 
   public static final String SERIALIZED_NAME_SEQ = "seq";
   @SerializedName(SERIALIZED_NAME_SEQ)

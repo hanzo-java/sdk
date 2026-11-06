@@ -56,7 +56,7 @@ public class ToolMcpCatalog {
   public static final String SERIALIZED_NAME_CATALOG = "catalog";
   @SerializedName(SERIALIZED_NAME_CATALOG)
   @javax.annotation.Nullable
-  private List<ToolMCPListing> catalog = new ArrayList<>();
+  private List<ToolMCPListing> catalog;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)

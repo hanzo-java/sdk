@@ -57,7 +57,7 @@ public class SecurityScanDetail {
   public static final String SERIALIZED_NAME_FINDINGS = "findings";
   @SerializedName(SERIALIZED_NAME_FINDINGS)
   @javax.annotation.Nullable
-  private List<SecurityFindingView> findings = new ArrayList<>();
+  private List<SecurityFindingView> findings;
 
   public static final String SERIALIZED_NAME_SCAN = "scan";
   @SerializedName(SERIALIZED_NAME_SCAN)

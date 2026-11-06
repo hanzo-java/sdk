@@ -56,7 +56,7 @@ public class SpaceSpaceList {
   public static final String SERIALIZED_NAME_SPACES = "spaces";
   @SerializedName(SERIALIZED_NAME_SPACES)
   @javax.annotation.Nullable
-  private List<SpaceSpaceItem> spaces = new ArrayList<>();
+  private List<SpaceSpaceItem> spaces;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

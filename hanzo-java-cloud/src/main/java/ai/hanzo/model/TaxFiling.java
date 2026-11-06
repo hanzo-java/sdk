@@ -66,7 +66,7 @@ public class TaxFiling {
   public static final String SERIALIZED_NAME_FORMS = "forms";
   @SerializedName(SERIALIZED_NAME_FORMS)
   @javax.annotation.Nullable
-  private List<String> forms = new ArrayList<>();
+  private List<String> forms;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -86,12 +86,12 @@ public class TaxFiling {
   public static final String SERIALIZED_NAME_MISSING_TIN = "missingTin";
   @SerializedName(SERIALIZED_NAME_MISSING_TIN)
   @javax.annotation.Nullable
-  private List<String> missingTin = new ArrayList<>();
+  private List<String> missingTin;
 
   public static final String SERIALIZED_NAME_PARTS = "parts";
   @SerializedName(SERIALIZED_NAME_PARTS)
   @javax.annotation.Nullable
-  private List<TaxPart> parts = new ArrayList<>();
+  private List<TaxPart> parts;
 
   public static final String SERIALIZED_NAME_RECEIPT_ID = "receiptId";
   @SerializedName(SERIALIZED_NAME_RECEIPT_ID)
@@ -106,7 +106,7 @@ public class TaxFiling {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private List<String> steps = new ArrayList<>();
+  private List<String> steps;
 
   public static final String SERIALIZED_NAME_TCC = "tcc";
   @SerializedName(SERIALIZED_NAME_TCC)

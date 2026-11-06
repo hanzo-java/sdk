@@ -56,7 +56,7 @@ public class ToolPluginMountList {
   public static final String SERIALIZED_NAME_PLUGINS = "plugins";
   @SerializedName(SERIALIZED_NAME_PLUGINS)
   @javax.annotation.Nullable
-  private List<ToolPluginMount> plugins = new ArrayList<>();
+  private List<ToolPluginMount> plugins;
 
   public ToolPluginMountList() {
   }

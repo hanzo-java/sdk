@@ -61,7 +61,7 @@ public class LegalSignRequest {
   public static final String SERIALIZED_NAME_SIGNERS = "signers";
   @SerializedName(SERIALIZED_NAME_SIGNERS)
   @javax.annotation.Nullable
-  private List<LegalLegalSigner> signers = new ArrayList<>();
+  private List<LegalLegalSigner> signers;
 
   public LegalSignRequest() {
   }

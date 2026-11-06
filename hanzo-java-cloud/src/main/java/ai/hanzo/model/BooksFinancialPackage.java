@@ -74,7 +74,7 @@ public class BooksFinancialPackage {
   public static final String SERIALIZED_NAME_GL = "gl";
   @SerializedName(SERIALIZED_NAME_GL)
   @javax.annotation.Nullable
-  private List<BooksGLRow> gl = new ArrayList<>();
+  private List<BooksGLRow> gl;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)

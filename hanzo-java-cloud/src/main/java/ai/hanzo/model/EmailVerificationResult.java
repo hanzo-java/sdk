@@ -67,7 +67,7 @@ public class EmailVerificationResult {
   public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   @javax.annotation.Nullable
-  private List<EmailSuggestion> suggestions = new ArrayList<>();
+  private List<EmailSuggestion> suggestions;
 
   public EmailVerificationResult() {
   }

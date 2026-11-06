@@ -56,7 +56,7 @@ public class SpaceDriveList {
   public static final String SERIALIZED_NAME_DRIVES = "drives";
   @SerializedName(SERIALIZED_NAME_DRIVES)
   @javax.annotation.Nullable
-  private List<SpaceDriveItem> drives = new ArrayList<>();
+  private List<SpaceDriveItem> drives;
 
   public static final String SERIALIZED_NAME_SPACE = "space";
   @SerializedName(SERIALIZED_NAME_SPACE)

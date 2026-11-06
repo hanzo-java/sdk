@@ -55,7 +55,7 @@ public class TrainClientList {
   public static final String SERIALIZED_NAME_CLIENTS = "clients";
   @SerializedName(SERIALIZED_NAME_CLIENTS)
   @javax.annotation.Nullable
-  private List<Object> clients = new ArrayList<>();
+  private List<Object> clients;
 
   public TrainClientList() {
   }

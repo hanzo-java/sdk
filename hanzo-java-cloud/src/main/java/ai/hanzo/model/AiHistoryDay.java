@@ -56,7 +56,7 @@ public class AiHistoryDay {
   public static final String SERIALIZED_NAME_BY_TASK = "by_task";
   @SerializedName(SERIALIZED_NAME_BY_TASK)
   @javax.annotation.Nullable
-  private Map<String, Integer> byTask = new HashMap<>();
+  private Map<String, Integer> byTask;
 
   public static final String SERIALIZED_NAME_COST_SAVED_INDEX = "cost_saved_index";
   @SerializedName(SERIALIZED_NAME_COST_SAVED_INDEX)

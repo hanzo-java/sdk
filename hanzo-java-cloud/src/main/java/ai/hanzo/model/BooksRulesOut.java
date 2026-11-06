@@ -56,7 +56,7 @@ public class BooksRulesOut {
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private List<BooksRule> rules = new ArrayList<>();
+  private List<BooksRule> rules;
 
   public BooksRulesOut() {
   }

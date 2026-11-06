@@ -58,17 +58,17 @@ public class LeaderboardBountyBoard {
   public static final String SERIALIZED_NAME_HUNTERS = "hunters";
   @SerializedName(SERIALIZED_NAME_HUNTERS)
   @javax.annotation.Nullable
-  private List<LeaderboardBountyHunter> hunters = new ArrayList<>();
+  private List<LeaderboardBountyHunter> hunters;
 
   public static final String SERIALIZED_NAME_RECENT_AWARDS = "recentAwards";
   @SerializedName(SERIALIZED_NAME_RECENT_AWARDS)
   @javax.annotation.Nullable
-  private List<LeaderboardBountyAwardView> recentAwards = new ArrayList<>();
+  private List<LeaderboardBountyAwardView> recentAwards;
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private List<LeaderboardBountyRule> rules = new ArrayList<>();
+  private List<LeaderboardBountyRule> rules;
 
   public static final String SERIALIZED_NAME_SELF = "self";
   @SerializedName(SERIALIZED_NAME_SELF)

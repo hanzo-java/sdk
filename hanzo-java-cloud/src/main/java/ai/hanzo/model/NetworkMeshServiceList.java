@@ -56,7 +56,7 @@ public class NetworkMeshServiceList {
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private List<NetworkMeshView> services = new ArrayList<>();
+  private List<NetworkMeshView> services;
 
   public NetworkMeshServiceList() {
   }

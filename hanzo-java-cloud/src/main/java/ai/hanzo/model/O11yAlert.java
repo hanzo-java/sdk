@@ -56,7 +56,7 @@ public class O11yAlert {
   public static final String SERIALIZED_NAME_ANNOTATIONS = "annotations";
   @SerializedName(SERIALIZED_NAME_ANNOTATIONS)
   @javax.annotation.Nullable
-  private Map<String, String> annotations = new HashMap<>();
+  private Map<String, String> annotations;
 
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
@@ -71,7 +71,7 @@ public class O11yAlert {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private Map<String, String> labels;
 
   public static final String SERIALIZED_NAME_STARTS_AT = "startsAt";
   @SerializedName(SERIALIZED_NAME_STARTS_AT)

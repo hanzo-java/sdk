@@ -56,7 +56,7 @@ public class Template {
   public static final String SERIALIZED_NAME_BASIC_CONFIG_OPTIONS = "basicConfigOptions";
   @SerializedName(SERIALIZED_NAME_BASIC_CONFIG_OPTIONS)
   @javax.annotation.Nullable
-  private List<TemplateConfigOption> basicConfigOptions = new ArrayList<>();
+  private List<TemplateConfigOption> basicConfigOptions;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)

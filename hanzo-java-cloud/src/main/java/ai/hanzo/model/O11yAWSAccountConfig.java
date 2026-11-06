@@ -55,7 +55,7 @@ public class O11yAWSAccountConfig {
   public static final String SERIALIZED_NAME_REGIONS = "regions";
   @SerializedName(SERIALIZED_NAME_REGIONS)
   @javax.annotation.Nullable
-  private List<String> regions = new ArrayList<>();
+  private List<String> regions;
 
   public O11yAWSAccountConfig() {
   }

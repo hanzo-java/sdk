@@ -57,12 +57,12 @@ public class O11yO11yLogPipelinePreviewIn {
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
   @javax.annotation.Nullable
-  private List<O11yO11yLogRecord> logs = new ArrayList<>();
+  private List<O11yO11yLogRecord> logs;
 
   public static final String SERIALIZED_NAME_PIPELINES = "pipelines";
   @SerializedName(SERIALIZED_NAME_PIPELINES)
   @javax.annotation.Nullable
-  private List<O11yO11yLogPipeline> pipelines = new ArrayList<>();
+  private List<O11yO11yLogPipeline> pipelines;
 
   public O11yO11yLogPipelinePreviewIn() {
   }

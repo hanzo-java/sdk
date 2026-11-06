@@ -66,7 +66,7 @@ public class BooksTrialBalance {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private List<BooksTrialBalanceRow> rows = new ArrayList<>();
+  private List<BooksTrialBalanceRow> rows;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)

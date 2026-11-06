@@ -56,7 +56,7 @@ public class AiModel {
   public static final String SERIALIZED_NAME_CAPABILITIES = "capabilities";
   @SerializedName(SERIALIZED_NAME_CAPABILITIES)
   @javax.annotation.Nullable
-  private List<String> capabilities = new ArrayList<>();
+  private List<String> capabilities;
 
   public static final String SERIALIZED_NAME_PROPERTY_CLASS = "class";
   @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
@@ -91,7 +91,7 @@ public class AiModel {
   public static final String SERIALIZED_NAME_INPUTS = "inputs";
   @SerializedName(SERIALIZED_NAME_INPUTS)
   @javax.annotation.Nullable
-  private List<String> inputs = new ArrayList<>();
+  private List<String> inputs;
 
   public static final String SERIALIZED_NAME_MAX_OUTPUT_TOKENS = "max_output_tokens";
   @SerializedName(SERIALIZED_NAME_MAX_OUTPUT_TOKENS)
@@ -106,7 +106,7 @@ public class AiModel {
   public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
   @SerializedName(SERIALIZED_NAME_OUTPUTS)
   @javax.annotation.Nullable
-  private List<String> outputs = new ArrayList<>();
+  private List<String> outputs;
 
   public static final String SERIALIZED_NAME_PRICING = "pricing";
   @SerializedName(SERIALIZED_NAME_PRICING)

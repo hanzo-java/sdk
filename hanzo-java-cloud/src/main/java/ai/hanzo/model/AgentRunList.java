@@ -56,7 +56,7 @@ public class AgentRunList {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
   @javax.annotation.Nullable
-  private List<AgentAgentRunView> runs = new ArrayList<>();
+  private List<AgentAgentRunView> runs;
 
   public AgentRunList() {
   }

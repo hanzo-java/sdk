@@ -92,7 +92,7 @@ public class ComputeClusterDetailView {
   public static final String SERIALIZED_NAME_NODE_POOLS = "nodePools";
   @SerializedName(SERIALIZED_NAME_NODE_POOLS)
   @javax.annotation.Nullable
-  private List<ComputeNodePoolView> nodePools = new ArrayList<>();
+  private List<ComputeNodePoolView> nodePools;
 
   public static final String SERIALIZED_NAME_NODE_SIZE = "nodeSize";
   @SerializedName(SERIALIZED_NAME_NODE_SIZE)
@@ -102,7 +102,7 @@ public class ComputeClusterDetailView {
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
   @javax.annotation.Nullable
-  private List<ComputeMachineView> nodes = new ArrayList<>();
+  private List<ComputeMachineView> nodes;
 
   public static final String SERIALIZED_NAME_NVIDIA_GPU = "nvidiaGpu";
   @SerializedName(SERIALIZED_NAME_NVIDIA_GPU)

@@ -61,7 +61,7 @@ public class O11yStatusResult {
   public static final String SERIALIZED_NAME_DEPLOYMENTS = "deployments";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENTS)
   @javax.annotation.Nullable
-  private List<O11yDeployment> deployments = new ArrayList<>();
+  private List<O11yDeployment> deployments;
 
   public static final String SERIALIZED_NAME_LATENCY_MS = "latencyMs";
   @SerializedName(SERIALIZED_NAME_LATENCY_MS)

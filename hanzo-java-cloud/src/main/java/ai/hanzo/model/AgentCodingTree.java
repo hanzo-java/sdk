@@ -56,7 +56,7 @@ public class AgentCodingTree {
   public static final String SERIALIZED_NAME_ENTRIES = "entries";
   @SerializedName(SERIALIZED_NAME_ENTRIES)
   @javax.annotation.Nullable
-  private List<AgentCodingEntry> entries = new ArrayList<>();
+  private List<AgentCodingEntry> entries;
 
   public static final String SERIALIZED_NAME_REF = "ref";
   @SerializedName(SERIALIZED_NAME_REF)

@@ -61,7 +61,7 @@ public class O11yO11yDashboardPatchIn {
   public static final String SERIALIZED_NAME_OPS = "ops";
   @SerializedName(SERIALIZED_NAME_OPS)
   @javax.annotation.Nullable
-  private List<O11yO11yDashboardPatchOp> ops = new ArrayList<>();
+  private List<O11yO11yDashboardPatchOp> ops;
 
   public O11yO11yDashboardPatchIn() {
   }

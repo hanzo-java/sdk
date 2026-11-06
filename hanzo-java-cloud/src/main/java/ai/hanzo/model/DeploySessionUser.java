@@ -55,7 +55,7 @@ public class DeploySessionUser {
   public static final String SERIALIZED_NAME_GROUPS = "groups";
   @SerializedName(SERIALIZED_NAME_GROUPS)
   @javax.annotation.Nullable
-  private List<String> groups = new ArrayList<>();
+  private List<String> groups;
 
   public static final String SERIALIZED_NAME_ISS = "iss";
   @SerializedName(SERIALIZED_NAME_ISS)

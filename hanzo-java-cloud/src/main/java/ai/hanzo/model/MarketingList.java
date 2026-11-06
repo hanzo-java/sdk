@@ -60,7 +60,7 @@ public class MarketingList {
   public static final String SERIALIZED_NAME_COUNTS = "counts";
   @SerializedName(SERIALIZED_NAME_COUNTS)
   @javax.annotation.Nullable
-  private Map<String, Long> counts = new HashMap<>();
+  private Map<String, Long> counts;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)

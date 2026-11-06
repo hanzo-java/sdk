@@ -81,7 +81,7 @@ public class O11yGettableWaterfallTrace {
   public static final String SERIALIZED_NAME_SPANS = "spans";
   @SerializedName(SERIALIZED_NAME_SPANS)
   @javax.annotation.Nullable
-  private List<O11yWaterfallSpan> spans = new ArrayList<>();
+  private List<O11yWaterfallSpan> spans;
 
   public static final String SERIALIZED_NAME_START_TIMESTAMP_MILLIS = "startTimestampMillis";
   @SerializedName(SERIALIZED_NAME_START_TIMESTAMP_MILLIS)
@@ -101,7 +101,7 @@ public class O11yGettableWaterfallTrace {
   public static final String SERIALIZED_NAME_UNCOLLAPSED_SPANS = "uncollapsedSpans";
   @SerializedName(SERIALIZED_NAME_UNCOLLAPSED_SPANS)
   @javax.annotation.Nullable
-  private List<String> uncollapsedSpans = new ArrayList<>();
+  private List<String> uncollapsedSpans;
 
   public O11yGettableWaterfallTrace() {
   }

@@ -61,7 +61,7 @@ public class TransportInboxPage {
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private List<TransportInboxView> messages = new ArrayList<>();
+  private List<TransportInboxView> messages;
 
   public TransportInboxPage() {
   }

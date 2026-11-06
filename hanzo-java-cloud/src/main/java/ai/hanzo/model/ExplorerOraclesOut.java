@@ -56,7 +56,7 @@ public class ExplorerOraclesOut {
   public static final String SERIALIZED_NAME_ORACLES = "oracles";
   @SerializedName(SERIALIZED_NAME_ORACLES)
   @javax.annotation.Nullable
-  private List<ExplorerOracleView> oracles = new ArrayList<>();
+  private List<ExplorerOracleView> oracles;
 
   public ExplorerOraclesOut() {
   }

@@ -65,7 +65,7 @@ public class FlagOptinOut {
   public static final String SERIALIZED_NAME_PUBLIC = "public";
   @SerializedName(SERIALIZED_NAME_PUBLIC)
   @javax.annotation.Nullable
-  private List<String> _public = new ArrayList<>();
+  private List<String> _public;
 
   public FlagOptinOut() {
   }

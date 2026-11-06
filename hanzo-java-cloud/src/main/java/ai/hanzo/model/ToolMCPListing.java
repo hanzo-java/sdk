@@ -92,7 +92,7 @@ public class ToolMCPListing {
   public static final String SERIALIZED_NAME_PACKAGES = "packages";
   @SerializedName(SERIALIZED_NAME_PACKAGES)
   @javax.annotation.Nullable
-  private List<ToolMCPPackage> packages = new ArrayList<>();
+  private List<ToolMCPPackage> packages;
 
   public static final String SERIALIZED_NAME_REGISTRY = "registry";
   @SerializedName(SERIALIZED_NAME_REGISTRY)
@@ -102,7 +102,7 @@ public class ToolMCPListing {
   public static final String SERIALIZED_NAME_REMOTES = "remotes";
   @SerializedName(SERIALIZED_NAME_REMOTES)
   @javax.annotation.Nullable
-  private List<ToolMCPRemote> remotes = new ArrayList<>();
+  private List<ToolMCPRemote> remotes;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -127,7 +127,7 @@ public class ToolMCPListing {
   public static final String SERIALIZED_NAME_TRANSPORTS = "transports";
   @SerializedName(SERIALIZED_NAME_TRANSPORTS)
   @javax.annotation.Nullable
-  private List<String> transports = new ArrayList<>();
+  private List<String> transports;
 
   public static final String SERIALIZED_NAME_VENDOR = "vendor";
   @SerializedName(SERIALIZED_NAME_VENDOR)

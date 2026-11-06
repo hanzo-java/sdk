@@ -62,7 +62,7 @@ public class LeaderboardActivityView {
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
   @javax.annotation.Nullable
-  private List<LeaderboardActivityPoint> days = new ArrayList<>();
+  private List<LeaderboardActivityPoint> days;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)

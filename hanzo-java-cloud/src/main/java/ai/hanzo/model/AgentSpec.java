@@ -66,7 +66,7 @@ public class AgentSpec {
   public static final String SERIALIZED_NAME_GPUS = "gpus";
   @SerializedName(SERIALIZED_NAME_GPUS)
   @javax.annotation.Nullable
-  private List<AgentGPU> gpus = new ArrayList<>();
+  private List<AgentGPU> gpus;
 
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)

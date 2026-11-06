@@ -61,7 +61,7 @@ public class AgentSeriesLine {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   @javax.annotation.Nullable
-  private List<AgentSeriesPoint> points = new ArrayList<>();
+  private List<AgentSeriesPoint> points;
 
   public AgentSeriesLine() {
   }
