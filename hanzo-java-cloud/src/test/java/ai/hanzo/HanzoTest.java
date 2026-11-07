@@ -67,6 +67,20 @@ class HanzoTest {
         assertEquals("https://api.hanzo.ai", Hanzo.client("", "", "").getBasePath());
     }
 
+    // A completion that writes a page takes longer than okhttp's 10 s default.
+    @Test
+    void waitsForASlowAnswer() throws Exception {
+        server.enqueue(json("{\"model\":\"zen6\",\"choices\":[]}").setBodyDelay(11, java.util.concurrent.TimeUnit.SECONDS));
+
+        PostChat200Response reply = new AiApi(client("hk-test", null)).postChatCompletions(
+                new OpenaiChatCompletionRequest()
+                        .model("zen6")
+                        .messages(List.of(new OpenaiChatCompletionMessage().role("user").content("hi"))),
+                null, null);
+
+        assertEquals("zen6", reply.getModel());
+    }
+
     @Test
     void sendsTheBearerAndTheTenant() throws Exception {
         server.enqueue(json("{\"keys\":[{\"id\":\"k1\",\"prefix\":\"hk-ab\",\"created\":\"2026-11-01T00:00:00Z\"}]}"));

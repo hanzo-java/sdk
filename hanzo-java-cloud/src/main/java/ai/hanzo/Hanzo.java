@@ -30,6 +30,14 @@ public final class Hanzo {
     /** The Hanzo gateway. Every route is {@code <base>/v1/<service>/...}. */
     public static final String DEFAULT_BASE_URL = "https://api.hanzo.ai";
 
+    /**
+     * How long a call may wait for its answer, in milliseconds. okhttp's own
+     * default is 10 s, and a completion that writes more than a few lines takes
+     * longer than that, so {@code postChatCompletions} failed with a timeout on
+     * the first real prompt. 100 s is the C# client's default too.
+     */
+    public static final int READ_TIMEOUT_MS = 100_000;
+
     private Hanzo() {
     }
 
@@ -64,6 +72,7 @@ public final class Hanzo {
      */
     public static ApiClient client(String apiKey, String baseUrl, String orgId) {
         ApiClient client = new ApiClient();
+        client.setReadTimeout(READ_TIMEOUT_MS);
         client.setBasePath(baseUrl == null || baseUrl.isEmpty() ? DEFAULT_BASE_URL : baseUrl);
         if (apiKey != null && !apiKey.isEmpty()) {
             client.setBearerToken(apiKey);
